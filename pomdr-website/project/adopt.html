@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Adopt | Peace of Mind Dog Rescue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400..600&display=swap" />
+<link rel="stylesheet" href="pomdr.css" />
+<style>
+/* toolbar, filters, etc. already have styles. Just keep page-level. */
+.hero{padding:160px 0 60px;background:radial-gradient(ellipse at 20% 0%,rgba(0,139,176,.07),transparent 55%),radial-gradient(ellipse at 80% 10%,rgba(99,47,136,.05),transparent 55%),var(--cream);border-bottom:1px solid var(--line);}
+.hero h1{font-family:var(--font-serif);font-size:clamp(40px,6vw,84px);line-height:.98;letter-spacing:-.025em;font-weight:400;margin:14px 0 16px;}
+.hero h1 em{font-style:italic;color:var(--blue);font-weight:300;}
+.hero p{font-size:19px;color:var(--ink-2);max-width:580px;margin:0 0 32px;}
+.hero-meta{display:flex;gap:36px;margin-top:44px;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;}
+.hero-meta strong{font-family:var(--font-serif);font-size:32px;font-weight:300;color:var(--blue);display:block;line-height:1;margin-bottom:3px;}
+.hero-meta span{font-size:13px;color:var(--ink-3);}
+</style>
+</head>
+<body data-page="adopt">
+
+
+<script>
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script><section class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">Adoptable Dogs · Updated daily</div>
+    <h1>Meet the dogs looking for their <em>forever</em> people.</h1>
+    <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>
+    <div class="hero-meta">
+      <div><strong id="count-available">—</strong>Available now</div>
+      <div><strong id="count-foster">—</strong>Need foster</div>
+      <div><strong>98%</strong>Match success</div>
+      <div><strong>16 yrs</strong>Of lifetime care</div>
+    </div>
+  </div>
+</section>
+
+<div class="toolbar">
+  <div class="container toolbar-inner">
+    <div class="tabs" id="tabs"></div>
+    <div class="filters" id="filters"></div>
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+      <input id="search-input" placeholder="Search by name or breed…" />
+    </div>
+  </div>
+</div>
+
+<section class="grid-section">
+  <div class="container">
+    <div class="results-row">
+      <div class="results-count serif" id="results-count">—</div>
+      <div class="sort">
+        Sort by
+        <select id="sort-select">
+          <option value="default">Newest</option>
+          <option value="age-asc">Age · youngest</option>
+          <option value="age-desc">Age · oldest</option>
+          <option value="weight-asc">Size · smallest</option>
+          <option value="weight-desc">Size · largest</option>
+        </select>
+      </div>
+    </div>
+    <div class="dogs-grid" id="dogs-grid"></div>
+
+    <div class="policy">
+      <div>
+        <div class="eyebrow">Before you apply</div>
+        <h2>Our adoption process, in four gentle steps.</h2>
+        <p>We care deeply about matching the right dog with the right home. Please take a moment to review our policies. Most meetings happen within a week of application.</p>
+        <a href="process.html" class="policy-cta">Read the full adoption process
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <ul class="policy-list">
+        <li><span><span class="num">01</span>&nbsp;&nbsp;Submit application</span><span style="color:var(--ink-3);font-size:12px">~ 10 min</span></li>
+        <li><span><span class="num">02</span>&nbsp;&nbsp;Phone conversation</span><span style="color:var(--ink-3);font-size:12px">1–3 days</span></li>
+        <li><span><span class="num">03</span>&nbsp;&nbsp;Meet & greet</span><span style="color:var(--ink-3);font-size:12px">By appointment</span></li>
+        <li><span><span class="num">04</span>&nbsp;&nbsp;Welcome home</span><span style="color:var(--ink-3);font-size:12px">Lifetime support</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+const DOGS = [
+  { name: "Nana", breed: "Anatolian Shepherd / Great Pyrenees mix", sex: "Female", age: 6, weight: 87, tab: "adoptable", status: "foster_needed" },
+  { name: "Sun Bear", breed: "Yorkie / Shih Tzu mix", sex: "Male", age: 12, weight: 11, tab: "adoptable" },
+  { name: "Oscar", breed: "German Shepherd", sex: "Male", age: 6, weight: 90, tab: "adoptable" },
+  { name: "Pebble", breed: "Long-haired Dachshund", sex: "Female", age: 12, weight: 11, tab: "adoptable" },
+  { name: "Ohana", breed: "Maltese mix", sex: "Female", age: 10, weight: 7, tab: "adoptable", status: "adoption_pending" },
+  { name: "Lilac", breed: "Chihuahua mix", sex: "Female", age: 9, weight: 9, tab: "adoptable" },
+  { name: "Leela", breed: "Chihuahua", sex: "Female", age: 10, weight: 5, tab: "adoptable" },
+  { name: "Malcolm", breed: "Husky", sex: "Male", age: 8, weight: 50, tab: "adoptable" },
+  { name: "Leaf", breed: "Chihuahua mix", sex: "Female", age: 7, weight: 17, tab: "adoptable" },
+  { name: "Dasher", breed: "Whippet", sex: "Male", age: 4, weight: 40, tab: "adoptable" },
+  { name: "Bixby", breed: "Yorkie", sex: "Female", age: 12, weight: 10, tab: "adoptable" },
+  { name: "Mahalo", breed: "Chihuahua mix", sex: "Male", age: 8, weight: 12, tab: "adoptable" },
+  { name: "Ozzy", breed: "Chihuahua mix", sex: "Male", age: 8, weight: 17, tab: "adoptable" },
+  { name: "Koa", breed: "German Shepherd mix", sex: "Male", age: 12, weight: 40, tab: "adoptable", status: "foster_needed" },
+  { name: "Spam", breed: "Chihuahua", sex: "Male", age: 8, weight: 7, tab: "adoptable" },
+  { name: "Furby", breed: "Chihuahua / Terrier mix", sex: "Male", age: 13, weight: 15, tab: "adoptable" },
+  { name: "Gingerbread", breed: "Chihuahua", sex: "Male", age: 9, weight: 10, tab: "adoptable" },
+  { name: "Biggie", breed: "Pug", sex: "Male", age: 3, weight: 15, tab: "adoptable" },
+  { name: "Katara", breed: "Rat Terrier / Chihuahua mix", sex: "Female", age: 11, weight: 16, tab: "adoptable", status: "foster_needed_dated" },
+  { name: "Katsu", breed: "Pomeranian mix", sex: "Female", age: 13, weight: 13, tab: "adoptable" },
+  { name: "Lilikoi", breed: "Yorkie mix", sex: "Female", age: 12, weight: 7, tab: "adoptable" },
+  { name: "Shane", breed: "Yorkie mix", sex: "Male", age: 10, weight: 6, tab: "adoptable" },
+  { name: "Honeybee", breed: "French Bulldog", sex: "Female", age: 7, weight: 20, tab: "adoptable", status: "foster_needed" },
+  { name: "Buddy the Lab", breed: "Black Lab mix", sex: "Male", age: 10, weight: 60, tab: "adoptable", status: "foster_needed" },
+  { name: "Fonzie", breed: "Havanese / Poodle mix", sex: "Male", age: 11, weight: 17, tab: "adoptable", status: "adoption_pending" },
+  { name: "Aloha", breed: "Pit Bull / Chihuahua mix", sex: "Female", age: 10, weight: 18, tab: "adoptable" },
+  { name: "Jelly Bean", breed: "Terrier mix", sex: "Male", age: 12, weight: 14, tab: "adoptable" },
+  { name: "Aragorn", breed: "Chihuahua mix", sex: "Male", age: 10, weight: 20, tab: "adoptable" },
+  { name: "Yankee Candle", breed: "Pomeranian", sex: "Male", age: 11, weight: 12, tab: "adoptable" },
+  { name: "Mihla", breed: "Labrador Retriever mix", sex: "Female", age: 8, weight: 69, tab: "adoptable", status: "courtesy_listing" },
+  { name: "Zelda", breed: "Chihuahua mix", sex: "Female", age: 13, weight: 5, tab: "adoptable" },
+  { name: "Cricket", breed: "Yorkie / Maltese mix", sex: "Male", age: 8, weight: 6, tab: "adoptable", status: "adoption_pending" },
+  { name: "Old Man Jenkins", breed: "Poodle mix", sex: "Male", age: 10, weight: 12, tab: "adoptable" },
+  { name: "Doodle the Poodle", breed: "Miniature Poodle mix", sex: "Male", age: 7, weight: 14, tab: "adoptable" },
+  { name: "Rolly Polly", breed: "Dachshund mix", sex: "Male", age: 10, weight: 14, tab: "adoptable" },
+  { name: "Watson", breed: "Chihuahua mix", sex: "Male", age: 12, weight: 7, tab: "adoptable", status: "foster_needed" },
+  { name: "Anemone", breed: "Poodle / Terrier mix", sex: "Male", age: 13, weight: 25, tab: "adoptable" },
+  { name: "Sea Bass", breed: "Terrier mix", sex: "Male", age: 10, weight: 10, tab: "adoptable" },
+  { name: "Santa's Little Helper", breed: "Pug mix", sex: "Male", age: 8, weight: 20, tab: "adoptable" },
+  { name: "Pirata", breed: "Pit Bull mix", sex: "Female", age: 10, weight: 49, tab: "adoptable" },
+  { name: "Rita", breed: "Maltese", sex: "Female", age: 13, weight: 13, tab: "adoptable", status: "foster_needed" },
+  { name: "Hawk", breed: "Silky Terrier", sex: "Male", age: 13, weight: 13, tab: "adoptable" },
+  { name: "Casper", breed: "Yorkshire Terrier", sex: "Male", age: 10, weight: 10, tab: "adoptable" },
+  { name: "Hatchi", breed: "Siberian Husky", sex: "Male", age: 8, weight: 80, tab: "adoptable" },
+  { name: "Lacey", breed: "Chihuahua mix", sex: "Female", age: 10, weight: 18, tab: "adoptable" },
+  { name: "Beanie Baby", breed: "Chihuahua mix", sex: "Female", age: 13, weight: 10, tab: "adoptable", status: "foster_needed" },
+  { name: "Skipper", breed: "Border Collie mix", sex: "Male", age: 9, weight: 46, tab: "adoptable" },
+  { name: "Patches", breed: "Chihuahua mix", sex: "Male", age: 12, weight: 12, tab: "adoptable" },
+  { name: "Sebastian", breed: "Pomeranian / Chihuahua mix", sex: "Male", age: 12, weight: 10, tab: "adoptable" },
+  { name: "Whimsy", breed: "Chihuahua mix", sex: "Female", age: 6, weight: 12, tab: "adoptable" },
+  { name: "Chocolate Chunk", breed: "Chihuahua", sex: "Male", age: 9, weight: 10, tab: "adoptable" },
+  { name: "Sugar Cookie", breed: "Pomeranian", sex: "Female", age: 11, weight: 10, tab: "adoptable" },
+  { name: "Mighty Joe", breed: "Miniature Pinscher", sex: "Male", age: 12, weight: 20, tab: "adoptable", status: "foster_needed" },
+  { name: "Cider", breed: "Chihuahua mix", sex: "Male", age: 10, weight: 9, tab: "adoptable" },
+  { name: "Neo", breed: "Chihuahua / Pomeranian", sex: "Male", age: 13, weight: 10, tab: "adoptable" },
+  { name: "Mya", breed: "Pomeranian / Chihuahua mix", sex: "Female", age: 10, weight: 10, tab: "adoptable" },
+  { name: "Romeo", breed: "Chihuahua mix", sex: "Male", age: 10, weight: 10, tab: "adoptable" },
+  { name: "Clove", breed: "Chihuahua mix", sex: "Male", age: 8, weight: 15, tab: "adoptable" },
+  { name: "Floss", breed: "Chihuahua mix", sex: "Male", age: 8, weight: 7, tab: "adoptable" },
+  { name: "Gigi", breed: "Chihuahua mix", sex: "Female", age: 10, weight: 10, tab: "adoptable" },
+  { name: "Dash", breed: "Cocker Spaniel", sex: "Male", age: 13, weight: 30, tab: "adoptable" },
+  { name: "Suki", breed: "Terrier / Chihuahua mix", sex: "Female", age: 10, weight: 20, tab: "adoptable" },
+  { name: "Marbles", breed: "Chihuahua mix", sex: "Female", age: 8, weight: 12, tab: "adoptable" },
+  { name: "Moose", breed: "Chihuahua / Beagle mix", sex: "Male", age: 9, weight: 20, tab: "adoptable" },
+  { name: "Hubba Bubba", breed: "American Pitbull / Frenchie mix", sex: "Male", age: 6, weight: 40, tab: "adoptable" },
+  { name: "Tamagotchi", breed: "Chihuahua", sex: "Male", age: 8, weight: 7, tab: "adoptable" },
+  { name: "Corey", breed: "Poodle mix", sex: "Male", age: 12, weight: 19, tab: "adoptable" },
+  { name: "Hot Sauce", breed: "Shih Tzu", sex: "Male", age: 7, weight: 17, tab: "adoptable", status: "foster_needed" },
+  { name: "Blockbuster", breed: "Chihuahua mix", sex: "Male", age: 11, weight: 14, tab: "adoptable" },
+
+  // Hospice tab — sanctuary care, not adoptable.
+  { name: "Mr. Pancake", breed: "Beagle mix", sex: "Male", age: 15, weight: 18, tab: "hospice", status: "hospice" },
+  { name: "Juniper", breed: "Maltese", sex: "Female", age: 16, weight: 8, tab: "hospice", status: "hospice" },
+  { name: "Captain", breed: "Shih Tzu", sex: "Male", age: 14, weight: 14, tab: "hospice", status: "hospice" },
+
+  // Other tab — courtesy listings and friends-of-rescue dogs.
+  { name: "Bruno", breed: "Boxer", sex: "Male", age: 4, weight: 60, tab: "other", status: "courtesy_listing" },
+  { name: "Mia", breed: "Miniature Pinscher mix", sex: "Female", age: 1, weight: 15, tab: "other", status: "courtesy_listing" },
+  { name: "Chopsticks", breed: "Shih Tzu mix", sex: "Male", age: 10, weight: 18, tab: "other", status: "courtesy_listing" },
+
+  // Recently adopted tab — happy tails from the last 90 days.
+  { name: "Breeze", breed: "Shih Tzu / Poodle mix", sex: "Male", age: 13, weight: 8, tab: "adopted", status: "recently_adopted" },
+  { name: "Rosie", breed: "Maltese mix", sex: "Female", age: 11, weight: 9, tab: "adopted", status: "recently_adopted" },
+  { name: "Finn", breed: "Terrier mix", sex: "Male", age: 9, weight: 17, tab: "adopted", status: "recently_adopted" },
+  { name: "Biscuit", breed: "Beagle mix", sex: "Male", age: 12, weight: 22, tab: "adopted", status: "recently_adopted" },
+];
+
+// placeholder DogPhoto SVG component
+function DogPhoto(name, seed) {
+  const palettes = [
+    ["#e8c5a8", "#a68560", "#3d2a1a"],
+    ["#c8b8d4", "#8a6aa0", "#3a2a4e"],
+    ["#e0cbb2", "#a08670", "#3e2d1f"],
+    ["#b8d4c5", "#6a9d85", "#2b4a3a"],
+    ["#d4c5b0", "#9c8670", "#4a3a28"],
+    ["#cfd9bf", "#84966a", "#3d4a2b"],
+    ["#f0c8b0", "#d4896a", "#8b3a2b"],
+    ["#b8c9d4", "#6a8fa0", "#2b4a5e"],
+  ];
+  const p = palettes[seed % palettes.length];
+  const id = `g-${seed}-${name.replace(/\W/g,'')}`;
+  return `
+    <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
+      <defs>
+        <linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${p[0]}" />
+          <stop offset="60%" stop-color="${p[1]}" />
+          <stop offset="100%" stop-color="${p[2]}" />
+        </linearGradient>
+        <pattern id="${id}-dots" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.06)" />
+        </pattern>
+        <radialGradient id="${id}-v" cx="50%" cy="40%" r="70%">
+          <stop offset="60%" stop-color="rgba(0,0,0,0)" />
+          <stop offset="100%" stop-color="rgba(0,0,0,0.35)" />
+        </radialGradient>
+      </defs>
+      <rect width="300" height="400" fill="url(#${id})" />
+      <rect width="300" height="400" fill="url(#${id}-dots)" />
+      <rect width="300" height="400" fill="url(#${id}-v)" />
+      <g font-family="ui-monospace,Menlo,monospace" font-size="9" fill="rgba(255,255,255,0.5)" letter-spacing="1">
+        <text x="14" y="22">◐ photo · ${name.toLowerCase().replace(/\W/g,'')}.jpg</text>
+        <text x="14" y="388">[placeholder]</text>
+      </g>
+      <text x="150" y="220" text-anchor="middle" font-family="'Source Serif 4',serif" font-weight="400" font-size="62" fill="rgba(255,255,255,0.92)" font-style="italic">${name.split(' ')[0]}</text>
+    </svg>
+  `;
+}
+
+// STATE
+let state = {
+  tab: 'adoptable',
+  search: '',
+  filter: 'all',
+  sort: 'default',
+  liked: new Set(JSON.parse(localStorage.getItem('pomdr-likes') || '[]')),
+};
+
+// TABS
+const TABS = [
+  { id: 'adoptable', label: 'Our Adoptable Dogs' },
+  { id: 'other', label: 'Other Adoptable' },
+  { id: 'hospice', label: 'Hospice Care' },
+  { id: 'adopted', label: 'Recently Adopted' },
+];
+const FILTERS = [
+  { id: 'all', label: 'All' },
+  { id: 'small', label: 'Small (under 20 lb)' },
+  { id: 'medium', label: 'Medium (20–50 lb)' },
+  { id: 'large', label: 'Large (50+ lb)' },
+  { id: 'young', label: 'Under 8 years' },
+  { id: 'senior', label: 'Senior (10+)' },
+  { id: 'foster', label: 'Foster Needed' },
+];
+
+function renderTabs() {
+  const el = document.getElementById('tabs');
+  const counts = {};
+  TABS.forEach(t => counts[t.id] = DOGS.filter(d => d.tab === t.id).length);
+  el.innerHTML = TABS.map(t => `
+    <button class="tab ${state.tab === t.id ? 'active' : ''}" data-tab="${t.id}">
+      ${t.label}<span class="tab-count">${counts[t.id] || 0}</span>
+    </button>
+  `).join('');
+  el.querySelectorAll('.tab').forEach(b => b.onclick = () => { state.tab = b.dataset.tab; render(); });
+}
+function renderFilters() {
+  const el = document.getElementById('filters');
+  el.innerHTML = FILTERS.map(f => `<button class="filter ${state.filter === f.id ? 'active' : ''}" data-filter="${f.id}">${f.label}</button>`).join('');
+  el.querySelectorAll('.filter').forEach(b => b.onclick = () => { state.filter = b.dataset.filter; render(); });
+}
+
+function applyFilters(list) {
+  return list.filter(d => {
+    if (d.tab !== state.tab) return false;
+    if (state.filter === 'small' && d.weight >= 20) return false;
+    if (state.filter === 'medium' && (d.weight < 20 || d.weight > 50)) return false;
+    if (state.filter === 'large' && d.weight <= 50) return false;
+    if (state.filter === 'young' && d.age >= 8) return false;
+    if (state.filter === 'senior' && d.age < 10) return false;
+    if (state.filter === 'foster' && d.status !== 'foster_needed' && d.status !== 'foster_needed_dated') return false;
+    if (state.search) {
+      const q = state.search.toLowerCase();
+      if (!d.name.toLowerCase().includes(q) && !d.breed.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  });
+}
+function applySort(list) {
+  const l = [...list];
+  if (state.sort === 'age-asc') l.sort((a,b) => a.age - b.age);
+  else if (state.sort === 'age-desc') l.sort((a,b) => b.age - a.age);
+  else if (state.sort === 'weight-asc') l.sort((a,b) => a.weight - b.weight);
+  else if (state.sort === 'weight-desc') l.sort((a,b) => b.weight - a.weight);
+  return l;
+}
+
+// 7-state status badges. Status vocabulary mirrors theme.json + dog detail status strip.
+const STATUS_BADGES = {
+  available:           { label: "Available",        cls: "available" },
+  foster_needed:       { label: "Foster Needed",    cls: "foster_needed" },
+  foster_needed_dated: { label: "Foster Needed",    cls: "foster_needed_dated" },
+  adoption_pending:    { label: "Adoption Pending", cls: "adoption_pending" },
+  recently_adopted:    { label: "Recently Adopted", cls: "recently_adopted" },
+  hospice:             { label: "Hospice",          cls: "hospice" },
+  courtesy_listing:    { label: "Courtesy Listing", cls: "courtesy_listing" },
+};
+function badgeFor(d) {
+  const key = d.status || (d.tab === 'hospice' ? 'hospice' : 'available');
+  const cfg = STATUS_BADGES[key] || STATUS_BADGES.available;
+  return `<div class="badge ${cfg.cls}">${cfg.label}</div>`;
+}
+
+// Map of dogs with real, locked photos. All others fall back to the indexed pool.
+const PROFILE_SLUGS = new Set(["clove","mihla","watson","sun-bear","oscar","nana","pebble","malcolm","bixby","breeze","honeybee","aragorn"]);
+const PROFILE_IMAGES = {
+  "pebble":   "images/dog1.jpeg",
+  "watson":   "images/dog2.jpeg",
+  "malcolm":  "images/dog3.jpeg",
+  "bixby":    "images/dog4.jpeg",
+  "breeze":   "images/dog5.jpeg",
+  "honeybee": "images/dog6.jpeg",
+  "aragorn":  "images/dog7.jpeg",
+  "clove":    "uploads/IMG_2403.jpg",
+  "mihla":    "uploads/IMG_8315.jpeg",
+  "nana":     "uploads/IMG_8679.jpeg",
+  "oscar":    "uploads/IMG_6278.jpeg",
+  "sun-bear": "uploads/Blythe with Tamagochi (1).jpeg",
+};
+function slugify(n) { return n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+function dogCard(d, i) {
+  const slug = slugify(d.name);
+  const imgSrc = PROFILE_IMAGES[slug] || `images/dog${(i % 17) + 1}.jpeg`;
+  const href = PROFILE_SLUGS.has(slug) ? `dog/${slug}.html` : `dog/coming-soon.html?name=${encodeURIComponent(slug)}`;
+  return `
+    <a class="dog-card-link" href="${href}" style="display:block;color:inherit;text-decoration:none">
+    <article class="dog-card" data-name="${d.name}">
+      <div class="photo-wrap">
+        <img src="${imgSrc}" alt="${d.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.6s cubic-bezier(0.2,0.8,0.2,1);" />
+        ${badgeFor(d)}
+        <button class="heart ${state.liked.has(d.name) ? 'active' : ''}" data-name="${d.name}" aria-label="Favorite">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
+        </button>
+      </div>
+      <div class="info">
+        <div class="name">${d.name}</div>
+        <div class="meta-line">~${d.age} yrs · ${d.sex} · ${d.weight} lb · ${d.breed}</div>
+        <div class="cta-row">
+          <span>View profile</span>
+          <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </article>
+    </a>
+  `;
+}
+
+function render() {
+  renderTabs();
+  renderFilters();
+  const filtered = applySort(applyFilters(DOGS));
+  const grid = document.getElementById('dogs-grid');
+  grid.innerHTML = filtered.length
+    ? filtered.map(dogCard).join('')
+    : `<div style="grid-column:1/-1;padding:60px;text-align:center;color:var(--ink-3);border:1px dashed var(--line);border-radius:var(--radius)">No dogs match those filters. Try widening your search.</div>`;
+
+  document.getElementById('results-count').textContent =
+    filtered.length === 1 ? '1 dog' : `${filtered.length} dogs`;
+
+  // counts
+  document.getElementById('count-available').textContent =
+    DOGS.filter(d => d.tab === 'adoptable' && d.status !== 'adoption_pending' && d.status !== 'recently_adopted').length;
+  document.getElementById('count-foster').textContent =
+    DOGS.filter(d => d.status === 'foster_needed' || d.status === 'foster_needed_dated').length;
+
+  grid.querySelectorAll('.heart').forEach(b => b.onclick = (e) => {
+    e.preventDefault(); e.stopPropagation();
+    const n = b.dataset.name;
+    if (state.liked.has(n)) state.liked.delete(n); else state.liked.add(n);
+    localStorage.setItem('pomdr-likes', JSON.stringify([...state.liked]));
+    b.classList.toggle('active');
+  });
+}
+
+document.getElementById('search-input').addEventListener('input', (e) => { state.search = e.target.value; render(); });
+document.getElementById('sort-select').addEventListener('change', (e) => { state.sort = e.target.value; render(); });
+
+render();
+</script>
+<script src="pomdr-layout.js"></script>
+</body>
+</html>

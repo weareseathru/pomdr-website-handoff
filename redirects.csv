@@ -1,0 +1,32 @@
+legacy_url,new_url,http_code,source,note
+/,/,200,web-capture,Homepage. No redirect needed.
+/about/,/about/,200,web-capture,Same path. Block theme renders the new about page.
+/adopt/,/adopt/,200,web-capture,Adoptable dogs listing.
+/courtesy-listings/,/courtesy-listings/,200,web-capture,One of three dog category listings.
+/adopted/,/adopted/,200,web-capture,Recently adopted historical archive.
+/events/,/events/,200,web-capture,Adoption events listing.
+/process/,/process/,200,web-capture,Adoption process page.
+/volunteer/,/volunteer/,200,web-capture,Volunteer opportunities.
+/volunteer-application/,/volunteer-application/,200,web-capture,LGL form embed page. Confirm with Andrew whether volunteer apps stay on LGL.
+/foster-needs/,/foster-needs/,200,web-capture,Foster needs page.
+/helping-paw/,/helping-paw/,200,web-capture,Helping Paw program. Anchors for Financial and Walking/Foster sub-sections.
+/recources/,/resources/,301,web-capture,Misspelled URL slug on the live site. Preserve as 301 source. Canonical becomes /resources/.
+/surrender/,/surrender/,200,web-capture,Placing your dog page. Spec calls it Placing Your Dog.
+/perpetual-care-program/,/perpetual-care-program/,200,web-capture,Spec also calls this Lifetime Care. Confirm canonical name.
+/donate/,/donate/,200,web-capture,Ways to Give page. LGL likely backs the donation form.
+/benefit-shop/,/benefit-shop/,200,web-capture,Benefit Shop page. Address per global CLAUDE.md is 223 Grand Ave.
+/jobs/,/jobs/,200,web-capture,Jobs page. Spec calls it Job Openings.
+/videos/,/videos/,200,web-capture,Videos page. Possibly merge into /media/ pending decision.
+/media/,/media/,200,web-capture,In the Media page.
+/testimonials/,/testimonials/,200,web-capture,Testimonials page.
+/pets/3037/,/pets/pebble/,301,web-capture,Pebble. Legacy integer ID seen in capture. New URL uses slug.
+/pets/2865/,/pets/patches/,301,web-capture,Patches. Legacy integer ID seen in capture.
+/pets/2860/,/pets/sun-bear/,301,web-capture,Sun Bear. Legacy integer ID seen in capture.
+/pets/2855/,/pets/flounder/,301,web-capture,Flounder. Legacy integer ID seen in capture.
+/pets/2849/,/pets/oyster/,301,web-capture,Oyster. Legacy integer ID seen in capture.
+/pets/2844/,/pets/orca/,301,web-capture,Orca. Legacy integer ID seen in capture.
+/pets/2839/,/pets/sebastian/,301,web-capture,Sebastian. Legacy integer ID seen in capture.
+/dog.php?id=*,/pets/{slug}/,301,handoff-spec,HANDOFF.md calls for redirecting /dog.php?id=N for IDs 3000-5000. Captures show /pets/{id}/ pattern instead. Confirm with Andrew whether dog.php still resolves on production. Pattern row is a placeholder.
+/wp-admin/*,/wp-admin/*,200,inferred,WordPress admin. No redirect needed.
+,,,,
+,,,,STUB ONLY. This file is a seed. A full crawl of www.pomdr.org is required before launch to enumerate every URL the site has ever published. Run that crawl from staging once it exists.

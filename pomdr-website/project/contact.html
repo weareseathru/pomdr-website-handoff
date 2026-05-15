@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact | Peace of Mind Dog Rescue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400..600&display=swap"/>
+<link rel="stylesheet" href="pomdr.css"/>
+</head>
+<body data-page="contact">
+
+<header class="page-header">
+  <div class="container">
+    <span class="eyebrow">Contact</span>
+    <h1 class="page-title">Talk to a <em>real person</em>.</h1>
+    <p class="page-lead">Email, call, or stop by. We answer every message, usually within a day or two.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start">
+      <div>
+        <h2 class="section-title">Reach <em>us</em>.</h2>
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:24px">
+          <div>
+            <div class="eyebrow">Phone</div>
+            <a href="tel:8317189122" style="font-family:var(--font-serif);font-size:28px;color:var(--blue)">831 718 9122</a>
+          </div>
+          <div>
+            <div class="eyebrow">Email</div>
+            <a href="mailto:info@peaceofminddogrescue.org" style="font-family:var(--font-serif);font-size:24px;color:var(--blue)">info@peaceofminddogrescue.org</a>
+          </div>
+          <div>
+            <div class="eyebrow">Office &amp; Adoption Center</div>
+            <p style="margin:0;font-size:17px">615 Forest Avenue<br/>Pacific Grove, CA 93950</p>
+            <p style="margin:8px 0 0;font-size:14px;color:var(--ink-3)">Open by appointment Tuesday through Saturday.</p>
+          </div>
+        </div>
+      </div>
+      <form action="thank-you.html" method="get" style="background:white;padding:32px;border-radius:var(--radius-lg);border:1px solid var(--line)" onsubmit="event.preventDefault();window.location.href='thank-you.html?source=contact';"><input type="hidden" name="source" value="contact"/>
+        <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 20px">Send a note</h3>
+        <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Your name</label>
+        <input required style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;margin-bottom:16px"/>
+        <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">Email</label>
+        <input type="email" required style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;margin-bottom:16px"/>
+        <label style="display:block;font-size:13px;font-weight:600;margin-bottom:6px">How can we help?</label>
+        <textarea rows="5" required style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font:inherit;margin-bottom:16px;resize:vertical"></textarea>
+        <button class="btn btn-primary" style="width:100%;justify-content:center">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="pomdr-layout.js"></script>
+</body>
+</html>
