@@ -104,9 +104,9 @@ Listings, Hospice. Captured live site shows:
 
 The block theme's dog Custom Post Type field `category` (controlled
 vocabulary: `adoptable`, `courtesy`, `hospice`) drives which listing page
-each dog appears on. The status field (`available`, `foster_needed`,
-`foster_needed_dated`, `adoption_pending`, `recently_adopted`,
-`hospice`, `courtesy_listing`) drives badges and filters within a listing.
+each dog appears on. The status field (`available`, `foster-needed`,
+`foster-needed-dated`, `adoption-pending`, `recently-adopted`,
+`hospice`, `courtesy-listing`) drives badges and filters within a listing.
 
 ---
 
@@ -121,14 +121,14 @@ Audit of the design's footer (`pomdr-website/project/pomdr-layout.js` lines
 
 | Required item         | In design? | Notes |
 |-----------------------|------------|-------|
-| Phone                 | partial    | Display reads "831 718 9122" but `tel:` href is `8312183647`. Display correct, anchor wrong. Fix in theme. |
+| Phone                 | yes        | Display "(831) 718-9122" and `tel:+18317189122` both correct in `pomdr-layout.js:169`. Fixed in Session 2 footer rewrite. |
 | Email                 | yes        | `info@peaceofminddogrescue.org`. Matches global CLAUDE.md. |
 | Mailing address       | yes (Bauer only) | "615 Forest Ave, Pacific Grove, CA 93950". |
 | Bauer Center          | yes        | (same as mailing address) |
 | Boand Vet Clinic      | no         | "1251 10th St, Monterey, CA" per global CLAUDE.md. Not in design footer. |
 | Benefit Shop          | no         | "223 Grand Ave, Pacific Grove, CA" per global CLAUDE.md. Not in design footer. Listed in nav, not footer. |
 | 501(c)(3) status      | yes        | "501(c)(3) nonprofit." |
-| Tax ID                | wrong      | Design says `EIN 26-4220886`. Authoritative value per global CLAUDE.md is `27-1154816`. **Block theme must use 27-1154816.** |
+| Tax ID                | yes        | Footer now reads `EIN 27-1154816` in `pomdr-layout.js:235`, matching the authoritative value in CLAUDE.md. Fixed in Session 2 footer rewrite. |
 | Hours                 | no         | Not present. |
 | Social links          | yes        | Facebook, Instagram, YouTube. URLs match `peaceofminddogrescue` handle. |
 | Terms                 | no         | Design has "Privacy" and "Contact" only, no "Terms" link. |
@@ -195,9 +195,9 @@ fast and unambiguous.
 1. **Add a new dog.** Create a `pomdr_dog` post, fill required fields, set
    category and status, upload featured photo + gallery, publish. Review
    placeholder text enforces voice rules.
-2. **Move a dog from `available` to `adoption_pending`.** Single status
+2. **Move a dog from `available` to `adoption-pending`.** Single status
    field flip. The card re-skins automatically.
-3. **Mark a dog adopted.** Status flip to `recently_adopted`. The dog
+3. **Mark a dog adopted.** Status flip to `recently-adopted`. The dog
    moves out of category listings and into the historical archive.
 4. **Post a happy tail.** A separate CPT (`pomdr_happy_tail`) or a tag on
    the dog post. Decide in Session 2.

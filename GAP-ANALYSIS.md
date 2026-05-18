@@ -45,8 +45,8 @@ as representative; spot-checks against `dog/aragorn.html`, `dog/sun-bear.html`,
 | `sex`           | partial         | yes              | partial  | Listing card omits sex on some variants (homepage rotator shows age + city only). Add sex to the canonical card stats line for consistency, since adopters filter on it. |
 | `age_years`     | yes             | yes              | partial  | Detail page shows `~12 years`; design's `data.jsx` shows bare `11 yrs` and a `Meet Pebble · 11 yrs ...` violation. Voice: numeric value with `~` only when approximate, abbrev `yrs` on cards, `years` on detail. Conflict: detail page says 12, `data.jsx` says 11. Source-of-truth resolves on data sync, not in design. |
 | `weight_lb`     | no              | yes (vitals line)| partial  | Listing card does not show weight; detail shows `11 lb`. Add weight to card stats line behind a small-screen breakpoint (drop on `xs`). |
-| `status`        | partial         | partial          | partial  | Cards show one badge slot (`badge.foster`, `badge.pending` exist in `pomdr.css` lines 894 to 920) but the design only renders two of seven status values. Detail page has no status surface at all. Resolution: extend badge vocabulary to all seven values (`available`, `foster_needed`, `foster_needed_dated`, `adoption_pending`, `recently_adopted`, `hospice`, `courtesy_listing`). Detail hero gains a status strip beneath the eyebrow. |
-| `foster_dates` | no              | no               | missing  | Required when `status = foster_needed_dated`. Pattern: render as small italic line under the badge ("Needs foster May 14 to June 2"). Block pattern in Session 2. |
+| `status`        | partial         | partial          | partial  | Cards show one badge slot (`badge.foster`, `badge.pending` exist in `pomdr.css` lines 894 to 920) but the design only renders two of seven status values. Detail page has no status surface at all. Resolution: extend badge vocabulary to all seven values (`available`, `foster-needed`, `foster-needed-dated`, `adoption-pending`, `recently-adopted`, `hospice`, `courtesy-listing`). Detail hero gains a status strip beneath the eyebrow. |
+| `foster_dates` | no              | no               | missing  | Required when `status = foster-needed-dated`. Pattern: render as small italic line under the badge ("Needs foster May 14 to June 2"). Block pattern in Session 2. |
 | `campaign_tag`  | no              | no               | missing  | Required for "Forever Starts Here" / LTD surfacing. Add a ribbon block (top-right corner of card; banner above detail hero). Visual style not yet designed. |
 | `intake_date`   | no              | no               | missing  | Drives "long-term" calculation that toggles `campaign_tag`. Editor-only field, not directly rendered, but powers a derived field. |
 | `category`      | partial         | no               | partial  | Listing pages exist (`/adopt/`, `/courtesy-listings/`) but the design has no `/hospice/` listing page (INVENTORY.md section 3 flags this). Each dog must carry one of `adoptable`, `courtesy`, `hospice`. |
@@ -71,7 +71,7 @@ to-design item for Session 2 (visual) and Session 3 (block authoring):
 3. **Campaign ribbon.** "Forever Starts Here" / LTD treatment. Both card
    and detail variants. Visual TBD.
 4. **Foster dates surface.** Small italic line under the status strip when
-   `status = foster_needed_dated`.
+   `status = foster-needed-dated`.
 5. **Hospice listing page.** Sister page to `/adopt/` and
    `/courtesy-listings/`. Same grid template, different filter scope.
 6. **Adoption inquiry CTA wired to LGL.** Detail page currently links to a
@@ -97,7 +97,7 @@ time.
 | `/about/`                    | `about.html`                 | covered  | Translate. `/about/#team` and `/about/#locations` are anchor targets within. |
 | `/adopt/`                    | `adopt.html`                 | covered  | Filter toolbar is React; reimplement in interactivity API. |
 | `/courtesy-listings/`        | (none directly)              | partial  | Reuse `adopt.html` template with `category=courtesy` query. No bespoke design needed. |
-| `/adopted/`                  | (none)                       | missing  | Historical archive page. Reuse adopt grid template with `status=recently_adopted`. Confirm in Session 2 whether design changes are wanted (greyscale photos, year-grouped headings, etc.). |
+| `/adopted/`                  | (none)                       | missing  | Historical archive page. Reuse adopt grid template with `status=recently-adopted`. Confirm in Session 2 whether design changes are wanted (greyscale photos, year-grouped headings, etc.). |
 | `/events/`                   | (none directly)              | missing  | Spec calls for an events listing. No designed page. New pattern in Session 2. |
 | `/process/`                  | (covered inside `adopt.html`)| partial  | The design folds the adoption process into `adopt.html`. The live site has it on its own URL. Resolution: lift the "process" section into a standalone page template that also renders inline on `/adopt/`. |
 | `/volunteer/`                | `volunteer.html`             | covered  | Translate. |

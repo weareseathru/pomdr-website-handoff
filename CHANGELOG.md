@@ -18,10 +18,10 @@ session-based until we cut a real release tag.
 
 ### Added
 
-- 7-status dog badge system covering `available`, `foster_needed`,
-  `foster_needed_dated`, `adoption_pending`, `recently_adopted`, `hospice`,
-  `courtesy_listing`.
-- Campaign ribbons on adoption cards (`forever_starts_here`, `helping_paw`).
+- 7-status dog badge system covering `available`, `foster-needed`,
+  `foster-needed-dated`, `adoption-pending`, `recently-adopted`, `hospice`,
+  `courtesy-listing`.
+- Campaign ribbons on adoption cards (`forever-starts-here`, `helping-paw`).
 - Vanilla-JS gallery lightbox with keyboard navigation, focus trap, and
   reduced-motion respect.
 - Impact section redesign pairing stat tiles with photos and voice-compliant

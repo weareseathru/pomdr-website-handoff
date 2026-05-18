@@ -1554,9 +1554,9 @@ const Newsletter = () => {
         </div>
         <form className="newsletter-form" action="thank-you.html" method="get" onSubmit={(e) => { e.preventDefault(); window.location.href = "thank-you.html?source=newsletter"; }}>
           <input type="hidden" name="source" value="newsletter" />
-          <label>Newsletter signup</label>
+          <label htmlFor="newsletter-email">Newsletter signup</label>
           <div className="nform-row">
-            <input type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input id="newsletter-email" name="email" autoComplete="email" type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required />
             <button type="submit">{sent ? "✓ Subscribed" : "Subscribe"}</button>
           </div>
           <div className="fine">We respect your inbox. Unsubscribe anytime.</div>
