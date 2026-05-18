@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+
+# PHP vendor (Composer); intentionally NOT blanket-ignoring all "vendor/"
+# because the static prototype vendors React/Babel into
+# pomdr-website/project/vendor/ for offline use.
+/vendor/
+**/composer/vendor/
+
+# Environment & secrets
+.env
+.env.local
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Build output
+dist/
+build/
+.next/
+.parcel-cache/
+.cache/
+
+# OS & editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# WordPress (local dev only; the pomdr-2026 theme source IS tracked)
+wp-config.php
+wp-config-local.php
+wp-content/uploads/
+wp-content/cache/
+.wp-now/
+
+# Claude cache and per-session notes (not for the public repo)
+.claude/cache/
+.claude/session-notes/
+
+# Scraping artifacts (raw HTML to JSON snapshots from earlier research)
+pomdr-website/project/uploads/web-capture-*.json
+
+# Misc patch / merge leftovers
+*.orig
+*.rej

@@ -1,0 +1,38 @@
+# Normalize line endings: enforce LF in the repo, let Git handle checkout
+# conversion per platform. Fixes "LF will be replaced by CRLF" warnings on
+# Windows.
+* text=auto eol=lf
+
+# Source files: always LF
+*.html  text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.jsx   text eol=lf
+*.ts    text eol=lf
+*.tsx   text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.php   text eol=lf
+*.csv   text eol=lf
+*.svg   text eol=lf
+
+# Shell / config: LF
+*.sh    text eol=lf
+.gitignore       text eol=lf
+.gitattributes   text eol=lf
+
+# Binary assets: never touch
+*.jpeg  binary
+*.jpg   binary
+*.png   binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.mp4   binary
+*.mov   binary
