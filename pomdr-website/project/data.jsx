@@ -142,10 +142,30 @@ const EVENTS = [
 ];
 
 const STATS = [
-  { num: "3,200", sym: "+", lbl: "Senior dogs rescued", desc: "Since 2009 across the Central Coast" },
-  { num: "16", sym: "yrs", lbl: "Of lifetime commitment", desc: "To every dog that comes to us" },
-  { num: "98", sym: "%", lbl: "Adoption success rate", desc: "Through careful, patient matching" },
-  { num: "420", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking and caring" },
+  {
+    num: "3,200", sym: "+", lbl: "Senior dogs rescued", desc: "Since 2009 across the Central Coast",
+    story: "From the very first scared pup in 2009 to the gray-muzzled friend you might meet today, every name is remembered, every story counted.",
+    img: "images/dog3.jpeg",
+    imgAlt: "A senior rescue dog looking calmly into the camera",
+  },
+  {
+    num: "16", sym: "yrs", lbl: "Of lifetime commitment", desc: "To every dog that comes to us",
+    story: "Founded by people who refused to look away from the senior dog at the back of the kennel. Sixteen years on, we still don't.",
+    img: "uploads/Pat And Zeta.jpeg",
+    imgAlt: "Pat with Zeta, a senior dog she adopted through POMDR",
+  },
+  {
+    num: "98", sym: "%", lbl: "Adoption success rate", desc: "Through careful, patient matching",
+    story: "Patience makes the match. We take the time to learn each dog so the family who takes them home knows exactly who they are getting.",
+    img: "uploads/Hazel HT.jpeg",
+    imgAlt: "Hazel napping in her new home after adoption",
+  },
+  {
+    num: "420", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, and caring",
+    story: "Foster families, transport drivers, dog walkers, photographers, vet techs. Every Saturday morning, a small army shows up for senior dogs.",
+    img: "uploads/Nancy helping paw Finnegan, walker Jane (1).jpeg",
+    imgAlt: "Volunteer Jane walking Finnegan as part of the Helping Paw program",
+  },
 ];
 
 Object.assign(window, { DogPhoto, HERO_SLIDES, DOGS, PROGRAMS, TAILS, EVENTS, STATS });

@@ -76,7 +76,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--blue);
+  color: var(--blue-700);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -231,11 +231,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav-item:hover > a,
 .nav-item:hover > button {
   background: var(--blue-50);
-  color: var(--blue);
+  color: var(--blue-700);
 }
 .nav-item > a.active,
 .nav-item > button.active {
-  color: var(--blue);
+  color: var(--blue-700);
   background: var(--blue-50);
 }
 
@@ -253,7 +253,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ============================================================
-   DROPDOWN — hover-stable version
+   DROPDOWN: hover-stable version
    The invisible padding-top "bridge" prevents the gap between
    the trigger and the menu from breaking the hover state.
    ============================================================ */
@@ -319,7 +319,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .nav-dropdown a:hover {
   background: var(--blue-50);
-  color: var(--blue);
+  color: var(--blue-700);
 }
 
 .dd-section {
@@ -416,7 +416,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-weight: 500;
   color: var(--ink-2);
 }
-.nav-mobile a.active { background: var(--blue-50); color: var(--blue); }
+.nav-mobile a.active { background: var(--blue-50); color: var(--blue-700); }
 .nav-mobile a.m-cta { background: var(--blue); color: white; text-align: center; margin-top: 8px; font-weight: 600; }
 
 /* Mobile: collapse nav links into drawer */
@@ -522,7 +522,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .footer-contact { font-size: 13px; line-height: 2; }
 .footer-contact a:hover { color: white; }
-.footer h5 {
+.footer h2 {
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -757,7 +757,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border: 1px solid transparent;
   transition: all var(--ease) 200ms;
 }
-.tab:hover { background: var(--blue-50); color: var(--blue); }
+.tab:hover { background: var(--blue-50); color: var(--blue-700); }
 .tab.active { background: var(--ink); color: var(--white); }
 .tab-count {
   display: inline-grid; place-items: center;
@@ -775,7 +775,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 13px; font-weight: 500; color: var(--ink-2);
   transition: all var(--ease) 200ms;
 }
-.filter:hover { border-color: var(--blue); color: var(--blue); }
+.filter:hover { border-color: var(--blue-700); color: var(--blue-700); }
 .filter.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
 
 .search {
@@ -927,7 +927,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .dog-card .cta-row {
   display: flex; align-items: center; justify-content: space-between;
-  font-size: 13px; font-weight: 600; color: var(--blue);
+  font-size: 13px; font-weight: 600; color: var(--blue-700);
   margin-top: 8px;
 }
 .dog-card .cta-row .arrow svg {
@@ -953,7 +953,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .policy p { color: var(--ink-2); margin: 0 0 24px; }
 .policy-cta {
   display: inline-flex; align-items: center; gap: 8px;
-  font-weight: 600; color: var(--blue);
+  font-weight: 600; color: var(--blue-700);
 }
 .policy-list {
   display: flex; flex-direction: column; gap: 0;
@@ -1009,7 +1009,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   cursor: pointer;
   transition: all var(--ease) 200ms;
 }
-.filter-chip:hover { border-color: var(--blue); color: var(--blue); }
+.filter-chip:hover { border-color: var(--blue-700); color: var(--blue-700); }
 .filter-chip.active { background: var(--blue); color: var(--white); border-color: var(--blue); }
 
 /* ===== RESPONSIVE ===== */
@@ -1058,10 +1058,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 14px;
   color: var(--ink-3);
 }
-.nav-mobile a.m-child.active { color: var(--blue); }
+.nav-mobile a.m-child.active { color: var(--blue-700); }
 
 /* Footer Visit Us block. */
-.footer-locations h5 { margin-bottom: 12px; }
+.footer-locations h2 { margin-bottom: 12px; }
 .footer-addresses {
   list-style: none;
   padding: 0;
@@ -1145,21 +1145,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 .dog-status .dog-status-cta {
   font-weight: 600;
   font-size: 13px;
-  color: var(--blue);
+  color: var(--blue-700);
   text-decoration: underline;
   text-underline-offset: 3px;
   margin-left: 4px;
 }
 .dog-status[data-status="available"] { background: #E8F5EE; color: #1F5A35; }
 .dog-status[data-status="available"] .dog-status-dot { background: #2E8B57; box-shadow: 0 0 0 4px rgba(46,139,87,0.15); }
-.dog-status[data-status="available"] .dog-status-cta { color: #2E8B57; }
+.dog-status[data-status="available"] .dog-status-cta { color: #1F5A35; }
 
 .dog-status[data-status="foster_needed"],
 .dog-status[data-status="foster_needed_dated"] { background: var(--orange-50); color: #6B3D00; }
 .dog-status[data-status="foster_needed"] .dog-status-dot,
 .dog-status[data-status="foster_needed_dated"] .dog-status-dot { background: var(--orange); box-shadow: 0 0 0 4px rgba(192,107,0,0.15); }
 .dog-status[data-status="foster_needed"] .dog-status-cta,
-.dog-status[data-status="foster_needed_dated"] .dog-status-cta { color: var(--orange); }
+.dog-status[data-status="foster_needed_dated"] .dog-status-cta { color: #6B3D00; }
 
 .dog-status[data-status="adoption_pending"] { background: var(--purple-50); color: #3F1E5C; }
 .dog-status[data-status="adoption_pending"] .dog-status-dot { background: var(--purple); box-shadow: 0 0 0 4px rgba(99,47,136,0.15); }

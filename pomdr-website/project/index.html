@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>POMDR — Helping Senior Dogs & Senior People Since 2009</title>
+<title>POMDR, Helping Senior Dogs and Senior People Since 2009</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400..600&display=swap" />
@@ -48,6 +48,39 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
+/* Skip link: invisible until focused, jumps past nav to <main>. */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 8px;
+  z-index: 200;
+  background: var(--purple);
+  color: var(--white);
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: top 0.18s var(--ease);
+}
+.skip-link:focus { top: 8px; outline: 2px solid var(--white); outline-offset: 2px; }
+
+/* Visible keyboard focus ring on every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--blue-700);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Honor reduced-motion preference globally. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 body {
   font-family: var(--font-sans);
   color: var(--ink);
@@ -65,7 +98,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
 .eyebrow {
   font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
-  color: var(--blue); display: inline-flex; align-items: center; gap: 10px;
+  color: var(--blue-700); display: inline-flex; align-items: center; gap: 10px;
 }
 .eyebrow::before {
   content: ""; width: 24px; height: 1px; background: var(--blue); display: inline-block;
@@ -110,8 +143,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   white-space: nowrap;
 }
 .nav-item > a:hover, .nav-item > button:hover,
-.nav-item:hover > a, .nav-item:hover > button { background: var(--blue-50); color: var(--blue); }
-.nav-item > a.active, .nav-item > button.active { color: var(--blue); }
+.nav-item:hover > a, .nav-item:hover > button { background: var(--blue-50); color: var(--blue-700); }
+.nav-item > a.active, .nav-item > button.active { color: var(--blue-700); }
 .nav-chevron { width: 10px; height: 10px; opacity: 0.5; transition: transform 0.2s; }
 .nav-item:hover .nav-chevron { transform: rotate(180deg); }
 
@@ -139,7 +172,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--ink-2); font-weight: 500;
   transition: all 0.15s;
 }
-.nav-dropdown a:hover { background: var(--blue-50); color: var(--blue); }
+.nav-dropdown a:hover { background: var(--blue-50); color: var(--blue-700); }
 .nav-dropdown .dd-section {
   font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
   font-weight: 700; color: var(--ink-3); padding: 10px 14px 4px;
@@ -597,9 +630,9 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 .program-card p { font-size: 15px; color: var(--ink-2); margin: 0 0 20px; flex: 1; }
 .program-card ul { list-style: none; padding: 0; margin: 0 0 24px; font-size: 14px; color: var(--ink-2); }
 .program-card ul li { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px dashed var(--line); }
-.program-card ul li::before { content: "→"; color: var(--blue); }
+.program-card ul li::before { content: "→"; color: var(--blue-700); }
 .program-card .learn {
-  display: inline-flex; align-items: center; gap: 10px; color: var(--blue);
+  display: inline-flex; align-items: center; gap: 10px; color: var(--blue-700);
   font-weight: 600; font-size: 14px;
 }
 .program-card .learn::after {
@@ -618,25 +651,52 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
               radial-gradient(ellipse at 80% 80%, rgba(99,47,136,0.2), transparent 60%);
 }
 .impact .container { position: relative; z-index: 1; }
-.impact-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px;
-  margin-top: 60px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 60px;
+
+/* Story rows: each stat paired with a photo, alternating sides on desktop. */
+.impact-stories {
+  margin-top: 72px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex; flex-direction: column;
+  gap: 0;
 }
+.impact-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+  align-items: center;
+  padding: 64px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.impact-row:last-child { border-bottom: none; }
+.impact-row .impact-photo {
+  position: relative; border-radius: var(--radius-lg);
+  overflow: hidden; aspect-ratio: 4 / 3;
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 30px 60px -24px rgba(0,0,0,0.5);
+}
+.impact-row .impact-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.impact-row.flip .impact-photo { order: 2; }
+.impact-row.flip .impact-copy { order: 1; }
+
 .stat { position: relative; }
 .stat .num {
   font-family: var(--font-serif); font-weight: 300;
-  font-size: clamp(54px, 6.2vw, 96px);
+  font-size: clamp(64px, 7vw, 112px);
   line-height: 0.95; letter-spacing: -0.03em;
   display: flex; align-items: flex-start;
 }
-.stat .num .sym { font-size: 0.45em; color: var(--blue-200); padding-left: 4px; padding-top: 12px; }
+.stat .num .sym { font-size: 0.42em; color: var(--blue-200); padding-left: 6px; padding-top: 14px; }
 .stat .lbl {
-  margin-top: 12px; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase;
-  color: rgba(255,255,255,0.7); font-weight: 600;
+  margin-top: 14px; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.72); font-weight: 600;
 }
-.stat .desc { margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.55); }
+.stat .desc { margin-top: 6px; font-size: 14px; color: rgba(255,255,255,0.55); }
+.stat .story {
+  margin-top: 24px;
+  font-family: var(--font-serif); font-size: 22px; line-height: 1.45;
+  color: rgba(255,255,255,0.92); font-weight: 400; letter-spacing: -0.005em;
+  max-width: 36ch;
+}
 .impact .section-header { text-align: left; margin: 0; max-width: 720px; }
 .impact .section-title { color: white; }
 .impact .section-title em { color: var(--blue-200); }
@@ -778,11 +838,11 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: 40px;
   padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.footer-brand h4 { font-family: var(--font-serif); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; margin: 20px 0 16px; }
+.footer-brand .footer-tagline { font-family: var(--font-serif); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; margin: 20px 0 16px; }
 .footer-brand p { opacity: 0.8; font-size: 14px; margin: 0 0 24px; max-width: 36ch; }
 .footer-contact { font-size: 14px; opacity: 0.85; line-height: 1.9; }
 .footer-contact a:hover { color: var(--blue-200); }
-.footer h5 { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--blue-200); margin: 0 0 20px; }
+.footer h2 { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--blue-200); margin: 0 0 20px; }
 .footer ul { list-style: none; padding: 0; margin: 0; font-size: 14px; display: flex; flex-direction: column; gap: 10px; }
 .footer ul a { opacity: 0.8; transition: opacity 0.2s; }
 .footer ul a:hover { opacity: 1; color: white; }
@@ -835,7 +895,9 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .pillars-grid, .programs-grid { grid-template-columns: 1fr; }
   .mission-inner, .events-layout, .newsletter .container { grid-template-columns: 1fr; gap: 40px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
-  .impact-grid { grid-template-columns: 1fr 1fr; }
+  .impact-row { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
+  .impact-row.flip .impact-photo { order: 0; }
+  .impact-row.flip .impact-copy { order: 0; }
   .nav-links a:not(.nav-cta) { display: none; }
 }
 @media (max-width: 640px) {
@@ -844,7 +906,8 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .tail-card.featured { grid-column: auto; }
   .hero-meta { display: none; }
   .footer-top { grid-template-columns: 1fr; }
-  .impact-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .impact-row { padding: 40px 0; gap: 24px; }
+  .stat .story { font-size: 19px; }
   .section { padding: 80px 0; }
   .container { padding: 0 20px; }
 }
@@ -918,6 +981,7 @@ const HERO_SLIDES = [
   {
     pillar: "Adopt",
     img: "images/hero-adopt.jpeg",
+    imgAlt: "A gray-muzzled senior dog at rest in soft afternoon light",
     objectPosition: "center 30%",
     title: ["Senior dogs deserve", "a soft place", "to land."],
     titleEm: "soft place",
@@ -931,6 +995,7 @@ const HERO_SLIDES = [
   {
     pillar: "Helping Paw",
     img: "images/hero-helping-paw.jpeg",
+    imgAlt: "A volunteer walking a small dog alongside an older guardian on a quiet street",
     objectPosition: "center 35%",
     title: ["Helping seniors", "and their dogs stay", "together longer."],
     titleEm: "together",
@@ -944,6 +1009,7 @@ const HERO_SLIDES = [
   {
     pillar: "Our Mission",
     img: "images/hero-mission.jpeg",
+    imgAlt: "Two senior dogs in a sunny doorway, comfortable and at home",
     objectPosition: "center 30%",
     title: ["A lifetime", "commitment,", "every time."],
     titleEm: "commitment",
@@ -957,6 +1023,7 @@ const HERO_SLIDES = [
   {
     pillar: "Get Involved",
     img: "images/hero-volunteer.jpg",
+    imgAlt: "Volunteers and dogs gathered for a morning at the Pacific Grove rescue center",
     objectPosition: "center 40%",
     title: ["Be the reason", "a gray muzzle", "finds home."],
     titleEm: "gray muzzle",
@@ -971,19 +1038,20 @@ const HERO_SLIDES = [
 ];
 
 const DOGS = [
-  { name: "Pebble",    age: "12 yrs", breed: "Long-haired Dachshund",       weight: "11 lb",  sex: "Female", tags: ["Calm", "Snuggler"],       img: "images/dog1.jpeg" },
-  { name: "Nana",      age: "6 yrs",  breed: "Anatolian / Great Pyrenees",   weight: "87 lb",  sex: "Female", tags: ["Foster Needed"],           img: "images/dog2.jpeg", status: "Foster Needed" },
-  { name: "Malcolm",   age: "8 yrs",  breed: "Husky",                        weight: "50 lb",  sex: "Male",   tags: ["Active", "Loyal"],         img: "images/dog3.jpeg" },
-  { name: "Bixby",     age: "12 yrs", breed: "Yorkie",                       weight: "10 lb",  sex: "Female", tags: ["Gentle", "Lap dog"],       img: "images/dog4.jpeg" },
-  { name: "Breeze",    age: "13 yrs", breed: "Shih Tzu / Poodle mix",        weight: "8 lb",   sex: "Male",   tags: ["Sweet", "Quiet"],          img: "images/dog5.jpeg" },
-  { name: "Honeybee",  age: "7 yrs",  breed: "French Bulldog",               weight: "20 lb",  sex: "Female", tags: ["Foster Needed"],           img: "images/dog6.jpeg", status: "Foster Needed" },
-  { name: "Aragorn",   age: "10 yrs", breed: "Chihuahua mix",                weight: "20 lb",  sex: "Male",   tags: ["Brave", "Loves walks"],   img: "images/dog7.jpeg" },
+  { name: "Pebble",    age: 12, breed: "Long-haired Dachshund",      weight: 11, sex: "F", tags: ["Calm", "Snuggler"],     img: "images/dog1.jpeg", status: "available" },
+  { name: "Nana",      age: 6,  breed: "Anatolian / Great Pyrenees", weight: 87, sex: "F", tags: ["Gentle giant"],         img: "uploads/IMG_8679.jpeg", status: "foster_needed" },
+  { name: "Malcolm",   age: 8,  breed: "Husky",                      weight: 50, sex: "M", tags: ["Active", "Loyal"],      img: "images/dog3.jpeg", status: "available" },
+  { name: "Bixby",     age: 12, breed: "Yorkie",                     weight: 10, sex: "F", tags: ["Gentle", "Lap dog"],    img: "images/dog4.jpeg", status: "available" },
+  { name: "Watson",    age: 12, breed: "Chihuahua mix",              weight: 12, sex: "M", tags: ["Curious", "Walker"],    img: "images/dog2.jpeg", status: "available" },
+  { name: "Honeybee",  age: 7,  breed: "French Bulldog",             weight: 20, sex: "F", tags: ["Snuggler"],             img: "images/dog6.jpeg", status: "foster_needed" },
+  { name: "Aragorn",   age: 10, breed: "Chihuahua mix",              weight: 20, sex: "M", tags: ["Regal", "Affectionate"],img: "images/dog7.jpeg", status: "adoption_pending" },
 ];
 
 const PROGRAMS = [
   {
     title: "Intake & Adoptions",
-    desc: "Finding senior dogs their furever home through careful matching, foster care and lifelong support.",
+    href: "adopt.html",
+    desc: "Finding senior dogs a forever home through careful matching, foster care, and lifelong support.",
     points: ["Adoptable dogs", "Courtesy listings", "Adoption process", "Adoption events"],
     icon: (
       <svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
@@ -991,7 +1059,8 @@ const PROGRAMS = [
   },
   {
     title: "Helping Paw",
-    desc: "Support for guardians facing hardship — walking brigade, financial assistance and temporary fosters.",
+    href: "helping-paw.html",
+    desc: "Support for guardians facing hardship. Walking brigade, financial assistance, and temporary fosters.",
     points: ["Walking brigade", "Financial assistance", "Temporary fosters"],
     icon: (
       <svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg>
@@ -999,7 +1068,8 @@ const PROGRAMS = [
   },
   {
     title: "Perpetual Care",
-    desc: "Making sure your dog is loved and cared for after you're gone — a promise, not a program.",
+    href: "perpetual-care-program.html",
+    desc: "Making sure your dog is loved and cared for after you're gone. A promise, not a program.",
     points: ["Placing your dog", "Lifetime commitment", "Planning ahead"],
     icon: (
       <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg>
@@ -1017,7 +1087,7 @@ const TAILS = [
     dogSeed: 2,
   },
   {
-    quote: "They didn't just match us with a dog — they matched us with a companion who understood quiet mornings.",
+    quote: "They didn't just match us with a dog. They matched us with a companion who understood quiet mornings.",
     name: "Eleanor W.",
     city: "Carmel",
     dog: "Finn",
@@ -1040,10 +1110,30 @@ const EVENTS = [
 ];
 
 const STATS = [
-  { num: "3,200", sym: "+", lbl: "Senior dogs rescued", desc: "Since 2009 across the Central Coast" },
-  { num: "16", sym: "yrs", lbl: "Of lifetime commitment", desc: "To every dog that comes into our care" },
-  { num: "1,800", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, transporting & caring" },
-  { num: "501", sym: "c3", lbl: "Tax-deductible giving", desc: "EIN 27-1154816 · Founded Oct 2009" },
+  {
+    num: "3,200", sym: "+", lbl: "Senior dogs rescued", desc: "Since 2009 across the Central Coast",
+    img: "images/dog14.jpeg",
+    imgAlt: "A senior dog resting peacefully on a comfortable couch in a foster home",
+    story: "Cooper came to us at ~13 years old, a surrender from a family moving into memory care. He spent nine weeks in foster and was adopted the same week his profile went live. He lives in Carmel now, going on slow morning walks with his new person. He is one of 3,200.",
+  },
+  {
+    num: "16", sym: "yrs", lbl: "Of lifetime commitment", desc: "To every dog that comes into our care",
+    img: "images/dog15.jpeg",
+    imgAlt: "A small senior dog wrapped in a fleece blanket, resting and content",
+    story: "Our commitment has never changed: every dog who comes into our care is here for as long as it takes. Some stay a week. Some stay two years. A few stay forever, in our sanctuary program. The number changes. The promise does not.",
+  },
+  {
+    num: "1,800", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, transporting and caring",
+    img: "uploads/Nancy%20helping%20paw%20Finnegan%2C%20walker%20Jane%20(1).jpeg",
+    imgAlt: "A volunteer walking a small dog alongside a senior guardian on a quiet neighborhood street",
+    story: "On any given Tuesday morning, a dozen volunteers are walking dogs before their own workday starts. They are retired teachers, college students, remote workers, weekend-only folks. They show up. That is everything.",
+  },
+  {
+    num: "501", sym: "c3", lbl: "Tax-deductible giving", desc: "EIN 27-1154816, founded October 2009",
+    img: "uploads/Hazel%20HT.jpeg",
+    imgAlt: "Hazel, a happy dog, settled into her new home after adoption",
+    story: "Every dollar given to POMDR goes directly toward food, medical care, foster reimbursement, and the small daily kindnesses that add up to a good life for a senior dog. Hazel went home in 2024 after a three-month stay that included two surgeries. She is doing great.",
+  },
 ];
 
 Object.assign(window, { DogPhoto, HERO_SLIDES, DOGS, PROGRAMS, TAILS, EVENTS, STATS });
@@ -1053,7 +1143,7 @@ const { useState, useEffect, useRef } = React;
 
 // Logo mark
 const Logo = () => (
-  <a href="#" className="logo">
+  <a href="index.html" className="logo">
     <div className="logo-mark">P</div>
     <div className="logo-text">
       <div className="name">Peace of Mind</div>
@@ -1147,6 +1237,11 @@ const Hero = () => {
 
   uE(() => {
     if (paused) return;
+    if (typeof window !== 'undefined' &&
+        window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
     const t = setTimeout(() => setIdx((idx + 1) % slides.length), 6000);
     return () => clearTimeout(t);
   }, [idx, paused]);
@@ -1156,7 +1251,7 @@ const Hero = () => {
       {slides.map((s, i) => (
         <div key={i} className={`hero-slide ${i === idx ? 'active' : ''}`}>
           <div className="hero-image">
-            <img src={s.img} alt={s.pillar} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',objectPosition: s.objectPosition || 'center top'}} />
+            <img src={s.img} alt={s.imgAlt || ''} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',objectPosition: s.objectPosition || 'center top'}} />
           </div>
           <div className="hero-scrim" />
         </div>
@@ -1286,7 +1381,7 @@ const Adoptables = () => {
                 </div>
                 <div className="info">
                   <div className="name">{d.name}</div>
-                  <div className="meta-line">{d.age} · {d.sex === 'F' ? 'Female' : 'Male'} · {d.weight} lb · {d.breed}</div>
+                  <div className="meta-line">~{d.age} {d.age === 1 ? 'yr' : 'yrs'} · {d.sex === 'F' ? 'Female' : 'Male'} · {d.weight} lb · {d.breed}</div>
                   <div className="tags">{d.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
                   <div className="cta-row">
                     <span>View profile</span>
@@ -1320,7 +1415,7 @@ const Pillars = () => {
   const pillars = [
     { num: "01", label: "Adopt", title: "Open your home.", desc: "Match with a senior pup whose quiet mornings suit yours.", img: "images/pillar-adopt.jpeg", href: "adopt.html" },
     { num: "02", label: "Donate", title: "Fuel the work.", desc: "Your gift funds medical care, foster stipends and a lifetime promise.", img: "images/pillar-donate.jpeg", href: "donate.html" },
-    { num: "03", label: "Volunteer", title: "Walk with us.", desc: "Foster, transport, write bios — every hour makes a difference.", img: "images/pillar-volunteer.jpeg", href: "volunteer.html" },
+    { num: "03", label: "Volunteer", title: "Walk with us.", desc: "Foster, transport, write bios. Every hour makes a difference.", img: "images/pillar-volunteer.jpeg", href: "volunteer.html" },
   ];
   return (
     <section className="section pillars">
@@ -1330,7 +1425,7 @@ const Pillars = () => {
             <window.Reveal key={p.label} delay={i * 80}>
               <a className="pillar" href={p.href} style={{'--tilt': 0}}>
                 <div style={{position:'absolute',inset:0,zIndex:0,overflow:'hidden'}}>
-                  <img src={p.img} alt={p.label} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',transition:'transform 0.7s cubic-bezier(0.2,0.8,0.2,1)'}} />
+                  <img src={p.img} alt="" role="presentation" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',transition:'transform 0.7s cubic-bezier(0.2,0.8,0.2,1)'}} />
                 </div>
                 <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%)',zIndex:1}}/>
                 <div style={{position:'relative',zIndex:2}}>
@@ -1374,7 +1469,7 @@ const Mission = () => (
           <div>
             <span className="eyebrow" style={{color:'var(--purple)'}}>Our Mission</span>
             <h2 className="mission-title">Who will care for your dog if <em>you no longer can?</em></h2>
-            <p className="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz and San Benito counties — through rescue, foster, adoption, hospice and education.</p>
+            <p className="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz, and San Benito counties, through rescue, foster, adoption, hospice, and education.</p>
             <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:24,padding:'14px 18px',background:'var(--blue-50)',borderRadius:14,fontSize:14,color:'var(--ink-2)'}}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Serving <strong style={{color:'var(--ink)'}}>Monterey · Santa Cruz · San Benito</strong> counties since 2009</span>
@@ -1426,22 +1521,30 @@ const Programs = () => (
 
 /* ============== IMPACT ============== */
 const Impact = () => (
-  <section className="impact">
+  <section className="impact" aria-labelledby="impact-title">
     <div className="container">
       <window.Reveal>
         <div className="section-header left">
           <span className="eyebrow">Our Impact</span>
-          <h2 className="section-title">Quiet numbers. <em>Loud love.</em></h2>
-          <p className="section-lead">Every rescue, every adoption, every quiet walk adds up to something the numbers can only partly hold.</p>
+          <h2 className="section-title" id="impact-title">Quiet numbers. <em>Loud love.</em></h2>
+          <p className="section-lead">Every rescue, every adoption, every quiet walk adds up to something the numbers can only partly hold. Here are four of them, and the lives behind them.</p>
         </div>
       </window.Reveal>
-      <div className="impact-grid">
+      <div className="impact-stories">
         {window.STATS.map((s, i) => (
           <window.Reveal key={s.lbl} delay={i * 80}>
-            <div className="stat">
-              <div className="num">{s.num}<span className="sym">{s.sym}</span></div>
-              <div className="lbl">{s.lbl}</div>
-              <div className="desc">{s.desc}</div>
+            <div className={`impact-row${i % 2 === 1 ? ' flip' : ''}`}>
+              <figure className="impact-photo">
+                <img src={s.img} alt={s.imgAlt} loading="lazy" />
+              </figure>
+              <div className="impact-copy">
+                <div className="stat">
+                  <div className="num">{s.num}<span className="sym">{s.sym}</span></div>
+                  <div className="lbl">{s.lbl}</div>
+                  <div className="desc">{s.desc}</div>
+                  <p className="story">{s.story}</p>
+                </div>
+              </div>
             </div>
           </window.Reveal>
         ))}
@@ -1524,7 +1627,7 @@ const Events = () => (
               <window.DogPhoto name="Gala" seed={1} />
             </div>
             <div className="tag">★ Featured · May 17</div>
-            <h3>Senior Supper — An evening for our seniors, by our friends.</h3>
+            <h3>Senior Supper. An evening for our seniors, by our friends.</h3>
             <div className="details">
               <span>5:30 – 8 pm</span>
               <span>Carmel Valley Ranch</span>
@@ -1550,7 +1653,7 @@ const Newsletter = () => {
         <div>
           <span className="eyebrow">Stay in the loop</span>
           <h2>Sweet stories, happy tails and <em>good news</em> in your inbox.</h2>
-          <p>One thoughtful email a month — adoption updates, events, and a little sunshine from the pups.</p>
+          <p>One thoughtful email a month. Adoption updates, events, and a little sunshine from the pups.</p>
         </div>
         <form className="newsletter-form" action="thank-you.html" method="get" onSubmit={(e) => { e.preventDefault(); window.location.href = "thank-you.html?source=newsletter"; }}>
           <input type="hidden" name="source" value="newsletter" />
@@ -1573,7 +1676,7 @@ const Footer = () => (
       <div className="footer-top">
         <div className="footer-brand">
           <window.Logo />
-          <h4>Helping senior dogs and senior people since 2009.</h4>
+          <p className="footer-tagline">Helping senior dogs and senior people since 2009.</p>
           <p>A 501(c)(3) nonprofit serving Monterey, Santa Cruz and San Benito counties.</p>
           <div className="footer-contact">
             <div><strong>Adopt or Donate</strong></div>
@@ -1583,7 +1686,7 @@ const Footer = () => (
           </div>
         </div>
         <div>
-          <h5>Adopt</h5>
+          <h2>Adopt</h2>
           <ul>
             <li><a href="adopt.html">Available Dogs</a></li>
             <li><a href="adopt.html#process">Adoption Process</a></li>
@@ -1592,7 +1695,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h5>Get Involved</h5>
+          <h2>Get Involved</h2>
           <ul>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="foster.html">Foster</a></li>
@@ -1601,7 +1704,7 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h5>About</h5>
+          <h2>About</h2>
           <ul>
             <li><a href="about.html">Our Story</a></li>
             <li><a href="about.html#team">Team</a></li>
@@ -1611,14 +1714,14 @@ const Footer = () => (
           </ul>
         </div>
         <div>
-          <h5>Follow</h5>
+          <h2>Follow</h2>
           <div className="socials">
             <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.2.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.9.2 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.2-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.3-.1-.9-.2-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5-8.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
             <a href="https://www.facebook.com/POMDR/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.6V13h2.8v8h3.1z"/></svg></a>
             <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.7 2 12 2 12s0 3.3.4 4.8c.2.9.9 1.6 1.8 1.8 1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.8.4-4.8s0-3.3-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
           </div>
           <div style={{marginTop:28}}>
-            <h5>Tax-deductible</h5>
+            <h2>Tax-deductible</h2>
             <div style={{fontSize:13,opacity:0.7}}>EIN 27-1154816</div>
           </div>
         </div>
@@ -1626,7 +1729,7 @@ const Footer = () => (
       <div className="footer-bottom">
         <div>© 2026 Peace of Mind Dog Rescue. 501(c)(3) nonprofit. EIN 27-1154816.</div>
         <div style={{display:'flex',gap:20}}>
-          <a href="about.html">Privacy</a><a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a>
         </div>
       </div>
     </div>
@@ -1691,17 +1794,20 @@ const App = () => {
 
   return (
     <>
+      <a href="#main" className="skip-link">Skip to main content</a>
       <window.Nav />
-      <window.Hero />
-      <window.Pillars />
-      <window.Marquee />
-      <window.Adoptables />
-      <window.Mission />
-      <window.Programs />
-      <window.Impact />
-      <window.Tails />
-      <window.Events />
-      <window.Newsletter />
+      <main id="main">
+        <window.Hero />
+        <window.Pillars />
+        <window.Marquee />
+        <window.Adoptables />
+        <window.Mission />
+        <window.Programs />
+        <window.Impact />
+        <window.Tails />
+        <window.Events />
+        <window.Newsletter />
+      </main>
       <window.Footer />
       {editMode && <TweaksPanel tweaks={tweaks} setTweak={setTweak} onClose={() => setEditMode(false)} />}
     </>

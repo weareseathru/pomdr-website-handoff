@@ -33,8 +33,8 @@
     <h1>Meet the dogs looking for their <em>forever</em> people.</h1>
     <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>
     <div class="hero-meta">
-      <div><strong id="count-available">—</strong>Available now</div>
-      <div><strong id="count-foster">—</strong>Need foster</div>
+      <div><strong id="count-available">-</strong>Available now</div>
+      <div><strong id="count-foster">-</strong>Need foster</div>
       <div><strong>98%</strong>Match success</div>
       <div><strong>16 yrs</strong>Of lifetime care</div>
     </div>
@@ -55,7 +55,7 @@
 <section class="grid-section">
   <div class="container">
     <div class="results-row">
-      <div class="results-count serif" id="results-count">—</div>
+      <div class="results-count serif" id="results-count">-</div>
       <div class="sort">
         Sort by
         <select id="sort-select">
@@ -115,12 +115,12 @@ const DOGS = [
   { name: "Lilikoi", breed: "Yorkie mix", sex: "Female", age: 12, weight: 7, tab: "adoptable" },
   { name: "Shane", breed: "Yorkie mix", sex: "Male", age: 10, weight: 6, tab: "adoptable" },
   { name: "Honeybee", breed: "French Bulldog", sex: "Female", age: 7, weight: 20, tab: "adoptable", status: "foster_needed" },
-  { name: "Buddy the Lab", breed: "Black Lab mix", sex: "Male", age: 10, weight: 60, tab: "adoptable", status: "foster_needed" },
+  { name: "Buddy the Lab", breed: "Black Lab mix", sex: "Male", age: 10, weight: 60, tab: "adoptable", status: "foster_needed", campaign_tag: "forever_starts_here" },
   { name: "Fonzie", breed: "Havanese / Poodle mix", sex: "Male", age: 11, weight: 17, tab: "adoptable", status: "adoption_pending" },
   { name: "Aloha", breed: "Pit Bull / Chihuahua mix", sex: "Female", age: 10, weight: 18, tab: "adoptable" },
   { name: "Jelly Bean", breed: "Terrier mix", sex: "Male", age: 12, weight: 14, tab: "adoptable" },
   { name: "Aragorn", breed: "Chihuahua mix", sex: "Male", age: 10, weight: 20, tab: "adoptable" },
-  { name: "Yankee Candle", breed: "Pomeranian", sex: "Male", age: 11, weight: 12, tab: "adoptable" },
+  { name: "Yankee Candle", breed: "Pomeranian", sex: "Male", age: 11, weight: 12, tab: "adoptable", campaign_tag: "forever_starts_here" },
   { name: "Mihla", breed: "Labrador Retriever mix", sex: "Female", age: 8, weight: 69, tab: "adoptable", status: "courtesy_listing" },
   { name: "Zelda", breed: "Chihuahua mix", sex: "Female", age: 13, weight: 5, tab: "adoptable" },
   { name: "Cricket", breed: "Yorkie / Maltese mix", sex: "Male", age: 8, weight: 6, tab: "adoptable", status: "adoption_pending" },
@@ -162,17 +162,17 @@ const DOGS = [
   { name: "Hot Sauce", breed: "Shih Tzu", sex: "Male", age: 7, weight: 17, tab: "adoptable", status: "foster_needed" },
   { name: "Blockbuster", breed: "Chihuahua mix", sex: "Male", age: 11, weight: 14, tab: "adoptable" },
 
-  // Hospice tab — sanctuary care, not adoptable.
+  // Hospice tab: sanctuary care, not adoptable.
   { name: "Mr. Pancake", breed: "Beagle mix", sex: "Male", age: 15, weight: 18, tab: "hospice", status: "hospice" },
   { name: "Juniper", breed: "Maltese", sex: "Female", age: 16, weight: 8, tab: "hospice", status: "hospice" },
   { name: "Captain", breed: "Shih Tzu", sex: "Male", age: 14, weight: 14, tab: "hospice", status: "hospice" },
 
-  // Other tab — courtesy listings and friends-of-rescue dogs.
+  // Other tab: courtesy listings and friends-of-rescue dogs.
   { name: "Bruno", breed: "Boxer", sex: "Male", age: 4, weight: 60, tab: "other", status: "courtesy_listing" },
   { name: "Mia", breed: "Miniature Pinscher mix", sex: "Female", age: 1, weight: 15, tab: "other", status: "courtesy_listing" },
   { name: "Chopsticks", breed: "Shih Tzu mix", sex: "Male", age: 10, weight: 18, tab: "other", status: "courtesy_listing" },
 
-  // Recently adopted tab — happy tails from the last 90 days.
+  // Recently adopted tab: happy tails from the last 90 days.
   { name: "Breeze", breed: "Shih Tzu / Poodle mix", sex: "Male", age: 13, weight: 8, tab: "adopted", status: "recently_adopted" },
   { name: "Rosie", breed: "Maltese mix", sex: "Female", age: 11, weight: 9, tab: "adopted", status: "recently_adopted" },
   { name: "Finn", breed: "Terrier mix", sex: "Male", age: 9, weight: 17, tab: "adopted", status: "recently_adopted" },
@@ -322,6 +322,15 @@ const PROFILE_IMAGES = {
   "sun-bear": "uploads/Blythe with Tamagochi (1).jpeg",
 };
 function slugify(n) { return n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+const CAMPAIGN_LABELS = {
+  forever_starts_here: "Forever Starts Here",
+  helping_paw: "Helping Paw",
+};
+function campaignRibbon(d) {
+  if (!d.campaign_tag) return "";
+  const label = CAMPAIGN_LABELS[d.campaign_tag] || d.campaign_tag;
+  return `<div class="campaign-ribbon" data-campaign="${d.campaign_tag}" aria-label="Campaign: ${label}">${label}</div>`;
+}
 function dogCard(d, i) {
   const slug = slugify(d.name);
   const imgSrc = PROFILE_IMAGES[slug] || `images/dog${(i % 17) + 1}.jpeg`;
@@ -332,13 +341,14 @@ function dogCard(d, i) {
       <div class="photo-wrap">
         <img src="${imgSrc}" alt="${d.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.6s cubic-bezier(0.2,0.8,0.2,1);" />
         ${badgeFor(d)}
+        ${campaignRibbon(d)}
         <button class="heart ${state.liked.has(d.name) ? 'active' : ''}" data-name="${d.name}" aria-label="Favorite">
           <svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
         </button>
       </div>
       <div class="info">
         <div class="name">${d.name}</div>
-        <div class="meta-line">~${d.age} yrs · ${d.sex} · ${d.weight} lb · ${d.breed}</div>
+        <div class="meta-line">~${d.age} ${d.age === 1 ? 'yr' : 'yrs'} · ${d.sex} · ${d.weight} lb · ${d.breed}</div>
         <div class="cta-row">
           <span>View profile</span>
           <span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
