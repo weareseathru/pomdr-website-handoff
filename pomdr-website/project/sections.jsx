@@ -3,107 +3,77 @@ const { useState: uS, useEffect: uE, useRef: uR } = React;
 /* ============== HERO ============== */
 const Hero = () => {
   const [idx, setIdx] = uS(0);
-  const [paused, setPaused] = uS(false);
   const slides = window.HERO_SLIDES;
 
   uE(() => {
-    if (paused) return;
-    const t = setTimeout(() => setIdx((idx + 1) % slides.length), 6000);
+    const t = setTimeout(() => setIdx((i) => (i + 1) % slides.length), 6000);
     return () => clearTimeout(t);
-  }, [idx, paused]);
+  }, [idx]);
+
+  const prev = () => setIdx((i) => (i - 1 + slides.length) % slides.length);
+  const next = () => setIdx((i) => (i + 1) % slides.length);
 
   return (
-    <section className="hero">
-      {slides.map((s, i) => (
-        <div key={i} className={`hero-slide ${i === idx ? 'active' : ''}`}>
-          <div className="hero-image">
-            <window.DogPhoto name={s.dog} seed={s.seed} />
+    <div className="hero-outer">
+      <section className="hero" aria-label="Featured dogs slideshow">
+        {slides.map((s, i) => (
+          <div key={i} className={`hero-slide ${i === idx ? 'active' : ''}`} aria-hidden={i !== idx}>
+            <div className="hero-image">
+              <window.DogPhoto name={s.dog} seed={s.seed} />
+            </div>
           </div>
-          <div className="hero-scrim" />
-        </div>
-      ))}
+        ))}
 
-      <div className="hero-content">
+        {/* Soft white gradient at bottom — replaces dark color scrim */}
+        <div className="hero-gradient-bottom" aria-hidden="true" />
+
+        {/* Prominent side arrows */}
+        <button className="hero-arrow hero-arrow--prev" onClick={prev} aria-label="Previous dog">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button className="hero-arrow hero-arrow--next" onClick={next} aria-label="Next dog">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+
+        {/* Position dots */}
+        <div className="hero-dots" role="tablist" aria-label="Slideshow navigation">
+          {slides.map((s, i) => (
+            <button
+              key={i}
+              className={`hero-dot ${i === idx ? 'active' : ''}`}
+              onClick={() => setIdx(i)}
+              role="tab"
+              aria-selected={i === idx}
+              aria-label={`${s.dog}, slide ${i + 1} of ${slides.length}`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Text lives BELOW the image — not overlaid on it */}
+      <div className="hero-caption">
         <div className="container">
-          <div className="hero-tag" key={`tag-${idx}`}>
-            <span className="dot">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-            {slides[idx].tag}
-          </div>
-          <h1 className="hero-title" key={`t-${idx}`}>
+          <p className="hero-caption-tag" key={`tag-${idx}`}>{slides[idx].tag}</p>
+          <h1 className="hero-title" key={`title-${idx}`}>
             {slides[idx].title.map((line, i) => (
-              <div key={i}>
+              <span key={i} className="hero-title-line">
                 {line.includes(slides[idx].titleEm)
                   ? <>{line.split(slides[idx].titleEm)[0]}<em>{slides[idx].titleEm}</em>{line.split(slides[idx].titleEm)[1]}</>
                   : line}
-              </div>
+              </span>
             ))}
           </h1>
-          <p className="hero-sub" key={`s-${idx}`}>{slides[idx].sub}</p>
+          <p className="hero-sub" key={`sub-${idx}`}>{slides[idx].sub}</p>
           <div className="hero-ctas">
-            <a href="#adopt" className="btn btn-primary">
-              Meet our dogs
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <a href="adopt.html" className="btn btn-primary">
+              See our dogs
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
-            <a href="#donate" className="btn btn-ghost">
+            <a href="donate.html" className="btn btn-outline">
               Support our mission
             </a>
           </div>
         </div>
-      </div>
-
-      <div className="hero-meta" key={`m-${idx}`}>
-        <div className="avatar"><window.DogPhoto name={slides[idx].dog} seed={slides[idx].seed} /></div>
-        <div>
-          <div className="label">Featured pup</div>
-          <div className="name">{slides[idx].dog}</div>
-          <div className="meta-sub">{slides[idx].tag.split(' · ').slice(1).join(' · ')}</div>
-        </div>
-      </div>
-
-      <div className="hero-controls">
-        <div className="hero-progress">
-          {slides.map((_, i) => (
-            <button key={i} className={i === idx ? 'active' : ''} onClick={() => setIdx(i)}>
-              <span className="bar" key={`bar-${i}-${idx}`}/>
-            </button>
-          ))}
-        </div>
-        <div className="hero-counter">
-          <button onClick={() => setIdx((idx - 1 + slides.length) % slides.length)} aria-label="Previous">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          </button>
-          <span>{String(idx + 1).padStart(2, '0')}</span>
-          <span className="slash">/</span>
-          <span>{String(slides.length).padStart(2, '0')}</span>
-          <button onClick={() => setIdx((idx + 1) % slides.length)} aria-label="Next">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-          <button onClick={() => setPaused(!paused)} aria-label="Pause">
-            {paused
-              ? <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>
-              : <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>}
-          </button>
-        </div>
-      </div>
-
-      <div className="scroll-hint">
-        <span>Scroll</span>
-        <div className="line" />
-      </div>
-    </section>
-  );
-};
-
-/* ============== MARQUEE ============== */
-const Marquee = () => {
-  const items = ["Adopt a Senior", "Foster Love", "Walk with Us", "Donate Today", "Lifetime Commitment", "Since 2009", "Central Coast, CA"];
-  const doubled = [...items, ...items, ...items, ...items];
-  return (
-    <div className="marquee">
-      <div className="marquee-track">
-        {doubled.map((x, i) => <span key={i}>{x}</span>)}
       </div>
     </div>
   );
@@ -143,7 +113,7 @@ const Adoptables = () => {
                   <div style={{fontSize:14,color:'var(--ink-3)'}}>{d.breed}</div>
                   <div className="tags">{d.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
                   <div className="cta-row">
-                    <span>Meet {d.name}</span>
+                    <span>View Profile</span>
                     <span className="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
                   </div>
                 </div>
@@ -234,16 +204,16 @@ const Mission = () => (
         </window.Reveal>
         <window.Reveal delay={120}>
           <div>
-            <span className="eyebrow" style={{color:'var(--purple)'}}>Our Mission</span>
+            <span className="eyebrow">Our Mission</span>
             <h2 className="mission-title">Who will care for your dog if <em>you no longer can?</em></h2>
             <p className="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz and San Benito counties, through rescue, foster, adoption, hospice and education.</p>
             <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-              <a href="#surrender" className="btn btn-purple">Surrender options</a>
-              <a href="#perpetual" className="btn btn-outline">Perpetual care</a>
+              <a href="surrender.html" className="btn btn-primary">Surrender options</a>
+              <a href="perpetual-care-program.html" className="btn btn-outline">Lifetime care</a>
             </div>
             <div className="mission-sig">
-              <div className="avatar"><window.DogPhoto name="Monica" seed={0} /></div>
-              <div className="who"><strong>Monica Rua</strong><span>Founder & Executive Director</span></div>
+              <div className="avatar"><window.DogPhoto name="Carie" seed={0} /></div>
+              <div className="who"><strong>Carie Broecker</strong><span>Executive Director and Co-founder</span></div>
             </div>
           </div>
         </window.Reveal>
@@ -271,7 +241,7 @@ const Programs = () => (
               <h3>{p.title}</h3>
               <p>{p.desc}</p>
               <ul>{p.points.map(x => <li key={x}>{x}</li>)}</ul>
-              <a href="#" className="learn">Explore {p.title}</a>
+              <a href={p.href} className="learn">Explore {p.title}</a>
             </div>
           </window.Reveal>
         ))}
@@ -492,4 +462,89 @@ const Footer = () => (
   </footer>
 );
 
-Object.assign(window, { Hero, Marquee, Adoptables, Pillars, Mission, Programs, Impact, Tails, Events, Newsletter, Footer });
+/* ============== VIDEOS ============== */
+const Videos = () => (
+  <section className="section videos" id="videos">
+    <div className="container">
+      <window.Reveal>
+        <div className="section-header">
+          <span className="eyebrow">POMDR in the World</span>
+          <h2 className="section-title">Hear the <em>stories directly.</em></h2>
+          <p className="section-lead">From a CNN Hero award to letters from the dogs themselves, this is POMDR on screen.</p>
+        </div>
+      </window.Reveal>
+      <div className="videos-grid">
+        {window.VIDEOS.map((v, i) => (
+          <window.Reveal key={v.title} delay={i * 80}>
+            <a
+              href={v.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`video-card${v.featured ? ' featured' : ''}`}
+              aria-label={`Watch ${v.title} (opens in new tab)`}
+            >
+              <div className="video-thumb">
+                <div className="video-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M5 3l14 9-14 9z"/></svg>
+                </div>
+                {v.featured && <span className="video-badge">CNN Heroes</span>}
+              </div>
+              <div className="video-info">
+                <span className="video-year">{v.year}</span>
+                <h3>{v.title}</h3>
+                <p>{v.desc}</p>
+              </div>
+            </a>
+          </window.Reveal>
+        ))}
+      </div>
+      <div className="videos-footer">
+        <a href="videos.html" className="btn btn-outline">
+          Watch all 18 videos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+/* ============== HELPING PAW (expanded) ============== */
+const HelpingPaw = () => {
+  const hp = window.HELPING_PAW;
+  return (
+    <section className="section helping-paw-expanded" id="helping-paw-detail">
+      <div className="container">
+        <div className="hp-inner">
+          <window.Reveal>
+            <div className="hp-photo">
+              <img src={hp.photo} alt={hp.photoAlt} loading="lazy" />
+            </div>
+          </window.Reveal>
+          <window.Reveal delay={100}>
+            <div className="hp-content">
+              <span className="eyebrow">{hp.eyebrow}</span>
+              <h2 className="section-title">
+                {hp.title} <em>{hp.titleEm}</em>
+              </h2>
+              <p style={{fontSize:19, color:'var(--ink-2)', maxWidth:'48ch', margin:'0 0 32px'}}>{hp.desc}</p>
+              <div className="hp-services">
+                {hp.services.map(s => (
+                  <div key={s.title} className="hp-service">
+                    <h4>{s.title}</h4>
+                    <p>{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="hp-ctas">
+                <a href={hp.applyUrl} className="btn btn-primary">Apply for Helping Paw</a>
+                <a href={hp.donateUrl} className="btn btn-outline">Donate to the Fund</a>
+              </div>
+            </div>
+          </window.Reveal>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+Object.assign(window, { Hero, Adoptables, Pillars, Mission, Programs, HelpingPaw, Impact, Tails, Events, Newsletter, Videos, Footer });

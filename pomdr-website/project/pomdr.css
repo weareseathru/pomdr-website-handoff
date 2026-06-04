@@ -133,27 +133,26 @@ ul { margin: 0; padding: 0; list-style: none; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 16px 0;
-  transition: padding 0.4s var(--ease);
+  padding: 20px 0;
+  transition: padding 0.3s var(--ease);
 }
-.nav.scrolled { padding: 10px 0; }
+.nav.scrolled { padding: 12px 0; }
 
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(22, 32, 43, 0.06);
+  border: 1px solid rgba(22, 32, 43, 0.08);
   border-radius: 999px;
-  padding: 8px 10px 8px 24px;
+  padding: 10px 12px 10px 28px;
   box-shadow: var(--shadow-nav);
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: box-shadow 0.2s;
 }
 .nav.scrolled .nav-inner {
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 12px 40px -12px rgba(22,32,43,.18);
+  box-shadow: 0 12px 40px -12px rgba(22, 32, 43, 0.22);
 }
 
 /* Logo */

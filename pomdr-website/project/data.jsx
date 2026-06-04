@@ -83,7 +83,7 @@ const PROGRAMS = [
   {
     title: "Intake & Adoptions",
     href: "adopt.html",
-    desc: "Finding senior dogs their furever home through careful matching, foster care, and lifelong support.",
+    desc: "Finding senior dogs their forever home through careful matching, foster care, and lifelong support.",
     points: ["Adoptable dogs", "Courtesy listings", "Adoption process", "Adoption events"],
     icon: (
       <svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
@@ -161,11 +161,60 @@ const STATS = [
     imgAlt: "Hazel napping in her new home after adoption",
   },
   {
-    num: "420", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, and caring",
+    num: "1,800", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, and caring",
     story: "Foster families, transport drivers, dog walkers, photographers, vet techs. Every Saturday morning, a small army shows up for senior dogs.",
     img: "uploads/Nancy helping paw Finnegan, walker Jane (1).jpeg",
     imgAlt: "Volunteer Jane walking Finnegan as part of the Helping Paw program",
   },
 ];
 
-Object.assign(window, { DogPhoto, HERO_SLIDES, DOGS, PROGRAMS, TAILS, EVENTS, STATS });
+const VIDEOS = [
+  {
+    title: "CNN Heroes — POMDR",
+    year: 2022,
+    url: "https://www.cnn.com/2022/07/28/us/dog-rescue-aging-california-seniors",
+    desc: "CNN recognized POMDR as a Hero organization for its work connecting senior dogs with senior people across California's Central Coast.",
+    featured: true,
+  },
+  {
+    title: "This is Our Message to You",
+    year: 2026,
+    url: "https://youtu.be/B7RQI4beRZU",
+    desc: "Our 2026 message to the Central Coast community about what POMDR stands for.",
+    featured: false,
+  },
+  {
+    title: "Take a Chance on POMDR",
+    year: 2025,
+    url: "https://youtu.be/HVv8rEJjnvs",
+    desc: "An invitation to learn who we are and why we do this work — told through the dogs themselves.",
+    featured: false,
+  },
+];
+
+const HELPING_PAW = {
+  eyebrow: "Helping Paw Program",
+  title: "Keeping seniors and their dogs",
+  titleEm: "together.",
+  desc: "When a guardian faces hardship, we step in. Walking brigades, financial assistance, temporary foster care. Whatever it takes to keep a senior person and their dog together as long as possible.",
+  services: [
+    {
+      title: "Walking Brigade",
+      desc: "Volunteers walk dogs for seniors who can no longer do it themselves, whether due to medical recovery, mobility limits, or a difficult stretch.",
+    },
+    {
+      title: "Financial Assistance",
+      desc: "Up to $750 for urgent veterinary care, and up to $2,750 for emergency major medical needs. Financial need required; all pets must be spayed or neutered.",
+    },
+    {
+      title: "Temporary Foster",
+      desc: "When a guardian is hospitalized or needs recovery time, POMDR fosters their dog and returns them when the guardian is ready.",
+    },
+  ],
+  photo: "uploads/Nancy helping paw Finnegan, walker Jane (1).jpeg",
+  photoAlt: "POMDR volunteer Jane walking Finnegan as part of the Helping Paw walking brigade",
+  applyUrl: "helping-paw.html",
+  donateUrl: "donate.html",
+};
+
+Object.assign(window, { DogPhoto, HERO_SLIDES, DOGS, PROGRAMS, TAILS, EVENTS, STATS, VIDEOS, HELPING_PAW });
