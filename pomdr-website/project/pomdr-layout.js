@@ -176,7 +176,7 @@
             </div>
           </div>
           <div>
-            <h5>Adopt</h5>
+            <h2>Adopt</h2>
             <ul>
               <li><a href="${rel("adopt.html")}">Available Dogs</a></li>
               <li><a href="${rel("process.html")}">Adoption Process</a></li>
@@ -187,7 +187,7 @@
             </ul>
           </div>
           <div>
-            <h5>Get Involved</h5>
+            <h2>Get Involved</h2>
             <ul>
               <li><a href="${rel("donate.html")}">Donate</a></li>
               <li><a href="${rel("foster.html")}">Foster</a></li>
@@ -198,7 +198,7 @@
             </ul>
           </div>
           <div>
-            <h5>About</h5>
+            <h2>About</h2>
             <ul>
               <li><a href="${rel("about.html")}">Our Story</a></li>
               <li><a href="${rel("about.html")}#team">Team</a></li>
@@ -210,7 +210,7 @@
             </ul>
           </div>
           <div class="footer-locations">
-            <h5>Visit Us</h5>
+            <h2>Visit Us</h2>
             <ul class="footer-addresses">
               <li>
                 <strong>Patricia J. Bauer Center</strong>
@@ -249,11 +249,26 @@
     document.body.insertAdjacentHTML("afterbegin", skipHTML);
   }
 
-  // Ensure the skip-link has a target. Pages may explicitly wrap their content
-  // in <main id="main">; if not, promote the first content section.
-  if (!document.getElementById("main")) {
-    const target = document.querySelector("body > header, body > section, body > main");
-    if (target) target.id = "main";
+  // Ensure the skip-link has a target AND a real <main> landmark. Pages may
+  // explicitly wrap their content in <main id="main">; if not, wrap the
+  // body's existing content nodes in a fresh <main> so screen readers
+  // get a real landmark, not just an id-attribute hop. We exclude the chrome
+  // (skip link, nav, footer, scripts) from the wrap so injection can replace
+  // them cleanly later.
+  if (!document.querySelector("main")) {
+    const isChrome = (el) =>
+      el.matches("script, .skip-link, nav.nav, footer.footer, .pomdr-toast");
+    const contentNodes = Array.from(document.body.children).filter(
+      (el) => el.nodeType === 1 && !isChrome(el)
+    );
+    if (contentNodes.length) {
+      const mainEl = document.createElement("main");
+      mainEl.id = "main";
+      contentNodes[0].parentNode.insertBefore(mainEl, contentNodes[0]);
+      contentNodes.forEach((n) => mainEl.appendChild(n));
+    }
+  } else if (!document.getElementById("main")) {
+    document.querySelector("main").id = "main";
   }
 
   // Replace existing nav if present, otherwise prepend.

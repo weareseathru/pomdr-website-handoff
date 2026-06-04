@@ -172,7 +172,7 @@ const Pillars = () => {
   const pillars = [
     { num: "01", label: "Adopt", title: "Open your home.", desc: "Match with a senior pup whose quiet mornings suit yours.", seed: 0 },
     { num: "02", label: "Donate", title: "Fuel the work.", desc: "Your gift funds medical care, foster stipends and a lifetime promise.", seed: 2 },
-    { num: "03", label: "Volunteer", title: "Walk with us.", desc: "Foster, transport, write bios — every hour makes a difference.", seed: 5 },
+    { num: "03", label: "Volunteer", title: "Walk with us.", desc: "Foster, transport, write bios. Every hour makes a difference.", seed: 5 },
   ];
   return (
     <section className="section pillars">
@@ -181,7 +181,7 @@ const Pillars = () => {
           {pillars.map((p, i) => (
             <window.Reveal key={p.num} delay={i * 80}>
               <a className="pillar" href={`#${p.label.toLowerCase()}`} style={{'--tilt': 0}}>
-                <div className="pillar-num">— {p.num}</div>
+                <div className="pillar-num">{p.num}</div>
                 <div style={{position:'absolute',inset:0,zIndex:0}}>
                   <window.DogPhoto name={p.label} seed={p.seed} />
                 </div>
@@ -236,7 +236,7 @@ const Mission = () => (
           <div>
             <span className="eyebrow" style={{color:'var(--purple)'}}>Our Mission</span>
             <h2 className="mission-title">Who will care for your dog if <em>you no longer can?</em></h2>
-            <p className="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz and San Benito counties — through rescue, foster, adoption, hospice and education.</p>
+            <p className="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz and San Benito counties, through rescue, foster, adoption, hospice and education.</p>
             <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
               <a href="#surrender" className="btn btn-purple">Surrender options</a>
               <a href="#perpetual" className="btn btn-outline">Perpetual care</a>
@@ -259,7 +259,7 @@ const Programs = () => (
       <window.Reveal>
         <div className="section-header">
           <span className="eyebrow">Our Programs</span>
-          <h2 className="section-title">A <em>lifetime commitment</em> — not a paperwork kind.</h2>
+          <h2 className="section-title">A <em>lifetime commitment</em>, not a paperwork kind.</h2>
           <p className="section-lead">Three intertwined programs, one promise: we walk alongside our dogs and their people for life.</p>
         </div>
       </window.Reveal>
@@ -380,7 +380,7 @@ const Events = () => (
               <window.DogPhoto name="Gala" seed={1} />
             </div>
             <div className="tag">★ Featured · May 17</div>
-            <h3>Senior Supper — An evening for our seniors, by our friends.</h3>
+            <h3>Senior Supper. An evening for our seniors, by our friends.</h3>
             <div className="details">
               <span>5:30 – 8 pm</span>
               <span>Carmel Valley Ranch</span>
@@ -406,7 +406,7 @@ const Newsletter = () => {
         <div>
           <span className="eyebrow">Stay in the loop</span>
           <h2>Sweet stories, happy tails and <em>good news</em> in your inbox.</h2>
-          <p>One thoughtful email a month — adoption updates, events, and a little sunshine from the pups.</p>
+          <p>One thoughtful email a month. Adoption updates, events, and a little sunshine from the pups.</p>
         </div>
         <form className="newsletter-form" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
           <label>Newsletter signup</label>
