@@ -1,0 +1,40 @@
+name: voice-check
+
+# Runs the CLAUDE.md voice rules against any new copy added in a PR.
+# Uses scripts/check-voice.sh in --diff mode so the inherited prototype's
+# existing violations do not block merges; only NEW violations fail.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  voice:
+    name: Voice rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run voice check (diff mode)
+        if: github.event_name == 'pull_request'
+        run: |
+          base="origin/${{ github.base_ref }}"
+          git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+          bash scripts/check-voice.sh --diff "$base"
+
+      - name: Run voice check (full)
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          # On push to main we run --all in report-only mode so we can track
+          # the inherited backlog over time without blocking. Cleanup PRs
+          # bring this count down.
+          bash scripts/check-voice.sh --all || echo "::warning::inherited voice violations remain; see log"

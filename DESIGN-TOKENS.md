@@ -59,7 +59,7 @@ block theme, declare it in `theme.json` so it's available everywhere.
 | `--orange-50`     | `#FFF5E8`  | `pomdr.css:23`      | (declared, no class observed using it) |
 
 These appear only in `pomdr.css` (the shared design system). Treat orange
-as a state color for `adoption_pending`. No third primary, no third brand
+as a state color for `adoption-pending`. No third primary, no third brand
 hue.
 
 ### 1.4 Ink (text)

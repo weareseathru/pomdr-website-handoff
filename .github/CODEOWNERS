@@ -1,0 +1,21 @@
+# CODEOWNERS for POMDR website redesign.
+#
+# Documents who must review changes. GitHub auto-requests a review from
+# the owners listed for any file path matched below.
+#
+# Today the team is one human + one AI implementation partner (Claude).
+# As staff (Carie, Monica, Allison) come into the repo for content edits,
+# add their GitHub handles here scoped to the directories they own.
+
+# Catch-all: Andrew is the developer-in-the-loop on everything.
+*       @weareseathru
+
+# Plan files and standing rules.
+/CLAUDE.md          @weareseathru
+/VOICE.md           @weareseathru
+/DESIGN-TOKENS.md   @weareseathru
+/STACK.md           @weareseathru
+
+# Future: content-editor scopes go here once staff have GitHub accounts.
+# /pomdr-website/project/dog/   @carie @monica
+# /pomdr-website/project/*.html @carie @monica

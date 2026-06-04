@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# .githooks/pre-commit
+#
+# Opt-in pre-commit hook. Runs the voice check against the files you have
+# staged. Same script that runs in CI, just in --staged mode.
+#
+# Enable per-clone:
+#   git config core.hooksPath .githooks
+#
+# Bypass for an emergency commit (do not do this lightly):
+#   git commit --no-verify
+#
+set -euo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+SCRIPT="$ROOT_DIR/scripts/check-voice.sh"
+
+if [[ ! -x "$SCRIPT" ]]; then
+  echo "pre-commit: $SCRIPT not found or not executable; skipping." >&2
+  exit 0
+fi
+
+bash "$SCRIPT" --staged
