@@ -1,0 +1,68 @@
+/*
+ Theme Name:   POMDR 2026
+ Theme URI:    https://www.peaceofminddogrescue.org/
+ Description:  Divi Child Theme — POMDR redesign layer
+ Author:       Antigravity / Andrew Z.
+ Author URI:   https://www.peaceofminddogrescue.org/
+ Template:     Divi
+ Version:      1.0.0
+ Text Domain:  pomdr-2026
+*/
+
+/*
+  Import the POMDR design system.
+  This loads all CSS custom properties (color, typography, spacing, motion)
+  and the base component styles from the prototype.
+  Divi's own stylesheet loads after this, so any Divi conflicts are overridden
+  by the component-specific selectors in pomdr-design.css.
+*/
+@import url('assets/css/pomdr-design.css');
+
+/*
+  Divi-specific overrides.
+  Only put rules here that correct Divi conflicts with the POMDR design.
+  Everything else belongs in pomdr-design.css.
+*/
+
+/* Reset Divi's default body font to our design system */
+body,
+body #page-container {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--cream);
+}
+
+/* Ensure Divi containers respect our max-width */
+.et_pb_row {
+  max-width: 1320px;
+}
+
+/* Divi button reset — use our btn classes instead */
+.et_pb_button {
+  font-family: var(--font-sans);
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Divi heading reset — use our serif scale */
+h1, h2, h3, h4, h5, h6,
+.et_pb_module h1,
+.et_pb_module h2,
+.et_pb_module h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* Suppress Divi's aggressive link color override */
+a {
+  color: var(--blue);
+}
+a:hover {
+  color: var(--blue-700);
+}

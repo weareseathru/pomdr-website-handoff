@@ -161,7 +161,7 @@ const STATS = [
     imgAlt: "Hazel napping in her new home after adoption",
   },
   {
-    num: "420", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, and caring",
+    num: "1,800", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, and caring",
     story: "Foster families, transport drivers, dog walkers, photographers, vet techs. Every Saturday morning, a small army shows up for senior dogs.",
     img: "uploads/Nancy helping paw Finnegan, walker Jane (1).jpeg",
     imgAlt: "Volunteer Jane walking Finnegan as part of the Helping Paw program",
