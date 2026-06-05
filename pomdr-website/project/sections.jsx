@@ -24,7 +24,7 @@ const Hero = () => {
           </div>
         ))}
 
-        {/* Soft white gradient at bottom — replaces dark color scrim */}
+        {/* Soft white gradient at bottom, replaces dark color scrim */}
         <div className="hero-gradient-bottom" aria-hidden="true" />
 
         {/* Prominent side arrows */}
@@ -50,7 +50,7 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* Text lives BELOW the image — not overlaid on it */}
+      {/* Text lives BELOW the image, not overlaid on it */}
       <div className="hero-caption">
         <div className="container">
           <p className="hero-caption-tag" key={`tag-${idx}`}>{slides[idx].tag}</p>
@@ -93,7 +93,7 @@ const Adoptables = () => {
         <window.Reveal>
           <div className="section-header">
             <span className="eyebrow">Adoptable Dogs</span>
-            <h2 className="section-title">Meet the pups waiting for <em>their next chapter.</em></h2>
+            <h2 className="section-title">Find the pups waiting for <em>their next chapter.</em></h2>
             <p className="section-lead">Each of these seniors has a full heart, a few grey hairs, and a story that's not finished yet.</p>
           </div>
         </window.Reveal>
@@ -317,7 +317,7 @@ const Events = () => (
             <span className="eyebrow" style={{color:'var(--purple)'}}>Upcoming</span>
             <h2 className="section-title">Events & <em>gatherings.</em></h2>
           </div>
-          <a href="#" className="btn btn-outline">View full calendar</a>
+          <a href="events.html" className="btn btn-outline">View full calendar</a>
         </div>
       </window.Reveal>
       <div className="events-layout">
@@ -355,7 +355,7 @@ const Events = () => (
               <span>5:30 – 8 pm</span>
               <span>Carmel Valley Ranch</span>
             </div>
-            <a href="#" className="btn btn-light" style={{width:'fit-content'}}>
+            <a href="volunteer.html" className="btn btn-light" style={{width:'fit-content'}}>
               Reserve your seat
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
@@ -410,41 +410,41 @@ const Footer = () => (
         <div>
           <h5>Adopt</h5>
           <ul>
-            <li><a href="#">Adoptable Dogs</a></li>
-            <li><a href="#">Courtesy Listings</a></li>
-            <li><a href="#">Recently Adopted</a></li>
-            <li><a href="#">Adoption Events</a></li>
-            <li><a href="#">Adoption Process</a></li>
+            <li><a href="adopt.html">Adoptable Dogs</a></li>
+            <li><a href="adopt.html?category=courtesy">Courtesy Listings</a></li>
+            <li><a href="adopted.html">Recently Adopted</a></li>
+            <li><a href="events.html">Adoption Events</a></li>
+            <li><a href="process.html">Adoption Process</a></li>
           </ul>
         </div>
         <div>
           <h5>Volunteer</h5>
           <ul>
-            <li><a href="#">Application</a></li>
-            <li><a href="#">Foster Needs</a></li>
-            <li><a href="#">Opportunities</a></li>
+            <li><a href="volunteer-application.html">Application</a></li>
+            <li><a href="foster.html">Foster Needs</a></li>
+            <li><a href="jobs.html">Opportunities</a></li>
           </ul>
           <h5 style={{marginTop:28}}>Surrender</h5>
           <ul>
-            <li><a href="#">Placing Your Dog</a></li>
-            <li><a href="#">Perpetual Care</a></li>
+            <li><a href="surrender.html">Placing Your Dog</a></li>
+            <li><a href="perpetual-care-program.html">Perpetual Care</a></li>
           </ul>
         </div>
         <div>
           <h5>About Us</h5>
           <ul>
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Ways to Give</a></li>
-            <li><a href="#">Benefit Shop</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="about.html#team">Our Team</a></li>
+            <li><a href="donate.html">Ways to Give</a></li>
+            <li><a href="benefit-shop.html">Benefit Shop</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
           <h5>Follow</h5>
           <div className="socials">
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.2.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.9.2 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.2-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.3-.1-.9-.2-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5-8.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.6V13h2.8v8h3.1z"/></svg></a>
-            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.7 2 12 2 12s0 3.3.4 4.8c.2.9.9 1.6 1.8 1.8 1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.8.4-4.8s0-3.3-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+            <a href="https://instagram.com/peace.of.mind.dog.rescue" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.2.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.9.2 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.2-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.3-.1-.9-.2-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5-8.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+            <a href="/" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.6V13h2.8v8h3.1z"/></svg></a>
+            <a href="/" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.7 2 12 2 12s0 3.3.4 4.8c.2.9.9 1.6 1.8 1.8 1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.8.4-4.8s0-3.3-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
           </div>
           <div style={{marginTop:28}}>
             <h5>Tax-deductible</h5>
@@ -452,10 +452,10 @@ const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="footer-bottom">
-        <div>© 2026 Peace of Mind Dog Rescue. All rights reserved.</div>
-        <div style={{display:'flex',gap:20}}>
-          <a href="#">Privacy</a><a href="#">Accessibility</a><a href="#">Press</a>
+      <div className="footer-legal">
+        <p>© {new Date().getFullYear()} Peace of Mind Dog Rescue. All rights reserved.</p>
+        <div className="legal-links">
+          <a href="privacy.html">Privacy</a><a href="accessibility.html">Accessibility</a><a href="media.html">Press</a>
         </div>
       </div>
     </div>

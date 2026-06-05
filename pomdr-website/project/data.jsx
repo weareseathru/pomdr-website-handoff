@@ -170,7 +170,7 @@ const STATS = [
 
 const VIDEOS = [
   {
-    title: "CNN Heroes — POMDR",
+    title: "CNN Heroes, POMDR",
     year: 2022,
     url: "https://www.cnn.com/2022/07/28/us/dog-rescue-aging-california-seniors",
     desc: "CNN recognized POMDR as a Hero organization for its work connecting senior dogs with senior people across California's Central Coast.",
@@ -187,7 +187,7 @@ const VIDEOS = [
     title: "Take a Chance on POMDR",
     year: 2025,
     url: "https://youtu.be/HVv8rEJjnvs",
-    desc: "An invitation to learn who we are and why we do this work — told through the dogs themselves.",
+    desc: "An invitation to learn who we are and why we do this work, told through the dogs themselves.",
     featured: false,
   },
 ];

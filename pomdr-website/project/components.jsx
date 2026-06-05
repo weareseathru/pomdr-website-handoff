@@ -2,7 +2,7 @@ const { useState, useEffect, useRef } = React;
 
 // Logo mark
 const Logo = () => (
-  <a href="#" className="logo">
+  <a href="index.html" className="logo">
     <div className="logo-mark">P</div>
     <div className="logo-text">
       <div className="name">Peace of Mind</div>
