@@ -562,6 +562,41 @@ ul { margin: 0; padding: 0; list-style: none; }
 .socials a:hover { background: var(--blue); transform: translateY(-2px); }
 .socials svg { width: 14px; height: 14px; fill: white; }
 
+/* Footer logo override: dark background needs full white text */
+.footer .logo-text .name { color: white; }
+.footer .logo-text .sub  { color: white; }
+
+/* Footer contact: horizontal pill row */
+.footer-contact-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--blue-200);
+  margin-bottom: 10px;
+}
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.15s;
+}
+.footer-contact-item:hover { color: white; }
+.footer-contact-item svg { flex-shrink: 0; stroke: currentColor; }
+.footer-contact-sep {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 14px;
+  line-height: 1;
+}
+
 /* ===== COMMON COMPONENTS ===== */
 
 /* Reveal animation */
