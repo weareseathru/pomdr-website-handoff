@@ -136,7 +136,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   to   { transform: scale(1.15) translate(-1%, -2%); }
 }
 
-/* Soft white gradient at bottom only — no dark color overlay */
+/* Soft white gradient at bottom only, no dark color overlay */
 .hero-gradient-bottom {
   position: absolute; bottom: 0; left: 0; right: 0;
   height: 180px; z-index: 2; pointer-events: none;
@@ -184,7 +184,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero-dot:focus-visible { outline: 2px solid white; outline-offset: 2px; }
 
-/* Caption block — below the image */
+/* Caption block, below the image */
 .hero-caption {
   background: white;
   padding: 40px 0 56px;
