@@ -116,11 +116,46 @@ fi
 echo "check-voice.sh ($MODE): scanning ${#FILES[@]} files."
 fail=0
 
-# Rule 1: em dash (U+2014). The literal em dash character is intentionally
-# embedded below; do not "fix" it.
-if grep -nH --color=never -- "—" "${FILES[@]}" 2>/dev/null; then
+# Rule 1: em dash (U+2014) in user-facing copy.
+#
+# Scope (per Andrew, 2026-06-09): the no-em-dash rule protects brand copy that
+# people read, not developer-only text. So em dashes in CODE COMMENTS are
+# allowed; em dashes in actual copy (HTML text, JS/JSX strings, CSS `content:`)
+# still fail. We strip comments before checking, preserving line numbers so the
+# report still points at the right line. The literal em dash characters below
+# are intentional; do not "fix" them.
+#
+# strip_comments blanks comment bodies but keeps newlines, so line numbers in
+# the stripped stream match the original file.
+strip_comments() {
+  case "$1" in
+    *.css)
+      perl -0777 -pe 's{/\*.*?\*/}{ my $c=$&; $c=~s/[^\n]//g; $c }ges' "$1"
+      ;;
+    *.js|*.jsx)
+      perl -0777 -pe 's{/\*.*?\*/}{ my $c=$&; $c=~s/[^\n]//g; $c }ges; s{//[^\n]*}{}g' "$1"
+      ;;
+    *.html|*.htm)
+      perl -0777 -pe 's{<!--.*?-->}{ my $c=$&; $c=~s/[^\n]//g; $c }ges' "$1"
+      ;;
+    *)
+      cat "$1"
+      ;;
+  esac
+}
+
+em_dash_hit=0
+for f in "${FILES[@]}"; do
+  matches=$(strip_comments "$f" | grep -n --color=never -- "—" || true)
+  if [[ -n "$matches" ]]; then
+    printf '%s\n' "$matches" | awk -v f="$f" '{print f ":" $0}'
+    em_dash_hit=1
+  fi
+done
+if [[ $em_dash_hit -eq 1 ]]; then
   echo ""
-  echo "FAIL: em dash found in source. Replace with comma, period, or parens." >&2
+  echo "FAIL: em dash found in user-facing copy. Replace with comma, period, or parens." >&2
+  echo "(Em dashes inside code comments are allowed and not flagged.)" >&2
   fail=1
 fi
 
