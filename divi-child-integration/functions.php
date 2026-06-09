@@ -2759,8 +2759,9 @@ add_shortcode('foster_needs', function($atts) {
  * Loads the design-system CSS and JS (assets/) on top of the production
  * Divi child theme. This is additive: it only registers a wp_enqueue_scripts
  * action and does not change any of the production logic above.
- * ACF field registration (inc/acf-fields.php) and the legacy redirect handler
- * (inc/redirects.php) are intentionally NOT loaded here. ACF fields are owned
- * by the ACF plugin, and the redirect module is opt-in.
+ * ACF fields are owned by the ACF Pro plugin, not registered in code. The
+ * authoritative field-group schema is version-controlled as a reference export
+ * at acf-export-2026-06-09.json (theme root). The legacy redirect handler
+ * (inc/redirects.php) is intentionally NOT loaded here; it is opt-in.
  */
 require_once get_stylesheet_directory() . '/inc/enqueue.php';

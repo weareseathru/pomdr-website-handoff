@@ -24,22 +24,22 @@ verbatim, then adds the redesign on top through a single additive require of
 
 ```
 divi-child-integration/
-  README.md             ← this file
-  style.css             ← child theme header + design token imports
-  functions.php         ← production theme logic; requires inc/enqueue.php
-  single-pets.php       ← dog detail page template (overrides Divi)
-  screenshot.png        ← theme screenshot shown in Appearance > Themes
+  README.md                      ← this file
+  style.css                      ← child theme header + design token imports
+  functions.php                  ← production theme logic; requires inc/enqueue.php
+  single-pets.php                ← dog detail page template (overrides Divi)
+  screenshot.png                 ← theme screenshot shown in Appearance > Themes
+  acf-export-2026-06-09.json     ← authoritative ACF field-group export (reference)
   inc/
-    enqueue.php         ← enqueues the redesign CSS/JS (loaded)
-    acf-fields.php      ← ACF field group definitions (NOT loaded; see below)
-    redirects.php       ← legacy URL handler (NOT loaded; opt-in, see below)
+    enqueue.php                  ← enqueues the redesign CSS/JS (loaded)
+    redirects.php                ← legacy URL handler (NOT loaded; opt-in, see below)
   assets/
     css/
-      pomdr-design.css  ← full v2 design system (adapted from the prototype)
+      pomdr-design.css           ← full v2 design system (adapted from the prototype)
     js/
-      gallery.js        ← lightbox from the prototype
-      pomdr-nav.js      ← mobile nav supplement
-  temp/                 ← reference templates from the production theme
+      gallery.js                 ← lightbox from the prototype
+      pomdr-nav.js               ← mobile nav supplement
+  temp/                          ← reference templates from the production theme
     single-pet.php
     template-pet-profile.php
     template-blog-list.php
@@ -47,16 +47,16 @@ divi-child-integration/
 
 ### What loads, and what does not
 
-`functions.php` requires only `inc/enqueue.php`. Two files in `inc/` are
-present for reference and are intentionally **not** wired in:
+`functions.php` requires only `inc/enqueue.php`. Note:
 
-- `inc/acf-fields.php` would re-register field groups that the ACF Pro plugin
-  already owns on the live site. Loading it risks double registration.
-- `inc/redirects.php` is an opt-in legacy URL handler. The Redirection plugin
-  currently manages redirects.
+- ACF fields are owned by the ACF Pro plugin and are NOT registered in code.
+  `acf-export-2026-06-09.json` is a version-controlled reference export of the
+  live field groups (see "ACF field groups" below), not a loaded file.
+- `inc/redirects.php` is an opt-in legacy URL handler and is not wired in. The
+  Redirection plugin currently manages redirects.
 
-Wire either only after confirming with Andrew. The `temp/` templates are
-production references, not active overrides.
+Wire `inc/redirects.php` only after confirming with Andrew. The `temp/`
+templates are production references, not active overrides.
 
 ## How to deploy
 
@@ -89,11 +89,23 @@ listed as "Divi / production" are not yet redesigned in this repo.
 
 ## ACF field groups
 
-`inc/acf-fields.php` holds version-controlled field group definitions for
-reference and disaster recovery. It is **not loaded** by `functions.php` (the
-ACF Pro plugin owns the live field groups). If you ever need to rebuild from
-scratch, import via ACF > Tools > Import Field Groups. The `pets` CPT fields
-are the most critical and most complete.
+`acf-export-2026-06-09.json` (theme root) is the authoritative, version
+controlled export of the live ACF Pro field groups and CPT registrations,
+pulled from the production site on 2026-06-09. It is a reference and disaster
+recovery copy, NOT loaded at runtime (the ACF Pro plugin owns the live fields).
+
+To rebuild from scratch, import it via ACF > Tools > Import Field Groups. The
+`pets` group is the critical one: `status` is a multi-value **checkbox** with
+Title-Case values (`Adoptable`, `Foster Needed`, `Sponsor Needed`,
+`Adoption Pending`, `Adopted`, `Hospice`, `Courtesy Listing`), `age` and
+`weight` are numbers, `date_adopted` is a date_picker returning `m/d/Y`, breed
+is stored as `looks_like`, and the bio is `pet_description`. The templates read
+these exact names.
+
+For a later production stage, consider enabling ACF local JSON sync (an
+`acf-json/` directory with one file per group) so field changes are
+version-controlled automatically. That is deliberately not enabled now to avoid
+changing runtime behavior during the prototype stage.
 
 ## Do not do these things
 

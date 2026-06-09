@@ -117,12 +117,13 @@ bash scripts/check-voice.sh --staged
 │       ├── pomdr-layout.js
 │       └── uploads/             # Brand PDF, dog photos, design refs
 └── divi-child-integration/      # WordPress Divi child theme (Track B)
-    ├── style.css                # Child theme header + token imports
-    ├── functions.php            # Production theme logic + redesign enqueue
-    ├── single-pets.php          # Dog detail template (overrides Divi)
-    ├── inc/                     # enqueue, redirects, ACF field definitions
-    ├── assets/                  # Redesign CSS + JS (design system, gallery, nav)
-    └── temp/                    # Reference templates from the production theme
+    ├── style.css                    # Child theme header + token imports
+    ├── functions.php                # Production theme logic + redesign enqueue
+    ├── single-pets.php              # Dog detail template (overrides Divi)
+    ├── acf-export-2026-06-09.json   # Authoritative ACF field-group export (reference)
+    ├── inc/                         # enqueue (loaded), redirects (opt-in)
+    ├── assets/                      # Redesign CSS + JS (design system, gallery, nav)
+    └── temp/                        # Reference templates from the production theme
 ```
 
 ---
