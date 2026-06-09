@@ -1,28 +1,393 @@
 /*
- Theme Name:   POMDR 2026
- Theme URI:    https://www.peaceofminddogrescue.org/
- Description:  Divi Child Theme - POMDR redesign layer
- Author:       Antigravity / Andrew Z.
- Author URI:   https://www.peaceofminddogrescue.org/
- Template:     Divi
- Version:      1.0.0
- Text Domain:  pomdr-2026
+ Theme Name: Divi Child
+ Theme URI: https://www.elegantthemes.com/gallery/divi/
+ Description: Divi Child Theme
+ Author: Elegant Themes
+ Author URI: https://www.elegantthemes.com
+ Template: Divi
+ Version: 1.0.2
 */
 
-/*
-  Import the POMDR design system.
-  This loads all CSS custom properties (color, typography, spacing, motion)
-  and the base component styles from the prototype.
-  Divi's own stylesheet loads after this, so any Divi conflicts are overridden
-  by the component-specific selectors in pomdr-design.css.
-*/
-@import url('assets/css/pomdr-design.css');
+/* Custom styling for pet name title */
+.entry-title {
+    font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif !important;
+    font-weight: 900 !important;
+    /* Heavy weight */
+    font-size: 3rem !important;
+    line-height: 1.2 !important;
+    color: #632F88 !important;
+}
 
-/*
-  Divi-specific overrides.
-  Only put rules here that correct Divi conflicts with the POMDR design.
-  Everything else belongs in pomdr-design.css.
-*/
+@media (min-width: 981px) {
+    .et_pb_section {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+}
+
+
+#main-content {
+    background-color: #fffaf5 !important;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 20px;
+}
+
+.gallery a {
+    display: inline-block;
+}
+
+.gallery__image {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+    transition: transform 0.3s linear;
+}
+
+.gallery__image:hover {
+    transform: scale(1.1);
+}
+
+/* Main Grid */
+.custom-acf-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+.custom-acf-posts-fullwidth {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+article.custom-post-full:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+article.custom-post-full {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    cursor: pointer;
+}
+
+.custom-post-full-content {
+    padding: 5px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#menu-top-nav .donate_red>a {
+    color: rgb(200, 0, 0) !important;
+}
+
+a.et_pb_button.buttoncustom.et_pb_bg_layout_light:hover {
+    background: none;
+}
+
+.et_pb_section.teammainsec {
+    padding-bottom: 50px !important;
+}
+
+/* Pet Detail Page layout */
+.pom-section {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.pom-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    box-sizing: border-box;
+    width: 80%;
+    width: var(--content-width, 80%);
+    max-width: 1080px;
+    max-width: var(--content-max-width, 1080px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pom-row--header {
+    padding: 0 0 5px;
+    align-items: flex-start;
+}
+
+.pom-col-title {
+    flex: 0 0 60%;
+    max-width: 60%;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.pom-col-btn {
+    flex: 0 0 20%;
+    max-width: 20%;
+    box-sizing: border-box;
+    padding-top: 8px;
+}
+
+.pom-col-main {
+    flex: 0 0 60%;
+    max-width: 60%;
+    box-sizing: border-box;
+    padding-right: 30px;
+}
+
+.pom-col-side {
+    flex: 0 0 40%;
+    max-width: 40%;
+    box-sizing: border-box;
+}
+
+.pom-row--full .pom-col-main {
+    padding-right: 0;
+}
+
+.pom-content {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pom-buttons {
+    margin-top: 10px;
+}
+
+.pom-buttons-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    clear: both;
+}
+
+.pom-buttons-row:last-child {
+    margin-bottom: 0;
+}
+
+.pom-video {
+    width: 100%;
+}
+
+.pom-image {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 980px) {
+    .pom-col-title,
+    .pom-col-btn,
+    .pom-col-main,
+    .pom-col-side {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-right: 0;
+    }
+
+    .pom-col-title {
+        padding-bottom: 10px;
+    }
+}
+
+/* For tablet devices */
+@media only screen and (max-width: 980px) {
+    .custom-acf-posts-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on tablets */
+    }
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 767px) {
+    .custom-acf-posts-grid {
+        grid-template-columns: 1fr;
+        /* 1 column on mobile */
+    }
+}
+
+.custom-acf-posts-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* For tablet devices */
+@media only screen and (max-width: 980px) {
+    .custom-acf-posts-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on tablets */
+    }
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 767px) {
+    .custom-acf-posts-grid-4 {
+        grid-template-columns: 1fr;
+        /* 1 column on mobile */
+    }
+}
+
+/* Individual post styling */
+.custom-post-item {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Make all items the same height */
+}
+
+.custom-post-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styling */
+.custom-post-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Content area styling */
+.custom-post-content {
+    padding: 5px;
+    flex-grow: 1;
+    /* Allow content area to expand */
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-post-title {
+    font-size: 20px;
+    /* margin-bottom: 10px; */
+}
+
+.custom-post-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.custom-field-1,
+.custom-field-2 {
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.custom-post-excerpt {
+    margin-bottom: 15px;
+    flex-grow: 1;
+    /* Push the read more button to the bottom */
+}
+
+.custom-read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2ea3f2;
+    /* Divi blue */
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+    margin-top: auto;
+    /* Push to bottom */
+    align-self: flex-start;
+    /* Align to left */
+}
+
+.custom-read-more:hover {
+    background-color: #0c71c3;
+}
+
+/* Force container to full width if needed */
+.et_pb_text_inner {
+    width: 100%;
+}
+
+/* Foster Needs - Stacked List */
+.foster-needs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.foster-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.foster-card__name {
+    margin: 0 0 20px;
+    color: #632F88;
+    font-size: 1.6em;
+}
+
+.foster-card__image {
+    margin-bottom: 20px;
+}
+
+.foster-card__image img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.foster-card__breed {
+    color: #666;
+    margin: 0 0 10px;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+.foster-card__details {
+    color: #888;
+    font-size: 1em;
+    margin: 0 0 15px;
+}
+
+.foster-card__description {
+    color: #444;
+    line-height: 1.6;
+    margin: 0 0 15px;
+}
+
+.foster-card__foster-info {
+    background: #fffaf5;
+    padding: 15px;
+    border-radius: 8px;
+    color: #666;
+}
+
+/* ====================================================================
+   POMDR 2026 redesign layer: Divi overrides
+   --------------------------------------------------------------------
+   pomdr-design.css (the design system: tokens, components) is loaded
+   separately via inc/enqueue.php with a dependency on Divi's stylesheet,
+   so it is NOT @imported here. The rules below only correct Divi
+   conflicts with the POMDR design. Custom properties (var(--font-sans),
+   var(--ink), etc.) are defined in pomdr-design.css.
+   ==================================================================== */
 
 /* Reset Divi's default body font to our design system */
 body,
