@@ -82,9 +82,21 @@ These are absolute. Every piece of generated content must conform.
   WordPress recommended minimum. Verify before writing PHP.
 - Custom post types for dogs already exist (or need to be standardized) — read
   before proposing changes.
-- No heavy page builders (Elementor, Divi, etc.) unless explicitly approved.
-  They slow the site, complicate accessibility, and make AI-assisted editing
-  harder. Gutenberg + custom blocks is the default.
+- Page builders are still discouraged in general (they slow the site,
+  complicate accessibility, and make AI-assisted editing harder). However, the
+  Divi parent theme on new.pomdr.org is now an approved, retained dependency
+  (see decision 2026-06-06 below). The redesign ships as a Divi **child theme**
+  (`divi-child-integration/`, theme name "POMDR 2026") that layers on top of
+  Divi without editing the parent. No additional page builders beyond Divi.
+- DECISION 2026-06-06 (keep Divi): The integration target changed from a clean
+  FSE block theme (`pomdr-2026`) to a **Divi child theme** that preserves the
+  existing Divi base build and functions on new.pomdr.org. Approved this session;
+  pending Andrew's formal sign-off on the integration PR. This overrides earlier
+  block-theme language in this file and in STACK.md / WP-SCAFFOLD-NOTES.md.
+  Custom redesigned pages are child-theme templates plus a global CSS/JS layer;
+  everything else inherits the new look through CSS. Rationale: retain the
+  staff-familiar Divi editing surface and the working ACF `pets` CPT, LGL forms,
+  and Redirection setup rather than rebuilding them.
 - CSS: plain modern CSS (custom properties, logical properties, container
   queries) over any framework unless a compelling reason surfaces. If we
   adopt Tailwind, do it intentionally via a WordPress-compatible integration,
@@ -237,7 +249,9 @@ Separate entries with a blank line. No em dashes.
 - Do not generate photorealistic AI images of dogs. All dog photos are real,
   taken by volunteers or staff.
 - Do not propose switching away from WordPress. The platform is fixed.
-- Do not propose adding a page builder plugin without explicit approval.
+- Do not propose adding a page builder plugin without explicit approval. (Divi
+  itself is approved and retained as of 2026-06-06; see §3. This applies to any
+  additional builders.)
 - Do not publish to production.
 - Do not grant the WordPress MCP write access to a production database.
 - Do not add tracking, ads, or third-party widgets without approval.
@@ -291,4 +305,4 @@ infallible.
 
 ---
 
-_Last updated: 2026-05-18. Owner: Andrew Z._
+_Last updated: 2026-06-06. Owner: Andrew Z._

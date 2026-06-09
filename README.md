@@ -118,6 +118,11 @@ bash scripts/check-voice.sh --staged
 
 Never push directly to `main`.
 
+At the end of each session, run the
+[end-of-session checklist](./docs/SESSION-CHECKLIST.md) (voice check, commit,
+push the feature branch, open/update the PR, log the change) so progress always
+lands on GitHub.
+
 > **Branch protection caveat.** The repo is currently private on a free
 > GitHub user account, so GitHub will not let us enable classic branch
 > protection or repository rulesets on `main` (both gated behind GitHub

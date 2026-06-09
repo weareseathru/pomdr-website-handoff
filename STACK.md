@@ -140,8 +140,8 @@ new theme needs a real signup that posts to Mailchimp.
 |-----------------------|--------------------------------------|
 | Platform              | WordPress (confirmed)                |
 | Current theme         | Divi (confirmed via `et_pb_*` markup)|
-| Target theme          | Custom block theme `pomdr-2026`      |
-| FSE                   | Yes (Path A from HANDOFF.md)         |
+| Target theme          | Divi **child theme** "POMDR 2026" (see §7, 2026-06-06) |
+| FSE                   | No. Divi parent retained; child theme overlay |
 | PHP minimum           | TBD                                  |
 | WP version            | TBD                                  |
 | Hosting               | TBD                                  |
@@ -177,8 +177,9 @@ None are confirmed in production yet.
 
 ## 7. Decisions log
 
-Empty until Andrew makes calls. Each decision becomes one row here with
-date, decision, and one-sentence rationale, so future maintainers know
-why something is the way it is.
+Each decision becomes one row here with date, decision, and one-sentence
+rationale, so future maintainers know why something is the way it is.
 
-(no entries yet)
+| Date       | Decision                                              | Rationale |
+|------------|-------------------------------------------------------|-----------|
+| 2026-06-06 | Keep Divi. Ship the redesign as a **Divi child theme** (`divi-child-integration/`, "POMDR 2026"), not the FSE block theme `pomdr-2026`. | Preserve the existing Divi base build, staff editing surface, ACF `pets` CPT, LGL forms, and Redirection rather than rebuilding. Supersedes the "Target theme = custom block theme" row in §5 and the block-theme plan in WP-SCAFFOLD-NOTES.md. Approved in session; pending Andrew's PR sign-off. |
