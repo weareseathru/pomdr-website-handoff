@@ -1630,7 +1630,14 @@ function display_acf_gallery_shortcode($atts) {
 }
 add_shortcode('acf_gallery', 'display_acf_gallery_shortcode');
 
-add_action('init', function() {
+// Flush rewrite rules only when the theme is activated, not on every request.
+// The /pets/{id}/ rewrite rule above is registered on every 'init'; the rule
+// cache itself only needs rebuilding once. Calling flush_rewrite_rules() on
+// every 'init' is a DB write on every single page load (a real cost at this
+// traffic level). After deploying this change to an already-active theme,
+// flush the cache once by hand: Settings > Permalinks > Save, or the WP-CLI
+// command `wp rewrite flush`.
+add_action('after_switch_theme', function() {
     flush_rewrite_rules();
 });
 

@@ -37,9 +37,14 @@ add_action( 'wp_enqueue_scripts', function () {
     );
 
     // Pass site data to JS for dynamic features (dog name prefill on LGL forms, etc.).
+    // adoptFormBase uses home_url() so it tracks the current environment instead
+    // of a hardcoded staging host. NOTE: the adoption-inquiry prefill mechanism
+    // still needs reconciling end to end (this internal /adoption-questionnaire/
+    // path vs the confirmed LGL iframe form `utzjcNEZaqAcJk3QURlQmw` prefilled by
+    // `field_21`). See docs/RISK-REGISTER.md item B1 before relying on prefill.
     wp_localize_script( 'pomdr-nav', 'POMDR', array(
         'siteUrl'       => home_url(),
-        'adoptFormBase' => 'https://new.pomdr.org/adoption-questionnaire/',
+        'adoptFormBase' => home_url( '/adoption-questionnaire/' ),
         'phone'         => '(831) 718-9122',
         'email'         => 'info@peaceofminddogrescue.org',
     ) );

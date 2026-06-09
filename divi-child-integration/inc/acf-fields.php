@@ -1,19 +1,41 @@
 <?php
 /**
- * ACF Pro field group definitions.
+ * ACF Pro field group definitions (REFERENCE ONLY, NOT LOADED).
  *
- * All field groups are registered here in PHP so they are version-controlled.
- * If ACF is not active, this file does nothing.
+ * WARNING: This file is NOT required by functions.php and must stay that way
+ * until reconciled. The live ACF Pro plugin owns the real field groups on the
+ * site. The definitions below are an ASPIRATIONAL schema from the earlier
+ * block-theme plan and do NOT match the live production fields. Importing or
+ * loading them as-is would register a parallel, conflicting schema and render
+ * dog vitals blank, because the field names and the status representation
+ * differ from what the live templates actually read.
  *
- * CPTs covered:
- *   - pets      (dog records - the most important)
- *   - team      (staff, board, advisory council)
- *   - events    (adoption events, fundraisers, community)
- *   - projects  (campaigns, special initiatives)
+ * Verified live schema (read directly from functions.php and single-pets.php,
+ * 2026-06-09). Any real version-controlled copy MUST match these:
  *
- * Status vocabulary (kebab-case, matches theme.json and CSS class names):
- *   available | foster-needed | foster-needed-dated | adoption-pending |
- *   recently-adopted | hospice | courtesy-listing
+ *   Field name          This file defines     Live templates read
+ *   ------------------  --------------------  -----------------------------
+ *   age                 age_years (number)    get_field('age')
+ *   weight              weight_lb (number)    get_field('weight')
+ *   foster_start_date   foster_date_start     get_field('foster_start_date')
+ *   foster_end_date     foster_date_end       get_field('foster_end_date')
+ *   date_adopted        (missing)             get_field('date_adopted')
+ *   status              single select,        multi-value, Title Case:
+ *                       kebab-case            'Adoptable', 'Foster Needed',
+ *                                             'Adoption Pending', 'Hospice',
+ *                                             'Adopted' (in_array checks)
+ *
+ * TO FIX (needs live access, Andrew): export the real field groups from the
+ * live site (ACF > Tools > Export Field Groups > Generate PHP / JSON) and
+ * commit THAT as the version-controlled copy, replacing the definitions below.
+ * Do not hand-edit these to "look right"; only a real export is trustworthy.
+ * See docs/RISK-REGISTER.md items A1, A2, A5.
+ *
+ * Status vocabulary note: CLAUDE.md defines 7 kebab-case statuses
+ * (available | foster-needed | foster-needed-dated | adoption-pending |
+ * recently-adopted | hospice | courtesy-listing). The LIVE site uses Title
+ * Case multi-value strings instead. That conflict is unresolved; see
+ * RISK-REGISTER.md item A1.
  */
 
 defined( 'ABSPATH' ) || exit;
