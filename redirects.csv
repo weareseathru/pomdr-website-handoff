@@ -13,20 +13,14 @@ legacy_url,new_url,http_code,source,note
 /recources/,/resources/,301,web-capture,Misspelled URL slug on the live site. Preserve as 301 source. Canonical becomes /resources/.
 /surrender/,/surrender/,200,web-capture,Placing your dog page. Spec calls it Placing Your Dog.
 /perpetual-care-program/,/perpetual-care-program/,200,web-capture,Spec also calls this Lifetime Care. Confirm canonical name.
-/donate/,/donate/,200,web-capture,Ways to Give page. LGL likely backs the donation form.
+/donate/,/donate/,200,web-capture,Ways to Give page. Donation form CONFIRMED 2026-06-09: LGL form 62FAoG7Obtf81TYETJMN3Q embedded as an iframe (see STACK.md section 2). Confirm whether the canonical path is /donate/ or /donation/.
 /benefit-shop/,/benefit-shop/,200,web-capture,Benefit Shop page. Address per global CLAUDE.md is 223 Grand Ave.
 /jobs/,/jobs/,200,web-capture,Jobs page. Spec calls it Job Openings.
 /videos/,/videos/,200,web-capture,Videos page. Possibly merge into /media/ pending decision.
 /media/,/media/,200,web-capture,In the Media page.
 /testimonials/,/testimonials/,200,web-capture,Testimonials page.
-/pets/3037/,/pets/pebble/,301,web-capture,Pebble. Legacy integer ID seen in capture. New URL uses slug.
-/pets/2865/,/pets/patches/,301,web-capture,Patches. Legacy integer ID seen in capture.
-/pets/2860/,/pets/sun-bear/,301,web-capture,Sun Bear. Legacy integer ID seen in capture.
-/pets/2855/,/pets/flounder/,301,web-capture,Flounder. Legacy integer ID seen in capture.
-/pets/2849/,/pets/oyster/,301,web-capture,Oyster. Legacy integer ID seen in capture.
-/pets/2844/,/pets/orca/,301,web-capture,Orca. Legacy integer ID seen in capture.
-/pets/2839/,/pets/sebastian/,301,web-capture,Sebastian. Legacy integer ID seen in capture.
-/dog.php?id=*,/pets/{slug}/,301,handoff-spec,HANDOFF.md calls for redirecting /dog.php?id=N for IDs 3000-5000. Captures show /pets/{id}/ pattern instead. Confirm with Andrew whether dog.php still resolves on production. Pattern row is a placeholder.
+/pets/{id}/,/pets/{id}/,200,decision-2026-06-09,DECISION: integer-ID URLs are canonical (functions.php registers ^pets/([0-9]+)/ and forces post_type_link to /pets/{ID}/). The post ID carries forward, so these resolve directly. NO slug redirect. Earlier /pets/{id}/ to /pets/{slug}/ rows were removed; they would have redirected away from the canonical URL.
+/dog.php?id=*,/pets/{id}/,301,handoff-spec,Legacy old-site URL /dog.php?id=N redirects to the canonical /pets/{N}/. Implemented by the opt-in handler in divi-child-integration/inc/redirects.php. Confirm the legacy id equals the new post ID before enabling; if not, a legacy_id lookup is needed.
 /wp-admin/*,/wp-admin/*,200,inferred,WordPress admin. No redirect needed.
 ,,,,
 ,,,,STUB ONLY. This file is a seed. A full crawl of www.pomdr.org is required before launch to enumerate every URL the site has ever published. Run that crawl from staging once it exists.

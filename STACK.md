@@ -47,10 +47,33 @@ source data when set.
 
 | Field           | Value                                                          |
 |-----------------|----------------------------------------------------------------|
-| System          | LGL (Little Green Light) likely; Stripe? GiveButter? other?    |
-| Confirmation    | LGL forms confirmed for adoption inquiry. Donation processor   |
-|                 | not separately confirmed.                                       |
-| Form pattern    | iframe embed, prefill via query parameter                       |
+| System          | LGL (Little Green Light). CONFIRMED 2026-06-09.                |
+| Confirmation    | Donation form is LGL form `62FAoG7Obtf81TYETJMN3Q`, embedded   |
+|                 | as an iframe on the donation page.                             |
+| Form pattern    | iframe embed (donation); query-param prefill for inquiry forms |
+
+**CONFIRMED 2026-06-09 (donation form).** The donation page uses an LGL iframe.
+Production implementation (deferred to the production stage, not applied to the
+local prototype): on the `/donation/` page, replace the plain donation URL text
+with this embed, inside a centered container (`max-width: 900px`, horizontal
+auto margins):
+
+```html
+<div style="max-width:900px;margin:0 auto;">
+  <iframe src="https://secure.lglforms.com/form_engine/s/62FAoG7Obtf81TYETJMN3Q"
+          width="100%" height="800" frameborder="0"></iframe>
+  <script src="https://secure.lglforms.com/form_engine/s/tfs_iframe.js"></script>
+</div>
+```
+
+This is the same LGL pattern as the adoption inquiry form (see section 3),
+which uses a different form id and a `field_21` prefill. The donation form does
+not take a dog-name prefill.
+
+Legacy note: the prototype `donate.html` still links its widget to the old
+`POMDRDonation.php` processor and several `POMDRDonation.php?fund=...` funds.
+Those fund-specific links were not part of this confirmation; confirm whether
+each fund moves to LGL or stays on the legacy processor before production.
 
 Evidence: a `<script>` block in the captured DOM at `new.pomdr.org` builds
 an LGL iframe URL on page load and inserts it into `#adoption-iframe`.
@@ -183,3 +206,7 @@ rationale, so future maintainers know why something is the way it is.
 | Date       | Decision                                              | Rationale |
 |------------|-------------------------------------------------------|-----------|
 | 2026-06-06 | Keep Divi. Ship the redesign as a **Divi child theme** (`divi-child-integration/`, "POMDR 2026"), not the FSE block theme `pomdr-2026`. | Preserve the existing Divi base build, staff editing surface, ACF `pets` CPT, LGL forms, and Redirection rather than rebuilding. Supersedes the "Target theme = custom block theme" row in §5 and the block-theme plan in WP-SCAFFOLD-NOTES.md. Approved in session; pending Andrew's PR sign-off. |
+| 2026-06-09 | **Status canonical = live ACF `status` checkbox** (multi-value, Title Case). | The live data is the source of truth; the kebab-case "7 status" model is now display-only. Reconciled in CLAUDE.md §8 and the ACF export. |
+| 2026-06-09 | **Dog URL canonical = integer `/pets/{ID}/`** (not slug). | Already in code and indexed for years; rename-safe. `redirects.csv` updated to stop asserting slug canonicalization. |
+| 2026-06-09 | **Donation form = LGL `62FAoG7Obtf81TYETJMN3Q`** (iframe). | Confirmed by Andrew. Embed recorded in §2 for the production stage. |
+| 2026-06-09 | **ACF schema version-controlled** via `divi-child-integration/acf-export-2026-06-09.json` (real export). | Replaces the aspirational, mismatched `inc/acf-fields.php`, which was removed. |
