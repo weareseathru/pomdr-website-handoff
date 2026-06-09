@@ -214,7 +214,9 @@ Tiers by traffic and conversion impact. Each page must clear the section 4
 floors (16px+ text, 4.5:1 contrast, 44px targets, breadcrumb, keyboard).
 
 **Tier 0, infrastructure (touches every page):**
-1. Realign `pomdr-layout.js` nav to the 6-item canonical IA + Donate.
+1. Reconcile `pomdr-layout.js` SUBMENUS to cover every real page (keep the
+   expanded top-level per decision 1): add Ways to Give under About, expand
+   Helping Paw to Financial / Walking-Foster / Resources, add Foster Needs.
 2. Add breadcrumbs to the shared layout (data-driven from the nav map).
 3. Global sizing/contrast sweep: raise all sub-16px text, fix low-contrast
    grays, verify 44px targets.
@@ -237,20 +239,31 @@ empty states.
 
 ---
 
-## 7. Decisions needed before the big build
+## 7. Decisions (resolved 2026-06-09)
 
-1. **Nav IA.** Adopt the 6-item canonical structure (Adopt, Volunteer, Helping
-   Paw, Surrender, About Us, Donate)? Recommended yes, for staff and post-launch
-   consistency.
-2. **Contact page.** The live site has none. Add a real Contact page (a senior
-   audience often wants a phone number and a simple form), or keep contact in
-   the footer only? Recommended: add a light Contact page.
-3. **Hospice placement.** Live menu omits it though the page exists. Put Hospice
-   under Adopt, under About Us, or leave it linked only from context? 
-4. **Ways to Give.** Confirm the hub-plus-selective-detail approach rather than
-   building all 13 donation variants as separate pages.
-5. **"Surrender" label.** Keep the staff term, or use the gentler "Placing Your
-   Dog" / "Rehome" as the visible label?
+1. **Nav IA: keep the prototype's expanded top-level nav.** DECIDED. Retain the
+   prototype's top-level set (Home, About, Adopt, Foster, Volunteer, Helping
+   Paw, Surrender, Benefit Shop, Contact) plus the Donate button. The Tier 0
+   nav work is therefore NOT a collapse to 6 items; it is reconciling the
+   SUBMENUS so every real new.pomdr.org page is reachable. Specifically:
+   - About submenu: add "Ways to Give" (the donate hub).
+   - Helping Paw submenu: expand to Financial, Walking/Foster, Resources.
+   - Volunteer or Foster submenu: add "Foster Needs" (distinct from the general
+     foster page).
+   - Keep Hospice under Adopt (prototype already does; see item 3).
+2. **Contact page: add it.** DECIDED. Build a light Contact page (phone, email,
+   the three addresses, hours, short message form). Keep Contact in the nav and
+   footer. This improves on the live site, which has footer contact only.
+3. **Ways to Give: hub plus selective standalone.** DECIDED. Keep the one Ways
+   to Give hub (`donate.html`). Build standalone pages only for
+   planned-giving, legacy (legacy donor), silver-hearts-fund, and wish-list.
+   The plaque / stone / suite / tribute / dog-tag / sponsor-an-ad variants
+   become sections or anchor targets on the hub, not separate pages.
+4. **Hospice placement.** Keep under Adopt (prototype convention). Minor; can
+   revisit.
+5. **"Surrender" label.** Open, minor. Keep "Surrender" as the top-level label
+   for now with "Placing Your Dog" as the submenu item (prototype already does
+   this), revisit if staff prefer the gentler term.
 
 ---
 
