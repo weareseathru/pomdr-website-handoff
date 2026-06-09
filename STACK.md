@@ -142,7 +142,7 @@ new theme needs a real signup that posts to Mailchimp.
 | Current theme         | Divi (confirmed via `et_pb_*` markup)|
 | Target theme          | Divi **child theme** "POMDR 2026" (see §7, 2026-06-06) |
 | FSE                   | No. Divi parent retained; child theme overlay |
-| PHP minimum           | TBD                                  |
+| PHP minimum           | PHP 8.2 (Local mirror runs php-8.2.29) |
 | WP version            | TBD                                  |
 | Hosting               | TBD                                  |
 | Staging URL           | https://new.pomdr.org/ (captured)    |
