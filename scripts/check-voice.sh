@@ -52,9 +52,17 @@ if [[ ! -d "$ROOT" ]]; then
 fi
 
 # Build the candidate file list.
+#
+# Note: we use a `while read` loop rather than `mapfile`/`readarray` because
+# mapfile is a bash 4+ builtin. macOS ships bash 3.2, where this script also
+# needs to run (local pre-commit hook + manual runs). The loop is portable to
+# both. Process substitution `< <(...)` is fine in bash 3.2.
+CANDIDATES=()
 case "$MODE" in
   --all)
-    mapfile -t CANDIDATES < <(
+    while IFS= read -r line; do
+      CANDIDATES+=("$line")
+    done < <(
       find "$ROOT" \
         \( -name "*.html" -o -name "*.jsx" -o -name "*.js" -o -name "*.css" \) \
         -not -path "*/vendor/*" \
@@ -69,7 +77,9 @@ case "$MODE" in
       echo "check-voice.sh: --diff requires a git repo" >&2
       exit 2
     fi
-    mapfile -t CANDIDATES < <(
+    while IFS= read -r line; do
+      CANDIDATES+=("$line")
+    done < <(
       git diff --name-only --diff-filter=AM "$BASE"...HEAD -- \
         "$ROOT/*.html" "$ROOT/**/*.html" \
         "$ROOT/*.jsx" "$ROOT/**/*.jsx" \
@@ -79,7 +89,9 @@ case "$MODE" in
     )
     ;;
   --staged)
-    mapfile -t CANDIDATES < <(
+    while IFS= read -r line; do
+      CANDIDATES+=("$line")
+    done < <(
       git diff --cached --name-only --diff-filter=AM -- \
         "$ROOT/*.html" "$ROOT/**/*.html" \
         "$ROOT/*.jsx" "$ROOT/**/*.jsx" \
