@@ -274,20 +274,34 @@ Separate entries with a blank line. No em dashes.
 
 ### Dog status vocabulary
 
-The 7 status values used in the prototype and the WordPress block theme. All
-slugs use kebab-case (lowercase, hyphen separators) to match `theme.json`,
-CSS class names, and URL conventions. Storage in WordPress ACF and meta
-queries uses the same kebab-case slugs.
+DECISION 2026-06-09 (status canonical): The authoritative storage is the live
+ACF `status` field on the `pets` CPT. It is a **checkbox (multi-value)**, so a
+dog can hold more than one status at once (for example Hospice plus Sponsor
+Needed). Values are stored as **Title Case strings**, and the live templates
+query them with `in_array('Adoptable', $status)` and similar. This supersedes
+the earlier kebab-case "7 status" model, which is now only a display
+convention. The full schema is version-controlled at
+`divi-child-integration/acf-export-2026-06-09.json`.
 
-| Slug                  | Label              | Notes                                       |
-| --------------------- | ------------------ | ------------------------------------------- |
-| `available`           | Available          | Adoptable, ready to meet                    |
-| `foster-needed`       | Foster needed      | No date range                               |
-| `foster-needed-dated` | Foster needed      | With date range (vacation foster, etc.)     |
-| `adoption-pending`    | Adoption pending   | Application in final stages                 |
-| `recently-adopted`    | Recently adopted   | Drives the "happy tail" treatment           |
-| `hospice`             | Hospice            | Sanctuary care, not adoptable               |
-| `courtesy-listing`    | Courtesy listing   | Listed for another rescue or owner          |
+Canonical storage values (the exact ACF checkbox choices), with the kebab-case
+slug used for CSS classes and display:
+
+| Stored value (canonical) | Display slug (CSS) | Notes                                              |
+| ------------------------ | ------------------ | -------------------------------------------------- |
+| `Adoptable`              | `available`        | Adoptable, ready to meet                           |
+| `Foster Needed`          | `foster-needed`    | Use `foster-needed-dated` when `foster_start_date` / `foster_end_date` are set |
+| `Sponsor Needed`         | `sponsor-needed`   | Sponsorship funds the dog's care while they wait   |
+| `Adoption Pending`       | `adoption-pending` | Application in final stages                        |
+| `Adopted`                | `recently-adopted` | Drives the "happy tail" treatment                  |
+| `Hospice`                | `hospice`          | Sanctuary care, not adoptable                      |
+| `Courtesy Listing`       | `courtesy-listing` | Listed for another rescue or owner                 |
+
+The kebab-case slugs (lowercase, hyphen separators) remain the convention for
+CSS class names and URL or display contexts in the prototype and the redesign
+layer. Storage and meta queries use the Title Case values above, not the slugs.
+The foster date range is a property of two date fields (`foster_start_date`,
+`foster_end_date`), not a separate stored status; `foster-needed-dated` is a
+display-only variant.
 
 ---
 
@@ -305,4 +319,4 @@ infallible.
 
 ---
 
-_Last updated: 2026-06-06. Owner: Andrew Z._
+_Last updated: 2026-06-09. Owner: Andrew Z._
