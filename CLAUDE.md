@@ -130,6 +130,28 @@ has confirmed. Not when Claude believes it works.
 
 ## 4. Working style
 
+### Design method (human-centered, every page)
+
+This project uses a Stanford d.school / IDEO / Whipsaw design-thinking practice,
+baked into every part of the work, not bolted on at the end:
+
+- **Empathize first.** Design for the real person (an older adopter, a senior
+  owner in a stressful moment), not the org chart.
+- **Frame each page with "How Might We"** and give it one clear job.
+- **Surface every primary action. Never bury it in prose.** The legacy site
+  hides applications (foster, Helping Paw, volunteer, surrender) inside
+  paragraphs. The redesign always presents the primary action as a real,
+  high-contrast, 44px+ button ABOVE the explanatory text (repeated at the
+  end), so a quick user can act in one tap and a detailed user can still read
+  the full story. A link inside a sentence is never the only path to an action.
+- **Ruthless simplicity and craft (Whipsaw).** One primary action per page,
+  calm hierarchy, generous space; beauty serves clarity. Every element earns
+  its place.
+- **Prototype, test, iterate.** Bias toward action; validate with real users
+  (ideally seniors) and the quality gates, not in the abstract.
+
+Full detail and the page-by-page application live in `docs/IA-UX-AUDIT.md`.
+
 ### Tone and pace
 
 Andrew has a standing rule: **never rush or be careless**. Always work

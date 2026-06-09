@@ -131,6 +131,33 @@ POMDR's audience skews older (senior adopters, senior people keeping their
 dogs). The following are not generic; they are the rules that matter most for
 this audience and are enforceable in CSS and markup. Sources at the end.
 
+### Design method: human-centered, baked into every page
+
+This project follows a Stanford d.school / IDEO / Whipsaw design-thinking
+practice. It is not decoration; it is how we decide what to build and judge
+whether it is done.
+
+- **Empathize first (IDEO human-centered design).** Design for the actual
+  person: an older adopter or a senior owner in a stressful moment (a dog to
+  rehome, a vet bill they cannot cover). Their goals, not the org chart, drive
+  the layout. We design WITH this user in mind, not for an abstract visitor.
+- **Define with "How Might We."** Frame each page as a problem to solve, not a
+  bucket of content. Examples: "How might we let a worried owner start the
+  Helping Paw application in one tap?" "How might we make fostering feel doable,
+  not daunting?" Every page states the one job it does.
+- **Bias toward action and prototype-test loops (d.school).** Ship a clear
+  prototype, test it with real users (ideally a few seniors), and iterate. Do
+  not perfect in the abstract. Treat the quality gates (axe-core, Lighthouse,
+  keyboard walk, and a senior usability read) as the "test" step.
+- **Craft and ruthless simplicity (Whipsaw).** Reduce, then reduce again. One
+  primary action per page, generous space, calm hierarchy, nothing competing
+  with the thing the user came to do. Beauty serves clarity; it is not added on
+  top of clutter. Every element earns its place.
+- **Desirable, feasible, viable.** A page is done when it is desirable (the
+  user can do their job easily and it feels warm), feasible (accessible,
+  editable by non-technical staff, performant), and viable (it advances adopt,
+  foster, donate, or volunteer).
+
 ### Accessibility floors (WCAG 2.2 AA, tuned for older adults)
 
 1. **Body text minimum 16px; prefer 17 to 18px.** Older eyes lose acuity and
@@ -156,6 +183,22 @@ this audience and are enforceable in CSS and markup. Sources at the end.
 
 ### Ease of use for both "quick" and "detailed" users
 
+- **Surface every primary action. Never bury it in prose.** This is the single
+  biggest failing of the legacy site: applications and key links (foster
+  application, Helping Paw application, volunteer application, surrender form)
+  are hidden inside paragraphs of body text, so a user has to read and hunt to
+  find the one thing they came to do. The redesign inverts this. On every
+  program page the primary action is a real, high-contrast button, at least
+  44px, placed ABOVE the explanatory text (and repeated at the end for
+  detailed readers who scroll). The paragraph explains; the button acts. A
+  link inside a sentence is never the only way to reach an application.
+  - Foster page: a "Start the Foster Application" button up top, not a link in
+    paragraph three.
+  - Helping Paw page: an "Apply for Helping Paw" button for each track
+    (Financial, Walking/Foster) up top.
+  - Surrender page: a clear "Start the Placing Your Dog form" button.
+  - Quick users tap the button and leave happy; detailed users read the prose
+    below it. Both are served by the same layout.
 - **Clear primary actions on every page.** Adopt, Donate, Foster, Volunteer
   should be reachable in one click from anywhere (nav + footer cover this).
 - **Progressive disclosure.** Lead with the simple path (one big CTA), let
@@ -211,7 +254,11 @@ pages use the parent section as the second crumb (Adopt, About Us).
 ## 6. Prioritized build plan
 
 Tiers by traffic and conversion impact. Each page must clear the section 4
-floors (16px+ text, 4.5:1 contrast, 44px targets, breadcrumb, keyboard).
+floors (16px+ text, 4.5:1 contrast, 44px targets, breadcrumb, keyboard) AND
+the design-method bar: it states the one job it does, surfaces its primary
+action as a button above the prose (never buried in a paragraph), and reduces
+everything else out of the way. A page is not done until a quick user can act
+in one tap and a detailed user can still read the full story below.
 
 **Tier 0, infrastructure (touches every page):**
 1. Reconcile `pomdr-layout.js` SUBMENUS to cover every real page (keep the
