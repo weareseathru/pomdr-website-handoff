@@ -3,8 +3,8 @@
  * Legacy URL redirect handler.
  *
  * Handles two legacy patterns from the old peaceofminddogrescue.org PHP site:
- *   1. /dog.php?id=N  — redirects to /pets/{id}/
- *   2. /recources/    — redirects to /resources/ (misspelled URL in old nav)
+ *   1. /dog.php?id=N  - redirects to /pets/{id}/
+ *   2. /recources/    - redirects to /resources/ (misspelled URL in old nav)
  *
  * These run at init so they fire before any page content is generated.
  * The Redirection plugin handles all other URL rules (set those up via

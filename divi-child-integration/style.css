@@ -1,7 +1,7 @@
 /*
  Theme Name:   POMDR 2026
  Theme URI:    https://www.peaceofminddogrescue.org/
- Description:  Divi Child Theme — POMDR redesign layer
+ Description:  Divi Child Theme - POMDR redesign layer
  Author:       Antigravity / Andrew Z.
  Author URI:   https://www.peaceofminddogrescue.org/
  Template:     Divi
@@ -39,7 +39,7 @@ body #page-container {
   max-width: 1320px;
 }
 
-/* Divi button reset — use our btn classes instead */
+/* Divi button reset - use our btn classes instead */
 .et_pb_button {
   font-family: var(--font-sans);
   border-radius: 999px;
@@ -47,7 +47,7 @@ body #page-container {
   letter-spacing: 0.01em;
 }
 
-/* Divi heading reset — use our serif scale */
+/* Divi heading reset - use our serif scale */
 h1, h2, h3, h4, h5, h6,
 .et_pb_module h1,
 .et_pb_module h2,
@@ -65,4 +65,64 @@ a {
 }
 a:hover {
   color: var(--blue-700);
+}
+
+/*
+  Gallery lightbox (assets/js/gallery.js).
+  Overlay is appended to <body> and toggled via the [hidden] attribute.
+*/
+.pomdr-lightbox[hidden] {
+  display: none;
+}
+.pomdr-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(22, 32, 43, 0.88); /* var(--ink) at opacity */
+}
+html.pomdr-lightbox-open {
+  overflow: hidden; /* lock scroll while open */
+}
+.pomdr-lightbox__figure {
+  margin: 0;
+  max-width: min(1000px, 100%);
+  text-align: center;
+}
+.pomdr-lightbox__img {
+  max-width: 100%;
+  max-height: 80vh;
+  height: auto;
+  border-radius: var(--radius, 22px);
+  box-shadow: var(--shadow-lg);
+}
+.pomdr-lightbox__caption {
+  margin-top: 12px;
+  color: var(--white, #fff);
+  font-family: var(--font-sans);
+  font-size: 15px;
+}
+.pomdr-lightbox__caption[hidden] {
+  display: none;
+}
+.pomdr-lightbox__close {
+  position: absolute;
+  top: clamp(8px, 2vw, 20px);
+  right: clamp(8px, 2vw, 20px);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--white, #fff);
+  color: var(--ink, #16202b);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.pomdr-lightbox__close:focus-visible {
+  outline: 3px solid var(--blue, #008bb0);
+  outline-offset: 2px;
 }

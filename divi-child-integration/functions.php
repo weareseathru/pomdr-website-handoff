@@ -1,6 +1,6 @@
 <?php
 /**
- * POMDR 2026 Divi Child Theme — functions.php
+ * POMDR 2026 Divi Child Theme - functions.php
  *
  * Entry point. Loads sub-files from inc/ to keep this file short.
  * All heavy lifting (ACF fields, redirects, enqueue) lives in inc/.

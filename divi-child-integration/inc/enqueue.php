@@ -16,7 +16,7 @@ add_action( 'wp_enqueue_scripts', function () {
         filemtime( get_stylesheet_directory() . '/assets/css/pomdr-design.css' )
     );
 
-    // Gallery lightbox — only on single pet pages.
+    // Gallery lightbox - only on single pet pages.
     if ( is_singular( 'pets' ) ) {
         wp_enqueue_script(
             'pomdr-gallery',
@@ -27,7 +27,7 @@ add_action( 'wp_enqueue_scripts', function () {
         );
     }
 
-    // Mobile nav supplement — all pages.
+    // Mobile nav supplement - all pages.
     wp_enqueue_script(
         'pomdr-nav',
         get_stylesheet_directory_uri() . '/assets/js/pomdr-nav.js',

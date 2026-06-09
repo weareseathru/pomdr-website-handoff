@@ -6,7 +6,7 @@
  * If ACF is not active, this file does nothing.
  *
  * CPTs covered:
- *   - pets      (dog records — the most important)
+ *   - pets      (dog records - the most important)
  *   - team      (staff, board, advisory council)
  *   - events    (adoption events, fundraisers, community)
  *   - projects  (campaigns, special initiatives)
@@ -23,7 +23,7 @@ if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 }
 
 /* =====================================================================
-   PETS CPT — dog records
+   PETS CPT - dog records
    ===================================================================== */
 
 acf_add_local_field_group( array(
@@ -229,7 +229,7 @@ acf_add_local_field_group( array(
 
 
 /* =====================================================================
-   TEAM CPT — staff, board, advisory council
+   TEAM CPT - staff, board, advisory council
    ===================================================================== */
 
 acf_add_local_field_group( array(
@@ -288,7 +288,7 @@ acf_add_local_field_group( array(
 
 
 /* =====================================================================
-   EVENTS CPT — adoption events, fundraisers, community events
+   EVENTS CPT - adoption events, fundraisers, community events
    ===================================================================== */
 
 acf_add_local_field_group( array(
