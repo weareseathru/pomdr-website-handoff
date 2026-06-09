@@ -46,12 +46,17 @@ project rule: **never push to `main`, always open a PR for Andrew to review.**
    ```
 
 6. **Open or update a PR against `main`** using the PR template, so Andrew can
-   review. Use `gh`:
+   review. If the `gh` CLI is installed:
 
    ```bash
    gh pr create --base main --fill   # first time
    gh pr view --web                  # to review/update an existing PR
    ```
+
+   If `gh` is not installed (`command not found`), open the PR from the
+   GitHub web UI, or use the GitHub MCP server from within the agent. The
+   push in step 5 is enough to make GitHub offer a "Compare & pull request"
+   button on the branch.
 
 7. **Log progress** in `CHANGELOG.md` (one line under the current session).
 

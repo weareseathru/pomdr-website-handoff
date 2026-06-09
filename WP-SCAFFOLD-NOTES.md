@@ -1,5 +1,16 @@
 # POMDR WP Block Theme: Scaffold Notes (Track B)
 
+> **SUPERSEDED (2026-06-06). Historical record only.** This document plans a
+> clean Full Site Editing block theme (`pomdr-2026/`). That approach was
+> dropped. Track B now ships as a Divi **child theme**
+> (`divi-child-integration/`, theme name "POMDR 2026") that overlays the
+> existing Divi parent on new.pomdr.org. The current, authoritative
+> architecture lives in [CLAUDE.md §3](./CLAUDE.md), the decisions log in
+> [STACK.md §7](./STACK.md), and [docs/LOCAL-BRIDGE.md](./docs/LOCAL-BRIDGE.md).
+> The locked decisions below about the `pets` CPT slug, ACF Pro, and the
+> integration TBDs still hold; the block-theme scaffold steps do not. Kept so
+> the reasoning trail survives.
+
 Status: decisions locked (session 2). Ready to execute steps 3 through 8
 when Andrew is ready to stand up the local WP environment. The static
 prototype (Track A) is demo-ready first. Dog data will be populated from

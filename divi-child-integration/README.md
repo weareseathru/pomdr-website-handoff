@@ -17,25 +17,46 @@ directory is the WordPress implementation layer.
 
 ## Architecture overview
 
+The repo theme is a faithful superset of the production Divi child theme on
+new.pomdr.org: it carries the production `functions.php` and templates
+verbatim, then adds the redesign on top through a single additive require of
+`inc/enqueue.php`. Nothing in the parent Divi theme is edited.
+
 ```
 divi-child-integration/
-  README.md                ← this file
-  style.css                ← child theme header + design token imports
-  functions.php            ← enqueue styles/scripts, register hooks
-  single-pets.php          ← dog detail page template (overrides Divi)
-  archive-pets.php         ← dog listing grid template (overrides Divi)
-  page-whats-happening.php ← What's Happening events page template
+  README.md             ← this file
+  style.css             ← child theme header + design token imports
+  functions.php         ← production theme logic; requires inc/enqueue.php
+  single-pets.php       ← dog detail page template (overrides Divi)
+  screenshot.png        ← theme screenshot shown in Appearance > Themes
   inc/
-    acf-fields.php         ← ACF field group definitions (all CPTs)
-    redirects.php          ← legacy URL handler (dog.php?id=N)
-    enqueue.php            ← script and style enqueue functions
+    enqueue.php         ← enqueues the redesign CSS/JS (loaded)
+    acf-fields.php      ← ACF field group definitions (NOT loaded; see below)
+    redirects.php       ← legacy URL handler (NOT loaded; opt-in, see below)
   assets/
     css/
-      pomdr-design.css     ← full design system (copy of pomdr.css, adapted)
+      pomdr-design.css  ← full v2 design system (adapted from the prototype)
     js/
-      gallery.js           ← lightbox from prototype
-      pomdr-nav.js         ← mobile nav supplement
+      gallery.js        ← lightbox from the prototype
+      pomdr-nav.js      ← mobile nav supplement
+  temp/                 ← reference templates from the production theme
+    single-pet.php
+    template-pet-profile.php
+    template-blog-list.php
 ```
+
+### What loads, and what does not
+
+`functions.php` requires only `inc/enqueue.php`. Two files in `inc/` are
+present for reference and are intentionally **not** wired in:
+
+- `inc/acf-fields.php` would re-register field groups that the ACF Pro plugin
+  already owns on the live site. Loading it risks double registration.
+- `inc/redirects.php` is an opt-in legacy URL handler. The Redirection plugin
+  currently manages redirects.
+
+Wire either only after confirming with Andrew. The `temp/` templates are
+production references, not active overrides.
 
 ## How to deploy
 
@@ -54,19 +75,25 @@ divi-child-integration/
 
 ## Which CPTs map to which template
 
-| CPT slug  | Template file         | URL pattern              |
-|-----------|-----------------------|--------------------------|
-| `pets`    | single-pets.php       | /pets/{id}/              |
-| `pets`    | archive-pets.php      | /adopt/ (main listing)   |
-| `team`    | single-team.php       | /team/{slug}/            |
-| `events`  | archive-events.php    | /events/                 |
-| `projects`| (uses Divi builder)   | /projects/{slug}/        |
+Only `single-pets.php` is an active override in this theme today. The other
+CPTs render through Divi and the production theme's own logic. Templates
+listed as "Divi / production" are not yet redesigned in this repo.
+
+| CPT slug   | Template file       | URL pattern            | Status              |
+|------------|---------------------|------------------------|---------------------|
+| `pets`     | single-pets.php     | /pets/{id}/            | Override in repo    |
+| `pets`     | (Divi / production) | /adopt/ (main listing) | Not yet redesigned  |
+| `team`     | (Divi / production) | /team/{slug}/          | Not yet redesigned  |
+| `events`   | (Divi / production) | /events/               | Not yet redesigned  |
+| `projects` | (Divi builder)      | /projects/{slug}/      | Not yet redesigned  |
 
 ## ACF field groups
 
-All field groups are version-controlled in `inc/acf-fields.php`. Import them
-via ACF > Tools > Import Field Groups if you ever need to rebuild from scratch.
-The `pets` CPT fields are the most critical and most complete.
+`inc/acf-fields.php` holds version-controlled field group definitions for
+reference and disaster recovery. It is **not loaded** by `functions.php` (the
+ACF Pro plugin owns the live field groups). If you ever need to rebuild from
+scratch, import via ACF > Tools > Import Field Groups. The `pets` CPT fields
+are the most critical and most complete.
 
 ## Do not do these things
 

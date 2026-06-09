@@ -3,16 +3,28 @@
 Working repository for the Peace of Mind Dog Rescue (POMDR) website
 redesign. Two tracks live here side by side:
 
-- **Track A — Static prototype** under `pomdr-website/project/`. Clickable
+- **Track A, static prototype** under `pomdr-website/project/`. Clickable
   HTML/CSS/JS used as a design lab. Approved patterns get re-implemented
-  in the WordPress block theme.
-- **Track B — WordPress block theme** (`pomdr-2026/`, lands in Session 3).
-  Full Site Editing theme that docks to new.pomdr.org's existing `pets`
-  CPT and ACF fields.
+  in the WordPress theme.
+- **Track B, Divi child theme** (`divi-child-integration/`, theme name
+  "POMDR 2026"). The WordPress implementation layer. It overlays the
+  existing Divi parent on new.pomdr.org and docks to that site's `pets`
+  custom post type and ACF fields. The redesign ships as child-theme
+  templates plus a global CSS/JS layer, so the rest of the site inherits
+  the new look through CSS without editing the parent.
 
-The redesign target is documented in [CLAUDE.md](./CLAUDE.md) (project
-charter, voice rules, technical stance) and in the plan file at
-`~/.claude/plans/lets-start-here-and-synchronous-lightning.md`.
+> **Architecture note (2026-06-06).** Track B was originally scoped as a
+> clean Full Site Editing block theme (`pomdr-2026/`). That approach was
+> dropped in favor of the Divi child theme above, to retain the
+> staff-familiar Divi editing surface and the working ACF `pets` CPT, LGL
+> forms, and Redirection setup rather than rebuilding them. See
+> [CLAUDE.md §3](./CLAUDE.md) and the decisions log in
+> [STACK.md §7](./STACK.md). The block-theme notes in
+> [WP-SCAFFOLD-NOTES.md](./WP-SCAFFOLD-NOTES.md) are retained as historical
+> record only.
+
+The redesign target is documented in [CLAUDE.md](./CLAUDE.md): project
+charter, voice rules, and technical stance.
 
 ---
 
@@ -80,15 +92,21 @@ bash scripts/check-voice.sh --staged
 ├── VOICE.md                     # Voice audit + rules (cites em dashes in tables)
 ├── DESIGN-TOKENS.md             # Color, type, spacing tokens with source cites
 ├── INVENTORY.md                 # Existing site URL and nav inventory
-├── STACK.md                     # Integration TBDs (forms, donations, email)
+├── STACK.md                     # Integration stack + decisions log
 ├── GAP-ANALYSIS.md              # Data model + page coverage gaps
 ├── BRAND-ASSETS.md              # Where the heavy brand assets live
 ├── PROTOTYPE-WALKTHROUGH.md     # QA script for the static prototype
-├── WP-SCAFFOLD-NOTES.md         # Session 3 status + WP backend dovetail plan
+├── WP-SCAFFOLD-NOTES.md         # Historical: superseded block-theme plan
+├── SESSION-3-DESIGN-BRIEF.md    # Design brief for the prototype upgrades
 ├── CHANGELOG.md                 # Session-by-session log
 ├── README.md                    # This file
 ├── redirects.csv                # Legacy URL preservation map
-├── theme.json                   # Draft theme.json for pomdr-2026 WP theme
+├── theme.json                   # Design-token reference (from the dropped block theme)
+├── docs/
+│   ├── LOCAL-BRIDGE.md          # Git repo <-> Local WP <-> new.pomdr.org wiring
+│   └── SESSION-CHECKLIST.md     # End-of-session push/PR checklist
+├── scripts/
+│   └── check-voice.sh           # Voice-rule enforcement (CI + pre-commit)
 ├── pomdr-website/
 │   └── project/                 # Static prototype (Track A)
 │       ├── index.html
@@ -98,7 +116,13 @@ bash scripts/check-voice.sh --staged
 │       ├── pomdr.css
 │       ├── pomdr-layout.js
 │       └── uploads/             # Brand PDF, dog photos, design refs
-└── pomdr-2026/                  # WordPress block theme (Track B, Session 3)
+└── divi-child-integration/      # WordPress Divi child theme (Track B)
+    ├── style.css                # Child theme header + token imports
+    ├── functions.php            # Production theme logic + redesign enqueue
+    ├── single-pets.php          # Dog detail template (overrides Divi)
+    ├── inc/                     # enqueue, redirects, ACF field definitions
+    ├── assets/                  # Redesign CSS + JS (design system, gallery, nav)
+    └── temp/                    # Reference templates from the production theme
 ```
 
 ---
@@ -111,7 +135,8 @@ bash scripts/check-voice.sh --staged
    dashes.
 3. Open a PR against `main`. The PR template
    ([`.github/PULL_REQUEST_TEMPLATE.md`](./.github/PULL_REQUEST_TEMPLATE.md))
-   embeds the voice and accessibility checklists.
+   embeds the voice and accessibility checklists. Use the GitHub web UI,
+   the `gh` CLI if installed, or the GitHub MCP server.
 4. CI runs the voice check on the diff. Inherited prototype violations
    do not block; new ones do.
 5. Andrew reviews and merges.

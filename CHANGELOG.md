@@ -14,6 +14,40 @@ session-based until we cut a real release tag.
   pushes to main (report-only full scan). Opt-in pre-commit hook at
   `.githooks/pre-commit` shares the same script.
 
+## [divi-integration-v2] - 2026-06-09
+
+### Added
+
+- WordPress implementation layer as a Divi **child theme**,
+  `divi-child-integration/` (theme name "POMDR 2026"): production
+  `functions.php`, `single-pets.php` dog template, and reference templates
+  under `temp/`, with the v2 redesign layered on top via a single additive
+  require of `inc/enqueue.php`.
+- v2 design system in `assets/css/pomdr-design.css` plus `gallery.js`
+  (lightbox) and `pomdr-nav.js`, enqueued over the production Divi theme.
+- Homepage redesign v2 in the static prototype: image-forward hero, removed
+  ticker, new sections.
+- `docs/LOCAL-BRIDGE.md`: how the Git repo, the Local WP mirror, and
+  new.pomdr.org connect (symlinked theme, WP Migrate DB for content).
+- `docs/SESSION-CHECKLIST.md`: end-of-session voice-check, commit, push, and
+  PR routine.
+
+### Changed
+
+- **Architecture decision (2026-06-06): keep Divi.** The integration target
+  moved from a clean FSE block theme (`pomdr-2026/`) to the Divi child theme
+  above, to retain the staff-familiar Divi editing surface and the working
+  ACF `pets` CPT, LGL forms, and Redirection. Recorded in CLAUDE.md §3 and
+  STACK.md §7; `WP-SCAFFOLD-NOTES.md` is now historical record only.
+- Confirmed local environment runs PHP 8.2 (`php-8.2.29`).
+- Removed an inherited em dash from the adoption form title (voice rule).
+
+### Notes
+
+- `inc/acf-fields.php` and `inc/redirects.php` are intentionally NOT loaded
+  by `functions.php` (the ACF plugin owns the live field groups; redirects
+  are opt-in). Wire either only after confirming with Andrew.
+
 ## [session-2-3] - 2026-05-17
 
 ### Added

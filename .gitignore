@@ -33,7 +33,7 @@ desktop.ini
 *.swo
 *~
 
-# WordPress (local dev only; the pomdr-2026 theme source IS tracked)
+# WordPress (local dev only; the divi-child-integration theme source IS tracked)
 wp-config.php
 wp-config-local.php
 wp-content/uploads/
