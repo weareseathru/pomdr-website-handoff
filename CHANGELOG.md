@@ -13,6 +13,28 @@ session-based until we cut a real release tag.
 - Voice-rule CI: `scripts/check-voice.sh` runs in PRs (diff mode) and on
   pushes to main (report-only full scan). Opt-in pre-commit hook at
   `.githooks/pre-commit` shares the same script.
+- `docs/RISK-REGISTER.md`: pre-launch failure-mode review (5-year, ~1000/day
+  framing) as a living register with a Top 7 tracker and open decisions.
+- `divi-child-integration/acf-export-2026-06-09.json`: authoritative,
+  version-controlled export of the live ACF field groups and CPT registrations.
+
+### Changed
+
+- Voice check now scopes the em-dash rule to user-facing copy and exempts code
+  comments (CSS/JS/HTML), per Andrew's clarification. Also made portable to
+  macOS bash 3.2 (replaced `mapfile`).
+- Pre-launch hardening: removed the per-request `flush_rewrite_rules()`
+  (now `after_switch_theme`); replaced the hardcoded `new.pomdr.org`
+  `adoptFormBase` with `home_url()`.
+- Reconciled docs to confirmed decisions (2026-06-09): status canonical is the
+  live Title-Case ACF checkbox (CLAUDE.md §8), dog URLs are integer
+  `/pets/{ID}/` (`redirects.csv` updated), donation is LGL form
+  `62FAoG7Obtf81TYETJMN3Q` (STACK.md §2). Logged in STACK.md §7.
+
+### Removed
+
+- `divi-child-integration/inc/acf-fields.php`: an aspirational, mismatched
+  hand-authored schema, superseded by the real ACF export above.
 
 ## [divi-integration-v2] - 2026-06-09
 

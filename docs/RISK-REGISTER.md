@@ -23,57 +23,51 @@ Ranked by impact times likelihood divided by effort.
 | # | Item | Effort | Status | Notes |
 |---|------|--------|--------|-------|
 | 1 | Remove per-request `flush_rewrite_rules()` | XS | **done** | functions.php: now flushes on `after_switch_theme` only. Flush permalinks once after deploy. |
-| 2 | Resolve the status-vocabulary fork (A1) | S (paper) | **blocked** | Needs decision: adopt the live Title-Case multi-value as canonical and update CLAUDE.md + acf-fields. Do not change live queries blindly. |
+| 2 | Resolve the status-vocabulary fork (A1) | S (paper) | **done** | DECIDED 2026-06-09: live Title-Case checkbox is canonical. CLAUDE.md §8 and the ACF export reconciled. Live queries were already correct; unchanged. |
 | 3 | Full production crawl + real redirect map (D1) | M | **open** | `redirects.csv` is an admitted stub. Top SEO task. Needs a crawl of www.pomdr.org. |
 | 4 | Fix adoption-form prefill + drop hardcoded staging URL (B1) | S | **in progress** | Hardcoded `new.pomdr.org` removed (now `home_url()`). Full `field_21` prefill wiring still needs the confirmed flow. |
-| 5 | Decide integer-ID vs slug canonical dog URL (A3) | S (paper) | **blocked** | Recommend keeping integer IDs (already indexed, rename-safe). Then make `redirects.csv` agree. |
+| 5 | Decide integer-ID vs slug canonical dog URL (A3) | S (paper) | **done** | DECIDED 2026-06-09: integer `/pets/{ID}/` canonical. `redirects.csv` updated to drop the slug 301s. |
 | 6 | Backup + uptime + 404 log (I1, J1) | S | **open** | Config/hosting, not repo code. Converts silent multi-day failures into same-hour alerts. |
-| 7 | Reconcile ACF reference to live schema + consistent output escaping (A2, H1) | M | **in progress** | acf-fields.php now carries an accurate warning + verified live field names; real ACF export still owed. Escaping pass on shortcodes still open. |
+| 7 | Reconcile ACF reference to live schema + consistent output escaping (A2, H1) | M | **in progress** | A2 DONE: real ACF export committed (`acf-export-2026-06-09.json`), aspirational `acf-fields.php` removed. Escaping pass on shortcodes (H1) still open. |
 
 ---
 
 ## A. Dog data integrity (highest-risk area)
 
-### A1. Status vocabulary exists in three incompatible forms  `blocked`
-The live code queries Title-Case multi-value statuses (`in_array('Adoptable', $status)`,
-`'Foster Needed'`, `'Adoption Pending'`, `'Hospice'`, `'Adopted'`) across
-`functions.php` (e.g. lines 194, 218, 1088-1099) and `single-pets.php`
-(128-131, 395). CLAUDE.md and `inc/acf-fields.php` instead define 7 kebab-case
-slugs, and `'Adopted'` is not even in that set (the charter uses
-`recently-adopted`). If the kebab-case ACF field ever replaces the live field,
-every listing and filter silently returns empty or wrong dogs.
-- Likelihood x Impact: High x High.
-- Get ahead of it: freeze ONE representation. The live Title-Case multi-value
-  field is the de facto source of truth. Either keep it and update
-  CLAUDE.md + acf-fields to match, or plan a one-time WP-CLI migration and
-  change every `in_array()` in lockstep. Resolve on paper first.
-- Do not over-engineer: no status-enum abstraction layer. One documented
-  vocabulary plus a find/replace is enough.
-- Decision owner: Andrew.
+### A1. Status vocabulary exists in three incompatible forms  `done`
+RESOLVED 2026-06-09. The real ACF export confirms the live `status` field is a
+multi-value **checkbox** with Title-Case choices: `Adoptable`, `Foster Needed`,
+`Sponsor Needed`, `Adoption Pending`, `Adopted`, `Hospice`, `Courtesy Listing`.
+That is now the canonical storage vocabulary (CLAUDE.md §8). The live queries
+(`in_array('Adoptable', $status)`, etc. in `functions.php` and
+`single-pets.php`) were already correct against it, so no code changed. The
+aspirational kebab-case `inc/acf-fields.php` that contradicted it was removed
+(see A2). The kebab-case slugs survive only as a CSS/display convention with a
+documented mapping. Note: the live set adds `Sponsor Needed` (with a
+`sponsored_by` field and a sponsor PDP section), which the prototype's original
+7-status model did not have.
 
-### A2. ACF reference file uses different field names than live  `in progress`
-`inc/acf-fields.php` defined `age_years`, `weight_lb`, `foster_date_start/_end`
-and omitted `date_adopted`, while live templates read `age`, `weight`,
-`foster_start_date`, `foster_end_date`, `date_adopted`. Following the README's
-"import to rebuild" path would have blanked dog vitals.
-- Done this session: added a prominent warning header to acf-fields.php with the
-  verified live field-name table and instructions not to load it.
-- Still owed: export the real field groups from the live ACF
-  (ACF > Tools > Export) and commit that as the trustworthy copy. Needs live
-  access (Andrew). Do not hand-author the schema.
+### A2. ACF reference file uses different field names than live  `done`
+RESOLVED 2026-06-09. Andrew provided the real ACF export; it is committed at
+`divi-child-integration/acf-export-2026-06-09.json` (5 field groups + 3 CPT
+registrations) as the authoritative, version-controlled copy. The aspirational,
+mismatched `inc/acf-fields.php` (which used `age_years`, `weight_lb`,
+`foster_date_start/_end` and kebab-case status) was removed. The README and
+CLAUDE.md now point at the export and document the real field names.
+- Later-stage recommendation: enable ACF local JSON sync (an `acf-json/` dir
+  with one file per group) so future field changes are version-controlled
+  automatically. Deliberately not enabled now to avoid changing runtime during
+  the prototype stage.
 
-### A3. Integer-ID vs slug URL contradiction  `blocked`
-`functions.php` (114-127) registers `^pets/([0-9]+)/?$` and forces
-`post_type_link` to `/pets/{ID}/` (integer). `redirects.csv` declares the new
-canonical is `/pets/{slug}/` with a 301 from the integer. Opposed canonicals
-mean a redirect loop or duplicate-content for every dog.
-- Likelihood x Impact: High x High. Live code today; integer URLs are indexed.
-- Recommendation: keep `/pets/{ID}/` canonical (already in code, already
-  indexed for years, and rename-safe: renaming a dog will not 404 its URL).
-  Then update `redirects.csv` to stop asserting slug canonicalization.
-- Do not over-engineer: slugs look nicer but couple the URL to an editable
-  title, which is a maintenance trap for a team that renames dogs.
-- Decision owner: Andrew.
+### A3. Integer-ID vs slug URL contradiction  `done`
+RESOLVED 2026-06-09. DECIDED: integer `/pets/{ID}/` is canonical (already in
+code via the rewrite rule and the `post_type_link` filter, already indexed for
+years, and rename-safe). `redirects.csv` was updated to remove the
+`/pets/{id}/` to `/pets/{slug}/` 301 rows (they would have redirected away from
+the canonical URL) and to point the legacy `dog.php?id=N` redirect at
+`/pets/{N}/`. Caveat carried in the CSV: confirm the legacy id equals the new
+post ID before enabling the `dog.php` handler; if not, a `legacy_id` lookup is
+needed.
 
 ### A4. `flush_rewrite_rules()` on every request  `done`
 Was called inside an unguarded `init` hook (functions.php ~1633), a DB write on
@@ -81,12 +75,15 @@ every page load. Replaced with an `after_switch_theme` flush.
 - Deploy note: on an already-active theme, flush once after deploy
   (Settings > Permalinks > Save, or `wp rewrite flush`).
 
-### A5. "Recently adopted" depends on hand-typed date strings  `open`
-Shortcodes parse `date_adopted` with `DateTime::createFromFormat('m/d/Y', ...)`
-(functions.php ~1110) or `strtotime`. A date typed in another format silently
-drops the dog from the happy-tail treatment. The field appears to be free text.
-- Get ahead of it: make `date_adopted` an ACF date_picker with a fixed return
-  format, or make the parser tolerant (try several formats, fail gracefully).
+### A5. "Recently adopted" date parsing  `mostly resolved`
+The real ACF export shows `date_adopted` is already a **date_picker** with
+`return_format` `m/d/Y`, which matches the parser
+(`DateTime::createFromFormat('m/d/Y', ...)`, functions.php ~1110). So the
+free-text risk is much lower than first feared: the picker enforces the format.
+- Residual risk: legacy values entered before the field became a picker, or
+  any code path using `strtotime`, could still mis-parse. Low.
+- Get ahead of it (optional): make the parser tolerant as a belt-and-suspenders
+  measure. Not a launch blocker.
 
 ---
 
@@ -114,14 +111,17 @@ loses subscribers.
 - Get ahead of it: confirm audience ID and opt-in mode, then use Mailchimp's
   hosted embed form (no API key on the server, no PII handling).
 
-### B3. Donation processor unconfirmed  `blocked`
-STACK.md §2 cannot confirm what processes donations. If recurring donations are
-tied to a specific processor, a cutover that changes it breaks recurring
-revenue.
-- Get ahead of it: confirm the processor and whether recurring subscriptions
-  exist before the donate page is finalized. "Donate page is an LGL exception"
-  is an acceptable launch answer if that is what is live.
-- Decision owner: Andrew.
+### B3. Donation processor  `done (impl deferred)`
+RESOLVED 2026-06-09. CONFIRMED: donations use LGL form
+`62FAoG7Obtf81TYETJMN3Q`, embedded as an iframe on the donation page. The exact
+embed snippet (centered, max-width 900px, with the LGL resize script) is
+recorded in STACK.md §2 for the production stage. Per Andrew, this is a local
+prototype; the iframe goes onto the production `/donation/` page in a later
+stage, not now.
+- Still open: the prototype `donate.html` and several `POMDRDonation.php?fund=`
+  links (Max's, Silver Hearts, etc.) were not part of this confirmation.
+  Confirm whether each fund-specific donation moves to LGL or stays on the
+  legacy processor before production.
 
 ---
 
@@ -305,20 +305,25 @@ features used are well supported, but reflow at 200% zoom needs verification.
 
 ---
 
-## Decisions needed from Andrew
+## Decisions from Andrew
 
-These block the `blocked` items above. Each is a one-time call.
+Resolved 2026-06-09:
 
-1. **Status vocabulary (A1).** Adopt the live Title-Case multi-value status as
-   canonical, and update CLAUDE.md plus the ACF reference to match? (Recommended.)
-2. **Dog URL canonical (A3).** Keep `/pets/{ID}/` integer URLs canonical and fix
-   `redirects.csv` to agree? (Recommended.)
-3. **Donation processor (B3).** What processes donations today, and are there
-   recurring subscriptions that must survive cutover?
-4. **Real ACF export (A2).** Provide an ACF > Tools export of the live field
-   groups so the version-controlled copy is trustworthy.
+1. ~~Status vocabulary (A1)~~ DONE. Live Title-Case checkbox is canonical.
+2. ~~Dog URL canonical (A3)~~ DONE. Integer `/pets/{ID}/` canonical.
+3. ~~Donation processor (B3)~~ DONE. LGL form `62FAoG7Obtf81TYETJMN3Q`.
+4. ~~Real ACF export (A2)~~ DONE. Committed as `acf-export-2026-06-09.json`.
+
+Still open:
+
 5. **Hosting and backups (I1).** Host, PHP/WP versions, and current backup
-   cadence, so DR can be specified.
+   cadence, so DR can be specified. (Deferred: this is a local prototype today;
+   revisit at the production-deploy stage.)
+6. **Fund-specific donations (B3).** Do the `POMDRDonation.php?fund=` funds
+   (Max's Helping Paws, Silver Hearts, Helping Paw, tributes) move to LGL or
+   stay on the legacy processor?
+7. **Canonical donation path.** Is it `/donate/` or `/donation/`? The prototype
+   and redirects use `/donate/`; the LGL embed instruction said `/donation/`.
 
 ---
 
