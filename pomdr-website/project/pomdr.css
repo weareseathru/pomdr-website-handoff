@@ -44,6 +44,9 @@
   --shadow-nav: 0 8px 32px -12px rgba(22,32,43,.12);
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Height the fixed nav occupies; breadcrumb uses it to clear the nav. */
+  --nav-h: 104px;
 }
 
 /* ===== RESET ===== */
@@ -431,11 +434,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  min-height: 44px;
   padding: 15px 28px;
   border-radius: 999px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   font-family: var(--font-sans);
   cursor: pointer;
   border: none;
@@ -444,6 +449,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   text-decoration: none;
 }
 .btn svg { flex-shrink: 0; }
+.btn:focus-visible { outline: 3px solid var(--blue-900); outline-offset: 3px; }
 
 .btn-primary {
   background: var(--blue);
@@ -1357,3 +1363,56 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-weight: 700;
 }
 
+
+/* ============================================================
+   BREADCRUMB (injected by pomdr-layout.js on all non-home pages)
+   ============================================================ */
+.breadcrumb {
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  padding: calc(var(--nav-h) + 8px) 0 12px;
+}
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--ink-2);
+}
+.breadcrumb li { display: inline-flex; align-items: center; gap: 8px; }
+.breadcrumb li + li::before { content: "/"; color: var(--ink-3); }
+.breadcrumb a { color: var(--blue-700); border-radius: 6px; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb a:focus-visible { outline: 3px solid var(--blue-900); outline-offset: 3px; }
+.breadcrumb [aria-current="page"] { color: var(--ink-2); font-weight: 600; }
+
+/* On the shared .page-hero the breadcrumb already clears the fixed nav, so drop
+   the hero's own nav-clearance top padding to avoid a double gap. Pages with a
+   different first section get their top spacing tidied in their refinement pass. */
+body.has-breadcrumb .page-hero { padding-top: 48px; }
+
+/* ============================================================
+   ACTION BAR (primary action surfaced above the prose, never buried)
+   Usage: a one-line .page-purpose, then an .action-bar with a .btn, then text.
+   ============================================================ */
+.page-purpose {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 62ch;
+  margin: 0 0 24px;
+}
+.action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 32px;
+}
+.action-bar .btn { font-size: 17px; padding: 16px 32px; }
+.action-bar .action-note { font-size: 16px; color: var(--ink-2); }
+@media (max-width: 520px) {
+  .action-bar { flex-direction: column; align-items: stretch; }
+  .action-bar .btn { width: 100%; }
+}
