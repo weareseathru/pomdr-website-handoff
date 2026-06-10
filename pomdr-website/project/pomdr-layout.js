@@ -261,6 +261,8 @@
             <ul>
               <li><a href="${rel("about.html")}">Our Story</a></li>
               <li><a href="${rel("about.html")}#team">Team</a></li>
+              <li><a href="${rel("why.html")}">Why Senior Dogs</a></li>
+              <li><a href="${rel("culture.html")}">Our Culture</a></li>
               <li><a href="${rel("media.html")}">In the Media</a></li>
               <li><a href="${rel("testimonials.html")}">Testimonials</a></li>
               <li><a href="${rel("jobs.html")}">Job Openings</a></li>
@@ -272,17 +274,17 @@
             <h2>Visit Us</h2>
             <ul class="footer-addresses">
               <li>
-                <strong>Patricia J. Bauer Center</strong>
+                <strong><a href="${rel("bauer-center.html")}">Patricia J. Bauer Center</a></strong>
                 <span>615 Forest Ave</span>
                 <span>Pacific Grove, CA 93950</span>
               </li>
               <li>
-                <strong>Boand Veterinary Clinic</strong>
+                <strong><a href="${rel("clinic.html")}">Boand Veterinary Clinic</a></strong>
                 <span>1251 10th St</span>
                 <span>Monterey, CA</span>
               </li>
               <li>
-                <strong>Benefit Shop</strong>
+                <strong><a href="${rel("benefit-shop.html")}">Benefit Shop</a></strong>
                 <span>223 Grand Ave</span>
                 <span>Pacific Grove, CA</span>
               </li>
