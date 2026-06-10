@@ -922,9 +922,12 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   width: 100%;
   min-height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;            /* behind the content (which sits at z-index 1) */
   overflow: hidden;
 }
+/* Lift the page content above the paw trail so the paws read as a soft
+   background texture, showing through the transparent sections only. */
+.nav, #main, .footer { position: relative; z-index: 1; }
 .paw-trail .paw,
 .paw-trail .dog-cutout {
   position: absolute;
@@ -932,56 +935,54 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   will-change: opacity, transform;
 }
 .paw-trail .paw {
-  width: 36px; height: 36px;
-  color: var(--blue, #008bb0);
-  transform: translateY(14px) scale(.82) rotate(var(--rot, 0deg));
-  transition: opacity .7s ease, transform .7s ease;
+  width: 40px; height: 40px;
+  color: var(--ink, #16202b);
+  transform: translateY(14px) scale(.8) rotate(var(--rot, 0deg));
+  transition: opacity .8s var(--ease, ease), transform .8s var(--ease, ease);
 }
 .paw-trail .paw.in {
-  opacity: .09;
+  opacity: .07;
   transform: translateY(0) scale(1) rotate(var(--rot, 0deg));
 }
+.paw-trail .paw.purple { color: var(--purple, #632F88); }
 .paw-trail .dog-cutout {
-  width: 132px; height: 132px;
+  width: 150px; height: 150px;
   color: var(--purple, #632F88);
-  transform: translateY(22px);
-  transition: opacity .9s ease, transform .9s ease;
+  transform: translateY(24px);
+  transition: opacity 1s var(--ease, ease), transform 1s var(--ease, ease);
 }
-.paw-trail .dog-cutout.in { opacity: .15; transform: translateY(0); }
+.paw-trail .dog-cutout.in { opacity: .12; transform: translateY(0); }
 @media (max-width: 760px) {
-  .paw-trail .paw { width: 24px; height: 24px; }
-  .paw-trail .dog-cutout { width: 92px; height: 92px; }
+  .paw-trail .paw { width: 28px; height: 28px; }
+  .paw-trail .dog-cutout { width: 104px; height: 104px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .paw-trail .paw, .paw-trail .paw.in {
     transition: none;
     transform: rotate(var(--rot, 0deg));
-    opacity: .08;
+    opacity: .06;
   }
   .paw-trail .dog-cutout, .paw-trail .dog-cutout.in {
-    transition: none; transform: none; opacity: .12;
+    transition: none; transform: none; opacity: .1;
   }
 }
 
 </style>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="root"></div>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Decorative paw trail. Reveals on scroll, sits behind content, pointer-events
-     none, aria-hidden. Paws meander down the left, cross over, and resolve into
-     dog-cutout placeholders near the bottom (swap the #dogSymbol for real dog
-     graphics when uploaded). -->
+<!-- Decorative paw trail (home page only). Sits BEHIND the content (z-index 0),
+     shows through the transparent sections as a soft texture, reveals on scroll.
+     aria-hidden, pointer-events none. The dog cutouts near the bottom are
+     placeholders to swap for real dog graphics (replace #dogSymbol). -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="pawSymbol" viewBox="0 0 64 64">
-    <ellipse cx="32" cy="43" rx="16" ry="13"/>
-    <ellipse cx="13" cy="26" rx="6" ry="8.5"/>
-    <ellipse cx="26" cy="16" rx="6.5" ry="9"/>
-    <ellipse cx="40" cy="16" rx="6.5" ry="9"/>
-    <ellipse cx="53" cy="26" rx="6" ry="8.5"/>
+    <path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/>
+    <ellipse cx="12" cy="31" rx="5" ry="7.6" transform="rotate(-28 12 31)"/>
+    <ellipse cx="24" cy="19" rx="5.2" ry="8.2" transform="rotate(-11 24 19)"/>
+    <ellipse cx="40" cy="19" rx="5.2" ry="8.2" transform="rotate(11 40 19)"/>
+    <ellipse cx="52" cy="31" rx="5" ry="7.6" transform="rotate(28 52 31)"/>
   </symbol>
   <symbol id="dogSymbol" viewBox="0 0 100 100">
     <path d="M6 72 V50 c0-9 7-16 16-16 h3 l5-9 c1-2 4-2 5 0 l4 9 h18 c9 0 16 7 16 16 v22 h-8 V56 c-2 3-5 5-9 6 v10 h-8 V63 h-9 v9 h-8 V62 c-4-1-7-3-9-6 v16 z"/>
@@ -991,956 +992,704 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 <div class="paw-trail" aria-hidden="true">
   <svg class="paw" style="top:5%;left:9%;--rot:15deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:10%;left:12%;--rot:28deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:15%;left:9%;--rot:12deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw purple" style="top:15%;left:9%;--rot:12deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:20%;left:14%;--rot:32deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:26%;left:11%;--rot:22deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:31%;left:17%;--rot:40deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw purple" style="top:31%;left:17%;--rot:40deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:37%;left:14%;--rot:30deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:43%;left:22%;--rot:52deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:48%;left:32%;--rot:66deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw purple" style="top:48%;left:32%;--rot:66deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:53%;left:44%;--rot:80deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:58%;left:56%;--rot:92deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:63%;left:66%;--rot:104deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw purple" style="top:63%;left:66%;--rot:104deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:68%;left:74%;--rot:114deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:73%;left:81%;--rot:122deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:79%;left:85%;--rot:116deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw purple" style="top:79%;left:85%;--rot:116deg"><use href="#pawSymbol"/></svg>
   <svg class="paw" style="top:85%;left:88%;--rot:128deg"><use href="#pawSymbol"/></svg>
   <svg class="dog-cutout" style="top:90%;left:66%"><use href="#dogSymbol"/></svg>
   <svg class="dog-cutout" style="top:93%;left:80%"><use href="#dogSymbol"/></svg>
 </div>
 
-<script>
-// Tweakable defaults (persisted)
-window.POMDR_TWEAKS = /*EDITMODE-BEGIN*/{
-  "heroLayout": "fullbleed",
-  "cardStyle": "editorial",
-  "motion": "moderate"
-}/*EDITMODE-END*/;
-</script>
-
-<script type="text/babel" data-presets="react">
-
-// === data.jsx ===
-// Dog placeholder SVG generator - warm tones inspired by brand
-const DogPhoto = ({ name, seed = 0, variant = "portrait" }) => {
-  const palettes = [
-    ["#C9BBD7", "#7F5A9D", "#632F88"],  // purple
-    ["#BCD7E4", "#26A1BF", "#008bb0"],  // blue
-    ["#f7ddb7", "#d9a870", "#8b5a2b"],  // warm tan
-    ["#e8d5c4", "#c9a88a", "#6b4a2b"],  // sepia
-    ["#d4c5b0", "#9c8670", "#4a3a28"],  // olive-brown
-    ["#cfd9bf", "#84966a", "#3d4a2b"],  // sage
-    ["#f0c8b0", "#d4896a", "#8b3a2b"],  // peach
-    ["#b8c9d4", "#6a8fa0", "#2b4a5e"],  // slate
-  ];
-  const p = palettes[seed % palettes.length];
-  const id = `g-${seed}-${name.replace(/\W/g,'')}`;
-  return (
-    <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style={{width:'100%',height:'100%',display:'block'}}>
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={p[0]} />
-          <stop offset="60%" stopColor={p[1]} />
-          <stop offset="100%" stopColor={p[2]} />
-        </linearGradient>
-        <pattern id={`${id}-dots`} width="24" height="24" patternUnits="userSpaceOnUse">
-          <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.06)" />
-        </pattern>
-      </defs>
-      <rect width="300" height="400" fill={`url(#${id})`} />
-      <rect width="300" height="400" fill={`url(#${id}-dots)`} />
-      {/* soft vignette */}
-      <radialGradient id={`${id}-v`} cx="50%" cy="40%" r="70%">
-        <stop offset="60%" stopColor="rgba(0,0,0,0)" />
-        <stop offset="100%" stopColor="rgba(0,0,0,0.35)" />
-      </radialGradient>
-      <rect width="300" height="400" fill={`url(#${id}-v)`} />
-      {/* monospace placeholder note */}
-      <g fontFamily="ui-monospace, Menlo, monospace" fontSize="9" fill="rgba(255,255,255,0.55)" letterSpacing="1">
-        <text x="14" y="22">◐ photo · {name.toLowerCase()}.jpg</text>
-        <text x="14" y="388">[placeholder]</text>
-      </g>
-      {/* big serif name */}
-      <text x="150" y="220" textAnchor="middle" fontFamily="'Source Serif 4', serif" fontWeight="400" fontSize="72" fill="rgba(255,255,255,0.92)" fontStyle="italic">{name}</text>
-    </svg>
-  );
-};
-
-const HERO_SLIDES = [
-  {
-    pillar: "Adopt",
-    img: "images/hero-adopt.jpeg",
-    imgAlt: "A gray-muzzled senior dog at rest in soft afternoon light",
-    objectPosition: "center 30%",
-    title: ["Senior dogs deserve", "a soft place", "to land."],
-    titleEm: "soft place",
-    sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
-    tag: "Adoption · Senior dogs, ready to love",
-    ctas: [
-      { text: "Adopt a Dog", href: "adopt.html", style: "btn-primary" },
-      { text: "See all dogs", href: "adopt.html", style: "btn-ghost" },
-    ],
-  },
-  {
-    pillar: "Helping Paw",
-    img: "images/hero-helping-paw.jpeg",
-    imgAlt: "A volunteer walking a small dog alongside an older guardian on a quiet street",
-    objectPosition: "center 35%",
-    title: ["Helping seniors", "and their dogs stay", "together longer."],
-    titleEm: "together",
-    sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
-    tag: "Helping Paw · Support for senior guardians",
-    ctas: [
-      { text: "Helping Paw Program", href: "helping-paw.html", style: "btn-primary" },
-      { text: "Request support", href: "helping-paw.html#request", style: "btn-ghost" },
-    ],
-  },
-  {
-    pillar: "Our Mission",
-    img: "images/hero-mission.jpeg",
-    imgAlt: "Two senior dogs in a sunny doorway, comfortable and at home",
-    objectPosition: "center 30%",
-    title: ["A lifetime", "commitment,", "every time."],
-    titleEm: "commitment",
-    sub: "Every dog in our care is ours for life. If a placement doesn't work, for any reason, ever, they come home to us.",
-    tag: "Our Mission · Since 2009",
-    ctas: [
-      { text: "Our Mission", href: "about.html", style: "btn-primary" },
-      { text: "How we help", href: "about.html#approach", style: "btn-ghost" },
-    ],
-  },
-  {
-    pillar: "Get Involved",
-    img: "images/hero-volunteer.jpg",
-    imgAlt: "Volunteers and dogs gathered for a morning at the Pacific Grove rescue center",
-    objectPosition: "center 40%",
-    title: ["Be the reason", "a gray muzzle", "finds home."],
-    titleEm: "gray muzzle",
-    sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
-    tag: "Foster · Donate · Volunteer",
-    ctas: [
-      { text: "Foster", href: "volunteer.html#foster", style: "btn-primary" },
-      { text: "Donate", href: "donate.html", style: "btn-purple" },
-      { text: "Volunteer", href: "volunteer.html", style: "btn-ghost" },
-    ],
-  },
-];
-
-const DOGS = [
-  { name: "Pebble",    age: 12, breed: "Long-haired Dachshund",      weight: 11, sex: "F", tags: ["Calm", "Snuggler"],     img: "images/dog1.jpeg", status: "available" },
-  { name: "Nana",      age: 6,  breed: "Anatolian / Great Pyrenees", weight: 87, sex: "F", tags: ["Gentle giant"],         img: "uploads/IMG_8679.jpeg", status: "foster_needed" },
-  { name: "Malcolm",   age: 8,  breed: "Husky",                      weight: 50, sex: "M", tags: ["Active", "Loyal"],      img: "images/dog3.jpeg", status: "available" },
-  { name: "Bixby",     age: 12, breed: "Yorkie",                     weight: 10, sex: "F", tags: ["Gentle", "Lap dog"],    img: "images/dog4.jpeg", status: "available" },
-  { name: "Watson",    age: 12, breed: "Chihuahua mix",              weight: 12, sex: "M", tags: ["Curious", "Walker"],    img: "images/dog2.jpeg", status: "available" },
-  { name: "Honeybee",  age: 7,  breed: "French Bulldog",             weight: 20, sex: "F", tags: ["Snuggler"],             img: "images/dog6.jpeg", status: "foster_needed" },
-  { name: "Aragorn",   age: 10, breed: "Chihuahua mix",              weight: 20, sex: "M", tags: ["Regal", "Affectionate"],img: "images/dog7.jpeg", status: "adoption_pending" },
-];
-
-const PROGRAMS = [
-  {
-    title: "Intake & Adoptions",
-    href: "adopt.html",
-    desc: "Finding senior dogs a forever home through careful matching, foster care, and lifelong support.",
-    points: ["Adoptable dogs", "Courtesy listings", "Adoption process", "Adoption events"],
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
-    ),
-  },
-  {
-    title: "Helping Paw",
-    href: "helping-paw.html",
-    desc: "Support for guardians facing hardship. Walking brigade, financial assistance, and temporary fosters.",
-    points: ["Walking brigade", "Financial assistance", "Temporary fosters"],
-    icon: (
-      <svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg>
-    ),
-  },
-  {
-    title: "Perpetual Care",
-    href: "perpetual-care-program.html",
-    desc: "Making sure your dog is loved and cared for after you're gone. A promise, not a program.",
-    points: ["Placing your dog", "Lifetime commitment", "Planning ahead"],
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg>
-    ),
-  },
-];
-
-const TAILS = [
-  {
-    featured: true,
-    quote: "Rosie walked into our home unsure, and two weeks later she was napping at my feet like she'd always been here. Thank you for trusting us with her golden years.",
-    name: "The Alvarez Family",
-    city: "Pacific Grove, CA",
-    dog: "Rosie",
-    dogSeed: 2,
-  },
-  {
-    quote: "They didn't just match us with a dog. They matched us with a companion who understood quiet mornings.",
-    name: "Eleanor W.",
-    city: "Carmel",
-    dog: "Finn",
-    dogSeed: 4,
-  },
-  {
-    quote: "POMDR stayed in touch long after adoption day. That's what a lifetime commitment looks like.",
-    name: "David & Marta",
-    city: "Santa Cruz",
-    dog: "Biscuit",
-    dogSeed: 6,
-  },
-];
-
-const EVENTS = [
-  { month: "May", day: "03", title: "Pups on the Promenade", type: "Adoption Event", time: "10 am – 2 pm", where: "Pacific Grove" },
-  { month: "May", day: "17", title: "Senior Supper Fundraiser", type: "Fundraiser", time: "5:30 – 8 pm", where: "Carmel Valley" },
-  { month: "Jun", day: "01", title: "Volunteer Orientation", type: "Volunteer", time: "10 am to noon", where: "POMDR HQ" },
-  { month: "Jun", day: "14", title: "Doggy Day Out Walk", type: "Community", time: "9 – 11 am", where: "Lovers Point" },
-];
-
-const STATS = [
-  {
-    num: "3,200", sym: "+", lbl: "Senior dogs rescued", desc: "Since 2009 across the Central Coast",
-    img: "images/dog14.jpeg",
-    imgAlt: "A senior dog resting peacefully on a comfortable couch in a foster home",
-    story: "Cooper came to us at ~13 years old, a surrender from a family moving into memory care. He spent nine weeks in foster and was adopted the same week his profile went live. He lives in Carmel now, going on slow morning walks with his new person. He is one of 3,200.",
-  },
-  {
-    num: "16", sym: "yrs", lbl: "Of lifetime commitment", desc: "To every dog that comes into our care",
-    img: "images/dog15.jpeg",
-    imgAlt: "A small senior dog wrapped in a fleece blanket, resting and content",
-    story: "Our commitment has never changed: every dog who comes into our care is here for as long as it takes. Some stay a week. Some stay two years. A few stay forever, in our sanctuary program. The number changes. The promise does not.",
-  },
-  {
-    num: "1,800", sym: "+", lbl: "Active volunteers", desc: "Fostering, walking, transporting and caring",
-    img: "uploads/Nancy%20helping%20paw%20Finnegan%2C%20walker%20Jane%20(1).jpeg",
-    imgAlt: "A volunteer walking a small dog alongside a senior guardian on a quiet neighborhood street",
-    story: "On any given Tuesday morning, a dozen volunteers are walking dogs before their own workday starts. They are retired teachers, college students, remote workers, weekend-only folks. They show up. That is everything.",
-  },
-  {
-    num: "501", sym: "c3", lbl: "Tax-deductible giving", desc: "EIN 27-1154816, founded October 2009",
-    img: "uploads/Hazel%20HT.jpeg",
-    imgAlt: "Hazel, a happy dog, settled into her new home after adoption",
-    story: "Every dollar given to POMDR goes directly toward food, medical care, foster reimbursement, and the small daily kindnesses that add up to a good life for a senior dog. Hazel went home in 2024 after a three-month stay that included two surgeries. She is doing great.",
-  },
-];
-
-Object.assign(window, { DogPhoto, HERO_SLIDES, DOGS, PROGRAMS, TAILS, EVENTS, STATS });
-
-// === components.jsx ===
-const { useState, useEffect, useRef } = React;
-
-// Logo mark
-const Logo = () => (
-  <a href="index.html" className="logo">
-    <div className="logo-mark">P</div>
-    <div className="logo-text">
-      <div className="name">Peace of Mind</div>
-      <div className="sub">Dog Rescue</div>
-    </div>
-  </a>
-);
-
-const Chevron = () => (
-  <svg className="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M2 3.5l3 3 3-3"/></svg>
-);
-
-const NAV_ITEMS = [
-  { id: "home",        label: "Home",        href: "index.html" },
-  { id: "adopt",       label: "Adopt",       href: "adopt.html" },
-  { id: "foster",      label: "Foster",      href: "foster.html" },
-  { id: "helping-paw", label: "Helping Paw", href: "helping-paw.html" },
-  { id: "about",       label: "About",       href: "about.html" },
-  { id: "contact",     label: "Contact",     href: "contact.html" },
-];
-
-const Nav = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 16);
-    window.addEventListener('scroll', h);
-    return () => window.removeEventListener('scroll', h);
-  }, []);
-  const active = "home";
-  return (
-    <nav className={`nav ${scrolled ? 'scrolled' : ''}`} id="site-nav">
-      <div className="container">
-        <div className="nav-inner">
-          <Logo />
-          <div className="nav-links">
-            {NAV_ITEMS.map(it => (
-              <div key={it.id} className="nav-item">
-                <a href={it.href} className={active === it.id ? 'active' : ''}>{it.label}</a>
-              </div>
-            ))}
-            <a href="donate.html" className="nav-cta">
-              Donate
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-            <button className={`nav-toggle ${mobileOpen ? 'open' : ''}`} aria-label="Open menu" onClick={() => setMobileOpen(!mobileOpen)}>
-              <span></span><span></span><span></span>
-            </button>
-          </div>
+<!-- ===== NAV ===== -->
+<nav class="nav" id="site-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-mark">P</div>
+        <div class="logo-text">
+          <div class="name">Peace of Mind</div>
+          <div class="sub">Dog Rescue</div>
         </div>
-      </div>
-      <div className={`nav-mobile ${mobileOpen ? 'open' : ''}`}>
-        {NAV_ITEMS.map(it => (
-          <a key={it.id} href={it.href} className={active === it.id ? 'active' : ''} onClick={() => setMobileOpen(false)}>{it.label}</a>
-        ))}
-        <a href="donate.html" className="m-cta" onClick={() => setMobileOpen(false)}>Donate</a>
-      </div>
-    </nav>
-  );
-};
-
-// Reveal on scroll
-const Reveal = ({ children, delay = 0, as: Tag = 'div', ...rest }) => {
-  const ref = useRef(null);
-  const [shown, setShown] = useState(false);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setShown(true); obs.disconnect(); }
-    }, { rootMargin: '-60px' });
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return (
-    <Tag ref={ref} className={`reveal ${shown ? 'in' : ''}`} style={{transitionDelay: `${delay}ms`}} {...rest}>
-      {children}
-    </Tag>
-  );
-};
-
-Object.assign(window, { Logo, Nav, Reveal });
-
-// === sections.jsx ===
-const { useState: uS, useEffect: uE, useRef: uR } = React;
-
-/* ============== HERO ============== */
-const Hero = () => {
-  const [idx, setIdx] = uS(0);
-  const [paused, setPaused] = uS(false);
-  const slides = window.HERO_SLIDES;
-
-  uE(() => {
-    if (paused) return;
-    if (typeof window !== 'undefined' &&
-        window.matchMedia &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-    const t = setTimeout(() => setIdx((idx + 1) % slides.length), 6000);
-    return () => clearTimeout(t);
-  }, [idx, paused]);
-
-  return (
-    <section className="hero">
-      {slides.map((s, i) => (
-        <div key={i} className={`hero-slide ${i === idx ? 'active' : ''}`}>
-          <div className="hero-image">
-            <img src={s.img} alt={s.imgAlt || ''} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',objectPosition: s.objectPosition || 'center top'}} />
-          </div>
-          <div className="hero-scrim" />
-        </div>
-      ))}
-
-      <div className="hero-content">
-        <div className="container">
-          <div className="hero-tag" key={`tag-${idx}`}>
-            <span className="dot">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-            {slides[idx].tag}
-          </div>
-          <h1 className="hero-title" key={`t-${idx}`}>
-            {slides[idx].title.map((line, i) => (
-              <div key={i}>
-                {line.includes(slides[idx].titleEm)
-                  ? <>{line.split(slides[idx].titleEm)[0]}<em>{slides[idx].titleEm}</em>{line.split(slides[idx].titleEm)[1]}</>
-                  : line}
-              </div>
-            ))}
-          </h1>
-          <p className="hero-sub" key={`s-${idx}`}>{slides[idx].sub}</p>
-          <div className="hero-ctas" key={`ctas-${idx}`}>
-            {slides[idx].ctas.map((c, i) => (
-              <a key={i} href={c.href} className={`btn ${c.style}`}>
-                {c.text}
-                {i === 0 && (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                )}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="hero-controls">
-        <div className="hero-progress">
-          {slides.map((_, i) => (
-            <button key={i} className={i === idx ? 'active' : ''} onClick={() => setIdx(i)}>
-              <span className="bar" key={`bar-${i}-${idx}`}/>
-            </button>
-          ))}
-        </div>
-        <div className="hero-counter">
-          <button onClick={() => setIdx((idx - 1 + slides.length) % slides.length)} aria-label="Previous">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          </button>
-          <span>{String(idx + 1).padStart(2, '0')}</span>
-          <span className="slash">/</span>
-          <span>{String(slides.length).padStart(2, '0')}</span>
-          <button onClick={() => setIdx((idx + 1) % slides.length)} aria-label="Next">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-          <button onClick={() => setPaused(!paused)} aria-label="Pause">
-            {paused
-              ? <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>
-              : <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>}
-          </button>
-        </div>
-      </div>
-
-      <div className="scroll-hint">
-        <span>Scroll</span>
-        <div className="line" />
-      </div>
-    </section>
-  );
-};
-
-/* ============== MARQUEE ============== */
-const Marquee = () => {
-  const items = ["Adopt a Senior", "Foster Love", "Walk with Us", "Donate Today", "Lifetime Commitment", "Since 2009", "Central Coast, CA"];
-  const doubled = [...items, ...items, ...items, ...items];
-  return (
-    <div className="marquee">
-      <div className="marquee-track">
-        {doubled.map((x, i) => <span key={i}>{x}</span>)}
+      </a>
+      <div class="nav-links">
+        <div class="nav-item"><a href="index.html" class="active" aria-current="page">Home</a></div>
+        <div class="nav-item"><a href="adopt.html">Adopt</a></div>
+        <div class="nav-item"><a href="foster.html">Foster</a></div>
+        <div class="nav-item"><a href="helping-paw.html">Helping Paw</a></div>
+        <div class="nav-item"><a href="about.html">About</a></div>
+        <div class="nav-item"><a href="contact.html">Contact</a></div>
+        <a href="donate.html" class="nav-cta">
+          Donate
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-  );
-};
+  </div>
+  <div class="nav-mobile" id="nav-mobile" hidden>
+    <a href="index.html" class="active">Home</a>
+    <a href="adopt.html">Adopt</a>
+    <a href="foster.html">Foster</a>
+    <a href="helping-paw.html">Helping Paw</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="donate.html" class="m-cta">Donate</a>
+  </div>
+</nav>
 
-/* ============== ADOPTABLES ============== */
-const Adoptables = () => {
-  const [liked, setLiked] = uS(() => {
-    try { return new Set(JSON.parse(localStorage.getItem('pomdr-likes') || '[]')); }
-    catch (_) { return new Set(); }
-  });
-  const toggle = (n) => {
-    const s = new Set(liked);
-    s.has(n) ? s.delete(n) : s.add(n);
-    setLiked(s);
-    try { localStorage.setItem('pomdr-likes', JSON.stringify([...s])); } catch (_) {}
-  };
-  return (
-    <section className="section adoptables" id="adopt">
-      <div className="container">
-        <window.Reveal>
-          <div className="section-header">
-            <span className="eyebrow">Adoptable Dogs</span>
-            <h2 className="section-title">Find the pups waiting for <em>their next chapter.</em></h2>
-            <p className="section-lead">Each of these seniors has a full heart, a few grey hairs, and a story that's not finished yet.</p>
-          </div>
-        </window.Reveal>
-        <div className="dogs-grid">
-          {window.DOGS.map((d, i) => {
-            const slug = d.name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-            const profileSlugs = new Set(["clove","mihla","watson","sun-bear","oscar","nana","pebble","malcolm","bixby","breeze","honeybee","aragorn"]);
-            const href = profileSlugs.has(slug) ? `dog/${slug}.html` : `dog/coming-soon.html?name=${encodeURIComponent(slug)}`;
-            return (
-            <window.Reveal key={d.name} delay={i * 60}>
-              <a href={href} className="dog-card-link" style={{display:'block',color:'inherit',textDecoration:'none'}}>
-              <div className="dog-card">
-                <div className="photo-wrap">
-                  <div className="dog-photo">
-                    <img src={d.img} alt={d.name} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} />
-                  </div>
-                  {(() => {
-                    const labels = { available:'Available', foster_needed:'Foster Needed', foster_needed_dated:'Foster Needed', adoption_pending:'Adoption Pending', recently_adopted:'Recently Adopted', hospice:'Hospice', courtesy_listing:'Courtesy Listing' };
-                    const key = d.status || 'available';
-                    return <div className={`badge ${key}`}>{labels[key] || 'Available'}</div>;
-                  })()}
-                  <button className={`heart ${liked.has(d.name) ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggle(d.name); }} aria-label="Favorite">
-                    <svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
-                  </button>
-                </div>
-                <div className="info">
-                  <div className="name">{d.name}</div>
-                  <div className="meta-line">~{d.age} {d.age === 1 ? 'yr' : 'yrs'} · {d.sex === 'F' ? 'Female' : 'Male'} · {d.weight} lb · {d.breed}</div>
-                  <div className="tags">{d.tags.map(t => <span key={t} className="tag">{t}</span>)}</div>
-                  <div className="cta-row">
-                    <span>View profile</span>
-                    <span className="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-                  </div>
-                </div>
-              </div>
-              </a>
-            </window.Reveal>
-            );
-          })}
-          <window.Reveal delay={window.DOGS.length * 60}>
-            <div className="dog-card see-more" onClick={() => window.location.href='adopt.html'} style={{cursor:'pointer'}}>
-              <div>
-                <div className="see-more-num">60+</div>
-                <div className="see-more-label">more pups looking for their people</div>
-                <div className="arrow-big">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </div>
-              </div>
-            </div>
-          </window.Reveal>
+<main id="main">
+
+  <!-- ===== HERO (rotating) ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-slide active">
+      <div class="hero-image"><img src="images/hero-adopt.jpeg" alt="A gray-muzzled senior dog at rest in soft afternoon light" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></div>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-image"><img src="images/hero-helping-paw.jpeg" alt="A volunteer walking a small dog alongside an older guardian on a quiet street" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%"></div>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-image"><img src="images/hero-mission.jpeg" alt="Two senior dogs in a sunny doorway, comfortable and at home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></div>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-image"><img src="images/hero-volunteer.jpg" alt="Volunteers and dogs gathered for a morning at the Pacific Grove rescue center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"></div>
+      <div class="hero-scrim"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-tag" id="hero-tag">
+          <span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          <span id="hero-tag-text">Adoption · Senior dogs, ready to love</span>
+        </div>
+        <h1 class="hero-title" id="hero-title">
+          <div>Senior dogs deserve</div>
+          <div>a <em>soft place</em></div>
+          <div>to land.</div>
+        </h1>
+        <p class="hero-sub" id="hero-sub">Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.</p>
+        <div class="hero-ctas" id="hero-ctas">
+          <a href="adopt.html" class="btn btn-primary">Adopt a Dog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="adopt.html" class="btn btn-ghost">See all dogs</a>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
 
-/* ============== PILLARS ============== */
-const Pillars = () => {
-  const pillars = [
-    { num: "01", label: "Adopt", title: "Open your home.", desc: "Match with a senior pup whose quiet mornings suit yours.", img: "images/pillar-adopt.jpeg", href: "adopt.html" },
-    { num: "02", label: "Donate", title: "Fuel the work.", desc: "Your gift funds medical care, foster stipends and a lifetime promise.", img: "images/pillar-donate.jpeg", href: "donate.html" },
-    { num: "03", label: "Volunteer", title: "Walk with us.", desc: "Foster, transport, write bios. Every hour makes a difference.", img: "images/pillar-volunteer.jpeg", href: "volunteer.html" },
-  ];
-  return (
-    <section className="section pillars">
-      <div className="container">
-        <div className="pillars-grid">
-          {pillars.map((p, i) => (
-            <window.Reveal key={p.label} delay={i * 80}>
-              <a className="pillar" href={p.href} style={{'--tilt': 0}}>
-                <div style={{position:'absolute',inset:0,zIndex:0,overflow:'hidden'}}>
-                  <img src={p.img} alt="" role="presentation" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center',transition:'transform 0.7s cubic-bezier(0.2,0.8,0.2,1)'}} />
-                </div>
-                <div style={{position:'absolute',inset:0,background:'linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%)',zIndex:1}}/>
-                <div style={{position:'relative',zIndex:2}}>
-                  <h3 className="pillar-label">{p.label}</h3>
-                  <p className="pillar-tagline">{p.title}</p>
-                  <p>{p.desc}</p>
-                  <span className="pillar-cta">
-                    Learn more
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                  </span>
-                </div>
-              </a>
-            </window.Reveal>
-          ))}
+    <div class="hero-controls">
+      <div class="hero-progress" id="hero-progress">
+        <button class="active" data-i="0" aria-label="Slide 1"><span class="bar"></span></button>
+        <button data-i="1" aria-label="Slide 2"><span class="bar"></span></button>
+        <button data-i="2" aria-label="Slide 3"><span class="bar"></span></button>
+        <button data-i="3" aria-label="Slide 4"><span class="bar"></span></button>
+      </div>
+      <div class="hero-counter">
+        <button id="hero-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+        <span id="hero-cur">01</span><span class="slash">/</span><span>04</span>
+        <button id="hero-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+        <button id="hero-pause" aria-label="Pause slideshow"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+      </div>
+    </div>
+
+    <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
+  </section>
+
+  <!-- ===== ADOPTABLES ===== -->
+  <section class="section adoptables" id="adopt">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Adoptable Dogs</span>
+          <h2 class="section-title">Find the pups waiting for <em>their next chapter.</em></h2>
+          <p class="section-lead">Each of these seniors has a full heart, a few grey hairs, and a story that is not finished yet.</p>
         </div>
       </div>
-    </section>
-  );
-};
+      <div class="dogs-grid">
 
-/* ============== MISSION ============== */
-const Mission = () => (
-  <section className="mission" id="about">
-    <div className="container">
-      <div className="mission-inner">
-        <window.Reveal>
-          <div className="mission-visual">
-            <img src="images/carie.jpg" alt="Carie Broecker with dogs" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top',display:'block'}} />
-            <div className="float float-1">
-              <div className="ic purple">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg>
-              </div>
-              <div>
-                <div className="num">Since 2009</div>
-                <div className="lbl">A promise kept</div>
-              </div>
+        <div class="reveal"><a href="dog/pebble.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="images/dog1.jpeg" alt="Pebble" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge available">Available</div>
+            <button class="heart" type="button" data-name="Pebble" aria-label="Save Pebble to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Pebble</div>
+            <div class="meta-line">~12 yrs · Female · 11 lb · Long-haired Dachshund</div>
+            <div class="tags"><span class="tag">Calm</span><span class="tag">Snuggler</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="dog/nana.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="uploads/IMG_8679.jpeg" alt="Nana" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge foster_needed">Foster Needed</div>
+            <button class="heart" type="button" data-name="Nana" aria-label="Save Nana to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Nana</div>
+            <div class="meta-line">~6 yrs · Female · 87 lb · Anatolian / Great Pyrenees</div>
+            <div class="tags"><span class="tag">Gentle giant</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="dog/malcolm.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="images/dog3.jpeg" alt="Malcolm" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge available">Available</div>
+            <button class="heart" type="button" data-name="Malcolm" aria-label="Save Malcolm to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Malcolm</div>
+            <div class="meta-line">~8 yrs · Male · 50 lb · Husky</div>
+            <div class="tags"><span class="tag">Active</span><span class="tag">Loyal</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="dog/bixby.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="images/dog4.jpeg" alt="Bixby" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge available">Available</div>
+            <button class="heart" type="button" data-name="Bixby" aria-label="Save Bixby to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Bixby</div>
+            <div class="meta-line">~12 yrs · Female · 10 lb · Yorkie</div>
+            <div class="tags"><span class="tag">Gentle</span><span class="tag">Lap dog</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="dog/watson.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="images/dog2.jpeg" alt="Watson" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge available">Available</div>
+            <button class="heart" type="button" data-name="Watson" aria-label="Save Watson to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Watson</div>
+            <div class="meta-line">~12 yrs · Male · 12 lb · Chihuahua mix</div>
+            <div class="tags"><span class="tag">Curious</span><span class="tag">Walker</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="dog/honeybee.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="images/dog6.jpeg" alt="Honeybee" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge foster_needed">Foster Needed</div>
+            <button class="heart" type="button" data-name="Honeybee" aria-label="Save Honeybee to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Honeybee</div>
+            <div class="meta-line">~7 yrs · Female · 20 lb · French Bulldog</div>
+            <div class="tags"><span class="tag">Snuggler</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="dog/aragorn.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card"><div class="photo-wrap">
+            <div class="dog-photo"><img src="images/dog7.jpeg" alt="Aragorn" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
+            <div class="badge adoption_pending">Adoption Pending</div>
+            <button class="heart" type="button" data-name="Aragorn" aria-label="Save Aragorn to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+          </div><div class="info">
+            <div class="name">Aragorn</div>
+            <div class="meta-line">~10 yrs · Male · 20 lb · Chihuahua mix</div>
+            <div class="tags"><span class="tag">Regal</span><span class="tag">Affectionate</span></div>
+            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+          </div></div>
+        </a></div>
+
+        <div class="reveal"><a href="adopt.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+          <div class="dog-card see-more">
+            <div>
+              <div class="see-more-num">60+</div>
+              <div class="see-more-label">more pups looking for their people</div>
+              <div class="arrow-big"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
             </div>
           </div>
-        </window.Reveal>
-        <window.Reveal delay={120}>
+        </a></div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PILLARS ===== -->
+  <section class="section pillars">
+    <div class="container">
+      <div class="pillars-grid">
+        <div class="reveal"><a class="pillar" href="adopt.html">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Adopt</h3>
+            <p class="pillar-tagline">Open your home.</p>
+            <p>Match with a senior pup whose quiet mornings suit yours.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+        <div class="reveal"><a class="pillar" href="donate.html">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Donate</h3>
+            <p class="pillar-tagline">Fuel the work.</p>
+            <p>Your gift funds medical care, foster stipends and a lifetime promise.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+        <div class="reveal"><a class="pillar" href="volunteer.html">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Volunteer</h3>
+            <p class="pillar-tagline">Walk with us.</p>
+            <p>Foster, transport, write bios. Every hour makes a difference.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION ===== -->
+  <section class="mission" id="about">
+    <div class="container">
+      <div class="mission-inner">
+        <div class="reveal">
+          <div class="mission-visual">
+            <img src="images/carie.jpg" alt="Carie Broecker with dogs" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block">
+            <div class="float float-1">
+              <div class="ic purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
+              <div><div class="num">Since 2009</div><div class="lbl">A promise kept</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
           <div>
-            <span className="eyebrow" style={{color:'var(--purple)'}}>Our Mission</span>
-            <h2 className="mission-title">Who will care for your dog if <em>you no longer can?</em></h2>
-            <p className="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz, and San Benito counties, through rescue, foster, adoption, hospice, and education.</p>
-            <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:24,padding:'14px 18px',background:'var(--blue-50)',borderRadius:14,fontSize:14,color:'var(--ink-2)'}}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Serving <strong style={{color:'var(--ink)'}}>Monterey · Santa Cruz · San Benito</strong> counties since 2009</span>
+            <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
+            <h2 class="mission-title">Who will care for your dog if <em>you no longer can?</em></h2>
+            <p class="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz, and San Benito counties, through rescue, foster, adoption, hospice, and education.</p>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:14px 18px;background:var(--blue-50);border-radius:14px;font-size:16px;color:var(--ink-2)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Serving <strong style="color:var(--ink)">Monterey, Santa Cruz and San Benito</strong> counties since 2009</span>
             </div>
-            <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
-              <a href="surrender.html" className="btn btn-purple">Surrender options</a>
-              <a href="surrender.html#perpetual" className="btn btn-outline">Perpetual care</a>
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="surrender.html" class="btn btn-purple">Surrender options</a>
+              <a href="perpetual-care-program.html" class="btn btn-outline">Perpetual care</a>
             </div>
-            <div className="mission-sig">
-              <div className="avatar" style={{overflow:'hidden'}}>
-                <img src="images/carie.jpg" alt="Carie Broecker" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top'}} />
-              </div>
-              <div className="who"><strong>Carie Broecker</strong><span>Co-Founder &amp; Executive Director</span></div>
+            <div class="mission-sig">
+              <div class="avatar" style="overflow:hidden"><img src="images/carie.jpg" alt="Carie Broecker" style="width:100%;height:100%;object-fit:cover;object-position:center top"></div>
+              <div class="who"><strong>Carie Broecker</strong><span>Co-Founder and Executive Director</span></div>
             </div>
           </div>
-        </window.Reveal>
-      </div>
-    </div>
-  </section>
-);
-
-/* ============== PROGRAMS ============== */
-const Programs = () => (
-  <section className="section programs" id="helping-paw">
-    <div className="container">
-      <window.Reveal>
-        <div className="section-header">
-          <span className="eyebrow">Our Programs</span>
-          <h2 className="section-title">A <em>lifetime commitment</em>, not a paperwork kind.</h2>
-          <p className="section-lead">Three intertwined programs, one promise: we walk alongside our dogs and their people for life.</p>
         </div>
-      </window.Reveal>
-      <div className="programs-grid">
-        {window.PROGRAMS.map((p, i) => (
-          <window.Reveal key={p.title} delay={i * 80}>
-            <div className="program-card">
-              <div className="program-icon">{p.icon}</div>
-              <h3>{p.title}</h3>
-              <p>{p.desc}</p>
-              <ul>{p.points.map(x => <li key={x}>{x}</li>)}</ul>
-              <a href={p.href || "#"} className="learn">Explore {p.title}</a>
-            </div>
-          </window.Reveal>
-        ))}
       </div>
     </div>
   </section>
-);
 
-/* ============== IMPACT ============== */
-const Impact = () => (
-  <section className="impact" aria-labelledby="impact-title">
-    <div className="container">
-      <window.Reveal>
-        <div className="section-header left">
-          <span className="eyebrow">Our Impact</span>
-          <h2 className="section-title" id="impact-title">Quiet numbers. <em>Loud love.</em></h2>
-          <p className="section-lead">Every rescue, every adoption, every quiet walk adds up to something the numbers can only partly hold. Here are four of them, and the lives behind them.</p>
+  <!-- ===== PROGRAMS ===== -->
+  <section class="section programs" id="helping-paw">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Our Programs</span>
+          <h2 class="section-title">A <em>lifetime commitment</em>, not a paperwork kind.</h2>
+          <p class="section-lead">Three intertwined programs, one promise: we walk alongside our dogs and their people for life.</p>
         </div>
-      </window.Reveal>
-      <div className="impact-stories">
-        {window.STATS.map((s, i) => (
-          <window.Reveal key={s.lbl} delay={i * 80}>
-            <div className={`impact-row${i % 2 === 1 ? ' flip' : ''}`}>
-              <figure className="impact-photo">
-                <img src={s.img} alt={s.imgAlt} loading="lazy" />
-              </figure>
-              <div className="impact-copy">
-                <div className="stat">
-                  <div className="num">{s.num}<span className="sym">{s.sym}</span></div>
-                  <div className="lbl">{s.lbl}</div>
-                  <div className="desc">{s.desc}</div>
-                  <p className="story">{s.story}</p>
-                </div>
-              </div>
-            </div>
-          </window.Reveal>
-        ))}
+      </div>
+      <div class="programs-grid">
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
+          <h3>Intake and Adoptions</h3>
+          <p>Finding senior dogs a forever home through careful matching, foster care, and lifelong support.</p>
+          <ul><li>Adoptable dogs</li><li>Courtesy listings</li><li>Adoption process</li><li>Adoption events</li></ul>
+          <a href="adopt.html" class="learn">Explore Intake and Adoptions</a>
+        </div></div>
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg></div>
+          <h3>Helping Paw</h3>
+          <p>Support for guardians facing hardship. Walking brigade, financial assistance, and temporary fosters.</p>
+          <ul><li>Walking brigade</li><li>Financial assistance</li><li>Temporary fosters</li></ul>
+          <a href="helping-paw.html" class="learn">Explore Helping Paw</a>
+        </div></div>
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg></div>
+          <h3>Perpetual Care</h3>
+          <p>Making sure your dog is loved and cared for after you are gone. A promise, not a program.</p>
+          <ul><li>Placing your dog</li><li>Lifetime commitment</li><li>Planning ahead</li></ul>
+          <a href="perpetual-care-program.html" class="learn">Explore Perpetual Care</a>
+        </div></div>
       </div>
     </div>
   </section>
-);
 
-/* ============== HAPPY TAILS ============== */
-const Tails = () => (
-  <section className="tails">
-    <div className="container">
-      <window.Reveal>
-        <div className="section-header">
-          <span className="eyebrow">Happy Tails</span>
-          <h2 className="section-title">Stories from <em>forever families.</em></h2>
+  <!-- ===== IMPACT ===== -->
+  <section class="impact" aria-labelledby="impact-title">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header left">
+          <span class="eyebrow">Our Impact</span>
+          <h2 class="section-title" id="impact-title">Quiet numbers. <em>Loud love.</em></h2>
+          <p class="section-lead">Every rescue, every adoption, every quiet walk adds up to something the numbers can only partly hold. Here are four of them, and the lives behind them.</p>
         </div>
-      </window.Reveal>
-      <div className="tails-grid">
-        {window.TAILS.map((t, i) => (
-          <window.Reveal key={i} delay={i * 80}>
-            <div className={`tail-card ${t.featured ? 'featured' : ''}`}>
-              <div className="quote-mark">"</div>
-              <blockquote>{t.quote}</blockquote>
-              <div className="person">
-                <div className="av"><window.DogPhoto name={t.dog} seed={t.dogSeed} /></div>
-                <div>
-                  <strong>{t.name}</strong>
-                  <span>adopted {t.dog} · {t.city}</span>
-                </div>
-              </div>
-            </div>
-          </window.Reveal>
-        ))}
+      </div>
+      <div class="impact-stories">
+        <div class="reveal"><div class="impact-row">
+          <figure class="impact-photo"><img src="images/dog14.jpeg" alt="A senior dog resting peacefully on a comfortable couch in a foster home" loading="lazy"></figure>
+          <div class="impact-copy"><div class="stat">
+            <div class="num">3,200<span class="sym">+</span></div>
+            <div class="lbl">Senior dogs rescued</div>
+            <div class="desc">Since 2009 across the Central Coast</div>
+            <p class="story">Cooper came to us at ~13 years old, a surrender from a family moving into memory care. He spent nine weeks in foster and was adopted the same week his profile went live. He lives in Carmel now, going on slow morning walks with his new person. He is one of 3,200.</p>
+          </div></div>
+        </div></div>
+        <div class="reveal"><div class="impact-row flip">
+          <figure class="impact-photo"><img src="images/dog15.jpeg" alt="A small senior dog wrapped in a fleece blanket, resting and content" loading="lazy"></figure>
+          <div class="impact-copy"><div class="stat">
+            <div class="num">16<span class="sym">yrs</span></div>
+            <div class="lbl">Of lifetime commitment</div>
+            <div class="desc">To every dog that comes into our care</div>
+            <p class="story">Our commitment has never changed: every dog who comes into our care is here for as long as it takes. Some stay a week. Some stay two years. A few stay forever, in our sanctuary program. The number changes. The promise does not.</p>
+          </div></div>
+        </div></div>
+        <div class="reveal"><div class="impact-row">
+          <figure class="impact-photo"><img src="uploads/Nancy%20helping%20paw%20Finnegan%2C%20walker%20Jane%20(1).jpeg" alt="A volunteer walking a small dog alongside a senior guardian on a quiet neighborhood street" loading="lazy"></figure>
+          <div class="impact-copy"><div class="stat">
+            <div class="num">1,800<span class="sym">+</span></div>
+            <div class="lbl">Active volunteers</div>
+            <div class="desc">Fostering, walking, transporting and caring</div>
+            <p class="story">On any given Tuesday morning, a dozen volunteers are walking dogs before their own workday starts. They are retired teachers, college students, remote workers, weekend-only folks. They show up. That is everything.</p>
+          </div></div>
+        </div></div>
+        <div class="reveal"><div class="impact-row flip">
+          <figure class="impact-photo"><img src="uploads/Hazel%20HT.jpeg" alt="Hazel, a happy dog, settled into her new home after adoption" loading="lazy"></figure>
+          <div class="impact-copy"><div class="stat">
+            <div class="num">501<span class="sym">c3</span></div>
+            <div class="lbl">Tax-deductible giving</div>
+            <div class="desc">EIN 27-1154816, founded October 2009</div>
+            <p class="story">Every dollar given to POMDR goes directly toward food, medical care, foster reimbursement, and the small daily kindnesses that add up to a good life for a senior dog. Hazel went home in 2024 after a three-month stay that included two surgeries. She is doing great.</p>
+          </div></div>
+        </div></div>
       </div>
     </div>
   </section>
-);
 
-/* ============== EVENTS ============== */
-const Events = () => (
-  <section className="events">
-    <div className="container">
-      <window.Reveal>
-        <div className="section-header left" style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',maxWidth:'none',marginBottom:40}}>
-          <div style={{maxWidth:560}}>
-            <span className="eyebrow" style={{color:'var(--purple)'}}>Upcoming</span>
-            <h2 className="section-title">Events & <em>gatherings.</em></h2>
+  <!-- ===== HAPPY TAILS ===== -->
+  <section class="tails">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Happy Tails</span>
+          <h2 class="section-title">Stories from <em>forever families.</em></h2>
+        </div>
+      </div>
+      <div class="tails-grid">
+        <div class="reveal"><div class="tail-card featured">
+          <div class="quote-mark">"</div>
+          <blockquote>Rosie walked into our home unsure, and two weeks later she was napping at my feet like she had always been here. Thank you for trusting us with her golden years.</blockquote>
+          <div class="person">
+            <div class="av" style="background:linear-gradient(160deg,var(--purple-100),var(--purple));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">R</div>
+            <div><strong>The Alvarez Family</strong><span>adopted Rosie · Pacific Grove, CA</span></div>
           </div>
-          <a href="events.html" className="btn btn-outline">View full calendar</a>
-        </div>
-      </window.Reveal>
-      <div className="events-layout">
-        <window.Reveal>
-          <div className="event-list">
-            {window.EVENTS.map((e, i) => (
-              <div className="event-row" key={i}>
-                <div className="event-date">
-                  <div className="month">{e.month}</div>
-                  <div className="day">{e.day}</div>
-                </div>
-                <div>
-                  <div className="event-title">{e.title}</div>
-                  <div className="event-meta">
-                    <span>⏱ {e.time}</span>
-                    <span>◎ {e.where}</span>
-                    <span>· {e.type}</span>
-                  </div>
-                </div>
-                <div className="arrow-sm">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </div>
-              </div>
-            ))}
+        </div></div>
+        <div class="reveal"><div class="tail-card">
+          <div class="quote-mark">"</div>
+          <blockquote>They did not just match us with a dog. They matched us with a companion who understood quiet mornings.</blockquote>
+          <div class="person">
+            <div class="av" style="background:linear-gradient(160deg,var(--blue-100),var(--blue));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">F</div>
+            <div><strong>Eleanor W.</strong><span>adopted Finn · Carmel</span></div>
           </div>
-        </window.Reveal>
-        <window.Reveal delay={120}>
-          <div className="events-feature">
-            <div style={{position:'absolute',inset:0,zIndex:0}}>
-              <window.DogPhoto name="Gala" seed={1} />
-            </div>
-            <div className="tag">★ Featured · May 17</div>
-            <h3>Senior Supper. An evening for our seniors, by our friends.</h3>
-            <div className="details">
-              <span>5:30 – 8 pm</span>
-              <span>Carmel Valley Ranch</span>
-            </div>
-            <a href="events.html" className="btn btn-light" style={{width:'fit-content'}}>
-              Reserve your seat
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div></div>
+        <div class="reveal"><div class="tail-card">
+          <div class="quote-mark">"</div>
+          <blockquote>POMDR stayed in touch long after adoption day. That is what a lifetime commitment looks like.</blockquote>
+          <div class="person">
+            <div class="av" style="background:linear-gradient(160deg,#e8d5c4,#8b5a2b);display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">B</div>
+            <div><strong>David and Marta</strong><span>adopted Biscuit · Santa Cruz</span></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS ===== -->
+  <section class="events">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header left" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;margin-bottom:40px">
+          <div style="max-width:560px">
+            <span class="eyebrow" style="color:var(--purple)">Upcoming</span>
+            <h2 class="section-title">Events and <em>gatherings.</em></h2>
+          </div>
+          <a href="events.html" class="btn btn-outline">View full calendar</a>
+        </div>
+      </div>
+      <div class="events-layout">
+        <div class="reveal">
+          <div class="event-list">
+            <a class="event-row" href="events.html">
+              <div class="event-date"><div class="month">May</div><div class="day">03</div></div>
+              <div><div class="event-title">Pups on the Promenade</div><div class="event-meta"><span>10 am to 2 pm</span><span>Pacific Grove</span><span>Adoption Event</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+            <a class="event-row" href="events.html">
+              <div class="event-date"><div class="month">May</div><div class="day">17</div></div>
+              <div><div class="event-title">Senior Supper Fundraiser</div><div class="event-meta"><span>5:30 to 8 pm</span><span>Carmel Valley</span><span>Fundraiser</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+            <a class="event-row" href="events.html">
+              <div class="event-date"><div class="month">Jun</div><div class="day">01</div></div>
+              <div><div class="event-title">Volunteer Orientation</div><div class="event-meta"><span>10 am to noon</span><span>POMDR HQ</span><span>Volunteer</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+            <a class="event-row" href="events.html">
+              <div class="event-date"><div class="month">Jun</div><div class="day">14</div></div>
+              <div><div class="event-title">Doggy Day Out Walk</div><div class="event-meta"><span>9 to 11 am</span><span>Lovers Point</span><span>Community</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
             </a>
           </div>
-        </window.Reveal>
+        </div>
+        <div class="reveal">
+          <div class="events-feature">
+            <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(150deg,var(--purple-400),var(--blue-900))"></div>
+            <div class="tag">Featured · May 17</div>
+            <h3>Senior Supper. An evening for our seniors, by our friends.</h3>
+            <div class="details"><span>5:30 to 8 pm</span><span>Carmel Valley Ranch</span></div>
+            <a href="events.html" class="btn btn-light" style="width:fit-content">Reserve your seat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-);
 
-/* ============== NEWSLETTER ============== */
-const Newsletter = () => {
-  const [email, setEmail] = uS("");
-  const [sent, setSent] = uS(false);
-  return (
-    <section className="newsletter">
-      <div className="container">
-        <div>
-          <span className="eyebrow">Stay in the loop</span>
-          <h2>Sweet stories, happy tails and <em>good news</em> in your inbox.</h2>
-          <p>One thoughtful email a month. Adoption updates, events, and a little sunshine from the pups.</p>
-        </div>
-        <form className="newsletter-form" action="thank-you.html" method="get" onSubmit={(e) => { e.preventDefault(); window.location.href = "thank-you.html?source=newsletter"; }}>
-          <input type="hidden" name="source" value="newsletter" />
-          <label htmlFor="newsletter-email">Newsletter signup</label>
-          <div className="nform-row">
-            <input id="newsletter-email" name="email" autoComplete="email" type="email" placeholder="your@email.com" value={email} onChange={e => setEmail(e.target.value)} required />
-            <button type="submit">{sent ? "✓ Subscribed" : "Subscribe"}</button>
-          </div>
-          <div className="fine">We respect your inbox. Unsubscribe anytime.</div>
-        </form>
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <div class="container">
+      <div>
+        <span class="eyebrow">Stay in the loop</span>
+        <h2>Sweet stories, happy tails and <em>good news</em> in your inbox.</h2>
+        <p>One thoughtful email a month. Adoption updates, events, and a little sunshine from the pups.</p>
       </div>
-    </section>
-  );
-};
+      <form class="newsletter-form" action="thank-you.html" method="get" onsubmit="event.preventDefault();window.location.href='thank-you.html?source=newsletter';">
+        <input type="hidden" name="source" value="newsletter">
+        <label for="newsletter-email">Newsletter signup</label>
+        <div class="nform-row">
+          <input id="newsletter-email" name="email" autocomplete="email" type="email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe</button>
+        </div>
+        <div class="fine">We respect your inbox. Unsubscribe anytime.</div>
+      </form>
+    </div>
+  </section>
 
-/* ============== FOOTER ============== */
-const Footer = () => (
-  <footer className="footer">
-    <div className="container">
-      <div className="footer-top">
-        <div className="footer-brand">
-          <window.Logo />
-          <p className="footer-tagline">Helping senior dogs and senior people since 2009.</p>
-          <p>A 501(c)(3) nonprofit serving Monterey, Santa Cruz and San Benito counties.</p>
-          <div className="footer-contact">
-            <div><strong>Adopt or Donate</strong></div>
-            <div><a href="tel:8317189122">(831) 718-9122</a></div>
-            <div><a href="mailto:info@pomdr.org">info@pomdr.org</a></div>
-            <div style={{marginTop:10}}>615 Forest Avenue<br/>Pacific Grove, CA 93950</div>
-          </div>
-        </div>
-        <div>
-          <h2>Adopt</h2>
-          <ul>
-            <li><a href="adopt.html">Available Dogs</a></li>
-            <li><a href="adopt.html#process">Adoption Process</a></li>
-            <li><a href="adopt.html#events">Adoption Events</a></li>
-            <li><a href="foster.html">Foster a Dog</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2>Get Involved</h2>
-          <ul>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="foster.html">Foster</a></li>
-            <li><a href="volunteer.html">Volunteer</a></li>
-            <li><a href="helping-paw.html">Helping Paw</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2>About</h2>
-          <ul>
-            <li><a href="about.html">Our Story</a></li>
-            <li><a href="about.html#team">Team</a></li>
-            <li><a href="about.html#locations">Locations</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="surrender.html">Placing Your Dog</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2>Follow</h2>
-          <div className="socials">
-            <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.2.9-.3 1.9-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.9.2 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.2-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.3-.1-.9-.2-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5-8.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
-            <a href="https://www.facebook.com/POMDR/" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.6V13h2.8v8h3.1z"/></svg></a>
-            <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.7 2 12 2 12s0 3.3.4 4.8c.2.9.9 1.6 1.8 1.8 1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.8.4-4.8s0-3.3-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
-          </div>
-          <div style={{marginTop:28}}>
-            <h2>Tax-deductible</h2>
-            <div style={{fontSize:13,opacity:0.7}}>EIN 27-1154816</div>
-          </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <div class="logo-mark">P</div>
+          <div class="logo-text"><div class="name">Peace of Mind</div><div class="sub">Dog Rescue</div></div>
+        </a>
+        <p class="footer-tagline">Helping senior dogs and senior people since 2009.</p>
+        <p>A 501(c)(3) nonprofit serving Monterey, Santa Cruz and San Benito counties.</p>
+        <div class="footer-contact">
+          <div><strong>Adopt or Donate</strong></div>
+          <div><a href="tel:8317189122">(831) 718-9122</a></div>
+          <div><a href="mailto:info@peaceofminddogrescue.org">info@peaceofminddogrescue.org</a></div>
+          <div style="margin-top:10px">615 Forest Avenue<br>Pacific Grove, CA 93950</div>
         </div>
       </div>
-      <div className="footer-bottom">
-        <div>© 2026 Peace of Mind Dog Rescue. 501(c)(3) nonprofit. EIN 27-1154816.</div>
-        <div style={{display:'flex',gap:20}}>
-          <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a>
+      <div>
+        <h2>Adopt</h2>
+        <ul>
+          <li><a href="adopt.html">Available Dogs</a></li>
+          <li><a href="process.html">Adoption Process</a></li>
+          <li><a href="events.html">Adoption Events</a></li>
+          <li><a href="foster.html">Foster a Dog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Get Involved</h2>
+        <ul>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="foster.html">Foster</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+          <li><a href="helping-paw.html">Helping Paw</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>About</h2>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="about.html#team">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="surrender.html">Placing Your Dog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Follow</h2>
+        <div class="socials">
+          <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.9.2 2.3.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.3 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.9-.4 2.3-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1.1.3-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.9-.2-2.3-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.4-.3-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.9.4-2.3.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1.1-.3 2.3-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5-8.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a>
+          <a href="https://www.facebook.com/POMDR/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4v2.7H7.6V13h2.8v8h3.1z"/></svg></a>
+          <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2c-.2-.9-.9-1.6-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 8.7 2 12 2 12s0 3.3.4 4.8c.2.9.9 1.6 1.8 1.8 1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.5.4-4.8.4-4.8s0-3.3-.4-4.8zM10 15V9l5.2 3L10 15z"/></svg></a>
+        </div>
+        <div style="margin-top:28px">
+          <h2>Tax-deductible</h2>
+          <div style="font-size:14px;opacity:0.7">EIN 27-1154816</div>
         </div>
       </div>
     </div>
-  </footer>
-);
-
-Object.assign(window, { Hero, Marquee, Adoptables, Pillars, Mission, Programs, Impact, Tails, Events, Newsletter, Footer });
-
-// === app.jsx ===
-const { useState: useS, useEffect: useEf } = React;
-
-const TweaksPanel = ({ tweaks, setTweak, onClose }) => {
-  const opts = {
-    heroLayout: ["fullbleed", "split", "editorial"],
-    cardStyle: ["editorial", "minimal", "polaroid"],
-    motion: ["subtle", "moderate", "rich"],
-  };
-  const labels = { heroLayout: "Hero Layout", cardStyle: "Dog Card Style", motion: "Motion Intensity" };
-  return (
-    <div className="tweaks-panel open">
-      <h4>Tweaks <button onClick={onClose}>×</button></h4>
-      {Object.keys(opts).map(key => (
-        <div className="tweak-row" key={key}>
-          <label>{labels[key]}</label>
-          <div className="tweak-segments">
-            {opts[key].map(v => (
-              <button key={v} className={tweaks[key] === v ? 'active' : ''} onClick={() => setTweak(key, v)}>{v}</button>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div class="footer-bottom">
+      <div>&copy; 2026 Peace of Mind Dog Rescue. 501(c)(3) nonprofit. EIN 27-1154816.</div>
+      <div style="display:flex;gap:20px">
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Contact</a>
+      </div>
     </div>
-  );
-};
+  </div>
+</footer>
 
-const App = () => {
-  const [tweaks, setTweaks] = useS(window.POMDR_TWEAKS);
-  const [editMode, setEditMode] = useS(false);
-
-  useEf(() => {
-    document.body.dataset.cardStyle = tweaks.cardStyle;
-    document.body.dataset.motion = tweaks.motion;
-    document.body.dataset.heroLayout = tweaks.heroLayout;
-  }, [tweaks]);
-
-  useEf(() => {
-    const handler = (e) => {
-      if (!e.data) return;
-      if (e.data.type === '__activate_edit_mode') setEditMode(true);
-      if (e.data.type === '__deactivate_edit_mode') setEditMode(false);
-    };
-    window.addEventListener('message', handler);
-    window.parent.postMessage({type: '__edit_mode_available'}, '*');
-    return () => window.removeEventListener('message', handler);
-  }, []);
-
-  const setTweak = (key, val) => {
-    const next = { ...tweaks, [key]: val };
-    setTweaks(next);
-    window.parent.postMessage({type: '__edit_mode_set_keys', edits: { [key]: val }}, '*');
-  };
-
-  return (
-    <>
-      <a href="#main" className="skip-link">Skip to main content</a>
-      <window.Nav />
-      <main id="main">
-        <window.Hero />
-        <window.Adoptables />
-        <window.Mission />
-        <window.Programs />
-        <window.HelpingPaw />
-        <window.Impact />
-        <window.Videos />
-        <window.Tails />
-        <window.Events />
-        <window.Newsletter />
-      </main>
-      <window.Footer />
-      {editMode && <TweaksPanel tweaks={tweaks} setTweak={setTweak} onClose={() => setEditMode(false)} />}
-    </>
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-
-</script>
-
-<!-- Paw trail reveal. Plain JS, no library. Sizes the trail to the full page
-     so the meander spans it, then reveals each paw as it enters the viewport. -->
+<!-- ===== BEHAVIOR (lean vanilla JS, progressive enhancement) ===== -->
 <script>
 (function () {
-  var trail = document.querySelector('.paw-trail');
-  if (!trail) return;
-  function syncHeight() {
-    var h = Math.max(
-      document.documentElement.scrollHeight,
-      document.body ? document.body.scrollHeight : 0
-    );
-    trail.style.height = h + 'px';
-  }
-  syncHeight();
-  window.addEventListener('resize', syncHeight, { passive: true });
-  // Re-sync after the React app and images settle so positions are accurate.
-  window.addEventListener('load', function () {
-    setTimeout(syncHeight, 200);
-    setTimeout(syncHeight, 900);
-  });
-  var items = trail.querySelectorAll('.paw, .dog-cutout');
-  if (!('IntersectionObserver' in window)) {
-    Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); });
-    return;
-  }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Nav: scrolled state + mobile toggle */
+  var nav = document.getElementById('site-nav');
+  var onScroll = function () { if (nav) nav.classList.toggle('scrolled', window.scrollY > 16); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  var toggle = document.querySelector('.nav-toggle');
+  var mobile = document.getElementById('nav-mobile');
+  if (toggle && mobile) {
+    var setMobile = function (open) {
+      mobile.classList.toggle('open', open);
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      mobile.hidden = !open;
+    };
+    toggle.addEventListener('click', function () { setMobile(!mobile.classList.contains('open')); });
+    mobile.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMobile(false); }); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobile.classList.contains('open')) { setMobile(false); toggle.focus(); }
     });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+  }
+
+  /* Reveal on scroll */
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var rio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
+    }, { rootMargin: '-60px' });
+    reveals.forEach(function (el) { rio.observe(el); });
+  }
+
+  /* Favorite hearts (persisted) */
+  var likes;
+  try { likes = new Set(JSON.parse(localStorage.getItem('pomdr-likes') || '[]')); } catch (_) { likes = new Set(); }
+  document.querySelectorAll('.heart').forEach(function (btn) {
+    var name = btn.getAttribute('data-name');
+    if (likes.has(name)) btn.classList.add('active');
+    btn.addEventListener('click', function (e) {
+      e.preventDefault(); e.stopPropagation();
+      if (likes.has(name)) { likes.delete(name); btn.classList.remove('active'); }
+      else { likes.add(name); btn.classList.add('active'); }
+      try { localStorage.setItem('pomdr-likes', JSON.stringify([].concat(Array.from(likes)))); } catch (_) {}
+    });
+  });
+
+  /* Hero rotator */
+  var SLIDES = [
+    { tag: "Adoption · Senior dogs, ready to love",
+      title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
+      sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt a Dog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
+    { tag: "Helping Paw · Support for senior guardians",
+      title: "<div>Helping seniors</div><div>and their dogs stay</div><div><em>together</em> longer.</div>",
+      sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
+      ctas: '<a href="helping-paw.html" class="btn btn-primary">Helping Paw Program <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="helping-paw.html" class="btn btn-ghost">Request support</a>' },
+    { tag: "Our Mission · Since 2009",
+      title: "<div>A lifetime</div><div><em>commitment</em>,</div><div>every time.</div>",
+      sub: "Every dog in our care is ours for life. If a placement does not work, for any reason, ever, they come home to us.",
+      ctas: '<a href="about.html" class="btn btn-primary">Our Mission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="about.html" class="btn btn-ghost">How we help</a>' },
+    { tag: "Foster · Donate · Volunteer",
+      title: "<div>Be the reason</div><div>a <em>gray muzzle</em></div><div>finds home.</div>",
+      sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
+      ctas: '<a href="foster.html" class="btn btn-primary">Foster <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="donate.html" class="btn btn-purple">Donate</a><a href="volunteer.html" class="btn btn-ghost">Volunteer</a>' }
+  ];
+  var heroSlides = document.querySelectorAll('.hero-slide');
+  var dots = document.querySelectorAll('#hero-progress button');
+  var elTag = document.getElementById('hero-tag-text');
+  var elTitle = document.getElementById('hero-title');
+  var elSub = document.getElementById('hero-sub');
+  var elCtas = document.getElementById('hero-ctas');
+  var elCur = document.getElementById('hero-cur');
+  var idx = 0, timer = null, paused = false;
+  var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+  function setSlide(i) {
+    idx = (i + SLIDES.length) % SLIDES.length;
+    heroSlides.forEach(function (s, k) { s.classList.toggle('active', k === idx); });
+    dots.forEach(function (d, k) { d.classList.toggle('active', k === idx); });
+    var s = SLIDES[idx];
+    if (elTag) elTag.textContent = s.tag;
+    if (elTitle) elTitle.innerHTML = s.title;
+    if (elSub) elSub.textContent = s.sub;
+    if (elCtas) elCtas.innerHTML = s.ctas;
+    if (elCur) elCur.textContent = pad(idx + 1);
+  }
+  function schedule() { if (timer) clearTimeout(timer); if (paused || reduceMotion) return; timer = setTimeout(function () { setSlide(idx + 1); schedule(); }, 6000); }
+  if (heroSlides.length) {
+    dots.forEach(function (d) { d.addEventListener('click', function () { setSlide(parseInt(d.getAttribute('data-i'), 10)); schedule(); }); });
+    var prev = document.getElementById('hero-prev'), next = document.getElementById('hero-next'), pause = document.getElementById('hero-pause');
+    if (prev) prev.addEventListener('click', function () { setSlide(idx - 1); schedule(); });
+    if (next) next.addEventListener('click', function () { setSlide(idx + 1); schedule(); });
+    if (pause) pause.addEventListener('click', function () {
+      paused = !paused;
+      pause.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
+      pause.innerHTML = paused
+        ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>'
+        : '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+      schedule();
+    });
+    schedule();
+  }
+
+  /* Paw trail: size to the full page, reveal each paw on scroll */
+  var trail = document.querySelector('.paw-trail');
+  if (trail) {
+    var syncHeight = function () {
+      var h = Math.max(document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0);
+      trail.style.height = h + 'px';
+    };
+    syncHeight();
+    window.addEventListener('resize', syncHeight, { passive: true });
+    window.addEventListener('load', function () { setTimeout(syncHeight, 200); setTimeout(syncHeight, 900); });
+    var paws = trail.querySelectorAll('.paw, .dog-cutout');
+    if (!('IntersectionObserver' in window)) {
+      paws.forEach(function (el) { el.classList.add('in'); });
+    } else {
+      var pio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); pio.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      paws.forEach(function (el) { pio.observe(el); });
+    }
+  }
 })();
 </script>
 </body>
