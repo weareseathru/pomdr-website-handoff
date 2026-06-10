@@ -70,7 +70,7 @@ subagents only create or edit their own assigned page files.
 
 ## Stages (chunks)
 
-### Stage 0, Foundation (lead, sequential). Status: in progress.
+### Stage 0, Foundation (lead, sequential). Status: DONE.
 
 The shared spine. Everything else depends on it, so it is done first and not
 parallelized.
@@ -103,7 +103,7 @@ blind global change cannot be visually verified here):
   may wrap the 9-item expanded nav, so this is a browser-verify item in
   Stage 1, not a blind change.
 
-### Stage 1, Core conversion pages (Tier 1)
+### Stage 1, Core conversion pages (Tier 1). Status: DONE.
 
 Refine the pages that already exist and carry the most traffic, to the
 contract: adopt, the dog detail template and the 12 dog pages, donate (Ways to
@@ -112,7 +112,7 @@ pattern on two exemplars (foster, helping-paw, the action-surfacing showcases),
 then subagents refine the rest in parallel (one agent per 2-3 pages, distinct
 files).
 
-### Stage 2, Missing institutional pages (Tier 2)
+### Stage 2, Missing institutional pages (Tier 2). Status: DONE (LGL iframes deferred to production).
 
 Build the new pages, parallel subagents, distinct files: why, clinic,
 bauer-center, about/culture, mailing-list (Mailchimp signup), contact (per

@@ -17,8 +17,25 @@ session-based until we cut a real release tag.
   framing) as a living register with a Top 7 tracker and open decisions.
 - `divi-child-integration/acf-export-2026-06-09.json`: authoritative,
   version-controlled export of the live ACF field groups and CPT registrations.
+- `docs/IA-UX-AUDIT.md` and `docs/BUILD-PLAN.md`: full crawl of both web
+  properties, senior/accessible/ethical UX rules, gap map, and a staged build
+  plan with a Shared Build Contract and subagent strategy.
+- Prototype build Stage 0 (foundation): nav submenus reconciled to the real IA;
+  site-wide data-driven breadcrumbs; accessible `.action-bar` / `.page-purpose`
+  components; `.btn` raised to 16px / 44px min / focus ring.
+- Prototype build Stage 2 (new pages): `mailing-list.html`, `clinic.html`,
+  `bauer-center.html`, `why.html`, `culture.html`. Each surfaces its primary
+  action as a button above the prose, with breadcrumbs and 16px+ text. New
+  pages linked from the footer.
 
 ### Changed
+
+- Prototype build Stage 1 (core pages): refined adopt, donate, about, process,
+  volunteer, foster, helping-paw, and all 12 dog pages to the action-surfacing
+  spec. Buttons given the base `.btn` accessible class, sub-16px text raised,
+  legacy external application links repointed to internal pages, dog-page title
+  separators changed from em dash to a pipe. No dog facts changed.
+- `contact.html`: lists all three locations and meets the 16px label floor.
 
 - Voice check now scopes the em-dash rule to user-facing copy and exempts code
   comments (CSS/JS/HTML), per Andrew's clarification. Also made portable to
