@@ -1387,10 +1387,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .breadcrumb a:focus-visible { outline: 3px solid var(--blue-900); outline-offset: 3px; }
 .breadcrumb [aria-current="page"] { color: var(--ink-2); font-weight: 600; }
 
-/* On the shared .page-hero the breadcrumb already clears the fixed nav, so drop
-   the hero's own nav-clearance top padding to avoid a double gap. Pages with a
-   different first section get their top spacing tidied in their refinement pass. */
-body.has-breadcrumb .page-hero { padding-top: 48px; }
+/* On the shared hero patterns (.page-hero and .page-header, ~23 pages) the
+   breadcrumb already clears the fixed nav, so drop the hero's own nav-clearance
+   top padding to avoid a double gap. Both heroes use 160px top by default. */
+body.has-breadcrumb .page-hero,
+body.has-breadcrumb .page-header { padding-top: 48px; }
+@media (max-width: 768px) {
+  body.has-breadcrumb .page-hero,
+  body.has-breadcrumb .page-header { padding-top: 32px; }
+}
 
 /* ============================================================
    ACTION BAR (primary action surfaced above the prose, never buried)
