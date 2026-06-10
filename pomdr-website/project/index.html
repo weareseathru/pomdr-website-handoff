@@ -967,15 +967,77 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   }
 }
 
+/* ===== HERO SIDE ARROWS ===== */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 8;
+  width: 60px; height: 60px;
+  display: grid; place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.14);
+  border: 1.5px solid rgba(255,255,255,0.55);
+  color: #fff;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: background .25s var(--ease), transform .25s var(--ease), border-color .25s;
+}
+.hero-arrow:hover { background: rgba(255,255,255,0.28); transform: translateY(-50%) scale(1.08); }
+.hero-arrow:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.hero-arrow.prev { left: 28px; }
+.hero-arrow.next { right: 28px; }
+.hero-arrow svg { width: 26px; height: 26px; }
+@media (max-width: 820px) {
+  .hero-arrow { width: 46px; height: 46px; }
+  .hero-arrow.prev { left: 12px; }
+  .hero-arrow.next { right: 12px; }
+  .hero-arrow svg { width: 20px; height: 20px; }
+}
+
+/* ===== VIDEO SECTION ===== */
+.video-section { padding: 120px 0; }
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+@media (max-width: 900px) { .video-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; } }
+.video-card {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius, 20px);
+  overflow: hidden;
+  background: var(--ink, #16202b);
+  cursor: pointer;
+  border: 1px solid var(--line, #e5ddd0);
+}
+.video-card img.poster { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+.video-card:hover img.poster { transform: scale(1.05); }
+.video-card .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,32,43,0.1) 0%, rgba(22,32,43,0.62) 100%); }
+.video-card .play {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 74px; height: 74px; border-radius: 999px;
+  background: rgba(255,255,255,0.94); color: var(--blue, #008bb0);
+  display: grid; place-items: center;
+  box-shadow: 0 12px 32px -8px rgba(0,0,0,0.45);
+  transition: transform .25s var(--ease);
+}
+.video-card:hover .play { transform: translate(-50%,-50%) scale(1.08); }
+.video-card .play svg { width: 28px; height: 28px; margin-left: 3px; }
+.video-card .v-title {
+  position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 2;
+  color: #fff; font-family: var(--font-serif, serif); font-size: 19px; font-weight: 500;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+.video-card:focus-visible { outline: 3px solid var(--blue, #008bb0); outline-offset: 3px; }
+.video-card iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 </style>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Decorative paw trail (home page only). Sits BEHIND the content (z-index 0),
-     shows through the transparent sections as a soft texture, reveals on scroll.
-     aria-hidden, pointer-events none. The dog cutouts near the bottom are
-     placeholders to swap for real dog graphics (replace #dogSymbol). -->
+<!-- Decorative paw trail (home page only). Behind the content (z-index 0),
+     reveals on scroll. aria-hidden, pointer-events none. Dog cutouts near the
+     bottom are placeholders to swap for real dog graphics (#dogSymbol). -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="pawSymbol" viewBox="0 0 64 64">
     <path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/>
@@ -1051,7 +1113,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 
 <main id="main">
 
-  <!-- ===== HERO (rotating) ===== -->
+  <!-- ===== HERO (rotating, side-arrow navigation) ===== -->
   <section class="hero" id="hero">
     <div class="hero-slide active">
       <div class="hero-image"><img src="images/hero-adopt.jpeg" alt="A gray-muzzled senior dog at rest in soft afternoon light" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></div>
@@ -1069,6 +1131,9 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
       <div class="hero-image"><img src="images/hero-volunteer.jpg" alt="Volunteers and dogs gathered for a morning at the Pacific Grove rescue center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"></div>
       <div class="hero-scrim"></div>
     </div>
+
+    <button class="hero-arrow prev" id="hero-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="hero-arrow next" id="hero-next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
 
     <div class="hero-content">
       <div class="container">
@@ -1097,14 +1162,50 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
         <button data-i="3" aria-label="Slide 4"><span class="bar"></span></button>
       </div>
       <div class="hero-counter">
-        <button id="hero-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
         <span id="hero-cur">01</span><span class="slash">/</span><span>04</span>
-        <button id="hero-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
         <button id="hero-pause" aria-label="Pause slideshow"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
       </div>
     </div>
 
     <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
+  </section>
+
+  <!-- ===== PILLARS (Adopt / Donate / Volunteer) ===== -->
+  <section class="section pillars">
+    <div class="container">
+      <div class="pillars-grid">
+        <div class="reveal"><a class="pillar" href="adopt.html">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Adopt</h3>
+            <p class="pillar-tagline">Open your home.</p>
+            <p>Match with a senior pup whose quiet mornings suit yours.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+        <div class="reveal"><a class="pillar" href="donate.html">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Donate</h3>
+            <p class="pillar-tagline">Fuel the work.</p>
+            <p>Your gift funds medical care, foster stipends and a lifetime promise.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+        <div class="reveal"><a class="pillar" href="volunteer.html">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Volunteer</h3>
+            <p class="pillar-tagline">Walk with us.</p>
+            <p>Foster, transport, write bios. Every hour makes a difference.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+      </div>
+    </div>
   </section>
 
   <!-- ===== ADOPTABLES ===== -->
@@ -1224,112 +1325,74 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     </div>
   </section>
 
-  <!-- ===== PILLARS ===== -->
-  <section class="section pillars">
-    <div class="container">
-      <div class="pillars-grid">
-        <div class="reveal"><a class="pillar" href="adopt.html">
-          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
-          <div style="position:relative;z-index:2">
-            <h3 class="pillar-label">Adopt</h3>
-            <p class="pillar-tagline">Open your home.</p>
-            <p>Match with a senior pup whose quiet mornings suit yours.</p>
-            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a></div>
-        <div class="reveal"><a class="pillar" href="donate.html">
-          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
-          <div style="position:relative;z-index:2">
-            <h3 class="pillar-label">Donate</h3>
-            <p class="pillar-tagline">Fuel the work.</p>
-            <p>Your gift funds medical care, foster stipends and a lifetime promise.</p>
-            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a></div>
-        <div class="reveal"><a class="pillar" href="volunteer.html">
-          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><img src="images/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></div>
-          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
-          <div style="position:relative;z-index:2">
-            <h3 class="pillar-label">Volunteer</h3>
-            <p class="pillar-tagline">Walk with us.</p>
-            <p>Foster, transport, write bios. Every hour makes a difference.</p>
-            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-          </div>
-        </a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== MISSION ===== -->
-  <section class="mission" id="about">
-    <div class="container">
-      <div class="mission-inner">
-        <div class="reveal">
-          <div class="mission-visual">
-            <img src="images/carie.jpg" alt="Carie Broecker with dogs" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block">
-            <div class="float float-1">
-              <div class="ic purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
-              <div><div class="num">Since 2009</div><div class="lbl">A promise kept</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal">
-          <div>
-            <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
-            <h2 class="mission-title">Who will care for your dog if <em>you no longer can?</em></h2>
-            <p class="mission-text">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz, and San Benito counties, through rescue, foster, adoption, hospice, and education.</p>
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:14px 18px;background:var(--blue-50);border-radius:14px;font-size:16px;color:var(--ink-2)">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Serving <strong style="color:var(--ink)">Monterey, Santa Cruz and San Benito</strong> counties since 2009</span>
-            </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap">
-              <a href="surrender.html" class="btn btn-purple">Surrender options</a>
-              <a href="perpetual-care-program.html" class="btn btn-outline">Perpetual care</a>
-            </div>
-            <div class="mission-sig">
-              <div class="avatar" style="overflow:hidden"><img src="images/carie.jpg" alt="Carie Broecker" style="width:100%;height:100%;object-fit:cover;object-position:center top"></div>
-              <div class="who"><strong>Carie Broecker</strong><span>Co-Founder and Executive Director</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROGRAMS ===== -->
-  <section class="section programs" id="helping-paw">
+  <!-- ===== MISSION + PROGRAMS ===== -->
+  <section class="section programs" id="mission">
     <div class="container">
       <div class="reveal">
         <div class="section-header">
-          <span class="eyebrow">Our Programs</span>
-          <h2 class="section-title">A <em>lifetime commitment</em>, not a paperwork kind.</h2>
-          <p class="section-lead">Three intertwined programs, one promise: we walk alongside our dogs and their people for life.</p>
+          <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
+          <h2 class="section-title">Who will care for your dog if <em>you no longer can?</em></h2>
+          <p class="section-lead">We are a resource and advocate for senior dogs and senior people on California's Central Coast. Through rescue, foster, adoption, hospice, and lifelong care, we make sure that when life changes, no dog is left without someone to love them.</p>
         </div>
       </div>
       <div class="programs-grid">
         <div class="reveal"><div class="program-card">
           <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
           <h3>Intake and Adoptions</h3>
-          <p>Finding senior dogs a forever home through careful matching, foster care, and lifelong support.</p>
+          <p>We meet each dog where they are, find the right foster home, and match them with a person for the rest of their days.</p>
           <ul><li>Adoptable dogs</li><li>Courtesy listings</li><li>Adoption process</li><li>Adoption events</li></ul>
           <a href="adopt.html" class="learn">Explore Intake and Adoptions</a>
         </div></div>
         <div class="reveal"><div class="program-card">
           <div class="program-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg></div>
           <h3>Helping Paw</h3>
-          <p>Support for guardians facing hardship. Walking brigade, financial assistance, and temporary fosters.</p>
+          <p>When a guardian is struggling, we step in with dog walking, rides to the vet, financial help, and temporary foster care, so families can stay together.</p>
           <ul><li>Walking brigade</li><li>Financial assistance</li><li>Temporary fosters</li></ul>
           <a href="helping-paw.html" class="learn">Explore Helping Paw</a>
         </div></div>
         <div class="reveal"><div class="program-card">
           <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg></div>
           <h3>Perpetual Care</h3>
-          <p>Making sure your dog is loved and cared for after you are gone. A promise, not a program.</p>
+          <p>Plan ahead with us, and we promise to love and care for your dog if you no longer can. It is a promise, not a program.</p>
           <ul><li>Placing your dog</li><li>Lifetime commitment</li><li>Planning ahead</li></ul>
           <a href="perpetual-care-program.html" class="learn">Explore Perpetual Care</a>
         </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO ===== -->
+  <section class="section video-section">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Watch</span>
+          <h2 class="section-title">Our dogs and our people, in <em>their own words.</em></h2>
+          <p class="section-lead">Short films from the rescue: dogs settling into foster homes, volunteers on their morning walks, and the families who opened their doors.</p>
+        </div>
+      </div>
+      <!-- To go live: paste a YouTube video ID into data-youtube-id (the 11
+           characters after watch?v=). The video then plays inline on click,
+           privacy-friendly (youtube-nocookie) and only loaded when clicked. -->
+      <div class="video-grid reveal">
+        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Meet our senior dogs">
+          <img class="poster" src="images/dog12.jpeg" alt="A senior dog looking calmly toward the camera" loading="lazy">
+          <div class="scrim"></div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="v-title">Meet our senior dogs</div>
+        </div>
+        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Inside the Helping Paw program">
+          <img class="poster" src="images/dog9.jpeg" alt="A volunteer spending time with a small dog" loading="lazy">
+          <div class="scrim"></div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="v-title">Inside the Helping Paw program</div>
+        </div>
+        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Why we foster">
+          <img class="poster" src="images/dog16.jpeg" alt="A foster dog resting comfortably at home" loading="lazy">
+          <div class="scrim"></div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="v-title">Why we foster</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1340,8 +1403,8 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
       <div class="reveal">
         <div class="section-header left">
           <span class="eyebrow">Our Impact</span>
-          <h2 class="section-title" id="impact-title">Quiet numbers. <em>Loud love.</em></h2>
-          <p class="section-lead">Every rescue, every adoption, every quiet walk adds up to something the numbers can only partly hold. Here are four of them, and the lives behind them.</p>
+          <h2 class="section-title" id="impact-title">The lives behind <em>the numbers.</em></h2>
+          <p class="section-lead">Every figure here is really a dog who found home, and the people who got them there. Here are four, with the stories behind them.</p>
         </div>
       </div>
       <div class="impact-stories">
@@ -1614,7 +1677,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     });
   });
 
-  /* Hero rotator */
+  /* Hero rotator (side arrows navigate) */
   var SLIDES = [
     { tag: "Adoption · Senior dogs, ready to love",
       title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
@@ -1669,6 +1732,26 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     });
     schedule();
   }
+
+  /* YouTube video facade: load the iframe only on click (fast first paint),
+     play inline, privacy-friendly via youtube-nocookie. */
+  document.querySelectorAll('.video-card').forEach(function (card) {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    var play = function () {
+      var id = card.getAttribute('data-youtube-id');
+      if (!id || id === 'PLACEHOLDER') return;
+      var ifr = document.createElement('iframe');
+      ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      ifr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
+      ifr.setAttribute('allowfullscreen', '');
+      ifr.setAttribute('title', card.getAttribute('data-title') || 'POMDR video');
+      card.innerHTML = '';
+      card.appendChild(ifr);
+    };
+    card.addEventListener('click', play);
+    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+  });
 
   /* Paw trail: size to the full page, reveal each paw on scroll */
   var trail = document.querySelector('.paw-trail');
