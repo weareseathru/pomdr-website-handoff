@@ -20,6 +20,7 @@
       id: "about", label: "About", href: "about.html",
       children: [
         { id: "about-team",     label: "Our Team",       href: "about.html#team" },
+        { id: "donate",         label: "Ways to Give",   href: "donate.html" },
         { id: "media",          label: "In the Media",   href: "media.html" },
         { id: "videos",         label: "Videos",         href: "videos.html" },
         { id: "testimonials",   label: "Testimonials",   href: "testimonials.html" },
@@ -48,8 +49,9 @@
     {
       id: "helping-paw", label: "Helping Paw", href: "helping-paw.html",
       children: [
-        { id: "helping-paw-main", label: "Helping Paw Program", href: "helping-paw.html" },
-        { id: "resources",        label: "Resources",           href: "resources.html" },
+        { id: "helping-paw-financial", label: "Financial",      href: "helping-paw.html#financial" },
+        { id: "helping-paw-walking",   label: "Walking/Foster", href: "helping-paw.html#walking-foster" },
+        { id: "resources",             label: "Resources",      href: "resources.html" },
       ],
     },
     {
@@ -113,6 +115,55 @@
       }
     }
     return lines.join("");
+  };
+
+  // ---- BREADCRUMBS ----
+  // Trail derived from the page's data-page id against the nav tree, with
+  // overrides for footer-only pages and the /dog/ profile pages. Mirrors the
+  // menu hierarchy, not the URL path. The last crumb is the current page.
+  const CRUMB_OVERRIDES = {
+    privacy:     [{ label: "Privacy" }],
+    terms:       [{ label: "Terms" }],
+    "thank-you": [{ label: "Thank you" }],
+  };
+
+  const buildCrumbTrail = () => {
+    if (!page || page === "home") return null;
+    // Dog profile pages live in /dog/ and all use data-page="adopt"; derive the
+    // dog's name from the document title (split on pipe, en dash, or em dash).
+    // Separators are written as unicode escapes so this file stays em-dash-free.
+    if (inSubdir) {
+      const sep = new RegExp("\\s*[|\\u2013\\u2014]\\s*");
+      const name = (document.title.split(sep)[0] || "").trim();
+      return [{ label: "Adopt", href: "adopt.html" }, { label: name || "Dog profile" }];
+    }
+    if (CRUMB_OVERRIDES[page]) return CRUMB_OVERRIDES[page];
+    for (const top of NAV_ITEMS) {
+      if (top.id === page) return [{ label: top.label }];
+      if (top.children) {
+        const child = top.children.find((c) => c.id === page);
+        if (child) return [{ label: top.label, href: top.href }, { label: child.label }];
+      }
+    }
+    return null;
+  };
+
+  const renderBreadcrumb = () => {
+    const trail = buildCrumbTrail();
+    if (!trail || !trail.length) return "";
+    const crumbs = [`<li><a href="${rel("index.html")}">Home</a></li>`];
+    trail.forEach((c, i) => {
+      const last = i === trail.length - 1;
+      if (last || !c.href) {
+        crumbs.push(`<li><span aria-current="page">${c.label}</span></li>`);
+      } else {
+        crumbs.push(`<li><a href="${rel(c.href)}">${c.label}</a></li>`);
+      }
+    });
+    return `
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container"><ol>${crumbs.join("")}</ol></div>
+      </nav>`;
   };
 
   // ---- SKIP LINK ----
@@ -285,6 +336,18 @@
   const existingFooter = document.querySelector("footer.footer");
   if (existingFooter) existingFooter.outerHTML = footerHTML;
   else document.body.insertAdjacentHTML("beforeend", footerHTML);
+
+  // ---- BREADCRUMB INJECT ----
+  // Sits between the nav and the main content. Skipped on the home page and any
+  // page whose data-page does not resolve to a trail.
+  const crumbHTML = renderBreadcrumb();
+  if (crumbHTML) {
+    const mainEl = document.getElementById("main") || document.querySelector("main");
+    if (mainEl && !document.querySelector(".breadcrumb")) {
+      mainEl.insertAdjacentHTML("beforebegin", crumbHTML);
+      document.body.classList.add("has-breadcrumb");
+    }
+  }
 
   // ---- BEHAVIOR ----
   // Scroll state
