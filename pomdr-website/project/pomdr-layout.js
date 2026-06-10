@@ -122,9 +122,15 @@
   // overrides for footer-only pages and the /dog/ profile pages. Mirrors the
   // menu hierarchy, not the URL path. The last crumb is the current page.
   const CRUMB_OVERRIDES = {
-    privacy:     [{ label: "Privacy" }],
-    terms:       [{ label: "Terms" }],
-    "thank-you": [{ label: "Thank you" }],
+    privacy:        [{ label: "Privacy" }],
+    terms:          [{ label: "Terms" }],
+    "thank-you":    [{ label: "Thank you" }],
+    // About sub-pages (institutional pages, Stage 2).
+    clinic:         [{ label: "About", href: "about.html" }, { label: "Boand Veterinary Clinic" }],
+    "bauer-center": [{ label: "About", href: "about.html" }, { label: "Patricia J. Bauer Center" }],
+    why:            [{ label: "About", href: "about.html" }, { label: "Why senior dogs" }],
+    culture:        [{ label: "About", href: "about.html" }, { label: "Our Culture" }],
+    "mailing-list": [{ label: "Mailing List" }],
   };
 
   const buildCrumbTrail = () => {
