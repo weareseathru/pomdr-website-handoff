@@ -84,7 +84,16 @@ html, body { margin: 0; padding: 0; }
 body {
   font-family: var(--font-sans);
   color: var(--ink);
-  background: var(--cream);
+  /* Subtle, continuous wash so sections shift gently instead of hard color
+     blocks. Cream with the faintest warm, blue, and purple hints. */
+  background: linear-gradient(180deg,
+    #FAF6F0 0%,
+    #F6F1EC 16%,
+    #F1EEF3 40%,
+    #ECF1F4 62%,
+    #F4EFEA 82%,
+    #FAF6F0 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-size: 17px;
@@ -419,10 +428,11 @@ section { position: relative; }
 .section-lead { font-size: 19px; color: var(--ink-2); max-width: 56ch; margin: 0 auto; }
 
 /* ===== ADOPTABLES GRID ===== */
-.adoptables { background: var(--cream); }
+.adoptables { background: transparent; }
 .dogs-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
 }
+.dogs-more { text-align: center; margin-top: 44px; }
 .dog-card {
   background: white; border-radius: var(--radius-lg); overflow: hidden;
   transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
@@ -545,20 +555,20 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   opacity: 0.85;
 }
 .pillar h3 {
-  font-family: var(--font-serif); font-size: 42px; font-weight: 400; letter-spacing: -0.02em;
-  margin: 0 0 10px;
+  font-family: var(--font-serif); font-size: 50px; font-weight: 500; letter-spacing: -0.02em;
+  margin: 0 0 12px;
 }
-.pillar p { font-size: 15px; opacity: 0.9; margin: 0 0 22px; max-width: 32ch; }
+.pillar p { font-size: 16px; opacity: 0.92; margin: 0 0 22px; max-width: 32ch; }
 .pillar-cta {
   display: inline-flex; align-items: center; gap: 10px;
-  font-size: 14px; font-weight: 600;
-  padding: 10px 18px; border-radius: 999px;
-  background: rgba(255,255,255,0.18); backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.3);
+  font-size: 16px; font-weight: 600;
+  padding: 12px 22px; border-radius: 999px;
+  background: var(--blue-100); color: var(--blue-900);
+  border: none;
   width: fit-content;
   transition: all 0.25s var(--ease);
 }
-.pillar:hover .pillar-cta { background: white; color: var(--ink); }
+.pillar:hover .pillar-cta { background: #fff; color: var(--blue-900); }
 
 /* ===== MISSION ===== */
 .mission { background: var(--cream); padding: 140px 0; }
@@ -605,7 +615,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 .mission-sig .who span { color: var(--ink-3); }
 
 /* ===== PROGRAMS ===== */
-.programs { background: var(--blue-50); padding: 120px 0; }
+.programs { background: transparent; padding: 120px 0; }
 .programs-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
 }
@@ -642,20 +652,20 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 
 /* ===== IMPACT ===== */
 .impact {
-  background: var(--ink); color: white;
+  background: transparent; color: var(--ink);
   padding: 100px 0; overflow: hidden; position: relative;
 }
 .impact::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(0,139,176,0.25), transparent 55%),
-              radial-gradient(ellipse at 80% 80%, rgba(99,47,136,0.2), transparent 60%);
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,139,176,0.06), transparent 55%),
+              radial-gradient(ellipse at 80% 80%, rgba(99,47,136,0.05), transparent 60%);
 }
 .impact .container { position: relative; z-index: 1; }
 
 /* Story rows: each stat paired with a photo, alternating sides on desktop. */
 .impact-stories {
   margin-top: 72px;
-  border-top: 1px solid rgba(255,255,255,0.12);
+  border-top: 1px solid var(--line);
   display: flex; flex-direction: column;
   gap: 0;
 }
@@ -663,14 +673,14 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
   align-items: center;
   padding: 64px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid var(--line);
 }
 .impact-row:last-child { border-bottom: none; }
 .impact-row .impact-photo {
   position: relative; border-radius: var(--radius-lg);
   overflow: hidden; aspect-ratio: 4 / 3;
-  background: rgba(255,255,255,0.04);
-  box-shadow: 0 30px 60px -24px rgba(0,0,0,0.5);
+  background: var(--cream-2);
+  box-shadow: 0 24px 50px -22px rgba(22,32,43,0.22);
 }
 .impact-row .impact-photo img {
   width: 100%; height: 100%; object-fit: cover; display: block;
@@ -685,27 +695,27 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   line-height: 0.95; letter-spacing: -0.03em;
   display: flex; align-items: flex-start;
 }
-.stat .num .sym { font-size: 0.42em; color: var(--blue-200); padding-left: 6px; padding-top: 14px; }
+.stat .num .sym { font-size: 0.42em; color: var(--blue); padding-left: 6px; padding-top: 14px; }
 .stat .lbl {
   margin-top: 14px; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: rgba(255,255,255,0.72); font-weight: 600;
+  color: var(--ink-3); font-weight: 600;
 }
-.stat .desc { margin-top: 6px; font-size: 14px; color: rgba(255,255,255,0.55); }
+.stat .desc { margin-top: 6px; font-size: 15px; color: var(--ink-3); }
 .stat .story {
   margin-top: 24px;
   font-family: var(--font-serif); font-size: 22px; line-height: 1.45;
-  color: rgba(255,255,255,0.92); font-weight: 400; letter-spacing: -0.005em;
+  color: var(--ink-2); font-weight: 400; letter-spacing: -0.005em;
   max-width: 36ch;
 }
 .impact .section-header { text-align: left; margin: 0; max-width: 720px; }
-.impact .section-title { color: white; }
-.impact .section-title em { color: var(--blue-200); }
-.impact .section-lead { color: rgba(255,255,255,0.7); margin: 0; }
-.impact .eyebrow { color: var(--blue-200); }
-.impact .eyebrow::before { background: var(--blue-200); }
+.impact .section-title { color: var(--ink); }
+.impact .section-title em { color: var(--blue); }
+.impact .section-lead { color: var(--ink-2); margin: 0; }
+.impact .eyebrow { color: var(--blue-700); }
+.impact .eyebrow::before { background: var(--blue); }
 
 /* ===== HAPPY TAILS ===== */
-.tails { background: var(--cream); padding: 120px 0; }
+.tails { background: transparent; padding: 120px 0; }
 .tails-grid {
   display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px;
   margin-top: 48px;
@@ -737,7 +747,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 .tail-card .dog-thumb { width: 60px; height: 60px; border-radius: 16px; background-size: cover; background-position: center; margin-left: auto; }
 
 /* ===== EVENTS ===== */
-.events { background: var(--purple-50); padding: 120px 0; }
+.events { background: transparent; padding: 120px 0; }
 .events-layout {
   display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px;
 }
@@ -797,31 +807,32 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 
 /* ===== NEWSLETTER / PERPETUAL CTA ===== */
 .newsletter {
-  background: var(--blue); color: white; padding: 100px 0; position: relative; overflow: hidden;
+  background: transparent; color: var(--ink); padding: 100px 0; position: relative; overflow: hidden;
 }
 .newsletter::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.15), transparent 60%);
+  background: radial-gradient(ellipse at 30% 0%, rgba(0,139,176,0.05), transparent 60%);
 }
 .newsletter .container { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
 .newsletter h2 { font-family: var(--font-serif); font-weight: 300; font-size: clamp(36px, 4vw, 54px); line-height: 1.05; letter-spacing: -0.02em; margin: 16px 0 18px; }
-.newsletter h2 em { font-style: italic; color: #f7ddb7; }
-.newsletter p { font-size: 18px; opacity: 0.9; max-width: 46ch; }
-.newsletter .eyebrow { color: #f7ddb7; }
-.newsletter .eyebrow::before { background: #f7ddb7; }
+.newsletter h2 em { font-style: italic; color: var(--blue); }
+.newsletter p { font-size: 18px; color: var(--ink-2); max-width: 46ch; }
+.newsletter .eyebrow { color: var(--blue-700); }
+.newsletter .eyebrow::before { background: var(--blue); }
 .newsletter-form {
-  background: rgba(255,255,255,0.1); backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
   border-radius: 24px; padding: 28px;
 }
-.newsletter-form label { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: rgba(255,255,255,0.8); }
+.newsletter-form label { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--ink-2); }
 .nform-row {
   display: flex; align-items: center; gap: 8px;
-  background: white; padding: 6px 6px 6px 20px; border-radius: 999px;
+  background: var(--cream); border: 1px solid var(--line); padding: 6px 6px 6px 20px; border-radius: 999px;
   margin-top: 12px;
 }
 .nform-row input {
-  flex: 1; border: none; background: transparent; font-family: inherit; font-size: 15px;
+  flex: 1; border: none; background: transparent; font-family: inherit; font-size: 16px;
   padding: 12px 0; color: var(--ink); outline: none;
 }
 .nform-row button {
@@ -830,7 +841,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   transition: all 0.25s var(--ease);
 }
 .nform-row button:hover { background: var(--purple); }
-.newsletter-form .fine { font-size: 12px; opacity: 0.75; margin-top: 14px; }
+.newsletter-form .fine { font-size: 13px; color: var(--ink-3); margin-top: 14px; }
 
 /* ===== FOOTER ===== */
 .footer { background: var(--blue-900); color: white; padding: 80px 0 40px; }
@@ -1179,7 +1190,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
             <h3 class="pillar-label">Adopt</h3>
-            <p class="pillar-tagline">Open your home.</p>
             <p>Match with a senior pup whose quiet mornings suit yours.</p>
             <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
@@ -1189,7 +1199,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
             <h3 class="pillar-label">Donate</h3>
-            <p class="pillar-tagline">Fuel the work.</p>
             <p>Your gift funds medical care, foster stipends and a lifetime promise.</p>
             <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
@@ -1199,7 +1208,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
             <h3 class="pillar-label">Volunteer</h3>
-            <p class="pillar-tagline">Walk with us.</p>
             <p>Foster, transport, write bios. Every hour makes a difference.</p>
             <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
@@ -1208,13 +1216,49 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     </div>
   </section>
 
-  <!-- ===== ADOPTABLES ===== -->
+  <!-- ===== MISSION + PROGRAMS ===== -->
+  <section class="section programs" id="mission">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
+          <h2 class="section-title">Who will care for your dog if <em>you no longer can?</em></h2>
+          <p class="section-lead">We are a resource and advocate for senior dogs and senior people on California's Central Coast. Through rescue, foster, adoption, hospice, and lifelong care, we make sure that when life changes, no dog is left without someone to love them.</p>
+        </div>
+      </div>
+      <div class="programs-grid">
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
+          <h3>Intake and Adoptions</h3>
+          <p>We meet each dog where they are, find the right foster home, and match them with a person for the rest of their days.</p>
+          <ul><li>Adoptable dogs</li><li>Courtesy listings</li><li>Adoption process</li><li>Adoption events</li></ul>
+          <a href="adopt.html" class="learn">Explore Intake and Adoptions</a>
+        </div></div>
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg></div>
+          <h3>Helping Paw</h3>
+          <p>When a guardian is struggling, we step in with dog walking, rides to the vet, financial help, and temporary foster care, so families can stay together.</p>
+          <ul><li>Walking brigade</li><li>Financial assistance</li><li>Temporary fosters</li></ul>
+          <a href="helping-paw.html" class="learn">Explore Helping Paw</a>
+        </div></div>
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg></div>
+          <h3>Perpetual Care</h3>
+          <p>Plan ahead with us, and we promise to love and care for your dog if you no longer can. It is a promise, not a program.</p>
+          <ul><li>Placing your dog</li><li>Lifetime commitment</li><li>Planning ahead</li></ul>
+          <a href="perpetual-care-program.html" class="learn">Explore Perpetual Care</a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ADOPTABLES (two rows of three) ===== -->
   <section class="section adoptables" id="adopt">
     <div class="container">
       <div class="reveal">
         <div class="section-header">
           <span class="eyebrow">Adoptable Dogs</span>
-          <h2 class="section-title">Find the pups waiting for <em>their next chapter.</em></h2>
+          <h2 class="section-title">A few of the pups waiting for <em>their next chapter.</em></h2>
           <p class="section-lead">Each of these seniors has a full heart, a few grey hairs, and a story that is not finished yet.</p>
         </div>
       </div>
@@ -1298,65 +1342,9 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
           </div></div>
         </a></div>
 
-        <div class="reveal"><a href="dog/aragorn.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
-          <div class="dog-card"><div class="photo-wrap">
-            <div class="dog-photo"><img src="images/dog7.jpeg" alt="Aragorn" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block"></div>
-            <div class="badge adoption_pending">Adoption Pending</div>
-            <button class="heart" type="button" data-name="Aragorn" aria-label="Save Aragorn to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
-          </div><div class="info">
-            <div class="name">Aragorn</div>
-            <div class="meta-line">~10 yrs · Male · 20 lb · Chihuahua mix</div>
-            <div class="tags"><span class="tag">Regal</span><span class="tag">Affectionate</span></div>
-            <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
-          </div></div>
-        </a></div>
-
-        <div class="reveal"><a href="adopt.html" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
-          <div class="dog-card see-more">
-            <div>
-              <div class="see-more-num">60+</div>
-              <div class="see-more-label">more pups looking for their people</div>
-              <div class="arrow-big"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-            </div>
-          </div>
-        </a></div>
-
       </div>
-    </div>
-  </section>
-
-  <!-- ===== MISSION + PROGRAMS ===== -->
-  <section class="section programs" id="mission">
-    <div class="container">
-      <div class="reveal">
-        <div class="section-header">
-          <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
-          <h2 class="section-title">Who will care for your dog if <em>you no longer can?</em></h2>
-          <p class="section-lead">We are a resource and advocate for senior dogs and senior people on California's Central Coast. Through rescue, foster, adoption, hospice, and lifelong care, we make sure that when life changes, no dog is left without someone to love them.</p>
-        </div>
-      </div>
-      <div class="programs-grid">
-        <div class="reveal"><div class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
-          <h3>Intake and Adoptions</h3>
-          <p>We meet each dog where they are, find the right foster home, and match them with a person for the rest of their days.</p>
-          <ul><li>Adoptable dogs</li><li>Courtesy listings</li><li>Adoption process</li><li>Adoption events</li></ul>
-          <a href="adopt.html" class="learn">Explore Intake and Adoptions</a>
-        </div></div>
-        <div class="reveal"><div class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg></div>
-          <h3>Helping Paw</h3>
-          <p>When a guardian is struggling, we step in with dog walking, rides to the vet, financial help, and temporary foster care, so families can stay together.</p>
-          <ul><li>Walking brigade</li><li>Financial assistance</li><li>Temporary fosters</li></ul>
-          <a href="helping-paw.html" class="learn">Explore Helping Paw</a>
-        </div></div>
-        <div class="reveal"><div class="program-card">
-          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg></div>
-          <h3>Perpetual Care</h3>
-          <p>Plan ahead with us, and we promise to love and care for your dog if you no longer can. It is a promise, not a program.</p>
-          <ul><li>Placing your dog</li><li>Lifetime commitment</li><li>Planning ahead</li></ul>
-          <a href="perpetual-care-program.html" class="learn">Explore Perpetual Care</a>
-        </div></div>
+      <div class="dogs-more">
+        <a href="adopt.html" class="btn btn-primary">See all adoptable dogs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </section>
