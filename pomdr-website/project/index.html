@@ -912,6 +912,57 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .container { padding: 0 20px; }
 }
 
+/* ===== PAW TRAIL (decorative scroll reveal, home page) =====
+   Lean: one SVG symbol reused via <use>, revealed by IntersectionObserver.
+   Only opacity and transform animate (GPU composited, no layout work).
+   Decorative and aria-hidden; honors prefers-reduced-motion. */
+.paw-trail {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.paw-trail .paw,
+.paw-trail .dog-cutout {
+  position: absolute;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.paw-trail .paw {
+  width: 36px; height: 36px;
+  color: var(--blue, #008bb0);
+  transform: translateY(14px) scale(.82) rotate(var(--rot, 0deg));
+  transition: opacity .7s ease, transform .7s ease;
+}
+.paw-trail .paw.in {
+  opacity: .09;
+  transform: translateY(0) scale(1) rotate(var(--rot, 0deg));
+}
+.paw-trail .dog-cutout {
+  width: 132px; height: 132px;
+  color: var(--purple, #632F88);
+  transform: translateY(22px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+.paw-trail .dog-cutout.in { opacity: .15; transform: translateY(0); }
+@media (max-width: 760px) {
+  .paw-trail .paw { width: 24px; height: 24px; }
+  .paw-trail .dog-cutout { width: 92px; height: 92px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paw-trail .paw, .paw-trail .paw.in {
+    transition: none;
+    transform: rotate(var(--rot, 0deg));
+    opacity: .08;
+  }
+  .paw-trail .dog-cutout, .paw-trail .dog-cutout.in {
+    transition: none; transform: none; opacity: .12;
+  }
+}
+
 </style>
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -919,6 +970,44 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 </head>
 <body>
 <div id="root"></div>
+
+<!-- Decorative paw trail. Reveals on scroll, sits behind content, pointer-events
+     none, aria-hidden. Paws meander down the left, cross over, and resolve into
+     dog-cutout placeholders near the bottom (swap the #dogSymbol for real dog
+     graphics when uploaded). -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="pawSymbol" viewBox="0 0 64 64">
+    <ellipse cx="32" cy="43" rx="16" ry="13"/>
+    <ellipse cx="13" cy="26" rx="6" ry="8.5"/>
+    <ellipse cx="26" cy="16" rx="6.5" ry="9"/>
+    <ellipse cx="40" cy="16" rx="6.5" ry="9"/>
+    <ellipse cx="53" cy="26" rx="6" ry="8.5"/>
+  </symbol>
+  <symbol id="dogSymbol" viewBox="0 0 100 100">
+    <path d="M6 72 V50 c0-9 7-16 16-16 h3 l5-9 c1-2 4-2 5 0 l4 9 h18 c9 0 16 7 16 16 v22 h-8 V56 c-2 3-5 5-9 6 v10 h-8 V63 h-9 v9 h-8 V62 c-4-1-7-3-9-6 v16 z"/>
+    <circle cx="30" cy="46" r="3.4"/>
+  </symbol>
+</svg>
+<div class="paw-trail" aria-hidden="true">
+  <svg class="paw" style="top:5%;left:9%;--rot:15deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:10%;left:12%;--rot:28deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:15%;left:9%;--rot:12deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:20%;left:14%;--rot:32deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:26%;left:11%;--rot:22deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:31%;left:17%;--rot:40deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:37%;left:14%;--rot:30deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:43%;left:22%;--rot:52deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:48%;left:32%;--rot:66deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:53%;left:44%;--rot:80deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:58%;left:56%;--rot:92deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:63%;left:66%;--rot:104deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:68%;left:74%;--rot:114deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:73%;left:81%;--rot:122deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:79%;left:85%;--rot:116deg"><use href="#pawSymbol"/></svg>
+  <svg class="paw" style="top:85%;left:88%;--rot:128deg"><use href="#pawSymbol"/></svg>
+  <svg class="dog-cutout" style="top:90%;left:66%"><use href="#dogSymbol"/></svg>
+  <svg class="dog-cutout" style="top:93%;left:80%"><use href="#dogSymbol"/></svg>
+</div>
 
 <script>
 // Tweakable defaults (persisted)
@@ -1816,6 +1905,43 @@ const App = () => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
+</script>
+
+<!-- Paw trail reveal. Plain JS, no library. Sizes the trail to the full page
+     so the meander spans it, then reveals each paw as it enters the viewport. -->
+<script>
+(function () {
+  var trail = document.querySelector('.paw-trail');
+  if (!trail) return;
+  function syncHeight() {
+    var h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body ? document.body.scrollHeight : 0
+    );
+    trail.style.height = h + 'px';
+  }
+  syncHeight();
+  window.addEventListener('resize', syncHeight, { passive: true });
+  // Re-sync after the React app and images settle so positions are accurate.
+  window.addEventListener('load', function () {
+    setTimeout(syncHeight, 200);
+    setTimeout(syncHeight, 900);
+  });
+  var items = trail.querySelectorAll('.paw, .dog-cutout');
+  if (!('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -8% 0px' });
+  Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+})();
 </script>
 </body>
 </html>

@@ -119,6 +119,18 @@ bauer-center, about/culture, mailing-list (Mailchimp signup), contact (per
 decision), adoption-questionnaire (LGL form host), donation (LGL form host).
 Each gets the action-surfacing treatment and breadcrumbs.
 
+### Stage 2.5, Design refresh: paw trail. Status: DONE (needs browser check).
+
+A lean, performant brand touch on the home page: low-opacity paw prints that
+reveal on scroll in a meandering path (down the left, across, to the right),
+resolving into dog-cutout placeholders near the bottom (swap `#dogSymbol` for
+real dog graphics when uploaded). Implementation: one reused SVG `<symbol>` via
+`<use>`, a single IntersectionObserver (no scroll handler, no library), and
+only opacity/transform animation (GPU composited). Decorative and aria-hidden,
+pointer-events none, and `prefers-reduced-motion` renders it static. Tunable via
+the paw `top`/`left`/`--rot` inline values and the `.paw.in` opacity. Visual
+layering and readability over content need an in-browser check.
+
 ### Stage 3, Ways to Give (Tier 3)
 
 Refine the donate hub, then build the standalone pages (planned-giving, legacy,
