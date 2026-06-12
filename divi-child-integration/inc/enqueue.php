@@ -16,6 +16,25 @@ add_action( 'wp_enqueue_scripts', function () {
         filemtime( get_stylesheet_directory() . '/assets/css/pomdr-design.css' )
     );
 
+    // Accessibility layer (always-on baseline + opt-in senior mode). Loaded
+    // after pomdr-design so it reads its tokens and wins on the cascade.
+    wp_enqueue_style(
+        'pomdr-a11y',
+        get_stylesheet_directory_uri() . '/assets/css/a11y.css',
+        array( 'pomdr-design' ),
+        filemtime( get_stylesheet_directory() . '/assets/css/a11y.css' )
+    );
+
+    // Accessibility behavior: floating toggle + single scroll-reveal observer.
+    // All pages, footer, deferred. Core content works without it.
+    wp_enqueue_script(
+        'pomdr-a11y',
+        get_stylesheet_directory_uri() . '/assets/js/a11y.js',
+        array(),
+        filemtime( get_stylesheet_directory() . '/assets/js/a11y.js' ),
+        true
+    );
+
     // Gallery lightbox - only on single pet pages.
     if ( is_singular( 'pets' ) ) {
         wp_enqueue_script(

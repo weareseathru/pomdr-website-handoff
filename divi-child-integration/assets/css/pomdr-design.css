@@ -52,6 +52,21 @@
   --shadow-nav: 0 8px 32px -12px rgba(22,32,43,.12);
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Accessible color for small text and links (#008bb0 fails 4.5:1; this passes
+     at 5.98:1). Mirrors the prototype's Fix 2 tokens. */
+  --blue-text: var(--blue-700);
+  --orange-text: #a05800;
+  --blue-link: var(--blue-text);
+
+  /* ===== Accessibility knobs (a11y.css and its senior mode flip these) ===== */
+  --fs-base: 18px;                 /* base body text (was 17px) */
+  --leading: 1.6;                  /* base line-height */
+  --measure: 70ch;                 /* max readable line length */
+  --tap-min: 44px;                 /* min interactive target; senior mode raises to 48px */
+  --focus-w: 3px;                  /* focus ring thickness (WCAG 2.2 focus appearance) */
+  --focus-color: var(--blue-900);  /* high-contrast focus ring (about 9:1) */
+  --reveal-dur: 320ms;             /* scroll-reveal duration, inside 200-400ms band */
 }
 
 /* ===== RESET ===== */
@@ -61,8 +76,8 @@ body {
   font-family: var(--font-sans);
   background: var(--cream);
   color: var(--ink);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: var(--fs-base);
+  line-height: var(--leading);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
