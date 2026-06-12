@@ -13,6 +13,9 @@
   --blue-100: #BCD7E4;
   --blue-200: #7CB9D0;
   --blue-400: #26A1BF;
+  /* Accessible blue for small text (< 24px): clears WCAG AA 4.5:1 where the
+     lighter --blue (#008bb0) does not. Equal to --blue-700. */
+  --blue-text: var(--blue-700);
 
   --purple: #632F88;
   --purple-400: #7F5A9D;
@@ -21,10 +24,12 @@
 
   --orange: #C06B00;
   --orange-50: #FFF5E8;
+  /* Accessible orange for small text (eyebrows): #C06B00 fails 4.5:1 at 12px. */
+  --orange-text: #a05800;
 
   --ink: #16202b;
   --ink-2: #3c4a57;
-  --ink-3: #6b7885;
+  --ink-3: #5a6773;
   --line: #e5ddd0;
   --cream: #FAF6F0;
   --cream-2: #F3ECDF;
@@ -79,7 +84,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--blue-700);
+  color: var(--blue-text);
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -94,7 +99,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .eyebrow.purple { color: var(--purple); }
 .eyebrow.purple::before { background: var(--purple); }
-.eyebrow.orange { color: var(--orange); }
+.eyebrow.orange { color: var(--orange-text); }
 .eyebrow.orange::before { background: var(--orange); }
 .eyebrow.light { color: var(--blue-200); }
 .eyebrow.light::before { background: var(--blue-200); }
@@ -452,7 +457,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn:focus-visible { outline: 3px solid var(--blue-900); outline-offset: 3px; }
 
 .btn-primary {
-  background: var(--blue);
+  background: var(--blue-700);
   color: white;
   box-shadow: 0 10px 24px -6px rgba(0, 139, 176, 0.5);
 }
@@ -1009,7 +1014,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .policy-list li:last-child { border-bottom: none; }
 .policy-list .num {
   font-family: var(--font-serif); font-size: 22px;
-  font-weight: 300; color: var(--blue);
+  font-weight: 300; color: var(--blue-text);
   font-style: italic; margin-right: 4px;
 }
 

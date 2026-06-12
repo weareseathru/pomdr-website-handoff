@@ -17,6 +17,7 @@
 			"palette": [
 				{ "slug": "blue-900",   "name": "Blue 900",   "color": "#004e63" },
 				{ "slug": "blue-700",   "name": "Blue 700",   "color": "#006c8a" },
+				{ "slug": "blue-text",  "name": "Blue Text",  "color": "#006c8a" },
 				{ "slug": "blue",       "name": "Blue",       "color": "#008bb0" },
 				{ "slug": "blue-400",   "name": "Blue 400",   "color": "#26A1BF" },
 				{ "slug": "blue-200",   "name": "Blue 200",   "color": "#7CB9D0" },
@@ -32,11 +33,12 @@
 
 				{ "slug": "orange",     "name": "Orange",     "color": "#C06B00" },
 				{ "slug": "orange-700", "name": "Orange 700", "color": "#a05800" },
+				{ "slug": "orange-text","name": "Orange Text","color": "#a05800" },
 				{ "slug": "orange-50",  "name": "Orange 50",  "color": "#FFF5E8" },
 
 				{ "slug": "ink",        "name": "Ink",        "color": "#16202b" },
 				{ "slug": "ink-2",      "name": "Ink 2",      "color": "#3c4a57" },
-				{ "slug": "ink-3",      "name": "Ink 3",      "color": "#6b7885" },
+				{ "slug": "ink-3",      "name": "Ink 3",      "color": "#5a6773" },
 
 				{ "slug": "cream",      "name": "Cream",      "color": "#FAF6F0" },
 				{ "slug": "cream-2",    "name": "Cream 2",    "color": "#F3ECDF" },
