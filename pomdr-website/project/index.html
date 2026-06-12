@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="tokens.css" />
 <!-- Always-on a11y baseline + floating toggle + opt-in senior mode. -->
 <link rel="stylesheet" href="a11y.css" />
+<!-- Decorative scroll-driven watercolor paw trail (self-contained module). -->
+<link rel="stylesheet" href="paw-trail.css" />
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -889,60 +891,11 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .container { padding: 0 20px; }
 }
 
-/* ===== PAW TRAIL (decorative scroll reveal, home page) =====
-   Lean: one SVG symbol reused via <use>, revealed by IntersectionObserver.
-   Only opacity and transform animate (GPU composited, no layout work).
-   Decorative and aria-hidden; honors prefers-reduced-motion. */
-.paw-trail {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  min-height: 100%;
-  pointer-events: none;
-  z-index: 0;            /* behind the content (which sits at z-index 1) */
-  overflow: hidden;
-}
-/* Lift the page content above the paw trail so the paws read as a soft
-   background texture, showing through the transparent sections only. */
-.nav, #main, .footer { position: relative; z-index: 1; }
-.paw-trail .paw,
-.paw-trail .dog-cutout {
-  position: absolute;
-  opacity: 0;
-  will-change: opacity, transform;
-}
-.paw-trail .paw {
-  width: 40px; height: 40px;
-  color: var(--ink, #16202b);
-  transform: translateY(14px) scale(.8) rotate(var(--rot, 0deg));
-  transition: opacity .8s var(--ease, ease), transform .8s var(--ease, ease);
-}
-.paw-trail .paw.in {
-  opacity: .07;
-  transform: translateY(0) scale(1) rotate(var(--rot, 0deg));
-}
-.paw-trail .paw.purple { color: var(--purple, #632F88); }
-.paw-trail .dog-cutout {
-  width: 150px; height: 150px;
-  color: var(--purple, #632F88);
-  transform: translateY(24px);
-  transition: opacity 1s var(--ease, ease), transform 1s var(--ease, ease);
-}
-.paw-trail .dog-cutout.in { opacity: .12; transform: translateY(0); }
-@media (max-width: 760px) {
-  .paw-trail .paw { width: 28px; height: 28px; }
-  .paw-trail .dog-cutout { width: 104px; height: 104px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .paw-trail .paw, .paw-trail .paw.in {
-    transition: none;
-    transform: rotate(var(--rot, 0deg));
-    opacity: .06;
-  }
-  .paw-trail .dog-cutout, .paw-trail .dog-cutout.in {
-    transition: none; transform: none; opacity: .1;
-  }
-}
+/* ===== PAW TRAIL =====
+   The decorative scroll-driven watercolor paw trail now lives in its own
+   self-contained module (paw-trail.css + paw-trail.js, with GSAP vendored in
+   vendor/). It injects its own layer and lifts .nav, #main, and .footer above
+   it. Nothing for it is declared here. */
 
 /* ===== HERO SIDE ARROWS ===== */
 .hero-arrow {
@@ -1012,42 +965,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<!-- Decorative paw trail (home page only). Behind the content (z-index 0),
-     reveals on scroll. aria-hidden, pointer-events none. Dog cutouts near the
-     bottom are placeholders to swap for real dog graphics (#dogSymbol). -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="pawSymbol" viewBox="0 0 64 64">
-    <path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/>
-    <ellipse cx="12" cy="31" rx="5" ry="7.6" transform="rotate(-28 12 31)"/>
-    <ellipse cx="24" cy="19" rx="5.2" ry="8.2" transform="rotate(-11 24 19)"/>
-    <ellipse cx="40" cy="19" rx="5.2" ry="8.2" transform="rotate(11 40 19)"/>
-    <ellipse cx="52" cy="31" rx="5" ry="7.6" transform="rotate(28 52 31)"/>
-  </symbol>
-  <symbol id="dogSymbol" viewBox="0 0 100 100">
-    <path d="M6 72 V50 c0-9 7-16 16-16 h3 l5-9 c1-2 4-2 5 0 l4 9 h18 c9 0 16 7 16 16 v22 h-8 V56 c-2 3-5 5-9 6 v10 h-8 V63 h-9 v9 h-8 V62 c-4-1-7-3-9-6 v16 z"/>
-    <circle cx="30" cy="46" r="3.4"/>
-  </symbol>
-</svg>
-<div class="paw-trail" aria-hidden="true">
-  <svg class="paw" style="top:5%;left:9%;--rot:15deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:10%;left:12%;--rot:28deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw purple" style="top:15%;left:9%;--rot:12deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:20%;left:14%;--rot:32deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:26%;left:11%;--rot:22deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw purple" style="top:31%;left:17%;--rot:40deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:37%;left:14%;--rot:30deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:43%;left:22%;--rot:52deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw purple" style="top:48%;left:32%;--rot:66deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:53%;left:44%;--rot:80deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:58%;left:56%;--rot:92deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw purple" style="top:63%;left:66%;--rot:104deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:68%;left:74%;--rot:114deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:73%;left:81%;--rot:122deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw purple" style="top:79%;left:85%;--rot:116deg"><use href="#pawSymbol"/></svg>
-  <svg class="paw" style="top:85%;left:88%;--rot:128deg"><use href="#pawSymbol"/></svg>
-  <svg class="dog-cutout" style="top:90%;left:66%"><use href="#dogSymbol"/></svg>
-  <svg class="dog-cutout" style="top:93%;left:80%"><use href="#dogSymbol"/></svg>
-</div>
+<!-- The decorative paw trail injects its own layer from paw-trail.js. -->
 
 <!-- ===== NAV ===== -->
 <nav class="nav" id="site-nav">
@@ -1699,29 +1617,15 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
   });
 
-  /* Paw trail: size to the full page, reveal each paw on scroll */
-  var trail = document.querySelector('.paw-trail');
-  if (trail) {
-    var syncHeight = function () {
-      var h = Math.max(document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0);
-      trail.style.height = h + 'px';
-    };
-    syncHeight();
-    window.addEventListener('resize', syncHeight, { passive: true });
-    window.addEventListener('load', function () { setTimeout(syncHeight, 200); setTimeout(syncHeight, 900); });
-    var paws = trail.querySelectorAll('.paw, .dog-cutout');
-    if (!('IntersectionObserver' in window)) {
-      paws.forEach(function (el) { el.classList.add('in'); });
-    } else {
-      var pio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); pio.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -8% 0px' });
-      paws.forEach(function (el) { pio.observe(el); });
-    }
-  }
+  /* The paw trail is handled by its own module (paw-trail.js), loaded below. */
 })();
 </script>
 <!-- Shared accessibility utility: floating toggle + single scroll-reveal observer. -->
 <script src="a11y.js" defer></script>
+<!-- Decorative paw trail: GSAP + ScrollTrigger vendored locally (no CDN), then
+     the self-contained module. Defer so it runs after the markup is parsed. -->
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="paw-trail.js" defer></script>
 </body>
 </html>
