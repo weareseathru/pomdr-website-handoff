@@ -10,6 +10,8 @@
 <!-- Design tokens come from the single shared source (tokens.css). Page styles
      stay inline below; tokens are never redeclared here. -->
 <link rel="stylesheet" href="tokens.css" />
+<!-- Always-on a11y baseline + floating toggle + opt-in senior mode. -->
+<link rel="stylesheet" href="a11y.css" />
 <style>
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
@@ -61,8 +63,8 @@ body {
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: var(--fs-base);
+  line-height: var(--leading);
   overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
@@ -859,9 +861,8 @@ body[data-motion="subtle"] .hero-slide.active .hero-image { animation-duration: 
 body[data-motion="rich"] .marquee-track { animation-duration: 110s; }
 body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s; }
 
-/* reveal on scroll */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-.reveal.in { opacity: 1; transform: translateY(0); }
+/* The .reveal scroll utility lives once in a11y.css (token-driven, reduced
+   motion safe) and is driven by a11y.js. Not redefined here. */
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
@@ -1605,16 +1606,8 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     });
   }
 
-  /* Reveal on scroll */
-  var reveals = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)) {
-    reveals.forEach(function (el) { el.classList.add('in'); });
-  } else {
-    var rio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } });
-    }, { rootMargin: '-60px' });
-    reveals.forEach(function (el) { rio.observe(el); });
-  }
+  /* Scroll-reveal is handled by the shared single utility in a11y.js
+     (loaded below), so it is not duplicated here. */
 
   /* Favorite hearts (persisted) */
   var likes;
@@ -1728,5 +1721,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   }
 })();
 </script>
+<!-- Shared accessibility utility: floating toggle + single scroll-reveal observer. -->
+<script src="a11y.js" defer></script>
 </body>
 </html>

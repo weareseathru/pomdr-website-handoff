@@ -75,6 +75,17 @@
     return inSubdir ? "../" + href : href;
   };
 
+  // Load the shared accessibility utility once (floating toggle + the single
+  // scroll-reveal observer). a11y.css arrives via pomdr.css's @import; this is
+  // just the behavior. Path respects the /dog/ subdirectory depth.
+  if (!document.getElementById("pomdr-a11y-js")) {
+    const a11yScript = document.createElement("script");
+    a11yScript.id = "pomdr-a11y-js";
+    a11yScript.src = rel("a11y.js");
+    a11yScript.defer = true;
+    document.head.appendChild(a11yScript);
+  }
+
   const isActive = (item) => {
     if (page === item.id) return true;
     if (item.children) return item.children.some(c => page === c.id);

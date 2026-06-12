@@ -6,8 +6,11 @@
 
 /* ===== TOKENS =====
    Design tokens live in one place: tokens.css. Imported here so every page
-   that links pomdr.css gets them. (index.html links tokens.css directly.) */
+   that links pomdr.css gets them. (index.html links tokens.css directly.)
+   a11y.css adds the always-on accessibility baseline, the floating toggle, and
+   the opt-in senior mode. Both imports must stay at the top (CSS @import rule). */
 @import "tokens.css";
+@import "a11y.css";
 
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; }
@@ -16,8 +19,8 @@ body {
   font-family: var(--font-sans);
   background: var(--cream);
   color: var(--ink);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: var(--fs-base);
+  line-height: var(--leading);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -319,7 +322,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 8px !important;
   padding: 11px 20px !important;
   border-radius: 999px !important;
-  background: var(--blue) !important;
+  background: var(--blue-700) !important;
   color: white !important;
   font-size: 14px !important;
   font-weight: 600 !important;
@@ -566,12 +569,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ===== COMMON COMPONENTS ===== */
 
 /* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
+/* The .reveal scroll utility lives once in a11y.css (token-driven duration,
+   reduced-motion safe). Do not redefine it here. */
 
 /* Cards */
 .card {
@@ -1088,11 +1087,9 @@ ul { margin: 0; padding: 0; list-style: none; }
    ACCESSIBILITY: focus rings + reduced motion
    ============================================================ */
 
-:where(a, button, [role="button"], input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
-  border-radius: 6px;
-}
+/* The global :focus-visible ring lives once in a11y.css (token-driven width
+   and high-contrast color, WCAG 2.2 focus appearance). Component overrides
+   below only adjust offset. */
 .nav-cta:focus-visible,
 .btn:focus-visible { outline-offset: 3px; }
 

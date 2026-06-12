@@ -667,8 +667,7 @@ body[data-motion="rich"] .marquee-track { animation-duration: 22s; }
 body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s; }
 
 /* reveal on scroll */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
-.reveal.in { opacity: 1; transform: translateY(0); }
+/* .reveal lives once in a11y.css (token-driven duration, reduced-motion safe). */
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
