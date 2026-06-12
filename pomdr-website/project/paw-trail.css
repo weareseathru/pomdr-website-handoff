@@ -1,0 +1,98 @@
+/* ============================================================
+   POMDR PAW TRAIL · paw-trail.css
+
+   Decorative scroll-driven watercolor paw-print trail for the
+   homepage. Self-contained module: pairs with paw-trail.js and the
+   vendored GSAP + ScrollTrigger in vendor/. Colors come only from the
+   shared design tokens (tokens.css). The layer sits BEHIND content,
+   is pointer-events:none and aria-hidden, and never changes layout or
+   scroll length. Only transform, opacity, and filter animate.
+   ============================================================ */
+
+/* The full-page layer. Absolute, behind everything, no interaction. The
+   height is set in JS to match the document so prints can be placed in
+   document coordinates without affecting scroll length. */
+.pt-trail {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0;                 /* JS sets the real height to the document height */
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  z-index: 0;                /* behind the page content, which is lifted to 1 */
+  overflow: hidden;
+  contain: layout style;     /* isolate so the layer cannot push layout */
+}
+
+/* Lift the real page above the trail so the prints read as a faint texture
+   showing through the transparent section backgrounds only. The home page
+   sections use transparent backgrounds over the body wash, so the trail
+   glows softly behind them. */
+.nav,
+#main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* The hidden defs carrier (gradients, paw shape, watercolor filters). */
+.pt-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* One paw print. Position and size are set inline (left/top/width/height in
+   document pixels). Hidden by default so nothing shows before JS reveals it
+   on scroll. GSAP animates transform + opacity; the watercolor look is baked
+   into the SVG filter and the layered radial-gradient fills. */
+.pt-paw {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  color: var(--blue);                 /* currentColor feeds the print fills */
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* Pigment pooling from two layered fills of the same shape. The bleed is a
+   larger, fainter halo; the core is denser. Their overlap reads as a pooled
+   center, the halo alone as a feathered edge. Both paint currentColor, so each
+   print takes its token color from the c-* class on .pt-paw. */
+.pt-paw .pt-bleed {
+  fill: currentColor;
+  fill-opacity: 0.4;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(1.18);
+}
+.pt-paw .pt-core {
+  fill: currentColor;
+  fill-opacity: 0.95;
+}
+
+/* Palette, drawn only from the shared tokens. Pastels carry the higher
+   opacities (they are light), saturated hues stay fainter so body text
+   contrast is never affected. JS picks the per-print opacity inside the
+   0.08 to 0.18 band. */
+.pt-paw.c-blue        { color: var(--blue); }        /* #008bb0 */
+.pt-paw.c-purple      { color: var(--purple); }      /* #632F88 */
+.pt-paw.c-blue-200    { color: var(--blue-200); }    /* #7CB9D0 */
+.pt-paw.c-purple-200  { color: var(--purple-200); }  /* #A085B7 */
+.pt-paw.c-blue-100    { color: var(--blue-100); }    /* #BCD7E4 */
+.pt-paw.c-purple-100  { color: var(--purple-100); }  /* #C9BBD7 */
+.pt-paw.c-accent      { color: var(--orange); }      /* warm accent, every ~8th */
+.pt-paw.c-accent-red  { color: #e63946; }            /* --love-red, occasional */
+
+/* Reduced motion: paw-trail.js renders the finished trail statically (final
+   opacity, no scrub, no tweens). This rule is a belt-and-braces guard so no
+   transition can sneak in even if the element is touched. */
+@media (prefers-reduced-motion: reduce) {
+  .pt-paw {
+    transition: none !important;
+    will-change: auto;
+  }
+}
