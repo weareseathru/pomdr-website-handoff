@@ -35,6 +35,23 @@ add_action( 'wp_enqueue_scripts', function () {
         true
     );
 
+    // Homepage redesign layout (scoped under .pomdr-home). Front page only.
+    if ( is_front_page() || is_page( 'home' ) ) {
+        wp_enqueue_style(
+            'pomdr-home',
+            get_stylesheet_directory_uri() . '/assets/css/pomdr-home.css',
+            array( 'pomdr-design' ),
+            filemtime( get_stylesheet_directory() . '/assets/css/pomdr-home.css' )
+        );
+        wp_enqueue_script(
+            'pomdr-home',
+            get_stylesheet_directory_uri() . '/assets/js/pomdr-home.js',
+            array(),
+            filemtime( get_stylesheet_directory() . '/assets/js/pomdr-home.js' ),
+            true
+        );
+    }
+
     // Gallery lightbox - only on single pet pages.
     if ( is_singular( 'pets' ) ) {
         wp_enqueue_script(
