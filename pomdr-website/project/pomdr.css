@@ -4,55 +4,10 @@
    All pages link to this file. Page-specific styles go inline.
    ============================================================ */
 
-/* ===== TOKENS ===== */
-:root {
-  --blue: #008bb0;
-  --blue-700: #006c8a;
-  --blue-900: #004e63;
-  --blue-50: #E8F2F6;
-  --blue-100: #BCD7E4;
-  --blue-200: #7CB9D0;
-  --blue-400: #26A1BF;
-  /* Accessible blue for small text (< 24px): clears WCAG AA 4.5:1 where the
-     lighter --blue (#008bb0) does not. Equal to --blue-700. */
-  --blue-text: var(--blue-700);
-
-  --purple: #632F88;
-  --purple-400: #7F5A9D;
-  --purple-50: #F1EBF5;
-  --purple-100: #C9BBD7;
-
-  --orange: #C06B00;
-  --orange-50: #FFF5E8;
-  /* Accessible orange for small text (eyebrows): #C06B00 fails 4.5:1 at 12px. */
-  --orange-text: #a05800;
-
-  --ink: #16202b;
-  --ink-2: #3c4a57;
-  --ink-3: #5a6773;
-  --line: #e5ddd0;
-  --cream: #FAF6F0;
-  --cream-2: #F3ECDF;
-  --white: #ffffff;
-
-  --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-serif: 'Source Serif 4', 'Iowan Old Style', Palatino, serif;
-
-  --radius-sm: 14px;
-  --radius: 22px;
-  --radius-lg: 32px;
-  --radius-xl: 44px;
-
-  --shadow-sm: 0 2px 8px rgba(22,32,43,.04);
-  --shadow: 0 12px 32px -8px rgba(22,32,43,.12), 0 2px 6px rgba(22,32,43,.04);
-  --shadow-lg: 0 30px 60px -20px rgba(22,32,43,.25);
-  --shadow-nav: 0 8px 32px -12px rgba(22,32,43,.12);
-
-  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-
-  /* Height the fixed nav occupies; breadcrumb uses it to clear the nav. */
-  --nav-h: 104px;
-}
+/* ===== TOKENS =====
+   Design tokens live in one place: tokens.css. Imported here so every page
+   that links pomdr.css gets them. (index.html links tokens.css directly.) */
+@import "tokens.css";
 
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; }
