@@ -122,8 +122,8 @@
 
    How it works: the base size token jumps 18px -> 22px (so all prose that
    inherits it grows), and the elements below that set their own fixed px get
-   an explicit +4px. The +4px values mirror the base sizes in pomdr.css and the
-   page styles. */
+   an explicit +4px. The +4px values mirror the (already senior-enlarged) base
+   sizes in pomdr.css and the page styles. */
 
 html[data-a11y="senior"] {
   --fs-base: 22px;   /* body text: 18px + 4 */
@@ -135,13 +135,13 @@ html[data-a11y="senior"] .nav-item > button,
 html[data-a11y="senior"] .nav-mobile a,
 html[data-a11y="senior"] .nav-dropdown a,
 html[data-a11y="senior"] .breadcrumb a,
-html[data-a11y="senior"] .breadcrumb span { font-size: 18px; }   /* 14 + 4 */
+html[data-a11y="senior"] .breadcrumb span { font-size: 20px; }   /* 16 + 4 */
 /* The nav Donate button sets its base size with !important, so match it. */
-html[data-a11y="senior"] .nav-cta { font-size: 18px !important; } /* 14 + 4 */
+html[data-a11y="senior"] .nav-cta { font-size: 20px !important; } /* 16 + 4 */
 
-/* Eyebrows and small labels. */
-html[data-a11y="senior"] .eyebrow,
-html[data-a11y="senior"] .footer h2 { font-size: 16px; }         /* 12 + 4 */
+/* Eyebrows (the section labels) and footer column headings. */
+html[data-a11y="senior"] .eyebrow { font-size: 21px; }           /* 17 + 4 */
+html[data-a11y="senior"] .footer h2 { font-size: 18px; }         /* 14 + 4 */
 
 /* Leads and intro copy. */
 html[data-a11y="senior"] .section-lead,
@@ -151,22 +151,22 @@ html[data-a11y="senior"] .mission-text { font-size: 23px; }      /* 19 + 4 */
 
 /* Buttons (text only; the box is not resized). */
 html[data-a11y="senior"] .btn,
-html[data-a11y="senior"] .pillar-cta { font-size: 19px; }        /* 15 + 4 */
+html[data-a11y="senior"] .pillar-cta { font-size: 20px; }        /* 16 + 4 */
 
 /* Dog cards and their meta. */
 html[data-a11y="senior"] .dog-card .name { font-size: 30px; }    /* 26 + 4 */
 html[data-a11y="senior"] .meta-line,
 html[data-a11y="senior"] .dog-card .age,
 html[data-a11y="senior"] .program-card p,
-html[data-a11y="senior"] .program-card ul { font-size: 19px; }   /* ~15 + 4 */
-html[data-a11y="senior"] .dog-card .tag { font-size: 15px; }     /* 11 + 4 */
+html[data-a11y="senior"] .program-card ul { font-size: 20px; }   /* ~16 + 4 */
+html[data-a11y="senior"] .dog-card .tag { font-size: 18px; }     /* 14 + 4 */
 
 /* Footer text and links (the links set their own size, so target them). */
 html[data-a11y="senior"] .footer ul,
 html[data-a11y="senior"] .footer-col a,
 html[data-a11y="senior"] .footer-contact,
 html[data-a11y="senior"] .footer-legal,
-html[data-a11y="senior"] .footer-legal-links a { font-size: 18px; } /* ~14 + 4 */
+html[data-a11y="senior"] .footer-legal-links a { font-size: 19px; } /* ~15 + 4 */
 
 /* Forms. */
 html[data-a11y="senior"] input,
