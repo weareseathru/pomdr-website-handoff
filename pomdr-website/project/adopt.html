@@ -14,9 +14,52 @@
 .hero h1{font-family:var(--font-serif);font-size:clamp(40px,6vw,84px);line-height:.98;letter-spacing:-.025em;font-weight:400;margin:14px 0 16px;}
 .hero h1 em{font-style:italic;color:var(--blue);font-weight:300;}
 .hero p{font-size:19px;color:var(--ink-2);max-width:580px;margin:0 0 32px;}
-.hero-meta{display:flex;gap:36px;margin-top:44px;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;}
-.hero-meta strong{font-family:var(--font-serif);font-size:32px;font-weight:300;color:var(--blue);display:block;line-height:1;margin-bottom:3px;}
-.hero-meta span{font-size:13px;color:var(--ink-3);}
+.hero-meta{display:flex;gap:48px;margin-top:44px;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;}
+.hero-meta strong{font-family:var(--font-serif);font-size:34px;font-weight:300;color:var(--blue);display:block;line-height:1;margin-bottom:4px;}
+.hero-meta div{font-size:14px;color:var(--ink-3);}
+
+/* ===== Adopt toolbar, reorganized into clean tiers =====
+   A prominent search on its own row, the category tabs, then one row that
+   carries the filter chips and the sort control together. Overrides the shared
+   single-row toolbar layout from pomdr.css (this <style> loads after it). */
+.toolbar-inner{display:block;padding:18px 32px 16px;}
+
+/* Prominent, full-width search for the dog list. */
+.toolbar-search{
+  display:flex;align-items:center;gap:12px;
+  background:var(--white);border:1.5px solid var(--line);
+  border-radius:999px;padding:5px 8px 5px 20px;margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
+  transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
+}
+.toolbar-search:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(0,139,176,.14);}
+.toolbar-search > svg{color:var(--ink-3);flex-shrink:0;}
+.toolbar-search input{
+  flex:1;min-width:0;border:none;outline:none;background:transparent;
+  font:inherit;font-size:17px;color:var(--ink);padding:13px 0;
+}
+.toolbar-search input::placeholder{color:var(--ink-3);}
+
+/* Category tabs on their own row. */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+
+/* Filters and sort share one tidy row, divided from the tabs above. */
+.toolbar-controls{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px 18px;flex-wrap:wrap;
+  border-top:1px solid var(--line);padding-top:14px;
+}
+.toolbar-controls .filters{display:flex;gap:8px;flex-wrap:wrap;flex:1 1 auto;margin:0;}
+.toolbar-controls .sort{flex-shrink:0;margin-left:auto;}
+
+/* Slim results count above the grid. */
+.results-head{padding:30px 0 20px;}
+
+@media (max-width:600px){
+  .toolbar-inner{padding:14px 20px 12px;}
+  .toolbar-controls{align-items:flex-start;}
+  .toolbar-controls .sort{margin-left:0;}
+}
 </style>
 </head>
 <body data-page="adopt">
@@ -32,38 +75,25 @@
     <div class="eyebrow">Adoptable Dogs · Updated daily</div>
     <h1>Find the dogs looking for their <em>forever</em> people.</h1>
     <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>
-    <div class="page-cta" style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px;">
-      <a href="#dogs-grid" class="btn btn-primary">Browse Adoptable Dogs
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="adoption-form.html" class="btn btn-outline">Apply to Adopt</a>
-    </div>
     <div class="hero-meta">
+      <div><strong id="count-total">-</strong>Adoptable dogs</div>
       <div><strong id="count-available">-</strong>Available now</div>
       <div><strong id="count-foster">-</strong>Need foster</div>
-      <div><strong>98%</strong>Match success</div>
-      <div><strong>16 yrs</strong>Of lifetime care</div>
     </div>
   </div>
 </section>
 
 <div class="toolbar">
   <div class="container toolbar-inner">
-    <div class="tabs" id="tabs"></div>
-    <div class="filters" id="filters"></div>
-    <div class="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
-      <input id="search-input" placeholder="Search by name or breed…" />
+    <div class="toolbar-search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+      <input id="search-input" type="search" aria-label="Search dogs by name or breed" placeholder="Search dogs by name or breed…" />
     </div>
-  </div>
-</div>
-
-<section class="grid-section">
-  <div class="container">
-    <div class="results-row">
-      <div class="results-count serif" id="results-count">-</div>
+    <div class="tabs" id="tabs"></div>
+    <div class="toolbar-controls">
+      <div class="filters" id="filters"></div>
       <div class="sort">
-        Sort by
+        <label for="sort-select">Sort by</label>
         <select id="sort-select">
           <option value="default">Newest</option>
           <option value="age-asc">Age · youngest</option>
@@ -72,6 +102,14 @@
           <option value="weight-desc">Size · largest</option>
         </select>
       </div>
+    </div>
+  </div>
+</div>
+
+<section class="grid-section">
+  <div class="container">
+    <div class="results-head">
+      <div class="results-count serif" id="results-count">-</div>
     </div>
     <div class="dogs-grid" id="dogs-grid"></div>
 
@@ -378,6 +416,8 @@ function render() {
     filtered.length === 1 ? '1 dog' : `${filtered.length} dogs`;
 
   // counts
+  document.getElementById('count-total').textContent =
+    DOGS.filter(d => d.tab === 'adoptable').length;
   document.getElementById('count-available').textContent =
     DOGS.filter(d => d.tab === 'adoptable' && d.status !== 'adoption_pending' && d.status !== 'recently_adopted').length;
   document.getElementById('count-foster').textContent =
