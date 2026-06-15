@@ -701,31 +701,31 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 .tails-grid > .reveal { display: flex; }
 .tails-grid > .reveal > .tail-card { width: 100%; }
 .tail-card {
+  position: relative;
   background: white; border-radius: var(--radius-lg); padding: 32px;
   display: flex; flex-direction: column;
   border: 1px solid rgba(22,32,43,0.04);
-  /* Slow colour fade drives the rotating highlight; lift stays quick. */
-  transition: background 0.7s var(--ease), color 0.7s var(--ease),
-    border-color 0.7s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease),
+    border-color 0.4s var(--ease), transform 0.35s var(--ease), box-shadow 0.4s var(--ease);
 }
-.tail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-/* Rotating highlight: the active quote turns purple. Text size never changes,
-   so only colour animates and nothing reflows. */
-.tail-card.highlighted {
+/* Hover: the card reverses to purple with white text, lifts, and grows a little. */
+.tail-card:hover {
   background: var(--purple); color: #fff; border-color: var(--purple);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: var(--shadow-lg); z-index: 2;
 }
-.tail-card.highlighted .quote-mark { color: rgba(255,255,255,0.32); }
+.tail-card:hover .quote-mark { color: rgba(255,255,255,0.32); }
 .quote-mark { font-family: var(--font-serif); font-size: 80px; line-height: 0.5; color: var(--purple-100); margin-bottom: 10px; }
 .tail-card blockquote {
   font-family: var(--font-serif); font-size: 24px; line-height: 1.35;
   font-style: italic; margin: 0 0 24px; font-weight: 400; letter-spacing: -0.01em;
 }
 .tail-card .person { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(22,32,43,0.08); }
-.tail-card.highlighted .person { border-top-color: rgba(255,255,255,0.2); }
+.tail-card:hover .person { border-top-color: rgba(255,255,255,0.2); }
 .tail-card .person .av { width: 44px; height: 44px; border-radius: 50%; background: var(--blue-100); background-size: cover; background-position: center; }
 .tail-card .person strong { display: block; font-size: 14px; }
 .tail-card .person span { font-size: 12px; color: var(--ink-3); }
-.tail-card.highlighted .person span { color: rgba(255,255,255,0.75); }
+.tail-card:hover .person span { color: rgba(255,255,255,0.75); }
 .tail-card .dog-thumb { width: 60px; height: 60px; border-radius: 16px; background-size: cover; background-position: center; margin-left: auto; }
 /* See more stories link below the quotes. */
 .tails-more { text-align: center; margin-top: 44px; }
@@ -1358,7 +1358,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
         </div>
       </div>
       <div class="tails-grid">
-        <div class="reveal"><div class="tail-card highlighted">
+        <div class="reveal"><div class="tail-card">
           <div class="quote-mark">"</div>
           <blockquote>Rosie walked into our home unsure, and two weeks later she was napping at my feet like she had always been here. Thank you for trusting us with her golden years.</blockquote>
           <div class="person">
@@ -1645,21 +1645,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
   });
 
-  /* Happy Tails: rotate the purple highlight across the three quotes, one every
-     two seconds. Only color animates (text size is fixed), so nothing reflows.
-     Under reduced motion the first quote stays highlighted and it does not move. */
-  var tailCards = document.querySelectorAll('.tails-grid .tail-card');
-  if (tailCards.length) {
-    tailCards.forEach(function (c, i) { c.classList.toggle('highlighted', i === 0); });
-    if (!reduceMotion && tailCards.length > 1) {
-      var tailIdx = 0;
-      setInterval(function () {
-        tailCards[tailIdx].classList.remove('highlighted');
-        tailIdx = (tailIdx + 1) % tailCards.length;
-        tailCards[tailIdx].classList.add('highlighted');
-      }, 2000);
-    }
-  }
+  /* Happy Tails hover (lift, grow, reverse to purple) is handled purely in CSS. */
 
   /* The paw trail is handled by its own module (paw-trail.js), loaded below. */
 })();
