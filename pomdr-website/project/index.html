@@ -75,7 +75,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
 .eyebrow {
-  font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+  font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
   color: var(--blue-700); display: inline-flex; align-items: center; gap: 10px;
 }
 .eyebrow::before {
@@ -692,7 +692,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 /* ===== HAPPY TAILS ===== */
 .tails { background: transparent; padding: 120px 0; }
 .tails-grid {
-  display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   margin-top: 48px;
   align-items: stretch;
 }
@@ -704,27 +704,31 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   background: white; border-radius: var(--radius-lg); padding: 32px;
   display: flex; flex-direction: column;
   border: 1px solid rgba(22,32,43,0.04);
-  transition: all 0.4s var(--ease);
+  /* Slow colour fade drives the rotating highlight; lift stays quick. */
+  transition: background 0.7s var(--ease), color 0.7s var(--ease),
+    border-color 0.7s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 .tail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.tail-card.featured {
-  background: var(--purple); color: white;
-  grid-row: span 1;
+/* Rotating highlight: the active quote turns purple. Text size never changes,
+   so only colour animates and nothing reflows. */
+.tail-card.highlighted {
+  background: var(--purple); color: #fff; border-color: var(--purple);
 }
-.tail-card.featured .quote-mark { color: rgba(255,255,255,0.3); }
+.tail-card.highlighted .quote-mark { color: rgba(255,255,255,0.32); }
 .quote-mark { font-family: var(--font-serif); font-size: 80px; line-height: 0.5; color: var(--purple-100); margin-bottom: 10px; }
 .tail-card blockquote {
   font-family: var(--font-serif); font-size: 24px; line-height: 1.35;
   font-style: italic; margin: 0 0 24px; font-weight: 400; letter-spacing: -0.01em;
 }
-.tail-card.featured blockquote { font-size: 32px; }
 .tail-card .person { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(22,32,43,0.08); }
-.tail-card.featured .person { border-top-color: rgba(255,255,255,0.18); }
+.tail-card.highlighted .person { border-top-color: rgba(255,255,255,0.2); }
 .tail-card .person .av { width: 44px; height: 44px; border-radius: 50%; background: var(--blue-100); background-size: cover; background-position: center; }
 .tail-card .person strong { display: block; font-size: 14px; }
 .tail-card .person span { font-size: 12px; color: var(--ink-3); }
-.tail-card.featured .person span { color: rgba(255,255,255,0.7); }
+.tail-card.highlighted .person span { color: rgba(255,255,255,0.75); }
 .tail-card .dog-thumb { width: 60px; height: 60px; border-radius: 16px; background-size: cover; background-position: center; margin-left: auto; }
+/* See more stories link below the quotes. */
+.tails-more { text-align: center; margin-top: 44px; }
 
 /* ===== EVENTS ===== */
 .events { background: transparent; padding: 120px 0; }
@@ -912,7 +916,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 @media (max-width: 1024px) {
   .dogs-grid { grid-template-columns: repeat(3, 1fr); }
   .tails-grid { grid-template-columns: 1fr 1fr; }
-  .tail-card.featured { grid-column: span 2; }
   .pillars-grid, .programs-grid { grid-template-columns: 1fr; }
   .mission-inner, .events-layout, .newsletter .container { grid-template-columns: 1fr; gap: 40px; }
   .nav-links a:not(.nav-cta) { display: none; }
@@ -920,7 +923,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 @media (max-width: 640px) {
   .dogs-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .tails-grid { grid-template-columns: 1fr; }
-  .tail-card.featured { grid-column: auto; }
   .hero-meta { display: none; }
   .stat .story { font-size: 19px; }
   .section { padding: 80px 0; }
@@ -968,7 +970,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 @media (max-width: 900px) { .video-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; } }
 .video-card {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius, 20px);
   overflow: hidden;
   background: var(--ink, #16202b);
@@ -1356,7 +1358,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
         </div>
       </div>
       <div class="tails-grid">
-        <div class="reveal"><div class="tail-card featured">
+        <div class="reveal"><div class="tail-card highlighted">
           <div class="quote-mark">"</div>
           <blockquote>Rosie walked into our home unsure, and two weeks later she was napping at my feet like she had always been here. Thank you for trusting us with her golden years.</blockquote>
           <div class="person">
@@ -1380,6 +1382,9 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
             <div><strong>David and Marta</strong><span>adopted Biscuit · Santa Cruz</span></div>
           </div>
         </div></div>
+      </div>
+      <div class="tails-more">
+        <a href="testimonials.html" class="btn btn-purple">See more stories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </section>
@@ -1639,6 +1644,22 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     card.addEventListener('click', play);
     card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
   });
+
+  /* Happy Tails: rotate the purple highlight across the three quotes, one every
+     two seconds. Only color animates (text size is fixed), so nothing reflows.
+     Under reduced motion the first quote stays highlighted and it does not move. */
+  var tailCards = document.querySelectorAll('.tails-grid .tail-card');
+  if (tailCards.length) {
+    tailCards.forEach(function (c, i) { c.classList.toggle('highlighted', i === 0); });
+    if (!reduceMotion && tailCards.length > 1) {
+      var tailIdx = 0;
+      setInterval(function () {
+        tailCards[tailIdx].classList.remove('highlighted');
+        tailIdx = (tailIdx + 1) % tailCards.length;
+        tailCards[tailIdx].classList.add('highlighted');
+      }, 2000);
+    }
+  }
 
   /* The paw trail is handled by its own module (paw-trail.js), loaded below. */
 })();
