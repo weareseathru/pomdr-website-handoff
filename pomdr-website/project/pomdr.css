@@ -506,7 +506,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 10px;
   font-size: 13px;
 }
-.footer ul a { opacity: 0.8; }
+/* Slightly heavier weight so the footer options stand out and are easy to read. */
+.footer ul a { opacity: 0.85; font-weight: 500; }
 .footer ul a:hover { opacity: 1; color: white; }
 .footer-bottom {
   padding-top: 28px;
@@ -1059,14 +1060,25 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .nav-mobile a.m-child.active { color: var(--blue-700); }
 
-/* Footer Visit Us block. */
-.footer-locations h2 { margin-bottom: 12px; }
-.footer-addresses {
+/* Footer Visit Us block. Spans the full width as its own band, with the three
+   addresses laid out side by side (horizontal) instead of stacked. */
+.footer-locations {
+  grid-column: 1 / -1;
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-locations h2 { margin-bottom: 14px; }
+/* Scoped under .footer so it beats the generic ".footer ul" flex-column rule
+   and the addresses actually sit in a horizontal row. */
+.footer .footer-addresses {
   list-style: none;
   padding: 0;
-  margin: 0 0 14px;
-  display: grid;
-  gap: 12px;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px 48px;
 }
 .footer-addresses li {
   display: grid;
@@ -1074,14 +1086,11 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 13px;
   line-height: 1.5;
   opacity: 0.85;
+  min-width: 180px;
 }
 .footer-addresses strong { color: white; font-weight: 600; opacity: 1; }
 .footer-addresses span { opacity: 0.75; }
 .footer-hours { font-size: 12px; opacity: 0.7; margin: 0; }
-
-@media (max-width: 900px) {
-  .footer-locations { grid-column: 1 / -1; }
-}
 
 /* ============================================================
    ACCESSIBILITY: focus rings + reduced motion
