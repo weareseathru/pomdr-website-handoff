@@ -11,13 +11,25 @@
 <style>
 /* PAGE HERO */
 .page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(0,139,176,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
+.page-hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+/* Title uses the same serif as the other titles, with italic-blue emphasis. */
+.page-hero h1{font-family:var(--font-serif);font-size:clamp(44px,5.5vw,80px);font-weight:300;line-height:1.02;letter-spacing:-.03em;margin:0 0 18px;max-width:18ch;}
+.page-hero h1 em{font-style:italic;font-weight:300;color:var(--blue);}
+/* Placeholder slots for transparent dog cutout PNGs (added later). */
+.hero-cutouts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;}
+.cutout-slot{aspect-ratio:3/4;border-radius:var(--radius-lg);border:2px dashed var(--blue-200);background:linear-gradient(180deg,var(--blue-50),rgba(232,242,246,.25));display:grid;place-items:center;color:var(--blue-200);}
+.cutout-slot:nth-child(2){aspect-ratio:3/4.5;}
+.cutout-slot svg{width:40px;height:40px;opacity:.8;}
+@media(max-width:860px){.page-hero .container{grid-template-columns:1fr;gap:36px;}.hero-cutouts{max-width:440px;}}
 /* MISSION BAND */
-.mission-band{background:var(--ink);color:#fff;padding:64px 0;}
-.mission-band .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-.mission-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;line-height:1.05;letter-spacing:-.02em;margin:0;}
+.mission-band{background:var(--blue-900);color:#fff;padding:72px 0;}
+/* Top-align so the large title and the smaller body text start on the same line. */
+.mission-band .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.mission-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin:0;}
 .mission-band h2 em{font-style:italic;color:var(--blue-200);}
-.mission-band p{font-size:16px;color:rgba(255,255,255,.8);margin:0 0 14px;}
-@media(max-width:800px){.mission-band .container{grid-template-columns:1fr;gap:28px;}}
+.mission-band p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.88);margin:0 0 14px;}
+.mission-band p:last-child{margin-bottom:0;}
+@media(max-width:800px){.mission-band .container{grid-template-columns:1fr;gap:24px;}}
 /* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:48px;background:var(--blue-50);border-radius:var(--radius-xl);margin-top:48px;}
 .stat-item .num{font-family:var(--font-serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;line-height:1;color:var(--blue-700);}
@@ -74,12 +86,21 @@
 </script><!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="eyebrow">Our Story · Founded October 2009</div>
-    <h1>Advocating for seniors. <em>Dogs and people</em> alike.</h1>
-    <p>Peace of Mind Dog Rescue is a 501(c)(3) nonprofit based on California's Central Coast, dedicated to senior dogs and the senior people who love them.</p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
-      <a href="adopt.html" class="btn btn-primary">Meet our dogs</a>
-      <a href="volunteer.html" class="btn btn-outline">Volunteer with us</a>
+    <div class="hero-text">
+      <div class="eyebrow">Our Story · Founded October 2009</div>
+      <h1>Advocating for seniors. <em>Dogs and people</em> alike.</h1>
+      <p>Peace of Mind Dog Rescue is a 501(c)(3) nonprofit based on California's Central Coast, dedicated to senior dogs and the senior people who love them.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
+        <a href="adopt.html" class="btn btn-primary">Meet our dogs</a>
+        <a href="volunteer.html" class="btn btn-outline">Volunteer with us</a>
+      </div>
+    </div>
+    <!-- Dog cutouts: replace each .cutout-slot with a transparent PNG cutout of
+         a real POMDR dog when the photos are ready. -->
+    <div class="hero-cutouts" aria-hidden="true">
+      <div class="cutout-slot"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/><ellipse cx="12" cy="31" rx="5" ry="7.6"/><ellipse cx="24" cy="19" rx="5.2" ry="8.2"/><ellipse cx="40" cy="19" rx="5.2" ry="8.2"/><ellipse cx="52" cy="31" rx="5" ry="7.6"/></svg></div>
+      <div class="cutout-slot"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/><ellipse cx="12" cy="31" rx="5" ry="7.6"/><ellipse cx="24" cy="19" rx="5.2" ry="8.2"/><ellipse cx="40" cy="19" rx="5.2" ry="8.2"/><ellipse cx="52" cy="31" rx="5" ry="7.6"/></svg></div>
+      <div class="cutout-slot"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/><ellipse cx="12" cy="31" rx="5" ry="7.6"/><ellipse cx="24" cy="19" rx="5.2" ry="8.2"/><ellipse cx="40" cy="19" rx="5.2" ry="8.2"/><ellipse cx="52" cy="31" rx="5" ry="7.6"/></svg></div>
     </div>
   </div>
 </section>
