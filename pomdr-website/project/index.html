@@ -208,7 +208,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-content {
   position: relative; z-index: 2; height: 100%;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 120px 0 80px;
+  /* Larger, viewport-relative bottom padding lifts the title and buttons up off
+     the floor so they sit closer to the vertical center, nearer the side arrows. */
+  padding: 120px 0 clamp(120px, 17vh, 220px);
   color: white;
 }
 .hero-content .container { width: 100%; }
@@ -307,11 +309,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* Hero controls */
 .hero-controls {
-  position: absolute; left: 32px; right: 32px; bottom: 32px; z-index: 4;
-  display: flex; justify-content: space-between; align-items: center;
+  position: absolute; left: 0; right: 0; bottom: 32px; z-index: 4;
   pointer-events: none;
 }
-.hero-controls > * { pointer-events: auto; }
+/* Put the controls in a container so the progress bar and the counter line up
+   with the left and right edges of the hero text and buttons above. */
+.hero-controls .container {
+  display: flex; justify-content: space-between; align-items: center; width: 100%;
+}
+.hero-progress, .hero-counter { pointer-events: auto; }
 .hero-progress {
   display: flex; gap: 8px; align-items: center;
 }
@@ -1083,15 +1089,17 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     </div>
 
     <div class="hero-controls">
-      <div class="hero-progress" id="hero-progress">
-        <button class="active" data-i="0" aria-label="Slide 1"><span class="bar"></span></button>
-        <button data-i="1" aria-label="Slide 2"><span class="bar"></span></button>
-        <button data-i="2" aria-label="Slide 3"><span class="bar"></span></button>
-        <button data-i="3" aria-label="Slide 4"><span class="bar"></span></button>
-      </div>
-      <div class="hero-counter">
-        <span id="hero-cur">01</span><span class="slash">/</span><span>04</span>
-        <button id="hero-pause" aria-label="Pause slideshow"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+      <div class="container">
+        <div class="hero-progress" id="hero-progress">
+          <button class="active" data-i="0" aria-label="Slide 1"><span class="bar"></span></button>
+          <button data-i="1" aria-label="Slide 2"><span class="bar"></span></button>
+          <button data-i="2" aria-label="Slide 3"><span class="bar"></span></button>
+          <button data-i="3" aria-label="Slide 4"><span class="bar"></span></button>
+        </div>
+        <div class="hero-counter">
+          <span id="hero-cur">01</span><span class="slash">/</span><span>04</span>
+          <button id="hero-pause" aria-label="Pause slideshow"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+        </div>
       </div>
     </div>
 
