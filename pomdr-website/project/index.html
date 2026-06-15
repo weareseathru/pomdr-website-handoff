@@ -633,7 +633,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 /* ===== IMPACT ===== */
 .impact {
   background: transparent; color: var(--ink);
-  padding: 100px 0; overflow: hidden; position: relative;
+  padding: 120px 0; overflow: hidden; position: relative;
 }
 .impact::before {
   content: ""; position: absolute; inset: 0;
@@ -642,64 +642,64 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 }
 .impact .container { position: relative; z-index: 1; }
 
-/* Story rows: each stat paired with a photo, alternating sides on desktop. */
+/* Each stat is a small story: the photo on top, then the number and the text
+   directly below it, left edge aligned to the photo. Two to a row, generous and
+   uncramped so the text has room to breathe. */
 .impact-stories {
-  margin-top: 72px;
-  border-top: 1px solid var(--line);
-  display: flex; flex-direction: column;
-  gap: 0;
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px 64px;
 }
-.impact-row {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
-  align-items: center;
-  padding: 64px 0;
-  border-bottom: 1px solid var(--line);
-}
-.impact-row:last-child { border-bottom: none; }
-.impact-row .impact-photo {
-  position: relative; border-radius: var(--radius-lg);
-  overflow: hidden; aspect-ratio: 4 / 3;
-  background: var(--cream-2);
+.impact-story { display: flex; flex-direction: column; }
+.impact-story .impact-photo {
+  position: relative; margin: 0 0 28px;
+  border-radius: var(--radius-lg); overflow: hidden;
+  aspect-ratio: 16 / 10; background: var(--cream-2);
   box-shadow: 0 24px 50px -22px rgba(22,32,43,0.22);
 }
-.impact-row .impact-photo img {
+.impact-story .impact-photo img {
   width: 100%; height: 100%; object-fit: cover; display: block;
 }
-.impact-row.flip .impact-photo { order: 2; }
-.impact-row.flip .impact-copy { order: 1; }
 
 .stat { position: relative; }
 .stat .num {
   font-family: var(--font-serif); font-weight: 300;
-  font-size: clamp(64px, 7vw, 112px);
+  font-size: clamp(52px, 5vw, 84px);
   line-height: 0.95; letter-spacing: -0.03em;
   display: flex; align-items: flex-start;
 }
-.stat .num .sym { font-size: 0.42em; color: var(--blue); padding-left: 6px; padding-top: 14px; }
+.stat .num .sym { font-size: 0.42em; color: var(--blue); padding-left: 6px; padding-top: 10px; }
 .stat .lbl {
-  margin-top: 14px; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  margin-top: 12px; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--ink-3); font-weight: 600;
 }
-.stat .desc { margin-top: 6px; font-size: 15px; color: var(--ink-3); }
 .stat .story {
-  margin-top: 24px;
-  font-family: var(--font-serif); font-size: 22px; line-height: 1.45;
+  margin-top: 18px;
+  font-family: var(--font-serif); font-size: 21px; line-height: 1.5;
   color: var(--ink-2); font-weight: 400; letter-spacing: -0.005em;
-  max-width: 36ch;
 }
-.impact .section-header { text-align: left; margin: 0; max-width: 720px; }
+.impact .section-header { text-align: left; margin: 0; max-width: 820px; }
 .impact .section-title { color: var(--ink); }
 .impact .section-title em { color: var(--blue); }
-.impact .section-lead { color: var(--ink-2); margin: 0; }
 .impact .eyebrow { color: var(--blue-700); }
 .impact .eyebrow::before { background: var(--blue); }
+
+@media (max-width: 760px) {
+  .impact-stories { grid-template-columns: 1fr; gap: 48px; }
+}
 
 /* ===== HAPPY TAILS ===== */
 .tails { background: transparent; padding: 120px 0; }
 .tails-grid {
   display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 24px;
   margin-top: 48px;
+  align-items: stretch;
 }
+/* The cards sit inside .reveal wrappers; make those fill the row so every card
+   is the same height and the attributions line up along the bottom. */
+.tails-grid > .reveal { display: flex; }
+.tails-grid > .reveal > .tail-card { width: 100%; }
 .tail-card {
   background: white; border-radius: var(--radius-lg); padding: 32px;
   display: flex; flex-direction: column;
@@ -915,9 +915,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .tail-card.featured { grid-column: span 2; }
   .pillars-grid, .programs-grid { grid-template-columns: 1fr; }
   .mission-inner, .events-layout, .newsletter .container { grid-template-columns: 1fr; gap: 40px; }
-  .impact-row { grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
-  .impact-row.flip .impact-photo { order: 0; }
-  .impact-row.flip .impact-copy { order: 0; }
   .nav-links a:not(.nav-cta) { display: none; }
 }
 @media (max-width: 640px) {
@@ -925,7 +922,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .tails-grid { grid-template-columns: 1fr; }
   .tail-card.featured { grid-column: auto; }
   .hero-meta { display: none; }
-  .impact-row { padding: 40px 0; gap: 24px; }
   .stat .story { font-size: 19px; }
   .section { padding: 80px 0; }
   .container { padding: 0 20px; }
@@ -1142,7 +1138,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
         <div class="section-header">
           <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
           <h2 class="section-title">Who will care for your dog if <em>you no longer can?</em></h2>
-          <p class="section-lead">We are a resource and advocate for senior dogs and senior people on California's Central Coast. Through rescue, foster, adoption, hospice, and lifelong care, we make sure that when life changes, no dog is left without someone to love them.</p>
+          <p class="section-lead">We help senior dogs and senior people on California's Central Coast. Through rescue, foster, adoption, hospice, and lifelong care, no dog is left without someone to love them.</p>
         </div>
       </div>
       <div class="programs-grid">
@@ -1311,46 +1307,41 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
         <div class="section-header left">
           <span class="eyebrow">Our Impact</span>
           <h2 class="section-title" id="impact-title">The lives behind <em>the numbers.</em></h2>
-          <p class="section-lead">Every figure here is really a dog who found home, and the people who got them there. Here are four, with the stories behind them.</p>
         </div>
       </div>
       <div class="impact-stories">
-        <div class="reveal"><div class="impact-row">
+        <article class="impact-story reveal">
           <figure class="impact-photo"><picture><source type="image/webp" srcset="images/dog14.webp"><img src="images/dog14.jpeg" alt="A senior dog resting peacefully on a comfortable couch in a foster home" loading="lazy"></picture></figure>
-          <div class="impact-copy"><div class="stat">
+          <div class="stat">
             <div class="num">3,200<span class="sym">+</span></div>
             <div class="lbl">Senior dogs rescued</div>
-            <div class="desc">Since 2009 across the Central Coast</div>
-            <p class="story">Cooper came to us at ~13 years old, a surrender from a family moving into memory care. He spent nine weeks in foster and was adopted the same week his profile went live. He lives in Carmel now, going on slow morning walks with his new person. He is one of 3,200.</p>
-          </div></div>
-        </div></div>
-        <div class="reveal"><div class="impact-row flip">
+            <p class="story">Cooper came to us at ~13, surrendered when his family moved into memory care. Nine weeks later he was home in Carmel, on slow morning walks with his new person.</p>
+          </div>
+        </article>
+        <article class="impact-story reveal">
           <figure class="impact-photo"><picture><source type="image/webp" srcset="images/dog15.webp"><img src="images/dog15.jpeg" alt="A small senior dog wrapped in a fleece blanket, resting and content" loading="lazy"></picture></figure>
-          <div class="impact-copy"><div class="stat">
+          <div class="stat">
             <div class="num">16<span class="sym">yrs</span></div>
             <div class="lbl">Of lifetime commitment</div>
-            <div class="desc">To every dog that comes into our care</div>
-            <p class="story">Our commitment has never changed: every dog who comes into our care is here for as long as it takes. Some stay a week. Some stay two years. A few stay forever, in our sanctuary program. The number changes. The promise does not.</p>
-          </div></div>
-        </div></div>
-        <div class="reveal"><div class="impact-row">
+            <p class="story">Every dog in our care stays as long as it takes. Some a week, some two years, a few forever in sanctuary. The promise never changes.</p>
+          </div>
+        </article>
+        <article class="impact-story reveal">
           <figure class="impact-photo"><img src="uploads/Nancy%20helping%20paw%20Finnegan%2C%20walker%20Jane%20(1).jpeg" alt="A volunteer walking a small dog alongside a senior guardian on a quiet neighborhood street" loading="lazy"></figure>
-          <div class="impact-copy"><div class="stat">
+          <div class="stat">
             <div class="num">1,800<span class="sym">+</span></div>
             <div class="lbl">Active volunteers</div>
-            <div class="desc">Fostering, walking, transporting and caring</div>
-            <p class="story">On any given Tuesday morning, a dozen volunteers are walking dogs before their own workday starts. They are retired teachers, college students, remote workers, weekend-only folks. They show up. That is everything.</p>
-          </div></div>
-        </div></div>
-        <div class="reveal"><div class="impact-row flip">
+            <p class="story">On any given morning, a dozen volunteers walk dogs before their own day starts. Retired teachers, students, neighbors. They simply show up.</p>
+          </div>
+        </article>
+        <article class="impact-story reveal">
           <figure class="impact-photo"><img src="uploads/Hazel%20HT.jpeg" alt="Hazel, a happy dog, settled into her new home after adoption" loading="lazy"></figure>
-          <div class="impact-copy"><div class="stat">
+          <div class="stat">
             <div class="num">501<span class="sym">c3</span></div>
             <div class="lbl">Tax-deductible giving</div>
-            <div class="desc">EIN 27-1154816, founded October 2009</div>
-            <p class="story">Every dollar given to POMDR goes directly toward food, medical care, foster reimbursement, and the small daily kindnesses that add up to a good life for a senior dog. Hazel went home in 2024 after a three-month stay that included two surgeries. She is doing great.</p>
-          </div></div>
-        </div></div>
+            <p class="story">Every dollar goes to food, medical care, and foster reimbursement. Hazel came home in 2024 after two surgeries and a three-month stay. She is thriving.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
