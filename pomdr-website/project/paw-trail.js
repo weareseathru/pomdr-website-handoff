@@ -272,11 +272,9 @@
 
     var s = 0;
     for (var i = 0; i < count; i++) {
-      // Draw the last few prints closer together so the trail visibly slows and
-      // gathers as it reaches the footer, like a dog circling down to rest.
-      var nearEnd = (count - 1 - i) < CFG.settleCount;
-      var jitterStep = step * (nearEnd ? 0.62 : 1) *
-        (1 + rand(-CFG.spacingJitter, CFG.spacingJitter));
+      // Even spacing all the way down: the trail keeps a steady gait into the
+      // band above the footer rather than bunching up at the end.
+      var jitterStep = step * (1 + rand(-CFG.spacingJitter, CFG.spacingJitter));
       s += jitterStep;
       if (s > spine.total) break;
 
@@ -291,14 +289,10 @@
       // Perpendicular to the tangent: prints sit left/right of the walking line.
       var px = -on.ty, py = on.tx;
 
-      // Approaching the footer, draw the prints back onto the line and let them
-      // settle, as if the dog lay down by the brand block.
+      // How many prints from the end (used only to recolor the closing prints
+      // so they read on the light band above the footer; geometry is unchanged,
+      // so the ending stays evenly spaced instead of clumping).
       var fromEnd = count - 1 - i;
-      if (fromEnd < CFG.settleCount) {
-        var calm = (fromEnd + 1) / (CFG.settleCount + 1); // 0..~1, smaller at the very end
-        spread *= calm * 0.7;
-        sz *= 1 + (1 - calm) * 0.10;
-      }
 
       var cx = on.x + px * spread * side;
       var cy = on.y + py * spread * side;
@@ -313,9 +307,9 @@
       } else {
         pick = PALETTE[i % PALETTE.length];
       }
-      // The settling cluster is the deliberate final beat, and it lands on the
-      // light band above the footer, where pale tints vanish. Give it the
-      // saturated brand hues and the warm accent so the rest reads.
+      // The closing prints land on the light band above the footer, where pale
+      // tints vanish. Give them the saturated brand hues and the warm accent so
+      // the ending stays visible (spacing and gait are left untouched).
       if (fromEnd < CFG.settleCount) {
         pick = SETTLE[(CFG.settleCount - 1 - fromEnd) % SETTLE.length];
       }
