@@ -113,49 +113,64 @@
   .a11y-fab { padding: 12px 16px; font-size: 15px; }
 }
 
-/* ===== 3. OPT-IN SENIOR COMFORT MODE ===== */
-/* Enabled by the toggle (sets html[data-a11y="senior"]). It raises the knob
-   tokens (so anything reading them scales) and bumps a curated set of text
-   and interactive targets that use fixed px. */
+/* ===== 3. OPT-IN "LARGER TEXT" MODE ===== */
+/* Enabled by the toggle (sets html[data-a11y="senior"]). It does exactly ONE
+   thing: make text about 4px larger across the whole site, the nav included.
+   It deliberately does NOT change button sizes, touch targets, icons, padding,
+   line spacing, or layout, so nothing shifts except the size of the words.
+   Turning it off returns every size to normal.
+
+   How it works: the base size token jumps 18px -> 22px (so all prose that
+   inherits it grows), and the elements below that set their own fixed px get
+   an explicit +4px. The +4px values mirror the base sizes in pomdr.css and the
+   page styles. */
 
 html[data-a11y="senior"] {
-  --fs-base: 20px;     /* body text up from 18px */
-  --leading: 1.75;     /* roomier line spacing */
-  --tap-min: 48px;     /* larger touch targets */
-  --focus-w: 4px;      /* thicker focus ring */
+  --fs-base: 22px;   /* body text: 18px + 4 */
 }
 
-/* Prose and common text scale up. */
-html[data-a11y="senior"] body { letter-spacing: 0.01em; }
-html[data-a11y="senior"] :where(main) p,
-html[data-a11y="senior"] li,
-html[data-a11y="senior"] dd,
-html[data-a11y="senior"] blockquote,
+/* Navigation (every nav surface). */
+html[data-a11y="senior"] .nav-item > a,
+html[data-a11y="senior"] .nav-item > button,
+html[data-a11y="senior"] .nav-mobile a,
+html[data-a11y="senior"] .nav-dropdown a,
+html[data-a11y="senior"] .breadcrumb a,
+html[data-a11y="senior"] .breadcrumb span { font-size: 18px; }   /* 14 + 4 */
+/* The nav Donate button sets its base size with !important, so match it. */
+html[data-a11y="senior"] .nav-cta { font-size: 18px !important; } /* 14 + 4 */
+
+/* Eyebrows and small labels. */
+html[data-a11y="senior"] .eyebrow,
+html[data-a11y="senior"] .footer h2 { font-size: 16px; }         /* 12 + 4 */
+
+/* Leads and intro copy. */
 html[data-a11y="senior"] .section-lead,
 html[data-a11y="senior"] .page-lead,
 html[data-a11y="senior"] .lead,
-html[data-a11y="senior"] .mission-text,
+html[data-a11y="senior"] .mission-text { font-size: 23px; }      /* 19 + 4 */
+
+/* Buttons (text only; the box is not resized). */
+html[data-a11y="senior"] .btn,
+html[data-a11y="senior"] .pillar-cta { font-size: 19px; }        /* 15 + 4 */
+
+/* Dog cards and their meta. */
+html[data-a11y="senior"] .dog-card .name { font-size: 30px; }    /* 26 + 4 */
 html[data-a11y="senior"] .meta-line,
+html[data-a11y="senior"] .dog-card .age,
+html[data-a11y="senior"] .program-card p,
+html[data-a11y="senior"] .program-card ul { font-size: 19px; }   /* ~15 + 4 */
+html[data-a11y="senior"] .dog-card .tag { font-size: 15px; }     /* 11 + 4 */
+
+/* Footer text and links (the links set their own size, so target them). */
+html[data-a11y="senior"] .footer ul,
+html[data-a11y="senior"] .footer-col a,
+html[data-a11y="senior"] .footer-contact,
+html[data-a11y="senior"] .footer-legal,
+html[data-a11y="senior"] .footer-legal-links a { font-size: 18px; } /* ~14 + 4 */
+
+/* Forms. */
+html[data-a11y="senior"] input,
+html[data-a11y="senior"] select,
+html[data-a11y="senior"] textarea,
 html[data-a11y="senior"] label,
-html[data-a11y="senior"] .field-label {
-  font-size: 1.125rem;
-  line-height: 1.7;
-}
-
-/* Interactive targets reach 48x48 and gain comfortable padding. */
-html[data-a11y="senior"] :where(.btn, .nav-cta, .nav-links a, .filter, .filter-chip,
-  .heart, .socials a, .a11y-fab, button, [role="button"], input, select, textarea) {
-  min-height: var(--tap-min);
-  min-width: var(--tap-min);
-}
-html[data-a11y="senior"] :where(.btn, .nav-cta) { padding-block: 14px; font-size: 17px; }
-html[data-a11y="senior"] .heart { width: 48px; height: 48px; }
-html[data-a11y="senior"] .heart svg { width: 22px; height: 22px; }
-html[data-a11y="senior"] .socials a { width: 48px; height: 48px; }
-html[data-a11y="senior"] .filter { padding: 12px 18px; font-size: 16px; }
-
-/* Links get an underline in senior mode so they are not color-only. */
-html[data-a11y="senior"] :where(main) a:not(.btn):not(.nav-cta):not(.pillar):not(.dog-card-link):not(.logo) {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
+html[data-a11y="senior"] .field-label { font-size: 20px; }       /* 16 + 4 */

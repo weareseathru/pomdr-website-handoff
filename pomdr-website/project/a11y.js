@@ -62,7 +62,7 @@
         : "Larger text";
       btn.setAttribute(
         "aria-label",
-        on ? "Turn off larger text and spacing" : "Turn on larger text and spacing"
+        on ? "Turn off larger text" : "Turn on larger text"
       );
     }
 
@@ -72,8 +72,8 @@
       apply(next);
       sync();
       live.textContent = next
-        ? "Larger text and spacing turned on."
-        : "Larger text and spacing turned off.";
+        ? "Larger text turned on."
+        : "Larger text turned off.";
     });
 
     sync();
