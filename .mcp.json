@@ -6,7 +6,7 @@
     },
     "playwright": {
       "command": "/opt/homebrew/bin/npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": ["@playwright/mcp@latest", "--ignore-https-errors"]
     },
     "chrome-devtools": {
       "command": "/opt/homebrew/bin/npx",
@@ -15,6 +15,44 @@
     "context7": {
       "command": "/opt/homebrew/bin/npx",
       "args": ["-y", "@upstash/context7-mcp@latest"]
+    },
+    "filesystem": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/Users/kglocker/Documents/Antigravity/pomdr-website-handoff",
+        "/Users/kglocker/Local Sites/newpomdr-local/app/public"
+      ]
+    },
+    "fetch": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "@kazuph/mcp-fetch"]
+    },
+    "figma": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "figma-developer-mcp", "--stdio"],
+      "env": {
+        "FIGMA_API_KEY": "${FIGMA_API_KEY}"
+      }
+    },
+    "wordpress": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "@automattic/mcp-wordpress-remote"],
+      "env": {
+        "WP_API_URL": "https://newpomdr-local.local/wp-json/mcp/mcp-adapter-default-server",
+        "WP_API_USERNAME": "${WP_API_USERNAME}",
+        "WP_API_PASSWORD": "${WP_API_PASSWORD}",
+        "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+      }
+    },
+    "gdrive": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GDRIVE_CREDENTIALS_PATH": "${GDRIVE_CREDENTIALS_PATH}",
+        "GDRIVE_OAUTH_PATH": "${GDRIVE_OAUTH_PATH}"
+      }
     }
   }
 }

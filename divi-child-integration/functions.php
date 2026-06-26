@@ -186,50 +186,18 @@ function adopt_a_pet_shortcode() {
 
     $query = new WP_Query($args);
 
-    echo '<div class="custom-acf-posts-grid">';
+    ob_start();
 
     if ($query->have_posts()) :
+        echo '<div class="dogs-grid">';
         while ($query->have_posts()) : $query->the_post();
-
-            $status  = get_field('status') ?: [];
-            $image   = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'medium_large') : '';
-            $looks   = get_field('looks_like');
-            $sex_display = pom_acf_sex_display(get_the_ID());
-            $age     = get_field('age');
-            $weight  = get_field('weight');
-
-            echo '<div class="custom-post-item">';
-
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '">';
-                echo '<img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '" loading="lazy">';
-                echo '</a></div>';
-            }
-
-            echo '<div class="custom-post-content">';
-            echo '<div class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></div>';
-
-            if ($looks) echo esc_html($looks) . '<br>';
-            if ($sex_display) echo esc_html($sex_display) . ', ';
-            if ($age) echo esc_html($age) . ' yrs, ';
-            if ($weight) echo esc_html($weight) . ' lbs';
-
-            if (in_array('Foster Needed', $status)) {
-                echo '<br>Foster Needed!';
-            }
-
-            if (in_array('Adoption Pending', $status)) {
-                echo '<br>Adoption Pending';
-            }
-
-            echo '</div></div>';
-
+            echo pom_render_dog_card(get_the_ID());
         endwhile;
+        echo '</div>';
         wp_reset_postdata();
+    else :
+        echo '<p>No dogs are listed for adoption right now. Please check back soon, or call us at (831) 718-9122.</p>';
     endif;
-
-    echo '</div>';
 
     return ob_get_clean();
 }
@@ -1237,77 +1205,123 @@ add_shortcode('random_pet', 'random_pet_shortcode');
 
 
 // *************************** HOME PAGE PETS ****************************
-function pet_home_shortcode() {
-    ob_start();
+/**
+ * Map a pet's status (ACF checkbox, Title Case array, possibly multi-value) to
+ * a single badge. Class names match the deployed CSS in pomdr-design.css.
+ * Priority is most-urgent-first so a multi-status dog shows the right badge.
+ * Returns [class, label] or ['',''] when no recognized status.
+ */
+function pom_pet_badge($post_id) {
+    $status = get_field('status', $post_id);
+    $status = is_array($status)
+        ? $status
+        : array_filter(array_map('trim', explode(',', (string) $status)));
 
-    $args = [
+    $foster_start = get_field('foster_start_date', $post_id);
+    $foster_end   = get_field('foster_end_date', $post_id);
+    $has_dates    = (!empty($foster_start) || !empty($foster_end));
+
+    if (in_array('Adoption Pending', $status, true)) return ['adoption_pending', 'Adoption Pending'];
+    if (in_array('Foster Needed', $status, true))    return [$has_dates ? 'foster_needed_dated' : 'foster_needed', 'Foster Needed'];
+    if (in_array('Hospice', $status, true))          return ['hospice', 'Hospice'];
+    if (in_array('Sponsor Needed', $status, true))   return ['sponsor_needed', 'Sponsor Needed'];
+    if (in_array('Courtesy Listing', $status, true)) return ['courtesy_listing', 'Courtesy Listing'];
+    if (in_array('Adopted', $status, true))          return ['recently_adopted', 'Adopted'];
+    if (in_array('Adoptable', $status, true))        return ['available', 'Available'];
+    return ['', ''];
+}
+
+/**
+ * Shared dog-card renderer for the redesign. Outputs the .dog-card markup used
+ * on the homepage sample and the Adopt listing, bound to real `pets` ACF data
+ * so staff edit dogs in wp-admin and the new design renders automatically.
+ *
+ * Voice rules (CLAUDE.md s2): age shows as "~N yrs" with a tilde, never "est".
+ * No invented data: the only derived tag is "Senior" (age >= 10).
+ */
+function pom_render_dog_card($post_id) {
+    $name      = get_the_title($post_id);
+    $permalink = get_permalink($post_id);
+
+    list($badge_class, $badge_label) = pom_pet_badge($post_id);
+
+    // Meta line: ~age yrs · Sex · weight lb · breed (looks_like)
+    $age        = get_field('age', $post_id);
+    $sex        = function_exists('pom_acf_sex_display') ? pom_acf_sex_display($post_id) : get_field('sex', $post_id);
+    $weight     = get_field('weight', $post_id);
+    $looks_like = get_field('looks_like', $post_id);
+
+    $parts = [];
+    if (is_numeric($age))    $parts[] = '~' . intval($age) . ' yrs';
+    if (!empty($sex))        $parts[] = $sex;
+    if ($weight !== '' && $weight !== null) $parts[] = $weight . ' lb';
+    if (!empty($looks_like)) $parts[] = $looks_like;
+    $meta_line = implode(' · ', $parts);
+
+    $tags = [];
+    if (is_numeric($age) && intval($age) >= 10) $tags[] = 'Senior';
+
+    $thumb_id = get_post_thumbnail_id($post_id);
+
+    ob_start();
+    ?>
+    <a href="<?php echo esc_url($permalink); ?>" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+      <div class="dog-card"><div class="photo-wrap">
+        <div class="dog-photo"><?php
+            if ($thumb_id) {
+                echo wp_get_attachment_image($thumb_id, 'medium_large', false, [
+                    'alt'     => $name,
+                    'loading' => 'lazy',
+                    'style'   => 'width:100%;height:100%;object-fit:cover;object-position:center top;display:block',
+                ]);
+            }
+        ?></div>
+        <?php if ($badge_label) : ?>
+          <div class="badge <?php echo esc_attr($badge_class); ?>"><?php echo esc_html($badge_label); ?></div>
+        <?php endif; ?>
+        <button class="heart" type="button" data-name="<?php echo esc_attr($name); ?>" aria-label="Save <?php echo esc_attr($name); ?> to favorites"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></button>
+      </div><div class="info">
+        <div class="name"><?php echo esc_html($name); ?></div>
+        <?php if ($meta_line) : ?><div class="meta-line"><?php echo esc_html($meta_line); ?></div><?php endif; ?>
+        <?php if (!empty($tags)) : ?>
+          <div class="tags"><?php foreach ($tags as $t) echo '<span class="tag">' . esc_html($t) . '</span>'; ?></div>
+        <?php endif; ?>
+        <div class="cta-row"><span>View profile</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></div>
+      </div></div>
+    </a>
+    <?php
+    return ob_get_clean();
+}
+
+/**
+ * Homepage dog sample: featured adoptable dogs in the new card design.
+ * Wrapped in .pomdr-home so the scoped redesign CSS applies wherever the
+ * shortcode is placed.
+ */
+function pet_home_shortcode() {
+    $query = new WP_Query([
         'post_type'      => 'pets',
-        'posts_per_page' => 7,
+        'posts_per_page' => 6,
         'meta_query'     => [
             'relation' => 'AND',
-            [
-                'key'     => 'status',
-                'value'   => 'Adoptable',
-                'compare' => 'LIKE',
-            ],
-            [
-                'key'     => 'status',
-                'value'   => 'Adopted',
-                'compare' => 'NOT LIKE',
-            ],
-        ],
-        'orderby' => [
-            'meta_value' => 'DESC', // Featured first
-            'date'       => 'DESC', // Newest next
+            ['key' => 'status', 'value' => 'Adoptable', 'compare' => 'LIKE'],
+            ['key' => 'status', 'value' => 'Adopted',   'compare' => 'NOT LIKE'],
         ],
         'meta_key' => 'feature',
-    ];
+        'orderby'  => ['meta_value' => 'DESC', 'date' => 'DESC'],
+    ]);
 
-    $query = new WP_Query($args);
+    ob_start();
 
     if ($query->have_posts()) :
-        echo '<div class="custom-acf-posts-grid-4">';
-
+        echo '<div class="pomdr-home"><div class="dogs-grid">';
         while ($query->have_posts()) : $query->the_post();
-
-            $image = has_post_thumbnail()
-                ? get_the_post_thumbnail_url(get_the_ID(), 'full')
-                : '';
-
-            echo '<div class="custom-post-item">';
-
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . esc_url(get_permalink()) . '">';
-                echo '<img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '">';
-                echo '</a></div>';
-            }
-
-            echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title">' . esc_html(get_the_title()) . '</h2>';
-            echo '</div>';
-
-            echo '</div>';
-
+            echo pom_render_dog_card(get_the_ID());
         endwhile;
-
-        // See More tile
-        echo '<a href="/adopt/">';
-        echo '<div class="custom-post-item">';
-        echo '<div class="custom-post-image">';
-        echo '<img decoding="async" src="/wp-content/uploads/2025/07/blurred.jpg" alt="Browse All">';
         echo '</div>';
-        echo '<div class="custom-post-content">';
-        echo '<h2 class="custom-post-title">See More &gt;</h2>';
+        echo '<div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>';
         echo '</div>';
-        echo '</div>';
-        echo '</a>';
-
-        echo '</div>';
-
         wp_reset_postdata();
-    else :
-        echo '<p>Oops, error.</p>';
     endif;
 
     return ob_get_clean();
@@ -1316,89 +1330,36 @@ function pet_home_shortcode() {
 add_shortcode('pet_home', 'pet_home_shortcode');
 
 
+/**
+ * Adopt page listing: every dog not fully adopted, in the new card design,
+ * alphabetical so none are dropped. Cards are styled by the site-wide
+ * component in pomdr-design.css (works off the homepage). Status badges
+ * communicate adoptable / foster-needed / pending / etc.
+ */
 function adopt_a_pet_plp_shortcode() {
-    ob_start();
-
-    $args = array(
+    $query = new WP_Query(array(
         'post_type'      => 'pets',
         'posts_per_page' => -1,
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-    );
+        'meta_query'     => array(array(
+            'key'     => 'status',
+            'value'   => 'Adopted',
+            'compare' => 'NOT LIKE',
+        )),
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+    ));
 
-    $query = new WP_Query($args);
+    ob_start();
 
     if ($query->have_posts()) :
-        echo '<div class="custom-acf-posts-grid">';
-
+        echo '<div class="dogs-grid">';
         while ($query->have_posts()) : $query->the_post();
-
-            
-            $recently_adopted = false;
-            $date_adopted = get_field('date_adopted');
-
-            if ($date_adopted) {
-                // Support both Ymd and formatted date values
-                if (is_numeric($date_adopted)) {
-                    $dt = DateTime::createFromFormat('Ymd', $date_adopted);
-                    $adopted_timestamp = $dt ? $dt->getTimestamp() : false;
-                } else {
-                    $adopted_timestamp = strtotime($date_adopted);
-                }
-
-                if ($adopted_timestamp) {
-                    $days_diff = floor(
-                        (current_time('timestamp') - $adopted_timestamp) / DAY_IN_SECONDS
-                    );
-
-                    if ($days_diff >= 0 && $days_diff < 14) {
-                        $recently_adopted = true;
-                    }
-                }
-            }
-
-            
-            $looks_like = get_field('looks_like');
-            $sex        = get_field('sex');
-            $age        = get_field('age');
-            $weight     = get_field('weight');
-
-            $image = has_post_thumbnail()
-                ? get_the_post_thumbnail_url(get_the_ID(), 'full')
-                : '';
-
-            echo '<div class="custom-post-item">';
-
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . esc_url(get_permalink()) . '">';
-                echo '<img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '">';
-                echo '</a>';
-                echo '</div>';
-            }
-
-            echo '<div class="custom-post-content">';
-            echo '<div class="custom-post-title">';
-            echo '<a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a>';
-            echo '</div>';
-
-            
-            if ($recently_adopted) {
-                //echo '<div class="recently-adopted">Recently Adopted</div>';
-            }
-
-            if ($looks_like) echo esc_html($looks_like) . '<br>';
-            $sex_display_plp = pom_acf_sex_display(get_the_ID());
-            if ($sex_display_plp) echo esc_html($sex_display_plp) . ', ';
-            if ($age) echo esc_html($age) . ' yrs, ';
-            if ($weight) echo esc_html($weight) . ' lbs';
-
-            echo '</div></div>';
-
+            echo pom_render_dog_card(get_the_ID());
         endwhile;
-
         echo '</div>';
         wp_reset_postdata();
+    else :
+        echo '<p>No dogs are listed for adoption right now. Please check back soon, or call us at (831) 718-9122.</p>';
     endif;
 
     return ob_get_clean();

@@ -994,6 +994,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .dog-card-link:hover .cta-row .arrow svg { transform: translateX(4px); }
 
+/* Personality / derived tags (e.g. Senior). Site-wide so listing pages match
+   the homepage showcase cards. */
+.dog-card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.dog-card .tag {
+  font-size: 12px; padding: 4px 10px; border-radius: 999px;
+  background: var(--blue-50); color: var(--blue-700); font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
 /* Policy block */
 .policy {
   display: grid; grid-template-columns: 1fr 1fr;
