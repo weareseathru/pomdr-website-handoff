@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POMDR Visual Brand Guide & Status</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Palette */
+            --blue: #008bb0;
+            --blue-900: #004e63;
+            --blue-700: #006c8a;
+            --blue-200: #7CB9D0;
+            --blue-50: #E8F2F6;
+            --purple: #632F88;
+            --purple-700: #4B2268;
+            --purple-100: #C9BBD7;
+            --purple-50: #F1EBF5;
+            --ink: #16202b;
+            --ink-2: #3c4a57;
+            --ink-3: #5a6773;
+            --cream: #FAF6F0;
+            --cream-2: #F3ECDF;
+            --white: #ffffff;
+            --line: #e5ddd0;
+            
+            /* Typography */
+            --font-sans: 'Source Sans 3', sans-serif;
+            --font-serif: 'Source Serif 4', serif;
+            
+            /* UI */
+            --radius-pill: 999px;
+            --radius: 22px;
+            --shadow-sm: 0 2px 8px rgba(22,32,43,.04);
+            --shadow: 0 12px 32px -8px rgba(22,32,43,.12), 0 2px 6px rgba(22,32,43,.04);
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--ink);
+            font-family: var(--font-sans);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        .poster-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 40px 80px 40px;
+            background-color: var(--white);
+            box-shadow: 0 30px 60px -20px rgba(22,32,43,.15);
+            border-radius: 44px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            overflow: hidden;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--line);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 16px 32px;
+            font-family: var(--font-sans);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink-2);
+            cursor: pointer;
+            border-bottom: 4px solid transparent;
+            margin-bottom: -2px;
+            transition: 0.2s ease;
+        }
+
+        .tab-btn:hover {
+            color: var(--blue-700);
+        }
+
+        .tab-btn.active {
+            color: var(--blue-900);
+            border-bottom-color: var(--blue);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .eyebrow {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            color: var(--blue-700);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .eyebrow::before {
+            content: "";
+            display: block;
+            width: 32px;
+            height: 2px;
+            background-color: currentColor;
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 60px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: clamp(48px, 6vw, 88px);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .header h1 em {
+            color: var(--blue);
+            font-style: italic;
+        }
+
+        .header p {
+            font-size: 24px;
+            color: var(--ink-2);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            padding-bottom: 80px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 40px;
+        }
+
+        /* Shared Components */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .swatch {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .swatch-color {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swatch-details {
+            padding: 16px;
+            background: var(--white);
+        }
+
+        .swatch-name { font-weight: 600; font-size: 16px; }
+        .swatch-hex { font-size: 14px; color: var(--ink-2); margin-top: 4px; font-family: monospace; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s ease;
+            width: fit-content;
+        }
+        .btn-primary { background-color: var(--blue-700); color: var(--white); box-shadow: 0 10px 24px -6px rgba(0, 108, 138, 0.5); }
+        .btn-purple { background-color: var(--purple); color: var(--white); box-shadow: 0 10px 24px -6px rgba(99, 47, 136, 0.45); }
+        .btn-outline { background-color: transparent; color: var(--ink); border: 2px solid var(--ink); }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .badge.available { background: var(--blue-700); }
+        .badge.pending { background: var(--purple); }
+
+        /* Timeline and Progress Elements */
+        .timeline {
+            position: relative;
+            margin-left: 20px;
+            border-left: 3px solid var(--blue-200);
+            padding-left: 40px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -53px;
+            top: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--blue);
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 2px var(--blue-200);
+        }
+
+        .timeline-item.completed::before { background: var(--purple); box-shadow: 0 0 0 2px var(--purple-100); border-color: var(--white); }
+        .timeline-item.pending::before { background: var(--white); border: 4px solid var(--line); box-shadow: none; }
+
+        .timeline-date {
+            font-size: 14px;
+            color: var(--ink-2);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title { font-size: 24px; font-weight: 600; margin-bottom: 12px; color: var(--ink); font-family: var(--font-sans); }
+        .timeline-content { color: var(--ink-2); }
+
+        .progress-card {
+            background: var(--cream-2);
+            padding: 32px;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+        }
+        
+        .progress-card h4 { font-family: var(--font-sans); font-size: 20px; font-weight: 700; color: var(--blue-900); margin-bottom: 16px; }
+
+        .obstacle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .obstacle-card {
+            border: 2px solid var(--purple);
+            background: var(--purple-50);
+            padding: 24px;
+            border-radius: var(--radius);
+        }
+        .obstacle-card h4 { color: var(--purple); font-family: var(--font-sans); font-weight: 700; font-size: 18px; margin-bottom: 12px; }
+
+        /* Other styles from brand guide... */
+        .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .type-sample { padding: 32px; background: var(--cream); border-radius: var(--radius); }
+        .type-sample.serif { font-family: var(--font-serif); }
+        .type-display { font-size: 64px; line-height: 1.1; margin-bottom: 16px; }
+        
+        .voice-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .rule-card { padding: 32px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--white); }
+        .rule-card.do { border-top: 4px solid var(--blue); }
+        .rule-card.dont { border-top: 4px solid var(--purple); background: var(--cream); }
+        .rule-title { font-weight: 700; margin-bottom: 16px; font-size: 20px; display: flex; align-items: center; gap: 12px; }
+
+        .template-block { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 40px; }
+        .template-header { background: var(--cream-2); padding: 24px 32px; border-bottom: 1px solid var(--line); }
+        .template-header h3 { font-size: 28px; margin-bottom: 8px; }
+        .template-body { padding: 32px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+        .wireframe { border: 2px dashed var(--line); border-radius: 12px; padding: 20px; background: #fafafa; }
+        .wireframe-box { background: var(--cream); border: 1px solid var(--line); border-radius: 8px; padding: 16px; text-align: center; margin-bottom: 12px; font-weight: 600; color: var(--ink-2); font-family: monospace; font-size: 14px; }
+
+        /* ===== Responsive: collapse two-column grids on small screens ===== */
+        @media (max-width: 768px) {
+            .poster-container { padding: 24px 20px 48px; border-radius: 24px; margin-top: 24px; margin-bottom: 24px; }
+            .tabs { gap: 0; }
+            .tab-btn { padding: 14px 18px; font-size: 16px; }
+            .type-grid,
+            .obstacle-grid,
+            .template-body,
+            .voice-rules { grid-template-columns: 1fr; }
+            .obstacle-card[style*="span 2"] { grid-column: auto !important; }
+            .color-grid[style*="1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+            .section { margin-bottom: 48px; padding-bottom: 48px; }
+        }
+
+        /* ===== Respect users who ask for reduced motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster-container">
+        
+        <div class="tabs" role="tablist" aria-label="Brand guide sections">
+            <button class="tab-btn active" id="tab-brand" role="tab" aria-selected="true" aria-controls="brand-tab" onclick="showTab('brand', event)">Brand Guide &amp; UX</button>
+            <button class="tab-btn" id="tab-status" role="tab" aria-selected="false" aria-controls="status-tab" onclick="showTab('status', event)">Project Status &amp; Timeline</button>
+        </div>
+
+        <!-- TAB 1: BRAND GUIDE -->
+        <div id="brand-tab" class="tab-content active" role="tabpanel" aria-labelledby="tab-brand">
+            <header class="header" style="border:none; padding-bottom: 20px; margin-bottom: 40px;">
+                <div class="eyebrow" style="justify-content: center; margin-bottom: 24px;">Peace of Mind Dog Rescue</div>
+                <h1>Visual <em>Brand Guide</em></h1>
+                <p>The living guide for how the website looks, sounds, behaves, and why we do it this way.</p>
+            </header>
+
+            <section class="section">
+                <div class="eyebrow">The "Why"</div>
+                <h2 class="section-title">Our UX Strategy</h2>
+                <div class="color-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div class="swatch-details" style="background:var(--cream); border-radius:var(--radius); padding:24px;">
+                        <h4 style="font-family:var(--font-sans); color:var(--blue-900); font-size:20px; margin-bottom:12px;">Empathize First</h4>
+                        <p>We design for the real person (an older adopter or a senior owner in a stressful moment), not the org chart. Their goals drive the layout. We frame each page as a "How Might We" problem to solve.</p>
+                    </div>
+                    <div class="swatch-details" style="background:var(--cream); border-radius:var(--radius); padding:24px;">
+                        <h4 style="font-family:var(--font-sans); color:var(--blue-900); font-size:20px; margin-bottom:12px;">Surface Primary Actions</h4>
+                        <p>Applications (foster, Helping Paw) are never buried. <strong>Quick users tap the button and leave happy; detailed users read the prose below it.</strong></p>
+                    </div>
+                    <div class="swatch-details" style="background:var(--cream); border-radius:var(--radius); padding:24px;">
+                        <h4 style="font-family:var(--font-sans); color:var(--blue-900); font-size:20px; margin-bottom:12px;">Accessibility Floors</h4>
+                        <p>Older eyes lose acuity. We enforce WCAG 2.2 AA+: Body text minimum 16px (we use 17px-18px), 4.5:1 contrast, and large 44x44px touch targets. No hover-only traps.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="eyebrow">User Journeys</div>
+                <h2 class="section-title">Page Templates & Architecture</h2>
+                
+                <div class="template-block">
+                    <div class="template-header">
+                        <h3>1. The Navigation & Global Shell</h3>
+                        <p style="color: var(--ink-2); margin:0;">Used across the entire site to provide predictable consistency.</p>
+                    </div>
+                    <div class="template-body">
+                        <div>
+                            <p><strong>The Why:</strong> The canonical IA gives users exactly 6 top-level items + a utility "Donate" button. Breadcrumbs are present on every sub-page to orient users.</p>
+                        </div>
+                        <div class="wireframe">
+                            <div class="wireframe-box" style="background:var(--blue-50); color:var(--blue-900);">Global Header (Nav + Donate CTA)</div>
+                            <div class="wireframe-box" style="text-align:left; background:transparent; border-color:transparent; padding:0;">Home / Adopt / Pebble</div>
+                            <div class="wireframe-box" style="height: 60px; line-height: 60px;">[Page Content]</div>
+                            <div class="wireframe-box" style="background:var(--blue-900); color:white;">Global Footer Map</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-block">
+                    <div class="template-header">
+                        <h3>2. Program & Info Pages (e.g. Foster, Helping Paw)</h3>
+                        <p style="color: var(--ink-2); margin:0;">Used for programs requiring applications or detailed explanations.</p>
+                    </div>
+                    <div class="template-body">
+                        <div>
+                            <p><strong>Progressive Disclosure:</strong> We lead with the simple path (one big Call To Action) so users under stress don't have to hunt. Detail-seekers can scroll for the full story.</p>
+                        </div>
+                        <div class="wireframe">
+                            <div class="wireframe-box" style="border-width: 2px;">
+                                <h4 style="margin:0">Title</h4>
+                                <p style="font-size:12px; margin:4px 0;">Lead Paragraph</p>
+                                <button class="btn btn-primary" style="padding: 8px 16px; font-size: 12px; margin-top:8px;">Primary Action Button</button>
+                            </div>
+                            <div class="wireframe-box" style="height: 40px;">Section Content</div>
+                            <div class="wireframe-box">Primary Action Button (Repeated)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="template-block">
+                    <div class="template-header">
+                        <h3>3. The Adoption Flow</h3>
+                        <p style="color: var(--ink-2); margin:0;">Browsing available dogs and reviewing a specific dog.</p>
+                    </div>
+                    <div class="template-body">
+                        <div>
+                            <p><strong>The Why:</strong> Adopters want to quickly scan for size, age, and temperament, then dive deep into a dog's story. Badges denote status instantly.</p>
+                        </div>
+                        <div class="wireframe" style="display: flex; gap: 12px;">
+                            <div style="flex:1;">
+                                <div style="font-size: 12px; font-weight: bold; margin-bottom: 8px;">Grid View</div>
+                                <div class="wireframe-box" style="height: 60px;">Dog Card 1 (Badge)</div>
+                                <div class="wireframe-box" style="height: 60px;">Dog Card 2 (Badge)</div>
+                            </div>
+                            <div style="flex:1;">
+                                <div style="font-size: 12px; font-weight: bold; margin-bottom: 8px;">Detail View</div>
+                                <div class="wireframe-box" style="height: 50px;">Hero, Bio & CTA</div>
+                                <div class="wireframe-box" style="height: 30px; background:var(--blue-50);">Photo Gallery</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="eyebrow">The Palette</div>
+                <h2 class="section-title">Color System</h2>
+                <p style="font-size:18px; color:var(--ink-2); max-width:70ch; margin-bottom:32px;">Two colors do all the work. Brand Blue carries actions and key headlines (blue means "available to adopt"), Brand Purple carries accents and secondary states (purple means "foster needed"). Everything else is white, warm off-white, ink, and tints or shades of these two. Buttons use the slightly deeper Blue 700 so white text clears the WCAG AA 4.5:1 contrast floor. Status is never shown by color alone, every state also carries a labeled dot.</p>
+                <div class="color-grid">
+                    <div class="swatch"><div class="swatch-color" style="background: var(--blue); color: white;">Blue</div><div class="swatch-details"><div class="swatch-name">Brand Blue</div><div class="swatch-hex">#008bb0</div></div></div>
+                    <div class="swatch"><div class="swatch-color" style="background: var(--blue-900); color: white;">Dark</div><div class="swatch-details"><div class="swatch-name">Blue 900</div><div class="swatch-hex">#004e63</div></div></div>
+                    <div class="swatch"><div class="swatch-color" style="background: var(--purple); color: white;">Purple</div><div class="swatch-details"><div class="swatch-name">Brand Purple</div><div class="swatch-hex">#632F88</div></div></div>
+                    <div class="swatch"><div class="swatch-color" style="background: var(--blue-700); color: white;">Button</div><div class="swatch-details"><div class="swatch-name">Blue 700 (Buttons)</div><div class="swatch-hex">#006c8a</div></div></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- TAB 2: PROJECT STATUS -->
+        <div id="status-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-status">
+            <header class="header" style="border:none; padding-bottom: 20px; margin-bottom: 40px;">
+                <div class="eyebrow" style="justify-content: center; margin-bottom: 24px;">Project Roadmap</div>
+                <h1>Migration <em>Status & Timeline</em></h1>
+                <p>A simple, plain-English look at where we are, what's left, and how we get this redesign onto the live website safely.</p>
+            </header>
+
+            <section class="section">
+                <div class="eyebrow">Milestones</div>
+                <h2 class="section-title">The Project Timeline</h2>
+                
+                <div class="timeline">
+                    <!-- Completed Step -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-date">Phase 1: Discovery & UX Audit (Complete)</div>
+                        <div class="timeline-title">Understanding Our Users</div>
+                        <div class="timeline-content">
+                            <p>We mapped out every page on the live site. We created strict design rules (like making text large enough to read easily and buttons big enough to tap) to ensure the site is built specifically for our senior adopters and donors.</p>
+                        </div>
+                    </div>
+
+                    <!-- Completed Step -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-date">Phase 2: Architecture (Complete)</div>
+                        <div class="timeline-title">The "Divi" Decision</div>
+                        <div class="timeline-content">
+                            <p>We decided to keep the existing "Divi" website builder. Why? Because the POMDR staff already knows how to use it, and keeping it ensures that all our existing dog profiles, URLs, and donation forms keep working perfectly without starting from scratch.</p>
+                        </div>
+                    </div>
+
+                    <!-- Current Step -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">Phase 3: Active Build (In Progress)</div>
+                        <div class="timeline-title">Building the New Pages</div>
+                        <div class="timeline-content">
+                            <p>We are currently taking the beautiful new designs and dropping them into the Divi builder section-by-section. We've successfully completed the Homepage, Contact page, and the individual Dog Profile templates.</p>
+                        </div>
+                    </div>
+
+                    <!-- Future Step -->
+                    <div class="timeline-item pending">
+                        <div class="timeline-date">Phase 4: Dynamic Wiring (Upcoming)</div>
+                        <div class="timeline-title">Connecting the Live Data</div>
+                        <div class="timeline-content">
+                            <p>This is where we connect the live database of adoptable dogs to the new visual design. We will also build <strong>Live Filtering (also known as AJAX)</strong>. This is the technology that lets a user click "Small Dogs" and see the results instantly, without the page having to reload or blink.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="eyebrow">Implementation Strategy</div>
+                <h2 class="section-title">How We Build It (In Plain English)</h2>
+                
+                <div class="type-grid">
+                    <div class="progress-card">
+                        <h4>Moving Code to Divi safely</h4>
+                        <p>Divi is a visual builder that lets staff drag and drop boxes. Sometimes, drag-and-drop builders can mess up custom code. Our solution is simple: we wrap our new designs in "Code Modules." Think of these as protective lockboxes. The design stays perfectly intact inside the box, but POMDR staff can still drag the entire box up or down to reorder the page easily.</p>
+                    </div>
+                    <div class="progress-card" style="background-color: var(--blue-50);">
+                        <h4>The Paw Print Animation</h4>
+                        <p>We love the interactive paw prints that follow your mouse! To make sure they don't break the rest of the website's layout, we treat them like an invisible glass overlay. The paw prints happen on this "glass" layer that sits on top of the website, completely independent from the text and images underneath.</p>
+                    </div>
+                </div>
+
+                <div class="progress-card" style="margin-top: 24px; border-left: 4px solid var(--purple);">
+                    <h4>Automating the Build (The AI Advantage)</h4>
+                    <p>Manually creating 22 pages, clicking "Add Code Module" 100 times, and copying/pasting HTML by hand would take weeks of tedious labor. Instead, we will use AI to automate the entire transfer process in seconds.</p>
+                    <p><strong>The Proposed AI Solution:</strong></p>
+                    <ol style="padding-left: 20px;">
+                        <li><strong>The AI Parser:</strong> We will write a small script that automatically scans our 22 static HTML pages and perfectly chops them up into individual sections.</li>
+                        <li><strong>The Divi Translator:</strong> The script will automatically wrap those HTML sections into the exact native code that Divi reads in the background (known as <code>[et_pb_code]</code> shortcodes).</li>
+                        <li><strong>Instant Injection:</strong> Instead of clicking buttons in the WordPress dashboard, we will use a developer tool called <strong>WP-CLI</strong> (WordPress Command Line) to instantly inject all 22 pre-built pages directly into the database.</li>
+                    </ol>
+                    <p style="margin-bottom:0;"><strong>The Result:</strong> The AI does the heavy lifting in seconds. A human developer simply logs in, reviews the pages to ensure they look perfect, and hits "Publish."</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="eyebrow">Risks</div>
+                <h2 class="section-title">Obstacles & Solutions</h2>
+                
+                <div class="obstacle-grid">
+                    <div class="obstacle-card">
+                        <h4>The Top Menu Overlap</h4>
+                        <p>Our new homepage features a massive, beautiful photo right at the top. But WordPress usually forces a thick white menu bar above it. <br><br><strong>Solution:</strong> We will tell WordPress to use a "Blank Page" template for the homepage, letting our photo stretch all the way to the top underneath a transparent menu.</p>
+                    </div>
+                    <div class="obstacle-card">
+                        <h4>Accessibility & Screen Readers</h4>
+                        <p>Website builders like Divi often generate messy background code that confuses screen readers (tools used by visually impaired users).<br><br><strong>Solution:</strong> By using our protective "Code Modules", we bypass Divi's messy code entirely. This ensures the site remains 100% accessible and compliant for all users.</p>
+                    </div>
+                    <div class="obstacle-card" style="grid-column: span 2;">
+                        <h4>Connecting the Dog Database</h4>
+                        <p>Right now, the new dog cards are just placeholder pictures. We need them to automatically pull the real dogs (like Pebble or Buster) from the POMDR database. <br><br><strong>Solution:</strong> We will rewrite a small piece of code (called a "shortcode") in the background. Once updated, every time the website asks for a list of dogs, it will automatically wrap them in our shiny new design.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="border:none;">
+                <div class="progress-card" style="background: var(--purple-50); border: 1px solid var(--purple-100); text-align: center;">
+                    <h3 style="color: var(--purple); font-size: 28px; margin-bottom: 16px;">Projected Completion: ~2 to 3 Weeks</h3>
+                    <p style="color: var(--ink-2); max-width: 600px; margin: 0 auto;">We have 22 static pages left to safely transition into the Divi Builder. The hardest architectural decisions have already been made and resolved. The remaining time ensures everything is rigorously tested so that donation forms work flawlessly and adopters have a seamless, bug-free experience.</p>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script>
+        function showTab(tabName, evt) {
+            // Update buttons (active class + aria-selected stay in sync)
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
+            var clicked = (evt && evt.currentTarget) || document.getElementById('tab-' + tabName);
+            clicked.classList.add('active');
+            clicked.setAttribute('aria-selected', 'true');
+
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName + '-tab').classList.add('active');
+
+            // Scroll to top, honoring reduced-motion preference
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        }
+    </script>
+</body>
+</html>

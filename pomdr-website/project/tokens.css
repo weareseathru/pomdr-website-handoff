@@ -26,10 +26,11 @@
   --purple-100: #C9BBD7;
   --purple-50: #F1EBF5;
 
-  --orange: #C06B00;
-  --orange-50: #FFF5E8;
-  /* Accessible orange for small text (eyebrows): #C06B00 fails 4.5:1 at 12px. */
-  --orange-text: #a05800;
+  /* Orange retired 2026-06 (brand cleanup). These tokens now point at the
+     purple family so any remaining reference renders on-brand, not orange. */
+  --orange: #6E4B9E;
+  --orange-50: #F1EBF5;
+  --orange-text: #5B2C6F;
 
   --ink: #16202b;
   --ink-2: #3c4a57;
@@ -54,13 +55,15 @@
 
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 
-  /* Height the fixed nav occupies; breadcrumb uses it to clear the nav. */
-  --nav-h: 104px;
+  /* Height the action bar + two-row nav occupy; breadcrumb/hero clear it. */
+  --nav-h: 172px;
 
   /* ===== Accessibility knobs =====
      These are the levers the opt-in senior mode flips (in a11y.css under
      html[data-a11y="senior"]). Components read them so one override cascades. */
-  --fs-base: 18px;                 /* base body text (was 17px) */
+  --fs-base: 19px;                 /* base body text (senior-readable; was 18px) */
+  --fs-lead: 21px;                 /* intro / lead paragraphs */
+  --fs-small: 16px;                /* smallest UI text; never below 16 */
   --leading: 1.6;                  /* base line-height */
   --measure: 70ch;                 /* max readable line length for prose */
   --tap-min: 44px;                 /* min interactive target; senior mode raises to 48px */

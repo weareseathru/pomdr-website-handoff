@@ -40,6 +40,14 @@
     },
     { id: "foster",      label: "Foster",       href: "foster.html" },
     {
+      id: "donate", label: "Donate", href: "donate.html",
+      children: [
+        { id: "donate-ways",   label: "Ways to Give",        href: "donate.html" },
+        { id: "perpetual-care-give", label: "Lifetime Care", href: "perpetual-care-program.html" },
+        { id: "benefit-shop-give",   label: "Benefit Shop",  href: "benefit-shop.html" },
+      ],
+    },
+    {
       id: "volunteer", label: "Volunteer", href: "volunteer.html",
       children: [
         { id: "volunteer-opps", label: "Volunteer Opportunities", href: "volunteer.html" },
@@ -187,27 +195,44 @@
   const skipHTML = `<a href="#main" class="skip-link">Skip to main content</a>`;
 
   // ---- NAV ----
+  // Two visible rows of menu items: row 1 = the primary actions, row 2 = the
+  // rest. A persistent Adopt/Donate/Volunteer action bar sits above on every
+  // page (brand teal), and repeats as a sticky bottom bar on phones.
+  const PRIMARY_IDS = ["adopt", "foster", "donate", "volunteer", "helping-paw"];
+  const primaryItems = PRIMARY_IDS
+    .map((id) => NAV_ITEMS.find((i) => i.id === id))
+    .filter(Boolean);
+  const secondaryItems = NAV_ITEMS.filter((i) => !PRIMARY_IDS.includes(i.id));
+
   const navHTML = `
+    <div class="action-bar" id="action-bar">
+      <div class="container action-bar-inner">
+        <p class="action-bar-tag">Helping senior dogs and senior people since 2009</p>
+        <div class="action-bar-actions">
+          <a href="${rel("adopt.html")}" class="ab-btn ab-adopt">Adopt</a>
+          <a href="${rel("donate.html")}" class="ab-btn ab-donate">Donate</a>
+          <a href="${rel("volunteer.html")}" class="ab-btn ab-volunteer">Volunteer</a>
+        </div>
+      </div>
+    </div>
     <nav class="nav" id="site-nav" aria-label="Primary">
       <div class="container">
         <div class="nav-inner">
           <a href="${rel("index.html")}" class="logo" aria-label="Peace of Mind Dog Rescue, home">
-            <div class="logo-mark">P</div>
-            <div class="logo-text">
-              <span class="name">Peace of Mind</span>
-              <span class="sub">Dog Rescue</span>
-            </div>
+            <img src="${rel("images/logo-horizontal.png")}" alt="Peace of Mind Dog Rescue" class="logo-img" width="600" height="133">
+            <span class="logo-since">Since 2009</span>
           </a>
-          <div class="nav-links">
-            ${NAV_ITEMS.map(renderTopItem).join("")}
-            <a href="${rel("donate.html")}" class="nav-cta ${page === 'donate' ? 'active' : ''}">
-              Donate
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </a>
-            <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
-              <span></span><span></span><span></span>
-            </button>
+          <div class="nav-menu">
+            <div class="nav-row nav-row--primary">
+              ${primaryItems.map(renderTopItem).join("")}
+            </div>
+            <div class="nav-row nav-row--secondary">
+              ${secondaryItems.map(renderTopItem).join("")}
+            </div>
           </div>
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </div>
       <div class="nav-mobile" id="nav-mobile" hidden>

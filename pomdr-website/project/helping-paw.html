@@ -46,6 +46,12 @@
 .funds-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px;}
 .fund-card{background:#fff;border-radius:var(--radius-lg);padding:28px;border:1px solid var(--line);transition:all .35s var(--ease);display:flex;flex-direction:column;}
 .fund-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+/* PLACEHOLDER card photos (stock dogs). Swap for real categorized photos. */
+.fund-card{overflow:hidden;}
+.fund-card::before{content:"";display:block;height:150px;margin:-28px -28px 22px;background:var(--cream-2) center/cover no-repeat;}
+.fund-card:nth-of-type(3n+1)::before{background-image:url(images/dog3.jpeg);}
+.fund-card:nth-of-type(3n+2)::before{background-image:url(images/dog6.jpeg);}
+.fund-card:nth-of-type(3n)::before{background-image:url(images/dog12.jpeg);}
 .fund-card.featured{background:var(--blue);color:#fff;border-color:var(--blue);}
 .fund-card.featured p{color:rgba(255,255,255,.88);}
 .fund-icon{width:48px;height:48px;border-radius:15px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:18px;}
@@ -90,7 +96,7 @@
         Apply for Help
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="donate.html" class="btn btn-outline">Support this Program</a>
+      <a href="tel:+18317189122" class="btn btn-outline">Call (831) 718-9122</a>
     </div>
     <div class="hero-photo">
       <picture><source type="image/webp" srcset="images/pillar-volunteer.webp"><img src="images/pillar-volunteer.jpeg" alt="POMDR volunteer with dog" /></picture>
@@ -202,13 +208,6 @@
         <div class="conditions">For non-emergency care · Income verification required</div>
         <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Vet Assistance</a>
       </div>
-      <div class="fund-card" style="background:var(--blue-50);border-color:var(--blue-100);">
-        <div class="fund-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3>Support These Programs</h3>
-        <p>All three funds depend on the generosity of our donors. A gift to Helping Paw directly helps guardians who are doing everything they can to keep their dogs.</p>
-        <div class="conditions" style="border-top-color:var(--blue-100);">100% of donations go directly to guardian assistance</div>
-        <a href="donate.html" class="fund-link">Donate to Helping Paw</a>
-      </div>
     </div>
   </div>
 </section>
@@ -251,7 +250,6 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="volunteer.html" class="btn btn-outline">Become a Walker</a>
-      <a href="donate.html" class="btn btn-outline">Donate to the Program</a>
     </div>
   </div>
 </section>

@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="pomdr.css" />
 <style>
 .page-hero{padding:160px 0 80px;background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+.page-hero .eyebrow{color:#fff;}
+.page-hero .eyebrow::before{background:rgba(255,255,255,.65);}
 .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(0,139,176,.3),transparent 55%),radial-gradient(ellipse at 100% 100%,rgba(99,47,136,.2),transparent 55%);}
 .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;}
 .hero-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:28px;}
@@ -192,7 +194,7 @@
 <!-- QUOTE -->
 <div class="quote-band">
   <div class="container">
-    <blockquote>"We do not say we are a 'no-kill' shelter. Instead, we say we have a lifetime commitment to every dog in our care."</blockquote>
+    <blockquote>"We have a lifetime commitment to every senior dog in our care."</blockquote>
     <cite>POMDR Mission</cite>
   </div>
 </div>

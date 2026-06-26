@@ -50,3 +50,6 @@ pomdr-website/project/uploads/web-capture-*.json
 # Misc patch / merge leftovers
 *.orig
 *.rej
+
+# Local review artifacts (Playwright screenshots)
+responsive-review/

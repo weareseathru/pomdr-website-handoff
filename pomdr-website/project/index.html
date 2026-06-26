@@ -69,35 +69,48 @@ body {
   line-height: var(--leading);
   overflow-x: hidden;
 }
+/* Responsive guards: kill any horizontal scroll and let grid/flex children
+   shrink (their default min-width:auto is the usual overflow culprit). */
+html { overflow-x: hidden; }
+img, picture, svg, video, iframe { max-width: 100%; }
+.events-layout > *, .newsletter .container > *, .mission-inner > *, .impact-row > *,
+.event-row > *, .footer-top > *, .programs-grid > *, .pillars-grid > *, .tails-grid > *,
+.dogs-grid > *, .dog-card-link, .nform-row input { min-width: 0; }
+.event-title, .event-meta, .newsletter p, .stat .lbl, .stat-block .lbl { overflow-wrap: anywhere; }
+.event-meta { flex-wrap: wrap; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
 .serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
 .eyebrow {
-  font-size: 17px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
-  color: var(--blue-700); display: inline-flex; align-items: center; gap: 10px;
+  font-size: 31px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; line-height: 1.1;
+  color: var(--blue-700); display: inline-flex; align-items: center; gap: 14px;
 }
 .eyebrow::before {
-  content: ""; width: 24px; height: 1px; background: var(--blue); display: inline-block;
+  content: ""; width: 40px; height: 2px; background: var(--blue); display: inline-block; flex-shrink: 0;
 }
 
 .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
 
-/* ===== NAV ===== */
+/* ===== NAV =====
+   Structural nav styles (action bar, two-row, logo) come from pomdr.css so the
+   homepage matches the rest of the site. Only the position offset below the
+   action bar is set here to override the shared default cleanly. */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 16px 0;
+  position: fixed; top: 50px; left: 0; right: 0; z-index: 100;
+  padding: 14px 0;
   transition: all 0.4s var(--ease);
 }
 .nav-inner {
   display: flex; align-items: center; justify-content: space-between;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(22,32,43,0.06);
-  border-radius: 999px;
-  padding: 8px 10px 8px 24px;
-  box-shadow: 0 8px 32px -12px rgba(22,32,43,0.12);
+  gap: 24px;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(22,32,43,0.08);
+  border-radius: 26px;
+  padding: 12px 18px 12px 26px;
+  box-shadow: var(--shadow-nav);
 }
 .nav.scrolled .nav-inner { background: rgba(255,255,255,0.97); }
 .logo { display: flex; align-items: center; gap: 10px; }
@@ -170,8 +183,77 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .nav-cta:hover { background: var(--blue-700) !important; transform: translateY(-1px); box-shadow: 0 8px 20px -4px rgba(0,139,176,0.5) !important; }
 
+/* Persistent action bar (Adopt/Donate/Volunteer) */
+.action-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 101; background: var(--blue-700); border-bottom: 1px solid rgba(255,255,255,0.14); }
+.action-bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 50px; padding-top: 6px; padding-bottom: 6px; }
+.action-bar-tag { margin: 0; color: rgba(255,255,255,0.93); font-size: 16px; font-weight: 600; }
+.action-bar-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.ab-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px 18px; border-radius: 999px; font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none; transition: transform 0.2s var(--ease); }
+.ab-adopt { background: #fff; color: var(--blue-700); }
+.ab-donate { background: transparent; color: #fff; border: 2px solid #fff; }
+.ab-donate:hover { background: rgba(255, 255, 255, 0.15); }
+.ab-volunteer { background: var(--purple); color: #fff; }
+.ab-btn:hover { transform: translateY(-1px); }
+.ab-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* Full logo + Since 2009 */
+.logo-img { height: 52px; width: auto; display: block; transition: height 0.3s var(--ease); }
+.nav.scrolled .logo-img { height: 44px; }
+.logo-since { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); font-weight: 700; white-space: nowrap; border-left: 1px solid var(--line); padding-left: 12px; }
+
+/* Two visible rows of menu items */
+.nav-menu { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.nav-row { display: flex; align-items: center; gap: 8px; }
+.nav-row--primary .nav-item > a { font-size: 18px; font-weight: 700; color: var(--ink); }
+.nav-row--secondary .nav-item > a { font-size: 15px; font-weight: 500; color: var(--ink-3); padding: 6px 12px; }
+
+/* Mobile menu toggle */
+.nav-toggle { display: none; width: 44px; height: 44px; border-radius: 999px; background: var(--blue-50); align-items: center; justify-content: center; flex-direction: column; gap: 4px; }
+.nav-toggle span { width: 20px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.25s var(--ease); }
+.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Mobile drawer (beautiful, on-brand, with tap effects) */
+.nav-mobile {
+  display: none; position: absolute; top: calc(100% + 10px); left: 14px; right: 14px;
+  background: rgba(255,255,255,0.98); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border: 1px solid rgba(22,32,43,0.06); border-radius: var(--radius-lg); padding: 14px;
+  box-shadow: 0 30px 64px -20px rgba(22,32,43,.38), 0 2px 8px rgba(22,32,43,.06);
+  flex-direction: column; gap: 2px; max-height: min(72vh, 560px); overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.nav-mobile.open { display: flex; animation: navDrop 0.3s var(--ease) both; }
+@keyframes navDrop { from { opacity: 0; transform: translateY(-12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.nav-mobile a {
+  display: flex; align-items: center; gap: 10px; padding: 13px 16px; border-radius: 14px; min-height: 48px;
+  font-size: 18px; font-weight: 600; color: var(--ink); text-decoration: none;
+  transition: background .22s var(--ease), color .22s var(--ease), transform .12s var(--ease), padding-left .22s var(--ease);
+}
+.nav-mobile a:hover { background: var(--blue-50); color: var(--blue-700); padding-left: 20px; }
+.nav-mobile a:active { transform: scale(0.97); background: var(--blue-100); }
+.nav-mobile a.active { background: var(--blue-50); color: var(--blue-700); }
+.nav-mobile.open a { animation: navItemIn .34s var(--ease) both; }
+.nav-mobile.open a:nth-child(1){animation-delay:.03s} .nav-mobile.open a:nth-child(2){animation-delay:.05s}
+.nav-mobile.open a:nth-child(3){animation-delay:.07s} .nav-mobile.open a:nth-child(4){animation-delay:.09s}
+.nav-mobile.open a:nth-child(5){animation-delay:.11s} .nav-mobile.open a:nth-child(6){animation-delay:.13s}
+.nav-mobile.open a:nth-child(7){animation-delay:.15s} .nav-mobile.open a:nth-child(8){animation-delay:.17s}
+@keyframes navItemIn { from { opacity:0; transform: translateX(-10px); } to { opacity:1; transform: translateX(0); } }
+.nav-mobile a.m-cta {
+  justify-content: center; margin-top: 10px; min-height: 52px;
+  background: var(--blue); color: #fff; font-weight: 700; box-shadow: 0 10px 24px -6px rgba(0,139,176,.5);
+}
+.nav-mobile a.m-cta:hover { background: var(--blue-700); color: #fff; padding-left: 16px; }
+.nav-mobile a.m-cta:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) { .nav-mobile.open, .nav-mobile.open a { animation: none; } }
+
 @media (max-width: 960px) {
-  .nav-item:not(:last-child) > a, .nav-item:not(:last-child) > button { display: none; }
+  .nav-menu { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .action-bar-tag { display: none; }
+  .action-bar-inner { justify-content: center; }
+  .ab-btn { padding: 8px 18px; }
+  .logo-since { display: none; }
+  .logo-img { height: 44px; }
 }
 
 /* ===== HERO ===== */
@@ -244,7 +326,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 300;
-  color: #f7ddb7;
+  color: var(--blue-100);
 }
 .hero-sub {
   font-size: 19px; max-width: 48ch;
@@ -253,11 +335,35 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   animation: fadeUp 0.9s var(--ease) 0.5s both;
 }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp 0.9s var(--ease) 0.65s both; }
+/* Brand-colored translucent card behind the hero text, so it is always readable */
+.hero-card {
+  display: inline-block; max-width: 680px;
+  background: rgba(0, 139, 176, 0.65);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 34px 40px 36px;
+  box-shadow: 0 26px 64px -28px rgba(0, 0, 0, 0.55);
+}
+.hero-card .hero-title { margin-bottom: 22px; text-shadow: none; }
+.hero-card .hero-ctas { margin: 0; }
+/* Buttons must contrast with the teal card (primary blue would blend in) */
+.hero-card .btn-primary { background: #fff; color: var(--blue-700); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.4); }
+.hero-card .btn-primary:hover { background: var(--cream); }
+.hero-card .btn-ghost { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.55); color: #fff; }
+/* Keep the side arrows clear of the title card (arrow right edge ~88px; leave a gap) */
+.hero-content .container { padding-left: 112px; }
+@media (max-width: 900px) {
+  /* Higher specificity (.hero .hero-arrow) so it beats the later base rule */
+  .hero .hero-arrow { display: none; }
+  .hero-content .container { padding-left: 22px; padding-right: 22px; }
+  .hero-card { display: block; max-width: none; padding: 24px 22px; }
+}
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 16px 28px; border-radius: 999px; font-weight: 600; font-size: 16px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 11px 22px; border-radius: 999px; font-weight: 700; font-size: 19px; line-height: 1.05;
   transition: all 0.25s var(--ease);
   white-space: nowrap;
 }
@@ -397,9 +503,9 @@ section { position: relative; }
 .section-header.left { text-align: left; margin-left: 0; }
 .section-title {
   font-family: var(--font-serif); font-weight: 400;
-  font-size: clamp(36px, 4.2vw, 58px);
-  line-height: 1.05; letter-spacing: -0.02em;
-  margin: 16px 0 20px;
+  font-size: clamp(20px, 2.4vw, 30px);
+  line-height: 1.15; letter-spacing: -0.01em;
+  margin: 12px 0 16px;
   color: var(--ink);
 }
 .section-title em { font-style: italic; color: var(--blue); }
@@ -507,6 +613,10 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
 /* ===== 3 PILLARS ===== */
 .pillars { background: var(--cream-2); }
 .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+/* Equal card heights: stretch the .reveal grid items so cards in a row match. */
+.pillars-grid > .reveal, .programs-grid > .reveal, .tails-grid > .reveal { display: flex; }
+.pillars-grid > .reveal > *, .programs-grid > .reveal > *, .tails-grid > .reveal > * { width: 100%; height: 100%; }
+.pillar, .program-card, .tail-card { height: 100%; }
 .pillar {
   position: relative; overflow: hidden; border-radius: var(--radius-lg);
   aspect-ratio: 4/5;
@@ -680,6 +790,26 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   margin-top: 12px; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--ink-3); font-weight: 600;
 }
+
+/* POMDR By the Numbers: three big stats across (senior-readable labels) */
+.stats-3 {
+  margin-top: 56px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+}
+.stat-block {
+  text-align: center; padding: 44px 28px;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+}
+.stat-block .num {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(56px, 6vw, 92px); line-height: 0.95; letter-spacing: -0.03em;
+  color: var(--blue-700);
+  display: inline-flex; align-items: flex-start; justify-content: center;
+}
+.stat-block .num .sym { font-size: 0.4em; color: var(--blue); padding-left: 6px; padding-top: 10px; }
+.stat-block .lbl { margin-top: 14px; font-size: 18px; line-height: 1.4; color: var(--ink-2); font-weight: 600; }
+@media (max-width: 640px) { .stats-3 { grid-template-columns: 1fr; gap: 20px; } }
 .stat .story {
   margin-top: 18px;
   font-family: var(--font-serif); font-size: 21px; line-height: 1.5;
@@ -922,17 +1052,48 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 @media (max-width: 1024px) {
   .dogs-grid { grid-template-columns: repeat(3, 1fr); }
   .tails-grid { grid-template-columns: 1fr 1fr; }
-  .pillars-grid, .programs-grid { grid-template-columns: 1fr; }
   .mission-inner, .events-layout, .newsletter .container { grid-template-columns: 1fr; gap: 40px; }
   .nav-links a:not(.nav-cta) { display: none; }
 }
 @media (max-width: 640px) {
   .dogs-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .tails-grid { grid-template-columns: 1fr; }
+  /* Cards stay side-by-side on tablet; collapse to one column only at phone width */
+  .pillars-grid, .programs-grid, .stats-3, .video-grid { grid-template-columns: 1fr; }
   .hero-meta { display: none; }
   .stat .story { font-size: 19px; }
-  .section { padding: 80px 0; }
-  .container { padding: 0 20px; }
+  .section { padding: 76px 0; }
+  .container { padding: 0 16px; }
+  /* Hero slider controls (progress bars + counter) must never overflow the hero */
+  .hero-counter { display: none; }
+  .hero-progress button { width: 22px; }
+  .hero-progress button.active { width: 44px; }
+  .hero-controls { bottom: 20px; }
+  /* Event rows: smaller fixed columns + wrapping so they fit narrow screens */
+  .event-row { grid-template-columns: 50px 1fr auto; gap: 14px; padding: 16px; }
+  .event-date .day { font-size: 24px; }
+  .events-feature { padding: 26px; }
+  .events-feature h3 { font-size: 30px; }
+  .events-feature .details { flex-wrap: wrap; gap: 10px 18px; }
+  /* Events header (title + "View full calendar") must wrap, button goes full width */
+  .events .section-header { flex-wrap: wrap; gap: 16px; }
+  .events .section-header .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+  /* Stack the newsletter signup so it never overflows the rounded pill */
+  .nform-row { flex-direction: column; align-items: stretch; background: transparent; border: none; padding: 0; gap: 10px; }
+  .nform-row input { background: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: 13px 18px; }
+  .nform-row button { justify-content: center; width: 100%; }
+  .dogs-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .container { padding: 0 14px; }
+  .hero-content .container { padding-left: 14px; padding-right: 14px; }
+  .hero-card { padding: 22px 18px; }
+}
+@media (max-width: 360px) {
+  .action-bar-actions { gap: 6px; }
+  .ab-btn { padding: 7px 12px; font-size: 15px; min-height: 38px; }
 }
 
 /* ===== PAW TRAIL =====
@@ -973,7 +1134,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 /* ===== VIDEO SECTION ===== */
 .video-section { padding: 120px 0; }
 .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
-@media (max-width: 900px) { .video-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; } }
+@media (max-width: 640px) { .video-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; } }
 .video-card {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -1012,39 +1173,54 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 <!-- The decorative paw trail injects its own layer from paw-trail.js. -->
 
 <!-- ===== NAV ===== -->
-<nav class="nav" id="site-nav">
+<div class="action-bar" id="action-bar">
+  <div class="container action-bar-inner">
+    <p class="action-bar-tag">Helping senior dogs and senior people since 2009</p>
+    <div class="action-bar-actions">
+      <a href="adopt.html" class="ab-btn ab-adopt">Adopt</a>
+      <a href="donate.html" class="ab-btn ab-donate">Donate</a>
+      <a href="volunteer.html" class="ab-btn ab-volunteer">Volunteer</a>
+    </div>
+  </div>
+</div>
+<nav class="nav" id="site-nav" aria-label="Primary">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="logo">
-        <div class="logo-mark">P</div>
-        <div class="logo-text">
-          <div class="name">Peace of Mind</div>
-          <div class="sub">Dog Rescue</div>
-        </div>
+      <a href="index.html" class="logo" aria-label="Peace of Mind Dog Rescue, home">
+        <img src="images/logo-horizontal.png" alt="Peace of Mind Dog Rescue" class="logo-img" width="600" height="133">
+        <span class="logo-since">Since 2009</span>
       </a>
-      <div class="nav-links">
-        <div class="nav-item"><a href="index.html" class="active" aria-current="page">Home</a></div>
-        <div class="nav-item"><a href="adopt.html">Adopt</a></div>
-        <div class="nav-item"><a href="foster.html">Foster</a></div>
-        <div class="nav-item"><a href="helping-paw.html">Helping Paw</a></div>
-        <div class="nav-item"><a href="about.html">About</a></div>
-        <div class="nav-item"><a href="contact.html">Contact</a></div>
-        <a href="donate.html" class="nav-cta">
-          Donate
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
-          <span></span><span></span><span></span>
-        </button>
+      <div class="nav-menu">
+        <div class="nav-row nav-row--primary">
+          <div class="nav-item"><a href="adopt.html">Adopt</a></div>
+          <div class="nav-item"><a href="foster.html">Foster</a></div>
+          <div class="nav-item"><a href="donate.html">Donate</a></div>
+          <div class="nav-item"><a href="volunteer.html">Volunteer</a></div>
+          <div class="nav-item"><a href="helping-paw.html">Helping Paw</a></div>
+        </div>
+        <div class="nav-row nav-row--secondary">
+          <div class="nav-item"><a href="index.html" class="active" aria-current="page">Home</a></div>
+          <div class="nav-item"><a href="about.html">About</a></div>
+          <div class="nav-item"><a href="surrender.html">Surrender</a></div>
+          <div class="nav-item"><a href="benefit-shop.html">Benefit Shop</a></div>
+          <div class="nav-item"><a href="contact.html">Contact</a></div>
+        </div>
       </div>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
   <div class="nav-mobile" id="nav-mobile" hidden>
     <a href="index.html" class="active">Home</a>
     <a href="adopt.html">Adopt</a>
     <a href="foster.html">Foster</a>
+    <a href="donate.html">Donate</a>
+    <a href="volunteer.html">Volunteer</a>
     <a href="helping-paw.html">Helping Paw</a>
     <a href="about.html">About</a>
+    <a href="surrender.html">Surrender</a>
+    <a href="benefit-shop.html">Benefit Shop</a>
     <a href="contact.html">Contact</a>
     <a href="donate.html" class="m-cta">Donate</a>
   </div>
@@ -1076,14 +1252,17 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 
     <div class="hero-content">
       <div class="container">
-        <h1 class="hero-title" id="hero-title">
-          <div>Senior dogs deserve</div>
-          <div>a <em>soft place</em></div>
-          <div>to land.</div>
-        </h1>
-        <div class="hero-ctas" id="hero-ctas">
-          <a href="adopt.html" class="btn btn-primary">Adopt a Dog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-          <a href="adopt.html" class="btn btn-ghost">See all dogs</a>
+        <div class="hero-card">
+          <h1 class="hero-title" id="hero-title">
+            <div>Senior dogs deserve</div>
+            <div>a <em>soft place</em></div>
+            <div>to land.</div>
+          </h1>
+          <div class="hero-ctas" id="hero-ctas">
+            <a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="foster.html" class="btn btn-purple">Foster</a>
+            <a href="adopt.html" class="btn btn-ghost">See all dogs</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1147,8 +1326,8 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
       <div class="reveal">
         <div class="section-header">
           <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
-          <h2 class="section-title">Who will care for your dog if <em>you no longer can?</em></h2>
-          <p class="section-lead">We help senior dogs and senior people on California's Central Coast. Through rescue, foster, adoption, hospice, and lifelong care, no dog is left without someone to love them.</p>
+          <h2 class="section-title">Programs for senior dogs <em>and senior people.</em></h2>
+          <p class="section-lead">Who will care for your dog if you no longer can? We help senior dogs and senior people on California's Central Coast through rescue, foster, adoption, hospice, and lifelong care, so no dog is left without someone to love them.</p>
         </div>
       </div>
       <div class="programs-grid">
@@ -1183,8 +1362,8 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
       <div class="reveal">
         <div class="section-header">
           <span class="eyebrow">Adoptable Dogs</span>
-          <h2 class="section-title">A few of the pups waiting for <em>their next chapter.</em></h2>
-          <p class="section-lead">Each of these seniors has a full heart, a few grey hairs, and a story that is not finished yet.</p>
+          <h2 class="section-title">Adoptable dogs, <em>updated daily.</em></h2>
+          <p class="section-lead">A few of the seniors waiting for their next chapter. Each has a full heart, a few grey hairs, and a story that is not finished yet.</p>
         </div>
       </div>
       <div class="dogs-grid">
@@ -1280,7 +1459,8 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
       <div class="reveal">
         <div class="section-header">
           <span class="eyebrow">Watch</span>
-          <h2 class="section-title">Our dogs and our people, in <em>their own words.</em></h2>
+          <h2 class="section-title">POMDR <em>Videos.</em></h2>
+          <p class="section-lead">Our dogs and our people, in their own words. Short films from inside the rescue, from foster homes to morning walks.</p>
           <p class="section-lead">Short films from the rescue: dogs settling into foster homes, volunteers on their morning walks, and the families who opened their doors.</p>
         </div>
       </div>
@@ -1314,44 +1494,26 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   <section class="impact" aria-labelledby="impact-title">
     <div class="container">
       <div class="reveal">
-        <div class="section-header left">
-          <span class="eyebrow">Our Impact</span>
-          <h2 class="section-title" id="impact-title">The lives behind <em>the numbers.</em></h2>
+        <div class="section-header">
+          <span class="eyebrow">POMDR By the Numbers</span>
+          <h2 class="section-title" id="impact-title">Senior dogs and senior people, <em>helped together.</em></h2>
         </div>
       </div>
-      <div class="impact-stories">
-        <article class="impact-story reveal">
-          <figure class="impact-photo"><picture><source type="image/webp" srcset="images/dog14.webp"><img src="images/dog14.jpeg" alt="A senior dog resting peacefully on a comfortable couch in a foster home" loading="lazy"></picture></figure>
-          <div class="stat">
-            <div class="num">3,200<span class="sym">+</span></div>
-            <div class="lbl">Senior dogs rescued</div>
-            <p class="story">Cooper came to us at ~13, surrendered when his family moved into memory care. Nine weeks later he was home in Carmel, on slow morning walks with his new person.</p>
-          </div>
-        </article>
-        <article class="impact-story reveal">
-          <figure class="impact-photo"><picture><source type="image/webp" srcset="images/dog15.webp"><img src="images/dog15.jpeg" alt="A small senior dog wrapped in a fleece blanket, resting and content" loading="lazy"></picture></figure>
-          <div class="stat">
-            <div class="num">16<span class="sym">yrs</span></div>
-            <div class="lbl">Of lifetime commitment</div>
-            <p class="story">Every dog in our care stays as long as it takes. Some a week, some two years, a few forever in sanctuary. The promise never changes.</p>
-          </div>
-        </article>
-        <article class="impact-story reveal">
-          <figure class="impact-photo"><img src="uploads/Nancy%20helping%20paw%20Finnegan%2C%20walker%20Jane%20(1).jpeg" alt="A volunteer walking a small dog alongside a senior guardian on a quiet neighborhood street" loading="lazy"></figure>
-          <div class="stat">
-            <div class="num">1,800<span class="sym">+</span></div>
-            <div class="lbl">Active volunteers</div>
-            <p class="story">On any given morning, a dozen volunteers walk dogs before their own day starts. Retired teachers, students, neighbors. They simply show up.</p>
-          </div>
-        </article>
-        <article class="impact-story reveal">
-          <figure class="impact-photo"><img src="uploads/Hazel%20HT.jpeg" alt="Hazel, a happy dog, settled into her new home after adoption" loading="lazy"></figure>
-          <div class="stat">
-            <div class="num">501<span class="sym">c3</span></div>
-            <div class="lbl">Tax-deductible giving</div>
-            <p class="story">Every dollar goes to food, medical care, and foster reimbursement. Hazel came home in 2024 after two surgeries and a three-month stay. She is thriving.</p>
-          </div>
-        </article>
+      <!-- NOTE: stat values are PLACEHOLDERS pending real totals from POMDR.
+           In WP these become editable (ACF options) or dynamic counts. -->
+      <div class="stats-3 reveal">
+        <div class="stat-block">
+          <div class="num">250<span class="sym">+</span></div>
+          <div class="lbl">Seniors supported through Helping Paw</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">3,200<span class="sym">+</span></div>
+          <div class="lbl">Dogs adopted into loving homes</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">1,800<span class="sym">+</span></div>
+          <div class="lbl">Active volunteers</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1361,8 +1523,9 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     <div class="container">
       <div class="reveal">
         <div class="section-header">
-          <span class="eyebrow">Happy Tails</span>
-          <h2 class="section-title">Stories from <em>forever families.</em></h2>
+          <span class="eyebrow">Testimonials</span>
+          <h2 class="section-title">Hear from <em>our clients.</em></h2>
+          <p class="section-lead">Adopters, fosters, and Helping Paw families on what POMDR has meant to them and their senior dogs.</p>
         </div>
       </div>
       <div class="tails-grid">
@@ -1586,19 +1749,19 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
     { tag: "Adoption · Senior dogs, ready to love",
       title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
       sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
-      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt a Dog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Helping Paw · Support for senior guardians",
       title: "<div>Helping seniors</div><div>and their dogs stay</div><div><em>together</em> longer.</div>",
       sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
-      ctas: '<a href="helping-paw.html" class="btn btn-primary">Helping Paw Program <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="helping-paw.html" class="btn btn-ghost">Request support</a>' },
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Our Mission · Since 2009",
       title: "<div>A lifetime</div><div><em>commitment</em>,</div><div>every time.</div>",
       sub: "Every dog in our care is ours for life. If a placement does not work, for any reason, ever, they come home to us.",
-      ctas: '<a href="about.html" class="btn btn-primary">Our Mission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="about.html" class="btn btn-ghost">How we help</a>' },
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Foster · Donate · Volunteer",
       title: "<div>Be the reason</div><div>a <em>gray muzzle</em></div><div>finds home.</div>",
       sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
-      ctas: '<a href="foster.html" class="btn btn-primary">Foster <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="donate.html" class="btn btn-purple">Donate</a><a href="volunteer.html" class="btn btn-ghost">Volunteer</a>' }
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' }
   ];
   var heroSlides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('#hero-progress button');
