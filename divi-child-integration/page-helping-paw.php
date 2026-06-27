@@ -1,0 +1,253 @@
+<?php
+/** Template for the Helping Paw page (WP slug: helping-paw). Ports prototype helping-paw.html. */
+get_header();
+$img = get_stylesheet_directory_uri() . "/assets/images";
+?>
+<style>
+.page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(192,107,0,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
+.hero-photo{border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:16/9;margin-top:52px;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;}
+/* PROGRAMS */
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.program-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);transition:all .35s var(--ease);display:flex;flex-direction:column;}
+.program-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.program-card .card-img{aspect-ratio:3/2;overflow:hidden;background:var(--cream-2);}
+.program-card .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+.program-card:hover .card-img img{transform:scale(1.05);}
+.program-card .card-body{padding:24px;flex:1;display:flex;flex-direction:column;}
+.program-card .card-icon{width:44px;height:44px;border-radius:14px;background:var(--orange-50);display:grid;place-items:center;color:var(--orange);margin-bottom:14px;}
+.program-card .card-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;}
+.program-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
+.program-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
+.program-card .card-link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--orange);margin-top:auto;}
+.program-card .card-link::after{content:"→";transition:transform .25s;}
+.program-card:hover .card-link::after{transform:translateX(4px);}
+@media(max-width:900px){.programs-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:580px){.programs-grid{grid-template-columns:1fr;}}
+/* BRIGADE */
+.brigade-section{background:var(--orange-50);padding:100px 0;}
+.brigade-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;}
+.brigade-img{border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/5;}
+.brigade-img img{width:100%;height:100%;object-fit:cover;}
+.brigade-list{margin:20px 0;display:flex;flex-direction:column;gap:12px;}
+.brigade-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;padding:12px;background:#fff;border-radius:12px;border:1px solid rgba(192,107,0,.12);}
+.li-icon{width:34px;height:34px;border-radius:9px;background:var(--orange-50);display:grid;place-items:center;color:var(--orange);flex-shrink:0;}
+.li-icon svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;}
+.li-text strong{display:block;font-weight:600;font-size:16px;color:var(--ink);}
+.li-text span{font-size:15px;color:var(--ink-3);}
+@media(max-width:800px){.brigade-inner{grid-template-columns:1fr;gap:36px;}}
+/* FUNDS */
+.funds-section{padding:100px 0;}
+.funds-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px;}
+.fund-card{background:#fff;border-radius:var(--radius-lg);padding:28px;border:1px solid var(--line);transition:all .35s var(--ease);display:flex;flex-direction:column;}
+.fund-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+/* PLACEHOLDER card photos (stock dogs). Swap for real categorized photos. */
+.fund-card{overflow:hidden;}
+.fund-card::before{content:"";display:block;height:150px;margin:-28px -28px 22px;background:var(--cream-2) center/cover no-repeat;}
+.fund-card:nth-of-type(3n+1)::before{background-image:url(images/dog3.jpeg);}
+.fund-card:nth-of-type(3n+2)::before{background-image:url(images/dog6.jpeg);}
+.fund-card:nth-of-type(3n)::before{background-image:url(images/dog12.jpeg);}
+.fund-card.featured{background:var(--blue);color:#fff;border-color:var(--blue);}
+.fund-card.featured p{color:rgba(255,255,255,.88);}
+.fund-icon{width:48px;height:48px;border-radius:15px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:18px;}
+.fund-card.featured .fund-icon{background:rgba(255,255,255,.15);color:#fff;}
+.fund-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;}
+.fund-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
+.fund-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
+.fund-card .conditions{font-size:14px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--line);}
+.fund-card.featured .conditions{color:rgba(255,255,255,.6);border-top-color:rgba(255,255,255,.2);}
+.fund-link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--blue);margin-top:14px;}
+.fund-card.featured .fund-link{color:rgba(255,255,255,.88);}
+.fund-link::after{content:"→";transition:transform .25s;}
+.fund-card:hover .fund-link::after{transform:translateX(4px);}
+@media(max-width:700px){.funds-grid{grid-template-columns:1fr;}}
+/* ELIGIBILITY */
+.eligibility-band{background:var(--ink);color:#fff;padding:80px 0;}
+.eligibility-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+.eligibility-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
+.eligibility-band h2 em{font-style:italic;color:var(--blue-200);}
+.eligibility-band p{color:rgba(255,255,255,.8);font-size:16px;margin:0 0 20px;}
+@media(max-width:800px){.eligibility-inner{grid-template-columns:1fr;gap:28px;}}
+/* CTA STRIP */
+.cta-strip{padding:72px 0;background:var(--blue-50);}
+</style>
+<main id="main-content">
+
+
+<script>
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-nav').classList.toggle('scrolled', window.scrollY > 40);
+  });
+</script><!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Helping Paw Program</div>
+    <h1 class="display">Keeping pets and people <em>together.</em></h1>
+    <p class="lead">The Helping Paw Program provides support to senior people and people with disabilities who need help caring for their dogs, so no one has to give up their companion due to hardship.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">
+        Apply for Help
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:+18317189122" class="btn btn-outline">Call (831) 718-9122</a>
+    </div>
+    <div class="hero-photo">
+      <picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="POMDR volunteer with dog" /></picture>
+    </div>
+  </div>
+</section>
+
+<!-- THREE PROGRAMS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow blue">Our Services</div>
+    <h2 class="section-title blue">Three ways we <em>help.</em></h2>
+    <p class="section-lead">Whether you need someone to walk your dog, help with vet bills, or temporary care during a health crisis, Helping Paw is here.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="Walking Brigade volunteer"/></picture></div>
+        <div class="card-body">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M13 4v7h7"/><path d="M13 4a9 9 0 1 0 7 7"/></svg></div>
+          <h3>Walking Brigade</h3>
+          <p>Our volunteers walk dogs for senior or ill guardians who can no longer walk their own dogs. We also help with transportation to vets and groomers, and other supportive tasks.</p>
+          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="card-link">Request a Walker</a>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-donate.webp"><img src="<?php echo $img; ?>/pillar-donate.jpeg" alt="Senior guardian with dog"/></picture></div>
+        <div class="card-body">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3>Financial Assistance</h3>
+          <p>We offer two funds to help guardians facing unexpected veterinary expenses. Max's Helping Paws Fund for urgent care, and a Food Fund to keep dogs fed during financial hardship.</p>
+          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="card-link">Apply for Assistance</a>
+        </div>
+      </div>
+      <div class="program-card">
+        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-adopt.webp"><img src="<?php echo $img; ?>/pillar-adopt.jpeg" alt="Couple with dog"/></picture></div>
+        <div class="card-body">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+          <h3>Temporary Foster</h3>
+          <p>When a guardian faces a health crisis or hospitalization, we can arrange temporary foster care for their dog, keeping them safe until their person recovers.</p>
+          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="card-link">Request Temp Foster</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WALKING BRIGADE DETAIL -->
+<section class="brigade-section">
+  <div class="container">
+    <div class="brigade-inner">
+      <div>
+        <div class="eyebrow">Walking Brigade</div>
+        <h2 class="section-title" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:400;margin:12px 0 16px;">Volunteer walkers. <em style="font-style:italic;color:var(--orange)">Real bonds.</em></h2>
+        <p style="font-size:17px;color:var(--ink-2);margin:0 0 24px;">Our walking volunteers are matched with senior or ill guardians in the Monterey, Santa Cruz, and San Benito county areas. Walks happen on a regular schedule, giving the dog exercise and the guardian peace of mind.</p>
+        <ul class="brigade-list">
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="li-text"><strong>Tri-County Coverage</strong><span>Monterey, Santa Cruz &amp; San Benito counties</span></div>
+          </li>
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+            <div class="li-text"><strong>Regular Schedule</strong><span>Consistent walks matched to your needs</span></div>
+          </li>
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <div class="li-text"><strong>Vetted Volunteers</strong><span>All walkers are POMDR volunteers, safe and reliable</span></div>
+          </li>
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="li-text"><strong>Easy to Request</strong><span>Call (831) 718-9122 or fill out our form</span></div>
+          </li>
+        </ul>
+        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">
+          Request a Walker
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="brigade-img">
+        <picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="Helping Paw walking volunteer with dog" /></picture>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIAL ASSISTANCE FUNDS -->
+<section class="funds-section">
+  <div class="container">
+    <div class="eyebrow blue">Financial Assistance</div>
+    <h2 class="section-title blue">Two funds. <em style="color:var(--blue)">One mission.</em></h2>
+    <p class="section-lead">Our financial assistance programs help low-income guardians facing unexpected expenses so they never have to choose between their dog and their budget.</p>
+    <div class="funds-grid">
+      <div class="fund-card featured">
+        <div class="fund-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
+        <h3>Max's Helping Paws Fund</h3>
+        <p>Provides financial assistance to low-income guardians facing unexpected, urgent veterinary care, including surgery and specialist visits. Named in honor of Max, a beloved POMDR pup.</p>
+        <div class="conditions">For urgent, unexpected veterinary needs · Low-income guardians · Monterey, Santa Cruz &amp; San Benito counties</div>
+        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Max's Fund</a>
+      </div>
+      <div class="fund-card">
+        <div class="fund-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <h3>Food Fund</h3>
+        <p>Helps guardians who are struggling financially to continue feeding their dogs during times of hardship, keeping families together when budgets are tight.</p>
+        <div class="conditions">For food assistance · Must be facing financial hardship · Tri-county area</div>
+        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Food Assistance</a>
+      </div>
+      <div class="fund-card">
+        <div class="fund-icon" style="background:var(--purple-50);color:var(--purple);"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>Helping Paw Veterinary Fund</h3>
+        <p>For non-emergency but necessary veterinary care that a guardian cannot afford. Routine treatments, dental care, and ongoing medical management for chronic conditions.</p>
+        <div class="conditions">For non-emergency care · Income verification required</div>
+        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Vet Assistance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="eligibility-band">
+  <div class="container">
+    <div class="eligibility-inner">
+      <div>
+        <div style="font-size:17px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue-200);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:24px;height:1px;background:var(--blue-200);display:inline-block;"></span>Who Qualifies</div>
+        <h2>Are you <em>eligible?</em></h2>
+        <p>The Helping Paw Program is designed for people in our tri-county area who need support caring for their dog due to age, disability, or financial hardship.</p>
+        <p>We review each application individually and do our best to help as many people as we can. If we are unable to help, we provide referrals to other resources.</p>
+        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;font-size:16px;margin-top:8px;transition:all .25s;">
+          Apply Online
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <div style="margin-top:16px;font-size:15px;color:rgba(255,255,255,.5);">Or call <a href="tel:8317189122" style="color:var(--blue-200);">(831) 718-9122</a></div>
+      </div>
+      <div>
+        <ul class="check-list">
+          <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Senior or person with disability living in Monterey, Santa Cruz or San Benito county</li>
+          <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Facing financial hardship that makes caring for your dog difficult</li>
+          <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Temporarily unable to walk or care for your dog due to health issues</li>
+          <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Facing unexpected veterinary expenses you cannot cover</li>
+          <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>In need of temporary foster care during hospitalization or recovery</li>
+          <li><div class="ck"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Need help with food or basic supplies for your dog</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="container">
+    <h2>Ready to help or <em>get help?</em></h2>
+    <div class="ctas">
+      <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-primary">Apply for Helping Paw
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/volunteer/" class="btn btn-outline">Become a Walker</a>
+    </div>
+  </div>
+</section>
+
+
+</main>
+<?php get_footer();
