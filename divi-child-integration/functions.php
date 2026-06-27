@@ -205,408 +205,22 @@ function adopt_a_pet_shortcode() {
 add_shortcode('adopt_a_pet', 'adopt_a_pet_shortcode');
 
 
-function adopt_a_pet_fullwidth_shortcode() {
-    ob_start();
-
-    $args = [
-        'post_type'      => 'pets',
-        'posts_per_page' => 3,
-        'meta_query'     => [
-            'relation' => 'AND',
-            [
-                'key'     => 'status',
-                'value'   => 'Adoptable',
-                'compare' => 'LIKE',
-            ],
-            [
-                'key'     => 'status',
-                'value'   => 'Adopted',
-                'compare' => 'NOT LIKE',
-            ],
-        ],
-        'orderby' => [
-            'meta_value' => 'DESC',
-            'date'       => 'DESC',
-        ],
-        'meta_key' => 'feature',
-    ];
-
-    $query = new WP_Query($args);
-
-    echo '<div class="custom-acf-posts-fullwidth">';
-
-    if ($query->have_posts()) :
-        while ($query->have_posts()) : $query->the_post();
-
-            $status  = get_field('status') ?: [];
-            $image   = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : '';
-            $looks   = get_field('looks_like');
-            $sex     = get_field('sex');
-            $age     = get_field('age');
-            $weight  = get_field('weight');
-
-            echo '<article class="custom-post-full">';
-
-            if ($image) {
-                echo '<div class="custom-post-full-image">';
-                echo '<a href="' . get_permalink() . '">';
-                echo '<img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '">';
-                echo '</a></div>';
-            }
-
-            echo '<div class="custom-post-full-content">';
-            echo '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-
-            echo '<div class="pet-meta">';
-            if ($looks)  echo esc_html($looks) . '<br>';
-            if ($sex)    echo esc_html($sex) . ' · ';
-            if ($age)    echo esc_html($age) . ' yrs · ';
-            if ($weight) echo esc_html($weight) . ' lbs';
-            echo '</div>';
-
-            if (in_array('Foster Needed', $status)) {
-                echo '<div class="pet-badge foster">Foster Needed</div>';
-            }
-
-            if (in_array('Adoption Pending', $status)) {
-                echo '<div class="pet-badge pending">Adoption Pending</div>';
-            }
-
-            echo '</div></article>';
-
-        endwhile;
-        wp_reset_postdata();
-    endif;
-
-    echo '</div>';
-
-    return ob_get_clean();
-}
-
+function adopt_a_pet_fullwidth_shortcode() { return pomdr_dogs_by_status('Adoptable'); }
 add_shortcode('adopt_a_pet_fullwidth', 'adopt_a_pet_fullwidth_shortcode');
 
 // *************************Benifit Shop Staff *******************************
 
-function benefit_shop_staff_shortcode() {
- 
-    ob_start(); // Start output buffering
- 
-    $args = array(
-
-        'post_type'      => 'team',
-
-        'order'          => 'ASC',
-
-        'orderby'        => 'meta_value',
-
-        'meta_key'       => 'sort',
-
-        // 'posts_per_page' => 2, // Show only 2 staff
-
-        'meta_query'     => array(
-
-            array(
-
-                'key'     => 'group',
-
-                'value'   => 'Benefit Shop Staff', // Change if needed
-
-                'compare' => 'LIKE'
-
-            )
-
-        )
-
-    );
- 
-    $custom_query = new WP_Query($args);
- 
-    if ($custom_query->have_posts()) :
- 
-        echo '<div class="custom-acf-posts-grid benefit-shop-staff">';
- 
-        while ($custom_query->have_posts()) : $custom_query->the_post();
- 
-            $title = get_field('title');
-
-            $image = '';
- 
-            if (has_post_thumbnail()) {
-
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
-            }
- 
-            echo '<div class="custom-post-item">';
- 
-            // Image
-
-            if ($image) {
-
-                echo '<div class="custom-post-image">';
-
-                echo '<a href="' . get_permalink() . '">
-<img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '">
-</a>';
-
-                echo '</div>';
-
-            }
- 
-            // Content
-
-            echo '<div class="custom-post-content">';
- 
-            echo '<h2 class="custom-post-title">
-<a href="' . get_permalink() . '">' . get_the_title() . '</a>
-</h2>';
- 
-            if ($title) {
-
-                echo '<div class="staff-title">' . esc_html($title) . '</div>';
-
-            }
- 
-            echo '</div>'; // content
-
-            echo '</div>'; // item
- 
-        endwhile;
- 
-        echo '</div>'; // grid
- 
-        wp_reset_postdata();
- 
-    else :
- 
-        echo '<p>No Benefit Shop Staff found.</p>';
- 
-    endif;
- 
-    return ob_get_clean();
-
-}
- 
+function benefit_shop_staff_shortcode() { return pomdr_team_grid('Benefit Shop Staff'); }
 add_shortcode('benefit_shop_staff', 'benefit_shop_staff_shortcode');
  
 // ***************************Clinic Staff****************************
 
-function clinic_staff_shortcode() {
-
-    ob_start(); // Start output buffering
-
-    // Custom query to get your posts
-
-    $args = array(
-
-        'post_type' => 'team', // Change to your custom post type if needed
-
-        'order' => 'ASC',
-
-        'orderby' => 'meta_value', // Sort by the custom field value
-
-        'meta_key' => 'sort', // The ACF field name used for sorting
-
-        'meta_query' => array(
-
-            array(
-
-                'key' => 'group', // The ACF field name
-
-                'value' => 'Clinic Staff', // The value you want to match
-
-                'compare' => 'LIKE' // Use LIKE for checkbox fields
-
-            )
-
-        )
-
-    );
-
-    $custom_query = new WP_Query($args);
-
-    // Check if there are posts
-
-    if ($custom_query->have_posts()) :
-
-        echo '<div class="custom-acf-posts-grid">';
-
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-
-            // Get your ACF fields - replace field_name with your actual field names
-
-            $title = get_field('title');
-
-            $image = '';
-
-            if (has_post_thumbnail()) {
-
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
-            }
-
-            // Start building the post container
-
-            echo '<div class="custom-post-item">';
-
-            // Add featured image if it exists
-
-            if ($image) {
-
-                echo '<div class="custom-post-image">';
-
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
-
-                echo '</div>';
-
-            }
-
-            // Post content
-
-            echo '<div class="custom-post-content">';
-
-            echo '<h2 class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-
-            // Display your ACF fields
-
-            if ($title) {
-
-                echo $title;
-
-            }
-
-            echo '</div>'; // End .custom-post-content
-
-            echo '</div>'; // End .custom-post-item
-
-        endwhile;
-
-        echo '</div>'; // End .custom-acf-posts-grid
-
-        // Reset post data
-
-        wp_reset_postdata();
-
-    else :
-
-        echo '<p>Oops, error.</p>';
-
-    endif;
-
-    return ob_get_clean(); // Return the buffered content
-
-}
-
+function clinic_staff_shortcode() { return pomdr_team_grid('Clinic Staff'); }
 add_shortcode('clinic_staff', 'clinic_staff_shortcode');
  
 // ***************************Advisory Council****************************
 
-function advisory_council_shortcode() {
-
-    ob_start(); // Start output buffering
-
-    // Custom query to get your posts
-
-    $args = array(
-
-        'post_type' => 'team', // Change to your custom post type if needed
-
-        'order' => 'ASC',
-
-        'orderby' => 'meta_value', // Sort by the custom field value
-
-        'meta_key' => 'sort', // The ACF field name used for sorting
-
-        'meta_query' => array(
-
-            array(
-
-                'key' => 'group', // The ACF field name
-
-                'value' => 'Advisory Council', // The value you want to match
-
-                'compare' => 'LIKE' // Use LIKE for checkbox fields
-
-            )
-
-        )
-
-    );
-
-    $custom_query = new WP_Query($args);
-
-    // Check if there are posts
-
-    if ($custom_query->have_posts()) :
-
-        echo '<div class="custom-acf-posts-grid">';
-
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-
-            // Get your ACF fields - replace field_name with your actual field names
-
-            $title = get_field('title');
-
-            $image = '';
-
-            if (has_post_thumbnail()) {
-
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-
-            }
-
-            // Start building the post container
-
-            echo '<div class="custom-post-item">';
-
-            // Add featured image if it exists
-
-            if ($image) {
-
-                echo '<div class="custom-post-image">';
-
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
-
-                echo '</div>';
-
-            }
-
-            // Post content
-
-            echo '<div class="custom-post-content">';
-
-            echo '<h2 class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-
-            // Display your ACF fields
-
-            if ($title) {
-
-                echo $title;
-
-            }
-
-            echo '</div>'; // End .custom-post-content
-
-            echo '</div>'; // End .custom-post-item
-
-        endwhile;
-
-        echo '</div>'; // End .custom-acf-posts-grid
-
-        // Reset post data
-
-        wp_reset_postdata();
-
-    else :
-
-        echo '<p>Oops, error.</p>';
-
-    endif;
-
-    return ob_get_clean(); // Return the buffered content
-
-}
-
+function advisory_council_shortcode() { return pomdr_team_grid('Advisory Council'); }
 add_shortcode('advisory_council', 'advisory_council_shortcode');
  
 
@@ -721,244 +335,39 @@ add_shortcode('foster_a_pet', 'foster_a_pet_shortcode');
 
 
 // ************* ADOPTED PETS LIST VIEW ***********************
-function adopted_pets_shortcode() {
-    ob_start(); // Start output buffering
-    
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'pets', // Change to your custom post type if needed
-        'order' => 'DESC',
-        'orderby' => 'date_adopted',
-		'meta_query'     => array(
-            array(
-                'key'     => 'status',
-                'value'   => '"Adopted"',
-                'compare' => 'LIKE'
-            )
-        )
-    );
-    
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        echo '<div class="custom-acf-posts-grid">';
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-            // Get featured image if it exists
-            $image = '';
-            if (has_post_thumbnail()) {
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            }
-            
-            // Start building the post container
-            echo '<div class="custom-post-item">';
-            
-            // Add featured image if it exists
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<img src="' . $image . '" alt="' . get_the_title() . '">';
-                echo '</div>';
-            }
-            // Post content
-            echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title">' . get_the_title() . '</h2>';
-                
-            echo '</div>'; // End .custom-post-content 
-            echo '</div>'; // End .custom-post-item
-        endwhile;
-        
-        echo '</div>'; // End .custom-acf-posts-grid
-        
-        // Reset post data
-        wp_reset_postdata();
-        
-    else :
-        echo '<p>No posts found.</p>';
-    endif;
-    
-    return ob_get_clean(); // Return the buffered content
-}
+function adopted_pets_shortcode() { return pomdr_dogs_by_status('Adopted', array('meta_key' => 'date_adopted', 'orderby' => 'meta_value', 'order' => 'DESC')); }
 add_shortcode('adopted_pets', 'adopted_pets_shortcode');
 
 
 // *********** HOSPICE LIST VIEW ***********
-function hospice_care_shortcode() {
-    ob_start(); // Start output buffering
-    
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'pets', // Change to your custom post type if needed
-        'order' => 'DESC',
-        'orderby' => 'date',
-		'meta_query' => array(
-        'relation' => 'OR',
-        array(
-            'key' => 'status',
-            'compare' => 'NOT EXISTS'
-        ),
-        array(
-            'key' => 'status',
-            'value' => '"Hospice"',
-            'compare' => 'LIKE'
-        )
-    	)
+/* Render a status-filtered grid of dogs in the new card design. */
+function pomdr_dogs_by_status($status, $args = array()) {
+    $defaults = array(
+        'post_type'      => 'pets',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+        'meta_query'     => array(array('key' => 'status', 'value' => $status, 'compare' => 'LIKE')),
     );
-    
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        echo '<div class="hospice-care-list">';
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-			
-			$pet_description = get_field('pet_description');
-
-			// Check if "Foster Needed" is in the status array
-			$needs_foster = false;
-			if ($status && is_array($status)) {
-				$needs_foster = in_array('Foster Needed', $status);
-			}
-			$pending_adoption = false;
-			if ($status && is_array($status)) {
-				$pending_adoption = in_array('Adoption Pending', $status);
-			}
-
-			// Get featured image if it exists
-			$image = '';
-			if (has_post_thumbnail()) {
-				$image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-			}
-            
-
-
-echo '<div class="hospice-post-item" style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px;">';
-
-// Featured image if it exists
-if ($image) {
-    echo '<div class="custom-post-image" style="flex-shrink: 0; width: 400px; max-width: 400px;">';
-    echo '<img src="' . $image . '" alt="' . get_the_title() . '" style="width: 100%; height: auto; border-radius: 6px; display: block;">';
-    echo '</div>';
-}
-
-// Post content
-echo '<div class="custom-post-content" style="flex: 1; display: flex; flex-direction: column; min-width: 0;">';
-echo '<div class="custom-post-title" style="font-weight: bold; margin-bottom: 10px;">' . get_the_title() . '</div>';
-
-// Only display description if it exists
-if ($pet_description) {
-    echo '<div class="custom-post-description" style="margin-bottom: 10px;">' . $pet_description . '</div>';
-}
-
-echo '</div>'; // End .custom-post-content
-echo '</div>'; // End .custom-post-item
-	
-	
-	
-        endwhile;        
-        echo '</div>'; // End .custom-acf-posts-grid
-        
-        // Reset post data
+    $q = new WP_Query(array_merge($defaults, $args));
+    ob_start();
+    if ($q->have_posts()) {
+        echo '<div class="dogs-grid">';
+        while ($q->have_posts()) { $q->the_post(); echo pom_render_dog_card(get_the_ID()); }
+        echo '</div>';
         wp_reset_postdata();
-        
-    else :
-        echo '<p>No posts found.</p>';
-    endif;
-    
-    return ob_get_clean(); // Return the buffered content
+    } else {
+        echo '<p>No dogs to show right now. Please call (831) 718-9122.</p>';
+    }
+    return ob_get_clean();
 }
+
+function hospice_care_shortcode() { return pomdr_dogs_by_status('Hospice'); }
 add_shortcode('hospice_care', 'hospice_care_shortcode');
 
 
 // *********** Courtesy Listings LIST VIEW ***********
-function courtesy_listings_shortcode() {
-    ob_start(); // Start output buffering
-    
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'pets', // Change to your custom post type if needed
-        'order' => 'DESC',
-        'orderby' => 'date',
-		'meta_query' => array(
-        'relation' => 'OR',
-        array(
-            'key' => 'status',
-            'compare' => 'NOT EXISTS'
-        ),
-        array(
-            'key' => 'status',
-            'value' => '"Courtesy Listing"',
-            'compare' => 'LIKE'
-        )
-    	)
-    );
-    
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        echo '<div class="hospice-care-list">';
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-			
-
-			
-			$pet_description = get_field('pet_description');
-
-			// Check if "Foster Needed" is in the status array
-			$needs_foster = false;
-			if ($status && is_array($status)) {
-				$needs_foster = in_array('Foster Needed', $status);
-			}
-			$pending_adoption = false;
-			if ($status && is_array($status)) {
-				$pending_adoption = in_array('Adoption Pending', $status);
-			}
-
-			// Get featured image if it exists
-			$image = '';
-			if (has_post_thumbnail()) {
-				$image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-			}
-            
-
-
-echo '<div class="hospice-post-item" style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px;">';
-
-// Featured image if it exists
-if ($image) {
-    echo '<div class="custom-post-image" style="flex-shrink: 0; width: 400px; max-width: 400px;">';
-    echo '<img src="' . $image . '" alt="' . get_the_title() . '" style="width: 100%; height: auto; border-radius: 6px; display: block;">';
-    echo '</div>';
-}
-
-// Post content
-echo '<div class="custom-post-content" style="flex: 1; display: flex; flex-direction: column; min-width: 0;">';
-echo '<div class="custom-post-title" style="font-weight: bold; margin-bottom: 10px;">' . get_the_title() . '</div>';
-
-// Only display description if it exists
-if ($pet_description) {
-    echo '<div class="custom-post-description" style="margin-bottom: 10px;">' . $pet_description . '</div>';
-}
-
-echo '</div>'; // End .custom-post-content
-echo '</div>'; // End .custom-post-item
-	
-	
-	
-        endwhile;        
-        echo '</div>'; // End .custom-acf-posts-grid
-        
-        // Reset post data
-        wp_reset_postdata();
-        
-    else :
-        echo '<p>No posts found.</p>';
-    endif;
-    
-    return ob_get_clean(); // Return the buffered content
-}
+function courtesy_listings_shortcode() { return pomdr_dogs_by_status('Courtesy Listing'); }
 add_shortcode('courtesy_listings', 'courtesy_listings_shortcode');
 
 
@@ -1142,63 +551,10 @@ add_shortcode('adopted_pets_recent', 'adopted_pets_recent_shortcode');
 
 // *************************** RANDOM PET SIDEBAR ****************************
 function random_pet_shortcode() {
-    ob_start(); // Start output buffering
-    
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'pets', // Change to your custom post type if needed
-        'posts_per_page' => 3, // Number of posts to display
-		'orderby' => 'rand', // Randomize the order of results
-		'meta_query' => array(
-        'relation' => 'OR',
-        array(
-            'key' => 'adopted',
-            'compare' => 'NOT EXISTS'
-        ),
-        array(
-            'key' => 'status',
-            'value' => '"Adoptable"',
-            'compare' => 'LIKE'
-        )
-    	)
-    );
-    
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        //echo '<div class="custom-acf-posts-grid">';
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-            // Get featured image if it exists
-            $image = '';
-            if (has_post_thumbnail()) {
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            }
-            
-            // Add featured image if it exists
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
-                echo '</div>';
-            }
-            // Post content
-            echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-            echo '</div>'; // End .custom-post-content 
-            //echo '</div>'; // End .custom-post-item
-        endwhile;
-        
-        //echo '</div>'; // End .custom-acf-posts-grid
-        
-        // Reset post data
-        wp_reset_postdata();
-        
-    else :
-        echo '<p>Oops, error.</p>';
-    endif;
-    
-    return ob_get_clean(); // Return the buffered content
+    $q = new WP_Query(array('post_type' => 'pets', 'posts_per_page' => 1, 'orderby' => 'rand', 'meta_query' => array(array('key' => 'status', 'value' => 'Adoptable', 'compare' => 'LIKE'))));
+    ob_start();
+    if ($q->have_posts()) { echo '<div class="dogs-grid">'; while ($q->have_posts()) { $q->the_post(); echo pom_render_dog_card(get_the_ID()); } echo '</div>'; wp_reset_postdata(); }
+    return ob_get_clean();
 }
 add_shortcode('random_pet', 'random_pet_shortcode');
 
@@ -1263,9 +619,29 @@ function pom_render_dog_card($post_id) {
 
     $thumb_id = get_post_thumbnail_id($post_id);
 
+    // Filter/sort data attributes for the Adopt page JS. The grid stays
+    // CPT-driven; these only describe each rendered card so vanilla JS can
+    // search, filter, and sort the existing DOM nodes.
+    $status_raw = get_field('status', $post_id);
+    $status_raw = is_array($status_raw)
+        ? $status_raw
+        : array_filter(array_map('trim', explode(',', (string) $status_raw)));
+    // Lowercase each status, kebab-case multi-word values, space-join them.
+    $status_slugs = array_map(function ($s) {
+        return str_replace(' ', '-', strtolower(trim($s)));
+    }, $status_raw);
+    $data_status = implode(' ', array_filter($status_slugs));
+    $data_age    = is_numeric($age) ? intval($age) : '';
+    $data_weight = is_numeric($weight) ? floatval($weight) : '';
+
     ob_start();
     ?>
-    <a href="<?php echo esc_url($permalink); ?>" class="dog-card-link" style="display:block;color:inherit;text-decoration:none">
+    <a href="<?php echo esc_url($permalink); ?>" class="dog-card-link" style="display:block;color:inherit;text-decoration:none"
+       data-name="<?php echo esc_attr($name); ?>"
+       data-breed="<?php echo esc_attr($looks_like); ?>"
+       data-status="<?php echo esc_attr($data_status); ?>"
+       data-age="<?php echo esc_attr($data_age); ?>"
+       data-weight="<?php echo esc_attr($data_weight); ?>">
       <div class="dog-card"><div class="photo-wrap">
         <div class="dog-photo"><?php
             if ($thumb_id) {
@@ -1370,196 +746,102 @@ add_shortcode('adopt_a_pet_plp', 'adopt_a_pet_plp_shortcode');
 
 // ********************* EVENTS *********************
 function events_shortcode() {
-    ob_start(); // Start output buffering
-    
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'events',
-        'meta_key' => 'event_start', // Use meta_key for ACF field ordering
-        'orderby' => 'meta_value', // Order by the meta field value
-        'order' => 'ASC',
-        'meta_query' => array( // Wrap the meta query in meta_query array
-            array(
-                'key' => 'event_type',
-                'value' => 'Special Event', // Remove quotes unless they're actually part of the value
-                'compare' => 'LIKE'
-            )
-        )
-    );
-    
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        echo '<div class="custom-acf-posts-grid">'; // Added opening container
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-            echo '<div class="custom-post-item">'; // Added opening post item container
-            
-            // Get featured image if it exists
-            $image = '';
-            if (has_post_thumbnail()) {
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            }
-            
-            // Add featured image if it exists
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . esc_url(get_permalink()) . '"><img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '"></a>';
-                echo '</div>';
-            }
-            
-            // Post content
-            echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title"><a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a></h2>';
-            echo '</div>'; // End .custom-post-content
-            
-            echo '</div>'; // End .custom-post-item
+    $q = new WP_Query(array(
+        'post_type'      => 'events',
+        'posts_per_page' => -1,
+        'meta_key'       => 'event_start',
+        'orderby'        => 'meta_value',
+        'order'          => 'ASC',
+        'meta_query'     => array(array('key' => 'event_type', 'value' => 'Special Event', 'compare' => 'LIKE')),
+    ));
+    ob_start();
+    if ($q->have_posts()) :
+        echo '<div class="events-grid">';
+        while ($q->have_posts()) : $q->the_post();
+            $id      = get_the_ID();
+            $type    = trim((string) get_field('event_type', $id));
+            $start   = pomdr_event_date(get_field('event_start', $id));
+            $end     = pomdr_event_date(get_field('event_end', $id));
+            $details = trim((string) get_field('event_details', $id));
+            $thumb   = get_post_thumbnail_id($id);
+            $when    = $start . (($end && $end !== $start) ? ' &ndash; ' . $end : '');
+            echo '<article class="event-card">';
+            if ($thumb) echo '<div class="event-photo">' . wp_get_attachment_image($thumb, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
+            echo '<div class="event-body">';
+            if ($type !== '')    echo '<div class="eyebrow">' . esc_html($type) . '</div>';
+            echo '<h3 class="event-title">' . esc_html(get_the_title()) . '</h3>';
+            if ($when !== '')    echo '<div class="event-meta">' . wp_kses_post($when) . '</div>';
+            if ($details !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($details, 36)) . '</p>';
+            echo '</div></article>';
         endwhile;
-        
-        echo '</div>'; // End .custom-acf-posts-grid
-        
-        // Reset post data
+        echo '</div>';
         wp_reset_postdata();
-        
     else :
-        echo '<p>No events found.</p>';
+        echo '<p>No upcoming events right now. Call (831) 718-9122 or check our Facebook for dates.</p>';
     endif;
-    
-    return ob_get_clean(); // Return the buffered content
+    return ob_get_clean();
 }
 add_shortcode('events', 'events_shortcode');
 
 
 // **************************** BOARD TEAM MEMBERS **************************
-function team_board_shortcode() {
-    ob_start(); // Start output buffering
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'team', // Change to your custom post type if needed
-        'order' => 'ASC',
-        'orderby' => 'meta_value', // Sort by the custom field value
-        'meta_key' => 'sort', // The ACF field name used for sorting
-        'meta_query' => array(
-            array(
-                'key' => 'group', // The ACF field name
-                'value' => 'Board of Directors', // The value you want to match
-                'compare' => 'LIKE' // Use LIKE for checkbox fields
-            )
-        )
-    );
-	
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        echo '<div class="custom-acf-posts-grid">';
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-            // Get your ACF fields - replace field_name with your actual field names
-            $title = get_field('title');
-            $image = '';
-            if (has_post_thumbnail()) {
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            }
-            
-            // Start building the post container
-            echo '<div class="custom-post-item">';
-            
-            // Add featured image if it exists
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
-                echo '</div>';
-            }
-            // Post content
-            echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-            // Display your ACF fields
-            if ($title) {
-                echo $title;
-            }
-            echo '</div>'; // End .custom-post-content
-            echo '</div>'; // End .custom-post-item
-        endwhile;
-
-        echo '</div>'; // End .custom-acf-posts-grid
-
-        // Reset post data
-        wp_reset_postdata();
-
-    else :
-        echo '<p>Oops, error.</p>';
-    endif;
-
-    return ob_get_clean(); // Return the buffered content
+/* ===== New-design renderers for daily-content CPTs (team, events) ===== */
+function pomdr_initials($name) {
+    $parts = preg_split('/\s+/', trim((string) $name));
+    $ini = '';
+    foreach ($parts as $p) { if ($p !== '' && ctype_alpha($p[0])) $ini .= strtoupper($p[0]); if (strlen($ini) >= 2) break; }
+    return $ini !== '' ? $ini : '?';
 }
+
+function pom_render_person_card($id) {
+    $name  = get_the_title($id);
+    $role  = trim((string) get_field('title', $id));
+    $thumb = get_post_thumbnail_id($id);
+    ob_start(); ?>
+    <div class="person-card">
+      <div class="person-photo<?php echo $thumb ? '' : ' person-initials'; ?>">
+        <?php echo $thumb ? wp_get_attachment_image($thumb, 'medium', false, array('alt' => $name, 'loading' => 'lazy')) : esc_html(pomdr_initials($name)); ?>
+      </div>
+      <h4 class="person-name"><?php echo esc_html($name); ?></h4>
+      <?php if ($role !== '') : ?><div class="role"><?php echo esc_html($role); ?></div><?php endif; ?>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+
+function pomdr_team_grid($group) {
+    $q = new WP_Query(array(
+        'post_type'      => 'team',
+        'posts_per_page' => -1,
+        'order'          => 'ASC',
+        'orderby'        => 'meta_value',
+        'meta_key'       => 'sort',
+        'meta_query'     => array(array('key' => 'group', 'value' => $group, 'compare' => 'LIKE')),
+    ));
+    ob_start();
+    if ($q->have_posts()) {
+        echo '<div class="team-grid">';
+        while ($q->have_posts()) { $q->the_post(); echo pom_render_person_card(get_the_ID()); }
+        echo '</div>';
+        wp_reset_postdata();
+    }
+    return ob_get_clean();
+}
+
+function pomdr_event_date($v) {
+    if (!$v) return '';
+    $v = (string) $v;
+    if (preg_match('/^\d{8}$/', $v)) { $d = DateTime::createFromFormat('Ymd', $v); return $d ? $d->format('M j, Y') : $v; }
+    $t = strtotime($v);
+    return $t ? date('M j, Y', $t) : $v;
+}
+
+function team_board_shortcode() { return pomdr_team_grid('Board of Directors'); }
 add_shortcode('team_board', 'team_board_shortcode');
 
 
 // *************************** OFFICE TEAM MEMBERS ****************************
-function team_office_shortcode() {
-    ob_start(); // Start output buffering
-    // Custom query to get your posts
-    $args = array(
-        'post_type' => 'team', // Change to your custom post type if needed
-        'order' => 'ASC',
-        'orderby' => 'meta_value', // Sort by the custom field value
-        'meta_key' => 'sort', // The ACF field name used for sorting
-        'meta_query' => array(
-            array(
-                'key' => 'group', // The ACF field name
-                'value' => 'Office Staff', // The value you want to match
-                'compare' => 'LIKE' // Use LIKE for checkbox fields
-            )
-        )
-    );
-	
-    $custom_query = new WP_Query($args);
-    
-    // Check if there are posts
-    if ($custom_query->have_posts()) :
-        echo '<div class="custom-acf-posts-grid">';
-        
-        while ($custom_query->have_posts()) : $custom_query->the_post();
-            // Get your ACF fields - replace field_name with your actual field names
-            $title = get_field('title');
-            $image = '';
-            if (has_post_thumbnail()) {
-                $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
-            }
-            
-            // Start building the post container
-            echo '<div class="custom-post-item">';
-            
-            // Add featured image if it exists
-            if ($image) {
-                echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
-                echo '</div>';
-            }
-            // Post content
-            echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-            // Display your ACF fields
-            if ($title) {
-                echo $title;
-            }
-            echo '</div>'; // End .custom-post-content
-            echo '</div>'; // End .custom-post-item
-        endwhile;
-        
-        echo '</div>'; // End .custom-acf-posts-grid
-        
-        // Reset post data
-        wp_reset_postdata();
-        
-    else :
-        echo '<p>Oops, error.</p>';
-    endif;
-    
-    return ob_get_clean(); // Return the buffered content
-}
+function team_office_shortcode() { return pomdr_team_grid('Office Staff'); }
 add_shortcode('team_office', 'team_office_shortcode');
 
 
@@ -2725,4 +2007,71 @@ add_shortcode('foster_needs', function($atts) {
  * at acf-export-2026-06-09.json (theme root). The legacy redirect handler
  * (inc/redirects.php) is intentionally NOT loaded here; it is opt-in.
  */
+/* ============================================================
+ * Promo Banner: a staff-toggleable announcement for adoption promotions,
+ * fundraisers, etc. The Options page is registered here; its FIELDS are created
+ * once in the ACF UI (per this theme's "fields owned by ACF" convention) on the
+ * Promo Banner options page, with these names:
+ *   promo_enabled   true_false   (show/hide)
+ *   promo_label     text         e.g. "Adoption Promotion" or "Fundraiser"
+ *   promo_message   textarea     the announcement
+ *   promo_btn_text  text         button label (optional)
+ *   promo_btn_url   url          button link (optional)
+ *   promo_style     select       choices: purple, teal (default purple)
+ *   promo_start     date_picker  Ymd return (optional auto show)
+ *   promo_end       date_picker  Ymd return (optional auto hide)
+ * Placement: put [promo_banner] in a full-width Code module directly below the
+ * hero. It renders nothing when disabled or out of the date range.
+ * ============================================================ */
+add_action('acf/init', function () {
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page(array(
+            'page_title' => 'Promo Banner',
+            'menu_title' => 'Promo Banner',
+            'menu_slug'  => 'pomdr-promo-banner',
+            'capability' => 'edit_posts',
+            'icon_url'   => 'dashicons-megaphone',
+            'position'   => 4,
+            'redirect'   => false,
+        ));
+    }
+});
+
+function pomdr_promo_banner_shortcode() {
+    if (!function_exists('get_field') || !get_field('promo_enabled', 'option')) {
+        return '';
+    }
+    $start = get_field('promo_start', 'option');
+    $end   = get_field('promo_end', 'option');
+    $today = current_time('Ymd');
+    if ($start && $today < $start) return '';
+    if ($end && $today > $end)     return '';
+
+    $label = trim((string) get_field('promo_label', 'option'));
+    $msg   = trim((string) get_field('promo_message', 'option'));
+    $bt    = trim((string) get_field('promo_btn_text', 'option'));
+    $bu    = trim((string) get_field('promo_btn_url', 'option'));
+    $style = (get_field('promo_style', 'option') === 'teal') ? 'teal' : 'purple';
+    if ($msg === '' && $label === '') return '';
+
+    $paw = '<svg class="promo-paw" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#fff"/><g fill="#632F88"><ellipse cx="10.5" cy="13" rx="2" ry="2.5"/><ellipse cx="14.7" cy="10.6" rx="2" ry="2.5"/><ellipse cx="18.3" cy="10.6" rx="2" ry="2.5"/><ellipse cx="22" cy="13.4" rx="2" ry="2.5"/><path d="M16.2 15.4c-3 0-5.4 2.2-5.4 4.7 0 1.8 1.5 2.8 3.2 2.8.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.7 0 3.2-1 3.2-2.8 0-2.5-2.4-4.7-5.4-4.7z"/></g></svg>';
+
+    ob_start(); ?>
+    <aside class="promo-banner promo-banner--<?php echo esc_attr($style); ?>" role="region" aria-label="Announcement">
+      <div class="promo-inner">
+        <div class="promo-text">
+          <?php if ($label !== '') : ?><span class="promo-label"><?php echo $paw . esc_html($label); ?></span><?php endif; ?>
+          <?php if ($msg !== '') : ?><p class="promo-message"><?php echo esc_html($msg); ?></p><?php endif; ?>
+        </div>
+        <?php if ($bt !== '' && $bu !== '') : ?>
+        <div class="promo-actions"><a class="promo-btn" href="<?php echo esc_url($bu); ?>"><?php echo esc_html($bt); ?></a></div>
+        <?php endif; ?>
+      </div>
+    </aside>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('promo_banner', 'pomdr_promo_banner_shortcode');
+
+require_once get_stylesheet_directory() . '/inc/chrome.php';
 require_once get_stylesheet_directory() . '/inc/enqueue.php';

@@ -1,0 +1,425 @@
+/* ============================================================
+   POMDR CHROME (ported from the prototype): action bar, two-row nav,
+   centered tagline lockup, clickable logo, mobile drawer. Injected on
+   wp_body_open by inc/chrome.php; Divi's Theme Builder header is hidden.
+   Developer-managed (not staff-editable) per the editability model.
+   ============================================================ */
+
+/* Hide Divi's Theme Builder header and offset the content for our fixed nav. */
+.et-l--header, #et-secondary-nav, #top-header, #main-header { display: none !important; }
+.et-l--footer, #main-footer, #footer-bottom { display: none !important; }
+body { --nav-h: 172px; }
+#page-container { padding-top: 0 !important; }
+#et-main-area, .et-l--body { padding-top: var(--nav-h); }
+@media (max-width: 960px) { #et-main-area, .et-l--body { padding-top: 132px; } }
+/* Homepage hero is full-bleed; the fixed chrome floats over its top. */
+body.home #et-main-area, body.home .et-l--body { padding-top: 0 !important; }
+
+/* Divi's Customizer sets a blanket `h1..h6 { color: #632F88 }` (purple) that
+   hijacks every heading in our ported pages, where they should be dark ink by
+   default and white on dark sections. Restore the prototype's inheritance model,
+   scoped to our content (<main>) so Divi's footer/widgets are untouched and
+   dark-section heading rules (class-based) still win. */
+main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
+
+/* ===== ACTION BAR (persistent Adopt/Donate/Volunteer, every page) ===== */
+.action-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 101;
+  background: var(--blue-700);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.action-bar-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; min-height: 50px; padding-top: 6px; padding-bottom: 6px;
+}
+.action-bar-tag {
+  margin: 0; color: rgba(255, 255, 255, 0.93);
+  font-size: 16px; font-weight: 600; letter-spacing: 0.01em;
+}
+.action-bar-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.ab-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 42px; padding: 8px 18px; border-radius: 999px;
+  font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none;
+  transition: transform 0.2s var(--ease), background 0.2s;
+}
+.ab-adopt { background: #fff; color: var(--blue-700); }
+.ab-donate { background: transparent; color: #fff; border: 2px solid #fff; }
+.ab-donate:hover { background: rgba(255, 255, 255, 0.15); }
+.ab-volunteer { background: var(--purple); color: #fff; }
+.ab-btn:hover { transform: translateY(-1px); }
+.ab-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+
+/* ===== NAVIGATION (two-row, sits below the action bar) ===== */
+.nav {
+  position: fixed; top: 50px; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 0;
+  transition: padding 0.3s var(--ease);
+}
+.nav.scrolled { padding: 8px 0; }
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(22, 32, 43, 0.08);
+  border-radius: 26px;
+  padding: 12px 18px 12px 26px;
+  box-shadow: var(--shadow-nav);
+  transition: box-shadow 0.2s;
+}
+.nav.scrolled .nav-inner {
+  box-shadow: 0 12px 40px -12px rgba(22, 32, 43, 0.22);
+}
+
+/* Logo (full horizontal mark + "Since 2009") */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-img { height: 52px; width: auto; display: block; transition: height 0.3s var(--ease); }
+.nav.scrolled .logo-img { height: 44px; }
+.logo-since {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 700;
+  white-space: nowrap;
+  border-left: 1px solid var(--line);
+  padding-left: 12px;
+}
+
+/* Centered brand tagline lockup (desktop only; hidden when space is tight) */
+.nav-tagline { flex: 0 0 auto; margin: 0 auto; text-align: center; padding: 0 16px; line-height: 1; }
+.nav-tagline-1 {
+  display: block; font-family: var(--font-sans); font-style: italic; font-weight: 700;
+  font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
+}
+.nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
+.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
+.nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
+@media (max-width: 1200px) { .nav-tagline { display: none; } }
+
+/* Two visible rows of menu items */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.nav-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-row--primary .nav-item > a,
+.nav-row--primary .nav-item > button {
+  font-size: 18px; font-weight: 700; color: var(--ink);
+}
+.nav-row--secondary .nav-item > a,
+.nav-row--secondary .nav-item > button {
+  font-size: 15px; font-weight: 500; color: var(--ink-3); padding: 6px 12px;
+}
+
+/* legacy single-row container (kept harmless) */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Nav item (dropdown wrapper) */
+.nav-item {
+  position: relative;
+}
+
+/* Top-level link/button */
+.nav-item > a,
+.nav-item > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink-2);
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+.nav-item > a:hover,
+.nav-item > button:hover,
+.nav-item:hover > a,
+.nav-item:hover > button {
+  background: var(--blue-50);
+  color: var(--blue-700);
+}
+.nav-item > a.active,
+.nav-item > button.active {
+  color: var(--blue-700);
+  background: var(--blue-50);
+}
+
+/* Chevron */
+.nav-chevron {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.45;
+  transition: transform 0.2s var(--ease), opacity 0.2s;
+  flex-shrink: 0;
+}
+.nav-item:hover .nav-chevron {
+  transform: rotate(180deg);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   DROPDOWN: hover-stable version
+   The invisible padding-top "bridge" prevents the gap between
+   the trigger and the menu from breaking the hover state.
+   ============================================================ */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  /* start slightly down, animate to 0 */
+  transform: translateX(-50%) translateY(8px);
+  /* padding-top creates an invisible hover bridge */
+  padding: 12px 8px 8px;
+  background: white;
+  border-radius: 20px;
+  box-shadow:
+    0 24px 48px -12px rgba(22, 32, 43, 0.22),
+    0 0 0 1px rgba(22, 32, 43, 0.06);
+  min-width: 220px;
+  width: max-content;
+  /* hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.18s var(--ease),
+    transform 0.18s var(--ease),
+    visibility 0s linear 0.18s;
+  z-index: 200;
+}
+
+/* Transparent "bridge" so mouse never leaves the hover zone */
+.nav-dropdown::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 14px;
+  background: transparent;
+}
+
+.nav-item:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition:
+    opacity 0.18s var(--ease),
+    transform 0.18s var(--ease),
+    visibility 0s linear 0s;
+}
+
+/* Dropdown items */
+.nav-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown a:hover {
+  background: var(--blue-50);
+  color: var(--blue-700);
+}
+
+.dd-section {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ink-3);
+  padding: 4px 14px 4px;
+  display: block;
+}
+.dd-divider {
+  height: 1px;
+  background: var(--line);
+  margin: 6px 8px;
+}
+.dd-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.dd-icon svg {
+  width: 13px; height: 13px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+/* Donate CTA */
+.nav-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 11px 20px !important;
+  border-radius: 999px !important;
+  background: var(--blue-700) !important;
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 6px 16px -4px rgba(0, 139, 176, 0.4);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+  text-decoration: none !important;
+}
+.nav-cta:hover {
+  background: var(--blue-700) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 20px -4px rgba(0, 139, 176, 0.5) !important;
+}
+.nav-cta svg { flex-shrink: 0; }
+
+/* Mobile toggle button */
+.nav-toggle {
+  display: none;
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  background: var(--blue-50);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 16px; height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ===== Mobile drawer (beautiful, on-brand, with tap effects) ===== */
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 14px; right: 14px;
+  background: rgba(255,255,255,0.98);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border: 1px solid rgba(22,32,43,0.06);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  box-shadow: 0 30px 64px -20px rgba(22,32,43,.38), 0 2px 8px rgba(22,32,43,.06);
+  flex-direction: column;
+  gap: 2px;
+  max-height: min(72vh, 560px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-mobile.open { display: flex; animation: navDrop 0.3s var(--ease) both; }
+@keyframes navDrop {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.nav-mobile a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 13px 16px; border-radius: 14px; min-height: 48px;
+  font-size: 18px; font-weight: 600; color: var(--ink);
+  text-decoration: none;
+  transition: background .22s var(--ease), color .22s var(--ease), transform .12s var(--ease), padding-left .22s var(--ease);
+}
+.nav-mobile a:hover { background: var(--blue-50); color: var(--blue-700); padding-left: 20px; }
+.nav-mobile a:active { transform: scale(0.97); background: var(--blue-100); }
+.nav-mobile a.active { background: var(--blue-50); color: var(--blue-700); }
+/* subtle staggered entrance for the first several items */
+.nav-mobile.open a { animation: navItemIn .34s var(--ease) both; }
+.nav-mobile.open a:nth-child(1){animation-delay:.03s}
+.nav-mobile.open a:nth-child(2){animation-delay:.05s}
+.nav-mobile.open a:nth-child(3){animation-delay:.07s}
+.nav-mobile.open a:nth-child(4){animation-delay:.09s}
+.nav-mobile.open a:nth-child(5){animation-delay:.11s}
+.nav-mobile.open a:nth-child(6){animation-delay:.13s}
+.nav-mobile.open a:nth-child(7){animation-delay:.15s}
+.nav-mobile.open a:nth-child(8){animation-delay:.17s}
+@keyframes navItemIn { from { opacity:0; transform: translateX(-10px); } to { opacity:1; transform: translateX(0); } }
+.nav-mobile a.m-cta {
+  justify-content: center; margin-top: 10px; min-height: 52px;
+  background: var(--blue); color: #fff; font-weight: 700;
+  box-shadow: 0 10px 24px -6px rgba(0,139,176,.5);
+}
+.nav-mobile a.m-cta:hover { background: var(--blue-700); color: #fff; padding-left: 16px; }
+.nav-mobile a.m-cta:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) {
+  .nav-mobile.open, .nav-mobile.open a { animation: none; }
+  .nav-mobile a { transition: background .15s, color .15s; }
+}
+
+/* Mobile: collapse nav links into drawer */
+@media (max-width: 960px) {
+  .nav-menu { display: none; }
+  .nav-toggle { display: inline-flex; }
+  .action-bar-tag { display: none; }
+  .action-bar-inner { justify-content: center; }
+  .ab-btn { padding: 8px 18px; }
+  .logo-since { display: none; }
+  .logo-img { height: 44px; }
+}
+/* Very narrow phones: shrink the 3 action-bar buttons so they never overflow */
+@media (max-width: 360px) {
+  .action-bar-actions { gap: 6px; }
+  .ab-btn { padding: 7px 12px; font-size: 15px; min-height: 38px; }
+}
+@media (max-width: 540px) {
+  .nav-cta { display: none !important; }
+}
+
+
+.nav-mobile a.m-child {
+  padding: 11px 16px 11px 34px; min-height: 44px;
+  font-size: 15.5px; font-weight: 500; color: var(--ink-3);
+  position: relative;
+}
+.nav-mobile a.m-child::before {
+  content: ""; position: absolute; left: 18px; top: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--blue-200); transform: translateY(-50%);
+  transition: background .22s var(--ease);
+}
+.nav-mobile a.m-child:hover { color: var(--blue-700); background: var(--blue-50); padding-left: 38px; }
+.nav-mobile a.m-child:hover::before { background: var(--blue); }
+.nav-mobile a.m-child:active { transform: scale(0.97); }
+.nav-mobile a.m-child.active { color: var(--blue-700); }
+.nav-mobile a.m-child.active::before { background: var(--blue); }

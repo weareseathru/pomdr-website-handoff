@@ -1,0 +1,74 @@
+/* ============================================================
+   POMDR DESIGN TOKENS
+   Peace of Mind Dog Rescue · tokens.css
+
+   The single source of truth for design tokens (custom properties).
+   pomdr.css imports this file, and index.html links it directly, so
+   every page draws from one definition. Do not redeclare :root tokens
+   in pomdr.css, styles.css, or any page's inline <style>.
+   ============================================================ */
+
+:root {
+  --blue: #008bb0;
+  --blue-700: #006c8a;
+  --blue-900: #004e63;
+  --blue-50: #E8F2F6;
+  --blue-100: #BCD7E4;
+  --blue-200: #7CB9D0;
+  --blue-400: #26A1BF;
+  /* Accessible blue for small text (< 24px): clears WCAG AA 4.5:1 where the
+     lighter --blue (#008bb0) does not. Equal to --blue-700. */
+  --blue-text: var(--blue-700);
+
+  --purple: #632F88;
+  --purple-400: #7F5A9D;
+  --purple-200: #A085B7;
+  --purple-100: #C9BBD7;
+  --purple-50: #F1EBF5;
+
+  /* Orange retired 2026-06 (brand cleanup). These tokens now point at the
+     purple family so any remaining reference renders on-brand, not orange. */
+  --orange: #6E4B9E;
+  --orange-50: #F1EBF5;
+  --orange-text: #5B2C6F;
+
+  --ink: #16202b;
+  --ink-2: #3c4a57;
+  --ink-3: #5a6773;
+  --line: #e5ddd0;
+  --cream: #FAF6F0;
+  --cream-2: #F3ECDF;
+  --white: #ffffff;
+
+  --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4', 'Iowan Old Style', Palatino, serif;
+
+  --radius-sm: 14px;
+  --radius: 22px;
+  --radius-lg: 32px;
+  --radius-xl: 44px;
+
+  --shadow-sm: 0 2px 8px rgba(22,32,43,.04);
+  --shadow: 0 12px 32px -8px rgba(22,32,43,.12), 0 2px 6px rgba(22,32,43,.04);
+  --shadow-lg: 0 30px 60px -20px rgba(22,32,43,.25);
+  --shadow-nav: 0 8px 32px -12px rgba(22,32,43,.12);
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Height the action bar + two-row nav occupy; breadcrumb/hero clear it. */
+  --nav-h: 172px;
+
+  /* ===== Accessibility knobs =====
+     These are the levers the opt-in senior mode flips (in a11y.css under
+     html[data-a11y="senior"]). Components read them so one override cascades. */
+  --fs-base: 19px;                 /* base body text (senior-readable; was 18px) */
+  --fs-lead: 21px;                 /* intro / lead paragraphs */
+  --fs-small: 16px;                /* smallest UI text; never below 16 */
+  --leading: 1.6;                  /* base line-height */
+  --measure: 70ch;                 /* max readable line length for prose */
+  --tap-min: 44px;                 /* min interactive target; senior mode raises to 48px */
+  --focus-w: 3px;                  /* focus outline thickness (WCAG 2.2 focus appearance) */
+  --focus-color: var(--blue-900);  /* high-contrast focus ring (about 9:1 on light) */
+  --reveal-dur: 320ms;             /* scroll-reveal duration, inside the 200-400ms band */
+  --blue-link: var(--blue-text);   /* accessible blue for links/small text (5.98:1) */
+}
