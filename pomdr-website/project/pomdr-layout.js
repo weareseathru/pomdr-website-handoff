@@ -220,8 +220,15 @@
         <div class="nav-inner">
           <a href="${rel("index.html")}" class="logo" aria-label="Peace of Mind Dog Rescue, home">
             <img src="${rel("images/logo-horizontal.png")}" alt="Peace of Mind Dog Rescue" class="logo-img" width="600" height="133">
-            <span class="logo-since">Since 2009</span>
           </a>
+          <div class="nav-tagline" aria-hidden="true">
+            <span class="nav-tagline-1">Helping Senior Dogs and Senior People</span>
+            <span class="nav-tagline-2">
+              <svg class="paw-badge" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#632F88"/><g fill="#fff"><ellipse cx="10.5" cy="13" rx="2" ry="2.5"/><ellipse cx="14.7" cy="10.6" rx="2" ry="2.5"/><ellipse cx="18.3" cy="10.6" rx="2" ry="2.5"/><ellipse cx="22" cy="13.4" rx="2" ry="2.5"/><path d="M16.2 15.4c-3 0-5.4 2.2-5.4 4.7 0 1.8 1.5 2.8 3.2 2.8.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.7 0 3.2-1 3.2-2.8 0-2.5-2.4-4.7-5.4-4.7z"/></g></svg>
+              <span class="nav-since">SINCE 2009</span>
+              <svg class="paw-badge" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#632F88"/><g fill="#fff"><ellipse cx="10.5" cy="13" rx="2" ry="2.5"/><ellipse cx="14.7" cy="10.6" rx="2" ry="2.5"/><ellipse cx="18.3" cy="10.6" rx="2" ry="2.5"/><ellipse cx="22" cy="13.4" rx="2" ry="2.5"/><path d="M16.2 15.4c-3 0-5.4 2.2-5.4 4.7 0 1.8 1.5 2.8 3.2 2.8.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.7 0 3.2-1 3.2-2.8 0-2.5-2.4-4.7-5.4-4.7z"/></g></svg>
+            </span>
+          </div>
           <div class="nav-menu">
             <div class="nav-row nav-row--primary">
               ${primaryItems.map(renderTopItem).join("")}
@@ -260,7 +267,7 @@
             <p>A 501(c)(3) nonprofit rescuing senior dogs and helping seniors and their dogs stay together longer. Serving the Central Coast of California since 2009.</p>
             <div class="footer-contact">
               <div><a href="tel:+18317189122">(831) 718-9122</a></div>
-              <div><a href="mailto:info@peaceofminddogrescue.org">info@peaceofminddogrescue.org</a></div>
+              <div><a href="mailto:info@pomdr.org">info@pomdr.org</a></div>
             </div>
             <div class="socials">
               <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4a4 4 0 0 1-1.5-1 4 4 0 0 1-1-1.5c-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.4-.2 1-.4 2.2-.4 1.2-.1 1.6-.1 4.8-.1zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.5-1.3.9s-.6.8-.9 1.3c-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.5.9.9 1.3s.8.6 1.3.9c.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.5 1.3-.9s.6-.8.9-1.3c.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1a3.5 3.5 0 0 0-.9-1.3 3.5 3.5 0 0 0-1.3-.9c-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-3.4a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>

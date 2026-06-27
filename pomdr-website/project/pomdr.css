@@ -177,6 +177,17 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-left: 12px;
 }
 
+/* Centered brand tagline lockup (desktop only; hidden when space is tight) */
+.nav-tagline { flex: 0 0 auto; margin: 0 auto; text-align: center; padding: 0 16px; line-height: 1; }
+.nav-tagline-1 {
+  display: block; font-family: var(--font-sans); font-style: italic; font-weight: 700;
+  font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
+}
+.nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
+.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
+.nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
+@media (max-width: 1200px) { .nav-tagline { display: none; } }
+
 /* Two visible rows of menu items */
 .nav-menu {
   display: flex;
