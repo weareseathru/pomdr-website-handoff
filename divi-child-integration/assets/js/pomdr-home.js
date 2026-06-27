@@ -1,7 +1,3 @@
-/* POMDR homepage behavior (hero carousel, video facade, favorite hearts).
-   Extracted from the prototype. Nav/reveal are handled elsewhere (Divi nav,
-   a11y.js). Guards mean absent elements simply no-op. */
-
 (function () {
   "use strict";
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -49,25 +45,23 @@
     { tag: "Adoption · Senior dogs, ready to love",
       title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
       sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
-      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt a Dog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Helping Paw · Support for senior guardians",
       title: "<div>Helping seniors</div><div>and their dogs stay</div><div><em>together</em> longer.</div>",
       sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
-      ctas: '<a href="helping-paw.html" class="btn btn-primary">Helping Paw Program <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="helping-paw.html" class="btn btn-ghost">Request support</a>' },
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Our Mission · Since 2009",
       title: "<div>A lifetime</div><div><em>commitment</em>,</div><div>every time.</div>",
       sub: "Every dog in our care is ours for life. If a placement does not work, for any reason, ever, they come home to us.",
-      ctas: '<a href="about.html" class="btn btn-primary">Our Mission <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="about.html" class="btn btn-ghost">How we help</a>' },
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Foster · Donate · Volunteer",
       title: "<div>Be the reason</div><div>a <em>gray muzzle</em></div><div>finds home.</div>",
       sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
-      ctas: '<a href="foster.html" class="btn btn-primary">Foster <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="donate.html" class="btn btn-purple">Donate</a><a href="volunteer.html" class="btn btn-ghost">Volunteer</a>' }
+      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' }
   ];
   var heroSlides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('#hero-progress button');
-  var elTag = document.getElementById('hero-tag-text');
   var elTitle = document.getElementById('hero-title');
-  var elSub = document.getElementById('hero-sub');
   var elCtas = document.getElementById('hero-ctas');
   var elCur = document.getElementById('hero-cur');
   var idx = 0, timer = null, paused = false;
@@ -77,9 +71,7 @@
     heroSlides.forEach(function (s, k) { s.classList.toggle('active', k === idx); });
     dots.forEach(function (d, k) { d.classList.toggle('active', k === idx); });
     var s = SLIDES[idx];
-    if (elTag) elTag.textContent = s.tag;
     if (elTitle) elTitle.innerHTML = s.title;
-    if (elSub) elSub.textContent = s.sub;
     if (elCtas) elCtas.innerHTML = s.ctas;
     if (elCur) elCur.textContent = pad(idx + 1);
   }
@@ -120,24 +112,7 @@
     card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
   });
 
-  /* Paw trail: size to the full page, reveal each paw on scroll */
-  var trail = document.querySelector('.paw-trail');
-  if (trail) {
-    var syncHeight = function () {
-      var h = Math.max(document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0);
-      trail.style.height = h + 'px';
-    };
-    syncHeight();
-    window.addEventListener('resize', syncHeight, { passive: true });
-    window.addEventListener('load', function () { setTimeout(syncHeight, 200); setTimeout(syncHeight, 900); });
-    var paws = trail.querySelectorAll('.paw, .dog-cutout');
-    if (!('IntersectionObserver' in window)) {
-      paws.forEach(function (el) { el.classList.add('in'); });
-    } else {
-      var pio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); pio.unobserve(e.target); } });
-      }, { rootMargin: '0px 0px -8% 0px' });
-      paws.forEach(function (el) { pio.observe(el); });
-    }
-  }
+  /* Happy Tails hover (lift, grow, reverse to purple) is handled purely in CSS. */
+
+  /* The paw trail is handled by its own module (paw-trail.js), loaded below. */
 })();

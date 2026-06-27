@@ -1,0 +1,360 @@
+<?php
+/**
+ * Front page (homepage): the prototype homepage (hero + sections), ported 1:1.
+ * Chrome (action bar / nav / tagline) is injected by inc/chrome.php; the footer
+ * is Divi's. The adoptable-dogs row is the [pet_home] shortcode so it stays
+ * backend-driven (staff edit Pets in wp-admin). Homepage layout is
+ * developer-managed per the project's editability model.
+ */
+get_header();
+$img = get_stylesheet_directory_uri() . '/assets/images';
+?>
+<main id="main-content">
+
+  <!-- ===== HERO (rotating, side-arrow navigation) ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-slide active">
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-adopt.webp"><img src="<?php echo $img; ?>/hero-adopt.jpeg" alt="A gray-muzzled senior dog at rest in soft afternoon light" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></picture></div>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-helping-paw.webp"><img src="<?php echo $img; ?>/hero-helping-paw.jpeg" alt="A volunteer walking a small dog alongside an older guardian on a quiet street" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%"></picture></div>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-mission.webp"><img src="<?php echo $img; ?>/hero-mission.jpeg" alt="Two senior dogs in a sunny doorway, comfortable and at home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></picture></div>
+      <div class="hero-scrim"></div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-volunteer.webp"><img src="<?php echo $img; ?>/hero-volunteer.jpg" alt="Volunteers and dogs gathered for a morning at the Pacific Grove rescue center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"></picture></div>
+      <div class="hero-scrim"></div>
+    </div>
+
+    <button class="hero-arrow prev" id="hero-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button class="hero-arrow next" id="hero-next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-card">
+          <h1 class="hero-title" id="hero-title">
+            <div>Senior dogs deserve</div>
+            <div>a <em>soft place</em></div>
+            <div>to land.</div>
+          </h1>
+          <div class="hero-ctas" id="hero-ctas">
+            <a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="/foster/" class="btn btn-purple">Foster</a>
+            <a href="/adopt/" class="btn btn-ghost">See all dogs</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-controls">
+      <div class="container">
+        <div class="hero-progress" id="hero-progress">
+          <button class="active" data-i="0" aria-label="Slide 1"><span class="bar"></span></button>
+          <button data-i="1" aria-label="Slide 2"><span class="bar"></span></button>
+          <button data-i="2" aria-label="Slide 3"><span class="bar"></span></button>
+          <button data-i="3" aria-label="Slide 4"><span class="bar"></span></button>
+        </div>
+        <div class="hero-counter">
+          <span id="hero-cur">01</span><span class="slash">/</span><span>04</span>
+          <button id="hero-pause" aria-label="Pause slideshow"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
+  </section>
+
+  <!-- ===== PROMO BANNER (staff-toggleable in WP: adoption promos, fundraisers) ===== -->
+  <aside class="promo-banner" id="promo-banner" role="region" aria-label="Announcement">
+    <div class="container promo-inner">
+      <div class="promo-text">
+        <span class="promo-label">
+          <svg class="promo-paw" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#fff"/><g fill="#632F88"><ellipse cx="10.5" cy="13" rx="2" ry="2.5"/><ellipse cx="14.7" cy="10.6" rx="2" ry="2.5"/><ellipse cx="18.3" cy="10.6" rx="2" ry="2.5"/><ellipse cx="22" cy="13.4" rx="2" ry="2.5"/><path d="M16.2 15.4c-3 0-5.4 2.2-5.4 4.7 0 1.8 1.5 2.8 3.2 2.8.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.7 0 3.2-1 3.2-2.8 0-2.5-2.4-4.7-5.4-4.7z"/></g></svg>
+          Adoption Promotion
+        </span>
+        <p class="promo-message">This month, senior dog adoption fees are waived for adopters 65 and older. Give a gray muzzle a soft place to land.</p>
+      </div>
+      <div class="promo-actions">
+        <a href="/adopt/" class="btn btn-light">See adoptable dogs</a>
+        <button class="promo-dismiss" type="button" aria-label="Dismiss announcement">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+  <script>
+    (function(){ var b=document.getElementById('promo-banner'); if(!b) return;
+      if(localStorage.getItem('pomdrPromoDismissed')==='1') b.classList.add('dismissed');
+      var x=b.querySelector('.promo-dismiss');
+      if(x) x.addEventListener('click', function(){ b.classList.add('dismissed'); try{localStorage.setItem('pomdrPromoDismissed','1');}catch(e){} });
+    })();
+  </script>
+
+  <!-- ===== PILLARS (Adopt / Donate / Volunteer) ===== -->
+  <section class="section pillars">
+    <div class="container">
+      <div class="pillars-grid">
+        <div class="reveal"><a class="pillar" href="/adopt/">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-adopt.webp"><img src="<?php echo $img; ?>/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Adopt</h3>
+            <p>Match with a senior pup whose quiet mornings suit yours.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+        <div class="reveal"><a class="pillar" href="/donate/">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-donate.webp"><img src="<?php echo $img; ?>/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Donate</h3>
+            <p>Your gift funds medical care, foster stipends and a lifetime promise.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+        <div class="reveal"><a class="pillar" href="/volunteer/">
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
+          <div style="position:relative;z-index:2">
+            <h3 class="pillar-label">Volunteer</h3>
+            <p>Foster, transport, write bios. Every hour makes a difference.</p>
+            <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION + PROGRAMS ===== -->
+  <section class="section programs" id="mission">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
+          <h2 class="section-title">Programs for senior dogs <em>and senior people.</em></h2>
+          <p class="section-lead">Who will care for your dog if you no longer can? We help senior dogs and senior people on California's Central Coast through rescue, foster, adoption, hospice, and lifelong care, so no dog is left without someone to love them.</p>
+        </div>
+      </div>
+      <div class="programs-grid">
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
+          <h3>Intake and Adoptions</h3>
+          <p>We meet each dog where they are, find the right foster home, and match them with a person for the rest of their days.</p>
+          <ul><li>Adoptable dogs</li><li>Courtesy listings</li><li>Adoption process</li><li>Adoption events</li></ul>
+          <a href="/adopt/" class="learn">Explore Intake and Adoptions</a>
+        </div></div>
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="9" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="9" r="2"/><path d="M7 17c0-3 2-5 5-5s5 2 5 5-2 4-5 4-5-1-5-4z"/></svg></div>
+          <h3>Helping Paw</h3>
+          <p>When a guardian is struggling, we step in with dog walking, rides to the vet, financial help, and temporary foster care, so families can stay together.</p>
+          <ul><li>Walking brigade</li><li>Financial assistance</li><li>Temporary fosters</li></ul>
+          <a href="/helping-paw/" class="learn">Explore Helping Paw</a>
+        </div></div>
+        <div class="reveal"><div class="program-card">
+          <div class="program-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg></div>
+          <h3>Perpetual Care</h3>
+          <p>Plan ahead with us, and we promise to love and care for your dog if you no longer can. It is a promise, not a program.</p>
+          <ul><li>Placing your dog</li><li>Lifetime commitment</li><li>Planning ahead</li></ul>
+          <a href="/perpetual-care-program/" class="learn">Explore Perpetual Care</a>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ADOPTABLES (two rows of three) ===== -->
+  <section class="section adoptables" id="adopt">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Adoptable Dogs</span>
+          <h2 class="section-title">Adoptable dogs, <em>updated daily.</em></h2>
+          <p class="section-lead">A few of the seniors waiting for their next chapter. Each has a full heart, a few grey hairs, and a story that is not finished yet.</p>
+        </div>
+      </div>
+      <?php echo do_shortcode("[pet_home]"); ?>
+    </div>
+  </section>
+
+  <!-- ===== VIDEO ===== -->
+  <section class="section video-section">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Watch</span>
+          <h2 class="section-title">POMDR <em>Videos.</em></h2>
+          <p class="section-lead">Our dogs and our people, in their own words. Short films from inside the rescue, from foster homes to morning walks.</p>
+          <p class="section-lead">Short films from the rescue: dogs settling into foster homes, volunteers on their morning walks, and the families who opened their doors.</p>
+        </div>
+      </div>
+      <!-- To go live: paste a YouTube video ID into data-youtube-id (the 11
+           characters after watch?v=). The video then plays inline on click,
+           privacy-friendly (youtube-nocookie) and only loaded when clicked. -->
+      <div class="video-grid reveal">
+        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Meet our senior dogs">
+          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog12.webp"><img class="poster" src="<?php echo $img; ?>/dog12.jpeg" alt="A senior dog looking calmly toward the camera" loading="lazy"></picture>
+          <div class="scrim"></div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="v-title">Meet our senior dogs</div>
+        </div>
+        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Inside the Helping Paw program">
+          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog9.webp"><img class="poster" src="<?php echo $img; ?>/dog9.jpeg" alt="A volunteer spending time with a small dog" loading="lazy"></picture>
+          <div class="scrim"></div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="v-title">Inside the Helping Paw program</div>
+        </div>
+        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Why we foster">
+          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog16.webp"><img class="poster" src="<?php echo $img; ?>/dog16.jpeg" alt="A foster dog resting comfortably at home" loading="lazy"></picture>
+          <div class="scrim"></div>
+          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="v-title">Why we foster</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMPACT ===== -->
+  <section class="impact" aria-labelledby="impact-title">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">POMDR By the Numbers</span>
+          <h2 class="section-title" id="impact-title">Senior dogs and senior people, <em>helped together.</em></h2>
+        </div>
+      </div>
+      <!-- NOTE: stat values are PLACEHOLDERS pending real totals from POMDR.
+           In WP these become editable (ACF options) or dynamic counts. -->
+      <div class="stats-3 reveal">
+        <div class="stat-block">
+          <div class="num">250<span class="sym">+</span></div>
+          <div class="lbl">Seniors supported through Helping Paw</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">3,200<span class="sym">+</span></div>
+          <div class="lbl">Dogs adopted into loving homes</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">1,800<span class="sym">+</span></div>
+          <div class="lbl">Active volunteers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HAPPY TAILS ===== -->
+  <section class="tails">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header">
+          <span class="eyebrow">Testimonials</span>
+          <h2 class="section-title">Hear from <em>our clients.</em></h2>
+          <p class="section-lead">Adopters, fosters, and Helping Paw families on what POMDR has meant to them and their senior dogs.</p>
+        </div>
+      </div>
+      <div class="tails-grid">
+        <div class="reveal"><div class="tail-card">
+          <div class="quote-mark">"</div>
+          <blockquote>Rosie walked into our home unsure, and two weeks later she was napping at my feet like she had always been here. Thank you for trusting us with her golden years.</blockquote>
+          <div class="person">
+            <div class="av" style="background:linear-gradient(160deg,var(--purple-100),var(--purple));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">R</div>
+            <div><strong>The Alvarez Family</strong><span>adopted Rosie · Pacific Grove, CA</span></div>
+          </div>
+        </div></div>
+        <div class="reveal"><div class="tail-card">
+          <div class="quote-mark">"</div>
+          <blockquote>They did not just match us with a dog. They matched us with a companion who understood quiet mornings.</blockquote>
+          <div class="person">
+            <div class="av" style="background:linear-gradient(160deg,var(--blue-100),var(--blue));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">F</div>
+            <div><strong>Eleanor W.</strong><span>adopted Finn · Carmel</span></div>
+          </div>
+        </div></div>
+        <div class="reveal"><div class="tail-card">
+          <div class="quote-mark">"</div>
+          <blockquote>POMDR stayed in touch long after adoption day. That is what a lifetime commitment looks like.</blockquote>
+          <div class="person">
+            <div class="av" style="background:linear-gradient(160deg,#e8d5c4,#8b5a2b);display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">B</div>
+            <div><strong>David and Marta</strong><span>adopted Biscuit · Santa Cruz</span></div>
+          </div>
+        </div></div>
+      </div>
+      <div class="tails-more">
+        <a href="/testimonials/" class="btn btn-purple">See more stories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS ===== -->
+  <section class="events">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-header left" style="display:flex;justify-content:space-between;align-items:flex-end;max-width:none;margin-bottom:40px">
+          <div style="max-width:560px">
+            <span class="eyebrow" style="color:var(--purple)">Upcoming</span>
+            <h2 class="section-title">Events and <em>gatherings.</em></h2>
+          </div>
+          <a href="/events/" class="btn btn-outline">View full calendar</a>
+        </div>
+      </div>
+      <div class="events-layout">
+        <div class="reveal">
+          <div class="event-list">
+            <a class="event-row" href="/events/">
+              <div class="event-date"><div class="month">May</div><div class="day">03</div></div>
+              <div><div class="event-title">Pups on the Promenade</div><div class="event-meta"><span>10 am to 2 pm</span><span>Pacific Grove</span><span>Adoption Event</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+            <a class="event-row" href="/events/">
+              <div class="event-date"><div class="month">May</div><div class="day">17</div></div>
+              <div><div class="event-title">Senior Supper Fundraiser</div><div class="event-meta"><span>5:30 to 8 pm</span><span>Carmel Valley</span><span>Fundraiser</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+            <a class="event-row" href="/events/">
+              <div class="event-date"><div class="month">Jun</div><div class="day">01</div></div>
+              <div><div class="event-title">Volunteer Orientation</div><div class="event-meta"><span>10 am to noon</span><span>POMDR HQ</span><span>Volunteer</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+            <a class="event-row" href="/events/">
+              <div class="event-date"><div class="month">Jun</div><div class="day">14</div></div>
+              <div><div class="event-title">Doggy Day Out Walk</div><div class="event-meta"><span>9 to 11 am</span><span>Lovers Point</span><span>Community</span></div></div>
+              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+            </a>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="events-feature">
+            <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(150deg,var(--purple-400),var(--blue-900))"></div>
+            <div class="tag">Featured · May 17</div>
+            <h3>Senior Supper. An evening for our seniors, by our friends.</h3>
+            <div class="details"><span>5:30 to 8 pm</span><span>Carmel Valley Ranch</span></div>
+            <a href="/events/" class="btn btn-light" style="width:fit-content">Reserve your seat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <div class="container">
+      <div>
+        <span class="eyebrow">Stay in the loop</span>
+        <h2>Sweet stories, happy tails and <em>good news</em> in your inbox.</h2>
+        <p>One thoughtful email a month. Adoption updates, events, and a little sunshine from the pups.</p>
+      </div>
+      <form class="newsletter-form" action="/thank-you/" method="get" onsubmit="event.preventDefault();window.location.href='/thank-you/?source=newsletter';">
+        <input type="hidden" name="source" value="newsletter">
+        <label for="newsletter-email">Newsletter signup</label>
+        <div class="nform-row">
+          <input id="newsletter-email" name="email" autocomplete="email" type="email" placeholder="your@email.com" required>
+          <button type="submit">Subscribe</button>
+        </div>
+        <div class="fine">We respect your inbox. Unsubscribe anytime.</div>
+      </form>
+    </div>
+  </section>
+
+</main>
+<?php get_footer();
