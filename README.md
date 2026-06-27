@@ -180,4 +180,4 @@ Owner: Andrew Z. (apzielinski62@gmail.com). Implementation partner:
 Claude Code (anthropic.com).
 
 POMDR org: <https://www.pomdr.org> · (831) 718-9122 ·
-info@peaceofminddogrescue.org · EIN 27-1154816.
+info@pomdr.org · EIN 27-1154816.

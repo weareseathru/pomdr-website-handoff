@@ -176,7 +176,7 @@ follows the same contract.
   93950.
 - Vet clinic: Boand Veterinary Clinic, 1251 10th St, Monterey, CA.
 - Benefit Shop: 223 Grand Ave, Pacific Grove, CA.
-- Contact: info@peaceofminddogrescue.org, (831) 718-9122.
+- Contact: info@pomdr.org, (831) 718-9122.
 - Focus: senior dogs and senior people on California's Central Coast.
 
 ---

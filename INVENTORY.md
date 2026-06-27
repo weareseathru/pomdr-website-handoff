@@ -122,7 +122,7 @@ Audit of the design's footer (`pomdr-website/project/pomdr-layout.js` lines
 | Required item         | In design? | Notes |
 |-----------------------|------------|-------|
 | Phone                 | yes        | Display "(831) 718-9122" and `tel:+18317189122` both correct in `pomdr-layout.js:169`. Fixed in Session 2 footer rewrite. |
-| Email                 | yes        | `info@peaceofminddogrescue.org`. Matches global CLAUDE.md. |
+| Email                 | yes        | `info@pomdr.org`. Matches global CLAUDE.md. |
 | Mailing address       | yes (Bauer only) | "615 Forest Ave, Pacific Grove, CA 93950". |
 | Bauer Center          | yes        | (same as mailing address) |
 | Boand Vet Clinic      | no         | "1251 10th St, Monterey, CA" per global CLAUDE.md. Not in design footer. |

@@ -65,7 +65,7 @@ These are absolute. Every piece of generated content must conform.
 - Main address: Patricia J. Bauer Center, 615 Forest Ave, Pacific Grove, CA
 - Vet clinic: 1251 10th St, Monterey, CA
 - Benefit Shop: 223 Grand Ave, Pacific Grove, CA
-- General contact: info@peaceofminddogrescue.org, (831) 718-9122
+- General contact: info@pomdr.org, (831) 718-9122
 - Founded 2009. Focus: senior dogs and senior people.
 
 ---
