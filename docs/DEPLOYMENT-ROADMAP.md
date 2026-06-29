@@ -101,8 +101,32 @@ mirror alignment) on record; fixes folded in.
 
 ---
 
+## Audit status (2026-06-29)
+
+Two subagent audits were run and their fixes folded in:
+- **Prototype review:** no blockers. Fixed the white-on-blue contrast (now
+  `--blue-700`, AA), removed residual hardcoded orange and off-palette green/pink,
+  and added `:focus-within` so nav dropdowns are keyboard/touch accessible.
+- **Mirror alignment:** all 30 pages serve our chrome + templates correctly, no
+  Divi-builder leakage, images and content parity good. Two P0s were fixed: the
+  dog-profile `/pets/{id}/` URLs (rewrite rules flushed) and the sitewide Contact
+  link (now `mailto:info@pomdr.org`, no contact page needed).
+
+## Redirects to configure before launch (Redirection plugin)
+
+Old prototype/legacy paths that should 301 to the canonical WP slugs, in case any
+external links, emails (Mailchimp), or bookmarks point at them:
+- `/thank-you/` to `/thanks/`
+- `/resources/` to `/recources/`
+- (the `/foster/` to `/foster-needs/` redirect already exists and works)
+
 ## Open engineering follow-ups (non-blocking, tracked)
 
+- **Slug typo:** the resources page slug is `recources` (misspelled). Recommend
+  renaming it to `resources` with a redirect from `recources` before launch.
+- **Flush permalinks on every deploy** (Settings to Permalinks to Save) so the
+  `/pets/{id}/` dog-profile URLs resolve. This is in the deploy runbook; it is the
+  most important post-deploy step.
 - `clinic` / `benefit-shop`: staff sections were removed to match the prototype;
   the `[clinic_staff]` / `[benefit_shop_staff]` shortcodes still exist if we want
   to surface staff later.
