@@ -91,14 +91,6 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <span class="eyebrow blue">Our team</span>
-    <h2 class="section-title blue">The people behind the <em>care</em>.</h2>
-    <?php echo do_shortcode("[clinic_staff]"); ?>
-  </div>
-</section>
-
 <section class="mission-band">
   <div class="container">
     <div class="mission-inner">

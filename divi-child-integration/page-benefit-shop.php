@@ -31,14 +31,6 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
-<section class="section" style="background:var(--blue-50)">
-  <div class="container">
-    <span class="eyebrow">Our team</span>
-    <h2 class="section-title">The volunteers who <em>run the shop</em>.</h2>
-    <?php echo do_shortcode("[benefit_shop_staff]"); ?>
-  </div>
-</section>
-
 <section class="cta-strip" style="background:var(--cream-2)">
   <div class="container">
     <h2 class="serif">Every dollar funds <em>senior dog care</em>.</h2>
