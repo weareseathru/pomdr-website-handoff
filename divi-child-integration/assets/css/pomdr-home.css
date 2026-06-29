@@ -1172,13 +1172,13 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 
 /* Home section headers read horizontally (title block beside the lead) so each
    section takes less vertical space. */
-.video-section .section-header {
+body.home .section-header {
   display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 6px 48px;
 }
-.video-section .section-header .eyebrow,
-.video-section .section-header .section-title { grid-column: 1; }
-.video-section .section-header .section-title { margin: 0; }
-.video-section .section-header .section-lead { grid-column: 2; margin: 0; }
+body.home .section-header .eyebrow,
+body.home .section-header .section-title { grid-column: 1; }
+body.home .section-header .section-title { margin: 0; }
+body.home .section-header .section-lead { grid-column: 2; margin: 0; }
 @media (max-width: 720px) {
-  .video-section .section-header { grid-template-columns: 1fr; }
+  body.home .section-header { grid-template-columns: 1fr; }
 }

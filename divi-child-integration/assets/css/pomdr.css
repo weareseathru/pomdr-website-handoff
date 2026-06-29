@@ -1518,3 +1518,12 @@ body.has-breadcrumb .page-header { padding-top: 48px; }
   color: var(--blue);
   letter-spacing: -0.01em;
 }
+
+/* The narrative line, kept below the big headline as a smaller serif voice line. */
+.page-narrative {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.2; letter-spacing: -0.01em; font-weight: 400;
+  color: var(--ink-2); margin: 0 0 20px;
+}
+.page-narrative em { font-style: italic; color: var(--blue); }
