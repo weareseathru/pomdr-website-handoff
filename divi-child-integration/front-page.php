@@ -187,7 +187,6 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <span class="eyebrow">Watch</span>
           <h2 class="section-title">POMDR <em>Videos.</em></h2>
           <p class="section-lead">Our dogs and our people, in their own words. Short films from inside the rescue, from foster homes to morning walks.</p>
-          <p class="section-lead">Short films from the rescue: dogs settling into foster homes, volunteers on their morning walks, and the families who opened their doors.</p>
         </div>
       </div>
       <!-- To go live: paste a YouTube video ID into data-youtube-id (the 11

@@ -1496,3 +1496,25 @@ body.has-breadcrumb .page-header { padding-top: 48px; }
   .action-bar { flex-direction: column; align-items: stretch; }
   .action-bar .btn { width: 100%; }
 }
+
+/* ===== Clear page headline: big simple title + inline italic subtitle (~2/3
+   size), replacing the eyebrow + narrative-title + subheading stack. ===== */
+.page-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5.6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  margin: 0 0 22px;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+}
+.page-headline-sub {
+  font-style: italic;
+  font-size: 0.58em;          /* ~2/3 of the title */
+  font-weight: 300;
+  color: var(--blue);
+  letter-spacing: -0.01em;
+}

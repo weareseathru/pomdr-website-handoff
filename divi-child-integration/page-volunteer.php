@@ -49,8 +49,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   });
 </script><section class="page-hero">
   <div class="container">
-    <div class="eyebrow purple">Volunteer · Powered by Community</div>
-    <h1 class="display">Give your time. <em>Change a life.</em></h1>
+    <h1 class="page-headline">Volunteer <span class="page-headline-sub">Powered by Community</span></h1>
     <div class="hero-row">
       <p class="lead">Peace of Mind Dog Rescue relies on the time and talents of over 1,800 volunteers to help senior dogs and senior people across California's Central Coast.</p>
       <div class="hero-stat-row">
