@@ -97,7 +97,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
 
       <div class="role-card">
-        <div class="role-icon" style="background:#FFF5E8;color:#C06B00;">
+        <div class="role-icon" style="background:#F1EBF5;color:#632F88;">
           <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <h3>Adoption Events</h3>
@@ -115,7 +115,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
 
       <div class="role-card">
-        <div class="role-icon" style="background:#FFF0F3;color:#b03060;">
+        <div class="role-icon" style="background:#E3F2F6;color:#006c8a;">
           <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
         </div>
         <h3>Benefit Shop</h3>
@@ -124,7 +124,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
 
       <div class="role-card">
-        <div class="role-icon" style="background:#E8F8EE;color:#1a7a40;">
+        <div class="role-icon" style="background:#EFEAF4;color:#632F88;">
           <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <h3>Fundraising</h3>
@@ -151,7 +151,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
 
       <div class="role-card">
-        <div class="role-icon" style="background:#FFF5E8;color:#C06B00;">
+        <div class="role-icon" style="background:#F1EBF5;color:#632F88;">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
         <h3>Other Specialties</h3>

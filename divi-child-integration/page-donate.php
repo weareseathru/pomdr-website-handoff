@@ -16,11 +16,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .donate-card .tax{font-size:16px;color:rgba(255,255,255,.78);margin-top:14px;}
 .amounts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;}
 .amount-btn{min-height:44px;padding:13px 18px;border-radius:999px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-size:16px;font-weight:600;font-family:var(--font-sans);cursor:pointer;transition:all .2s;}
-.amount-btn:hover,.amount-btn.active{background:var(--blue);border-color:var(--blue);}
+.amount-btn:hover,.amount-btn.active{background:var(--blue-700);border-color:var(--blue);}
 .custom-row{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 6px 6px 20px;}
 .custom-row input{flex:1;min-height:44px;border:none;background:transparent;font:inherit;font-size:16px;color:#fff;outline:none;}
 .custom-row input::placeholder{color:rgba(255,255,255,.78);}
-.donate-btn{min-height:44px;background:var(--blue);color:#fff;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px;box-shadow:0 6px 18px -4px rgba(0,139,176,.55);transition:all .25s;border:none;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;}
+.donate-btn{min-height:44px;background:var(--blue-700);color:#fff;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px;box-shadow:0 6px 18px -4px rgba(0,139,176,.55);transition:all .25s;border:none;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;}
 .donate-btn:hover{background:var(--blue-700);}
 .donate-meta{display:flex;gap:20px;margin-top:18px;font-size:16px;color:rgba(255,255,255,.85);flex-wrap:wrap;}
 @media(max-width:800px){.donate-card{grid-template-columns:1fr;gap:28px;}}
@@ -40,7 +40,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-card:nth-of-type(3n+1)::before{background-image:url(images/dog2.jpeg);}
 .way-card:nth-of-type(3n+2)::before{background-image:url(images/dog14.jpeg);}
 .way-card:nth-of-type(3n)::before{background-image:url(images/dog16.webp);}
-.way-card.featured{background:var(--blue);color:#fff;border-color:var(--blue);}
+.way-card.featured{background:var(--blue-700);color:#fff;border-color:var(--blue);}
 .way-card.featured p{color:rgba(255,255,255,.88);}
 .way-icon{width:44px;height:44px;border-radius:14px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:16px;}
 .way-card.featured .way-icon{background:rgba(255,255,255,.15);color:#fff;}

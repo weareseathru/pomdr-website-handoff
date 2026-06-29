@@ -27,7 +27,7 @@
   --purple-50: #F1EBF5;
   --purple-100: #C9BBD7;
 
-  --orange: #C06B00;
+  --orange: #6E4B9E;
   --orange-50: #FFF5E8;
 
   --ink: #16202b;
@@ -490,7 +490,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-orange {
   background: var(--orange);
   color: white;
-  box-shadow: 0 10px 24px -6px rgba(192, 107, 0, 0.45);
+  box-shadow: 0 10px 24px -6px rgba(99, 47, 136, 0.45);
 }
 .btn-orange:hover { background: #a05800; transform: translateY(-2px); }
 
@@ -1228,7 +1228,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .dog-status[data-status="foster_needed"],
 .dog-status[data-status="foster_needed_dated"] { background: var(--orange-50); color: #6B3D00; }
 .dog-status[data-status="foster_needed"] .dog-status-dot,
-.dog-status[data-status="foster_needed_dated"] .dog-status-dot { background: var(--orange); box-shadow: 0 0 0 4px rgba(192,107,0,0.15); }
+.dog-status[data-status="foster_needed_dated"] .dog-status-dot { background: var(--orange); box-shadow: 0 0 0 4px rgba(99,47,136,0.15); }
 .dog-status[data-status="foster_needed"] .dog-status-cta,
 .dog-status[data-status="foster_needed_dated"] .dog-status-cta { color: #6B3D00; }
 
