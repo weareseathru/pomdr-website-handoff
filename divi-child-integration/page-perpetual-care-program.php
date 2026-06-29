@@ -9,8 +9,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Lifetime Care</span>
-    <h1 class="page-title">A plan for <em>after you</em>.</h1>
+    <h1 class="page-headline">Perpetual Care <span class="page-headline-sub">Lifetime peace of mind</span></h1>
+    <p class="page-narrative">A plan for <em>after you</em>.</p>
     <p class="page-lead">If something happens to you, POMDR can take your dog. The Lifetime Care Program is for senior people who want to know their senior dog has a soft landing.</p>
   </div>
 </header>

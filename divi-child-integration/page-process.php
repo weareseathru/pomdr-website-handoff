@@ -9,8 +9,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Adoption Process</span>
-    <h1 class="page-title">How <em>adoption</em> works.</h1>
+    <h1 class="page-headline">Adoption <span class="page-headline-sub">How It Works</span></h1>
+    <p class="page-narrative">How <em>adoption</em> works.</p>
     <p class="page-lead">Four steps. A real person at every one of them. Most placements finish inside two weeks.</p>
     <div class="page-cta">
       <a href="/adopt/" class="btn btn-primary">See Adoptable Dogs</a>

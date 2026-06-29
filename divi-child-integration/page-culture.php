@@ -21,8 +21,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow purple">Our Culture</span>
-    <h1 class="page-title">Kindness, run like a <em>professional</em>.</h1>
+    <h1 class="page-headline">Our Culture <span class="page-headline-sub">How we work</span></h1>
+    <p class="page-narrative">Kindness, run like a <em>professional</em>.</p>
     <p class="page-lead">Behind every rescued dog is a team that shows up with warmth, honesty, and care. This is what it feels like to work and volunteer at Peace of Mind Dog Rescue.</p>
     <div class="page-cta">
       <a href="/jobs/" class="btn btn-purple">Join our team</a>

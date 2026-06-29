@@ -6,8 +6,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Benefit Shop</span>
-    <h1 class="page-title">A whole store that <em>helps senior dogs</em>.</h1>
+    <h1 class="page-headline">Benefit Shop <span class="page-headline-sub">Shop for a cause</span></h1>
+    <p class="page-narrative">A whole store that <em>helps senior dogs</em>.</p>
     <p class="page-lead">Books, housewares, treasures, all donated by neighbors, all sold to fund vet care for senior dogs. Run by a tiny team of dedicated volunteers.</p>
   </div>
 </header>

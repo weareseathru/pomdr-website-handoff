@@ -25,8 +25,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Why Senior Dogs</span>
-    <h1 class="page-title">The best dogs are sometimes the <em>oldest</em>.</h1>
+    <h1 class="page-headline">Why Senior Dogs <span class="page-headline-sub">Steady, grateful, ready</span></h1>
+    <p class="page-narrative">The best dogs are sometimes the <em>oldest</em>.</p>
     <p class="page-lead">Peace of Mind Dog Rescue exists for the dogs other shelters overlook, the gray-muzzled, the slow-walking, the deeply loyal. Here is why a senior dog may be the right dog, and why supporting them matters.</p>
     <div class="page-cta">
       <a href="/adopt/" class="btn btn-primary">Adopt a senior dog</a>

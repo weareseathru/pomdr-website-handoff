@@ -6,8 +6,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Testimonials</span>
-    <h1 class="page-title">What <em>adopters</em> say.</h1>
+    <h1 class="page-headline">Testimonials <span class="page-headline-sub">In Their Words</span></h1>
+    <p class="page-narrative">What <em>adopters</em> say.</p>
     <p class="page-lead">A small sample of notes we receive from the people who take our dogs home.</p>
   </div>
 </header>

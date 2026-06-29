@@ -74,8 +74,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <div class="hero-inner">
       <div>
-        <div class="eyebrow">Placing Your Dog · Lifetime Care</div>
-        <h1 class="display">We'll be here, <em>whatever comes next.</em></h1>
+        <h1 class="page-headline">Placing Your Dog <span class="page-headline-sub">Lifetime Care</span></h1>
+        <p class="page-narrative">We'll be here, <em>whatever comes next.</em></p>
         <p class="hero-lead">Whether you need to surrender your dog now, or want peace of mind for the future, POMDR is a resource and partner, not just a rescue.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
           <a href="https://www.peaceofminddogrescue.org/POMDRsurrenderapplication.php" target="_blank" style="background:var(--blue-700);color:#fff;padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;box-shadow:0 10px 24px -6px rgba(0,139,176,.5);">

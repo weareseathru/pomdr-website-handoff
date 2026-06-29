@@ -82,8 +82,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </script><!-- HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="eyebrow">Helping Paw Program</div>
-    <h1 class="display">Keeping pets and people <em>together.</em></h1>
+    <h1 class="page-headline">Helping Paw <span class="page-headline-sub">Pets and People Together</span></h1>
+    <p class="page-narrative">Keeping pets and people <em>together.</em></p>
     <p class="lead">The Helping Paw Program provides support to senior people and people with disabilities who need help caring for their dogs, so no one has to give up their companion due to hardship.</p>
     <div style="display:flex;gap:14px;flex-wrap:wrap;">
       <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">

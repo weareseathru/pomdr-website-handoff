@@ -6,8 +6,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header" style="text-align:center">
   <div class="container">
-    <span class="eyebrow">Thank You</span>
-    <h1 class="page-title" id="thanks-headline">We got it.</h1>
+    <h1 class="page-headline" id="thanks-headline">Thank You <span class="page-headline-sub">We Got It</span></h1>
     <p class="page-lead" id="thanks-lead" style="margin-left:auto;margin-right:auto;max-width:600px">Your message is on its way to a real human at POMDR. We will follow up within a few days.</p>
   </div>
 </header>

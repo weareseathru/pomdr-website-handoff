@@ -20,8 +20,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Mailing List</span>
-    <h1 class="page-title">Stay close to the <em>dogs you love</em>.</h1>
+    <h1 class="page-headline">Mailing List <span class="page-headline-sub">Stay in Touch</span></h1>
+    <p class="page-narrative">Stay close to the <em>dogs you love</em>.</p>
     <p class="page-lead">Join our mailing list for adoptable dogs, happy tails, events, and the occasional senior pup who needs a little extra help finding home.</p>
     <div class="page-cta">
       <a href="#signup" class="btn btn-primary">Join the mailing list</a>

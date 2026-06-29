@@ -9,8 +9,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">Resources</span>
-    <h1 class="page-title">Caring for a <em>senior dog</em>.</h1>
+    <h1 class="page-headline">Resources <span class="page-headline-sub">Caring for Seniors</span></h1>
+    <p class="page-narrative">Caring for a <em>senior dog</em>.</p>
     <p class="page-lead">Practical guides for the questions we hear most often. Mobility, vet care, end-of-life choices, and how to keep a senior dog comfortable.</p>
   </div>
 </header>

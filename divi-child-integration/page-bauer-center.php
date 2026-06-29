@@ -33,8 +33,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <span class="eyebrow">The Bauer Center</span>
-    <h1 class="page-title">Where dogs and people <em>find each other</em>.</h1>
+    <h1 class="page-headline">The Bauer Center <span class="page-headline-sub">Our home base</span></h1>
+    <p class="page-narrative">Where dogs and people <em>find each other</em>.</p>
     <p class="page-lead">The Patricia J. Bauer Center in Pacific Grove is the home of Peace of Mind Dog Rescue. It is our office and our adoption center, the place where staff, volunteers, and visiting families come together to help senior dogs find their people.</p>
     <div class="page-cta">
       <a href="#visit" class="btn btn-purple">Plan your visit</a>

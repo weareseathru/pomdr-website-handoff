@@ -130,8 +130,8 @@ $adopt_filters = array(
 
 <section class="hero">
   <div class="container hero-inner">
-    <div class="eyebrow">Adoptable Dogs &middot; Updated daily</div>
-    <h1>Find the dogs looking for their <em>forever</em> people.</h1>
+    <h1 class="page-headline">Adoptable Dogs <span class="page-headline-sub">Updated daily</span></h1>
+    <p class="page-narrative">Find the dogs looking for their <em>forever</em> people.</p>
     <div class="hero-row">
       <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>
       <div class="hero-meta">
