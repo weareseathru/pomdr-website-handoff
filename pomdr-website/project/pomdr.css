@@ -307,7 +307,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   background: transparent;
 }
 
-.nav-item:hover .nav-dropdown {
+.nav-item:hover .nav-dropdown,
+.nav-item:focus-within .nav-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
