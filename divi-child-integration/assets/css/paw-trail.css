@@ -31,6 +31,9 @@
    glows softly behind them. */
 .nav,
 #main,
+#main-content,
+#et-main-area,
+.et-l--body,
 .footer {
   position: relative;
   z-index: 1;

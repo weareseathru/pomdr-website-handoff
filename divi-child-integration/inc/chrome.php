@@ -93,8 +93,7 @@ function pomdr_render_footer() {
         <div class="footer-main">
           <div class="footer-brand">
             <a href="<?php echo $home; ?>" class="logo footer-logo" aria-label="Peace of Mind Dog Rescue, home">
-              <div class="logo-mark">P</div>
-              <div class="logo-text"><div class="name">Peace of Mind</div><div class="sub">Dog Rescue</div></div>
+              <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/logo-horizontal.png' ); ?>" alt="Peace of Mind Dog Rescue" class="footer-logo-img" width="600" height="133">
             </a>
             <p class="footer-tagline">Helping senior dogs and senior people since 2009.</p>
             <p class="footer-mission">A 501(c)(3) nonprofit serving Monterey, Santa Cruz and San Benito counties.</p>
