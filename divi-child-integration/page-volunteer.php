@@ -159,6 +159,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <a href="/volunteer-application/" class="learn">Tell us your skills</a>
       </div>
 
+      <div class="role-card">
+        <div class="role-icon" style="background:var(--blue-50);color:var(--blue);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5.5 21a6.5 6.5 0 0 1 13 0"/><circle cx="5" cy="11" r="2"/><circle cx="19" cy="11" r="2"/></svg>
+        </div>
+        <h3>Volunteer Brigade</h3>
+        <p>Want to help but cannot commit to a set task or schedule? Join the brigade and get occasional email requests: special events, networking to find an adopter for a specific dog, or a transportation run. Even once a year, your help makes a difference.</p>
+        <a href="/volunteer-application/" class="learn">Join the brigade</a>
+      </div>
+
     </div>
   </div>
 </section>
