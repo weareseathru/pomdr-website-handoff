@@ -74,8 +74,7 @@ $adopt_filters = array(
 <style>
 /* toolbar, filters, etc. already have styles. Just keep page-level. */
 .hero{padding:160px 0 60px;background:radial-gradient(ellipse at 20% 0%,rgba(0,139,176,.07),transparent 55%),radial-gradient(ellipse at 80% 10%,rgba(99,47,136,.05),transparent 55%),var(--cream);border-bottom:1px solid var(--line);}
-.hero h1{font-family:var(--font-serif);font-size:clamp(22px,3.4vw,44px);line-height:1.1;letter-spacing:-.02em;font-weight:400;margin:12px 0 14px;}
-.hero h1 em{font-style:italic;color:var(--blue);font-weight:300;}
+/* The headline uses the shared .page-headline size so Adopt matches the other pages. */
 .hero p{font-size:19px;color:var(--ink-2);max-width:560px;margin:0;}
 /* Lead copy and the three counts share one row so the dogs are closer to the top. */
 .hero-row{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin-top:22px;}

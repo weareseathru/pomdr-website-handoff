@@ -9,6 +9,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero .eyebrow::before{background:rgba(255,255,255,.65);}
 .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(0,139,176,.35),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(99,47,136,.2),transparent 60%);}
 .page-hero>.container{position:relative;z-index:1;}
+.page-hero .page-headline{color:#fff;margin-top:8px;}
+.page-hero .page-headline-sub{color:var(--blue-200);}
+.page-hero .page-narrative{color:rgba(255,255,255,.92);}
+.page-hero .page-narrative em{color:var(--blue-200);}
 .donate-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:36px;margin-top:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:start;}
 .donate-card h1{font-family:var(--font-serif);font-size:clamp(18px,2.4vw,32px);line-height:1.1;letter-spacing:-.02em;font-weight:400;margin:0 0 14px;}
 .donate-card h1 em{font-style:italic;color:var(--blue-200);}
@@ -64,13 +68,13 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </script><!-- HERO + DONATE WIDGET -->
 <section class="page-hero">
   <div class="container">
+    <h1 class="page-headline">Ways to Give <span class="page-headline-sub">Every Gift Counts</span></h1>
+    <p class="page-narrative">Your gift <em>saves lives.</em></p>
     <div class="donate-card">
       <div>
-        <h1 class="page-headline">Ways to Give <span class="page-headline-sub">Every Gift Counts</span></h1>
-        <p class="page-narrative">Your gift <em>saves lives.</em></p>
         <p>POMDR relies heavily on donations to further our mission of helping senior dogs and senior people stay together. Our biggest expense is medical care for the senior dogs we rescue.</p>
         <p>Peace of Mind Dog Rescue is a non-profit 501(c)(3). Your donations are tax-deductible to the extent allowable by law.</p>
-        <div class="tax" style="font-size:14px;color:var(--ink-3);">Tax ID: 27-1154816 · EIN 27-1154816</div>
+        <div class="tax" style="font-size:14px;color:rgba(255,255,255,.6);">501(c)(3) nonprofit · EIN 27-1154816</div>
       </div>
       <div>
         <div style="font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:14px;">Choose an amount</div>
