@@ -9,7 +9,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Privacy <span class="page-headline-sub">Your data, respected</span></h1>
+    <h1 class="page-headline">Privacy</h1>
     <p class="page-narrative">Our <em>privacy</em> commitments.</p>
     <p class="page-lead">We protect the information you trust us with. This page explains what we collect and why.</p>
   </div>

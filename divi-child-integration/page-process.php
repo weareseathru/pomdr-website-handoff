@@ -9,7 +9,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Adoption <span class="page-headline-sub">How It Works</span></h1>
+    <h1 class="page-headline">Adoption</h1>
     <p class="page-narrative">How <em>adoption</em> works.</p>
     <p class="page-lead">Four steps. A real person at every one of them. Most placements finish inside two weeks.</p>
     <div class="page-cta">

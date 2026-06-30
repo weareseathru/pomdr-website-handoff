@@ -9,7 +9,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Careers <span class="page-headline-sub">Join the Team</span></h1>
+    <h1 class="page-headline">Careers</h1>
     <p class="page-narrative">Work <em>with us</em>.</p>
     <p class="page-lead">POMDR is a small organization with a big mission. When we hire, this is where the openings appear.</p>
   </div>

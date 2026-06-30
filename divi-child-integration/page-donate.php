@@ -41,9 +41,19 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 /* PLACEHOLDER card photos (stock dogs). Swap for real categorized photos. */
 .way-card{overflow:hidden;}
 .way-card::before{content:"";display:block;height:140px;margin:-26px -26px 20px;background:var(--cream-2) center/cover no-repeat;}
-.way-card:nth-of-type(3n+1)::before{background-image:url(images/dog2.jpeg);}
-.way-card:nth-of-type(3n+2)::before{background-image:url(images/dog14.jpeg);}
-.way-card:nth-of-type(3n)::before{background-image:url(images/dog16.webp);}
+/* Real category photos for each way to give (from peaceofminddogrescue.org/donateoverview). */
+.way-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/donate/maxsfundlogo.jpg);}
+.way-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/donate/monicazorro.jpg);}
+.way-card:nth-of-type(3)::before{background-image:url(<?php echo $img; ?>/donate/tribute.jpg);}
+.way-card:nth-of-type(4)::before{background-image:url(<?php echo $img; ?>/donate/sponsoradog.jpg);}
+.way-card:nth-of-type(5)::before{background-image:url(<?php echo $img; ?>/donate/benefitshop.jpg);}
+.way-card:nth-of-type(6)::before{background-image:url(<?php echo $img; ?>/donate/helpingpawfund.jpg);}
+.way-card:nth-of-type(7)::before{background-image:url(<?php echo $img; ?>/donate/sponsoranad.jpg);}
+.way-card:nth-of-type(8)::before{background-image:url(<?php echo $img; ?>/donate/legacydonor.jpg);}
+.way-card:nth-of-type(9)::before{background-image:url(<?php echo $img; ?>/donate/perpetualcare.jpg);}
+.way-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/donate/stock.jpg);}
+.way-card:nth-of-type(11)::before{background-image:url(<?php echo $img; ?>/donate/plannedgiving.jpg);}
+.way-card:nth-of-type(12)::before{background-image:url(<?php echo $img; ?>/donate/wishlist.jpg);}
 .way-card.featured{background:var(--blue-700);color:#fff;border-color:var(--blue);}
 .way-card.featured p{color:rgba(255,255,255,.88);}
 .way-icon{width:44px;height:44px;border-radius:14px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:16px;}
@@ -68,7 +78,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </script><!-- HERO + DONATE WIDGET -->
 <section class="page-hero">
   <div class="container">
-    <h1 class="page-headline">Ways to Give <span class="page-headline-sub">Every Gift Counts</span></h1>
+    <h1 class="page-headline">Ways to Give</h1>
     <p class="page-narrative">Your gift <em>saves lives.</em></p>
     <div class="donate-card">
       <div>

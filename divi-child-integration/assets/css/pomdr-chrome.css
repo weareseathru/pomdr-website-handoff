@@ -458,3 +458,13 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .socials svg { width: 17px; height: 17px; fill: #fff; }
 @media (max-width: 860px) { .footer-main { grid-template-columns: 1fr; gap: 36px; } }
 @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr 1fr; gap: 24px; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+
+/* Sub-page headers: the chrome offset (#et-main-area padding-top) already clears
+   the fixed nav, so the header does not need the prototype's tall top padding.
+   Bring the title up close to the nav. */
+#main-content .page-hero, #main-content .page-header { padding-top: 40px; }
+
+/* Divi leaves a stray 58px top padding on #main-content .container (old header
+   clearance). We manage spacing via the chrome offset and each section's own
+   padding, so neutralize it everywhere. */
+body #main-content .container { padding-top: 0 !important; }

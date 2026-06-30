@@ -8,7 +8,7 @@ get_header();
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Foster <span class="page-headline-sub">Open Your Home</span></h1>
+    <h1 class="page-headline">Foster</h1>
     <p class="page-narrative">Open your home. Save a <em>life</em>.</p>
     <p class="page-lead">Foster homes are the heart of our rescue. When you foster a senior dog, you give them comfort, safety, and routine while we find their forever person. We cover the costs. You give the love.</p>
     <div class="page-cta">

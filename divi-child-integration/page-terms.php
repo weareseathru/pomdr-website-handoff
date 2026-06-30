@@ -9,7 +9,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Terms <span class="page-headline-sub">The fine print</span></h1>
+    <h1 class="page-headline">Terms</h1>
     <p class="page-narrative">Terms of <em>use</em>.</p>
     <p class="page-lead">The handful of ground rules that govern this website and the services it links to.</p>
   </div>

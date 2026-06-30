@@ -17,7 +17,7 @@ if ( '' !== $prefill ) {
 <main id="main-content">
   <header class="page-header">
     <div class="container">
-      <h1 class="page-headline">Adoption <span class="page-headline-sub">Apply to Adopt</span></h1>
+      <h1 class="page-headline">Adoption</h1>
       <p class="page-narrative">Start your <em>application</em>.</p>
       <p class="page-lead">Tell us about your home and the senior dog you have in mind. We read every application personally and will be in touch. We cover the care; you bring the couch and the love.</p>
     </div>

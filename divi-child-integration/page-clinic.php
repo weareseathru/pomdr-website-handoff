@@ -33,7 +33,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Veterinary Clinic <span class="page-headline-sub">Care for every dog</span></h1>
+    <h1 class="page-headline">Veterinary Clinic</h1>
     <p class="page-narrative">Quality care, kept <em>affordable</em>.</p>
     <p class="page-lead">The Harry and Jaynne Boand Veterinary Clinic in Monterey provides accessible, compassionate veterinary care for our rescue dogs and for the senior people and dogs we serve across California's Central Coast.</p>
     <div class="page-cta">

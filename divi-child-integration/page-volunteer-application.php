@@ -9,7 +9,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Volunteer <span class="page-headline-sub">Apply to Help</span></h1>
+    <h1 class="page-headline">Volunteer</h1>
     <p class="page-narrative">Apply to <em>volunteer</em>.</p>
     <p class="page-lead">Tell us a little about you and how you would like to help. A volunteer coordinator follows up within a week.</p>
   </div>

@@ -73,7 +73,7 @@ $adopt_filters = array(
 <main id="main-content">
 <style>
 /* toolbar, filters, etc. already have styles. Just keep page-level. */
-.hero{padding:160px 0 60px;background:radial-gradient(ellipse at 20% 0%,rgba(0,139,176,.07),transparent 55%),radial-gradient(ellipse at 80% 10%,rgba(99,47,136,.05),transparent 55%),var(--cream);border-bottom:1px solid var(--line);}
+.hero{padding:40px 0 60px;background:radial-gradient(ellipse at 20% 0%,rgba(0,139,176,.07),transparent 55%),radial-gradient(ellipse at 80% 10%,rgba(99,47,136,.05),transparent 55%),var(--cream);border-bottom:1px solid var(--line);}
 /* The headline uses the shared .page-headline size so Adopt matches the other pages. */
 .hero p{font-size:19px;color:var(--ink-2);max-width:560px;margin:0;}
 /* Lead copy and the three counts share one row so the dogs are closer to the top. */
@@ -129,7 +129,7 @@ $adopt_filters = array(
 
 <section class="hero">
   <div class="container hero-inner">
-    <h1 class="page-headline">Adoptable Dogs <span class="page-headline-sub">Updated daily</span></h1>
+    <h1 class="page-headline">Adoptable Dogs</h1>
     <p class="page-narrative">Find the dogs looking for their <em>forever</em> people.</p>
     <div class="hero-row">
       <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>

@@ -74,7 +74,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <div class="hero-inner">
       <div>
-        <h1 class="page-headline">Placing Your Dog <span class="page-headline-sub">Lifetime Care</span></h1>
+        <h1 class="page-headline">Placing Your Dog</h1>
         <p class="page-narrative">We'll be here, <em>whatever comes next.</em></p>
         <p class="hero-lead">Whether you need to surrender your dog now, or want peace of mind for the future, POMDR is a resource and partner, not just a rescue.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">

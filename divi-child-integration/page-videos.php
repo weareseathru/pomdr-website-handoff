@@ -6,7 +6,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Videos <span class="page-headline-sub">Stories in Motion</span></h1>
+    <h1 class="page-headline">Videos</h1>
     <p class="page-narrative">See <em>POMDR</em> at work.</p>
     <p class="page-lead">Short clips: dog introductions, adoption stories, behind-the-scenes at the Bauer Center.</p>
   </div>

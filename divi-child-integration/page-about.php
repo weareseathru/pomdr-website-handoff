@@ -81,7 +81,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <section class="page-hero">
   <div class="container">
     <div class="hero-text">
-      <h1 class="page-headline">Our Story <span class="page-headline-sub">Founded October 2009</span></h1>
+      <h1 class="page-headline">Our Story</h1>
       <p class="page-narrative">Advocating for seniors. <em>Dogs and people</em> alike.</p>
       <p>Peace of Mind Dog Rescue is a 501(c)(3) nonprofit based on California's Central Coast, dedicated to senior dogs and the senior people who love them.</p>
       <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">

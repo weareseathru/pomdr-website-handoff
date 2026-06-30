@@ -6,7 +6,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">In the Media <span class="page-headline-sub">Press and Features</span></h1>
+    <h1 class="page-headline">In the Media</h1>
     <p class="page-narrative">Press, features, and <em>print ads</em>.</p>
     <p class="page-lead">Highlights of POMDR coverage, plus our weekly Monterey Herald ads for adoptable dogs.</p>
   </div>
