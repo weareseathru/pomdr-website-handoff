@@ -468,3 +468,9 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
    clearance). We manage spacing via the chrome offset and each section's own
    padding, so neutralize it everywhere. */
 body #main-content .container { padding-top: 0 !important; }
+
+/* Donate menu item: a dark-blue oval outline so it stands out in the nav. The
+   nav link is already a pill (border-radius 999px + padding), so a border reads
+   as an oval; box-sizing:border-box keeps it from shifting the row. */
+.nav-item--donate > a { border: 2px solid var(--blue-700); color: var(--blue-700) !important; font-weight: 700; }
+.nav-item--donate:hover > a, .nav-item--donate > a:hover { background: var(--blue-700) !important; color: #fff !important; }

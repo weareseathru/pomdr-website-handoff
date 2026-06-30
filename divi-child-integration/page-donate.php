@@ -36,11 +36,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 /* WAYS GRID */
 .ways-section{padding:80px 0 100px;}
 .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px;}
-.way-card{background:#fff;border-radius:var(--radius);padding:26px;border:1px solid var(--line);transition:all .35s var(--ease);display:flex;flex-direction:column;}
+/* Standard photo card (matches the homepage pillars): the photo fills the card,
+   a dark gradient keeps the icon and text legible, content overlays in white. */
+.way-card{position:relative;overflow:hidden;border-radius:var(--radius-lg);min-height:330px;padding:26px;color:#fff;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .way-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-/* PLACEHOLDER card photos (stock dogs). Swap for real categorized photos. */
-.way-card{overflow:hidden;}
-.way-card::before{content:"";display:block;height:140px;margin:-26px -26px 20px;background:var(--cream-2) center/cover no-repeat;}
+.way-card::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink-2) center/cover no-repeat;transition:transform .7s var(--ease);}
+.way-card:hover::before{transform:scale(1.05);}
+.way-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
+.way-card>*{position:relative;z-index:2;}
 /* Real category photos for each way to give (from peaceofminddogrescue.org/donateoverview). */
 .way-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/donate/maxsfundlogo.jpg);}
 .way-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/donate/monicazorro.jpg);}
@@ -54,15 +57,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/donate/stock.jpg);}
 .way-card:nth-of-type(11)::before{background-image:url(<?php echo $img; ?>/donate/plannedgiving.jpg);}
 .way-card:nth-of-type(12)::before{background-image:url(<?php echo $img; ?>/donate/wishlist.jpg);}
-.way-card.featured{background:var(--blue-700);color:#fff;border-color:var(--blue);}
-.way-card.featured p{color:rgba(255,255,255,.88);}
-.way-icon{width:44px;height:44px;border-radius:14px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:16px;}
-.way-card.featured .way-icon{background:rgba(255,255,255,.15);color:#fff;}
-.way-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.way-card h3{font-family:var(--font-serif);font-size:20px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;}
-.way-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.way-link{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:600;color:var(--blue);margin-top:auto;transition:gap .25s;}
-.way-card.featured .way-link{color:rgba(255,255,255,.88);}
+.way-icon{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(3px);display:grid;place-items:center;color:#fff;margin-bottom:16px;}
+.way-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;}
+.way-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
+.way-card p{font-size:15px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.way-link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#fff;margin-top:auto;text-shadow:0 1px 8px rgba(0,0,0,.55);transition:gap .25s;}
 .way-card:hover .way-link{gap:10px;}
 @media(max-width:900px){.ways-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.ways-grid{grid-template-columns:1fr;}}

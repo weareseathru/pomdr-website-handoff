@@ -47,7 +47,7 @@ function pomdr_render_chrome() {
             <div class="nav-row nav-row--primary">
               <div class="nav-item"><a href="<?php echo pomdr_url('adopt'); ?>">Adopt</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('foster'); ?>">Foster</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('donate'); ?>">Donate</a></div>
+              <div class="nav-item nav-item--donate"><a href="<?php echo pomdr_url('donate'); ?>">Donate</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('volunteer'); ?>">Volunteer</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('helping-paw'); ?>">Helping Paw</a></div>
             </div>

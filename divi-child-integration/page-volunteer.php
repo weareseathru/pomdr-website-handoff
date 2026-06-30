@@ -16,19 +16,29 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 /* ROLES */
 .roles-section{padding:100px 0;}
 .roles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.role-card{background:#fff;border-radius:var(--radius-lg);padding:28px;border:1px solid var(--line);transition:all .35s var(--ease);display:flex;flex-direction:column;}
+/* Standard photo card (matches the homepage pillars): photo fills the card, a
+   dark gradient keeps the icon and text legible, content overlays in white. */
+.role-card{position:relative;overflow:hidden;border-radius:var(--radius-lg);min-height:340px;padding:28px;color:#fff;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .role-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-/* PLACEHOLDER card photos (stock dogs). Swap for real categorized photos. */
-.role-card{overflow:hidden;}
-.role-card::before{content:"";display:block;height:150px;margin:-28px -28px 22px;background:var(--cream-2) center/cover no-repeat;}
-.role-card:nth-of-type(3n+1)::before{background-image:url(images/dog1.jpeg);}
-.role-card:nth-of-type(3n+2)::before{background-image:url(images/dog4.webp);}
-.role-card:nth-of-type(3n)::before{background-image:url(images/dog9.jpeg);}
-.role-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px;}
-.role-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.role-card h3{font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;}
-.role-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:600;color:var(--blue);margin-top:auto;}
+.role-card::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink-2) center/cover no-repeat;transition:transform .7s var(--ease);}
+.role-card:hover::before{transform:scale(1.05);}
+.role-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
+.role-card>*{position:relative;z-index:2;}
+.role-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/hero-mission.jpeg);}
+.role-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/dog4.jpeg);}
+.role-card:nth-of-type(3)::before{background-image:url(<?php echo $img; ?>/hero-adopt.jpeg);}
+.role-card:nth-of-type(4)::before{background-image:url(<?php echo $img; ?>/dog9.jpeg);}
+.role-card:nth-of-type(5)::before{background-image:url(<?php echo $img; ?>/pages/benefitshop.jpg);}
+.role-card:nth-of-type(6)::before{background-image:url(<?php echo $img; ?>/dog12.jpeg);}
+.role-card:nth-of-type(7)::before{background-image:url(<?php echo $img; ?>/dog2.jpeg);}
+.role-card:nth-of-type(8)::before{background-image:url(<?php echo $img; ?>/pages/helpingpaw.jpg);}
+.role-card:nth-of-type(9)::before{background-image:url(<?php echo $img; ?>/dog6.jpeg);}
+.role-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/dog16.jpeg);}
+.role-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:rgba(255,255,255,.2)!important;color:#fff!important;backdrop-filter:blur(3px);}
+.role-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;}
+.role-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
+.role-card p{font-size:15px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#fff;margin-top:auto;}
 .role-card .learn::after{content:"→";transition:transform .25s var(--ease);}
 .role-card:hover .learn::after{transform:translateX(5px);}
 @media(max-width:900px){.roles-grid{grid-template-columns:1fr 1fr;}}
