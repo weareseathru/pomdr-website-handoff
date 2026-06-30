@@ -29,7 +29,6 @@
    showing through the transparent section backgrounds only. The home page
    sections use transparent backgrounds over the body wash, so the trail
    glows softly behind them. */
-.nav,
 #main,
 .footer {
   position: relative;

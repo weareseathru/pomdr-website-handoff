@@ -29,7 +29,9 @@
    showing through the transparent section backgrounds only. The home page
    sections use transparent backgrounds over the body wash, so the trail
    glows softly behind them. */
-.nav,
+/* Note: .nav is intentionally NOT lifted here. The chrome nav is already
+   position:fixed z-index:100 (above the trail); lifting it would override that
+   and let the hero paint over the nav. */
 #main,
 #main-content,
 #et-main-area,
