@@ -68,6 +68,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 @media(max-width:800px){.locations-grid{grid-template-columns:1fr;}}
 /* CTA STRIP */
 .cta-strip{padding:72px 0;background:var(--blue-50);}
+/* WHAT WE DO: text + photo lead, then the cards read across the width in 2 cols. */
+.whatwedo-lead{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:8px;}
+.whatwedo-lead__media{width:100%;height:100%;min-height:260px;max-height:380px;object-fit:cover;border-radius:var(--radius-lg);display:block;}
+.cards-2col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+@media(max-width:860px){.whatwedo-lead{grid-template-columns:1fr;gap:26px;}.cards-2col{grid-template-columns:1fr;}}
+/* RECOGNITION: award logos sit side by side, not stacked. */
+.recognition-row{display:grid;grid-template-columns:repeat(2,auto);gap:40px;align-items:center;justify-content:start;margin-top:32px;}
+.recognition-row img{height:96px;width:auto;display:block;}
+@media(max-width:560px){.recognition-row{grid-template-columns:1fr;gap:24px;justify-items:start;}}
 </style>
 <main id="main-content">
 
@@ -131,11 +140,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <div class="eyebrow">What We Do</div>
     <h2 class="section-title">A lifetime <em>commitment.</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px;">
+    <div class="whatwedo-lead">
       <article class="card" style="padding:26px;">
         <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Foster and forever homes</h3>
         <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We find loving foster and forever homes for dogs whose guardians can no longer care for them, and for senior dogs in shelters.</p>
       </article>
+      <img class="whatwedo-lead__media" src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
+    </div>
+    <div class="cards-2col">
       <article class="card" style="padding:26px;">
         <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Help for senior guardians</h3>
         <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We help senior citizens pay for veterinary care when they cannot afford it, provide temporary foster care for people who are hospitalized, and walk dogs for people who can no longer walk them.</p>
@@ -166,6 +178,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 12px;">Diversity, Equity and Inclusion</h3>
         <p style="color:var(--ink-2);font-size:16px;line-height:1.65;margin:0;">Diversity, equity, and inclusion matter to POMDR across our staff, volunteers, adopters, and Helping Paw clients. We do not tolerate discrimination or harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, disability, genetic information, or pregnancy. Hiring decisions are based solely on qualifications, merit, and business needs. Adoption decisions are based on the best match for the dog and adopter, considering the dog's activity level, special needs, size, health, and temperament.</p>
       </article>
+    </div>
+    <div class="recognition-row">
+      <img src="<?php echo $img; ?>/pages/greymuzzle-2025.png" alt="Grey Muzzle Organization 2025 grant recipient" loading="lazy">
+      <img src="<?php echo $img; ?>/pages/saving-senior-dogs.png" alt="Saving senior dogs recognition" loading="lazy">
     </div>
   </div>
 </section>

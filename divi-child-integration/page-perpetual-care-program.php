@@ -3,15 +3,31 @@
 get_header();
 $img = get_stylesheet_directory_uri() . "/assets/images";
 ?>
+<style>
+/* Lay the content across the width: a text+photo intro and 2-up lists,
+   so the page reads horizontally instead of one tall vertical column. */
+.perp-intro{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;}
+.perp-intro__media{width:100%;height:100%;min-height:280px;max-height:380px;object-fit:cover;border-radius:var(--radius-lg);display:block;}
+.perp-howlist{font-size:17px;line-height:1.8;padding-left:24px;margin:0;columns:2;column-gap:56px;}
+.perp-howlist li{margin:0 0 14px;break-inside:avoid;}
+@media(max-width:860px){.perp-intro{grid-template-columns:1fr;gap:26px;}.perp-howlist{columns:1;}}
+</style>
 <main id="main-content">
 
 <main id="main">
 
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Perpetual Care</h1>
-    <p class="page-narrative">A plan for <em>after you</em>.</p>
-    <p class="page-lead">If something happens to you, POMDR can take your dog. The Lifetime Care Program is for senior people who want to know their senior dog has a soft landing.</p>
+    <div class="perp-intro">
+      <div>
+        <h1 class="page-headline">Perpetual Care</h1>
+        <p class="page-narrative">A plan for <em>after you</em>.</p>
+        <p class="page-lead">If something happens to you, POMDR can take your dog. The Lifetime Care Program is for senior people who want to know their senior dog has a soft landing.</p>
+      </div>
+      <picture>
+        <img class="perp-intro__media" src="<?php echo $img; ?>/pages/perpetualcare.jpg" alt="A senior dog enjoying a calm day in POMDR's care" loading="lazy">
+      </picture>
+    </div>
   </div>
 </header>
 
@@ -20,7 +36,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
       <div>
         <h2 class="section-title" style="margin-bottom:16px">How it works</h2>
-        <ol style="font-size:17px;line-height:1.8;padding-left:24px;margin:0">
+        <ol class="perp-howlist">
           <li>You enroll your dog while you can. We need to meet your dog first to determine whether POMDR can accept them into the program.</li>
           <li>To enroll, we suggest setting up a legal pet trust with your attorney to cover your dog's lifetime care expenses in the event of your illness, injury, or death.</li>
           <li>If you can no longer care for your dog (accident, illness, or death), your dog is placed in a loving POMDR foster home, either for the rest of their life or until a perfect match with a new permanent guardian is found.</li>

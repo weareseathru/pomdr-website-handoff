@@ -31,6 +31,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 @media(max-width:800px){.options-grid{grid-template-columns:1fr;}}
 /* PROCESS */
 .process-section{background:var(--cream-2);padding:100px 0;}
+.process-intro{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;margin-bottom:36px;}
+.process-intro__media{width:100%;height:100%;min-height:260px;max-height:360px;object-fit:cover;border-radius:var(--radius-lg);display:block;}
+.steps-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;}
+.steps-2col .step{padding:22px 0;}
+@media(max-width:860px){.process-intro{grid-template-columns:1fr;gap:26px;}.steps-2col{grid-template-columns:1fr;gap:0;}}
 /* PERPETUAL */
 .perpetual-section{background:var(--purple);color:#fff;padding:100px 0;}
 .perpetual-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start;}
@@ -142,10 +147,17 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <!-- SURRENDER PROCESS -->
 <section class="process-section">
   <div class="container">
-    <div style="font-size:17px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:24px;height:1px;background:var(--blue-700);display:inline-block;"></span>The Process</div>
-    <h2 class="section-title">What to <em>expect.</em></h2>
-    <p class="section-lead">Surrendering a dog is never easy. We've made the process as gentle and clear as possible.</p>
-    <div class="steps">
+    <div class="process-intro">
+      <div>
+        <div style="font-size:17px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:24px;height:1px;background:var(--blue-700);display:inline-block;"></span>The Process</div>
+        <h2 class="section-title">What to <em>expect.</em></h2>
+        <p class="section-lead">Surrendering a dog is never easy. We've made the process as gentle and clear as possible.</p>
+      </div>
+      <picture>
+        <img class="process-intro__media" src="<?php echo $img; ?>/pages/surrender.jpg" alt="A senior dog being cared for by POMDR" loading="lazy">
+      </picture>
+    </div>
+    <div class="steps steps-2col">
       <div class="step">
         <div class="step-num">01</div>
         <div>

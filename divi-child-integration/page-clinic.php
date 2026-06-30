@@ -24,7 +24,12 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 @media(max-width:700px){.svc-grid{grid-template-columns:1fr;}}
 /* MISSION */
 .mission-band{background:var(--purple-50);padding:88px 0;}
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .mission-inner{max-width:760px;}
+.mission-media{display:grid;gap:16px;}
+.mission-media img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);display:block;}
+.mission-media .plaque{max-height:200px;object-fit:cover;}
+@media(max-width:860px){.mission-grid{grid-template-columns:1fr;gap:28px;}}
 .mission-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,46px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;color:var(--purple);}
 .mission-band h2 em{font-style:italic;color:var(--purple);}
 .mission-band p{font-size:18px;color:var(--ink-2);margin:0 0 18px;line-height:1.7;}
@@ -105,11 +110,17 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <section class="mission-band">
   <div class="container">
-    <div class="mission-inner">
-      <span class="eyebrow purple">Why it matters</span>
-      <h2>Good medicine is what makes a <em>second chance possible</em>.</h2>
-      <p>Many of the dogs who come to us are seniors. Some have been overlooked for years, and some arrive with medical needs that other shelters could not take on. A clinic of our own means we never have to turn a dog away because care felt out of reach.</p>
-      <p>Founded in 2009, Peace of Mind Dog Rescue serves senior dogs and senior people across the Central Coast. The clinic is a cornerstone of that promise, keeping costs manageable so more dogs can heal and more families can stay together.</p>
+    <div class="mission-grid">
+      <div class="mission-inner">
+        <span class="eyebrow purple">Why it matters</span>
+        <h2>Good medicine is what makes a <em>second chance possible</em>.</h2>
+        <p>Many of the dogs who come to us are seniors. Some have been overlooked for years, and some arrive with medical needs that other shelters could not take on. A clinic of our own means we never have to turn a dog away because care felt out of reach.</p>
+        <p>Founded in 2009, Peace of Mind Dog Rescue serves senior dogs and senior people across the Central Coast. The clinic is a cornerstone of that promise, keeping costs manageable so more dogs can heal and more families can stay together.</p>
+      </div>
+      <div class="mission-media">
+        <img src="<?php echo $img; ?>/pages/clinic.jpg" alt="The Harry and Jaynne Boand Veterinary Clinic in Monterey" loading="lazy"/>
+        <img class="plaque" src="<?php echo $img; ?>/pages/clinic-plaque.jpg" alt="The clinic dedication plaque" loading="lazy"/>
+      </div>
     </div>
   </div>
 </section>

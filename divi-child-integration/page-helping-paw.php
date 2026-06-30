@@ -70,6 +70,13 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 @media(max-width:800px){.eligibility-inner{grid-template-columns:1fr;gap:28px;}}
 /* CTA STRIP */
 .cta-strip{padding:72px 0;background:var(--blue-50);}
+/* ELIGIBILITY: the qualifier list reads across in two columns, not one tall stack. */
+.eligibility-band .check-list{display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;}
+@media(max-width:820px){.eligibility-band .check-list{grid-template-columns:1fr;}}
+/* FURTHER ASSISTANCE: pair the text with a photo so it reads across the width. */
+.assist-2col{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;margin-top:8px;}
+.assist-2col__media{width:100%;height:100%;min-height:240px;max-height:360px;object-fit:cover;border-radius:var(--radius-lg);display:block;}
+@media(max-width:820px){.assist-2col{grid-template-columns:1fr;gap:26px;}}
 </style>
 <main id="main-content">
 
@@ -306,10 +313,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <!-- NEED FURTHER ASSISTANCE -->
 <section class="section">
   <div class="container">
-    <div class="eyebrow blue">Need further assistance?</div>
-    <h2 class="section-title blue">We are here to <em style="color:var(--blue)">help you apply.</em></h2>
-    <p class="section-lead">If you cannot fill out an application or need more information, call us at <a href="tel:+18317189122">(831) 718-9122</a>. Please be aware that this will delay the processing of your request.</p>
-    <p class="section-lead spanishAssistance" style="font-style:italic;">Si no puede completar una solicitud o necesita mas informacion, puede llamarnos al (831) 718-9122. Tenga en cuenta que esto retrasara el procesamiento de su solicitud.</p>
+    <div class="assist-2col">
+      <div>
+        <div class="eyebrow blue">Need further assistance?</div>
+        <h2 class="section-title blue">We are here to <em style="color:var(--blue)">help you apply.</em></h2>
+        <p class="section-lead">If you cannot fill out an application or need more information, call us at <a href="tel:+18317189122">(831) 718-9122</a>. Please be aware that this will delay the processing of your request.</p>
+        <p class="section-lead spanishAssistance" style="font-style:italic;">Si no puede completar una solicitud o necesita mas informacion, puede llamarnos al (831) 718-9122. Tenga en cuenta que esto retrasara el procesamiento de su solicitud.</p>
+      </div>
+      <img class="assist-2col__media" src="<?php echo $img; ?>/pages/helpingpaw.jpg" alt="A POMDR volunteer walking a senior dog" loading="lazy">
+    </div>
   </div>
 </section>
 

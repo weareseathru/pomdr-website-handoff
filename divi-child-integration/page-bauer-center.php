@@ -24,7 +24,12 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 @media(max-width:700px){.here-grid{grid-template-columns:1fr;}}
 /* VISIT BAND */
 .visit-band{background:var(--blue-50);padding:88px 0;}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
 .visit-inner{max-width:760px;}
+.visit-media{display:grid;gap:16px;}
+.visit-media img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);display:block;}
+.visit-media .portrait{max-width:220px;justify-self:start;}
+@media(max-width:860px){.visit-grid{grid-template-columns:1fr;gap:28px;}}
 .visit-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,46px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;color:var(--blue-700);}
 .visit-band h2 em{font-style:italic;color:var(--blue);}
 .visit-band p{font-size:18px;color:var(--ink-2);margin:0 0 18px;line-height:1.7;}
@@ -98,14 +103,20 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <section class="visit-band" id="visit">
   <div class="container">
-    <div class="visit-inner">
-      <span class="eyebrow light">Planning a visit</span>
-      <h2>Stop by and say <em>hello</em>.</h2>
-      <p>You are welcome at the Bauer Center, whether you are ready to adopt, thinking about fostering, or simply want to learn more about what we do. The front desk is staffed by volunteers from 11am to 4pm, Monday through Saturday, or by appointment. Adoptable dogs are available by appointment only, so we recommend calling ahead. If the door is locked, ring the bell.</p>
-      <p>Peace of Mind Dog Rescue was founded in 2009 and serves senior dogs and senior people across California's Central Coast. The Patricia J. Bauer Center is the heart of that work, and the door is open.</p>
-      <div class="page-cta" style="margin-top:24px;">
-        <a href="tel:8317189122" class="btn btn-purple">Call to plan a visit</a>
-        <a href="/adopt/" class="btn btn-outline">See dogs available now</a>
+    <div class="visit-grid">
+      <div class="visit-inner">
+        <span class="eyebrow light">Planning a visit</span>
+        <h2>Stop by and say <em>hello</em>.</h2>
+        <p>You are welcome at the Bauer Center, whether you are ready to adopt, thinking about fostering, or simply want to learn more about what we do. The front desk is staffed by volunteers from 11am to 4pm, Monday through Saturday, or by appointment. Adoptable dogs are available by appointment only, so we recommend calling ahead. If the door is locked, ring the bell.</p>
+        <p>Peace of Mind Dog Rescue was founded in 2009 and serves senior dogs and senior people across California's Central Coast. The Patricia J. Bauer Center is the heart of that work, and the door is open.</p>
+        <div class="page-cta" style="margin-top:24px;">
+          <a href="tel:8317189122" class="btn btn-purple">Call to plan a visit</a>
+          <a href="/adopt/" class="btn btn-outline">See dogs available now</a>
+        </div>
+      </div>
+      <div class="visit-media">
+        <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The Patricia J. Bauer Center" loading="lazy"/>
+        <img class="portrait" src="<?php echo $img; ?>/pages/mrs-bauer.jpg" alt="Patricia J. Bauer, who donated the POMDR center" loading="lazy"/>
       </div>
     </div>
   </div>
