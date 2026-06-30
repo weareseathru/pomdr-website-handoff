@@ -77,8 +77,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </script><!-- HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="hero-inner">
-      <div>
+    <div class="ph-split">
+      <div class="ph-text">
         <h1 class="page-headline">Placing Your Dog</h1>
         <p class="page-narrative">We'll be here, <em>whatever comes next.</em></p>
         <p class="hero-lead">Whether you need to surrender your dog now, or want peace of mind for the future, POMDR is a resource and partner, not just a rescue.</p>
@@ -89,24 +89,29 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           </a>
           <a href="#perpetual" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;">Learn About Perpetual Care</a>
         </div>
-      </div>
-      <div class="hero-card">
-        <h3>Have a question first?</h3>
-        <p>We understand this is a difficult decision. Please reach out. We are here to listen and help you find the best path forward for you and your dog.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;">
-          <a href="tel:8317189122" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
-            <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </span>
-            (831) 718-9122
-          </a>
-          <a href="mailto:info@pomdr.org" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
-            <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </span>
-            info@pomdr.org
-          </a>
+        <div class="hero-card" style="margin-top:28px;">
+          <h3>Have a question first?</h3>
+          <p>We understand this is a difficult decision. Please reach out. We are here to listen and help you find the best path forward for you and your dog.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;">
+            <a href="tel:8317189122" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
+              <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              (831) 718-9122
+            </a>
+            <a href="mailto:info@pomdr.org" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
+              <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              info@pomdr.org
+            </a>
+          </div>
         </div>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <img src="<?php echo $img; ?>/pages/surrender.jpg" alt="A senior dog being cared for by POMDR">
+        </picture>
       </div>
     </div>
   </div>
@@ -154,7 +159,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p class="section-lead">Surrendering a dog is never easy. We've made the process as gentle and clear as possible.</p>
       </div>
       <picture>
-        <img class="process-intro__media" src="<?php echo $img; ?>/pages/surrender.jpg" alt="A senior dog being cared for by POMDR" loading="lazy">
+        <source type="image/webp" srcset="<?php echo $img; ?>/dog4.webp">
+        <img class="process-intro__media" src="<?php echo $img; ?>/dog4.jpeg" alt="A senior dog settling into foster care" loading="lazy">
       </picture>
     </div>
     <div class="steps steps-2col">

@@ -89,21 +89,22 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </script><!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
-    <div class="hero-text">
-      <h1 class="page-headline">Our Story</h1>
-      <p class="page-narrative">Advocating for seniors. <em>Dogs and people</em> alike.</p>
-      <p>Peace of Mind Dog Rescue is a 501(c)(3) nonprofit based on California's Central Coast, dedicated to senior dogs and the senior people who love them.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
-        <a href="/adopt/" class="btn btn-primary">Meet our dogs</a>
-        <a href="/volunteer/" class="btn btn-outline">Volunteer with us</a>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">Our Story</h1>
+        <p class="page-narrative">Advocating for seniors. <em>Dogs and people</em> alike.</p>
+        <p>Peace of Mind Dog Rescue is a 501(c)(3) nonprofit based on California's Central Coast, dedicated to senior dogs and the senior people who love them.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;">
+          <a href="/adopt/" class="btn btn-primary">Meet our dogs</a>
+          <a href="/volunteer/" class="btn btn-outline">Volunteer with us</a>
+        </div>
       </div>
-    </div>
-    <!-- Dog cutouts: replace each .cutout-slot with a transparent PNG cutout of
-         a real POMDR dog when the photos are ready. -->
-    <div class="hero-cutouts" aria-hidden="true">
-      <div class="cutout-slot"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/><ellipse cx="12" cy="31" rx="5" ry="7.6"/><ellipse cx="24" cy="19" rx="5.2" ry="8.2"/><ellipse cx="40" cy="19" rx="5.2" ry="8.2"/><ellipse cx="52" cy="31" rx="5" ry="7.6"/></svg></div>
-      <div class="cutout-slot"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/><ellipse cx="12" cy="31" rx="5" ry="7.6"/><ellipse cx="24" cy="19" rx="5.2" ry="8.2"/><ellipse cx="40" cy="19" rx="5.2" ry="8.2"/><ellipse cx="52" cy="31" rx="5" ry="7.6"/></svg></div>
-      <div class="cutout-slot"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/><ellipse cx="12" cy="31" rx="5" ry="7.6"/><ellipse cx="24" cy="19" rx="5.2" ry="8.2"/><ellipse cx="40" cy="19" rx="5.2" ry="8.2"/><ellipse cx="52" cy="31" rx="5" ry="7.6"/></svg></div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo $img; ?>/pages/pomdr-house.webp">
+          <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
+        </picture>
+      </div>
     </div>
   </div>
 </section>
@@ -145,7 +146,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Foster and forever homes</h3>
         <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We find loving foster and forever homes for dogs whose guardians can no longer care for them, and for senior dogs in shelters.</p>
       </article>
-      <img class="whatwedo-lead__media" src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
+      <img class="whatwedo-lead__media" src="<?php echo $img; ?>/dog12.jpeg" alt="A senior POMDR dog resting in a foster home" loading="lazy">
     </div>
     <div class="cards-2col">
       <article class="card" style="padding:26px;">

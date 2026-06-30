@@ -5,8 +5,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 ?>
 <style>
 .page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(99,47,136,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
-.hero-photo{border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:16/9;margin-top:52px;}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;}
+/* Header split (.ph-split / .ph-text / .ph-media) is the site standard, defined in shared pomdr.css. */
 /* PROGRAMS */
 .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 .program-card{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);transition:all .35s var(--ease);display:flex;flex-direction:column;}
@@ -89,18 +88,22 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </script><!-- HERO -->
 <section class="page-hero">
   <div class="container">
-    <h1 class="page-headline">Helping Paw</h1>
-    <p class="page-narrative">Keeping pets and people <em>together.</em></p>
-    <p class="lead">The Helping Paw Program provides support to senior people and people with disabilities who need help caring for their dogs, so no one has to give up their companion due to hardship.</p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap;">
-      <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">
-        Apply for Help
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="tel:+18317189122" class="btn btn-outline">Call (831) 718-9122</a>
-    </div>
-    <div class="hero-photo">
-      <picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="POMDR volunteer with dog" /></picture>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">Helping Paw</h1>
+        <p class="page-narrative">Keeping pets and people <em>together.</em></p>
+        <p class="lead">The Helping Paw Program provides support to senior people and people with disabilities who need help caring for their dogs, so no one has to give up their companion due to hardship.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">
+            Apply for Help
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="tel:+18317189122" class="btn btn-outline">Call (831) 718-9122</a>
+        </div>
+      </div>
+      <div class="ph-media">
+        <picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-helping-paw.webp"><img src="<?php echo $img; ?>/hero-helping-paw.jpeg" alt="A POMDR volunteer walking a senior dog alongside its guardian" /></picture>
+      </div>
     </div>
   </div>
 </section>

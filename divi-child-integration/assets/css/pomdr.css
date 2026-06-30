@@ -1544,3 +1544,14 @@ body.has-breadcrumb .page-header { padding-top: 48px; }
 .photo-card > * { position: relative; z-index: 2; }
 .photo-card h3 { color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.55); }
 .photo-card p { color: rgba(255,255,255,.94); text-shadow: 0 1px 8px rgba(0,0,0,.6); }
+
+/* ===== Header split (site standard for sub-page headers) =====
+   The copy (title, subheading, body, buttons) sits on the left and an image on
+   the right at the SAME height, all on one horizontal row, so the page content
+   starts higher up. Markup: <div class="ph-split"><div class="ph-text">...copy...
+   </div><div class="ph-media"><img ...></div></div> inside the page-header. */
+.ph-split { display: grid; grid-template-columns: 1.05fr 1fr; gap: 52px; align-items: stretch; }
+.ph-text { display: flex; flex-direction: column; justify-content: center; }
+.ph-media { border-radius: var(--radius-xl); overflow: hidden; min-height: 360px; background: var(--cream-2); }
+.ph-media picture, .ph-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+@media (max-width: 860px) { .ph-split { grid-template-columns: 1fr; gap: 26px; } .ph-media { min-height: 0; aspect-ratio: 16/10; } }

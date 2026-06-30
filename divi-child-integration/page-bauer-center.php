@@ -38,12 +38,17 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">The Bauer Center</h1>
-    <p class="page-narrative">Where dogs and people <em>find each other</em>.</p>
-    <p class="page-lead">The Patricia J. Bauer Center in Pacific Grove is the home of Peace of Mind Dog Rescue. It is our office and our adoption center, the place where staff, volunteers, and visiting families come together to help senior dogs find their people.</p>
-    <div class="page-cta">
-      <a href="#visit" class="btn btn-purple">Plan your visit</a>
-      <a href="/adopt/" class="btn btn-outline">Meet our dogs</a>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">The Bauer Center</h1>
+        <p class="page-narrative">Where dogs and people <em>find each other</em>.</p>
+        <p class="page-lead">The Patricia J. Bauer Center in Pacific Grove is the home of Peace of Mind Dog Rescue. It is our office and our adoption center, the place where staff, volunteers, and visiting families come together to help senior dogs find their people.</p>
+        <div class="page-cta">
+          <a href="#visit" class="btn btn-purple">Plan your visit</a>
+          <a href="/adopt/" class="btn btn-outline">Meet our dogs</a>
+        </div>
+      </div>
+      <div class="ph-media"><picture><img src="<?php echo $img; ?>/pages/mrs-bauer.jpg" alt="Patricia J. Bauer, who donated the POMDR center" loading="lazy"/></picture></div>
     </div>
   </div>
 </header>
@@ -116,7 +121,6 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
       <div class="visit-media">
         <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The Patricia J. Bauer Center" loading="lazy"/>
-        <img class="portrait" src="<?php echo $img; ?>/pages/mrs-bauer.jpg" alt="Patricia J. Bauer, who donated the POMDR center" loading="lazy"/>
       </div>
     </div>
   </div>

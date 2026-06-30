@@ -17,9 +17,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Benefit Shop</h1>
-    <p class="page-narrative">A whole store that <em>helps senior dogs</em>.</p>
-    <p class="page-lead">Books, housewares, treasures, all donated by neighbors, all sold to fund vet care for senior dogs. Run by a tiny team of dedicated volunteers.</p>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">Benefit Shop</h1>
+        <p class="page-narrative">A whole store that <em>helps senior dogs</em>.</p>
+        <p class="page-lead">Books, housewares, treasures, all donated by neighbors, all sold to fund vet care for senior dogs. Run by a tiny team of dedicated volunteers.</p>
+      </div>
+      <div class="ph-media"><picture><img src="<?php echo $img; ?>/pages/benefitshop.jpg" alt="Inside the POMDR Benefit Shop in Pacific Grove" loading="lazy"/></picture></div>
+    </div>
   </div>
 </header>
 
@@ -33,7 +38,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p style="font-size:17px;line-height:1.7">Come check out our artwork, clothing, jewelry, home goods, furniture, and other merchandise. The shop specializes in higher-end, lightly used items at reasonable prices.</p>
       </div>
       <div class="media">
-        <img src="<?php echo $img; ?>/pages/benefitshop.jpg" alt="Inside the POMDR Benefit Shop in Pacific Grove" loading="lazy"/>
+        <img src="<?php echo $img; ?>/dog12.jpeg" alt="A senior dog cared for thanks to Benefit Shop sales" loading="lazy"/>
       </div>
     </div>
 

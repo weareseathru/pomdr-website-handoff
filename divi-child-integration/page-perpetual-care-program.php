@@ -18,15 +18,18 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
-    <div class="perp-intro">
-      <div>
+    <div class="ph-split">
+      <div class="ph-text">
         <h1 class="page-headline">Perpetual Care</h1>
         <p class="page-narrative">A plan for <em>after you</em>.</p>
         <p class="page-lead">If something happens to you, POMDR can take your dog. The Lifetime Care Program is for senior people who want to know their senior dog has a soft landing.</p>
       </div>
-      <picture>
-        <img class="perp-intro__media" src="<?php echo $img; ?>/pages/perpetualcare.jpg" alt="A senior dog enjoying a calm day in POMDR's care" loading="lazy">
-      </picture>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo $img; ?>/pages/perpetualcare.webp">
+          <img src="<?php echo $img; ?>/pages/perpetualcare.jpg" alt="A senior dog enjoying a calm day in POMDR's care" loading="lazy">
+        </picture>
+      </div>
     </div>
   </div>
 </header>

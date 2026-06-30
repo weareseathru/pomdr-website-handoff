@@ -38,12 +38,17 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Veterinary Clinic</h1>
-    <p class="page-narrative">Quality care, kept <em>affordable</em>.</p>
-    <p class="page-lead">The Harry and Jaynne Boand Veterinary Clinic in Monterey provides accessible, compassionate veterinary care for our rescue dogs and for the senior people and dogs we serve across California's Central Coast.</p>
-    <div class="page-cta">
-      <a href="tel:8317189122" class="btn btn-primary">Call the clinic</a>
-      <a href="#services" class="btn btn-outline">What we offer</a>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">Veterinary Clinic</h1>
+        <p class="page-narrative">Quality care, kept <em>affordable</em>.</p>
+        <p class="page-lead">The Harry and Jaynne Boand Veterinary Clinic in Monterey provides accessible, compassionate veterinary care for our rescue dogs and for the senior people and dogs we serve across California's Central Coast.</p>
+        <div class="page-cta">
+          <a href="tel:8317189122" class="btn btn-primary">Call the clinic</a>
+          <a href="#services" class="btn btn-outline">What we offer</a>
+        </div>
+      </div>
+      <div class="ph-media"><picture><img src="<?php echo $img; ?>/pages/clinic.jpg" alt="The Harry and Jaynne Boand Veterinary Clinic in Monterey" loading="lazy"/></picture></div>
     </div>
   </div>
 </header>
@@ -118,7 +123,6 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p>Founded in 2009, Peace of Mind Dog Rescue serves senior dogs and senior people across the Central Coast. The clinic is a cornerstone of that promise, keeping costs manageable so more dogs can heal and more families can stay together.</p>
       </div>
       <div class="mission-media">
-        <img src="<?php echo $img; ?>/pages/clinic.jpg" alt="The Harry and Jaynne Boand Veterinary Clinic in Monterey" loading="lazy"/>
         <img class="plaque" src="<?php echo $img; ?>/pages/clinic-plaque.jpg" alt="The clinic dedication plaque" loading="lazy"/>
       </div>
     </div>

@@ -24,6 +24,36 @@ not, use this file exclusively.
 - **Section flow:** Hero (with primary CTA) → supporting story / proof →
   repeated CTA.
 
+## 1b. Component standards (reusable across the site)
+
+These are the established visual building blocks. Reuse them; do not invent new
+header or card treatments without proposing them first.
+
+- **Sub-page header = the split header (`.ph-split`).** Every sub-page opens
+  with copy on the LEFT and one supporting photo on the RIGHT, the same height
+  as the copy, on a single horizontal row. Structure:
+  `.ph-split > .ph-text` (the `.page-headline`, `.page-narrative`, lead, and
+  buttons) `+ .ph-media` (a `<picture>`/`<img>`, `object-fit: cover`). The
+  classes live in shared `pomdr.css`; never re-declare them inline. Collapses to
+  a single stacked column below 860px. This keeps the title, subheading, body,
+  and buttons in one compact band so the first content/services section sits
+  high on the page. Reference: `page-helping-paw.php`.
+- **Photo card = `.photo-card` (the site card standard).** The homepage pillar
+  style is the standard card everywhere (donate ways-to-give, volunteer roles,
+  etc.): a real photo background, a dark gradient overlay for legibility, white
+  text and icon overlaid. One photo per card; never repeat the same photo twice
+  on a page. Use real POMDR photos only (never AI dog images).
+- **Eyebrow = paw-print + small caps.** Section/header eyebrows use the
+  `.eyebrow` class with the paw-print SVG mask glyph before short small-caps
+  label text (e.g. OUR MISSION). Purple paw on light sections.
+- **Page title pattern.** One `.page-headline` (large serif title) followed by
+  a short `.page-narrative` line. No second italic blue subtitle to the right of
+  the title (that pattern is retired). Keep the title close to the nav; do not
+  leave a large empty band above it.
+- **Donate nav emphasis.** The Donate item in the primary nav carries
+  `.nav-item--donate`, a dark-blue (`--blue-700`) oval outline that fills on
+  hover, so the give action stands out in the menu.
+
 ## 2. Color tokens (canonical — two-color + warm neutrals)
 
 | Role | Token | Hex | Notes |
@@ -90,6 +120,9 @@ against this palette before use. (CLAUDE.md §2; see
 
 - [ ] Primary action is a button ≥44px above the fold, repeated at the end
 - [ ] One primary CTA; secondary actions subordinate
+- [ ] Sub-page opens with the `.ph-split` header (copy left, photo right, one row)
+- [ ] Cards use the `.photo-card` standard; no photo repeated twice on a page
+- [ ] Title is `.page-headline` + `.page-narrative` (no italic blue subtitle); sits close to the nav
 - [ ] Tokens used (no raw hex); palette limited to blue/purple/orange + neutrals
 - [ ] Small text/links use `--blue-text`, not `--blue`
 - [ ] Body ≥16px (theme default 18px); contrast 4.5:1 verified

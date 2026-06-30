@@ -18,12 +18,22 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
 <main id="main-content">
 <header class="page-header">
   <div class="container">
-    <h1 class="page-headline">Foster</h1>
-    <p class="page-narrative">Open your home. Save a <em>life</em>.</p>
-    <p class="page-lead">Foster homes are the heart of our rescue. When you foster a senior dog, you give them comfort, safety, and routine while we find their forever person. We cover the costs. You give the love.</p>
-    <div class="page-cta">
-      <a href="/volunteer-application/" class="btn btn-primary">Apply to Foster</a>
-      <a href="#how" class="btn btn-outline">How it works</a>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">Foster</h1>
+        <p class="page-narrative">Open your home. Save a <em>life</em>.</p>
+        <p class="page-lead">Foster homes are the heart of our rescue. When you foster a senior dog, you give them comfort, safety, and routine while we find their forever person. We cover the costs. You give the love.</p>
+        <div class="page-cta">
+          <a href="/volunteer-application/" class="btn btn-primary">Apply to Foster</a>
+          <a href="#how" class="btn btn-outline">How it works</a>
+        </div>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo $img; ?>/hero-mission.webp">
+          <img src="<?php echo $img; ?>/hero-mission.jpeg" alt="Two senior dogs resting comfortably at home in a sunny doorway">
+        </picture>
+      </div>
     </div>
   </div>
 </header>
@@ -50,8 +60,8 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <p class="lead" style="margin:0">Every POMDR dog lives in a foster home as a member of the family until they find their permanent home. Foster parents are the bridge that helps a dog transition from their past, whether that was a loving home, a shelter, or a hard situation, into a calm new routine. We typically have about 80 dogs in our care at any time, with up to 15 more waiting for a foster home to open up.</p>
       </div>
       <picture>
-        <source type="image/webp" srcset="<?php echo $img; ?>/hero-mission.webp">
-        <img class="foster-intro__media" src="<?php echo $img; ?>/hero-mission.jpeg" alt="Two senior dogs resting comfortably at home in a sunny doorway" loading="lazy">
+        <source type="image/webp" srcset="<?php echo $img; ?>/dog9.webp">
+        <img class="foster-intro__media" src="<?php echo $img; ?>/dog9.jpeg" alt="A senior dog in a calm foster home" loading="lazy">
       </picture>
     </div>
     <div class="steps-2col">

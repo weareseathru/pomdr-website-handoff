@@ -59,22 +59,32 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   });
 </script><section class="page-hero">
   <div class="container">
-    <h1 class="page-headline">Volunteer</h1>
-    <p class="page-narrative">Give your time. <em>Change a life.</em></p>
-    <div class="hero-row">
-      <p class="lead">Peace of Mind Dog Rescue relies on the time and talents of over 1,800 volunteers to help senior dogs and senior people across California's Central Coast.</p>
-      <div class="hero-stat-row">
-        <div class="hero-stat"><div class="num">1,800+</div><div class="lbl">Active volunteers</div></div>
-        <div class="hero-stat"><div class="num">10+</div><div class="lbl">Ways to volunteer</div></div>
-        <div class="hero-stat"><div class="num">16 yrs</div><div class="lbl">Of community support</div></div>
+    <div class="ph-split">
+      <div class="ph-text">
+        <h1 class="page-headline">Volunteer</h1>
+        <p class="page-narrative">Give your time. <em>Change a life.</em></p>
+        <div class="hero-row">
+          <p class="lead">Peace of Mind Dog Rescue relies on the time and talents of over 1,800 volunteers to help senior dogs and senior people across California's Central Coast.</p>
+          <div class="hero-stat-row">
+            <div class="hero-stat"><div class="num">1,800+</div><div class="lbl">Active volunteers</div></div>
+            <div class="hero-stat"><div class="num">10+</div><div class="lbl">Ways to volunteer</div></div>
+            <div class="hero-stat"><div class="num">16 yrs</div><div class="lbl">Of community support</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a href="/volunteer-application/" class="btn btn-purple">
+            Fill Out Application
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#roles" class="btn btn-outline">See all opportunities</a>
+        </div>
       </div>
-    </div>
-    <div style="display:flex;gap:14px;flex-wrap:wrap;">
-      <a href="/volunteer-application/" class="btn btn-purple">
-        Fill Out Application
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#roles" class="btn btn-outline">See all opportunities</a>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo $img; ?>/hero-volunteer.webp">
+          <img src="<?php echo $img; ?>/hero-volunteer.jpg" alt="A POMDR volunteer spending time with a senior dog">
+        </picture>
+      </div>
     </div>
   </div>
 </section>
