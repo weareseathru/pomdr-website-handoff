@@ -235,6 +235,84 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
+<!-- PROGRAM DETAILS -->
+<section class="funds-section">
+  <div class="container">
+    <div class="eyebrow blue">The fine print, in plain language</div>
+    <h2 class="section-title blue">What financial assistance <em style="color:var(--blue)">covers.</em></h2>
+    <p class="section-lead">Helping Paw assists seniors, hospice patients, and other guardians facing hard times in keeping their beloved dogs and cats. Our financial assistance is a safety net during difficult times, not ongoing care.</p>
+    <div class="funds-grid">
+      <div class="fund-card">
+        <h3>Where we help</h3>
+        <p>Monterey, Santa Cruz, and San Benito counties. You must be able to demonstrate financial need to qualify for financial assistance.</p>
+        <div class="conditions">Tri-county area · Income verification required</div>
+      </div>
+      <div class="fund-card">
+        <h3>What we cover</h3>
+        <p>Urgent medical needs that will alleviate an animal's suffering, for dogs and cats. We do not cover routine veterinary care.</p>
+        <div class="conditions">Flea treatment is available by pre-arrangement when in stock, picked up at our Pacific Grove office</div>
+      </div>
+      <div class="fund-card featured">
+        <h3>How much we can give</h3>
+        <p>Up to $750 in standard assistance, and up to $2,750 for major medical emergencies. Assistance is limited to once per year.</p>
+        <div class="conditions">It helps if your pet has had an exam and you can share an estimate. In some cases we can cover the exam.</div>
+      </div>
+      <div class="fund-card">
+        <h3>Spay and neuter</h3>
+        <p>All pets must be spayed or neutered to receive funding. If a pet is not already altered, POMDR covers the cost to spay or neuter at the time of treatment or shortly after.</p>
+        <div class="conditions">No cost to you for the spay or neuter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER ASSISTANCE + SUPPLIES -->
+<section class="brigade-section">
+  <div class="container">
+    <div class="brigade-inner">
+      <div>
+        <div class="eyebrow">Volunteer assistance</div>
+        <h2 class="section-title" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:400;margin:12px 0 16px;">Hands-on help, <em style="font-style:italic;color:var(--orange)">no income limit.</em></h2>
+        <p style="font-size:17px;color:var(--ink-2);margin:0 0 24px;">We provide short-term dog walking for emergencies, emergency short-term foster or boarding for guardians in the hospital or recovering from illness or surgery, and transportation to the vet or groomer for disabled and senior guardians. There are no income restrictions for volunteer assistance, and donations are welcomed.</p>
+        <ul class="brigade-list">
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="li-text"><strong>Tri-County, by availability</strong><span>Monterey, Santa Cruz, and San Benito residents, subject to local volunteer availability</span></div>
+          </li>
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="li-text"><strong>Behavioral evaluation first</strong><span>For everyone's safety, dogs pass a behavioral evaluation (usually at our Pacific Grove office) before walking or foster care begins</span></div>
+          </li>
+          <li>
+            <div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="li-text"><strong>No income restrictions</strong><span>Volunteer assistance is open regardless of income. Donations are welcomed</span></div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow">Supplies, as available</div>
+        <h2 class="section-title" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:400;margin:12px 0 16px;">Donated gear for <em style="font-style:italic;color:var(--orange)">your pet.</em></h2>
+        <p style="font-size:17px;color:var(--ink-2);margin:0 0 24px;">When we have them, we can share donated supplies. They are picked up at our headquarters in Pacific Grove.</p>
+        <ul class="brigade-list">
+          <li><div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="li-text"><strong>Dog and cat food</strong><span>Flea prevention</span></div></li>
+          <li><div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="li-text"><strong>Collars, leashes, ID tags</strong><span>Crates and blankets</span></div></li>
+          <li><div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="li-text"><strong>Dog jackets, sweaters, raincoats</strong><span>For cold and wet days</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEED FURTHER ASSISTANCE -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow blue">Need further assistance?</div>
+    <h2 class="section-title blue">We are here to <em style="color:var(--blue)">help you apply.</em></h2>
+    <p class="section-lead">If you cannot fill out an application or need more information, call us at <a href="tel:+18317189122">(831) 718-9122</a>. Please be aware that this will delay the processing of your request.</p>
+    <p class="section-lead spanishAssistance" style="font-style:italic;">Si no puede completar una solicitud o necesita mas informacion, puede llamarnos al (831) 718-9122. Tenga en cuenta que esto retrasara el procesamiento de su solicitud.</p>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-strip">
   <div class="container">

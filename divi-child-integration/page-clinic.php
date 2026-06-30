@@ -69,7 +69,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <span class="eyebrow blue">What we do</span>
     <h2 class="section-title blue">Care for the dogs in our rescue, and <em>beyond</em>.</h2>
-    <p class="section-lead">The clinic is the medical home for every dog in our care. It is where new arrivals get a clean start and where our long-term and hospice dogs are kept comfortable. The same clinic helps us deliver the Helping Paw Program for guardians who need a hand with veterinary costs.</p>
+    <p class="section-lead">The clinic opened in November 2019 and is the medical home for every dog in our care. It is where new arrivals get a clean start and where our long-term and hospice dogs are kept comfortable. The same clinic helps us deliver the Helping Paw Program for guardians who need a hand with veterinary costs.</p>
     <div class="svc-grid">
       <div class="svc-card">
         <h3>Intake and wellness exams</h3>
@@ -86,6 +86,18 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="svc-card">
         <h3>Hospice and comfort care</h3>
         <p>For our hospice and sanctuary dogs, the clinic focuses on comfort, pain management, and dignity through every stage of life.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Diagnostics on site</h3>
+        <p>Every new dog receives a full exam, senior blood panel, heartworm test, urinalysis, vaccines, and a microchip. We have a full x-ray machine, a dental x-ray machine, and ultrasound, so we can look closer when something needs attention.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Dental, surgery, and lumps</h3>
+        <p>Most dogs need a dental cleaning and many need extractions. We also aspirate, biopsy, or remove any lumps that need it, treating conditions other shelters often cannot take on.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Specialist referrals</h3>
+        <p>When a dog needs more, we refer to veterinary specialists including ophthalmology, oncology, dermatology, dentistry, and internal medicine.</p>
       </div>
     </div>
   </div>

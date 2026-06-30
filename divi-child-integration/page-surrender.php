@@ -185,6 +185,49 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
+<!-- WHAT WE PROVIDE -->
+<section class="section">
+  <div class="container">
+    <div style="font-size:17px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:24px;height:1px;background:var(--blue-700);display:inline-block;"></span>If Your Dog Is Accepted</div>
+    <h2 class="section-title">What POMDR <em>provides.</em></h2>
+    <p class="section-lead">If your dog is accepted into our program, here is everything we take care of, for as long as it takes.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>A foster home</h4>
+        <p>Placement in a loving foster home until your dog is adopted, never a kennel.</p>
+      </div>
+      <div class="faq-item">
+        <h4>High quality dog food</h4>
+        <p>Nutritious food appropriate for your dog's age and health for the duration of their stay.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Full medical coverage</h4>
+        <p>We cover any medical needs that come up while your dog is in our care.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Grooming and flea control</h4>
+        <p>Grooming and flea control while your dog is with us.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Socialization and companionship</h4>
+        <p>Your dog spends their time in a real home with people who love them.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Careful adopter screening</h4>
+        <p>Screening of potential adopters, including a home visit and reference check.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Annual follow-ups</h4>
+        <p>Annual follow-ups and home visits to make sure the placement has been successful.</p>
+      </div>
+      <div class="faq-item">
+        <h4>A lifetime safety net</h4>
+        <p>A safety net for the lifetime of your dog, should they ever need to find a new home at any point in their life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- QUOTE -->
 <div class="quote-band">
   <div class="container">
@@ -277,6 +320,18 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="faq-item">
         <h4>What is a Courtesy Listing?</h4>
         <p>A courtesy listing is where we post your dog on our website to help you find a home. You remain responsible for their care during this time. We provide guidance and resources throughout the process.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Will you meet my dog before taking them?</h4>
+        <p>Yes. Before POMDR can intake your dog, we need to meet them. Dogs who come to POMDR must be good with other dogs (no aggression) and good with people (no bite history or propensity to bite).</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can you take a dog with medical needs?</h4>
+        <p>We are equipped to handle a variety of medical cases and senior-related issues. Some extreme cases can be difficult for us to take on, for example Epilepsy, Diabetes, Paralysis, Megaesophagus, or Advanced Dementia. Medical intakes are evaluated case by case.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if my dog isn't a POMDR candidate?</h4>
+        <p>You can still fill out an intake questionnaire. Even if we cannot take your dog directly, we can refer you to additional resources to help you find the right placement.</p>
       </div>
     </div>
   </div>

@@ -29,6 +29,18 @@ get_header();
   </div>
 </section>
 
+<section class="section" id="provides">
+  <div class="container">
+    <span class="eyebrow purple">What we provide, what we ask</span>
+    <h2 class="section-title">We have no shelter. Our dogs live in <em>foster homes</em>.</h2>
+    <p class="page-lead">Every POMDR dog lives in a foster home as a member of the family until they find their permanent home. Foster parents are the bridge that helps a dog transition from their past, whether that was a loving home, a shelter, or a hard situation, into a calm new routine. We typically have about 80 dogs in our care at any time, with up to 15 more waiting for a foster home to open up.</p>
+    <div class="step-row"><span class="step-num">01</span><div><h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 8px">POMDR supplies the gear</h3><p style="color:var(--ink-2);margin:0">We provide a crate, bed, collar, harness, leash, ID tag, bowls, toys, and flea prevention. If we have it, you get it.</p></div></div>
+    <div class="step-row"><span class="step-num">02</span><div><h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 8px">POMDR covers the vet care</h3><p style="color:var(--ink-2);margin:0">We cover all medical expenses for your foster dog. You never pay a vet bill.</p></div></div>
+    <div class="step-row"><span class="step-num">03</span><div><h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 8px">You provide food and a safe home</h3><p style="color:var(--ink-2);margin:0">We ask foster homes to provide the food and a loving, safe place to land until the dog is adopted.</p></div></div>
+    <div class="step-row"><span class="step-num">04</span><div><h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 8px">We tell you what we know</h3><p style="color:var(--ink-2);margin:0">Some dogs have medical or behavioral needs. We disclose anything we know when you inquire, so you can choose a match that fits your home.</p></div></div>
+  </div>
+</section>
+
 <section class="cta-strip" style="background:var(--blue-50)">
   <div class="container">
     <h2 class="serif">Ready to foster? <em>We need you.</em></h2>

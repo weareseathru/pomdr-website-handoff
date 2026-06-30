@@ -21,17 +21,22 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div>
         <h2 class="section-title" style="margin-bottom:16px">How it works</h2>
         <ol style="font-size:17px;line-height:1.8;padding-left:24px;margin:0">
-          <li>You enroll your dog while you can. We meet them, learn their routine, and keep their records.</li>
-          <li>If you can no longer care for your dog (hospitalization, move to assisted living, passing), POMDR takes responsibility for placement.</li>
+          <li>You enroll your dog while you can. We need to meet your dog first to determine whether POMDR can accept them into the program.</li>
+          <li>To enroll, we suggest setting up a legal pet trust with your attorney to cover your dog's lifetime care expenses in the event of your illness, injury, or death.</li>
+          <li>If you can no longer care for your dog (accident, illness, or death), your dog is placed in a loving POMDR foster home, either for the rest of their life or until a perfect match with a new permanent guardian is found.</li>
           <li>We honor any specific requests on file: medical, behavioral, and lifestyle preferences for the dog's next home.</li>
         </ol>
 
+        <p style="font-size:17px;line-height:1.7;margin-top:24px">If you are unable to set up a pet trust or make an annual gift but would still like to enroll your dog, please contact us to discuss the next steps. Your attorney or our resources page can help you set up a pet trust and plan for your pet's future should you predecease them.</p>
+
         <h2 class="section-title" style="margin:48px 0 16px">What it costs</h2>
-        <p style="font-size:17px;line-height:1.7">A one-time enrollment gift covers ongoing costs of the program. We share the current amount when we meet you in person.</p>
+        <p style="font-size:17px;line-height:1.7">We suggest a legal pet trust to ensure the resources are available for your dog's lifetime care, plus an annual gift in any amount to support our mission. At the time of your dog's death, any remainder of the trust goes into POMDR's general fund to help more dogs, carrying on the legacy of your love for dogs.</p>
       </div>
       <div>
         <h2 class="section-title" style="margin-bottom:16px">Who it is for</h2>
-        <p style="font-size:17px;line-height:1.7">Owners over 65 with a senior dog, especially those without family who could step in. Many of our Lifetime Care members also receive Helping Paw support during their lifetime.</p>
+        <p style="font-size:17px;line-height:1.7">The program is for guardians without a friend or family member who can care for their dog. Eligibility for enrollment is determined by our staff and depends on the dog's age, size, temperament, and any special medical needs. Many of our Perpetual Care members also receive Helping Paw support during their lifetime.</p>
+        <h2 class="section-title" style="margin:48px 0 16px">Our promise to you</h2>
+        <p style="font-size:17px;line-height:1.7">A lifetime commitment. Once your dog is in our care, we guarantee a loving, warm, and safe home, either in a POMDR foster home or with a new adoptive family, for the rest of their life. You can have peace of mind that your dog will never end up alone and frightened in an animal shelter.</p>
         <h2 class="section-title" style="margin:48px 0 16px">Get started</h2>
         <p style="font-size:17px;line-height:1.7">Call us first. We sit down with you, meet your dog, and walk through paperwork together.</p>
         <a href="mailto:info@pomdr.org" class="btn btn-primary" style="margin-top:16px">Schedule a Conversation</a>

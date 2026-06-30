@@ -50,6 +50,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <h3>Visit us</h3>
         <p>615 Forest Ave<br/>Pacific Grove, CA 93950</p>
+        <p style="margin-top:12px"><strong>Hours:</strong> 11am to 4pm, Monday through Saturday, or by appointment. Adoptable dogs are available by appointment only. If the door is locked, ring the bell.</p>
       </div>
       <div class="info-card">
         <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -87,6 +88,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3>Programs and support</h3>
         <p>Helping Paw, fostering, and donor support are all coordinated from here, keeping senior dogs and senior people connected.</p>
       </div>
+      <div class="here-card">
+        <h3>A home with a history</h3>
+        <p>The Bauer Center house was generously donated to POMDR by Patricia J. Bauer in September 2011, a legacy gift to help more dogs left behind. Our front room, Mattie's Playroom, is named for her playful Schnauzer, and the garden, Morgan's Memorial Garden, for her poodle mix.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -96,7 +101,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="visit-inner">
       <span class="eyebrow light">Planning a visit</span>
       <h2>Stop by and say <em>hello</em>.</h2>
-      <p>You are welcome at the Bauer Center, whether you are ready to adopt, thinking about fostering, or simply want to learn more about what we do. We recommend calling ahead so we can make sure the right person is available to greet you and introduce you to our dogs.</p>
+      <p>You are welcome at the Bauer Center, whether you are ready to adopt, thinking about fostering, or simply want to learn more about what we do. The front desk is staffed by volunteers from 11am to 4pm, Monday through Saturday, or by appointment. Adoptable dogs are available by appointment only, so we recommend calling ahead. If the door is locked, ring the bell.</p>
       <p>Peace of Mind Dog Rescue was founded in 2009 and serves senior dogs and senior people across California's Central Coast. The Patricia J. Bauer Center is the heart of that work, and the door is open.</p>
       <div class="page-cta" style="margin-top:24px;">
         <a href="tel:8317189122" class="btn btn-purple">Call to plan a visit</a>

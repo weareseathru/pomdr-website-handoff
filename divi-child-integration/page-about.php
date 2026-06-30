@@ -126,6 +126,50 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
+<!-- WHAT WE DO -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">What We Do</div>
+    <h2 class="section-title">A lifetime <em>commitment.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:40px;">
+      <article class="card" style="padding:26px;">
+        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Foster and forever homes</h3>
+        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We find loving foster and forever homes for dogs whose guardians can no longer care for them, and for senior dogs in shelters.</p>
+      </article>
+      <article class="card" style="padding:26px;">
+        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Help for senior guardians</h3>
+        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We help senior citizens pay for veterinary care when they cannot afford it, provide temporary foster care for people who are hospitalized, and walk dogs for people who can no longer walk them.</p>
+      </article>
+      <article class="card" style="padding:26px;">
+        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Pre-arranged care</h3>
+        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We make pre-arrangements to take in dogs should their guardians become unable to care for them, so no one has to worry about what happens next.</p>
+      </article>
+      <article class="card" style="padding:26px;">
+        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">A home for life</h3>
+        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">Every dog who comes into our care is either adopted into a wonderful, permanent home or lives out their life in one of our foster homes. Sometimes a senior dog should not have to endure one more move, and they stay with us.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OUR VALUES -->
+<section class="section" style="background:var(--cream-2);">
+  <div class="container">
+    <div class="eyebrow">Our Values</div>
+    <h2 class="section-title">How we <em>show up.</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;">
+      <article class="card" style="padding:28px;">
+        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 12px;">Compassionate Food Policy</h3>
+        <p style="color:var(--ink-2);font-size:16px;line-height:1.65;margin:0;">We believe all animals should be treated humanely and with compassion throughout their lives. To honor that, POMDR serves only vegetarian food at all POMDR events, from small staff and volunteer meetings to large gatherings like our annual Lucky Dog Gala. We recommend the same when others host, though we do not control food options at outside-hosted events.</p>
+      </article>
+      <article class="card" style="padding:28px;">
+        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 12px;">Diversity, Equity and Inclusion</h3>
+        <p style="color:var(--ink-2);font-size:16px;line-height:1.65;margin:0;">Diversity, equity, and inclusion matter to POMDR across our staff, volunteers, adopters, and Helping Paw clients. We do not tolerate discrimination or harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, disability, genetic information, or pregnancy. Hiring decisions are based solely on qualifications, merit, and business needs. Adoption decisions are based on the best match for the dog and adopter, considering the dog's activity level, special needs, size, health, and temperament.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- FOUNDERS QUOTE -->
 <div class="founders-band">
   <div class="container">
