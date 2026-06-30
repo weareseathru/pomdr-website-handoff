@@ -1182,3 +1182,10 @@ body.home .section-header .section-lead { grid-column: 2; margin: 0; }
 @media (max-width: 720px) {
   body.home .section-header { grid-template-columns: 1fr; }
 }
+
+/* Promo banner cleanup: thinner band (Divi adds a stray 58px top to
+   #main-content .container; override it here), tighter spacing, larger info text. */
+.promo-banner .promo-inner { padding-top: 12px !important; padding-bottom: 12px !important; gap: 22px; }
+.promo-banner .promo-text { gap: 14px; }
+.promo-banner .promo-label { font-size: 15px; }
+.promo-banner .promo-message { font-size: 20px; line-height: 1.35; margin: 0; }
