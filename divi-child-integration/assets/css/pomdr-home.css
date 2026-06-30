@@ -71,7 +71,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--blue-700); display: inline-flex; align-items: center; gap: 14px;
 }
 .eyebrow::before {
-  content: ""; width: 40px; height: 2px; background: var(--blue); display: inline-block; flex-shrink: 0;
+  content: ""; display: inline-block; flex-shrink: 0;
 }
 
 .container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
