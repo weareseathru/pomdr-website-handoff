@@ -4,8 +4,11 @@ get_header();
 $img = get_stylesheet_directory_uri() . "/assets/images";
 ?>
 <style>
-.page-hero{padding:160px 0 80px;background:var(--ink);color:#fff;position:relative;overflow:hidden;}
+.page-hero{padding:160px 0 80px;background:var(--blue-900);color:#fff;position:relative;overflow:hidden;}
 .page-hero .eyebrow{color:#fff;}
+.page-hero .page-headline{color:#fff;}
+.page-hero .page-narrative{color:rgba(255,255,255,.92);}
+.page-hero .page-narrative em{color:var(--blue-200);}
 .page-hero .eyebrow::before{background:rgba(255,255,255,.65);}
 .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(0,139,176,.3),transparent 55%),radial-gradient(ellipse at 100% 100%,rgba(99,47,136,.2),transparent 55%);}
 .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;}
@@ -63,7 +66,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .faq-item p{font-size:16px;color:var(--ink-2);margin:0;}
 @media(max-width:700px){.faq-grid{grid-template-columns:1fr;}}
 /* CTA */
-.cta-strip{padding:72px 0;background:var(--ink);color:#fff;}
+.cta-strip{padding:72px 0;background:var(--blue-900);color:#fff;}
 .cta-strip h2 em{color:var(--blue-200);}
 </style>
 <main id="main-content">

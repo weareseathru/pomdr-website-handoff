@@ -61,7 +61,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .fund-card:hover .fund-link::after{transform:translateX(4px);}
 @media(max-width:700px){.funds-grid{grid-template-columns:1fr;}}
 /* ELIGIBILITY */
-.eligibility-band{background:var(--ink);color:#fff;padding:80px 0;}
+.eligibility-band{background:var(--blue-900);color:#fff;padding:80px 0;}
 .eligibility-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
 .eligibility-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
 .eligibility-band h2 em{font-style:italic;color:var(--blue-200);}

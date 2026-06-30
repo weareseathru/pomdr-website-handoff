@@ -16,7 +16,7 @@
 :root {
   --blue: #008bb0;
   --blue-700: #006c8a;
-  --blue-900: #004e63;
+  --blue-900: #00627d;  /* deep band blue; brightened 2026-06-30 (was #004e63, read too dark). White text ~6.3:1, AA. */
   --blue-50: #E8F2F6;
   --blue-100: #BCD7E4;
   --blue-200: #7CB9D0;
