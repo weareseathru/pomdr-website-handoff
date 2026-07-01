@@ -60,6 +60,31 @@ $placeable_query = new WP_Query( array(
 ) );
 $count_total = (int) $placeable_query->found_posts;
 
+/**
+ * Query a status group for the adopt-page tabs (Courtesy Listing, Hospice,
+ * Adopted). CPT-driven like the main grid, so staff manage these in wp-admin.
+ */
+if ( ! function_exists( 'pom_adopt_group_query' ) ) {
+    function pom_adopt_group_query( $status_value, $limit = -1 ) {
+        return new WP_Query( array(
+            'post_type'      => 'pets',
+            'post_status'    => 'publish',
+            'posts_per_page' => $limit,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'meta_query'     => array(
+                array( 'key' => 'status', 'value' => $status_value, 'compare' => 'LIKE' ),
+            ),
+        ) );
+    }
+}
+
+// The three tab groups mirroring the live site (Other Adoptable = Courtesy
+// Listing). Adopted is capped to a recent set so the happy-tail tab stays light.
+$q_courtesy = pom_adopt_group_query( 'Courtesy Listing' );
+$q_hospice  = pom_adopt_group_query( 'Hospice' );
+$q_adopted  = pom_adopt_group_query( 'Adopted', 24 );
+
 // Category filter buttons output server-side (not JS-populated). Slugs match
 // the data-status values on each card.
 $adopt_filters = array(
@@ -117,6 +142,21 @@ $adopt_filters = array(
 .toolbar-controls .filters{display:flex;gap:8px;flex-wrap:wrap;flex:1 1 auto;margin:0;}
 .toolbar-controls .sort{flex-shrink:0;margin-left:auto;}
 
+/* ===== Status-group tabs (Our Adoptable / Other Adoptable / Hospice / Adopted).
+   Placed below the toolbar, above the cards. Each tab toggles a CPT-driven
+   group grid; the search/filter/sort toolbar belongs to the Adoptable group. */
+.dog-tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin:34px 0 4px;}
+.dog-tab{appearance:none;background:none;border:none;font:inherit;font-size:16px;font-weight:600;color:var(--ink-3);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;display:inline-flex;align-items:center;gap:9px;transition:color .2s var(--ease),border-color .2s var(--ease);}
+.dog-tab:hover{color:var(--blue-700);}
+.dog-tab.active{color:var(--blue-900);border-bottom-color:var(--blue-700);}
+.dog-tab:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px 6px 0 0;}
+.dog-tab-count{font-size:13px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:2px 9px;line-height:1.5;}
+.dog-tab.active .dog-tab-count{background:var(--blue-100);}
+.dog-group[hidden]{display:none;}
+.group-intro{font-size:17px;color:var(--ink-2);max-width:70ch;margin:26px 0 4px;line-height:1.55;}
+.group-empty{grid-column:1/-1;padding:56px 40px;text-align:center;color:var(--ink-3);border:1px dashed var(--line);border-radius:var(--radius);font-size:16px;}
+@media (max-width:600px){.dog-tab{padding:11px 12px;font-size:15px;}}
+
 /* Slim results count above the grid. */
 .results-head{padding:30px 0 20px;}
 
@@ -170,24 +210,111 @@ $adopt_filters = array(
 
 <section class="grid-section">
   <div class="container">
-    <div class="results-head">
-      <div class="results-count serif" id="results-count"><?php echo esc_html( $count_total === 1 ? '1 dog' : $count_total . ' dogs' ); ?></div>
+
+    <!-- Status-group tabs: below the toolbar, above the cards. Each toggles a
+         CPT-driven group. Mirrors the live site (Other Adoptable = Courtesy). -->
+    <div class="dog-tabs" role="tablist" aria-label="Dog groups">
+      <button class="dog-tab active" type="button" role="tab" aria-selected="true" aria-controls="group-adoptable" id="tab-adoptable" data-group="adoptable">Our Adoptable Dogs <span class="dog-tab-count"><?php echo esc_html( $count_total ); ?></span></button>
+      <button class="dog-tab" type="button" role="tab" aria-selected="false" aria-controls="group-courtesy" id="tab-courtesy" data-group="courtesy">Other Adoptable Dogs <span class="dog-tab-count"><?php echo esc_html( (int) $q_courtesy->found_posts ); ?></span></button>
+      <button class="dog-tab" type="button" role="tab" aria-selected="false" aria-controls="group-hospice" id="tab-hospice" data-group="hospice">Hospice Care <span class="dog-tab-count"><?php echo esc_html( (int) $q_hospice->found_posts ); ?></span></button>
+      <button class="dog-tab" type="button" role="tab" aria-selected="false" aria-controls="group-adopted" id="tab-adopted" data-group="adopted">Adopted Dogs <span class="dog-tab-count"><?php echo esc_html( (int) $q_adopted->found_posts ); ?></span></button>
     </div>
-    <div class="dogs-grid" id="dogs-grid">
-      <?php
-      if ( $placeable_query->have_posts() ) :
-          while ( $placeable_query->have_posts() ) :
-              $placeable_query->the_post();
-              echo pom_render_dog_card( get_the_ID() );
-          endwhile;
-      else :
-          echo '<div style="grid-column:1/-1;padding:60px;text-align:center;color:var(--ink-3);border:1px dashed var(--line);border-radius:var(--radius)">No adoptable dogs are listed right now. Please check back soon.</div>';
-      endif;
-      wp_reset_postdata();
-      ?>
+
+    <!-- Adoptable (default). The toolbar search/filter/sort applies to this group. -->
+    <div class="dog-group" data-group="adoptable" id="group-adoptable" role="tabpanel" aria-labelledby="tab-adoptable">
+      <div class="results-head">
+        <div class="results-count serif" id="results-count"><?php echo esc_html( $count_total === 1 ? '1 dog' : $count_total . ' dogs' ); ?></div>
+      </div>
+      <div class="dogs-grid" id="dogs-grid">
+        <?php
+        if ( $placeable_query->have_posts() ) :
+            while ( $placeable_query->have_posts() ) :
+                $placeable_query->the_post();
+                echo pom_render_dog_card( get_the_ID() );
+            endwhile;
+        else :
+            echo '<div class="group-empty">No adoptable dogs are listed right now. Please check back soon.</div>';
+        endif;
+        wp_reset_postdata();
+        ?>
+      </div>
     </div>
+
+    <?php
+    // The three secondary groups share one renderer. Each is CPT-driven, so
+    // staff manage them in wp-admin by setting a dog's status.
+    $pom_groups = array(
+        'courtesy' => array(
+            'query' => $q_courtesy,
+            'intro' => 'Dogs listed as a courtesy for other rescues and private guardians. These dogs are not in POMDR care; the listing helps them find homes.',
+            'empty' => 'No courtesy listings right now. Please check back soon.',
+        ),
+        'hospice'  => array(
+            'query' => $q_hospice,
+            'intro' => 'Sanctuary dogs in POMDR hospice care. Their medical or age needs mean they live out their days safe and loved with us, rather than being adopted out.',
+            'empty' => 'No hospice dogs are listed right now.',
+        ),
+        'adopted'  => array(
+            'query' => $q_adopted,
+            'intro' => 'A few of our recent happy tails. Senior dogs who found their people and a soft place to land.',
+            'empty' => 'Recently adopted dogs will appear here soon.',
+        ),
+    );
+    foreach ( $pom_groups as $gkey => $g ) :
+        $gq = $g['query'];
+        ?>
+        <div class="dog-group" data-group="<?php echo esc_attr( $gkey ); ?>" id="group-<?php echo esc_attr( $gkey ); ?>" role="tabpanel" aria-labelledby="tab-<?php echo esc_attr( $gkey ); ?>" hidden>
+          <p class="group-intro"><?php echo esc_html( $g['intro'] ); ?></p>
+          <div class="dogs-grid">
+            <?php
+            if ( $gq->have_posts() ) :
+                while ( $gq->have_posts() ) :
+                    $gq->the_post();
+                    echo pom_render_dog_card( get_the_ID() );
+                endwhile;
+            else :
+                echo '<div class="group-empty">' . esc_html( $g['empty'] ) . '</div>';
+            endif;
+            wp_reset_postdata();
+            ?>
+          </div>
+        </div>
+    <?php endforeach; ?>
+
   </div>
 </section>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.dog-tab'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.dog-group'));
+  var toolbar = document.querySelector('.toolbar');
+  if (!tabs.length) return;
+  function activate(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.classList.toggle('active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    var g = tab.getAttribute('data-group');
+    groups.forEach(function (grp) { grp.hidden = grp.getAttribute('data-group') !== g; });
+    if (toolbar) { toolbar.style.display = (g === 'adoptable') ? '' : 'none'; }
+  }
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { activate(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var idx = i;
+      if (e.key === 'ArrowRight') { idx = (i + 1) % tabs.length; }
+      else if (e.key === 'ArrowLeft') { idx = (i - 1 + tabs.length) % tabs.length; }
+      else { return; }
+      e.preventDefault();
+      tabs[idx].focus();
+      activate(tabs[idx]);
+    });
+  });
+})();
+</script>
 
 </main>
 <?php get_footer();

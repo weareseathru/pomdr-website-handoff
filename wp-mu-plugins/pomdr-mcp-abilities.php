@@ -176,6 +176,7 @@ add_action('wp_abilities_api_init', function () {
                 'breed'  => array('type' => 'string', 'description' => 'What the dog looks like (looks_like).'),
                 'status' => array('type' => 'array', 'items' => array('type' => 'string'), 'description' => 'Status values (Title Case): ' . implode(', ', pomdr_mcp_status_choices()) . '.'),
                 'bio'    => array('type' => 'string', 'description' => 'Pet description / bio.'),
+                'photo_url' => array('type' => 'string', 'description' => 'Optional URL of a photo to sideload and set as the dog\'s featured image.'),
             ),
             'required'   => array('name'),
         ),
@@ -202,7 +203,18 @@ add_action('wp_abilities_api_init', function () {
                 $valid = array_values(array_intersect(pomdr_mcp_status_choices(), array_map('sanitize_text_field', $input['status'])));
                 update_field('status', $valid, $post_id);
             }
-            return array('id' => (int) $post_id, 'permalink' => get_permalink($post_id), 'created' => true);
+            $photo_set = false;
+            if (!empty($input['photo_url'])) {
+                require_once ABSPATH . 'wp-admin/includes/media.php';
+                require_once ABSPATH . 'wp-admin/includes/file.php';
+                require_once ABSPATH . 'wp-admin/includes/image.php';
+                $att_id = media_sideload_image(esc_url_raw($input['photo_url']), $post_id, get_the_title($post_id), 'id');
+                if (!is_wp_error($att_id)) {
+                    set_post_thumbnail($post_id, $att_id);
+                    $photo_set = true;
+                }
+            }
+            return array('id' => (int) $post_id, 'permalink' => get_permalink($post_id), 'created' => true, 'photo_set' => $photo_set);
         },
         'meta'                => array(
             'annotations' => array('readonly' => false, 'destructive' => false, 'idempotent' => false),
