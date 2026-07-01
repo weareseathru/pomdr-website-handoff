@@ -51,5 +51,6 @@ pomdr-website/project/uploads/web-capture-*.json
 *.orig
 *.rej
 
-# Local review artifacts (Playwright screenshots)
+# Local review artifacts (Playwright / Chrome DevTools MCP screenshots)
 responsive-review/
+.playwright-mcp/
