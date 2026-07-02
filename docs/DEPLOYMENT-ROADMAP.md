@@ -35,6 +35,7 @@ the existing Divi child theme:
 | D3 | **`culture` page URL**: top-level `/culture/` (matches prototype) or nested `/about/culture/` (current, sensible IA)? | Cosmetic URL depth only; page renders correctly either way. | Keep nested under About, or flip the page parent in one click if you prefer top-level. |
 | D4 | **Real content vs prototype placeholders**: testimonials, the "POMDR Videos" YouTube IDs, the homepage stats (250+, 3,200+, 1,800+), and the impact numbers. | These are prototype sample values and must be real before launch. | Team supplies real quotes, video links, and current numbers (see content checklist). |
 | D5 | **Domain / launch target**: which site is "live" (new.pomdr.org vs the primary domain) and the cutover plan. | Determines staging, DNS, and redirect work. | Confirm the target and whether this replaces the current homepage immediately or soft-launches. |
+| D6 | **Sponsor-a-dog form**: confirm the destination for the "Sponsor {Name}" CTA (a dedicated LGL sponsor form id, or a route through the donation form with a prefill param). | The dog detail page now shows a sponsor CTA at parity with adopt; it points at the legacy `POMDRSponsorDog.php` as an interim (see RISK-REGISTER B4). | Confirm the target, then update the single `POMDR_SPONSOR_FORM_BASE` constant (or add a `pomdr_sponsor_form_url` filter). |
 
 ---
 

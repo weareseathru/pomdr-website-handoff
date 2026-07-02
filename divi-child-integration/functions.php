@@ -1,5 +1,36 @@
 <?php
 
+// *********** Sponsor-a-Dog CTA config (used by single-pets.php) ***********
+// The sponsor form destination is not yet confirmed for the new site. It may be
+// a dedicated LGL sponsor form, or sponsorship may route through the donation
+// form. Until that is decided, this base points at the current legacy sponsor
+// processor so the button keeps parity with the live site and is never a dead
+// link.
+// TODO(HUMAN): confirm LGL sponsor form id (or donation-form route) and update this base.
+if ( ! defined( 'POMDR_SPONSOR_FORM_BASE' ) ) {
+    define( 'POMDR_SPONSOR_FORM_BASE', 'https://www.peaceofminddogrescue.org/POMDRSponsorDog.php' );
+}
+
+/**
+ * Build the "Sponsor {Name}" CTA URL for a dog, with the name attached as the
+ * dogname query param (rawurlencoded). Filterable, so the destination can be
+ * swapped from one place once the sponsor form is confirmed, without touching
+ * the template.
+ *
+ * @param string $dog_name The dog's display name (post title).
+ * @return string The sponsor URL with the encoded dogname param.
+ */
+function pomdr_sponsor_form_url( $dog_name ) {
+    // The title filters (wptexturize, convert_chars) hand back HTML entities such
+    // as &#038; and &#8217;. Decode them to real characters first so the query
+    // param carries the actual name, then rawurlencode it exactly once.
+    $name = html_entity_decode( (string) $dog_name, ENT_QUOTES, 'UTF-8' );
+    $base = POMDR_SPONSOR_FORM_BASE;
+    $sep  = ( strpos( $base, '?' ) === false ) ? '?' : '&';
+    $url  = $base . $sep . 'dogname=' . rawurlencode( $name );
+    return apply_filters( 'pomdr_sponsor_form_url', $url, $name, $base );
+}
+
 // *********** Apply wpautop to Team bio field ***********
 add_filter('acf/format_value/name=bio', function($value, $post_id, $field) {
     if ($value) {
