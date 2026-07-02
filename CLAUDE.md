@@ -1,35 +1,44 @@
-# CLAUDE.md — POMDR WordPress Redesign
+# CLAUDE.md: POMDR WordPress Redesign
 
-This file sets the standing rules for Claude Code (running in Antigravity) when
-working on the Peace of Mind Dog Rescue (POMDR) website redesign. Read this
-file at the start of every session. Re-read when switching major tasks.
-
----
-
-## 1. Project goal
-
-Redesign the POMDR public website (currently at https://www.pomdr.org) from an
-acceptable-but-dated WordPress site into a warm, fun, modern, highly
-accessible site that:
-
-- Makes it easier for people to adopt, foster, donate, and volunteer.
-- Surfaces individual dogs and their personalities with character.
-- Is fully editable by non-technical staff (Carie, Monica, Allison, Andrew) in
-  the WordPress admin — no code changes needed for routine content updates.
-- Is stable, scalable, performant, and accessible (WCAG 2.2 AA minimum).
-- Preserves POMDR's brand voice and visual identity.
-
-Andrew Z. is the sole developer-in-the-loop. Claude is the implementation
-partner, not an autonomous agent — always confirm destructive or deployment
-actions.
+Orientation and standing rules for Claude Code on the Peace of Mind Dog Rescue
+(POMDR) website redesign. Read this file at the start of every session. It is the
+source of truth. When it is wrong or silent on something, flag it and propose the
+fix; do not act on the ambiguity. Deeper detail lives in the docs referenced in
+section 8; keep this file dense.
 
 ---
 
-## 2. Non-negotiable brand and copy rules
+## 1. Project summary
+
+POMDR is a Pacific Grove, California nonprofit (founded 2009, EIN 27-1154816)
+serving senior dogs and senior people. This project redesigns its public website
+into a warm, modern, highly accessible site (WCAG 2.2 AA minimum) that makes it
+easier to adopt, foster, donate, and volunteer, surfaces individual dogs with
+character, and stays fully editable by non-technical staff in wp-admin. The
+redesign ships as a Divi child theme overlaid on the existing WordPress install.
+It does not replace WordPress or Divi, and it preserves the working content
+model, forms, and redirects. Andrew Z. is the sole developer in the loop; Claude
+is the implementation partner, not an autonomous agent.
+
+---
+
+## 2. Session protocol
+
+<!--
+  PENDING (2026-07-02): Andrew to paste the canonical Session protocol block
+  here, verbatim. This placeholder is intentional. Replace it with the block as
+  provided; do not paraphrase, summarize, or reformat it.
+-->
+
+_Awaiting the Session protocol block from Andrew. Until it is embedded here,
+follow sections 3 through 7 and confirm process expectations before any
+irreversible or outward-facing action._
+
+---
+
+## 3. Voice rules (absolute, machine-enforced)
 
 These are absolute. Every piece of generated content must conform.
-
-### Copy style
 
 - **No em dashes. Ever.** Not in copy, not in alt text, not in commit messages
   visible to staff, not in template comments shown in the admin. Use commas,
@@ -43,302 +52,121 @@ These are absolute. Every piece of generated content must conform.
   the voice. No emoji stuffing.
 - Professional sign-off is "Andrew Z." when a human author is credited.
 
-### Brand colors
-
-- Teal primary: `#0099A8`, with accent variants `#008DAF` and `#008BB0`.
-- Purple primary: `#5B2C6F`, with accent variant `#632F88`.
-- White backgrounds are the default. Avoid heavy dark-mode inversions.
-- When adding new colors (e.g. for state indicators or tags), propose them and
-  show them against the primary palette before using.
-
-### Typography
-
-- Myriad Pro is the brand font. On web, fall back to a free, widely-licensed
-  alternative (Source Sans 3 or Open Sans are acceptable defaults) served via
-  a reputable font host. Document the decision in the theme's design tokens
-  file.
-
-### Org info that's safe to hardcode
-
-- Name: Peace of Mind Dog Rescue (POMDR)
-- Tax ID: 27-1154816
-- Main address: Patricia J. Bauer Center, 615 Forest Ave, Pacific Grove, CA
-- Vet clinic: 1251 10th St, Monterey, CA
-- Benefit Shop: 223 Grand Ave, Pacific Grove, CA
-- General contact: info@pomdr.org, (831) 718-9122
-- Founded 2009. Focus: senior dogs and senior people.
+Enforcement: run `bash scripts/check-voice.sh --staged` before every commit; CI
+runs the same check on the PR diff. Inherited prototype violations do not block;
+new ones do.
 
 ---
 
-## 3. Technical stance
+## 4. Architecture facts
 
-### Stack decisions
-
-- **WordPress**, block theme path preferred (Full Site Editing) so staff can
-  edit every area of the site in the Site Editor without touching code.
-- Child theme with a clearly named slug (e.g. `pomdr-2026`) on top of a clean
-  parent theme. Never edit the parent theme directly.
-- PHP version target: whatever the current POMDR host supports at or above the
-  WordPress recommended minimum. Verify before writing PHP.
-- Custom post types for dogs already exist (or need to be standardized) — read
-  before proposing changes.
-- Page builders are still discouraged in general (they slow the site,
-  complicate accessibility, and make AI-assisted editing harder). However, the
-  Divi parent theme on new.pomdr.org is now an approved, retained dependency
-  (see decision 2026-06-06 below). The redesign ships as a Divi **child theme**
-  (`divi-child-integration/`, theme name "POMDR 2026") that layers on top of
-  Divi without editing the parent. No additional page builders beyond Divi.
-- DECISION 2026-06-06 (keep Divi): The integration target changed from a clean
-  FSE block theme (`pomdr-2026`) to a **Divi child theme** that preserves the
-  existing Divi base build and functions on new.pomdr.org. Approved this session;
-  pending Andrew's formal sign-off on the integration PR. This overrides earlier
-  block-theme language in this file and in STACK.md / WP-SCAFFOLD-NOTES.md.
-  Custom redesigned pages are child-theme templates plus a global CSS/JS layer;
-  everything else inherits the new look through CSS. Rationale: retain the
-  staff-familiar Divi editing surface and the working ACF `pets` CPT, LGL forms,
-  and Redirection setup rather than rebuilding them.
-- CSS: plain modern CSS (custom properties, logical properties, container
-  queries) over any framework unless a compelling reason surfaces. If we
-  adopt Tailwind, do it intentionally via a WordPress-compatible integration,
-  not by bolting it on.
-- No unnecessary JavaScript. Progressive enhancement. The core experience
-  must work without JS.
-
-### Quality gates (enforced on every change)
-
-Before proposing a change is "done," Claude runs or asks Andrew to run:
-
-1. **Accessibility**: axe-core scan via Chrome DevTools MCP. Zero new
-   violations. Screen reader pass on new interactive components.
-2. **Performance**: Lighthouse. No regression beyond 3 points on any Core Web
-   Vital score. Target: LCP < 2.5s, INP < 200ms, CLS < 0.1.
-3. **Visual regression**: Playwright screenshots of affected pages, compared
-   to prior baseline. Any diff is flagged for review.
-4. **Code style**: WordPress coding standards for PHP. Prettier defaults for
-   JS/CSS.
-5. **Accessibility specifically for older audiences**: minimum body text 16px,
-   color contrast ratio ≥ 4.5:1 for body, focus indicators clearly visible,
-   no time-based interactions, no hover-only functionality.
-
-### What "done" means
-
-A task is done when (a) code is committed to a feature branch, (b) quality
-gates pass, (c) a preview URL or screenshot set is available, and (d) Andrew
-has confirmed. Not when Claude believes it works.
+- **Platform:** WordPress with the Divi parent theme, on new.pomdr.org (staging)
+  and www.pomdr.org (production). PHP 8.2. Never edit the Divi parent.
+- **Redesign theme:** a Divi **child** theme at `divi-child-integration/` (theme
+  name "POMDR 2026"). Redesigned pages are child-theme templates
+  (`front-page.php`, `page-{slug}.php`, `single-pets.php`) plus a global CSS and
+  JS layer (`assets/css`, `assets/js`). Every other page inherits the look
+  through CSS.
+- **Content model:** `pets` CPT plus ACF is the source of truth for dogs; Team
+  and Events CPTs cover staff and events. Everything renders through shortcodes,
+  so staff edit content in wp-admin with no code. Authoritative ACF schema:
+  `divi-child-integration/acf-export-2026-06-09.json`.
+- **Dog status:** the ACF `status` field is a multi-value **checkbox** storing
+  **Title Case** strings: `Adoptable`, `Foster Needed`, `Sponsor Needed`,
+  `Adoption Pending`, `Adopted`, `Hospice`, `Courtesy Listing`. A dog can hold
+  more than one. Queries use `in_array('Adoptable', $status)` on the Title Case
+  values. Kebab-case slugs are a display and CSS convention only.
+- **Dog URLs:** integer `/pets/{ID}/` is canonical (indexed for years,
+  rename-safe).
+- **Forms:** LGL (Little Green Light) embeds. Adoption inquiry form
+  `utzjcNEZaqAcJk3QURlQmw`, prefilled by `field_21`; donation form
+  `62FAoG7Obtf81TYETJMN3Q`.
+- **MU plugin:** `wp-mu-plugins/pomdr-mcp-abilities.php` (mirrored into the live
+  install's `mu-plugins/`) registers WordPress Abilities exposed as MCP tools:
+  `pomdr-list-dogs`, `pomdr-get-dog`, `pomdr-create-dog`, `pomdr-update-dog`,
+  `pomdr-list-events`. No delete abilities; writes require `edit_posts`.
+- **Local dev:** a Local by Flywheel mirror at `newpomdr-local.local`. The active
+  child theme `divi-child` is a symlink to `divi-child-integration/`, so theme
+  edits are live on the mirror. Design system source of truth:
+  `design-system/MASTER.md` and the `:root` tokens in
+  `divi-child-integration/assets/css/pomdr-design.css`.
+- **Historical reference:** the static prototype under `pomdr-website/project/`
+  is a design reference only, not an active track.
 
 ---
 
-## 4. Working style
+## 5. Settled decisions (do not revisit)
 
-### Design method (human-centered, every page)
+Extracted from STACK.md section 7 and the risk-register `done` items. Do not
+reopen or re-litigate these; if a task seems to require changing one, stop and
+ask Andrew.
 
-This project uses a Stanford d.school / IDEO / Whipsaw design-thinking practice,
-baked into every part of the work, not bolted on at the end:
-
-- **Empathize first.** Design for the real person (an older adopter, a senior
-  owner in a stressful moment), not the org chart.
-- **Frame each page with "How Might We"** and give it one clear job.
-- **Surface every primary action. Never bury it in prose.** The legacy site
-  hides applications (foster, Helping Paw, volunteer, surrender) inside
-  paragraphs. The redesign always presents the primary action as a real,
-  high-contrast, 44px+ button ABOVE the explanatory text (repeated at the
-  end), so a quick user can act in one tap and a detailed user can still read
-  the full story. A link inside a sentence is never the only path to an action.
-- **Ruthless simplicity and craft (Whipsaw).** One primary action per page,
-  calm hierarchy, generous space; beauty serves clarity. Every element earns
-  its place.
-- **Prototype, test, iterate.** Bias toward action; validate with real users
-  (ideally seniors) and the quality gates, not in the abstract.
-
-Full detail and the page-by-page application live in `docs/IA-UX-AUDIT.md`.
-
-### Tone and pace
-
-Andrew has a standing rule: **never rush or be careless**. Always work
-through problems step by step, show your work, and verify before responding.
-This applies to code reasoning too — when unsure, pause and check, don't
-guess.
-
-### Planning before coding
-
-For any task larger than a typo or single-file edit:
-
-1. State the goal in one sentence.
-2. List the files that will change.
-3. List the files that will be read but not changed.
-4. Note the acceptance criteria (what makes this done).
-5. Only then write code.
-
-Use `sequentialthinking` MCP for multi-step architectural decisions
-(information architecture, custom block structure, new templates).
-
-### Context management
-
-- When context gets long, summarize state into a file at
-  `.claude/session-notes/YYYY-MM-DD.md` and reference it rather than letting
-  the window fill.
-- If Claude is getting something wrong repeatedly, Andrew's instruction is:
-  rewrite the instructions file and show where the wrong choice was made.
-  Don't patch around the misunderstanding — fix the source.
-- Prefer reading the repo and this CLAUDE.md fresh at the start of a long
-  session over relying on cached assumptions.
-
-### Commits and branches
-
-- One logical change per commit. Clear, descriptive commit messages written
-  in plain language (remember: no em dashes).
-- Branch naming: `feature/`, `fix/`, `content/`, `design/`, `a11y/` prefixes.
-- Never push directly to `main`. Always through a PR with a clear before/after.
-- Tag Andrew for review on anything touching the public-facing site.
-
-### When in doubt, don't
-
-If a request could affect production data (live posts, media, users,
-settings), stop and confirm. A staging site is the required default for all
-WordPress MCP write operations. Never issue a destructive operation (delete,
-bulk update, user modification) without a typed confirmation from Andrew.
+| Decision | Source |
+|----------|--------|
+| Keep Divi. Ship the redesign as a **Divi child theme** (`divi-child-integration/`, "POMDR 2026"), not the FSE block theme `pomdr-2026`. | STACK.md section 7 (2026-06-06) |
+| **Status canonical = live ACF `status` checkbox** (multi-value, Title Case). Kebab-case model is display-only. | STACK.md section 7 (2026-06-09); RISK A1 (done) |
+| **Dog URL canonical = integer `/pets/{ID}/`** (not slug). `redirects.csv` updated to stop asserting slug canonicalization. | STACK.md section 7 (2026-06-09); RISK A3 (done) |
+| **Donation form = LGL `62FAoG7Obtf81TYETJMN3Q`** (iframe embed on the donation page). | STACK.md section 7 and section 2 (2026-06-09); RISK B3 (done, impl deferred) |
+| **ACF schema version-controlled** via `divi-child-integration/acf-export-2026-06-09.json` (real export). The aspirational `inc/acf-fields.php` was removed. | STACK.md section 7 (2026-06-09); RISK A2 (done) |
+| **`flush_rewrite_rules()` removed from per-request**; now flushes on `after_switch_theme` only. Flush permalinks once after each deploy. | RISK A4 (done) |
+| **Adoption inquiry form = LGL `utzjcNEZaqAcJk3QURlQmw`**, prefill via `field_21`. | STACK.md section 3 (confirmed) |
 
 ---
 
-## 5. MCP toolkit and how to use each
+## 6. Current open decisions (HUMAN-gated)
 
-### Required servers for this project
+These mirror roadmap items D1 to D5 (`docs/DEPLOYMENT-ROADMAP.md`). They are
+**human decisions. Claude must not make or assume them.** Surface them and wait
+for Andrew.
 
-| Server              | Used for                                                       |
-| ------------------- | -------------------------------------------------------------- |
-| Playwright          | Full-site crawl, screenshots, visual regression, flow testing |
-| Chrome DevTools MCP | Live debugging, Lighthouse, axe-core, Core Web Vitals         |
-| Filesystem          | Read/write theme files, content exports, asset organization  |
-| Fetch               | Single-URL content pulls, competitor research                |
-| Context7            | Up-to-date docs for WordPress, Gutenberg, CSS, libraries      |
-| Sequential Thinking | Multi-step architectural reasoning                           |
-| GitHub MCP          | Repo operations, PRs, issues                                 |
-| Figma MCP           | Pull design tokens and specs into code (when Figma is used)  |
-| WordPress MCP       | Read/write to staging WP via `mcp-adapter` plugin            |
-| Google Drive        | Brand assets, photos, reference docs                         |
-
-### Tool selection rules
-
-- **"Open the site" / "see the site"** → Playwright or Chrome DevTools MCP,
-  not Fetch. Fetch gives you markdown, not rendered reality.
-- **"Check if this is accessible"** → Chrome DevTools MCP with axe-core. Not
-  your own guess.
-- **"What does this WordPress API accept?"** → Context7, not memory. WP's API
-  surface changes.
-- **"Change this content on the live site"** → WordPress MCP, staging only,
-  with Andrew's confirmation.
-- **"Look up a single URL I gave you"** → Fetch.
-- **"Plan the new information architecture"** → Sequential Thinking.
+| # | Decision | Status |
+|---|----------|--------|
+| D1 | Donation flow: keep the legacy `POMDRDonation.php` links, or move all donate CTAs to the confirmed LGL donation form. | Open (human) |
+| D2 | Adoption form: confirm the LGL adoption form id (`utzjcNEZaqAcJk3QURlQmw`) and that `field_21` is the dog-name field, then finish the prefill wiring. | Open (human); wiring in progress (RISK B1) |
+| D3 | `culture` page URL: top-level `/culture/` or nested `/about/culture/`. | Open (human) |
+| D4 | Real content vs prototype placeholders: testimonials, POMDR Videos YouTube ids, homepage stats, impact numbers. | Open (human) |
+| D5 | Domain and launch target: which site is live (new.pomdr.org vs the primary domain) and the cutover plan. | Open (human) |
 
 ---
 
-## 6. Content inventory: things Claude should know exist
+## 7. Off-limits (hard guardrails)
 
-- ~95 adoptable or recently adopted dogs (roster lives in a spreadsheet and
-  in WP; use WP as source of truth).
-- Recurring content types: adoption post, foster post, happy tail, memorial,
-  event recap, Herald print ad.
-- Established campaigns: "Forever Starts Here" for long-term dogs.
-- Email infrastructure: Mailchimp, HTML templates, images hosted at
-  mcusercontent.com. Do not break existing email flow; site content feeds
-  into emails.
-- Social scheduling: Metricool. Site content also feeds social, so writing
-  for the site means writing for downstream reuse.
-- Existing 2025 annual impact report scaffold lives in a separate project
-  archive. The new site should have a clear, linkable home for annual
-  reports.
-
-### Herald print ad format (if asked to generate one)
-
-```
-**Name** (bold)
-breed | sex | age | weight
-
-Peace of Mind Dog Rescue
-
-www.POMDR.org
-```
-
-Separate entries with a blank line. No em dashes.
+- **No production deploy or publish.** The Local mirror (or an explicit staging
+  copy) is the only write target. Never give the WordPress MCP write access to a
+  production database.
+- **Confirm destructive or outward-facing actions** (deletes, bulk updates,
+  deploys, anything published externally) with a typed confirmation from Andrew.
+- **Never push directly to `main`.** Always through a PR with a clear
+  before/after.
+- **No page builders beyond Divi**, and do not propose switching away from
+  WordPress.
+- **Do not invent dog data** (names, ages, breeds, weights, histories); it comes
+  from WordPress or a staff source. **Do not generate AI images of dogs**; all
+  photos are real.
+- **No tracking, ads, third-party widgets, or AI chatbots** without approval.
+  Adoption questions go to humans, not bots.
 
 ---
 
-## 7. Things Claude should not do
+## 8. Reference pointers
 
-- Do not use em dashes. (This is worth repeating.)
-- Do not invent dog names, ages, breeds, weights, or histories. All dog data
-  comes from WordPress or a staff-provided source.
-- Do not generate photorealistic AI images of dogs. All dog photos are real,
-  taken by volunteers or staff.
-- Do not propose switching away from WordPress. The platform is fixed.
-- Do not propose adding a page builder plugin without explicit approval. (Divi
-  itself is approved and retained as of 2026-06-06; see §3. This applies to any
-  additional builders.)
-- Do not publish to production.
-- Do not grant the WordPress MCP write access to a production database.
-- Do not add tracking, ads, or third-party widgets without approval.
-- Do not suggest AI chatbots on the site for adoption questions. Those go to
-  humans.
+Cut detail lives here so this file stays dense.
 
----
-
-## 8. Definitions and naming
-
-- **POMDR**: Peace of Mind Dog Rescue.
-- **Helping Paw**: POMDR's support-in-place program for senior people keeping
-  their senior dogs.
-- **Happy tail**: a post celebrating a successful adoption.
-- **Long-term dog / LTD**: a dog whose time in the rescue has exceeded the
-  norm. These get special campaign attention.
-- **Foster-needed**: a dog currently without a foster placement.
-- **Sanctuary dog**: a dog whose medical or behavioral needs mean they live
-  out their days in POMDR care rather than being adopted out.
-
-### Dog status vocabulary
-
-DECISION 2026-06-09 (status canonical): The authoritative storage is the live
-ACF `status` field on the `pets` CPT. It is a **checkbox (multi-value)**, so a
-dog can hold more than one status at once (for example Hospice plus Sponsor
-Needed). Values are stored as **Title Case strings**, and the live templates
-query them with `in_array('Adoptable', $status)` and similar. This supersedes
-the earlier kebab-case "7 status" model, which is now only a display
-convention. The full schema is version-controlled at
-`divi-child-integration/acf-export-2026-06-09.json`.
-
-Canonical storage values (the exact ACF checkbox choices), with the kebab-case
-slug used for CSS classes and display:
-
-| Stored value (canonical) | Display slug (CSS) | Notes                                              |
-| ------------------------ | ------------------ | -------------------------------------------------- |
-| `Adoptable`              | `available`        | Adoptable, ready to meet                           |
-| `Foster Needed`          | `foster-needed`    | Use `foster-needed-dated` when `foster_start_date` / `foster_end_date` are set |
-| `Sponsor Needed`         | `sponsor-needed`   | Sponsorship funds the dog's care while they wait   |
-| `Adoption Pending`       | `adoption-pending` | Application in final stages                        |
-| `Adopted`                | `recently-adopted` | Drives the "happy tail" treatment                  |
-| `Hospice`                | `hospice`          | Sanctuary care, not adoptable                      |
-| `Courtesy Listing`       | `courtesy-listing` | Listed for another rescue or owner                 |
-
-The kebab-case slugs (lowercase, hyphen separators) remain the convention for
-CSS class names and URL or display contexts in the prototype and the redesign
-layer. Storage and meta queries use the Title Case values above, not the slugs.
-The foster date range is a property of two date fields (`foster_start_date`,
-`foster_end_date`), not a separate stored status; `foster-needed-dated` is a
-display-only variant.
+- Architecture and how to run: `README.md`, `docs/LOCAL-BRIDGE.md`,
+  `docs/DIVI-BRIDGE-HOWTO.md`.
+- Stack and decisions log: `STACK.md`.
+- Pre-launch risks (open, in progress, done): `docs/RISK-REGISTER.md`.
+- Launch plan and mechanics: `docs/DEPLOYMENT-ROADMAP.md`,
+  `docs/DEPLOYMENT-GUIDE.md`.
+- Design system and tokens: `design-system/MASTER.md`, `DESIGN-TOKENS.md`,
+  `divi-child-integration/assets/css/pomdr-design.css`.
+- Staff editing workflow: `docs/STAFF-CONTENT-GUIDE.md`.
+- Information architecture and UX method: `docs/IA-UX-AUDIT.md`.
+- Org info safe to hardcode: Peace of Mind Dog Rescue; EIN 27-1154816; Patricia
+  J. Bauer Center, 615 Forest Ave, Pacific Grove, CA; info@pomdr.org;
+  (831) 718-9122; founded 2009.
 
 ---
 
-## 9. When this file is wrong
-
-If Claude encounters a situation this file doesn't cover, or covers
-incorrectly, the move is:
-
-1. Flag it in the response.
-2. Propose the update to CLAUDE.md.
-3. Wait for Andrew's decision before acting on the ambiguous case.
-
-This file is a living document. Treat it as source of truth, but not as
-infallible.
-
----
-
-_Last updated: 2026-06-09. Owner: Andrew Z._
+_Owner: Andrew Z. Structure last reworked 2026-07-02. When this file is wrong,
+flag it, propose the update, and wait for Andrew's decision._
