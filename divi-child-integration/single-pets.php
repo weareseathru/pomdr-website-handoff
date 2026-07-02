@@ -396,7 +396,8 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
                                 $adopt_link = esc_url(add_query_arg('dogname', get_the_title($post_id), site_url('/adoption-questionnaire/')));
                                 $adopt_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . '</a>';
-                                $sponsor_html = '<a class="et_pb_button" href="#">' . esc_html__('Sponsor', 'pom') . '</a>';
+                                $sponsor_url  = pomdr_sponsor_form_url(get_the_title($post_id));
+                                $sponsor_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . esc_url($sponsor_url) . '">' . esc_html(sprintf(__('Sponsor %s', 'pom'), get_the_title($post_id))) . '</a>';
 
                                 echo '<div class="pom-section pom-section--header">';
                                 echo '<div class="pom-row pom-row--header">';
@@ -425,7 +426,8 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
                                 $adopt_link   = esc_url(add_query_arg('dogname', get_the_title($post_id), site_url('/adoption-questionnaire/')));
                                 $adopt_html   = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . '</a>';
-                                $sponsor_html = '<a class="et_pb_button" href="#">' . esc_html__('Sponsor', 'pom') . '</a>';
+                                $sponsor_url  = pomdr_sponsor_form_url(get_the_title($post_id));
+                                $sponsor_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . esc_url($sponsor_url) . '">' . esc_html(sprintf(__('Sponsor %s', 'pom'), get_the_title($post_id))) . '</a>';
 
                                 $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="et_pb_button" href="/adopt/">Browse All Pets</a></div></div>';
                                 continue;
@@ -509,7 +511,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                                 echo '</div>';
 
                                 echo '<div class="pom-col-btn">';
-                                echo '<a class="et_pb_button" href="#">Sponsor</a>';
+                                echo $is_adopted ? '' : '<a class="et_pb_button" href="' . esc_url(pomdr_sponsor_form_url(get_the_title($post_id))) . '">' . esc_html(sprintf(__('Sponsor %s', 'pom'), get_the_title($post_id))) . '</a>';
                                 echo '</div>';
 
                                 echo '</div>';
@@ -523,7 +525,8 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
                                 $adopt_link   = esc_url(add_query_arg('dogname', get_the_title($post_id), site_url('/adoption-questionnaire/')));
                                 $adopt_html   = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">Adopt</a>';
-                                $sponsor_html = '<a class="et_pb_button" href="#">Sponsor</a>';
+                                $sponsor_url  = pomdr_sponsor_form_url(get_the_title($post_id));
+                                $sponsor_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . esc_url($sponsor_url) . '">' . esc_html(sprintf(__('Sponsor %s', 'pom'), get_the_title($post_id))) . '</a>';
 
                                 $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="et_pb_button" href="/adopt/">Browse All Pets</a></div></div>';
                                 continue;

@@ -123,6 +123,22 @@ stage, not now.
   Confirm whether each fund-specific donation moves to LGL or stays on the
   legacy processor before production.
 
+### B4. Sponsor-a-dog CTA destination unconfirmed  `open`
+The dog detail page now renders a "Sponsor {Name}" CTA at parity with the adopt
+CTA (added on `feat/sponsor-dog-cta`). Its target is not yet confirmed: it may be
+a dedicated LGL sponsor form or a route through the donation form. The button is
+built behind a single filterable config point, `pomdr_sponsor_form_url()` in
+`functions.php`, whose base URL is the constant `POMDR_SPONSOR_FORM_BASE`. As an
+interim for launch parity, that constant points at the current legacy processor
+`POMDRSponsorDog.php?dogname={Name}` (the same destination the live legacy detail
+pages use), and it carries a `TODO(HUMAN): confirm LGL sponsor form id` marker.
+- Decision owner: Andrew (see roadmap D6).
+- Get ahead of it: confirm the sponsor form id (or the donation-form route and
+  its prefill param), then update the one constant (or add a
+  `pomdr_sponsor_form_url` filter). No template change needed.
+- Do not over-engineer: keep the single config point; do not scatter sponsor
+  URLs across templates.
+
 ---
 
 ## C. CSS-overlay-on-Divi approach
