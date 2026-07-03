@@ -251,7 +251,12 @@ function render_module_fragment($layout, $post_id)
             if ($video) {
                 ?>
                 <div class="pom-video">
-                    <?php echo $video; ?>
+                    <?php
+                    // Intentionally not escaped: youtube_video is an ACF oembed field whose
+                    // value is WordPress-generated iframe markup. wp_kses_post() would strip
+                    // the iframe and break the embed. Value is not free-form user input.
+                    echo $video;
+                    ?>
                 </div>
                 <?php
             }
