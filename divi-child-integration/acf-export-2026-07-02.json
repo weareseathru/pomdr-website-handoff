@@ -117,6 +117,27 @@
                 "placeholder": "",
                 "create_options": 0,
                 "save_options": 0
+            },
+            {
+                "key": "field_pomdr_is_adoption_event",
+                "label": "Adoption event?",
+                "name": "is_adoption_event",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "Check this to list the event on the Adoption Events page (/adoption-events/). Leave off for other events.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Show on the Adoption Events page",
+                "default_value": 0,
+                "allow_in_bindings": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
             }
         ],
         "location": [
