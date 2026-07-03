@@ -1810,6 +1810,151 @@
                 "placeholder": "",
                 "create_options": 0,
                 "save_options": 0
+            },
+            {
+                "key": "field_pomdr_is_bonded_pair",
+                "label": "Bonded pair (two dogs)?",
+                "name": "is_bonded_pair",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "Turn on if this record is a bonded pair (two dogs on one listing). It reveals the second dog's stats below.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "This is a bonded pair (two dogs)",
+                "default_value": 0,
+                "allow_in_bindings": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_pomdr_second_dog",
+                "label": "Second dog",
+                "name": "second_dog",
+                "aria-label": "",
+                "type": "group",
+                "instructions": "The second dog's stats. Mirrors the primary fields. Shown only when Bonded pair is on.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_pomdr_is_bonded_pair",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "sub_fields": [
+                    {
+                        "key": "field_pomdr_sd_looks_like",
+                        "label": "Looks like",
+                        "name": "looks_like",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 0,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_pomdr_second_dog"
+                    },
+                    {
+                        "key": "field_pomdr_sd_sex",
+                        "label": "Sex",
+                        "name": "sex",
+                        "aria-label": "",
+                        "type": "checkbox",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "Male": "Male",
+                            "Female": "Female"
+                        },
+                        "default_value": [],
+                        "return_format": "label",
+                        "allow_custom": 0,
+                        "allow_in_bindings": 0,
+                        "layout": "vertical",
+                        "toggle": 0,
+                        "save_custom": 0,
+                        "custom_choice_button_text": "Add new choice",
+                        "parent_repeater": "field_pomdr_second_dog"
+                    },
+                    {
+                        "key": "field_pomdr_sd_age",
+                        "label": "Age (yrs)",
+                        "name": "age",
+                        "aria-label": "",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "min": "",
+                        "max": "",
+                        "allow_in_bindings": 0,
+                        "placeholder": "",
+                        "step": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_pomdr_second_dog"
+                    },
+                    {
+                        "key": "field_pomdr_sd_weight",
+                        "label": "Weight (lbs)",
+                        "name": "weight",
+                        "aria-label": "",
+                        "type": "number",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "min": "",
+                        "max": "",
+                        "allow_in_bindings": 0,
+                        "placeholder": "",
+                        "step": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_pomdr_second_dog"
+                    }
+                ]
             }
         ],
         "location": [
