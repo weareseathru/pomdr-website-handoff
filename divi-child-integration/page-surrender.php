@@ -113,7 +113,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
       <div class="ph-media">
         <picture>
-          <img src="<?php echo $img; ?>/pages/surrender.jpg" alt="A senior dog being cared for by POMDR">
+          <img src="<?php echo esc_url( $img ); ?>/pages/surrender.jpg" alt="A senior dog being cared for by POMDR">
         </picture>
       </div>
     </div>
@@ -162,8 +162,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p class="section-lead">Surrendering a dog is never easy. We've made the process as gentle and clear as possible.</p>
       </div>
       <picture>
-        <source type="image/webp" srcset="<?php echo $img; ?>/dog4.webp">
-        <img class="process-intro__media" src="<?php echo $img; ?>/dog4.jpeg" alt="A senior dog settling into foster care" loading="lazy">
+        <source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/dog4.webp">
+        <img class="process-intro__media" src="<?php echo esc_url( $img ); ?>/dog4.jpeg" alt="A senior dog settling into foster care" loading="lazy">
       </picture>
     </div>
     <div class="steps steps-2col">
