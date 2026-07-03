@@ -110,6 +110,7 @@ Confirmed from the crawl; folds into the existing `redirects.csv`:
 | Legacy | New | Why |
 |--------|-----|-----|
 | `/recources/` | `/resources/` | Misspelled slug live on the site (301 already noted in redirects.csv) |
+| `/adoptionevents.php` | `/adoption-events/` | Legacy page in the primary nav; now a filtered Events view (301 in redirects.csv) |
 | `pomdr.org/*` | `peaceofminddogrescue.org/*` | `pomdr.org` already 301s to the full domain; keep it |
 | `new.pomdr.org/*` | canonical host `/*` | Retire the staging host after launch |
 
