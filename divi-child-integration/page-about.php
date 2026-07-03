@@ -101,8 +101,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
       <div class="ph-media">
         <picture>
-          <source type="image/webp" srcset="<?php echo $img; ?>/pages/pomdr-house.webp">
-          <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
+          <source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pages/pomdr-house.webp">
+          <img src="<?php echo esc_url( $img ); ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
         </picture>
       </div>
     </div>
@@ -146,7 +146,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Foster and forever homes</h3>
         <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We find loving foster and forever homes for dogs whose guardians can no longer care for them, and for senior dogs in shelters.</p>
       </article>
-      <img class="whatwedo-lead__media" src="<?php echo $img; ?>/dog12.jpeg" alt="A senior POMDR dog resting in a foster home" loading="lazy">
+      <img class="whatwedo-lead__media" src="<?php echo esc_url( $img ); ?>/dog12.jpeg" alt="A senior POMDR dog resting in a foster home" loading="lazy">
     </div>
     <div class="cards-2col">
       <article class="card" style="padding:26px;">
@@ -181,8 +181,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </article>
     </div>
     <div class="recognition-row">
-      <img src="<?php echo $img; ?>/pages/greymuzzle-2025.png" alt="Grey Muzzle Organization 2025 grant recipient" loading="lazy">
-      <img src="<?php echo $img; ?>/pages/saving-senior-dogs.png" alt="Saving senior dogs recognition" loading="lazy">
+      <img src="<?php echo esc_url( $img ); ?>/pages/greymuzzle-2025.png" alt="Grey Muzzle Organization 2025 grant recipient" loading="lazy">
+      <img src="<?php echo esc_url( $img ); ?>/pages/saving-senior-dogs.png" alt="Saving senior dogs recognition" loading="lazy">
     </div>
   </div>
 </section>
