@@ -28,7 +28,7 @@ Ranked by impact times likelihood divided by effort.
 | 4 | Fix adoption-form prefill + drop hardcoded staging URL (B1) | S | **in progress** | Hardcoded `new.pomdr.org` removed (now `home_url()`). Full `field_21` prefill wiring still needs the confirmed flow. |
 | 5 | Decide integer-ID vs slug canonical dog URL (A3) | S (paper) | **done** | DECIDED 2026-06-09: integer `/pets/{ID}/` canonical. `redirects.csv` updated to drop the slug 301s. |
 | 6 | Backup + uptime + 404 log (I1, J1) | S | **open** | Config/hosting, not repo code. Converts silent multi-day failures into same-hour alerts. |
-| 7 | Reconcile ACF reference to live schema + consistent output escaping (A2, H1) | M | **in progress** | A2 DONE: real ACF export committed (`acf-export-2026-06-09.json`), aspirational `acf-fields.php` removed. Escaping pass on shortcodes (H1) still open. |
+| 7 | Reconcile ACF reference to live schema + consistent output escaping (A2, H1) | M | **done** | A2 DONE: real ACF export committed (`acf-export-2026-06-09.json`), aspirational `acf-fields.php` removed. H1 DONE 2026-07-03: full escaping pass applied (see H1). |
 
 ---
 
@@ -236,25 +236,35 @@ The header reads Theme Name "Divi Child", Author "Elegant Themes", Version
 
 ## H. Security and spam
 
-### H1. Inconsistent output escaping in shortcodes  `open`
-Many shortcodes escape correctly, but several echo unescaped image src, alt,
-title, bio, and description (functions.php 490, 600, 707, 792, 1033, 1511, 1577).
-Inputs are mostly staff-authored, but a compromised editor account becomes
-stored XSS.
-- Get ahead of it: apply `esc_url`, `esc_attr`, `esc_html`, `wp_kses_post`
-  consistently, prioritizing fields that can hold HTML (`bio`, `pet_description`).
-  Mechanical and low-risk.
-- Do not over-engineer: no security framework needed; the core escaping
-  functions are the WordPress-standard answer.
+### H1. Inconsistent output escaping in shortcodes  `done`
+RESOLVED 2026-07-03 (branch `fix/escaping-and-spam`). Full audit of every
+dynamic output across `divi-child-integration/**/*.php` and `wp-mu-plugins/*.php`
+(159 outputs classified, table in the PR). Fixes applied, one commit per file:
+- The two custom-post dog shortcodes in `functions.php` now use `esc_url()` on
+  `get_permalink()` and the thumbnail src, `esc_attr()` on the alt, and
+  `esc_html()` on `get_the_title()` and the looks_like/sex/age/weight ACF values.
+- The `$img` theme-assets URI is wrapped in `esc_url()` across the page templates
+  (image src/srcset and CSS `url()`), for consistency; output is byte-identical.
+- Verified: the already-correct paths were left as-is (pre-escaped function
+  returns, WordPress core `wp_get_attachment_image`, pre-`esc_url`'d chrome vars,
+  `pet_description` via `wp_kses_post`, and `page-adoption-questionnaire.php`'s
+  sanitize-at-read plus `esc_url` + `rawurlencode`). `single-pets.php`'s
+  `youtube_video` output is intentionally raw (WP oembed iframe markup); a code
+  comment documents why. Three-page before/after saved-source diff was
+  byte-identical.
 
-### H2. Form and contact spam  `open`
-Public forms at this traffic attract bots. LGL handles its own anti-spam. A new
-native `/contact/` form would be a target.
-- Get ahead of it: keep inquiry on LGL where possible; if a native form is
-  added, use a honeypot, not a CAPTCHA.
-- Do not over-engineer: avoid reCAPTCHA image grids for a senior audience (they
-  are time-pressured and violate the accessibility rules). A honeypot is
-  invisible, accessible, and sufficient.
+### H2. Form and contact spam  `wontfix (N/A)`
+RESOLVED 2026-07-03. The theme processes **no** forms server-side: there is no
+`admin-post`, `wp_ajax`, or `$_POST` handler anywhere in the theme or mu-plugin.
+The two `<form>` elements it renders are presentation-only (the homepage
+newsletter redirects via JS; the mailing-list posts to a static `thank-you.html`
+that nothing handles). All real form processing is LGL-hosted iframes, which run
+their own anti-spam. So there is no server-side endpoint to spam and no honeypot
+is needed here.
+- If a native form that the theme processes is ever added, use a honeypot (a
+  visually-hidden field plus a minimum-submit-time check), not a CAPTCHA.
+- Note: the newsletter/mailing-list forms lacking a working backend is a separate
+  item (B2, Mailchimp signup has no backend), not a spam issue.
 
 ---
 

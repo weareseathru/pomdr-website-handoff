@@ -102,7 +102,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </div>
       <div class="ph-media">
-        <picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-helping-paw.webp"><img src="<?php echo $img; ?>/hero-helping-paw.jpeg" alt="A POMDR volunteer walking a senior dog alongside its guardian" /></picture>
+        <picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-helping-paw.webp"><img src="<?php echo esc_url( $img ); ?>/hero-helping-paw.jpeg" alt="A POMDR volunteer walking a senior dog alongside its guardian" /></picture>
       </div>
     </div>
   </div>
@@ -116,7 +116,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <p class="section-lead">Whether you need someone to walk your dog, help with vet bills, or temporary care during a health crisis, Helping Paw is here.</p>
     <div class="programs-grid">
       <div class="program-card">
-        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="Walking Brigade volunteer"/></picture></div>
+        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-volunteer.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-volunteer.jpeg" alt="Walking Brigade volunteer"/></picture></div>
         <div class="card-body">
           <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M13 4v7h7"/><path d="M13 4a9 9 0 1 0 7 7"/></svg></div>
           <h3>Walking Brigade</h3>
@@ -125,7 +125,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </div>
       <div class="program-card">
-        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-donate.webp"><img src="<?php echo $img; ?>/pillar-donate.jpeg" alt="Senior guardian with dog"/></picture></div>
+        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-donate.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-donate.jpeg" alt="Senior guardian with dog"/></picture></div>
         <div class="card-body">
           <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3>Financial Assistance</h3>
@@ -134,7 +134,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </div>
       <div class="program-card">
-        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-adopt.webp"><img src="<?php echo $img; ?>/pillar-adopt.jpeg" alt="Couple with dog"/></picture></div>
+        <div class="card-img"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-adopt.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-adopt.jpeg" alt="Couple with dog"/></picture></div>
         <div class="card-body">
           <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
           <h3>Temporary Foster</h3>
@@ -178,7 +178,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </a>
       </div>
       <div class="brigade-img">
-        <picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="Helping Paw walking volunteer with dog" /></picture>
+        <picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-volunteer.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-volunteer.jpeg" alt="Helping Paw walking volunteer with dog" /></picture>
       </div>
     </div>
   </div>
@@ -323,7 +323,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p class="section-lead">If you cannot fill out an application or need more information, call us at <a href="tel:+18317189122">(831) 718-9122</a>. Please be aware that this will delay the processing of your request.</p>
         <p class="section-lead spanishAssistance" style="font-style:italic;">Si no puede completar una solicitud o necesita mas informacion, puede llamarnos al (831) 718-9122. Tenga en cuenta que esto retrasara el procesamiento de su solicitud.</p>
       </div>
-      <img class="assist-2col__media" src="<?php echo $img; ?>/pages/helpingpaw.jpg" alt="A POMDR volunteer walking a senior dog" loading="lazy">
+      <img class="assist-2col__media" src="<?php echo esc_url( $img ); ?>/pages/helpingpaw.jpg" alt="A POMDR volunteer walking a senior dog" loading="lazy">
     </div>
   </div>
 </section>

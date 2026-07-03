@@ -48,7 +48,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <a href="/adopt/" class="btn btn-outline">Meet our dogs</a>
         </div>
       </div>
-      <div class="ph-media"><picture><img src="<?php echo $img; ?>/pages/mrs-bauer.jpg" alt="Patricia J. Bauer, who donated the POMDR center" loading="lazy"/></picture></div>
+      <div class="ph-media"><picture><img src="<?php echo esc_url( $img ); ?>/pages/mrs-bauer.jpg" alt="Patricia J. Bauer, who donated the POMDR center" loading="lazy"/></picture></div>
     </div>
   </div>
 </header>
@@ -120,7 +120,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </div>
       <div class="visit-media">
-        <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The Patricia J. Bauer Center" loading="lazy"/>
+        <img src="<?php echo esc_url( $img ); ?>/pages/pomdr-house.jpg" alt="The Patricia J. Bauer Center" loading="lazy"/>
       </div>
     </div>
   </div>

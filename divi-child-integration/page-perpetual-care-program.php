@@ -26,8 +26,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
       <div class="ph-media">
         <picture>
-          <source type="image/webp" srcset="<?php echo $img; ?>/pages/perpetualcare.webp">
-          <img src="<?php echo $img; ?>/pages/perpetualcare.jpg" alt="A senior dog enjoying a calm day in POMDR's care" loading="lazy">
+          <source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pages/perpetualcare.webp">
+          <img src="<?php echo esc_url( $img ); ?>/pages/perpetualcare.jpg" alt="A senior dog enjoying a calm day in POMDR's care" loading="lazy">
         </picture>
       </div>
     </div>

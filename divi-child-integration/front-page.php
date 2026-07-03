@@ -14,19 +14,19 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
   <!-- ===== HERO (rotating, side-arrow navigation) ===== -->
   <section class="hero" id="hero">
     <div class="hero-slide active">
-      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-adopt.webp"><img src="<?php echo $img; ?>/hero-adopt.jpeg" alt="A gray-muzzled senior dog at rest in soft afternoon light" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></picture></div>
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-adopt.webp"><img src="<?php echo esc_url( $img ); ?>/hero-adopt.jpeg" alt="A gray-muzzled senior dog at rest in soft afternoon light" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></picture></div>
       <div class="hero-scrim"></div>
     </div>
     <div class="hero-slide">
-      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-helping-paw.webp"><img src="<?php echo $img; ?>/hero-helping-paw.jpeg" alt="A volunteer walking a small dog alongside an older guardian on a quiet street" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%"></picture></div>
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-helping-paw.webp"><img src="<?php echo esc_url( $img ); ?>/hero-helping-paw.jpeg" alt="A volunteer walking a small dog alongside an older guardian on a quiet street" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%"></picture></div>
       <div class="hero-scrim"></div>
     </div>
     <div class="hero-slide">
-      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-mission.webp"><img src="<?php echo $img; ?>/hero-mission.jpeg" alt="Two senior dogs in a sunny doorway, comfortable and at home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></picture></div>
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-mission.webp"><img src="<?php echo esc_url( $img ); ?>/hero-mission.jpeg" alt="Two senior dogs in a sunny doorway, comfortable and at home" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%"></picture></div>
       <div class="hero-scrim"></div>
     </div>
     <div class="hero-slide">
-      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo $img; ?>/hero-volunteer.webp"><img src="<?php echo $img; ?>/hero-volunteer.jpg" alt="Volunteers and dogs gathered for a morning at the Pacific Grove rescue center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"></picture></div>
+      <div class="hero-image"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-volunteer.webp"><img src="<?php echo esc_url( $img ); ?>/hero-volunteer.jpg" alt="Volunteers and dogs gathered for a morning at the Pacific Grove rescue center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%"></picture></div>
       <div class="hero-scrim"></div>
     </div>
 
@@ -99,7 +99,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
     <div class="container">
       <div class="pillars-grid">
         <div class="reveal"><a class="pillar" href="/adopt/">
-          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-adopt.webp"><img src="<?php echo $img; ?>/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-adopt.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
             <h3 class="pillar-label">Adopt</h3>
@@ -108,7 +108,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           </div>
         </a></div>
         <div class="reveal"><a class="pillar" href="/donate/">
-          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-donate.webp"><img src="<?php echo $img; ?>/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-donate.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
             <h3 class="pillar-label">Donate</h3>
@@ -117,7 +117,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           </div>
         </a></div>
         <div class="reveal"><a class="pillar" href="/volunteer/">
-          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
+          <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/pillar-volunteer.webp"><img src="<?php echo esc_url( $img ); ?>/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
             <h3 class="pillar-label">Volunteer</h3>
@@ -194,19 +194,19 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
            privacy-friendly (youtube-nocookie) and only loaded when clicked. -->
       <div class="video-grid reveal">
         <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Meet our senior dogs">
-          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog12.webp"><img class="poster" src="<?php echo $img; ?>/dog12.jpeg" alt="A senior dog looking calmly toward the camera" loading="lazy"></picture>
+          <picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/dog12.webp"><img class="poster" src="<?php echo esc_url( $img ); ?>/dog12.jpeg" alt="A senior dog looking calmly toward the camera" loading="lazy"></picture>
           <div class="scrim"></div>
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="v-title">Meet our senior dogs</div>
         </div>
         <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Inside the Helping Paw program">
-          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog9.webp"><img class="poster" src="<?php echo $img; ?>/dog9.jpeg" alt="A volunteer spending time with a small dog" loading="lazy"></picture>
+          <picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/dog9.webp"><img class="poster" src="<?php echo esc_url( $img ); ?>/dog9.jpeg" alt="A volunteer spending time with a small dog" loading="lazy"></picture>
           <div class="scrim"></div>
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="v-title">Inside the Helping Paw program</div>
         </div>
         <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Why we foster">
-          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog16.webp"><img class="poster" src="<?php echo $img; ?>/dog16.jpeg" alt="A foster dog resting comfortably at home" loading="lazy"></picture>
+          <picture><source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/dog16.webp"><img class="poster" src="<?php echo esc_url( $img ); ?>/dog16.jpeg" alt="A foster dog resting comfortably at home" loading="lazy"></picture>
           <div class="scrim"></div>
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="v-title">Why we foster</div>
