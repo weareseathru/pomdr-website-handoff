@@ -53,6 +53,26 @@ function pet_age_sex_weight($atts) {
       esc_html($sex_value_display) . ", " . esc_html($age_value) . " years old (est), " .
       esc_html($weight_value) . " lbs</span>";
 
+    // Bonded pair: render the second dog's stats under the first, same markup.
+    if ( get_field('is_bonded_pair', $atts['post_id']) ) {
+        $sd = get_field('second_dog', $atts['post_id']);
+        if ( is_array($sd) ) {
+            $sd_looks  = isset($sd['looks_like']) ? $sd['looks_like'] : '';
+            $sd_sex    = isset($sd['sex']) ? $sd['sex'] : '';
+            if ( is_array($sd_sex) ) { $sd_sex = implode(', ', $sd_sex); }
+            $sd_age    = isset($sd['age']) ? $sd['age'] : '';
+            $sd_weight = isset($sd['weight']) ? $sd['weight'] : '';
+            if ( $sd_looks !== '' || $sd_sex !== '' || $sd_age !== '' || $sd_weight !== '' ) {
+                echo "<br/><br/>" .
+                  "<span style='font-weight:600; font-weight:bold; font-size:1.6em;'>" . esc_html($sd_looks) . "</span>" .
+                  "<span style='font-weight:400; font-size:1em;'> (looks like)</span><br/>" .
+                  "<span style='font-weight:600; font-size:1.2em; '>" .
+                  esc_html($sd_sex) . ", " . esc_html($sd_age) . " years old (est), " .
+                  esc_html($sd_weight) . " lbs</span>";
+            }
+        }
+    }
+
 } else {
     echo esc_html("Inquire Directly");
 }
@@ -614,6 +634,22 @@ function pom_render_dog_card($post_id) {
     if (!empty($looks_like)) $parts[] = $looks_like;
     $meta_line = implode(' · ', $parts);
 
+    // Bonded pair: build a second stat line from the second dog, same pattern.
+    $meta_line2 = '';
+    if (get_field('is_bonded_pair', $post_id)) {
+        $sd = get_field('second_dog', $post_id);
+        if (is_array($sd)) {
+            $sd_sex = isset($sd['sex']) ? $sd['sex'] : '';
+            if (is_array($sd_sex)) $sd_sex = implode(', ', $sd_sex);
+            $parts2 = [];
+            if (isset($sd['age']) && is_numeric($sd['age']))       $parts2[] = '~' . intval($sd['age']) . ' yrs';
+            if (!empty($sd_sex))                                    $parts2[] = $sd_sex;
+            if (isset($sd['weight']) && $sd['weight'] !== '' && $sd['weight'] !== null) $parts2[] = $sd['weight'] . ' lb';
+            if (!empty($sd['looks_like']))                          $parts2[] = $sd['looks_like'];
+            $meta_line2 = implode(' · ', $parts2);
+        }
+    }
+
     $tags = [];
     if (is_numeric($age) && intval($age) >= 10) $tags[] = 'Senior';
 
@@ -659,6 +695,7 @@ function pom_render_dog_card($post_id) {
       </div><div class="info">
         <div class="name"><?php echo esc_html($name); ?></div>
         <?php if ($meta_line) : ?><div class="meta-line"><?php echo esc_html($meta_line); ?></div><?php endif; ?>
+        <?php if ($meta_line2) : ?><div class="meta-line"><?php echo esc_html($meta_line2); ?></div><?php endif; ?>
         <?php if (!empty($tags)) : ?>
           <div class="tags"><?php foreach ($tags as $t) echo '<span class="tag">' . esc_html($t) . '</span>'; ?></div>
         <?php endif; ?>
