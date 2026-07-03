@@ -286,25 +286,25 @@ function foster_a_pet_shortcode() {
             // Add featured image if it exists
             if ($image) {
                 echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
+                echo '<a href="' . esc_url(get_permalink()) . '"><img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '"></a>';
                 echo '</div>';
             }
             // Post content
             echo '<div class="custom-post-content">';
-            echo '<div class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></div>';
+            echo '<div class="custom-post-title"><a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a></div>';
             
             // Display your ACF fields
             if ($looks_like) {
-                echo $looks_like . '<br/>';
+                echo esc_html($looks_like) . '<br/>';
             }
             if ($sex) {
-                echo $sex . ', ';
+                echo esc_html($sex) . ', ';
             }
 			if ($age) {
-                echo $age . ' yrs, ';
+                echo esc_html($age) . ' yrs, ';
             }
 			if ($weight) {
-                echo $weight . ' lbs';
+                echo esc_html($weight) . ' lbs';
             }
 			if ($needs_foster) {
         		echo '</br>Foster Needed!';
@@ -407,12 +407,12 @@ function adopted_pet_sidebar_shortcode() {
             // Add featured image if it exists
             if ($image) {
                 echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
+                echo '<a href="' . esc_url(get_permalink()) . '"><img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '"></a>';
                 echo '</div>';
             }
             // Post content
             echo '<div class="custom-post-content">';
-            echo '<h2 class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+            echo '<h2 class="custom-post-title"><a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a></h2>';
             echo '</div>'; // End .custom-post-content 
             //echo '</div>'; // End .custom-post-item
         endwhile;
