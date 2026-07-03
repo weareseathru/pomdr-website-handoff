@@ -24,16 +24,16 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .role-card:hover::before{transform:scale(1.05);}
 .role-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
 .role-card>*{position:relative;z-index:2;}
-.role-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/hero-mission.jpeg);}
-.role-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/dog4.jpeg);}
-.role-card:nth-of-type(3)::before{background-image:url(<?php echo $img; ?>/hero-adopt.jpeg);}
-.role-card:nth-of-type(4)::before{background-image:url(<?php echo $img; ?>/dog9.jpeg);}
-.role-card:nth-of-type(5)::before{background-image:url(<?php echo $img; ?>/pages/benefitshop.jpg);}
-.role-card:nth-of-type(6)::before{background-image:url(<?php echo $img; ?>/dog12.jpeg);}
-.role-card:nth-of-type(7)::before{background-image:url(<?php echo $img; ?>/dog2.jpeg);}
-.role-card:nth-of-type(8)::before{background-image:url(<?php echo $img; ?>/pages/helpingpaw.jpg);}
-.role-card:nth-of-type(9)::before{background-image:url(<?php echo $img; ?>/dog6.jpeg);}
-.role-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/dog16.jpeg);}
+.role-card:nth-of-type(1)::before{background-image:url(<?php echo esc_url( $img ); ?>/hero-mission.jpeg);}
+.role-card:nth-of-type(2)::before{background-image:url(<?php echo esc_url( $img ); ?>/dog4.jpeg);}
+.role-card:nth-of-type(3)::before{background-image:url(<?php echo esc_url( $img ); ?>/hero-adopt.jpeg);}
+.role-card:nth-of-type(4)::before{background-image:url(<?php echo esc_url( $img ); ?>/dog9.jpeg);}
+.role-card:nth-of-type(5)::before{background-image:url(<?php echo esc_url( $img ); ?>/pages/benefitshop.jpg);}
+.role-card:nth-of-type(6)::before{background-image:url(<?php echo esc_url( $img ); ?>/dog12.jpeg);}
+.role-card:nth-of-type(7)::before{background-image:url(<?php echo esc_url( $img ); ?>/dog2.jpeg);}
+.role-card:nth-of-type(8)::before{background-image:url(<?php echo esc_url( $img ); ?>/pages/helpingpaw.jpg);}
+.role-card:nth-of-type(9)::before{background-image:url(<?php echo esc_url( $img ); ?>/dog6.jpeg);}
+.role-card:nth-of-type(10)::before{background-image:url(<?php echo esc_url( $img ); ?>/dog16.jpeg);}
 .role-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:rgba(255,255,255,.2)!important;color:#fff!important;backdrop-filter:blur(3px);}
 .role-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;}
 .role-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
@@ -81,8 +81,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
       <div class="ph-media">
         <picture>
-          <source type="image/webp" srcset="<?php echo $img; ?>/hero-volunteer.webp">
-          <img src="<?php echo $img; ?>/hero-volunteer.jpg" alt="A POMDR volunteer spending time with a senior dog">
+          <source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-volunteer.webp">
+          <img src="<?php echo esc_url( $img ); ?>/hero-volunteer.jpg" alt="A POMDR volunteer spending time with a senior dog">
         </picture>
       </div>
     </div>
