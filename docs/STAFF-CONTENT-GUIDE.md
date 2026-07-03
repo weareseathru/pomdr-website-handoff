@@ -44,6 +44,12 @@ Copy rules for dogs (keep the voice consistent):
 When a dog is adopted, set its status to **Adopted**; it moves to the happy-tail
 treatment automatically.
 
+Bonded pairs (two dogs on one listing): turn on the **Bonded pair (two dogs)?**
+checkbox and a **Second dog** panel appears with its own Looks like, Sex, Age, and
+Weight. Fill in both dogs' stats, and keep the record title as the pair's name
+(for example, `Tarzan and Jane`). The card and profile then show two stat lines,
+and the Adopt and Sponsor buttons carry the pair's name as one.
+
 ---
 
 ## Adding a staff member (Team)
