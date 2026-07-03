@@ -30,8 +30,8 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
       </div>
       <div class="ph-media">
         <picture>
-          <source type="image/webp" srcset="<?php echo $img; ?>/hero-mission.webp">
-          <img src="<?php echo $img; ?>/hero-mission.jpeg" alt="Two senior dogs resting comfortably at home in a sunny doorway">
+          <source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/hero-mission.webp">
+          <img src="<?php echo esc_url( $img ); ?>/hero-mission.jpeg" alt="Two senior dogs resting comfortably at home in a sunny doorway">
         </picture>
       </div>
     </div>
@@ -60,8 +60,8 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <p class="lead" style="margin:0">Every POMDR dog lives in a foster home as a member of the family until they find their permanent home. Foster parents are the bridge that helps a dog transition from their past, whether that was a loving home, a shelter, or a hard situation, into a calm new routine. We typically have about 80 dogs in our care at any time, with up to 15 more waiting for a foster home to open up.</p>
       </div>
       <picture>
-        <source type="image/webp" srcset="<?php echo $img; ?>/dog9.webp">
-        <img class="foster-intro__media" src="<?php echo $img; ?>/dog9.jpeg" alt="A senior dog in a calm foster home" loading="lazy">
+        <source type="image/webp" srcset="<?php echo esc_url( $img ); ?>/dog9.webp">
+        <img class="foster-intro__media" src="<?php echo esc_url( $img ); ?>/dog9.jpeg" alt="A senior dog in a calm foster home" loading="lazy">
       </picture>
     </div>
     <div class="steps-2col">
