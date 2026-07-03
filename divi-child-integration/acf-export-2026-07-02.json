@@ -1,0 +1,2268 @@
+[
+    {
+        "key": "group_6838cb4de3351",
+        "title": "Events",
+        "fields": [
+            {
+                "key": "field_683a29adae980",
+                "label": "Event Details",
+                "name": "event_details",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_6838e28020bd3",
+                "label": "Event Start",
+                "name": "event_start",
+                "aria-label": "",
+                "type": "date_time_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "F j, Y g:i a",
+                "return_format": "F j, Y g:i a",
+                "first_day": 1,
+                "allow_in_bindings": 0,
+                "default_to_current_date": 0
+            },
+            {
+                "key": "field_6838e29420bd4",
+                "label": "Event Image",
+                "name": "event_image",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "allow_in_bindings": 0,
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_6838e56df7b24",
+                "label": "Event End",
+                "name": "event_end",
+                "aria-label": "",
+                "type": "time_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "g:i a",
+                "return_format": "g:i a",
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_6838e7f818d97",
+                "label": "Event Type",
+                "name": "event_type",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Special Event": "Special Event",
+                    "Adoption Event": "Adoption Event",
+                    "Perpetual Event": "Perpetual Event"
+                },
+                "default_value": "Special Event",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            },
+            {
+                "key": "field_pomdr_is_adoption_event",
+                "label": "Adoption event?",
+                "name": "is_adoption_event",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "Check this to list the event on the Adoption Events page (/adoption-events/). Leave off for other events.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Show on the Adoption Events page",
+                "default_value": 0,
+                "allow_in_bindings": 0,
+                "ui": 1,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "events"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "group_pdp_logic",
+        "title": "PDP Logic Builder",
+        "fields": [
+            {
+                "key": "field_pdp_logic_groups",
+                "label": "PDP Logic Groups",
+                "name": "pdp_logic",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "collapsed": "",
+                "min": 0,
+                "max": 0,
+                "layout": "row",
+                "button_label": "Add Logic Group",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_group_name",
+                        "label": "Group Name",
+                        "name": "group_name",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": false,
+                        "conditional_logic": false,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_pdp_logic_groups"
+                    },
+                    {
+                        "key": "field_group_operator",
+                        "label": "Group Operator",
+                        "name": "group_operator",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": false,
+                        "conditional_logic": false,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "AND": "AND",
+                            "OR": "OR"
+                        },
+                        "default_value": "AND",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": "",
+                        "return_format": "value",
+                        "create_options": 0,
+                        "save_options": 0,
+                        "parent_repeater": "field_pdp_logic_groups"
+                    },
+                    {
+                        "key": "field_group_priority",
+                        "label": "Priority",
+                        "name": "priority",
+                        "aria-label": "",
+                        "type": "number",
+                        "instructions": "Higher number = evaluated earlier",
+                        "required": false,
+                        "conditional_logic": false,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "min": "",
+                        "max": "",
+                        "step": "",
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_pdp_logic_groups"
+                    },
+                    {
+                        "key": "field_group_rules",
+                        "label": "Rules",
+                        "name": "rules",
+                        "aria-label": "",
+                        "type": "repeater",
+                        "instructions": "",
+                        "required": false,
+                        "conditional_logic": false,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "button_label": "Add Rule",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "collapsed": "",
+                        "rows_per_page": 20,
+                        "sub_fields": [
+                            {
+                                "key": "field_rule_field_name",
+                                "label": "Field Name",
+                                "name": "field_name",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "ACF field name or derived field (e.g. photo_count, has_video, age, status)",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_group_rules"
+                            },
+                            {
+                                "key": "field_rule_operator",
+                                "label": "Operator",
+                                "name": "operator",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "=": "=",
+                                    "!=": "!=",
+                                    ">": ">",
+                                    "<": "<",
+                                    "contains": "contains",
+                                    "empty": "empty",
+                                    "not_empty": "not_empty"
+                                },
+                                "default_value": "=",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0,
+                                "parent_repeater": "field_group_rules"
+                            },
+                            {
+                                "key": "field_rule_value",
+                                "label": "Value",
+                                "name": "value",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "Leave empty for empty/not_empty operators",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_group_rules"
+                            }
+                        ],
+                        "parent_repeater": "field_pdp_logic_groups"
+                    },
+                    {
+                        "key": "field_group_action",
+                        "label": "Action",
+                        "name": "action",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": false,
+                        "conditional_logic": false,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "show": "Show Section(s)",
+                            "hide": "Hide Section(s)"
+                        },
+                        "default_value": "show",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": "",
+                        "return_format": "value",
+                        "create_options": 0,
+                        "save_options": 0,
+                        "parent_repeater": "field_pdp_logic_groups"
+                    },
+                    {
+                        "key": "field_group_target_sections",
+                        "label": "Target Sections",
+                        "name": "target_sections",
+                        "aria-label": "",
+                        "type": "checkbox",
+                        "instructions": "Select which sections this group affects.",
+                        "required": false,
+                        "conditional_logic": false,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "header_section": "Header Section",
+                            "gallery_section": "Gallery Section",
+                            "quick_info_section": "Quick Info Section",
+                            "bio_section": "Bio Section",
+                            "foster_banner_section": "Foster Banner Section",
+                            "video_section": "Video Section",
+                            "sponsor_section": "Sponsor Section",
+                            "hospice_section": "Hospice Section",
+                            "previous_pet_section": "Previous Pet Section",
+                            "adoption_prompt_section": "Adoption Prompt Section",
+                            "custom_html_section": "Custom HTML Section"
+                        },
+                        "layout": "vertical",
+                        "default_value": [],
+                        "allow_custom": 0,
+                        "save_custom": 0,
+                        "toggle": 0,
+                        "return_format": "value",
+                        "custom_choice_button_text": "Add new choice",
+                        "parent_repeater": "field_pdp_logic_groups"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "pets"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": false,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "group_pdp_sections",
+        "title": "PDP Sections",
+        "fields": [
+            {
+                "key": "field_pdp_sections",
+                "label": "PDP Sections",
+                "name": "pdp_sections",
+                "aria-label": "",
+                "type": "flexible_content",
+                "instructions": "",
+                "required": false,
+                "conditional_logic": false,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "layout_header_section": {
+                        "key": "layout_header_section",
+                        "name": "header_section",
+                        "label": "Header Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_header_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            },
+                            {
+                                "key": "field_header_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_header_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_gallery_section": {
+                        "key": "layout_gallery_section",
+                        "name": "gallery_section",
+                        "label": "Gallery Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_gallery_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_gallery_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_gallery_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_quick_info_section": {
+                        "key": "layout_quick_info_section",
+                        "name": "quick_info_section",
+                        "label": "Quick Info Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_quick_info_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_quick_info_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_quick_info_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_bio_section": {
+                        "key": "layout_bio_section",
+                        "name": "bio_section",
+                        "label": "Bio Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_bio_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_bio_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_bio_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_foster_banner_section": {
+                        "key": "layout_foster_banner_section",
+                        "name": "foster_banner_section",
+                        "label": "Foster Banner Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_foster_banner_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_foster_banner_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_foster_banner_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_video_section": {
+                        "key": "layout_video_section",
+                        "name": "video_section",
+                        "label": "Video Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_video_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_video_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_video_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_sponsor_section": {
+                        "key": "layout_sponsor_section",
+                        "name": "sponsor_section",
+                        "label": "Sponsor Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_sponsor_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_sponsor_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_sponsor_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_hospice_section": {
+                        "key": "layout_hospice_section",
+                        "name": "hospice_section",
+                        "label": "Hospice Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_hospice_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_hospice_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_hospice_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_previous_pet_section": {
+                        "key": "layout_previous_pet_section",
+                        "name": "previous_pet_section",
+                        "label": "Previous Pet Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_prev_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_prev_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_prev_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_adoption_prompt_section": {
+                        "key": "layout_adoption_prompt_section",
+                        "name": "adoption_prompt_section",
+                        "label": "Adoption Prompt Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_adoption_prompt_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_adoption_prompt_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_adoption_prompt_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 1,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    },
+                    "layout_custom_html_section": {
+                        "key": "layout_custom_html_section",
+                        "name": "custom_html_section",
+                        "label": "Custom HTML Section",
+                        "display": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_custom_html_position",
+                                "label": "Section Position",
+                                "name": "section_position",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "Choose left/right/full width for this section.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "left": "Left",
+                                    "right": "Right",
+                                    "full": "Full"
+                                },
+                                "default_value": "full",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_custom_html_row_mode",
+                                "label": "Row Mode",
+                                "name": "row_mode",
+                                "aria-label": "",
+                                "type": "select",
+                                "instructions": "start_new_row = new row. merge_with_previous = share row with previous (left/right).",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "choices": {
+                                    "start_new_row": "Start New Row",
+                                    "merge_with_previous": "Merge With Previous"
+                                },
+                                "default_value": "start_new_row",
+                                "multiple": 0,
+                                "allow_null": 0,
+                                "ui": 0,
+                                "ajax": 0,
+                                "placeholder": "",
+                                "return_format": "value",
+                                "create_options": 0,
+                                "save_options": 0
+                            },
+                            {
+                                "key": "field_custom_html",
+                                "label": "Custom HTML (safe)",
+                                "name": "custom_html",
+                                "aria-label": "",
+                                "type": "textarea",
+                                "instructions": "Allowed HTML will be sanitized when output.",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "new_lines": "",
+                                "maxlength": "",
+                                "placeholder": "",
+                                "rows": ""
+                            },
+                            {
+                                "key": "field_custom_html_enable",
+                                "label": "Enable Section",
+                                "name": "enable_section",
+                                "aria-label": "",
+                                "type": "true_false",
+                                "instructions": "",
+                                "required": false,
+                                "conditional_logic": false,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "ui": 1,
+                                "default_value": 0,
+                                "message": "",
+                                "ui_on_text": "",
+                                "ui_off_text": ""
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "min": "",
+                "max": "",
+                "button_label": "Add Row"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "pets"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [],
+        "active": true,
+        "description": "",
+        "show_in_rest": false,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "group_67abcfef350c7",
+        "title": "Pets",
+        "fields": [
+            {
+                "key": "field_6834c04385993",
+                "label": "Status",
+                "name": "status",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Adoptable": "Adoptable",
+                    "Foster Needed": "Foster Needed",
+                    "Sponsor Needed": "Sponsor Needed",
+                    "Adoption Pending": "Adoption Pending",
+                    "Adopted": "Adopted",
+                    "Hospice": "Hospice",
+                    "Courtesy Listing": "Courtesy Listing"
+                },
+                "default_value": [
+                    "Adoptable"
+                ],
+                "return_format": "value",
+                "allow_custom": 0,
+                "allow_in_bindings": 0,
+                "layout": "vertical",
+                "toggle": 0,
+                "save_custom": 0,
+                "custom_choice_button_text": "Add new choice"
+            },
+            {
+                "key": "field_67b64497105ac",
+                "label": "Sex",
+                "name": "sex",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Male": "Male",
+                    "Female": "Female"
+                },
+                "default_value": [],
+                "return_format": "label",
+                "allow_custom": 0,
+                "allow_in_bindings": 0,
+                "layout": "vertical",
+                "toggle": 0,
+                "save_custom": 0,
+                "custom_choice_button_text": "Add new choice"
+            },
+            {
+                "key": "field_67b64481105ab",
+                "label": "Looks like",
+                "name": "looks_like",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_67b64578e4e05",
+                "label": "Age (yrs)",
+                "name": "age",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "step": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_67b64598e4e06",
+                "label": "Weight (lbs)",
+                "name": "weight",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "step": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_67abd015876ae",
+                "label": "Pet Description",
+                "name": "pet_description",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": "br"
+            },
+            {
+                "key": "field_67e557fddcff6",
+                "label": "Photo Gallery",
+                "name": "photo_gallery",
+                "aria-label": "",
+                "type": "gallery",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "uploadedTo",
+                "min": "",
+                "max": "",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": "",
+                "mime_types": "",
+                "insert": "append",
+                "preview_size": "medium"
+            },
+            {
+                "key": "field_67e462d2232cd",
+                "label": "YouTube Video",
+                "name": "youtube_video",
+                "aria-label": "",
+                "type": "oembed",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "width": "",
+                "height": "",
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_6834c72233f2d",
+                "label": "Date Adopted",
+                "name": "date_adopted",
+                "aria-label": "",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "m/d/Y",
+                "return_format": "m/d/Y",
+                "first_day": 0,
+                "allow_in_bindings": 0,
+                "default_to_current_date": 0
+            },
+            {
+                "key": "field_689d1e920d738",
+                "label": "Foster Start Date",
+                "name": "foster_start_date",
+                "aria-label": "",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "M j",
+                "return_format": "M j",
+                "first_day": 1,
+                "default_to_current_date": 0,
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_689d1ec60d739",
+                "label": "Foster End Date",
+                "name": "foster_end_date",
+                "aria-label": "",
+                "type": "date_picker",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "display_format": "M j",
+                "return_format": "M j",
+                "first_day": 1,
+                "default_to_current_date": 0,
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_697f9a6797175",
+                "label": "Foster Details",
+                "name": "foster_details",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_69179a1f61c7b",
+                "label": "Sponsored By",
+                "name": "sponsored_by",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_6917a587edb5b",
+                "label": "Feature",
+                "name": "feature",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Yes": "Yes",
+                    "No": "No"
+                },
+                "default_value": "No",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "pets"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ]
+        ],
+        "menu_order": 1,
+        "position": "acf_after_title",
+        "style": "seamless",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content",
+            "discussion",
+            "comments",
+            "author",
+            "categories",
+            "send-trackbacks"
+        ],
+        "active": true,
+        "description": "",
+        "show_in_rest": 1,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "group_67f15b7298adb",
+        "title": "Team",
+        "fields": [
+            {
+                "key": "field_67f15b930fb4a",
+                "label": "Title",
+                "name": "title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_67f15b9a0fb4b",
+                "label": "Bio",
+                "name": "bio",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 1,
+                "rows": "",
+                "placeholder": "",
+                "new_lines": ""
+            },
+            {
+                "key": "field_67f5ad12580ba",
+                "label": "Sort",
+                "name": "sort",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "step": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_67f807f74cbe4",
+                "label": "Group",
+                "name": "group",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "Board of Directors": "Board of Directors",
+                    "Office Staff": "Office Staff",
+                    "Benefit Shop Staff": "Benefit Shop Staff",
+                    "Clinic Staff": "Clinic Staff",
+                    "Advisory Council": "Advisory Council"
+                },
+                "default_value": [],
+                "return_format": "value",
+                "allow_custom": 0,
+                "allow_in_bindings": 0,
+                "layout": "vertical",
+                "toggle": 0,
+                "save_custom": 0,
+                "custom_choice_button_text": "Add new choice"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "team"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "page"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ]
+        ],
+        "menu_order": 2,
+        "position": "acf_after_title",
+        "style": "seamless",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content",
+            "discussion",
+            "comments",
+            "author",
+            "categories"
+        ],
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "post_type_6838e2bfec0a2",
+        "title": "Events",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "events",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "allow_ai_access": false,
+        "ai_description": "",
+        "labels": {
+            "name": "Events",
+            "singular_name": "Event",
+            "menu_name": "Events",
+            "all_items": "All Events",
+            "edit_item": "Edit Event",
+            "view_item": "View Event",
+            "view_items": "View Events",
+            "add_new_item": "Add New Event",
+            "add_new": "Add New Event",
+            "new_item": "New Event",
+            "parent_item_colon": "Parent Event:",
+            "search_items": "Search Events",
+            "not_found": "No events found",
+            "not_found_in_trash": "No events found in Trash",
+            "archives": "Event Archives",
+            "attributes": "Event Attributes",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Insert into event",
+            "uploaded_to_this_item": "Uploaded to this event",
+            "filter_items_list": "Filter events list",
+            "filter_by_date": "Filter events by date",
+            "items_list_navigation": "Events list navigation",
+            "items_list": "Events list",
+            "item_published": "Event published.",
+            "item_published_privately": "Event published privately.",
+            "item_reverted_to_draft": "Event reverted to draft.",
+            "item_scheduled": "Event scheduled.",
+            "item_updated": "Event updated.",
+            "item_link": "Event Link",
+            "item_link_description": "A link to a event."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": 7,
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-calendar-alt"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "editor",
+            "thumbnail",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    },
+    {
+        "key": "post_type_67b626d5c6851",
+        "title": "Pets",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "pets",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "allow_ai_access": false,
+        "ai_description": "",
+        "labels": {
+            "name": "Pets",
+            "singular_name": "Pet",
+            "menu_name": "Pets",
+            "all_items": "All Pets",
+            "edit_item": "Edit Pet",
+            "view_item": "View Pet",
+            "view_items": "View Pets",
+            "add_new_item": "Add New Pet",
+            "add_new": "Add New Pet",
+            "new_item": "New Pet",
+            "parent_item_colon": "Parent Pet:",
+            "search_items": "Search Pets",
+            "not_found": "No pets found",
+            "not_found_in_trash": "No pets found in Trash",
+            "archives": "Pet Archives",
+            "attributes": "Pet Attributes",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Insert into pet",
+            "uploaded_to_this_item": "Uploaded to this pet",
+            "filter_items_list": "Filter pets list",
+            "filter_by_date": "Filter pets by date",
+            "items_list_navigation": "Pets list navigation",
+            "items_list": "Pets list",
+            "item_published": "Pet published.",
+            "item_published_privately": "Pet published privately.",
+            "item_reverted_to_draft": "Pet reverted to draft.",
+            "item_scheduled": "Pet scheduled.",
+            "item_updated": "Pet updated.",
+            "item_link": "Pet Link",
+            "item_link_description": "A link to a pet."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": 3,
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-pets"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "thumbnail",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    },
+    {
+        "key": "post_type_67f15c0676c54",
+        "title": "Team",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "team",
+        "advanced_configuration": true,
+        "import_source": "",
+        "import_date": "",
+        "allow_ai_access": false,
+        "ai_description": "",
+        "labels": {
+            "name": "Team",
+            "singular_name": "Team",
+            "menu_name": "Team",
+            "all_items": "Team Members",
+            "edit_item": "Edit Team Member",
+            "view_item": "View Team Member",
+            "view_items": "View Team Members",
+            "add_new_item": "Add New Team Member",
+            "add_new": "Add New Team Member",
+            "new_item": "New Team Member",
+            "parent_item_colon": "Parent Team Member:",
+            "search_items": "Search Team Members",
+            "not_found": "No team members found",
+            "not_found_in_trash": "No team members found in Trash",
+            "archives": "Team Member Archives",
+            "attributes": "Team Member Attributes",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Insert into team member",
+            "uploaded_to_this_item": "Uploaded to this team member",
+            "filter_items_list": "Filter team members list",
+            "filter_by_date": "Filter team members by date",
+            "items_list_navigation": "Team Members list navigation",
+            "items_list": "Team Members list",
+            "item_published": "Team Member published.",
+            "item_published_privately": "Team Member published privately.",
+            "item_reverted_to_draft": "Team Member reverted to draft.",
+            "item_scheduled": "Team Member scheduled.",
+            "item_updated": "Team Member updated.",
+            "item_link": "Team Member Link",
+            "item_link_description": "A link to a team member."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": 4,
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-groups"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "thumbnail",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
+    }
+]

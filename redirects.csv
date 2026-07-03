@@ -5,6 +5,7 @@ legacy_url,new_url,http_code,source,note
 /courtesy-listings/,/courtesy-listings/,200,web-capture,One of three dog category listings.
 /adopted/,/adopted/,200,web-capture,Recently adopted historical archive.
 /events/,/events/,200,web-capture,Adoption events listing.
+/adoptionevents.php,/adoption-events/,301,manual,Legacy adoption events page in the primary nav. Now a filtered view of the Events CPT (only events flagged Adoption event).
 /process/,/process/,200,web-capture,Adoption process page.
 /volunteer/,/volunteer/,200,web-capture,Volunteer opportunities.
 /volunteer-application/,/volunteer-application/,200,web-capture,LGL form embed page. Confirm with Andrew whether volunteer apps stay on LGL.

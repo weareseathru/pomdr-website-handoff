@@ -68,6 +68,10 @@ They appear in the matching section on `/about/`.
 3. **Publish**. It shows on the events page and the homepage "Upcoming" list with
    a formatted date.
 
+To feature an event on the Adoption Events page (`/adoption-events/`), turn on the
+**Adoption event?** checkbox on the event. Leave it off for events that are not
+adoption meet-and-greets, and past events fall off that page on their own.
+
 ---
 
 ## The promo banner (campaigns)
