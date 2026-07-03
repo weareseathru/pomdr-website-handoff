@@ -48,7 +48,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <a href="#services" class="btn btn-outline">What we offer</a>
         </div>
       </div>
-      <div class="ph-media"><picture><img src="<?php echo $img; ?>/pages/clinic.jpg" alt="The Harry and Jaynne Boand Veterinary Clinic in Monterey" loading="lazy"/></picture></div>
+      <div class="ph-media"><picture><img src="<?php echo esc_url( $img ); ?>/pages/clinic.jpg" alt="The Harry and Jaynne Boand Veterinary Clinic in Monterey" loading="lazy"/></picture></div>
     </div>
   </div>
 </header>
@@ -123,7 +123,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p>Founded in 2009, Peace of Mind Dog Rescue serves senior dogs and senior people across the Central Coast. The clinic is a cornerstone of that promise, keeping costs manageable so more dogs can heal and more families can stay together.</p>
       </div>
       <div class="mission-media">
-        <img class="plaque" src="<?php echo $img; ?>/pages/clinic-plaque.jpg" alt="The clinic dedication plaque" loading="lazy"/>
+        <img class="plaque" src="<?php echo esc_url( $img ); ?>/pages/clinic-plaque.jpg" alt="The clinic dedication plaque" loading="lazy"/>
       </div>
     </div>
   </div>
