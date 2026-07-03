@@ -45,18 +45,18 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
 .way-card>*{position:relative;z-index:2;}
 /* Real category photos for each way to give (from peaceofminddogrescue.org/donateoverview). */
-.way-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/donate/maxsfundlogo.jpg);}
-.way-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/donate/monicazorro.jpg);}
-.way-card:nth-of-type(3)::before{background-image:url(<?php echo $img; ?>/donate/tribute.jpg);}
-.way-card:nth-of-type(4)::before{background-image:url(<?php echo $img; ?>/donate/sponsoradog.jpg);}
-.way-card:nth-of-type(5)::before{background-image:url(<?php echo $img; ?>/donate/benefitshop.jpg);}
-.way-card:nth-of-type(6)::before{background-image:url(<?php echo $img; ?>/donate/helpingpawfund.jpg);}
-.way-card:nth-of-type(7)::before{background-image:url(<?php echo $img; ?>/donate/sponsoranad.jpg);}
-.way-card:nth-of-type(8)::before{background-image:url(<?php echo $img; ?>/donate/legacydonor.jpg);}
-.way-card:nth-of-type(9)::before{background-image:url(<?php echo $img; ?>/donate/perpetualcare.jpg);}
-.way-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/donate/stock.jpg);}
-.way-card:nth-of-type(11)::before{background-image:url(<?php echo $img; ?>/donate/plannedgiving.jpg);}
-.way-card:nth-of-type(12)::before{background-image:url(<?php echo $img; ?>/donate/wishlist.jpg);}
+.way-card:nth-of-type(1)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/maxsfundlogo.jpg);}
+.way-card:nth-of-type(2)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/monicazorro.jpg);}
+.way-card:nth-of-type(3)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/tribute.jpg);}
+.way-card:nth-of-type(4)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/sponsoradog.jpg);}
+.way-card:nth-of-type(5)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/benefitshop.jpg);}
+.way-card:nth-of-type(6)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/helpingpawfund.jpg);}
+.way-card:nth-of-type(7)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/sponsoranad.jpg);}
+.way-card:nth-of-type(8)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/legacydonor.jpg);}
+.way-card:nth-of-type(9)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/perpetualcare.jpg);}
+.way-card:nth-of-type(10)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/stock.jpg);}
+.way-card:nth-of-type(11)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/plannedgiving.jpg);}
+.way-card:nth-of-type(12)::before{background-image:url(<?php echo esc_url( $img ); ?>/donate/wishlist.jpg);}
 .way-icon{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(3px);display:grid;place-items:center;color:#fff;margin-bottom:16px;}
 .way-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;}
 .way-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
