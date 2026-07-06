@@ -646,7 +646,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   font-family: var(--font-serif); font-size: 18px; font-style: italic;
   opacity: 0.85;
 }
-.pillar h3 {
+.pillar h2 {
   font-family: var(--font-serif); font-size: 50px; font-weight: 500; letter-spacing: -0.02em;
   margin: 0 0 12px;
   text-shadow: 0 2px 14px rgba(0,0,0,0.45);
