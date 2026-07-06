@@ -1,26 +1,72 @@
 legacy_url,new_url,http_code,source,note
-/,/,200,web-capture,Homepage. No redirect needed.
-/about/,/about/,200,web-capture,Same path. Block theme renders the new about page.
-/adopt/,/adopt/,200,web-capture,Adoptable dogs listing.
-/courtesy-listings/,/courtesy-listings/,200,web-capture,One of three dog category listings.
-/adopted/,/adopted/,200,web-capture,Recently adopted historical archive.
-/events/,/events/,200,web-capture,Adoption events listing.
-/process/,/process/,200,web-capture,Adoption process page.
-/volunteer/,/volunteer/,200,web-capture,Volunteer opportunities.
-/volunteer-application/,/volunteer-application/,200,web-capture,LGL form embed page. Confirm with Andrew whether volunteer apps stay on LGL.
-/foster-needs/,/foster-needs/,200,web-capture,Foster needs page.
-/helping-paw/,/helping-paw/,200,web-capture,Helping Paw program. Anchors for Financial and Walking/Foster sub-sections.
-/recources/,/resources/,301,web-capture,Misspelled URL slug on the live site. Preserve as 301 source. Canonical becomes /resources/.
-/surrender/,/surrender/,200,web-capture,Placing your dog page. Spec calls it Placing Your Dog.
-/perpetual-care-program/,/perpetual-care-program/,200,web-capture,Spec also calls this Lifetime Care. Confirm canonical name.
-/donate/,/donate/,200,web-capture,Ways to Give page. Donation form CONFIRMED 2026-06-09: LGL form 62FAoG7Obtf81TYETJMN3Q embedded as an iframe (see STACK.md section 2). Confirm whether the canonical path is /donate/ or /donation/.
-/benefit-shop/,/benefit-shop/,200,web-capture,Benefit Shop page. Address per global CLAUDE.md is 223 Grand Ave.
-/jobs/,/jobs/,200,web-capture,Jobs page. Spec calls it Job Openings.
-/videos/,/videos/,200,web-capture,Videos page. Possibly merge into /media/ pending decision.
-/media/,/media/,200,web-capture,In the Media page.
-/testimonials/,/testimonials/,200,web-capture,Testimonials page.
-/pets/{id}/,/pets/{id}/,200,decision-2026-06-09,DECISION: integer-ID URLs are canonical (functions.php registers ^pets/([0-9]+)/ and forces post_type_link to /pets/{ID}/). The post ID carries forward, so these resolve directly. NO slug redirect. Earlier /pets/{id}/ to /pets/{slug}/ rows were removed; they would have redirected away from the canonical URL.
-/dog.php?id=*,/pets/{id}/,301,handoff-spec,Legacy old-site URL /dog.php?id=N redirects to the canonical /pets/{N}/. Implemented by the opt-in handler in divi-child-integration/inc/redirects.php. Confirm the legacy id equals the new post ID before enabling; if not, a legacy_id lookup is needed.
-/wp-admin/*,/wp-admin/*,200,inferred,WordPress admin. No redirect needed.
-,,,,
-,,,,STUB ONLY. This file is a seed. A full crawl of www.pomdr.org is required before launch to enumerate every URL the site has ever published. Run that crawl from staging once it exists.
+/dog.php?id=3878,/pets/2408/,301,name-match,Mihla
+/dog.php?id=3966,/pets/2414/,301,name-match,Corey
+/dog.php?id=4201,/pets/2437/,301,name-match,Izzy
+/dog.php?id=4208,/pets/2442/,301,name-match,Bumper Car
+/dog.php?id=4264,/pets/2448/,301,name-match,"Mattie aka Matteo (partial name match, verify)"
+/dog.php?id=4295,/pets/2460/,301,name-match,Zelda
+/dog.php?id=4297,/pets/2466/,301,name-match,Nougat
+/dog.php?id=4320,/pets/2454/,301,name-match,"Winkle (partial name match, verify)"
+/dog.php?id=4330,/pets/2472/,301,name-match,Gracie
+/dog.php?id=4377,/pets/2495/,301,name-match,Pauly D
+/dog.php?id=4417,/pets/2507/,301,name-match,Mimi
+/dog.php?id=4418,/pets/2513/,301,name-match,Watson
+/dog.php?id=4469,/pets/2524/,301,name-match,Hot Sauce
+/dog.php?id=4563,/pets/2556/,301,name-match,Casper
+/dog.php?id=4573,/pets/2561/,301,name-match,Yankee Candle
+/dog.php?id=4594,/pets/2578/,301,name-match,Gumdrop
+/dog.php?id=4610,/pets/2598/,301,name-match,Leaf
+/dog.php?id=4611,/pets/2604/,301,name-match,Clove
+/dog.php?id=4620,/pets/2610/,301,name-match,Yeti
+/dog.php?id=4628,/pets/2622/,301,name-match,Osmosis Jones
+/dog.php?id=4631,/pets/2628/,301,name-match,Spork
+/dog.php?id=4652,/pets/2640/,301,name-match,Jamesy Boy
+/dog.php?id=4654,/pets/2646/,301,name-match,Mighty Joe
+/dog.php?id=4656,/pets/2652/,301,name-match,Miss Marley
+/dog.php?id=4666,/pets/2668/,301,name-match,Malcolm
+/dog.php?id=4679,/pets/2676/,301,name-match,Walrus
+/dog.php?id=4680,/pets/2682/,301,name-match,Gingerbread
+/dog.php?id=4687,/pets/2692/,301,name-match,Snowflake
+/dog.php?id=4692,/pets/2704/,301,name-match,Tarzan and Jane
+/dog.php?id=4711,/pets/2728/,301,name-match,Beanie Baby
+/dog.php?id=4717,/pets/2734/,301,name-match,Blockbuster
+/dog.php?id=4718,/pets/2739/,301,name-match,Furby
+/dog.php?id=4721,/pets/2750/,301,name-match,Tamagotchi
+/dog.php?id=4724,/pets/2755/,301,name-match,Hubba Bubba
+/dog.php?id=4727,/pets/2761/,301,name-match,Romeo
+/dog.php?id=4730,/pets/2745/,301,name-match,Dash
+/dog.php?id=4735,/pets/2772/,301,name-match,Suki
+/dog.php?id=4744,/pets/2783/,301,name-match,Gigi
+/dog.php?id=4751,/pets/2723/,301,name-match,Mya
+/dog.php?id=4762,/pets/2823/,301,name-match,Chocolate Chunk
+/dog.php?id=4772,/pets/2865/,301,name-match,Patches
+/dog.php?id=4801,/pets/2793/,301,name-match,Jelly Bean
+/dog.php?id=4816,/pets/2402/,301,name-match,Buddy the Lab
+/dog.php?id=4856,/pets/3069/,301,name-match,Forest
+/dog.php?id=4922,/pets/3071/,301,name-match,Ketchup
+/dog.php?id=<any other>,/adopt/,301,catch-all,"Regex ^/dog\.php(?=$|\?). Any dog.php id without an explicit rule. On production, regenerate per-dog rules from the production pets CPT + the old WordPress Redirection export so genuinely-adopted dogs map to their own /pets/ page (residual catch-all can then target /adopted/)."
+/adoptionevents.php,/events/,301,crawl,
+/news.html,/,301,crawl,No news page in the redesign; homepage is the safe target
+/lifetimecare.html,/perpetual-care-program/,301,crawl,
+/helpplacingdog.html,/surrender/,301,crawl,
+/inthemedia.html,/media/,301,crawl,
+/maxsfund.html,/donate/,301,crawl,Max's Fund is a giving fund; routed to the donate hub
+/hospicedogs.php,/adopt/,301,crawl,Hospice is a status tab on /adopt/
+/courtesylistings.php,/courtesy-listings/,301,crawl,
+/adopted.php,/adopted/,301,crawl,
+/thankyou.html,/thanks/,301,crawl,
+/tributedonations.php,/donate/,301,crawl,Tribute/memorial giving; routed to the donate hub
+/POMDRMailingList.php,/mailing-list/,301,crawl,
+/bauercenter.html,/bauer-center/,301,crawl,
+/vetclinic.html,/clinic/,301,crawl,
+/benefitshop.html,/benefit-shop/,301,crawl,
+/termsandprivacy.html,/terms/,301,crawl,Old combined page; /terms/ links to /privacy/
+/videos.html,/videos/,301,crawl,
+/jobs.html,/jobs/,301,crawl,
+/aboutus.html,/about/,301,crawl,
+/adoptionprocess.html,/process/,301,crawl,
+/resources.html,/recources/,301,crawl,Mirror slug is the misspelled /recources/ (the /recources/ to /resources/ rename is still pending; see REDIRECT-MAP)
+/POMDRAdoptionQuestionnaire.php?dogname=*,/adoption-questionnaire/?dogname=*,301,form-D2,Query preserved. Theme maps dogname to LGL field_21 (D2 confirmed: form utzjcNEZaqAcJk3QURlQmw).
+/POMDRDonation.php?initialdonation=*&fund=*,/donate/?initialdonation=*&fund=*,301,form-D1,"ACTIVE variant: LGL donate page (form 62FAoG7Obtf81TYETJMN3Q), params preserved. BLOCKED-ON-D1: if D1 keeps the legacy processor, remove this rule and leave POMDRDonation.php live. See REDIRECT-MAP."
+/POMDRSponsorDog.php?dogname=*,/donate/?dogname=*,301,BLOCKED-sponsor,NOT imported. Blocked on the sponsor-form decision (no dedicated sponsor page yet; the dog-page Sponsor CTA currently uses this legacy endpoint as the interim target). Preserve dogname for the eventual sponsor form. Enable once the sponsor destination is confirmed.
+/recources/,/resources/,301,PENDING-slug,"NOT imported. The redesign intends to correct the misspelled slug to /resources/, but /resources/ is currently 404 on the mirror. Enable this (and flip resources.html to target /resources/) only after the page slug is renamed."

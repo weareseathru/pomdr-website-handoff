@@ -1,73 +1,88 @@
 # REDIRECT-MAP.md
 
-Proposed 301 rules for the POMDR migration, covering both legacy dog-URL
-schemes, plus the list of pet IDs that need manual verification.
+301 redirect map for the POMDR migration: every legacy dog URL and every
+page-level URL from the old site's navigation, mapped to the new install and
+verified on the Local mirror.
 
-Generated 2026-06-12 by direct HTTP crawl + WordPress REST API.
+Refreshed 2026-07-06 by live crawl of the old site + the mirror's WordPress
+REST API, then imported into the Redirection plugin on the mirror and tested
+with `curl -I`. Supersedes the 2026-06-12 draft and the old `redirects.csv`
+stub.
 
 ## Canonical target (settled)
 
 Per STACK.md (decision 2026-06-09), the canonical dog URL is the **integer**
-`/pets/{ID}/`, where `{ID}` is the **new.pomdr.org** WordPress post ID. All
-legacy dog URLs 301 to that.
+`/pets/{ID}/`, where `{ID}` is the **new-install** WordPress post ID. Every
+legacy dog URL 301s to that. The old (`dog.php?id=`, ~3500 to ~4928) and new
+(2402 to 3091) ID spaces are **completely disjoint** (different WordPress
+installs), so every dog redirect is an explicit, name-matched rule.
 
-## The two legacy URL schemes
+## What changed in this refresh
 
-| Scheme | Where it lives | Count seen | ID space |
-|--------|----------------|-----------:|----------|
-| `dog.php?id={id}` | Old production (`peaceofminddogrescue.org`, and `pomdr.org` which 301s to it) | 88 adoptable | old WP install, IDs ~3500 to ~4905 |
-| `/pets/{id}/` | `new.pomdr.org` (the migration target, becomes canonical) | 87 pets | new WP install, IDs 2402 to 3037 |
+- **Only `adopt.php` emits `dog.php?id=` links.** `courtesylistings.php`,
+  `hospicedogs.php`, and `adopted.php` render dog names but **zero** `dog.php`
+  links (adopted.php lists 3,536 names, 0 links). So per-dog redirects are
+  scoped to currently-adoptable dogs; every *legacy adopted* `dog.php?id=` URL
+  (indexed from old emails and social, not crawlable) is handled by one
+  catch-all.
+- **Confident dog rules: 45** (was 42). This is the *union* of the
+  2026-06-12 map and the fresh crawl. Seven dogs adopted since the prior crawl
+  and fell off the live adoptable page, but their `dog.php?id=` and `/pets/`
+  pages both still exist, so those rules stay valid. The fresh crawl adds
+  Gumdrop (2578), **Forest (3069, promoted out of the old unmatched list)**, and
+  Ketchup (3071). No ID conflicts.
+- **Unmatched-old: 43** currently-adoptable dogs that are not in the
+  mirror snapshot (the mirror was imported before they were listed, e.g. the
+  Mustard / Mayo / McGruff / Onion Ring litter). Decision: **catch-all to
+  `/adopt/`** now; regenerate per-dog on production where they will exist.
+- **Unmatched-new: 75**
+  mirror pets with no legacy `dog.php` URL (new intakes / other statuses).
+  Informational only.
 
-**The two ID spaces are completely disjoint** (old 3500 to 4905 vs new 2402 to
-3037). They are different WordPress installs, so there is **no arithmetic or
-pattern** that maps an old ID to a new ID. Every `dog.php?id=` redirect must be
-an explicit per-dog rule, matched by dog name. That matching is below.
+### The caveat that governs accuracy
 
-## Scheme A: dog.php?id= to /pets/{id}/ (per-dog 301s)
+Matching *live-adoptable* dogs against a *mirror snapshot* is a moving target.
+The mirror proves the mechanism. The authoritative old-to-new map must be
+**regenerated against the production `pets` CPT at deploy**, ideally seeded from
+the old WordPress DB's own Redirection rules so genuinely-adopted dogs map to
+their own `/pets/` page instead of the catch-all.
 
-Name-matched from the live old `/adopt/` page (88 dogs) against the
-new REST pets list (87). **42 matched** (40 exact name, 2 partial),
-**46 could not be matched** and are listed in the verification section.
+## Scheme A: dog.php?id= to /pets/{id}/ (45 per-dog 301s)
 
-Implement these via the Redirection plugin (already in the stack) or a RewriteMap.
-Example Apache form for one row:
-
-```apache
-# RewriteEngine On
-RewriteCond %{QUERY_STRING} (^|&)id=4201(&|$)
-RewriteRule ^/?dog\.php$ /pets/2437/? [R=301,L]
-```
-
-Full confident map (old to new):
+Stored as **non-regex** rows carrying the query (`/dog.php?id=N`). Redirection
+splits path and query and matches the `id` exactly, so each dog resolves to its
+own page. (Regex is the wrong tool here: Redirection strips the query before
+regex matching, see "Redirection mechanics" below.)
 
 | Old `dog.php?id=` | Dog | New `/pets/{id}/` | Match |
 |---:|-----|---|:---:|
-| `?id=3878` | Mihla - Aged to Perfection | `/pets/2408/` | exact |
-| `?id=3966` | Corey - Aged to Perfection | `/pets/2414/` | exact |
+| `?id=3878` | Mihla | `/pets/2408/` | exact |
+| `?id=3966` | Corey | `/pets/2414/` | exact |
 | `?id=4201` | Izzy | `/pets/2437/` | exact |
-| `?id=4208` | Bumper Car - Aged to Perfection | `/pets/2442/` | exact |
-| `?id=4264` | Mattie aka Matteo - Aged to Perfection | `/pets/2448/` | **partial, verify** |
-| `?id=4295` | Zelda - Aged to Perfection | `/pets/2460/` | exact |
-| `?id=4297` | Nougat - Aged to Perfection | `/pets/2466/` | exact |
-| `?id=4320` | Winkle - Aged to Perfection | `/pets/2454/` | **partial, verify** |
-| `?id=4330` | Gracie - Aged to Perfection | `/pets/2472/` | exact |
-| `?id=4377` | Pauly D - Aged to Perfection | `/pets/2495/` | exact |
-| `?id=4417` | Mimi - Aged to Perfection | `/pets/2507/` | exact |
-| `?id=4418` | Watson - Aged to Perfection | `/pets/2513/` | exact |
+| `?id=4208` | Bumper Car | `/pets/2442/` | exact |
+| `?id=4264` | Mattie aka Matteo | `/pets/2448/` | partial, verify |
+| `?id=4295` | Zelda | `/pets/2460/` | exact |
+| `?id=4297` | Nougat | `/pets/2466/` | exact |
+| `?id=4320` | Winkle | `/pets/2454/` | partial, verify |
+| `?id=4330` | Gracie | `/pets/2472/` | exact |
+| `?id=4377` | Pauly D | `/pets/2495/` | exact |
+| `?id=4417` | Mimi | `/pets/2507/` | exact |
+| `?id=4418` | Watson | `/pets/2513/` | exact |
 | `?id=4469` | Hot Sauce | `/pets/2524/` | exact |
-| `?id=4563` | Casper - Aged to Perfection | `/pets/2556/` | exact |
-| `?id=4573` | Yankee Candle - Aged to Perfection | `/pets/2561/` | exact |
-| `?id=4610` | Leaf - Aged to Perfection | `/pets/2598/` | exact |
-| `?id=4611` | Clove - Aged to Perfection | `/pets/2604/` | exact |
-| `?id=4620` | Yeti - Aged to Perfection | `/pets/2610/` | exact |
-| `?id=4628` | Osmosis Jones - Aged to Perfection | `/pets/2622/` | exact |
-| `?id=4631` | Spork - Aged to Perfection | `/pets/2628/` | exact |
-| `?id=4652` | Jamesy Boy - Aged to Perfection | `/pets/2640/` | exact |
-| `?id=4654` | Mighty Joe - Aged to Perfection | `/pets/2646/` | exact |
-| `?id=4656` | Miss Marley - Aged to Perfection | `/pets/2652/` | exact |
-| `?id=4666` | Malcolm - Aged to Perfection | `/pets/2668/` | exact |
-| `?id=4679` | Walrus - Aged to Perfection | `/pets/2676/` | exact |
-| `?id=4680` | Gingerbread - Aged to Perfection | `/pets/2682/` | exact |
+| `?id=4563` | Casper | `/pets/2556/` | exact |
+| `?id=4573` | Yankee Candle | `/pets/2561/` | exact |
+| `?id=4594` | Gumdrop | `/pets/2578/` | exact |
+| `?id=4610` | Leaf | `/pets/2598/` | exact |
+| `?id=4611` | Clove | `/pets/2604/` | exact |
+| `?id=4620` | Yeti | `/pets/2610/` | exact |
+| `?id=4628` | Osmosis Jones | `/pets/2622/` | exact |
+| `?id=4631` | Spork | `/pets/2628/` | exact |
+| `?id=4652` | Jamesy Boy | `/pets/2640/` | exact |
+| `?id=4654` | Mighty Joe | `/pets/2646/` | exact |
+| `?id=4656` | Miss Marley | `/pets/2652/` | exact |
+| `?id=4666` | Malcolm | `/pets/2668/` | exact |
+| `?id=4679` | Walrus | `/pets/2676/` | exact |
+| `?id=4680` | Gingerbread | `/pets/2682/` | exact |
 | `?id=4687` | Snowflake | `/pets/2692/` | exact |
 | `?id=4692` | Tarzan and Jane | `/pets/2704/` | exact |
 | `?id=4711` | Beanie Baby | `/pets/2728/` | exact |
@@ -84,121 +99,177 @@ Full confident map (old to new):
 | `?id=4772` | Patches | `/pets/2865/` | exact |
 | `?id=4801` | Jelly Bean | `/pets/2793/` | exact |
 | `?id=4816` | Buddy the Lab | `/pets/2402/` | exact |
+| `?id=4856` | Forest | `/pets/3069/` | exact |
+| `?id=4922` | Ketchup | `/pets/3071/` | exact |
 
-## Scheme B: /pets/{id}/ handling
+## Unmatched-old (43): catch-all to /adopt/, regenerate on production
 
-- On `new.pomdr.org` these are already the canonical pages (HTTP 200). When the
-  new site becomes the primary domain, the **same WordPress install** moves with
-  it, so `/pets/{id}/` paths carry over **1:1** and need no per-dog rule.
-- Add a **domain-consolidation 301** so the staging host and old domain land on
-  the canonical host:
+These are live-*adoptable* dogs absent from the mirror snapshot. They are not
+ambiguous; the mirror simply does not have them yet. One catch-all rule
+(`^/dog\.php(?=$|\?)` to `/adopt/`, placed last) covers them plus every
+legacy adopted-dog URL. On production, replace the catch-all's coverage of
+these specific dogs with per-dog rules generated from the production `pets` CPT.
 
-```apache
-# new.pomdr.org and pomdr.org consolidate to the canonical host, path preserved
-RewriteCond %{HTTP_HOST} ^(new\.)?pomdr\.org$ [NC]
-RewriteRule ^ https://www.peaceofminddogrescue.org%{REQUEST_URI} [R=301,L]
-```
-
-- If a **slug** dog URL is ever exposed (the prototype uses `dog/{slug}.html`,
-  and the REST API exposes slugs), 301 it to the integer canonical, for example
-  `/pets/pebble/` to `/pets/3037/`. Not currently live, so this is preventive.
-
-## Page-level 301s (non-dog)
-
-Confirmed from the crawl; folds into the existing `redirects.csv`:
-
-| Legacy | New | Why |
-|--------|-----|-----|
-| `/recources/` | `/resources/` | Misspelled slug live on the site (301 already noted in redirects.csv) |
-| `pomdr.org/*` | `peaceofminddogrescue.org/*` | `pomdr.org` already 301s to the full domain; keep it |
-| `new.pomdr.org/*` | canonical host `/*` | Retire the staging host after launch |
-
-Every other nav page kept its path (`/adopt/`, `/donate/`, `/about/`, etc.), so
-those are 200 same-path, no redirect needed.
-
-## Pet IDs to verify manually
-
-### A. Partial name matches, confirm the dog is correct (2)
-
-- `dog.php?id=4264` "Mattie aka Matteo - Aged to Perfection" to `/pets/2448/` (matched on partial name)
-- `dog.php?id=4320` "Winkle - Aged to Perfection" to `/pets/2454/` (matched on partial name)
-
-### B. Old adoptable dogs with NO new match (46)
-
-These appear on the live old `/adopt/` but did not name-match any of the 87 new
-pets. Likely reasons: adopted/removed on the new site, a renamed slug, or a
-bonded-pair/spelling difference. Verify each, then point it at the right
-`/pets/{id}/`, or to `/adopted/` (if gone) or `/adopt/` (safe fallback).
-
-| Old `dog.php?id=` | Dog name (old) | Suggested fallback |
+| Old `dog.php?id=` | Dog name (old) | Target |
 |---:|-----|-----|
-| `?id=3505` | Hatchi | `/adopt/` then verify |
-| `?id=3728` | Poppy | `/adopt/` then verify |
-| `?id=4260` | Chad - Aged to Perfection | `/adopt/` then verify |
-| `?id=4596` | Biggie | `/adopt/` then verify |
-| `?id=4709` | Hawk | `/adopt/` then verify |
-| `?id=4710` | Rita | `/adopt/` then verify |
-| `?id=4790` | Sea Bass | `/adopt/` then verify |
-| `?id=4803` | Breeze | `/adopt/` then verify |
-| `?id=4804` | Doodle the Poodle aka Scooby | `/adopt/` then verify |
-| `?id=4805` | Old Man Jenkins | `/adopt/` then verify |
-| `?id=4813` | Aloha | `/adopt/` then verify |
-| `?id=4815` | Mahalo | `/adopt/` then verify |
-| `?id=4820` | Katsu | `/adopt/` then verify |
-| `?id=4822` | Musubi | `/adopt/` then verify |
-| `?id=4833` | Doc Ricketts | `/adopt/` then verify |
-| `?id=4835` | Stormie | `/adopt/` then verify |
-| `?id=4841` | Lucy | `/adopt/` then verify |
-| `?id=4842` | Lenny | `/adopt/` then verify |
-| `?id=4843` | London Fog | `/adopt/` then verify |
-| `?id=4844` | Jackie | `/adopt/` then verify |
-| `?id=4847` | Neptune | `/adopt/` then verify |
-| `?id=4848` | Saturn | `/adopt/` then verify |
-| `?id=4853` | Orange Crush | `/adopt/` then verify |
-| `?id=4854` | Firefly | `/adopt/` then verify |
-| `?id=4856` | Forest | `/adopt/` then verify |
-| `?id=4861` | Cream Corn | `/adopt/` then verify |
-| `?id=4862` | Pine | `/adopt/` then verify |
-| `?id=4866` | Gabby | `/adopt/` then verify |
-| `?id=4868` | Bernardus | `/adopt/` then verify |
-| `?id=4869` | Grizz | `/adopt/` then verify |
-| `?id=4874` | Franc | `/adopt/` then verify |
-| `?id=4880` | Peppercorn | `/adopt/` then verify |
-| `?id=4884` | Bogart | `/adopt/` then verify |
-| `?id=4885` | Jessica | `/adopt/` then verify |
-| `?id=4886` | Celeste | `/adopt/` then verify |
-| `?id=4889` | Margaret | `/adopt/` then verify |
-| `?id=4890` | Betty | `/adopt/` then verify |
-| `?id=4891` | Emily | `/adopt/` then verify |
-| `?id=4892` | Brisket | `/adopt/` then verify |
-| `?id=4893` | Chloe | `/adopt/` then verify |
-| `?id=4899` | Reef | `/adopt/` then verify |
-| `?id=4900` | Summer | `/adopt/` then verify |
-| `?id=4901` | Snorkel | `/adopt/` then verify |
-| `?id=4902` | Shelly | `/adopt/` then verify |
-| `?id=4903` | Echo | `/adopt/` then verify |
-| `?id=4905` | Lance | `/adopt/` then verify |
+| `?id=3505` | Hatchi | `/adopt/` (catch-all) |
+| `?id=3728` | Poppy | `/adopt/` (catch-all) |
+| `?id=3735` | Phylo | `/adopt/` (catch-all) |
+| `?id=4260` | Chad - Aged to Perfection | `/adopt/` (catch-all) |
+| `?id=4596` | Biggie | `/adopt/` (catch-all) |
+| `?id=4709` | Hawk | `/adopt/` (catch-all) |
+| `?id=4710` | Rita | `/adopt/` (catch-all) |
+| `?id=4792` | Guppy | `/adopt/` (catch-all) |
+| `?id=4804` | Doodle the Poodle aka Scooby | `/adopt/` (catch-all) |
+| `?id=4805` | Old Man Jenkins | `/adopt/` (catch-all) |
+| `?id=4813` | Aloha | `/adopt/` (catch-all) |
+| `?id=4820` | Katsu | `/adopt/` (catch-all) |
+| `?id=4833` | Doc Ricketts | `/adopt/` (catch-all) |
+| `?id=4835` | Stormie | `/adopt/` (catch-all) |
+| `?id=4842` | Lenny | `/adopt/` (catch-all) |
+| `?id=4844` | Jackie | `/adopt/` (catch-all) |
+| `?id=4847` | Neptune | `/adopt/` (catch-all) |
+| `?id=4853` | Orange Crush | `/adopt/` (catch-all) |
+| `?id=4854` | Firefly | `/adopt/` (catch-all) |
+| `?id=4862` | Pine | `/adopt/` (catch-all) |
+| `?id=4866` | Gabby | `/adopt/` (catch-all) |
+| `?id=4874` | Franc | `/adopt/` (catch-all) |
+| `?id=4880` | Peppercorn | `/adopt/` (catch-all) |
+| `?id=4889` | Margaret | `/adopt/` (catch-all) |
+| `?id=4892` | Brisket | `/adopt/` (catch-all) |
+| `?id=4898` | Pina Colada | `/adopt/` (catch-all) |
+| `?id=4901` | Snorkel | `/adopt/` (catch-all) |
+| `?id=4903` | Echo | `/adopt/` (catch-all) |
+| `?id=4904` | Belle | `/adopt/` (catch-all) |
+| `?id=4905` | Lance | `/adopt/` (catch-all) |
+| `?id=4906` | Antoine | `/adopt/` (catch-all) |
+| `?id=4907` | Maxwell | `/adopt/` (catch-all) |
+| `?id=4911` | Bingo | `/adopt/` (catch-all) |
+| `?id=4914` | Abby | `/adopt/` (catch-all) |
+| `?id=4915` | Sparkler | `/adopt/` (catch-all) |
+| `?id=4917` | Potato | `/adopt/` (catch-all) |
+| `?id=4918` | Betsy | `/adopt/` (catch-all) |
+| `?id=4921` | Mustard | `/adopt/` (catch-all) |
+| `?id=4923` | Pickles | `/adopt/` (catch-all) |
+| `?id=4925` | Mayo | `/adopt/` (catch-all) |
+| `?id=4926` | McGruff | `/adopt/` (catch-all) |
+| `?id=4927` | Fritter | `/adopt/` (catch-all) |
+| `?id=4928` | Onion Ring | `/adopt/` (catch-all) |
 
-### C. New pets with no old /adopt/ match (45, informational)
+## Page-level 301s
 
-These new pets were not on the old adoptable list (new intakes, or a different
-status such as courtesy/adopted/foster). No legacy `dog.php` URL needs to point
-at them, but if any DO have an old URL you know of, add it to Scheme A.
+Legacy nav/footer URLs to the new slugs. Stored as **regex path** rules
+(`^/legacy\.ext(?=$|\?)`) so they match with or without a trailing query and
+**pass any query (e.g. `?utm_source=`) through** to the target.
 
-New IDs: `2420`(koda), `2426`(cider), `2431`(astrid), `2478`(floss), `2483`(newt), `2489`(bindi), `2501`(adele), `2518`(baguette), `2529`(marbles), `2534`(nana), `2540`(ozzy), `2545`(melon), `2551`(chucky), `2567`(aragorn), `2573`(sunshine-sophie), `2578`(gumdrop), `2583`(oscar), `2588`(tootsie-roll), `2593`(chris-anthumum), `2616`(blizzard), `2634`(panda), `2657`(root-beer), `2662`(leela), `2674`(hopper), `2687`(moose), `2698`(pirata), `2710`(dottie), `2716`(santas-little-helper), `2766`(lovey), `2777`(pearl), `2788`(neo), `2798`(pie), `2803`(ahi-tuna), `2808`(free-willy), `2813`(sugar-cookie), `2818`(shortbread), `2828`(whimsy), `2833`(skipper), `2839`(sebastian), `2844`(orca), `2849`(oyster), `2855`(flounder), `2860`(sun-bear), `2870`(godiva), `3037`(pebble)
+| Legacy | New | Note |
+|--------|-----|------|
+| `/adoptionevents.php` | `/events/` |  |
+| `/news.html` | `/` | no news page; homepage |
+| `/lifetimecare.html` | `/perpetual-care-program/` |  |
+| `/helpplacingdog.html` | `/surrender/` |  |
+| `/inthemedia.html` | `/media/` |  |
+| `/maxsfund.html` | `/donate/` | Max's Fund, giving |
+| `/hospicedogs.php` | `/adopt/` | hospice tab on /adopt/ |
+| `/courtesylistings.php` | `/courtesy-listings/` |  |
+| `/adopted.php` | `/adopted/` |  |
+| `/thankyou.html` | `/thanks/` |  |
+| `/tributedonations.php` | `/donate/` | tribute giving |
+| `/POMDRMailingList.php` | `/mailing-list/` |  |
+| `/bauercenter.html` | `/bauer-center/` |  |
+| `/vetclinic.html` | `/clinic/` |  |
+| `/benefitshop.html` | `/benefit-shop/` |  |
+| `/termsandprivacy.html` | `/terms/` | combined legacy page |
+| `/videos.html` | `/videos/` |  |
+| `/jobs.html` | `/jobs/` |  |
+| `/aboutus.html` | `/about/` |  |
+| `/adoptionprocess.html` | `/process/` |  |
+| `/resources.html` | `/recources/` | mirror slug is /recources/ (misspelled) |
 
-## Important coverage gap
+### Form endpoints (query-preserving)
 
-The old `/adopt/` page only lists **currently adoptable** dogs (88). Dogs that
-were already **adopted** on the old site still have live `dog.php?id=` URLs
-(indexed, linked from old emails and social) but are **not enumerable** from the
-crawl, and the old site has **no sitemap.xml** (404). To build a complete
-`dog.php` to `/pets/` map, export the full old dog list from the old WordPress
-DB or the existing Redirection plugin rules. Without that, adopted-dog legacy
-URLs should 301 to `/adopted/` as a catch-all:
+| Legacy | New | Status |
+|--------|-----|--------|
+| `/POMDRAdoptionQuestionnaire.php?dogname=*` | `/adoption-questionnaire/?dogname=*` | **Active.** D2 confirmed: the theme maps `dogname` to LGL `field_21` (form `utzjcNEZaqAcJk3QURlQmw`). `dogname` preserved. |
+| `/POMDRDonation.php?initialdonation=*&fund=*` | `/donate/?initialdonation=*&fund=*` | **Active (LGL variant), BLOCKED-ON-D1.** Targets the new donate page (LGL form `62FAoG7Obtf81TYETJMN3Q`), params preserved. If D1 keeps the legacy processor, delete this rule and leave `POMDRDonation.php` live. |
+| `/POMDRSponsorDog.php?dogname=*` | `/donate/?dogname=*` | **NOT imported, blocked.** No dedicated sponsor page yet; the dog-page Sponsor CTA currently uses this legacy endpoint as its interim target. Preserve `dogname` for the eventual sponsor form; enable once the sponsor destination is confirmed. |
 
-```apache
-# Catch-all for any dog.php?id= not in the explicit map above
-RewriteCond %{QUERY_STRING} (^|&)id=[0-9]+
-RewriteRule ^/?dog\.php$ /adopted/? [R=301,L]
-```
+Blocked/pending rules live in `redirects.csv` (annotated) but are **not** in
+`redirects-import.csv`, so importing the file does not fire them.
+
+## Redirection mechanics (verified on the mirror, plugin 5.8.1)
+
+Findings that shaped the rule syntax, confirmed by reading the plugin source
+and by `curl -I`:
+
+- **Import format** is `source,target,regex,code` (header row auto-skipped).
+  `regex` is `0`/`1`. The file imports through the plugin's own
+  `Red_Csv_File::load()`.
+- **Regex sources are matched against the full path+query string**, not the
+  bare path. So `^/dog\.php$` fails on `/dog.php?id=1` (the `$` hits before the
+  `?`). The correct idiom is a **lookahead**: `^/path(?=$|\?)` matches the path,
+  does not consume the `?`, and lets Redirection append the remaining query to
+  the target cleanly.
+- **The default Query Parameters mode is "Exact match in any order."** A
+  non-regex source *without* a query does **not** match a request that *has*
+  one, so a plain `/aboutus.html` rule 404s on `/aboutus.html?utm_source=x`.
+  Page rules are therefore regex (above), which match regardless of query.
+- **Dog rules are the deliberate exception:** non-regex `/dog.php?id=N` uses the
+  exact-query matcher to distinguish each `id`. The catch-all regex is ordered
+  **last** so specific dogs win by position.
+
+## QA sample (hand-verifiable, tested 2026-07-06)
+
+Imported 69 active rules into a "POMDR Migration 2026-07-06" group (91 total
+items in Redirection; see `docs/redirects/redirection-rulecount.png`). All rows
+returned HTTP 301 with the Location shown:
+
+| # | Request | 301 Location | Rule |
+|--:|---------|--------------|------|
+| 1 | `/dog.php?id=3878` | `/pets/2408/` | Mihla (exact) |
+| 2 | `/dog.php?id=4816` | `/pets/2402/` | Buddy the Lab (exact) |
+| 3 | `/dog.php?id=4922` | `/pets/3071/` | Ketchup (fresh match) |
+| 4 | `/dog.php?id=4264` | `/pets/2448/` | Mattie aka Matteo (partial-verify) |
+| 5 | `/dog.php?id=4320` | `/pets/2454/` | Winkle (partial-verify) |
+| 6 | `/dog.php?id=99999` | `/adopt/?id=99999` | catch-all |
+| 7 | `/adoptionevents.php` | `/events/` | page |
+| 8 | `/aboutus.html` | `/about/` | page |
+| 9 | `/helpplacingdog.html` | `/surrender/` | page |
+| 10 | `/POMDRAdoptionQuestionnaire.php?dogname=Rex` | `/adoption-questionnaire/?dogname=Rex` | form passthrough (D2) |
+
+Robustness spot-checks also passed: `/aboutus.html?utm_source=email` to
+`/about/?utm_source=email` (query preserved), and every page target resolves
+200 (including the passthrough targets).
+
+## Files
+
+- **`redirects-import.csv`**: the machine artifact: 69 active rules in
+  Redirection's `source,target,regex,code` format. Import via
+  Tools to Redirection to Import/Export (or the plugin's CSV importer). This
+  replaces the old stub as the operational file.
+- **`redirects.csv`**: the annotated human master: every rule including the
+  blocked/pending ones, with a `note` column. Not for direct import.
+
+## Blocked / pending (do not enable without a decision)
+
+- **D1 (donation processor):** the active donation rule assumes the LGL/new-site
+  path. If D1 keeps the legacy processor, delete `/POMDRDonation.php` to
+  `/donate/`.
+- **Sponsor form:** `/POMDRSponsorDog.php` stays live (interim CTA target).
+  Enable its redirect once a sponsor destination exists.
+- **`/recources/` to `/resources/`:** the redesign intends to fix the misspelled
+  slug, but `/resources/` is currently 404 on the mirror, so `resources.html`
+  targets `/recources/` for now. After the rename, flip `resources.html` to
+  `/resources/` and enable `/recources/` to `/resources/`.
+
+## Production deploy checklist (redirects)
+
+1. Regenerate Scheme A against the production `pets` CPT (post IDs differ per
+   install) and, if available, the old WordPress Redirection export for adopted
+   dogs.
+2. Import `redirects-import.csv` (page + form rules are install-independent).
+3. Resolve D1 and the sponsor destination; enable/remove the blocked rows.
+4. Add the domain-consolidation 301 (`pomdr.org` and `new.pomdr.org` to the
+   canonical host, path preserved).
+5. Do **not** enable any of this on production until launch. Mirror only until
+   then.
