@@ -23,9 +23,34 @@ Generated 2026-06-12 by direct HTTP crawl (see Method).
 - **Every page is Divi-builder-generated** (`et_pb_pagebuilder_layout` on all 22).
   The "Divi" column counts builder modules in the page body as a complexity signal.
 
-## Heading-outline problems (accessibility)
+## Heading-outline problems (accessibility)  `FIXED 2026-07-06`
 
-Divi modules default headings to H1/H2, producing invalid outlines:
+The counts below were measured on the **legacy** Divi site. The prototype-to-Divi
+port already resolved most of them; a full re-audit on the current mirror then
+found and fixed the remainder. **Every page below now has exactly one H1 (the page
+title) and no skipped levels** (verified by a fresh h1-h6 dump of all 22 pages;
+see branch `fix/heading-outlines`).
+
+What was actually wrong on the current mirror, and how it was fixed:
+
+- **Sitewide 4 extra H1s (every page):** Divi's Theme Builder footer (hidden and
+  replaced by our chrome footer) left four H1 modules ("Adopt or Donate", "Main
+  Office", "Vet Clinic", "Benefit Shop") in the DOM. Fixed in code by disabling
+  the TB footer via Divi's `et_theme_builder_template_layouts` filter
+  (`inc/chrome.php`).
+- **No H1:** `/events/` (a Divi-builder stub) got a `page-events.php` template
+  with an H1 (its title) plus the existing `[events]` list. `/volunteer/` and
+  `/volunteer-application/` already had an H1 from their templates.
+- **Skipped levels (found by the re-audit, several not in the legacy list):**
+  `/about/` (team + timeline h4 to h3), `/videos/` and `/recources/` and
+  `/process/` and home (card titles h3 to h2), `/surrender/` (hero card h3 to h2,
+  list items h4 to h3). All fixed in the `page-*.php` templates (or the shared
+  card/person renderer) by demoting/promoting the tag and retargeting the
+  matching style selector, so appearance is unchanged.
+- **Legacy multiple-H1 counts** (donate 18, videos 18, etc.) were already gone on
+  the current mirror; the port renders one H1 per page.
+
+Original legacy measurements (kept for reference):
 
 - **No H1 in body:** `/events/`, `/volunteer/`, `/volunteer-application/`
 - **Multiple H1s:** `/donate/` (18), `/videos/` (18), `/recources/` (9),

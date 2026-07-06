@@ -122,4 +122,32 @@ The static prototype remains the **design lab**. New ideas are explored there
 first in fast HTML, then the approved, stable patterns flow through this
 checklist into Divi. The goal is a thin, continuous lane, not a big-bang port.
 
-_Last updated: 2026-06-26. Owner: Andrew Z._
+---
+
+## Manual mirror changes to replay on production
+
+Changes made directly on the mirror (Divi UI, ACF, etc.) that are **not** carried
+by the theme code and must be redone on production. Keep this list short: prefer
+a code fix (which deploys with the theme) whenever possible.
+
+### Heading outlines (branch `fix/heading-outlines`, 2026-07-06)
+
+**Nothing to replay manually.** The heading-outline accessibility fixes are all
+in theme code and deploy with the theme:
+
+- The one Divi-content defect (the Theme Builder footer's four stray H1s on every
+  page) is handled in code, **not** by editing the Divi footer in the builder:
+  `inc/chrome.php` disables the TB footer via Divi's own
+  `et_theme_builder_template_layouts` filter (footer layout `enabled = false`).
+  So no manual Divi UI change is needed on production; deploying the theme applies
+  it. Verified on Divi 5.2.1 (no default-footer fallback; our chrome footer
+  unaffected).
+- All per-page skip fixes are `page-*.php` template edits (plus the shared
+  person-card/events renderers), also carried by the theme.
+
+Post-deploy check: load a few pages and confirm one H1 each and no skipped levels
+(the same `h1-h6` dump used on the mirror). If the four footer H1s ever reappear,
+Divi may have changed the filter contract on a major update (risk G1); re-verify
+the `et_theme_builder_template_layouts` hook.
+
+_Last updated: 2026-07-06. Owner: Andrew Z._
