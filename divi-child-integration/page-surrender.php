@@ -13,7 +13,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(0,139,176,.3),transparent 55%),radial-gradient(ellipse at 100% 100%,rgba(99,47,136,.2),transparent 55%);}
 .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;}
 .hero-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:28px;}
-.hero-card h3{font-family:var(--font-serif);font-size:20px;font-weight:400;margin:0 0 12px;color:#fff;}
+.hero-card h2{font-family:var(--font-serif);font-size:20px;font-weight:400;margin:0 0 12px;color:#fff;}
 .hero-card p{font-size:15px;color:rgba(255,255,255,.8);margin:0 0 18px;}
 @media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:36px;}}
 /* OPTIONS */
@@ -48,7 +48,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .perp-steps{display:flex;flex-direction:column;gap:14px;margin-top:10px;}
 .perp-step{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;}
 .perp-num{font-family:var(--font-serif);font-size:26px;font-weight:300;color:var(--purple-100);line-height:1;flex-shrink:0;width:32px;}
-.perp-step h4{font-family:var(--font-serif);font-size:17px;font-weight:500;margin:0 0 5px;}
+.perp-step h3{font-family:var(--font-serif);font-size:17px;font-weight:500;margin:0 0 5px;}
 .perp-step p{font-size:15px;opacity:.8;margin:0;}
 .perp-cta{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:24px;margin-top:20px;}
 .perp-cta h3{font-family:var(--font-serif);font-size:18px;font-weight:400;margin:0 0 10px;}
@@ -62,7 +62,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .faq-section{padding:100px 0;}
 .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;}
 .faq-item{background:#fff;border-radius:var(--radius);padding:24px;border:1px solid var(--line);}
-.faq-item h4{font-family:var(--font-serif);font-size:18px;font-weight:500;margin:0 0 10px;}
+.faq-item h3{font-family:var(--font-serif);font-size:18px;font-weight:500;margin:0 0 10px;}
 .faq-item p{font-size:16px;color:var(--ink-2);margin:0;}
 @media(max-width:700px){.faq-grid{grid-template-columns:1fr;}}
 /* CTA */
@@ -93,7 +93,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <a href="#perpetual" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;">Learn About Perpetual Care</a>
         </div>
         <div class="hero-card" style="margin-top:28px;">
-          <h3>Have a question first?</h3>
+          <h2>Have a question first?</h2>
           <p>We understand this is a difficult decision. Please reach out. We are here to listen and help you find the best path forward for you and your dog.</p>
           <div style="display:flex;flex-direction:column;gap:12px;font-size:15px;">
             <a href="tel:8317189122" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
@@ -214,35 +214,35 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <p class="section-lead">If your dog is accepted into our program, here is everything we take care of, for as long as it takes.</p>
     <div class="faq-grid">
       <div class="faq-item">
-        <h4>A foster home</h4>
+        <h3>A foster home</h3>
         <p>Placement in a loving foster home until your dog is adopted, never a kennel.</p>
       </div>
       <div class="faq-item">
-        <h4>High quality dog food</h4>
+        <h3>High quality dog food</h3>
         <p>Nutritious food appropriate for your dog's age and health for the duration of their stay.</p>
       </div>
       <div class="faq-item">
-        <h4>Full medical coverage</h4>
+        <h3>Full medical coverage</h3>
         <p>We cover any medical needs that come up while your dog is in our care.</p>
       </div>
       <div class="faq-item">
-        <h4>Grooming and flea control</h4>
+        <h3>Grooming and flea control</h3>
         <p>Grooming and flea control while your dog is with us.</p>
       </div>
       <div class="faq-item">
-        <h4>Socialization and companionship</h4>
+        <h3>Socialization and companionship</h3>
         <p>Your dog spends their time in a real home with people who love them.</p>
       </div>
       <div class="faq-item">
-        <h4>Careful adopter screening</h4>
+        <h3>Careful adopter screening</h3>
         <p>Screening of potential adopters, including a home visit and reference check.</p>
       </div>
       <div class="faq-item">
-        <h4>Annual follow-ups</h4>
+        <h3>Annual follow-ups</h3>
         <p>Annual follow-ups and home visits to make sure the placement has been successful.</p>
       </div>
       <div class="faq-item">
-        <h4>A lifetime safety net</h4>
+        <h3>A lifetime safety net</h3>
         <p>A safety net for the lifetime of your dog, should they ever need to find a new home at any point in their life.</p>
       </div>
     </div>
@@ -276,28 +276,28 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <div class="perp-step">
             <div class="perp-num">01</div>
             <div>
-              <h4>Apply Online</h4>
+              <h3>Apply Online</h3>
               <p>Complete the Perpetual Care application with information about your dog and your situation.</p>
             </div>
           </div>
           <div class="perp-step">
             <div class="perp-num">02</div>
             <div>
-              <h4>Create a Pet Trust</h4>
+              <h3>Create a Pet Trust</h3>
               <p>Work with an attorney to create a Pet Trust naming POMDR as the caretaker of your dog.</p>
             </div>
           </div>
           <div class="perp-step">
             <div class="perp-num">03</div>
             <div>
-              <h4>Make an Annual Gift</h4>
+              <h3>Make an Annual Gift</h3>
               <p>An annual donation to POMDR formally establishes the relationship and supports our ability to honor the commitment.</p>
             </div>
           </div>
           <div class="perp-step">
             <div class="perp-num">04</div>
             <div>
-              <h4>Peace of Mind</h4>
+              <h3>Peace of Mind</h3>
               <p>Rest easy knowing your dog will always have a safe, loving place to go, no matter what.</p>
             </div>
           </div>
@@ -319,39 +319,39 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <h2 class="section-title">Frequently <em>asked.</em></h2>
     <div class="faq-grid">
       <div class="faq-item">
-        <h4>Do you accept dogs from outside your tri-county area?</h4>
+        <h3>Do you accept dogs from outside your tri-county area?</h3>
         <p>We usually work with a waitlist of dogs from our Monterey, Santa Cruz and San Benito county area and are rarely able to bring in dogs from outside our area. Please contact us to discuss your situation.</p>
       </div>
       <div class="faq-item">
-        <h4>What do you mean by "lifetime commitment"?</h4>
+        <h3>What do you mean by "lifetime commitment"?</h3>
         <p>Every dog that enters our program has a commitment from POMDR. If an adoption doesn't work out at any point, the dog comes back to us. We never re-surrender a dog.</p>
       </div>
       <div class="faq-item">
-        <h4>What happens to my dog medically?</h4>
+        <h3>What happens to my dog medically?</h3>
         <p>Every dog receives a full medical evaluation at our Boand Clinic. We cover all approved veterinary expenses while your dog is in our care, from routine to specialist care.</p>
       </div>
       <div class="faq-item">
-        <h4>How long does the surrender process take?</h4>
+        <h3>How long does the surrender process take?</h3>
         <p>It varies based on our current capacity. We work with a waitlist, so the more notice you can give us, the better. Please contact us early. We will always do our best.</p>
       </div>
       <div class="faq-item">
-        <h4>Can I stay in touch with my dog after surrendering?</h4>
+        <h3>Can I stay in touch with my dog after surrendering?</h3>
         <p>We understand how difficult this is. Once a dog is in our care, we focus on their transition and finding the right home. We encourage you to reach out to us with any questions about their wellbeing.</p>
       </div>
       <div class="faq-item">
-        <h4>What is a Courtesy Listing?</h4>
+        <h3>What is a Courtesy Listing?</h3>
         <p>A courtesy listing is where we post your dog on our website to help you find a home. You remain responsible for their care during this time. We provide guidance and resources throughout the process.</p>
       </div>
       <div class="faq-item">
-        <h4>Will you meet my dog before taking them?</h4>
+        <h3>Will you meet my dog before taking them?</h3>
         <p>Yes. Before POMDR can intake your dog, we need to meet them. Dogs who come to POMDR must be good with other dogs (no aggression) and good with people (no bite history or propensity to bite).</p>
       </div>
       <div class="faq-item">
-        <h4>Can you take a dog with medical needs?</h4>
+        <h3>Can you take a dog with medical needs?</h3>
         <p>We are equipped to handle a variety of medical cases and senior-related issues. Some extreme cases can be difficult for us to take on, for example Epilepsy, Diabetes, Paralysis, Megaesophagus, or Advanced Dementia. Medical intakes are evaluated case by case.</p>
       </div>
       <div class="faq-item">
-        <h4>What if my dog isn't a POMDR candidate?</h4>
+        <h3>What if my dog isn't a POMDR candidate?</h3>
         <p>You can still fill out an intake questionnaire. Even if we cannot take your dog directly, we can refer you to additional resources to help you find the right placement.</p>
       </div>
     </div>
