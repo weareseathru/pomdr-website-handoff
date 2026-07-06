@@ -745,7 +745,12 @@ add_shortcode('adopt_a_pet_plp', 'adopt_a_pet_plp_shortcode');
 
 
 // ********************* EVENTS *********************
-function events_shortcode() {
+function events_shortcode($atts = array()) {
+    // Optional heading level for event-card titles. Default h3 (used on the
+    // homepage under an h2 section). The standalone /events/ page passes h2 so it
+    // reads h1 (page title) then h2 (events), with no skipped level.
+    $atts   = shortcode_atts(array('hlevel' => 'h3'), $atts, 'events');
+    $hlevel = in_array($atts['hlevel'], array('h2', 'h3', 'h4'), true) ? $atts['hlevel'] : 'h3';
     $q = new WP_Query(array(
         'post_type'      => 'events',
         'posts_per_page' => -1,
@@ -769,7 +774,7 @@ function events_shortcode() {
             if ($thumb) echo '<div class="event-photo">' . wp_get_attachment_image($thumb, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
             echo '<div class="event-body">';
             if ($type !== '')    echo '<div class="eyebrow">' . esc_html($type) . '</div>';
-            echo '<h3 class="event-title">' . esc_html(get_the_title()) . '</h3>';
+            echo '<' . $hlevel . ' class="event-title">' . esc_html(get_the_title()) . '</' . $hlevel . '>';
             if ($when !== '')    echo '<div class="event-meta">' . wp_kses_post($when) . '</div>';
             if ($details !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($details, 36)) . '</p>';
             echo '</div></article>';
