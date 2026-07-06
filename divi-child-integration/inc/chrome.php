@@ -9,6 +9,26 @@
 
 defined('ABSPATH') || exit;
 
+/**
+ * Disable Divi's Theme Builder FOOTER template.
+ *
+ * Our own footer (rendered below on wp_footer) replaces it. The TB footer was
+ * only hidden via CSS, which left its heading modules in the DOM on every page:
+ * four H1s ("Adopt or Donate", "Main Office", "Vet Clinic", "Benefit Shop") that
+ * broke the heading outline for screen-reader and SEO purposes. This uses Divi's
+ * own supported filter to skip rendering the footer layout entirely, so every
+ * page has a single H1 (the page title). Header and body templates are untouched.
+ * Verified on Divi 5.2.1: no default-footer fallback appears, our chrome footer
+ * is unaffected.
+ */
+add_filter('et_theme_builder_template_layouts', function ($layouts) {
+    if (defined('ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE')
+        && isset($layouts[ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE])) {
+        $layouts[ET_THEME_BUILDER_FOOTER_LAYOUT_POST_TYPE]['enabled'] = false;
+    }
+    return $layouts;
+});
+
 function pomdr_url($slug) {
     return esc_url(home_url('/' . ltrim($slug, '/')));
 }
