@@ -802,7 +802,7 @@ function pom_render_person_card($id) {
       <div class="person-photo<?php echo $thumb ? '' : ' person-initials'; ?>">
         <?php echo $thumb ? wp_get_attachment_image($thumb, 'medium', false, array('alt' => $name, 'loading' => 'lazy')) : esc_html(pomdr_initials($name)); ?>
       </div>
-      <h4 class="person-name"><?php echo esc_html($name); ?></h4>
+      <h3 class="person-name"><?php echo esc_html($name); ?></h3>
       <?php if ($role !== '') : ?><div class="role"><?php echo esc_html($role); ?></div><?php endif; ?>
     </div>
     <?php
