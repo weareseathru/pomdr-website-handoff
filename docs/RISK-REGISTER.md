@@ -24,7 +24,7 @@ Ranked by impact times likelihood divided by effort.
 |---|------|--------|--------|-------|
 | 1 | Remove per-request `flush_rewrite_rules()` | XS | **done** | functions.php: now flushes on `after_switch_theme` only. Flush permalinks once after deploy. |
 | 2 | Resolve the status-vocabulary fork (A1) | S (paper) | **done** | DECIDED 2026-06-09: live Title-Case checkbox is canonical. CLAUDE.md §8 and the ACF export reconciled. Live queries were already correct; unchanged. |
-| 3 | Full production crawl + real redirect map (D1) | M | **open** | `redirects.csv` is an admitted stub. Top SEO task. Needs a crawl of www.pomdr.org. |
+| 3 | Full production crawl + real redirect map (D1) | M | **in progress** | Stub replaced 2026-07-06: `redirects-import.csv` (69 rules) + annotated `redirects.csv`, imported into Redirection on the mirror and 301-verified (see `REDIRECT-MAP.md`). Remaining: regenerate Scheme A against the production `pets` CPT + old-site adopted-dog URLs at deploy. |
 | 4 | Fix adoption-form prefill + drop hardcoded staging URL (B1) | S | **in progress** | Hardcoded `new.pomdr.org` removed (now `home_url()`). Full `field_21` prefill wiring still needs the confirmed flow. |
 | 5 | Decide integer-ID vs slug canonical dog URL (A3) | S (paper) | **done** | DECIDED 2026-06-09: integer `/pets/{ID}/` canonical. `redirects.csv` updated to drop the slug 301s. |
 | 6 | Backup + uptime + 404 log (I1, J1) | S | **open** | Config/hosting, not repo code. Converts silent multi-day failures into same-hour alerts. |
@@ -150,24 +150,31 @@ inject competing styles. Staff edits in the customizer may silently win or lose.
 
 ## D. SEO and redirect/URL continuity
 
-### D1. `redirects.csv` is an explicit stub  `open`
-The file itself says a full crawl of www.pomdr.org is required before launch.
+### D1. `redirects.csv` is an explicit stub  `in progress`
+The file itself said a full crawl of www.pomdr.org is required before launch.
 A 5-year-old site at 1,000/day has hundreds of indexed URLs (old posts, happy
 tails, memorials, events). Launching without the real map means a wave of 404s
 and lost rankings.
 - Likelihood x Impact: High x High. The classic redesign-kills-SEO failure.
-- Get ahead of it: crawl production (Playwright or Screaming Frog), diff against
-  the new URL set, load the real map into the Redirection plugin, and use Search
-  Console top-pages to prioritize URLs that actually earn traffic.
+- Progress 2026-07-06: the stub is replaced by `redirects-import.csv` (69 active
+  rules: 45 name-matched dogs + a dog catch-all + 21 page rules + 2 form
+  endpoints) and an annotated `redirects.csv` master. All were imported into the
+  Redirection plugin on the mirror and verified with `curl -I` (see
+  `REDIRECT-MAP.md` and `docs/redirects/redirection-rulecount.png`).
+- Remaining before launch: regenerate the per-dog map against the **production**
+  `pets` CPT (post IDs differ per install) plus the old WordPress Redirection
+  export so genuinely-adopted dogs map to their own `/pets/` page rather than the
+  `/adopt/` catch-all. Use Search Console top-pages to prioritize.
 
-### D2. `inc/redirects.php` overlaps the Redirection plugin  `open`
+### D2. `inc/redirects.php` overlaps the Redirection plugin  `resolved`
 The dormant `redirects.php` handler (a `/recources` typo redirect and a
 `dog.php?id=N` to `/pets/{ID}/` handler) would double-redirect or loop if active
-alongside the Redirection plugin, and its target reinforces the A3 conflict.
-- Get ahead of it: choose ONE mechanism. Prefer the Redirection plugin
-  (staff-manageable, logged, no deploy). Keep `redirects.php` only for the
-  `dog.php?id=N` pattern if the plugin handles it awkwardly, aligned with the A3
-  decision.
+alongside the Redirection plugin.
+- Decision 2026-07-06: the **Redirection plugin is the single mechanism**
+  (staff-manageable, logged, no deploy). `inc/redirects.php` stays dormant
+  (`functions.php` line ~2008 confirms it is intentionally not loaded; it is
+  opt-in), so there is no overlap. Do not load it while the plugin owns
+  redirects.
 - Do not over-engineer: redirects in code need a developer and a deploy for
   every change; the plugin lets staff fix a broken link themselves.
 
