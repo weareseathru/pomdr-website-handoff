@@ -39,7 +39,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .tl-item{display:grid;grid-template-columns:90px 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--line);}
 .tl-item:last-child{border-bottom:1px solid var(--line);}
 .tl-year{font-family:var(--font-serif);font-size:32px;font-weight:300;color:var(--blue);line-height:1;}
-.tl-content h4{font-family:var(--font-serif);font-size:20px;font-weight:500;margin:0 0 6px;}
+.tl-content h3{font-family:var(--font-serif);font-size:20px;font-weight:500;margin:0 0 6px;}
 .tl-content p{font-size:16px;color:var(--ink-2);margin:0;}
 /* TEAM */
 .team-section{background:var(--cream-2);padding:100px 0;}
@@ -204,35 +204,35 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="tl-item">
         <div class="tl-year">2009</div>
         <div class="tl-content">
-          <h4>Founded in October</h4>
+          <h3>Founded in October</h3>
           <p>Monica Rua and Carie Broecker co-found Peace of Mind Dog Rescue in Pacific Grove, CA, with a focus on senior dogs and the senior people who love them.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-year">2012</div>
         <div class="tl-content">
-          <h4>Helping Paw Program Launched</h4>
+          <h3>Helping Paw Program Launched</h3>
           <p>We expand our mission to support senior guardians facing hardship, offering walking brigades, financial assistance, and temporary foster care to keep pets and people together.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-year">2017</div>
         <div class="tl-content">
-          <h4>Patricia J. Bauer Center Opens</h4>
+          <h3>Patricia J. Bauer Center Opens</h3>
           <p>POMDR opens its forever home at 615 Forest Avenue, Pacific Grove. The Patricia J. Bauer Center, a dedicated space for dogs, volunteers, and community.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-year">2021</div>
         <div class="tl-content">
-          <h4>Harry and Jaynne Boand Veterinary Clinic</h4>
+          <h3>Harry and Jaynne Boand Veterinary Clinic</h3>
           <p>The POMDR Boand Clinic opens at 1251 10th St, Monterey, giving our dogs access to in-house veterinary care and specialist services.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-year">2025</div>
         <div class="tl-content">
-          <h4>1,800+ Volunteers & Growing</h4>
+          <h3>1,800+ Volunteers & Growing</h3>
           <p>Our volunteer base reaches over 1,800 dedicated community members, fostering, transporting, walking, writing bios, and championing senior dogs every day.</p>
         </div>
       </div>
