@@ -297,41 +297,65 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <a href="/events/" class="btn btn-outline">View full calendar</a>
         </div>
       </div>
+<?php
+      // Real upcoming events from the Events CPT, soonest first. Past events
+      // drop off automatically. Staff edit these in wp-admin > Events.
+      $home_ev = new WP_Query(array(
+        'post_type'      => 'events',
+        'posts_per_page' => 5,
+        'meta_key'       => 'event_start',
+        'orderby'        => 'meta_value',
+        'order'          => 'ASC',
+        'meta_query'     => array(array(
+          'key' => 'event_start', 'value' => current_time('Y-m-d') . ' 00:00:00',
+          'compare' => '>=', 'type' => 'DATETIME',
+        )),
+      ));
+      $home_events = array();
+      if ($home_ev->have_posts()) {
+        while ($home_ev->have_posts()) { $home_ev->the_post();
+          $eid = get_the_ID();
+          $raw = (string) get_post_meta($eid, 'event_start', true);
+          $ts  = $raw ? strtotime($raw) : 0;
+          $end = trim((string) get_field('event_end', $eid));
+          $home_events[] = array(
+            'title' => get_the_title(),
+            'ts'    => $ts,
+            'type'  => trim((string) get_field('event_type', $eid)),
+            'time'  => $ts ? date('g:i a', $ts) . ($end !== '' ? ' to ' . $end : '') : '',
+          );
+        }
+        wp_reset_postdata();
+      }
+      if (!empty($home_events)) :
+        $feat = $home_events[0];
+        $rows = array_slice($home_events, 0, 4);
+      ?>
       <div class="events-layout">
         <div class="reveal">
           <div class="event-list">
-            <a class="event-row" href="/events/">
-              <div class="event-date"><div class="month">May</div><div class="day">03</div></div>
-              <div><div class="event-title">Pups on the Promenade</div><div class="event-meta"><span>10 am to 2 pm</span><span>Pacific Grove</span><span>Adoption Event</span></div></div>
+            <?php foreach ($rows as $ev) : ?>
+            <a class="event-row" href="<?php echo esc_url(home_url('/events/')); ?>">
+              <div class="event-date"><div class="month"><?php echo esc_html($ev['ts'] ? date('M', $ev['ts']) : ''); ?></div><div class="day"><?php echo esc_html($ev['ts'] ? date('d', $ev['ts']) : ''); ?></div></div>
+              <div><div class="event-title"><?php echo esc_html($ev['title']); ?></div><div class="event-meta"><?php if ($ev['time']) : ?><span><?php echo esc_html($ev['time']); ?></span><?php endif; ?><?php if ($ev['type']) : ?><span><?php echo esc_html($ev['type']); ?></span><?php endif; ?></div></div>
               <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
             </a>
-            <a class="event-row" href="/events/">
-              <div class="event-date"><div class="month">May</div><div class="day">17</div></div>
-              <div><div class="event-title">Senior Supper Fundraiser</div><div class="event-meta"><span>5:30 to 8 pm</span><span>Carmel Valley</span><span>Fundraiser</span></div></div>
-              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-            </a>
-            <a class="event-row" href="/events/">
-              <div class="event-date"><div class="month">Jun</div><div class="day">01</div></div>
-              <div><div class="event-title">Volunteer Orientation</div><div class="event-meta"><span>10 am to noon</span><span>POMDR HQ</span><span>Volunteer</span></div></div>
-              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-            </a>
-            <a class="event-row" href="/events/">
-              <div class="event-date"><div class="month">Jun</div><div class="day">14</div></div>
-              <div><div class="event-title">Doggy Day Out Walk</div><div class="event-meta"><span>9 to 11 am</span><span>Lovers Point</span><span>Community</span></div></div>
-              <div class="arrow-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-            </a>
+            <?php endforeach; ?>
           </div>
         </div>
         <div class="reveal">
           <div class="events-feature">
             <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(150deg,var(--purple-400),var(--blue-900))"></div>
-            <div class="tag">Featured · May 17</div>
-            <h3>Senior Supper. An evening for our seniors, by our friends.</h3>
-            <div class="details"><span>5:30 to 8 pm</span><span>Carmel Valley Ranch</span></div>
-            <a href="/events/" class="btn btn-light" style="width:fit-content">Reserve your seat <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <div class="tag">Featured<?php echo $feat['ts'] ? ' &middot; ' . esc_html(date('M j', $feat['ts'])) : ''; ?></div>
+            <h3><?php echo esc_html($feat['title']); ?></h3>
+            <div class="details"><?php if ($feat['time']) : ?><span><?php echo esc_html($feat['time']); ?></span><?php endif; ?><?php if ($feat['type']) : ?><span><?php echo esc_html($feat['type']); ?></span><?php endif; ?></div>
+            <a href="<?php echo esc_url(home_url('/events/')); ?>" class="btn btn-light" style="width:fit-content">See details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
           </div>
         </div>
       </div>
+      <?php else : ?>
+      <div class="reveal"><p class="lead">No events are on the calendar right now. Call (831) 718-9122 or check our Facebook for the latest.</p></div>
+      <?php endif; ?>
     </div>
   </section>
 

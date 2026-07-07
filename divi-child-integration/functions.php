@@ -286,25 +286,27 @@ function foster_a_pet_shortcode() {
             // Add featured image if it exists
             if ($image) {
                 echo '<div class="custom-post-image">';
-                echo '<a href="' . get_permalink() . '"><img src="' . $image . '" alt="' . get_the_title() . '"></a>';
+                echo '<a href="' . esc_url(get_permalink()) . '"><img src="' . esc_url($image) . '" alt="' . esc_attr(get_the_title()) . '"></a>';
                 echo '</div>';
             }
             // Post content
             echo '<div class="custom-post-content">';
-            echo '<div class="custom-post-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></div>';
-            
-            // Display your ACF fields
+            echo '<div class="custom-post-title"><a href="' . esc_url(get_permalink()) . '">' . esc_html(get_the_title()) . '</a></div>';
+
+            // Display your ACF fields. Escape every value; route sex through the
+            // shared display helper so a checkbox array never prints as "Array".
             if ($looks_like) {
-                echo $looks_like . '<br/>';
+                echo esc_html($looks_like) . '<br/>';
             }
-            if ($sex) {
-                echo $sex . ', ';
+            $sex_display = function_exists('pom_acf_sex_display') ? pom_acf_sex_display(get_the_ID()) : '';
+            if ($sex_display !== '') {
+                echo esc_html($sex_display) . ', ';
             }
 			if ($age) {
-                echo $age . ' yrs, ';
+                echo esc_html($age) . ' yrs, ';
             }
 			if ($weight) {
-                echo $weight . ' lbs';
+                echo esc_html($weight) . ' lbs';
             }
 			if ($needs_foster) {
         		echo '</br>Foster Needed!';
@@ -745,14 +747,23 @@ add_shortcode('adopt_a_pet_plp', 'adopt_a_pet_plp_shortcode');
 
 
 // ********************* EVENTS *********************
-function events_shortcode() {
+function events_shortcode($atts = array()) {
+    $atts   = shortcode_atts(array('hlevel' => 'h3'), $atts, 'events');
+    $hlevel = in_array($atts['hlevel'], array('h2', 'h3', 'h4'), true) ? $atts['hlevel'] : 'h3';
+    // Upcoming events only (today or later), soonest first. Past events drop off
+    // automatically, and any event type shows (nothing hidden by its label).
     $q = new WP_Query(array(
         'post_type'      => 'events',
-        'posts_per_page' => -1,
+        'posts_per_page' => 50,
         'meta_key'       => 'event_start',
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
-        'meta_query'     => array(array('key' => 'event_type', 'value' => 'Special Event', 'compare' => 'LIKE')),
+        'meta_query'     => array(array(
+            'key'     => 'event_start',
+            'value'   => current_time('Y-m-d') . ' 00:00:00',
+            'compare' => '>=',
+            'type'    => 'DATETIME',
+        )),
     ));
     ob_start();
     if ($q->have_posts()) :
@@ -761,15 +772,25 @@ function events_shortcode() {
             $id      = get_the_ID();
             $type    = trim((string) get_field('event_type', $id));
             $start   = pomdr_event_date(get_field('event_start', $id));
-            $end     = pomdr_event_date(get_field('event_end', $id));
+            // event_end is a time_picker (for example "6:00 pm"), not a date.
+            // Append it as an end time; do NOT run it through the date parser,
+            // which would resolve a bare time to today and print a bogus range.
+            $end_raw = trim((string) get_field('event_end', $id));
             $details = trim((string) get_field('event_details', $id));
+            // Event photo: the Featured Image, falling back to the legacy
+            // event_image field so older events keep their picture.
             $thumb   = get_post_thumbnail_id($id);
-            $when    = $start . (($end && $end !== $start) ? ' &ndash; ' . $end : '');
+            if (!$thumb) {
+                $legacy = get_field('event_image', $id);
+                if (is_array($legacy) && !empty($legacy['ID'])) { $thumb = (int) $legacy['ID']; }
+                elseif (is_numeric($legacy))                    { $thumb = (int) $legacy; }
+            }
+            $when    = $start . ($end_raw !== '' ? ' to ' . esc_html($end_raw) : '');
             echo '<article class="event-card">';
             if ($thumb) echo '<div class="event-photo">' . wp_get_attachment_image($thumb, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
             echo '<div class="event-body">';
             if ($type !== '')    echo '<div class="eyebrow">' . esc_html($type) . '</div>';
-            echo '<h3 class="event-title">' . esc_html(get_the_title()) . '</h3>';
+            echo '<' . $hlevel . ' class="event-title">' . esc_html(get_the_title()) . '</' . $hlevel . '>';
             if ($when !== '')    echo '<div class="event-meta">' . wp_kses_post($when) . '</div>';
             if ($details !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($details, 36)) . '</p>';
             echo '</div></article>';
