@@ -135,3 +135,139 @@ function pomdr_validate_status_value($valid, $value, $field, $input) {
     return $valid;
 }
 add_filter('acf/validate_value/name=status', 'pomdr_validate_status_value', 10, 4);
+
+/* ============================================================
+ * (3) Editor validation (kind, plain-language messages)
+ * ============================================================
+ * Enforced for everyone (admins included) because these keep the public cards
+ * from breaking, not just the role. Messages are gentle and say why.
+ *
+ * Dogs (pets):
+ *   - a featured photo (the card image) is required
+ *   - the name (post title) must not be empty
+ *   - weight is numeric, 1 to 250 lb
+ *   - age is numeric, 0 to 25 yrs
+ * Events:
+ *   - the start date is required (blocks save if missing)
+ *   - a start date in the past shows a friendly warning, but does NOT block
+ */
+
+/**
+ * Weight: numeric, 1 to 250 lb.
+ */
+function pomdr_validate_weight($valid, $value, $field, $input) {
+    if ($valid !== true || $value === '' || $value === null) {
+        return $valid;
+    }
+    if (!is_numeric($value)) {
+        return 'Please enter the weight as a number (pounds).';
+    }
+    $w = (float) $value;
+    if ($w < 1 || $w > 250) {
+        return 'Please enter a weight between 1 and 250 lb.';
+    }
+    return $valid;
+}
+add_filter('acf/validate_value/name=weight', 'pomdr_validate_weight', 10, 4);
+
+/**
+ * Age: numeric, 0 to 25 yrs.
+ */
+function pomdr_validate_age($valid, $value, $field, $input) {
+    if ($valid !== true || $value === '' || $value === null) {
+        return $valid;
+    }
+    if (!is_numeric($value)) {
+        return 'Please enter the age as a number (years).';
+    }
+    $a = (float) $value;
+    if ($a < 0 || $a > 25) {
+        return 'Please enter an age between 0 and 25 yrs.';
+    }
+    return $valid;
+}
+add_filter('acf/validate_value/name=age', 'pomdr_validate_age', 10, 4);
+
+/**
+ * Event start date is required.
+ */
+function pomdr_validate_event_start($valid, $value, $field, $input) {
+    if ($valid !== true) {
+        return $valid;
+    }
+    if ($value === '' || $value === null) {
+        return 'Please add the event start date so it shows up on the calendar.';
+    }
+    return $valid;
+}
+add_filter('acf/validate_value/name=event_start', 'pomdr_validate_event_start', 10, 4);
+
+/**
+ * Dog-only, form-level checks that are not single ACF fields: the featured
+ * photo (the card image) and the name (post title). Runs during ACF's save
+ * validation, so a failure blocks the save with a kind message.
+ */
+function pomdr_validate_pet_save() {
+    $post_type = isset($_POST['post_type']) ? sanitize_key($_POST['post_type']) : '';
+    if ($post_type !== 'pets') {
+        return;
+    }
+
+    $name = isset($_POST['post_title']) ? trim(sanitize_text_field(wp_unslash($_POST['post_title']))) : '';
+    if ($name === '') {
+        acf_add_validation_error('', 'Please give the dog a name in the Title field at the top.');
+    }
+    $friendly = $name !== '' ? $name : 'this dog';
+
+    // Featured image: the card uses the post thumbnail. It arrives as the
+    // hidden _thumbnail_id field (classic editor); fall back to any already
+    // saved thumbnail for the block editor.
+    $thumb = isset($_POST['_thumbnail_id']) ? (int) $_POST['_thumbnail_id'] : 0;
+    if ($thumb <= 0) {
+        $post_id = isset($_POST['post_ID']) ? (int) $_POST['post_ID'] : 0;
+        $thumb = $post_id ? (int) get_post_thumbnail_id($post_id) : 0;
+    }
+    if ($thumb <= 0) {
+        acf_add_validation_error(
+            '',
+            sprintf('Please add a featured photo so %s\'s card looks great.', $friendly)
+        );
+    }
+}
+add_action('acf/validate_save_post', 'pomdr_validate_pet_save');
+
+/**
+ * Event start date in the past: a friendly, non-blocking warning. Set during
+ * save, shown once on the next admin screen via a transient.
+ */
+function pomdr_flag_past_event($post_id) {
+    if (get_post_type($post_id) !== 'events') {
+        return;
+    }
+    $start = get_field('event_start', $post_id);
+    if (!$start) {
+        return;
+    }
+    $ts = strtotime((string) $start);
+    if ($ts && $ts < current_time('timestamp')) {
+        set_transient('pomdr_event_past_' . get_current_user_id(), (int) $post_id, 60);
+    }
+}
+add_action('acf/save_post', 'pomdr_flag_past_event', 20);
+
+/**
+ * Show the past-event warning once (non-blocking).
+ */
+function pomdr_past_event_notice() {
+    $key = 'pomdr_event_past_' . get_current_user_id();
+    $post_id = (int) get_transient($key);
+    if (!$post_id) {
+        return;
+    }
+    delete_transient($key);
+    printf(
+        '<div class="notice notice-warning is-dismissible"><p>%s</p></div>',
+        esc_html__('Heads up: this event\'s start date is in the past, so it will not appear in the upcoming list. That is fine if you meant to log a past event.', 'pomdr')
+    );
+}
+add_action('admin_notices', 'pomdr_past_event_notice');
