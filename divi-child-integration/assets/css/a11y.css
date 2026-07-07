@@ -96,13 +96,16 @@
 /* ===== 3. OPT-IN SENIOR COMFORT MODE ===== */
 
 html[data-a11y="senior"] {
-  --fs-base: 20px;
-  --leading: 1.75;
+  --fs-base: 22px;
+  --leading: 1.8;
   --tap-min: 48px;
   --focus-w: 4px;
 }
 
-/* Body text scales up across Divi text modules and plain content. */
+/* Body text scales up noticeably across Divi text modules and plain content.
+   The !important is needed to beat Divi's own module font sizes (some are set
+   inline), so the toggle actually feels like a change. About +30% on body
+   prose (17px to 22px), which is a real help without being oversized. */
 html[data-a11y="senior"] body { font-size: var(--fs-base); line-height: var(--leading); letter-spacing: 0.01em; }
 html[data-a11y="senior"] :where(.et_pb_text, .et_pb_post_content, main) p,
 html[data-a11y="senior"] li,
@@ -115,15 +118,27 @@ html[data-a11y="senior"] .page-lead,
 html[data-a11y="senior"] .lead,
 html[data-a11y="senior"] label,
 html[data-a11y="senior"] .gfield_label {
-  font-size: 1.125rem;
-  line-height: 1.7;
+  font-size: 1.375rem !important;
+  line-height: 1.75 !important;
+}
+
+/* Section leads and intros go a touch larger still. */
+html[data-a11y="senior"] .section-lead,
+html[data-a11y="senior"] .page-lead,
+html[data-a11y="senior"] .lead {
+  font-size: 1.5rem !important;
+}
+
+/* Headings in content grow proportionally so the hierarchy holds. */
+html[data-a11y="senior"] :where(main, .et_pb_text) :where(h2, h3, h4) {
+  font-size: 1.15em;
 }
 
 /* Navigation text larger. */
 html[data-a11y="senior"] #top-menu li a,
 html[data-a11y="senior"] .et_pb_menu a,
 html[data-a11y="senior"] .et_mobile_menu a {
-  font-size: 1.0625rem;
+  font-size: 1.15rem;
 }
 
 /* Interactive targets reach 48x48 with comfortable padding (Divi + redesign). */
@@ -135,7 +150,7 @@ html[data-a11y="senior"] :where(.et_pb_button, a.et_pb_button, .et_pb_contact_su
 }
 html[data-a11y="senior"] :where(.et_pb_button, .btn, .nav-cta, .et_pb_contact_submit) {
   padding-block: 14px;
-  font-size: 17px;
+  font-size: 18px;
 }
 html[data-a11y="senior"] .heart { width: 48px; height: 48px; }
 html[data-a11y="senior"] .heart svg { width: 22px; height: 22px; }
