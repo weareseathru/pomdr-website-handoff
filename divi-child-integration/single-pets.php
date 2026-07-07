@@ -345,7 +345,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
 
 ?>
-<div id="main-content">
+<div id="main-content" role="main">
     <div class="et-l et-l--body">
         <div class="et_builder_inner_content et_pb_gutters3">
 
