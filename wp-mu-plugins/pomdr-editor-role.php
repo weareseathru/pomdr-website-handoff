@@ -85,3 +85,53 @@ function pomdr_is_content_editor() {
     return in_array(POMDR_EDITOR_ROLE, (array) $user->roles, true)
         && !in_array('administrator', (array) $user->roles, true);
 }
+
+/* ============================================================
+ * (2) Status vocabulary lockdown
+ * ============================================================
+ * Per settled risk A1, the dog status vocabulary is canonical: a multi-value
+ * ACF *checkbox* (not a single select) with exactly these Title-Case values,
+ * with custom values and "other" turned off. The field UI already prevents
+ * free text. This filter is the belt-and-suspenders guard for any programmatic
+ * or import path (REST, the MCP abilities, a CSV import) that could otherwise
+ * write an off-vocabulary value. It rejects anything outside the canonical set
+ * instead of silently storing it.
+ */
+
+/**
+ * The canonical dog status values (the exact ACF checkbox choices).
+ *
+ * @return string[]
+ */
+function pomdr_canonical_statuses() {
+    return array(
+        'Adoptable',
+        'Foster Needed',
+        'Sponsor Needed',
+        'Adoption Pending',
+        'Adopted',
+        'Hospice',
+        'Courtesy Listing',
+    );
+}
+
+/**
+ * Reject any status value that is not in the canonical set.
+ *
+ * @param bool|string $valid True if valid, or an error message string.
+ * @param mixed       $value The field value (array for a checkbox).
+ * @return bool|string
+ */
+function pomdr_validate_status_value($valid, $value, $field, $input) {
+    if ($valid !== true) {
+        return $valid;
+    }
+    $allowed = pomdr_canonical_statuses();
+    foreach ((array) $value as $v) {
+        if ($v !== '' && !in_array($v, $allowed, true)) {
+            return 'That status is not one we use. Please pick from the listed choices.';
+        }
+    }
+    return $valid;
+}
+add_filter('acf/validate_value/name=status', 'pomdr_validate_status_value', 10, 4);
