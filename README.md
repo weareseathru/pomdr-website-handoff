@@ -84,6 +84,26 @@ bash scripts/check-voice.sh --staged
 
 ---
 
+## Running the smoke suite
+
+A small, fast tripwire (`tests/smoke/`) that catches silent regressions from the
+Divi overlay. Run it against a live mirror before every merge and deploy:
+
+```bash
+npm install                            # first time only (installs Playwright)
+npx playwright install chromium
+SMOKE_BASE_URL=https://newpomdr-local.local npm run smoke
+```
+
+`SMOKE_BASE_URL` defaults to the Local mirror. The suite checks HTTP health, one
+h1 per page, a main landmark, a clean console and network (third-party embeds
+are allowlisted), plus a few per-page anchors (dog cards, the Adopt and Sponsor
+CTAs, donate amounts, the newsletter form). It finishes in under 90 seconds. CI
+only compiles the tests (no live mirror is reachable there), so the full run is a
+local, before-merge step.
+
+---
+
 ## Repository layout
 
 ```

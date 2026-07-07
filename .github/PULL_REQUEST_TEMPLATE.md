@@ -38,6 +38,8 @@
 
 <!-- Bulleted list. What did you do to verify this works end to end? -->
 
+- [ ] Ran `npm run smoke` against a live mirror (green) if this touches a smoke-covered page
+
 ## Risk
 
 <!-- Anything reviewers should specifically poke at. Production-data risks,
