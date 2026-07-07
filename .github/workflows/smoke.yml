@@ -1,0 +1,40 @@
+name: smoke
+
+# The full smoke suite (tests/smoke/) needs a live mirror to hit, which GitHub
+# CI cannot reach. So on PRs this job only INSTALLS deps and COMPILES the tests
+# (playwright --list loads every spec without launching a browser or a server),
+# which catches syntax, import, and config breakage.
+#
+# The FULL smoke run is a LOCAL, BEFORE-MERGE step (see the PR checklist and the
+# README's "Running the smoke suite" section):
+#   SMOKE_BASE_URL=https://newpomdr-local.local npm run smoke
+#
+# Voice rules run in voice-check.yml; this workflow deliberately does not
+# duplicate them.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-compile:
+    name: Smoke tests compile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile the smoke tests (no browser or live mirror needed)
+        run: npx playwright test -c tests/smoke/playwright.config.js --list

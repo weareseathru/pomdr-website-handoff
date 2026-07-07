@@ -1,0 +1,12 @@
+{
+  "name": "pomdr-smoke",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smoke-test tripwire for the POMDR Divi child theme. A small, fast safety net that catches silent regressions from the Divi-overlay approach (risk G1).",
+  "scripts": {
+    "smoke": "playwright test -c tests/smoke/playwright.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}
