@@ -2,29 +2,10 @@
   "use strict";
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Nav: scrolled state + mobile toggle */
-  var nav = document.getElementById('site-nav');
-  var onScroll = function () { if (nav) nav.classList.toggle('scrolled', window.scrollY > 16); };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  var toggle = document.querySelector('.nav-toggle');
-  var mobile = document.getElementById('nav-mobile');
-  if (toggle && mobile) {
-    var setMobile = function (open) {
-      mobile.classList.toggle('open', open);
-      toggle.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      mobile.hidden = !open;
-    };
-    toggle.addEventListener('click', function () { setMobile(!mobile.classList.contains('open')); });
-    mobile.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMobile(false); }); });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && mobile.classList.contains('open')) { setMobile(false); toggle.focus(); }
-    });
-  }
-
-  /* Scroll-reveal is handled by the shared single utility in a11y.js
-     (loaded below), so it is not duplicated here. */
+  /* Nav scrolled-state and the mobile drawer are handled site-wide by
+     pomdr-nav.js. They are intentionally NOT bound here: binding the same
+     .nav-toggle twice made the drawer open then instantly close on the
+     homepage. Scroll-reveal is likewise handled once by a11y.js. */
 
   /* Favorite hearts (persisted) */
   var likes;
@@ -45,19 +26,19 @@
     { tag: "Adoption · Senior dogs, ready to love",
       title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
       sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
-      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Helping Paw · Support for senior guardians",
       title: "<div>Helping seniors</div><div>and their dogs stay</div><div><em>together</em> longer.</div>",
       sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
-      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Our Mission · Since 2009",
       title: "<div>A lifetime</div><div><em>commitment</em>,</div><div>every time.</div>",
       sub: "Every dog in our care is ours for life. If a placement does not work, for any reason, ever, they come home to us.",
-      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Foster · Donate · Volunteer",
       title: "<div>Be the reason</div><div>a <em>gray muzzle</em></div><div>finds home.</div>",
       sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
-      ctas: '<a href="adopt.html" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="foster.html" class="btn btn-purple">Foster</a><a href="adopt.html" class="btn btn-ghost">See all dogs</a>' }
+      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' }
   ];
   var heroSlides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('#hero-progress button');
