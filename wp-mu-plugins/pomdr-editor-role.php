@@ -271,3 +271,87 @@ function pomdr_past_event_notice() {
     );
 }
 add_action('admin_notices', 'pomdr_past_event_notice');
+
+/* ============================================================
+ * (4) Admin de-cluttering for the role (administrators untouched)
+ * ============================================================ */
+
+/**
+ * The URL the welcome box links to for the full staff guide. Filterable so it
+ * can point at wherever the guide is published for staff (a Google Doc, a
+ * hosted page). Defaults to the version-controlled copy in the repo.
+ *
+ * @return string
+ */
+function pomdr_staff_guide_url() {
+    return (string) apply_filters(
+        'pomdr_staff_guide_url',
+        'https://github.com/weareseathru/pomdr-website-handoff/blob/main/docs/STAFF-CONTENT-GUIDE.md'
+    );
+}
+
+/**
+ * Hide admin menus that are irrelevant to a content editor, and relabel the
+ * Pets menu to "Dogs" for the role. Scoped so administrators see the full,
+ * unchanged admin.
+ */
+function pomdr_editor_tidy_menus() {
+    if (!pomdr_is_content_editor()) {
+        return;
+    }
+
+    // Hide menus the role does not need. (Plugins, Themes, Users, Settings,
+    // Appearance, and ACF are already hidden by missing capabilities; these are
+    // the ones that would otherwise show.)
+    remove_menu_page('edit.php');                    // Posts
+    remove_menu_page('edit-comments.php');           // Comments
+    remove_menu_page('tools.php');                   // Tools
+    remove_menu_page('edit.php?post_type=project');  // Projects CPT
+    remove_menu_page('et_divi_options');             // Divi (theme options / builder)
+    remove_menu_page('et_onboarding');               // Divi dashboard
+
+    // Relabel Pets to Dogs for the role only.
+    global $menu, $submenu;
+    if (is_array($menu)) {
+        foreach ($menu as $i => $item) {
+            if (isset($item[2]) && $item[2] === 'edit.php?post_type=pets') {
+                $menu[$i][0] = 'Dogs';
+            }
+        }
+    }
+    if (isset($submenu['edit.php?post_type=pets']) && is_array($submenu['edit.php?post_type=pets'])) {
+        foreach ($submenu['edit.php?post_type=pets'] as $j => $sub) {
+            if (isset($sub[0]) && $sub[0] === 'All Pets') {
+                $submenu['edit.php?post_type=pets'][$j][0] = 'All Dogs';
+            } elseif (isset($sub[0]) && $sub[0] === 'Add New Pet') {
+                $submenu['edit.php?post_type=pets'][$j][0] = 'Add New Dog';
+            }
+        }
+    }
+}
+add_action('admin_menu', 'pomdr_editor_tidy_menus', 999);
+
+/**
+ * A warm welcome box on the editor's dashboard, linking to the staff guide.
+ */
+function pomdr_editor_welcome_notice() {
+    if (!pomdr_is_content_editor()) {
+        return;
+    }
+    $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+    if (!$screen || $screen->id !== 'dashboard') {
+        return;
+    }
+    $user = wp_get_current_user();
+    $first = $user && $user->display_name ? explode(' ', $user->display_name)[0] : 'there';
+    printf(
+        '<div class="notice notice-info" style="border-left-color:#0099A8;padding:14px 16px;">
+            <h2 style="margin:0 0 6px;">Welcome, %1$s.</h2>
+            <p style="margin:0 0 8px;max-width:60em;">You can add and edit <strong>Dogs</strong>, <strong>Events</strong>, and <strong>Team</strong> members, and upload photos. Everything else (the layout, colors, and settings) is handled for you, so there is nothing here you can break.</p>
+            <p style="margin:0;"><a class="button button-primary" href="%2$s" target="_blank" rel="noopener">Read the Staff Content Guide</a></p>
+        </div>',
+        esc_html($first),
+        esc_url(pomdr_staff_guide_url())
+    );
+}
+add_action('admin_notices', 'pomdr_editor_welcome_notice');
