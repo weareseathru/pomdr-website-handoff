@@ -746,13 +746,21 @@ add_shortcode('adopt_a_pet_plp', 'adopt_a_pet_plp_shortcode');
 
 // ********************* EVENTS *********************
 function events_shortcode() {
+    // Show upcoming events only (today or later), soonest first. Past events
+    // drop off automatically, so staff never have to remove an old one. Any
+    // event type shows, so nothing disappears just because of its type label.
     $q = new WP_Query(array(
         'post_type'      => 'events',
         'posts_per_page' => -1,
         'meta_key'       => 'event_start',
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
-        'meta_query'     => array(array('key' => 'event_type', 'value' => 'Special Event', 'compare' => 'LIKE')),
+        'meta_query'     => array(array(
+            'key'     => 'event_start',
+            'value'   => current_time('Y-m-d') . ' 00:00:00',
+            'compare' => '>=',
+            'type'    => 'DATETIME',
+        )),
     ));
     ob_start();
     if ($q->have_posts()) :
@@ -763,10 +771,17 @@ function events_shortcode() {
             $start   = pomdr_event_date(get_field('event_start', $id));
             $end     = pomdr_event_date(get_field('event_end', $id));
             $details = trim((string) get_field('event_details', $id));
-            $thumb   = get_post_thumbnail_id($id);
+            // The event photo is the Featured Image. Fall back to the legacy
+            // event_image field so older events keep their photo.
+            $img_id  = get_post_thumbnail_id($id);
+            if (!$img_id) {
+                $legacy = get_field('event_image', $id);
+                if (is_array($legacy) && !empty($legacy['ID'])) { $img_id = (int) $legacy['ID']; }
+                elseif (is_numeric($legacy))                    { $img_id = (int) $legacy; }
+            }
             $when    = $start . (($end && $end !== $start) ? ' &ndash; ' . $end : '');
             echo '<article class="event-card">';
-            if ($thumb) echo '<div class="event-photo">' . wp_get_attachment_image($thumb, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
+            if ($img_id) echo '<div class="event-photo">' . wp_get_attachment_image($img_id, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
             echo '<div class="event-body">';
             if ($type !== '')    echo '<div class="eyebrow">' . esc_html($type) . '</div>';
             echo '<h3 class="event-title">' . esc_html(get_the_title()) . '</h3>';
@@ -782,6 +797,66 @@ function events_shortcode() {
     return ob_get_clean();
 }
 add_shortcode('events', 'events_shortcode');
+
+
+/* ===== Easier event entry: inline help + one obvious photo field ===== */
+
+/**
+ * Add plain-language help text under the event fields, so the edit screen reads
+ * like a friendly form. Uses acf/load_field (non-destructive: it fills the
+ * instructions at load time without editing the stored field group).
+ *
+ * @param array $field The ACF field being loaded.
+ * @return array
+ */
+function pomdr_event_field_help($field) {
+    $help = array(
+        'event_start'   => 'When the event starts. It shows on the events page, soonest first. Past events drop off on their own, so there is nothing to remove later.',
+        'event_end'     => 'Optional. The end time, if the event runs to a set time.',
+        'event_type'    => 'Optional label shown in small type above the title (for example, Special Event).',
+        'event_details' => 'A short, friendly description. A sentence or two is plenty.',
+    );
+    if (isset($help[$field['name']]) && empty($field['instructions'])) {
+        $field['instructions'] = $help[$field['name']];
+    }
+    return $field;
+}
+add_filter('acf/load_field/name=event_start',   'pomdr_event_field_help');
+add_filter('acf/load_field/name=event_end',     'pomdr_event_field_help');
+add_filter('acf/load_field/name=event_type',    'pomdr_event_field_help');
+add_filter('acf/load_field/name=event_details', 'pomdr_event_field_help');
+
+/**
+ * One obvious photo field: hide the legacy event_image input so the Featured
+ * Image is the single place to set the event photo (matching dogs and team).
+ * Existing events that only used event_image still display it via the render
+ * fallback above, so nothing is lost.
+ */
+add_filter('acf/prepare_field/name=event_image', '__return_false');
+
+/**
+ * Events are simple records, so use the classic editor (like dogs) instead of
+ * the block editor. That puts the event fields and their help text right on the
+ * screen, rather than tucked inside a collapsed block-editor panel.
+ */
+add_filter('use_block_editor_for_post_type', function ($use, $post_type) {
+    return $post_type === 'events' ? false : $use;
+}, 10, 2);
+
+/**
+ * A friendly hint under the Featured Image box on the events edit screen.
+ *
+ * @param string $content The Featured Image meta box HTML.
+ * @param int    $post_id The post being edited.
+ * @return string
+ */
+function pomdr_event_thumbnail_hint($content, $post_id) {
+    if (get_post_type($post_id) === 'events') {
+        $content .= '<p style="margin-top:8px;font-style:italic;color:#50575e;">This is the event photo. Any size works; it shows in full inside a neat frame. A landscape photo or an upright flyer both look good.</p>';
+    }
+    return $content;
+}
+add_filter('admin_post_thumbnail_html', 'pomdr_event_thumbnail_hint', 10, 2);
 
 
 // **************************** BOARD TEAM MEMBERS **************************

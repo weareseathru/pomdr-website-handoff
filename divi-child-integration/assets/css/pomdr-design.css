@@ -1429,8 +1429,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
 .event-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
   overflow: hidden; display: flex; flex-direction: column; }
-.event-photo { aspect-ratio: 16 / 10; overflow: hidden; background: var(--cream-2); }
-.event-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Uniform frame, whole image shown (never cropped or stretched). Wide photos
+   and upright flyers both display in full, centered on a soft background, so
+   the grid stays even and nothing important is cut off. */
+.event-photo { aspect-ratio: 4 / 3; overflow: hidden; background: var(--cream-2); }
+.event-photo img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
 .event-body { padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .event-title { font-family: var(--font-serif); font-size: 26px; font-weight: 500; margin: 6px 0 2px; color: var(--ink); }
 .event-meta { font-size: 15px; font-weight: 600; color: var(--blue-700); letter-spacing: 0.01em; }
