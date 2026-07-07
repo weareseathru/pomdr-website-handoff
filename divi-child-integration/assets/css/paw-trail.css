@@ -41,6 +41,18 @@
   z-index: 1;
 }
 
+/* The homepage runs the paw trail behind the content wash, so the lifted
+   wrappers must be transparent there to let the trail show through the body
+   cream. style.css otherwise forces #main-content to an opaque #fffaf5, which
+   was hiding the entire trail. Scoped to the home page only, so other pages
+   keep their solid page wash. */
+body.home #main-content,
+body.home #et-main-area,
+body.home .et-l--body,
+body.home .et-boc {
+  background-color: transparent !important;
+}
+
 /* The hidden defs carrier (gradients, paw shape, watercolor filters). */
 .pt-defs {
   position: absolute;
