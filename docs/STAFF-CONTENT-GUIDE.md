@@ -4,7 +4,26 @@ How POMDR staff add and edit the daily content. Everything here is done in the
 WordPress admin (wp-admin). You never touch code, and the designed cards update
 themselves.
 
-Owner: Andrew Z. Last updated: 2026-06-29.
+Owner: Andrew Z. Last updated: 2026-07-07.
+
+---
+
+## Your account and what you can edit
+
+You sign in with a **POMDR Content Editor** account. It is built so you can do
+the daily jobs and cannot accidentally break the site.
+
+- **You can:** add and edit **Dogs**, **Events**, and **Team** members, and
+  upload photos.
+- **You will not see:** plugins, themes, users, site settings, or the page
+  builder. They are hidden because you do not need them, so there is nothing
+  there to break.
+- **Gentle guardrails:** when you save a dog, the site checks a few things and
+  shows a kind reminder if something is missing (a name, a featured photo, a
+  sensible age or weight). Just fix what it points to and save again.
+
+If you need something outside this list (a new page, a layout change, a new
+account), ask Andrew.
 
 ---
 
