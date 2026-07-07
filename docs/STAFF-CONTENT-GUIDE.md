@@ -64,9 +64,14 @@ They appear in the matching section on `/about/`.
 ## Adding an event (Events)
 
 1. wp-admin > **Events** > **Add New**.
-2. **Title**, **event type**, **start/end dates**, **details**, optional image.
-3. **Publish**. It shows on the events page and the homepage "Upcoming" list with
-   a formatted date.
+2. **Title**, then the **Event Start** (and optional end), an optional **Event
+   Type** label, and a short **Event Details** blurb. Each field has a plain hint
+   under it, so you can just follow along.
+3. **Featured image** (right sidebar) = the event photo. Any size works; it is
+   shown in full inside a neat frame, so a landscape photo or an upright flyer
+   both look good.
+4. **Publish**. It shows on the events page, soonest first. **Past events drop
+   off on their own**, so there is nothing to remove later.
 
 ---
 
