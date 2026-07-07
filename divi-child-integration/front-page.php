@@ -329,7 +329,8 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
       }
       if (!empty($home_events)) :
         $feat = $home_events[0];
-        $rows = array_slice($home_events, 0, 4);
+        // The list shows the events after the featured one, so nothing repeats.
+        $rows = array_slice($home_events, 1, 4);
       ?>
       <div class="events-layout">
         <div class="reveal">
