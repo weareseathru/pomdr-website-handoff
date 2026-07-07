@@ -49,27 +49,30 @@
 
   /* Curated color cycle, all from the design tokens. Pastels sit at the top of
      the opacity band (they are light and need it to read); saturated brand hues
-     stay faint so body-text contrast is untouched. All values stay <= 0.18. */
+     stay faint so body-text contrast is untouched. The trail sits in the page
+     gutters and calm bands, mostly clear of text, so the band is 0.16 to 0.26:
+     present enough to read as a soft watercolor, still light under any text it
+     crosses. */
   var PALETTE = [
-    { cls: "c-blue-100",   op: 0.18 },
-    { cls: "c-purple-100", op: 0.18 },
-    { cls: "c-blue-200",   op: 0.15 },
-    { cls: "c-purple-200", op: 0.15 },
-    { cls: "c-blue",       op: 0.12 },
-    { cls: "c-purple",     op: 0.12 }
+    { cls: "c-blue-100",   op: 0.26 },
+    { cls: "c-purple-100", op: 0.26 },
+    { cls: "c-blue-200",   op: 0.21 },
+    { cls: "c-purple-200", op: 0.21 },
+    { cls: "c-blue",       op: 0.16 },
+    { cls: "c-purple",     op: 0.16 }
   ];
   var ACCENTS = [
-    { cls: "c-accent",     op: 0.16 },
-    { cls: "c-accent-red", op: 0.14 }
+    { cls: "c-accent",     op: 0.22 },
+    { cls: "c-accent-red", op: 0.19 }
   ];
   /* The final settling cluster: saturated so it reads on the light band above
      the footer. Still within the opacity band. */
   var SETTLE = [
-    { cls: "c-purple", op: 0.17 },
-    { cls: "c-blue",   op: 0.17 },
-    { cls: "c-accent", op: 0.16 },
-    { cls: "c-purple", op: 0.17 },
-    { cls: "c-blue",   op: 0.17 }
+    { cls: "c-purple", op: 0.22 },
+    { cls: "c-blue",   op: 0.22 },
+    { cls: "c-accent", op: 0.20 },
+    { cls: "c-purple", op: 0.22 },
+    { cls: "c-blue",   op: 0.22 }
   ];
 
   var SVGNS = "http://www.w3.org/2000/svg";
