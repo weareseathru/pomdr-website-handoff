@@ -86,7 +86,56 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   window.addEventListener('scroll', () => {
     document.getElementById('site-nav').classList.toggle('scrolled', window.scrollY > 40);
   });
-</script><!-- PAGE HERO -->
+</script>
+<style>
+/* About-page hero: the building photo shows whole (no crop) and gets more
+   width. The image renders at its natural 3:2 ratio inside rounded corners. */
+.page-hero > .container { display: block; } /* the shared hero container is a 2-col grid; this page lays out with ph-split instead */
+.page-hero .ph-split { width: 100%; grid-template-columns: 0.92fr 1.08fr; align-items: center; } /* width:100%: the page-hero container is a centering grid that otherwise shrink-fits this */
+.page-hero .ph-media { min-height: 0; background: none; border-radius: 0; }
+.page-hero .ph-media picture { height: auto; }
+.page-hero .ph-media img { width: 100%; height: auto; object-fit: contain; border-radius: var(--radius-xl); }
+
+/* What we do: editorial rows instead of small text cards. Big serif statements
+   (the site's hero word treatment), a number rail, hairline separators, photos
+   on alternating sides, and a soft brand paw watermark on the text-only rows. */
+.wwd-rows { margin-top: 24px; }
+.wwd-row {
+  display: grid; grid-template-columns: 88px 1.15fr 0.85fr;
+  gap: 36px; align-items: center;
+  padding: 52px 0; border-top: 1px solid var(--line);
+  position: relative;
+}
+.wwd-row:last-child { border-bottom: 1px solid var(--line); }
+.wwd-num {
+  font-family: var(--font-serif); font-size: 22px; color: var(--blue-text);
+  letter-spacing: 0.06em; align-self: start; padding-top: 14px;
+}
+.wwd-title {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(30px, 3.4vw, 46px); line-height: 1.04; letter-spacing: -0.02em;
+  margin: 0 0 16px; color: var(--ink);
+}
+.wwd-title em { font-style: italic; color: var(--blue); }
+.wwd-row p { font-size: 17px; line-height: 1.7; color: var(--ink-2); max-width: 54ch; margin: 0 0 20px; }
+.wwd-media { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; }
+.wwd-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wwd-row--flip { grid-template-columns: 88px 0.85fr 1.15fr; }
+.wwd-row--flip .wwd-media { order: 2; }
+.wwd-row--flip .wwd-body { order: 3; }
+.wwd-row--text { grid-template-columns: 88px 1fr; }
+.wwd-row--text .wwd-paw {
+  position: absolute; right: 2%; top: 50%; transform: translateY(-50%) rotate(12deg);
+  width: 150px; height: 150px; opacity: 0.1; pointer-events: none;
+}
+@media (max-width: 860px) {
+  .wwd-row, .wwd-row--flip { grid-template-columns: 1fr; gap: 20px; padding: 40px 0; }
+  .wwd-num { padding-top: 0; }
+  .wwd-row--flip .wwd-media, .wwd-row--flip .wwd-body { order: 0; }
+  .wwd-row--text .wwd-paw { width: 100px; height: 100px; opacity: 0.07; }
+}
+</style>
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
     <div class="ph-split">
@@ -139,26 +188,48 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <div class="eyebrow">What We Do</div>
     <h2 class="section-title">A lifetime <em>commitment.</em></h2>
-    <div class="whatwedo-lead">
-      <article class="card" style="padding:26px;">
-        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Foster and forever homes</h3>
-        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We find loving foster and forever homes for dogs whose guardians can no longer care for them, and for senior dogs in shelters.</p>
+    <div class="wwd-rows">
+
+      <article class="wwd-row reveal">
+        <div class="wwd-num">01</div>
+        <div class="wwd-body">
+          <h3 class="wwd-title">A <em>soft landing</em> for every dog.</h3>
+          <p>We find loving foster and forever homes for dogs whose guardians can no longer care for them, and for senior dogs in shelters.</p>
+          <a href="/adopt/" class="btn btn-primary">Meet our dogs</a>
+        </div>
+        <div class="wwd-media"><img src="<?php echo $img; ?>/dog12.jpeg" alt="A senior POMDR dog resting in a foster home" loading="lazy"></div>
       </article>
-      <img class="whatwedo-lead__media" src="<?php echo $img; ?>/dog12.jpeg" alt="A senior POMDR dog resting in a foster home" loading="lazy">
-    </div>
-    <div class="cards-2col">
-      <article class="card" style="padding:26px;">
-        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Help for senior guardians</h3>
-        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We help senior citizens pay for veterinary care when they cannot afford it, provide temporary foster care for people who are hospitalized, and walk dogs for people who can no longer walk them.</p>
+
+      <article class="wwd-row wwd-row--flip reveal">
+        <div class="wwd-num">02</div>
+        <div class="wwd-media"><img src="<?php echo $img; ?>/pages/helpingpaw.jpg" alt="A Helping Paw volunteer with a senior guardian and their dog" loading="lazy"></div>
+        <div class="wwd-body">
+          <h3 class="wwd-title">Keeping seniors and their dogs <em>together.</em></h3>
+          <p>We help senior citizens pay for veterinary care when they cannot afford it, provide temporary foster care for people who are hospitalized, and walk dogs for people who can no longer walk them.</p>
+          <a href="/helping-paw/" class="btn btn-primary">Explore Helping Paw</a>
+        </div>
       </article>
-      <article class="card" style="padding:26px;">
-        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">Pre-arranged care</h3>
-        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">We make pre-arrangements to take in dogs should their guardians become unable to care for them, so no one has to worry about what happens next.</p>
+
+      <article class="wwd-row wwd-row--text reveal">
+        <div class="wwd-num">03</div>
+        <div class="wwd-body">
+          <h3 class="wwd-title">Peace of mind, <em>pre-arranged.</em></h3>
+          <p>We make pre-arrangements to take in dogs should their guardians become unable to care for them, so no one has to worry about what happens next.</p>
+          <a href="/perpetual-care-program/" class="btn btn-outline">Perpetual Care Program</a>
+        </div>
+        <img class="wwd-paw" src="<?php echo $img; ?>/paw-cyan.svg" alt="" role="presentation">
       </article>
-      <article class="card" style="padding:26px;">
-        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 10px;">A home for life</h3>
-        <p style="color:var(--ink-2);font-size:16px;line-height:1.6;margin:0;">Every dog who comes into our care is either adopted into a wonderful, permanent home or lives out their life in one of our foster homes. Sometimes a senior dog should not have to endure one more move, and they stay with us.</p>
+
+      <article class="wwd-row wwd-row--text reveal">
+        <div class="wwd-num">04</div>
+        <div class="wwd-body">
+          <h3 class="wwd-title">A home for <em>life.</em></h3>
+          <p>Every dog who comes into our care is either adopted into a wonderful, permanent home or lives out their life in one of our foster homes. Sometimes a senior dog should not have to endure one more move, and they stay with us.</p>
+          <a href="/sponsor-a-dog/" class="btn btn-outline">Sponsor a dog in our care</a>
+        </div>
+        <img class="wwd-paw" src="<?php echo $img; ?>/paw-cyan.svg" alt="" role="presentation">
       </article>
+
     </div>
   </div>
 </section>

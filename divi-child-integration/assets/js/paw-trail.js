@@ -137,12 +137,14 @@
       "<defs>" +
         filters +
         // The paw shape, once. No fill here so each <use> paints currentColor.
+        // Geometry matches the brand paw (assets/images/paw-cyan.svg): four
+        // tilted toes over the wide notched main pad.
         '<g id="pt-shape">' +
-          '<path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/>' +
-          '<ellipse cx="12" cy="31" rx="5" ry="7.6" transform="rotate(-28 12 31)"/>' +
-          '<ellipse cx="24" cy="19" rx="5.2" ry="8.2" transform="rotate(-11 24 19)"/>' +
-          '<ellipse cx="40" cy="19" rx="5.2" ry="8.2" transform="rotate(11 40 19)"/>' +
-          '<ellipse cx="52" cy="31" rx="5" ry="7.6" transform="rotate(28 52 31)"/>' +
+          '<path d="M32 34.2 C29 30.8 24.6 29.6 20.9 31.2 C14.9 33.8 11.9 40.6 14.3 46.9 C16.2 51.9 20.9 55.6 26.2 56.6 C28.4 57 30.3 55.9 32 54.2 C33.7 55.9 35.6 57 37.8 56.6 C43.1 55.6 47.8 51.9 49.7 46.9 C52.1 40.6 49.1 33.8 43.1 31.2 C39.4 29.6 35 30.8 32 34.2 Z"/>' +
+          '<ellipse cx="11.5" cy="27" rx="5.6" ry="7.4" transform="rotate(-24 11.5 27)"/>' +
+          '<ellipse cx="23.5" cy="15.5" rx="5.8" ry="8" transform="rotate(-8 23.5 15.5)"/>' +
+          '<ellipse cx="40.5" cy="15.5" rx="5.8" ry="8" transform="rotate(8 40.5 15.5)"/>' +
+          '<ellipse cx="52.5" cy="27" rx="5.6" ry="7.4" transform="rotate(24 52.5 27)"/>' +
         "</g>" +
       "</defs>";
     document.body.appendChild(svg);
