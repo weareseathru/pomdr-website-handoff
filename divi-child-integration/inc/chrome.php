@@ -14,8 +14,11 @@ function pomdr_url($slug) {
 }
 
 function pomdr_paw_badge() {
-    return '<svg class="paw-badge" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#632F88"/><g fill="#fff"><ellipse cx="10.5" cy="13" rx="2" ry="2.5"/><ellipse cx="14.7" cy="10.6" rx="2" ry="2.5"/><ellipse cx="18.3" cy="10.6" rx="2" ry="2.5"/><ellipse cx="22" cy="13.4" rx="2" ry="2.5"/><path d="M16.2 15.4c-3 0-5.4 2.2-5.4 4.7 0 1.8 1.5 2.8 3.2 2.8.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.7 0 3.2-1 3.2-2.8 0-2.5-2.4-4.7-5.4-4.7z"/></g></svg>';
+    // The brand purple circle paw (matches assets/images/paw-badge-purple.svg,
+    // vectorized from the provided PNG): white paw on the purple disc.
+    return '<svg class="paw-badge" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#632F88"/><g fill="#fff"><ellipse cx="14.5" cy="30" rx="5.2" ry="7" transform="rotate(-24 14.5 30)"/><ellipse cx="25" cy="19.5" rx="5.4" ry="7.4" transform="rotate(-8 25 19.5)"/><ellipse cx="39" cy="19.5" rx="5.4" ry="7.4" transform="rotate(8 39 19.5)"/><ellipse cx="49.5" cy="30" rx="5.2" ry="7" transform="rotate(24 49.5 30)"/><path d="M32 36.9 C29.3 33.8 25.3 32.7 22 34.1 C16.6 36.5 13.9 42.6 16.1 48.2 C17.8 52.7 22 56 26.8 56.9 C28.7 57.3 30.5 56.3 32 54.8 C33.5 56.3 35.3 57.3 37.2 56.9 C42 56 46.2 52.7 47.9 48.2 C50.1 42.6 47.4 36.5 42 34.1 C38.7 32.7 34.7 33.8 32 36.9 Z"/></g></svg>';
 }
+
 
 function pomdr_render_chrome() {
     $home = esc_url(home_url('/'));
