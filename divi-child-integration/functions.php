@@ -45,17 +45,26 @@ function pet_age_sex_weight($atts) {
     // Display value for the sex field (handles mapping of value->label)
     $sex_value_display = pom_acf_sex_display($atts['post_id']);
 
-    // Concatenate values
-    if ($looks_like_value && $age_value && $weight_value && $sex_value_display) {
-   echo "<span style='font-weight:600; font-weight:bold; font-size:1.6em;'>" . esc_html($looks_like_value) . "</span>" .
-	  "<span style='font-weight:400; font-size:1em;'> (looks like)</span><br/>" .
-      "<span style='font-weight:600; font-size:1.2em; '>" .
-      esc_html($sex_value_display) . ", " . esc_html($age_value) . " years old (est), " .
-      esc_html($weight_value) . " lbs</span>";
-
-} else {
-    echo esc_html("Inquire Directly");
-}
+    // Show whichever vitals exist (a missing field no longer hides the rest),
+    // in the redesign voice: "~age" with a tilde, never "(est)".
+    $bits = array();
+    if ($age_value !== '' && $age_value !== null && $age_value !== false) {
+        $bits[] = is_numeric($age_value) ? '~' . $age_value . ' yrs' : $age_value;
+    }
+    if ($sex_value_display) { $bits[] = $sex_value_display; }
+    if ($weight_value) { $bits[] = $weight_value . ' lb'; }
+    if ($looks_like_value || $bits) {
+        echo '<div class="pdp-vitals">';
+        if ($looks_like_value) {
+            echo '<div class="pdp-breed">' . esc_html($looks_like_value) . '</div>';
+        }
+        if ($bits) {
+            echo '<div class="pdp-vitals-line">' . esc_html(implode(' · ', $bits)) . '</div>';
+        }
+        echo '</div>';
+    } else {
+        echo esc_html('Inquire directly');
+    }
 
     return ob_get_clean();
 }

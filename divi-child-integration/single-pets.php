@@ -177,6 +177,48 @@ function pom_should_show_section($section_name, $post_id)
 }
 
 
+
+/**
+ * The redesigned dog-page header: back link, status badge, big serif name,
+ * vitals line, and the Adopt / Sponsor actions as design-system buttons.
+ * Used by every header render path (logic builder and fallback).
+ */
+function pom_pdp_header_html($post_id)
+{
+    $name = get_the_title($post_id);
+    list($badge_class, $badge_label) = function_exists('pom_pet_badge') ? pom_pet_badge($post_id) : array('', '');
+
+    $status     = get_field('status', $post_id);
+    $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
+
+    $age    = get_field('age', $post_id);
+    $sex    = function_exists('pom_acf_sex_display') ? pom_acf_sex_display($post_id) : '';
+    $weight = get_field('weight', $post_id);
+    $breed  = get_field('looks_like', $post_id);
+    $bits   = array();
+    if ($age !== '' && $age !== null && $age !== false) { $bits[] = is_numeric($age) ? '~' . $age . ' yrs' : $age; }
+    if ($sex) { $bits[] = $sex; }
+    if ($weight) { $bits[] = $weight . ' lb'; }
+    if ($breed) { $bits[] = $breed; }
+
+    $out  = '<div class="pom-section pom-section--header"><header class="pdp-header">';
+    $out .= '<a class="pdp-back" href="' . esc_url(home_url('/adopt/')) . '">&larr; All adoptable dogs</a>';
+    if ($badge_label) {
+        $out .= '<span class="pdp-badge pdp-badge--' . esc_attr($badge_class) . '">' . esc_html($badge_label) . '</span>';
+    }
+    $out .= '<h1 class="pdp-name">' . esc_html($name) . '</h1>';
+    if ($bits) {
+        $out .= '<p class="pdp-meta">' . esc_html(implode(' · ', $bits)) . '</p>';
+    }
+    $out .= '<div class="pdp-ctas">';
+    if (!$is_adopted) {
+        $out .= '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', $name, home_url('/adoption-questionnaire/'))) . '">Adopt ' . esc_html($name) . '</a>';
+    }
+    $out .= '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', $name, home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
+    $out .= '</div></header></div>';
+    return $out;
+}
+
 function render_module_fragment($layout, $post_id)
 {
     ob_start();
@@ -287,11 +329,9 @@ function render_module_fragment($layout, $post_id)
 
         case 'adoption_prompt_section':
             ?>
-            <div class="pom-content">
-                <p><strong><?php echo esc_html__('Interested in', 'pom'); ?>
-                        <?php echo esc_html(get_the_title($post_id)); ?>?</strong><br>
-                    <?php echo esc_html__('Press the', 'pom'); ?> <strong><?php echo esc_html__('Adopt', 'pom'); ?></strong>
-                    <?php echo esc_html__('button to fill out our online form, and we&#8217;ll get back to you!', 'pom'); ?></p>
+            <div class="pom-content pdp-prompt">
+                <p><strong><?php echo esc_html(get_the_title($post_id)); ?></strong>
+                    <?php echo esc_html__('could be your new old best friend. Press Adopt to fill out our online form, and a real person will get back to you.', 'pom'); ?></p>
             </div>
             <?php
             break;
@@ -396,24 +436,9 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
                                 $adopt_link = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . '</a>';
-                                $sponsor_html = '<a class="et_pb_button" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
+                                $sponsor_html = '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
 
-                                echo '<div class="pom-section pom-section--header">';
-                                echo '<div class="pom-row pom-row--header">';
-
-                                echo '<div class="pom-col-title">';
-                                echo '<h1 class="entry-title">' . esc_html(get_the_title($post_id)) . '</h1>';
-                                echo '</div>';
-
-                                echo '<div class="pom-col-btn">';
-                                echo $adopt_html;
-                                echo '</div>';
-
-                                echo '<div class="pom-col-btn">';
-                                echo $sponsor_html;
-                                echo '</div>';
-
-                                echo '</div>';
+                                echo pom_pdp_header_html($post_id);
                                 echo '</div>';
 
                                 continue;
@@ -424,10 +449,10 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                                 $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
 
                                 $adopt_link   = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
-                                $adopt_html   = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . '</a>';
-                                $sponsor_html = '<a class="et_pb_button" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
+                                $adopt_html   = $is_adopted ? '' : '<a class="btn btn-primary" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . ' ' . esc_html(get_the_title($post_id)) . '</a>';
+                                $sponsor_html = '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
 
-                                $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="et_pb_button" href="/adopt/">Browse All Pets</a></div></div>';
+                                $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">Browse all dogs</a></div></div>';
                                 continue;
                             }
 
@@ -497,22 +522,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                                 $adopt_link = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">Adopt</a>';
 
-                                echo '<div class="pom-section pom-section--header">';
-                                echo '<div class="pom-row pom-row--header">';
-
-                                echo '<div class="pom-col-title">';
-                                echo '<h1 class="entry-title">' . esc_html(get_the_title($post_id)) . '</h1>';
-                                echo '</div>';
-
-                                echo '<div class="pom-col-btn">';
-                                echo $adopt_html;
-                                echo '</div>';
-
-                                echo '<div class="pom-col-btn">';
-                                echo '<a class="et_pb_button" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
-                                echo '</div>';
-
-                                echo '</div>';
+                                echo pom_pdp_header_html($post_id);
                                 echo '</div>';
                                 continue;
                             }
@@ -523,9 +533,9 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
                                 $adopt_link   = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html   = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">Adopt</a>';
-                                $sponsor_html = '<a class="et_pb_button" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
+                                $sponsor_html = '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
 
-                                $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="et_pb_button" href="/adopt/">Browse All Pets</a></div></div>';
+                                $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">Browse all dogs</a></div></div>';
                                 continue;
                             }
 
