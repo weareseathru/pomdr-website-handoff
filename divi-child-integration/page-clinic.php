@@ -138,5 +138,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
   </div>
 </section>
+
+<section class="section" id="team">
+  <div class="container">
+    <span class="eyebrow purple">Our team</span>
+    <h2 class="section-title">The people you will <em>meet</em>.</h2>
+    <p class="section-lead">The veterinarians and technicians who keep our dogs healthy, from intake exams to dental work.</p>
+    <?php echo do_shortcode('[clinic_staff]'); ?>
+  </div>
+</section>
+
 </main>
 <?php get_footer();
