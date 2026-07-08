@@ -139,22 +139,9 @@ function dt_enqueue_styles() {
         $theme->get('Version') 
     );
 }
-function register_custom_blog_template($templates) {
-    $templates['template-blog-list.php'] = 'Custom Blog List';
-    return $templates;
-}
-add_filter('theme_page_templates', 'register_custom_blog_template');
-
-/**
- * Handle template loading
- */
-function load_custom_blog_template($template) {
-    if(is_page_template('template-blog-list.php')) {
-        $template = get_stylesheet_directory() . '/template-blog-list.php';
-    }
-    return $template;
-}
-add_filter('template_include', 'load_custom_blog_template');
+/* The "Custom Blog List" template registration was removed 2026-07-07: it
+   pointed at a file that only existed in temp/ scratch (deleted), so choosing
+   it in the page editor produced a blank page. */
 add_action( 'wp_enqueue_scripts', 'dt_enqueue_styles' );
 
 
@@ -337,7 +324,31 @@ add_shortcode('foster_a_pet', 'foster_a_pet_shortcode');
 
 
 // ************* ADOPTED PETS LIST VIEW ***********************
-function adopted_pets_shortcode() { return pomdr_dogs_by_status('Adopted', array('meta_key' => 'date_adopted', 'orderby' => 'meta_value', 'order' => 'DESC')); }
+function adopted_pets_shortcode() {
+    // Do NOT pass meta_key => date_adopted into the query: that inner-joins on
+    // the date field and silently hides every dog whose date was never filled
+    // in, which left /adopted/ rendering empty. Query by status only, sort by
+    // the date in PHP (missing dates last), and cap the page so it does not
+    // grow unbounded as adoptions accumulate.
+    $q = new WP_Query(array(
+        'post_type'      => 'pets',
+        'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'meta_query'     => array(array('key' => 'status', 'value' => 'Adopted', 'compare' => 'LIKE')),
+    ));
+    $ids = $q->posts;
+    usort($ids, function ($a, $b) {
+        // Raw meta is stored Ymd, which string-sorts chronologically.
+        return strcmp((string) get_post_meta($b, 'date_adopted', true), (string) get_post_meta($a, 'date_adopted', true));
+    });
+    $ids = array_slice($ids, 0, 48);
+    if (empty($ids)) {
+        return '<p>No dogs to show right now. Please call (831) 718-9122.</p>';
+    }
+    $out = '<div class="dogs-grid">';
+    foreach ($ids as $id) { $out .= pom_render_dog_card($id); }
+    return $out . '</div>';
+}
 add_shortcode('adopted_pets', 'adopted_pets_shortcode');
 
 
@@ -831,22 +842,31 @@ function pom_render_person_card($id) {
 }
 
 function pomdr_team_grid($group) {
+    // Query by group only. Passing meta_key => sort into the query inner-joins
+    // on the sort field and silently DROPS any team member whose sort was never
+    // filled in; it also string-sorts (1, 10, 2). Sort numerically in PHP
+    // instead, with unsorted members last (alphabetical among themselves).
     $q = new WP_Query(array(
         'post_type'      => 'team',
         'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'orderby'        => 'title',
         'order'          => 'ASC',
-        'orderby'        => 'meta_value',
-        'meta_key'       => 'sort',
         'meta_query'     => array(array('key' => 'group', 'value' => $group, 'compare' => 'LIKE')),
     ));
-    ob_start();
-    if ($q->have_posts()) {
-        echo '<div class="team-grid">';
-        while ($q->have_posts()) { $q->the_post(); echo pom_render_person_card(get_the_ID()); }
-        echo '</div>';
-        wp_reset_postdata();
-    }
-    return ob_get_clean();
+    $ids = $q->posts;
+    usort($ids, function ($a, $b) {
+        $sa = get_post_meta($a, 'sort', true);
+        $sb = get_post_meta($b, 'sort', true);
+        $na = is_numeric($sa) ? (float) $sa : PHP_FLOAT_MAX;
+        $nb = is_numeric($sb) ? (float) $sb : PHP_FLOAT_MAX;
+        if ($na === $nb) { return strcasecmp(get_the_title($a), get_the_title($b)); }
+        return $na <=> $nb;
+    });
+    if (empty($ids)) { return ''; }
+    $out = '<div class="team-grid">';
+    foreach ($ids as $id) { $out .= pom_render_person_card($id); }
+    return $out . '</div>';
 }
 
 function pomdr_event_date($v) {
@@ -1098,37 +1118,10 @@ add_shortcode( 'acf_image', function( $atts ) {
     return $img_tag;
 });
 
-add_shortcode( 'acf_if', function( $atts, $content = null ) {
-    $a = shortcode_atts( array(
-        'field'    => '',
-        'operator' => '=',
-        'value'    => '',
-        'post_id'  => 0,
-    ), $atts, 'acf_if' );
-
-    if ( empty( $a['field'] ) ) return '';
-
-    if ( ! function_exists( 'get_field' ) ) return '';
-
-    $post_id = pom_acf_get_post_id_from_attr( $a );
-
-    $result = pom_acf_eval_condition( $a['field'], $a['operator'], $a['value'], $post_id );
-
-    // split content on [acf_else] if present
-    $true_part = $content;
-    $false_part = '';
-    if ( $content !== null && stripos( $content, '[acf_else]' ) !== false ) {
-        $parts = preg_split( '/\\[acf_else\\]/i', $content, 2 );
-        $true_part = isset( $parts[0] ) ? $parts[0] : '';
-        $false_part = isset( $parts[1] ) ? $parts[1] : '';
-    }
-
-    if ( $result ) {
-        return do_shortcode( $true_part );
-    } else {
-        return do_shortcode( $false_part );
-    }
-});
+/* Note: [acf_if] was registered twice (here and in the branching version
+   further down). WordPress silently uses the LAST registration, so this first,
+   simpler handler never ran. Removed 2026-07-07; the branching handler below
+   now also accepts operator= as an alias for op= so both syntaxes work. */
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -1477,10 +1470,14 @@ add_shortcode('acf_taxonomy', function($atts){
 
     foreach ((array)$terms as $term) {
         if (!is_object($term)) $term = get_term($term);
+        // A deleted or invalid term returns null/WP_Error; skip it rather than
+        // fataling the page (PHP 8 property access on null).
+        if (!$term instanceof WP_Term) { continue; }
 
         $name = $term->name;
         $slug = $term->slug;
         $link = get_term_link($term);
+        if (is_wp_error($link)) { $link = ''; }
 
         $tpl = str_replace('{name}', esc_html($name), $a['template']);
         $tpl = str_replace('{slug}', esc_html($slug), $tpl);
@@ -1677,11 +1674,14 @@ if ( ! function_exists( 'pom_acf_eval_cond' ) ) {
 
 add_shortcode( 'acf_if', function( $atts, $content = null ) {
     $a = shortcode_atts( array(
-        'field'   => '',
-        'post_id' => 0,
-        'op'      => '=',
-        'value'   => '',
+        'field'    => '',
+        'post_id'  => 0,
+        'op'       => '=',
+        'operator' => '',
+        'value'    => '',
     ), $atts, 'acf_if' );
+    // Accept operator= (the older syntax) as an alias for op=.
+    if ( '' !== $a['operator'] ) { $a['op'] = $a['operator']; }
 
     if ( empty( $a['field'] ) ) return '';
 
@@ -1917,8 +1917,10 @@ add_shortcode( 'acf_gallery_lightbox', function( $atts ) {
 
 function pom_enqueue_frontend_assets() {
     if ( is_singular( 'pets' ) ) {
-        wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css', array(), null );
-        wp_enqueue_script( 'fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js', array(), null, true );
+        // Vendored and pinned (5.0.36) so the dog-gallery lightbox does not
+        // depend on a CDN being up or on an unpinned "latest" release.
+        wp_enqueue_style( 'fancybox-css', get_stylesheet_directory_uri() . '/assets/vendor/fancybox.css', array(), '5.0.36' );
+        wp_enqueue_script( 'fancybox-js', get_stylesheet_directory_uri() . '/assets/vendor/fancybox.umd.js', array(), '5.0.36', true );
         $inline = "document.addEventListener('DOMContentLoaded', function(){ if(typeof Fancybox !== 'undefined'){ Fancybox.bind('[data-fancybox=\"gallery\"]', {}); }} );";
         wp_add_inline_script( 'fancybox-js', $inline );
     }
