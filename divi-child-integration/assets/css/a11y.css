@@ -41,7 +41,7 @@ html.js .reveal {
   transition: opacity var(--reveal-dur) var(--ease), transform var(--reveal-dur) var(--ease);
   will-change: opacity, transform;
 }
-.reveal.in { opacity: 1; transform: none; }
+html.js .reveal.in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal.in {

@@ -103,6 +103,13 @@
       });
     }, { rootMargin: "0px 0px -10% 0px" });
     items.forEach(function (el) { io.observe(el); });
+
+    // Safety net: content must NEVER stay hidden. If anything goes wrong with
+    // the observer (or a future CSS change), every reveal is forced visible
+    // after a few seconds. The animation is decorative; the content is not.
+    setTimeout(function () {
+      items.forEach(function (el) { el.classList.add("in"); });
+    }, 4000);
   }
 
   function start() {

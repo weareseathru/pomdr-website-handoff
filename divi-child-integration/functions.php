@@ -608,9 +608,12 @@ function pom_pet_badge($post_id) {
  * Voice rules (CLAUDE.md s2): age shows as "~N yrs" with a tilde, never "est".
  * No invented data: the only derived tag is "Senior" (age >= 10).
  */
-function pom_render_dog_card($post_id) {
+function pom_render_dog_card($post_id, $card_args = array()) {
     $name      = get_the_title($post_id);
     $permalink = get_permalink($post_id);
+    // 'eager' => true loads the photo immediately (used for the homepage row,
+    // so visitors never see the empty cream placeholder while lazy images decode).
+    $img_loading = !empty($card_args['eager']) ? 'eager' : 'lazy';
 
     list($badge_class, $badge_label) = pom_pet_badge($post_id);
 
@@ -660,7 +663,7 @@ function pom_render_dog_card($post_id) {
             if ($thumb_id) {
                 echo wp_get_attachment_image($thumb_id, 'medium_large', false, [
                     'alt'     => $name,
-                    'loading' => 'lazy',
+                    'loading' => $img_loading,
                     'style'   => 'width:100%;height:100%;object-fit:cover;object-position:center top;display:block',
                 ]);
             }
@@ -688,32 +691,49 @@ function pom_render_dog_card($post_id) {
  * shortcode is placed.
  */
 function pet_home_shortcode() {
-    $query = new WP_Query([
+    // This row must NEVER silently vanish. The old query inner-joined on the
+    // optional 'feature' meta (meta_key => 'feature'), so any dog without that
+    // flag was invisible and an unmaintained flag emptied the whole section
+    // (the same trap that blanked /adopted/ and dropped team members). Now:
+    // query adoptable dogs with no meta join, prefer featured ones in PHP,
+    // fall back to newest adoptable, and if there are truly no adoptable dogs,
+    // still render a friendly link instead of returning nothing.
+    $q = new WP_Query([
         'post_type'      => 'pets',
-        'posts_per_page' => 6,
+        'posts_per_page' => 30,
+        'fields'         => 'ids',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
         'meta_query'     => [
             'relation' => 'AND',
             ['key' => 'status', 'value' => 'Adoptable', 'compare' => 'LIKE'],
             ['key' => 'status', 'value' => 'Adopted',   'compare' => 'NOT LIKE'],
         ],
-        'meta_key' => 'feature',
-        'orderby'  => ['meta_value' => 'DESC', 'date' => 'DESC'],
     ]);
+    $ids = $q->posts;
 
-    ob_start();
+    // Featured dogs first (feature = Yes), newest first within each group.
+    usort($ids, function ($a, $b) {
+        $fa = ('Yes' === get_post_meta($a, 'feature', true)) ? 0 : 1;
+        $fb = ('Yes' === get_post_meta($b, 'feature', true)) ? 0 : 1;
+        return $fa <=> $fb; // usort is stable in PHP 8; date order holds within groups
+    });
+    $ids = array_slice($ids, 0, 6);
 
-    if ($query->have_posts()) :
-        echo '<div class="pomdr-home"><div class="dogs-grid">';
-        while ($query->have_posts()) : $query->the_post();
-            echo pom_render_dog_card(get_the_ID());
-        endwhile;
-        echo '</div>';
-        echo '<div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>';
-        echo '</div>';
-        wp_reset_postdata();
-    endif;
+    if (empty($ids)) {
+        return '<div class="pomdr-home"><div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs</a></div></div>';
+    }
 
-    return ob_get_clean();
+    $out = '<div class="pomdr-home"><div class="dogs-grid">';
+    foreach ($ids as $id) {
+        // Eager images: this row sits near the fold and lazy placeholders read
+        // as "the cards are not appearing".
+        $out .= pom_render_dog_card($id, array('eager' => true));
+    }
+    $out .= '</div>';
+    $out .= '<div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>';
+    $out .= '</div>';
+    return $out;
 }
 
 add_shortcode('pet_home', 'pet_home_shortcode');
