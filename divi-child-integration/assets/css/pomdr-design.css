@@ -628,7 +628,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ===== COMMON COMPONENTS ===== */
 
 /* Reveal animation */
-.reveal {
+html.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);

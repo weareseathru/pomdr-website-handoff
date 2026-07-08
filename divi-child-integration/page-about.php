@@ -100,9 +100,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </div>
       <div class="ph-media">
-        <picture>
-          <source type="image/webp" srcset="<?php echo $img; ?>/pages/pomdr-house.webp">
-          <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
+        <picture>          <img src="<?php echo $img; ?>/pages/pomdr-house.jpg" alt="The POMDR Patricia J. Bauer Center in Pacific Grove" loading="lazy">
         </picture>
       </div>
     </div>

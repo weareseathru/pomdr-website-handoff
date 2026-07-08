@@ -18,6 +18,10 @@
   if (window.__pomdrA11y) return;            // run once per page
   window.__pomdrA11y = true;
 
+  // Flag JS availability so CSS only hides .reveal content when this script
+  // will actually reveal it (progressive enhancement: no JS, no hidden text).
+  document.documentElement.classList.add("js");
+
   var STORAGE_KEY = "pomdr-a11y";
   var root = document.documentElement;
   var reduceMotion = window.matchMedia

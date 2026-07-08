@@ -35,7 +35,7 @@
 }
 
 /* The single scroll-reveal utility (a11y.js adds .in via one observer). */
-.reveal {
+html.js .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity var(--reveal-dur) var(--ease), transform var(--reveal-dur) var(--ease);
@@ -161,3 +161,26 @@ html[data-a11y="senior"] :where(.et_pb_text, .et_pb_post_content, main) a:not(.e
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
+/* ===== 4. TAP-TARGET FLOOR AND FAB CLEARANCE (2026-07-07 design sweep) ===== */
+
+/* Card-level action links and filter chips reach the 44px target everywhere
+   (they measured 24 to 38px on surrender, donate, volunteer, adopt). */
+.opt-link, .fund-link, .card-link, .way-link, .btn-white, .btn-ghost,
+.filter, .filter-chip, .dog-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* The hero progress dots keep their 3px-bar look (the bar is the button
+   background) while the touchable area grows to 23px tall. */
+.hero-progress button {
+  height: 23px;
+  padding-block: 10px;
+  background-clip: content-box;
+}
+
+/* On the homepage the FAB sits above the hero's pause control so both stay
+   clickable; elsewhere it keeps the standard corner. */
+body.home .a11y-fab { bottom: max(84px, env(safe-area-inset-bottom, 0px)); }

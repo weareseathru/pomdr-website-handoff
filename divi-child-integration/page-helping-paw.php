@@ -43,9 +43,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 /* PLACEHOLDER card photos (stock dogs). Swap for real categorized photos. */
 .fund-card{overflow:hidden;}
 .fund-card::before{content:"";display:block;height:150px;margin:-28px -28px 22px;background:var(--cream-2) center/cover no-repeat;}
-.fund-card:nth-of-type(3n+1)::before{background-image:url(images/dog3.jpeg);}
-.fund-card:nth-of-type(3n+2)::before{background-image:url(images/dog6.jpeg);}
-.fund-card:nth-of-type(3n)::before{background-image:url(images/dog12.jpeg);}
+.fund-card:nth-of-type(3n+1)::before{background-image:url(<?php echo $img; ?>/dog3.jpeg);}
+.fund-card:nth-of-type(3n+2)::before{background-image:url(<?php echo $img; ?>/dog6.jpeg);}
+.fund-card:nth-of-type(3n)::before{background-image:url(<?php echo $img; ?>/dog12.jpeg);}
 .fund-card.featured{background:var(--blue-700);color:#fff;border-color:var(--blue);}
 .fund-card.featured p{color:rgba(255,255,255,.88);}
 .fund-icon{width:48px;height:48px;border-radius:15px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:18px;}

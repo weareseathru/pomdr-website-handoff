@@ -26,7 +26,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div style="font-family:var(--font-serif);font-size:48px;color:var(--blue);line-height:1">1</div>
         <div>
           <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 8px">Apply online</h3>
-          <p style="margin:0;color:var(--ink-3);font-size:16px;line-height:1.6">Fill out our application. It is short and asks the things we need to make a good match. A coordinator follows up within a few days.</p>
+          <p style="margin:0 0 14px;color:var(--ink-3);font-size:16px;line-height:1.6">Fill out our application. It is short and asks the things we need to make a good match. A coordinator follows up within a few days.</p>
+          <a href="/adoption-questionnaire/" class="btn btn-primary" style="min-height:44px">Start the Application</a>
         </div>
       </li>
       <li class="card" style="padding:28px;display:grid;grid-template-columns:64px 1fr;gap:24px;align-items:start">

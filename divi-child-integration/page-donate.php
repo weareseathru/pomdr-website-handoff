@@ -42,7 +42,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .way-card::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink-2) center/cover no-repeat;transition:transform .7s var(--ease);}
 .way-card:hover::before{transform:scale(1.05);}
-.way-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
+.way-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.55) 0%,rgba(22,32,43,.65) 42%,rgba(22,32,43,.92) 100%);}
 .way-card>*{position:relative;z-index:2;}
 /* Real category photos for each way to give (from peaceofminddogrescue.org/donateoverview). */
 .way-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/donate/maxsfundlogo.jpg);}
@@ -60,8 +60,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-icon{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(3px);display:grid;place-items:center;color:#fff;margin-bottom:16px;}
 .way-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;}
 .way-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
-.way-card p{font-size:15px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
-.way-link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#fff;margin-top:auto;text-shadow:0 1px 8px rgba(0,0,0,.55);transition:gap .25s;}
+.way-card p{font-size:16px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.way-link{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#fff;margin-top:auto;text-shadow:0 1px 8px rgba(0,0,0,.55);transition:gap .25s;}
 .way-card:hover .way-link{gap:10px;}
 @media(max-width:900px){.ways-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.ways-grid{grid-template-columns:1fr;}}

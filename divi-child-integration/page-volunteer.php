@@ -22,7 +22,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .role-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .role-card::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink-2) center/cover no-repeat;transition:transform .7s var(--ease);}
 .role-card:hover::before{transform:scale(1.05);}
-.role-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
+.role-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.55) 0%,rgba(22,32,43,.65) 42%,rgba(22,32,43,.92) 100%);}
 .role-card>*{position:relative;z-index:2;}
 .role-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/hero-mission.jpeg);}
 .role-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/dog4.jpeg);}
@@ -37,8 +37,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .role-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:rgba(255,255,255,.2)!important;color:#fff!important;backdrop-filter:blur(3px);}
 .role-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;}
 .role-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
-.role-card p{font-size:15px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
-.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#fff;margin-top:auto;}
+.role-card p{font-size:16px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#fff;margin-top:auto;}
 .role-card .learn::after{content:"→";transition:transform .25s var(--ease);}
 .role-card:hover .learn::after{transform:translateX(5px);}
 @media(max-width:900px){.roles-grid{grid-template-columns:1fr 1fr;}}

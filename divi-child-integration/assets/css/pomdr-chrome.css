@@ -107,7 +107,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
 .nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
 .nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
-@media (max-width: 1200px) { .nav-tagline { display: none; } }
+@media (max-width: 1440px) { .nav-tagline { display: none; } } /* was 1200px; the tagline squeezed the menu off its card at laptop widths */
 
 /* Two visible rows of menu items */
 .nav-menu {
