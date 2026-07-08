@@ -116,6 +116,26 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   align-items: flex-end;
   gap: 4px;
 }
+
+/* The primary Donate action: a solid blue block on the far right of the nav
+   card, stretching the height of both menu rows. AA contrast (white on
+   --blue-700, about 6:1). */
+.nav-donate {
+  align-self: stretch;
+  display: grid;
+  place-items: center;
+  margin-left: 10px;
+  padding: 0 30px;
+  background: var(--blue-700);
+  color: #fff !important;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border-radius: 18px;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.nav-donate:hover { background: var(--blue-900); transform: translateY(-1px); }
+.nav-donate:focus-visible { outline: var(--focus-w) solid var(--focus-color); outline-offset: 2px; }
 .nav-row {
   display: flex;
   align-items: center;
@@ -390,6 +410,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 /* Mobile: collapse nav links into drawer */
 @media (max-width: 960px) {
   .nav-menu { display: none; }
+  .nav-donate { display: none; }
   .nav-toggle { display: inline-flex; }
   .action-bar-tag { display: none; }
   .action-bar-inner { justify-content: center; }
@@ -472,5 +493,5 @@ body #main-content .container { padding-top: 0 !important; }
 /* Donate menu item: a dark-blue oval outline so it stands out in the nav. The
    nav link is already a pill (border-radius 999px + padding), so a border reads
    as an oval; box-sizing:border-box keeps it from shifting the row. */
-.nav-item--donate > a { border: 2px solid var(--blue-700); color: var(--blue-700) !important; font-weight: 700; }
+/* The Donate nav item is now the standalone .nav-donate block (solid blue, double height). */
 .nav-item--donate:hover > a, .nav-item--donate > a:hover { background: var(--blue-700) !important; color: #fff !important; }

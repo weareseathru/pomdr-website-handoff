@@ -41,7 +41,7 @@
       ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' }
   ];
   var heroSlides = document.querySelectorAll('.hero-slide');
-  var dots = document.querySelectorAll('#hero-progress button');
+  var dots = document.querySelectorAll('#hero-progress button[data-i]');
   var elTitle = document.getElementById('hero-title');
   var elCtas = document.getElementById('hero-ctas');
   var elCur = document.getElementById('hero-cur');
@@ -66,8 +66,8 @@
       paused = !paused;
       pause.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
       pause.innerHTML = paused
-        ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>'
-        : '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
       schedule();
     });
     schedule();

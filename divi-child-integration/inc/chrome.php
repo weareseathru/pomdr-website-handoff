@@ -28,7 +28,6 @@ function pomdr_render_chrome() {
         <p class="action-bar-tag">Helping senior dogs and senior people since 2009</p>
         <div class="action-bar-actions">
           <a href="<?php echo pomdr_url('adopt'); ?>" class="ab-btn ab-adopt">Adopt</a>
-          <a href="<?php echo pomdr_url('donate'); ?>" class="ab-btn ab-donate">Donate</a>
           <a href="<?php echo pomdr_url('volunteer'); ?>" class="ab-btn ab-volunteer">Volunteer</a>
         </div>
       </div>
@@ -47,7 +46,6 @@ function pomdr_render_chrome() {
             <div class="nav-row nav-row--primary">
               <div class="nav-item"><a href="<?php echo pomdr_url('adopt'); ?>">Adopt</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('foster'); ?>">Foster</a></div>
-              <div class="nav-item nav-item--donate"><a href="<?php echo pomdr_url('donate'); ?>">Donate</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('volunteer'); ?>">Volunteer</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('helping-paw'); ?>">Helping Paw</a></div>
             </div>
@@ -59,6 +57,7 @@ function pomdr_render_chrome() {
               <div class="nav-item"><a href="mailto:info@pomdr.org">Contact</a></div>
             </div>
           </div>
+          <a href="<?php echo pomdr_url('donate'); ?>" class="nav-donate">Donate</a>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
         </div>
       </div>

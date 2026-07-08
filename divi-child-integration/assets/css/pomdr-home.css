@@ -357,10 +357,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 @media (max-width: 820px) { .promo-inner { flex-direction: column; align-items: flex-start; gap: 14px; } .promo-actions { width: 100%; justify-content: space-between; } }
 /* Keep the side arrows clear of the title card (arrow right edge ~88px; leave a gap) */
 .hero-content .container { padding-left: 112px; }
+.hero-controls .container { padding-left: 112px; } /* progress bars align with the hero card's left edge */
 @media (max-width: 900px) {
   /* Higher specificity (.hero .hero-arrow) so it beats the later base rule */
   .hero .hero-arrow { display: none; }
   .hero-content .container { padding-left: 22px; padding-right: 22px; }
+  .hero-controls .container { padding-left: 22px; }
   .hero-card { display: block; max-width: none; padding: 24px 22px; }
 }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -427,12 +429,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-controls .container {
   display: flex; justify-content: space-between; align-items: center; width: 100%;
 }
-.hero-progress, .hero-counter { pointer-events: auto; }
+.hero-progress { pointer-events: auto; }
 .hero-progress {
   display: flex; gap: 8px; align-items: center;
 }
 .hero-progress button {
-  width: 44px; height: 3px; background: rgba(255,255,255,0.3); border-radius: 2px;
+  width: 44px; height: 2px; background: rgba(255,255,255,0.3); border-radius: 2px;
   position: relative; overflow: hidden; transition: width 0.3s;
 }
 .hero-progress button.active { width: 88px; }
@@ -443,25 +445,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   animation: fill 6s linear forwards;
 }
 @keyframes fill { to { width: 100%; } }
-.hero-counter {
-  color: white; font-variant-numeric: tabular-nums; font-size: 16px;
-  display: flex; align-items: center; gap: 16px;
-  background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
-  padding: 10px 18px; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.2);
+/* The pause control sits quietly at the end of the progress row (the 04/04
+   counter bubble was removed by design; WCAG still requires a pause). */
+.hero-progress #hero-pause {
+  width: 34px; height: 34px; margin-left: 10px;
+  display: grid; place-items: center;
+  border-radius: 999px; color: #fff; opacity: 0.85;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.35);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  padding: 0;
 }
-.hero-counter .slash { opacity: 0.6; }
-.hero-counter button { color: white; opacity: 0.8; }
-.hero-counter button:hover { opacity: 1; }
+.hero-progress #hero-pause:hover { opacity: 1; background: rgba(255,255,255,0.26); }
 
-.scroll-hint {
-  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
-  color: rgba(255,255,255,0.7); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase;
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  pointer-events: none;
-}
-.scroll-hint .line { width: 1px; height: 32px; background: rgba(255,255,255,0.5); position: relative; overflow: hidden; }
-.scroll-hint .line::after {
+
   content: ""; position: absolute; top: -16px; left: 0; right: 0; height: 16px;
   background: white; animation: scrollDown 2s ease-in-out infinite;
 }
@@ -1071,7 +1068,6 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   .section { padding: 76px 0; }
   .container { padding: 0 16px; }
   /* Hero slider controls (progress bars + counter) must never overflow the hero */
-  .hero-counter { display: none; }
   .hero-progress button { width: 22px; }
   .hero-progress button.active { width: 44px; }
   .hero-controls { bottom: 20px; }
@@ -1125,6 +1121,7 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
   backdrop-filter: blur(8px);
   transition: background .25s var(--ease), transform .25s var(--ease), border-color .25s;
 }
+.hero-arrow svg { width: 34px; height: 34px; } /* the glyph fills the circle, easier to see */
 .hero-arrow:hover { background: rgba(255,255,255,0.28); transform: translateY(-50%) scale(1.08); }
 .hero-arrow:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .hero-arrow.prev { left: 28px; }

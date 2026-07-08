@@ -57,15 +57,11 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <button data-i="1" aria-label="Slide 2"><span class="bar"></span></button>
           <button data-i="2" aria-label="Slide 3"><span class="bar"></span></button>
           <button data-i="3" aria-label="Slide 4"><span class="bar"></span></button>
-        </div>
-        <div class="hero-counter">
-          <span id="hero-cur">01</span><span class="slash">/</span><span>04</span>
-          <button id="hero-pause" aria-label="Pause slideshow"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+          <button id="hero-pause" aria-label="Pause slideshow"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
         </div>
       </div>
     </div>
 
-    <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
   </section>
 
   <!-- ===== PROMO BANNER (staff-toggleable in WP: adoption promos, fundraisers) ===== -->

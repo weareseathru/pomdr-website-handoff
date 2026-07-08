@@ -493,10 +493,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   justify-content: center;
   gap: 8px;
   min-height: 48px;
-  padding: 11px 22px;
+  padding: 11px 24px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 20px; /* text fills the button (was 19px); padding stays generous */
   line-height: 1.05;
   font-family: var(--font-sans);
   cursor: pointer;
