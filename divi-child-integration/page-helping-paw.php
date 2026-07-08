@@ -94,7 +94,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p class="page-narrative">Keeping pets and people <em>together.</em></p>
         <p class="lead">The Helping Paw Program provides support to senior people and people with disabilities who need help caring for their dogs, so no one has to give up their companion due to hardship.</p>
         <div style="display:flex;gap:14px;flex-wrap:wrap;">
-          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">
+          <a href="/helping-paw-application/" class="btn btn-orange">
             Apply for Help
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
@@ -121,7 +121,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M13 4v7h7"/><path d="M13 4a9 9 0 1 0 7 7"/></svg></div>
           <h3>Walking Brigade</h3>
           <p>Our volunteers walk dogs for senior or ill guardians who can no longer walk their own dogs. We also help with transportation to vets and groomers, and other supportive tasks.</p>
-          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="card-link">Request a Walker</a>
+          <a href="/helping-paw-application/" class="card-link">Request a Walker</a>
         </div>
       </div>
       <div class="program-card">
@@ -130,7 +130,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3>Financial Assistance</h3>
           <p>We offer two funds to help guardians facing unexpected veterinary expenses. Max's Helping Paws Fund for urgent care, and a Food Fund to keep dogs fed during financial hardship.</p>
-          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="card-link">Apply for Assistance</a>
+          <a href="/helping-paw-application/" class="card-link">Apply for Assistance</a>
         </div>
       </div>
       <div class="program-card">
@@ -139,7 +139,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
           <h3>Temporary Foster</h3>
           <p>When a guardian faces a health crisis or hospitalization, we can arrange temporary foster care for their dog, keeping them safe until their person recovers.</p>
-          <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="card-link">Request Temp Foster</a>
+          <a href="/helping-paw-application/" class="card-link">Request Temp Foster</a>
         </div>
       </div>
     </div>
@@ -172,7 +172,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
             <div class="li-text"><strong>Easy to Request</strong><span>Call (831) 718-9122 or fill out our form</span></div>
           </li>
         </ul>
-        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-orange">
+        <a href="/helping-paw-application/" class="btn btn-orange">
           Request a Walker
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -196,21 +196,21 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3>Max's Helping Paws Fund</h3>
         <p>Provides financial assistance to low-income guardians facing unexpected, urgent veterinary care, including surgery and specialist visits. Named in honor of Max, a beloved POMDR pup.</p>
         <div class="conditions">For urgent, unexpected veterinary needs · Low-income guardians · Monterey, Santa Cruz &amp; San Benito counties</div>
-        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Max's Fund</a>
+        <a href="/helping-paw-application/" class="fund-link">Apply for Max's Fund</a>
       </div>
       <div class="fund-card">
         <div class="fund-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <h3>Food Fund</h3>
         <p>Helps guardians who are struggling financially to continue feeding their dogs during times of hardship, keeping families together when budgets are tight.</p>
         <div class="conditions">For food assistance · Must be facing financial hardship · Tri-county area</div>
-        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Food Assistance</a>
+        <a href="/helping-paw-application/" class="fund-link">Apply for Food Assistance</a>
       </div>
       <div class="fund-card">
         <div class="fund-icon" style="background:var(--purple-50);color:var(--purple);"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <h3>Helping Paw Veterinary Fund</h3>
         <p>For non-emergency but necessary veterinary care that a guardian cannot afford. Routine treatments, dental care, and ongoing medical management for chronic conditions.</p>
         <div class="conditions">For non-emergency care · Income verification required</div>
-        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="fund-link">Apply for Vet Assistance</a>
+        <a href="/helping-paw-application/" class="fund-link">Apply for Vet Assistance</a>
       </div>
     </div>
   </div>
@@ -225,7 +225,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h2>Are you <em>eligible?</em></h2>
         <p>The Helping Paw Program is designed for people in our tri-county area who need support caring for their dog due to age, disability, or financial hardship.</p>
         <p>We review each application individually and do our best to help as many people as we can. If we are unable to help, we provide referrals to other resources.</p>
-        <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-700);color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;font-size:16px;margin-top:8px;transition:all .25s;">
+        <a href="/helping-paw-application/" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-700);color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;font-size:16px;margin-top:8px;transition:all .25s;">
           Apply Online
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -333,7 +333,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <h2>Ready to help or <em>get help?</em></h2>
     <div class="ctas">
-      <a href="https://www.peaceofminddogrescue.org/helpingpawapplication.php" target="_blank" class="btn btn-primary">Apply for Helping Paw
+      <a href="/helping-paw-application/" class="btn btn-primary">Apply for Helping Paw
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="/volunteer/" class="btn btn-outline">Become a Walker</a>

@@ -368,15 +368,17 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <h2>Sweet stories, happy tails and <em>good news</em> in your inbox.</h2>
         <p>One thoughtful email a month. Adoption updates, events, and a little sunshine from the pups.</p>
       </div>
-      <form class="newsletter-form" action="/thank-you/" method="get" onsubmit="event.preventDefault();window.location.href='/thank-you/?source=newsletter';">
-        <input type="hidden" name="source" value="newsletter">
-        <label for="newsletter-email">Newsletter signup</label>
+      <?php
+      // The signup itself is the LGL newsletter form on /mailing-list/ (the
+      // same form the live site uses). This teaser sends people there rather
+      // than pretending to collect an email and discarding it.
+      ?>
+      <div class="newsletter-form">
         <div class="nform-row">
-          <input id="newsletter-email" name="email" autocomplete="email" type="email" placeholder="your@email.com" required>
-          <button type="submit">Subscribe</button>
+          <a class="btn btn-light" style="min-height:52px;display:inline-flex;align-items:center;gap:8px" href="<?php echo esc_url( home_url('/mailing-list/') ); ?>">Join the mailing list <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
-        <div class="fine">We respect your inbox. Unsubscribe anytime.</div>
-      </form>
+        <div class="fine">One thoughtful email a month. Unsubscribe anytime.</div>
+      </div>
     </div>
   </section>
 

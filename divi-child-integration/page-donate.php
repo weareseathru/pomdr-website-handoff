@@ -153,8 +153,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="way-card">
         <div class="way-icon" style="background:var(--purple-50);color:var(--purple);"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
         <h3>Sponsor a Dog</h3>
-        <p>Go to our adoptable dog page, choose a pup, and click "Sponsor." Your gift directly supports that dog's care while they wait for their forever home.</p>
-        <a href="/adopt/" class="way-link">Browse Dogs →</a>
+        <p>Choose a pup on our adoptable dog page and click "Sponsor," or sponsor directly. Your gift supports that dog's care while they wait for their forever home.</p>
+        <a href="/sponsor-a-dog/" class="way-link">Sponsor a Dog →</a>
       </div>
 
       <div class="way-card">

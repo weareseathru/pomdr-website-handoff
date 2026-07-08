@@ -44,20 +44,19 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </ul>
       </div>
 
-      <!-- Prototype signup. Production: replace this form with the Mailchimp
-           hosted embed form (audience id and embed URL are a pending integration
-           item, see STACK.md section 4). The fields below mirror what Mailchimp
-           collects so the swap is one for one. -->
-      <form id="signup" class="signup-card" method="post" action="thank-you.html"
-            onsubmit="event.preventDefault();window.location.href='thank-you.html?source=mailing-list';">
+      <!-- The real newsletter signup: the same LGL form the live site uses.
+           Form ID verified 2026-07-07 from the iframe on the live page
+           (peaceofminddogrescue.org/POMDRMailingList.php). Signups land in the
+           LGL constituent database, which feeds Mailchimp. -->
+      <div id="signup" class="signup-card">
         <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 20px">Join the mailing list</h3>
-        <label for="ml-first">First name</label>
-        <input id="ml-first" name="first_name" autocomplete="given-name"/>
-        <label for="ml-email">Email address</label>
-        <input id="ml-email" name="email" type="email" autocomplete="email" required/>
-        <button class="btn btn-primary" style="width:100%">Sign me up</button>
+        <iframe src="https://secure.lglforms.com/form_engine/s/gTxA6GdJUmSjS2J4hXvcKg"
+                title="Join the POMDR mailing list"
+                width="100%" height="620"
+                style="border:0;display:block;background:#fff;border-radius:12px;"></iframe>
+        <noscript><p>To sign up, visit <a href="https://secure.lglforms.com/form_engine/s/gTxA6GdJUmSjS2J4hXvcKg">our mailing list form</a>.</p></noscript>
         <p class="signup-note">You can unsubscribe at any time. We will never share your email.</p>
-      </form>
+      </div>
     </div>
   </div>
 </section>
@@ -73,4 +72,5 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </section>
 
 </main>
+<script src="https://secure.lglforms.com/form_engine/s/tfs_iframe.js"></script>
 <?php get_footer();

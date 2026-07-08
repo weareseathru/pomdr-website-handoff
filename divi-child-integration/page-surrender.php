@@ -86,7 +86,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p class="page-narrative">We'll be here, <em>whatever comes next.</em></p>
         <p class="hero-lead">Whether you need to surrender your dog now, or want peace of mind for the future, POMDR is a resource and partner, not just a rescue.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="https://www.peaceofminddogrescue.org/POMDRsurrenderapplication.php" target="_blank" style="background:var(--blue-700);color:#fff;padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;box-shadow:0 10px 24px -6px rgba(0,139,176,.5);">
+          <a href="/intake-questionnaire/" style="background:var(--blue-700);color:#fff;padding:16px 26px;border-radius:999px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;box-shadow:0 10px 24px -6px rgba(0,139,176,.5);">
             Start the Process
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
@@ -132,7 +132,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3>Surrender to POMDR</h3>
         <p style="color:rgba(255,255,255,.85);">Place your dog directly into our care. We accept dogs from Monterey, Santa Cruz and San Benito counties. We work with a waitlist, so please plan ahead when possible.</p>
         <div style="font-size:15px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);margin-bottom:16px;">We are rarely able to accept dogs outside our tri-county area.</div>
-        <a href="https://www.peaceofminddogrescue.org/POMDRsurrenderapplication.php" target="_blank" class="opt-link">Start Surrender Application</a>
+        <a href="/intake-questionnaire/" class="opt-link">Start Surrender Application</a>
       </div>
       <div class="option-card">
         <div class="opt-icon" style="background:var(--purple-50);color:var(--purple);"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
@@ -266,7 +266,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h2>What happens to your dog if <em>you can no longer care for them?</em></h2>
         <p>Our Perpetual Care program gives you peace of mind that your dog will be loved and cared for, no matter what life brings. This is a promise, not a program.</p>
         <p>By creating a Pet Trust and making an annual gift to POMDR, you establish a formal arrangement ensuring we will place your dog in a loving home if you pass away or can no longer provide care.</p>
-        <a href="https://www.peaceofminddogrescue.org/POMDRPerpetualCareApplication.php" target="_blank" class="btn-white">
+        <a href="/perpetual-care-program/" class="btn-white">
           Apply for Perpetual Care
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -363,11 +363,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <h2>Ready to take the <em>next step?</em></h2>
     <div class="ctas">
-      <a href="https://www.peaceofminddogrescue.org/POMDRsurrenderapplication.php" target="_blank" class="btn-primary">
+      <a href="/intake-questionnaire/" class="btn-primary">
         Surrender Application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="https://www.peaceofminddogrescue.org/POMDRPerpetualCareApplication.php" target="_blank" class="btn-ghost">Perpetual Care Application</a>
+      <a href="/perpetual-care-program/" class="btn-ghost">Perpetual Care Application</a>
       <a href="/helping-paw/" class="btn-ghost">Helping Paw Program</a>
     </div>
   </div>
