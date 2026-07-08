@@ -529,8 +529,10 @@ section { position: relative; }
   cursor: pointer;
 }
 .dog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.dog-card .photo-wrap { position: relative; padding: 14px; }
-.dog-card .dog-photo { border-radius: 20px; aspect-ratio: 1/1; overflow: hidden; background: var(--cream-2); }
+/* Full-bleed photo: the image fills the entire upper card, no inset frame.
+   The card's own radius + overflow:hidden shape the top corners. */
+.dog-card .photo-wrap { position: relative; padding: 0; }
+.dog-card .dog-photo { border-radius: 0; aspect-ratio: 1/1; overflow: hidden; background: var(--cream-2); }
 .dog-card .badge {
   position: absolute; top: 24px; left: 24px;
   background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
