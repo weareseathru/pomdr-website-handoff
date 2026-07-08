@@ -166,7 +166,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
       <div class="reveal">
         <div class="section-header">
           <span class="eyebrow">Adoptable Dogs</span>
-          <h2 class="section-title">Adoptable dogs, <em>updated daily.</em></h2>
+          <h2 class="section-title">Find your new <em>old best friend.</em></h2>
         </div>
       </div>
       <?php echo do_shortcode("[pet_home]"); ?>
