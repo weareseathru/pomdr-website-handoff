@@ -67,7 +67,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
 .eyebrow {
-  font-size: clamp(34px, 3.6vw, 46px); /* 2026-07-08: about 15px larger per Andrew */
+  font-size: clamp(36px, 4.2vw, 54px); /* 2026-07-08 round two: larger still, leads removed */
   letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; line-height: 1.05;
   color: var(--blue-700); display: inline-flex; align-items: center; gap: 14px;
 }
@@ -505,7 +505,7 @@ section { position: relative; }
 .section-header.left { text-align: left; margin-left: 0; }
 .section-title {
   font-family: var(--font-serif); font-weight: 400;
-  font-size: clamp(22px, 2.7vw, 34px); /* balanced against the 46px section labels */
+  font-size: clamp(24px, 3.1vw, 40px); /* balanced against the 54px section labels */
   line-height: 1.15; letter-spacing: -0.01em;
   margin: 12px 0 16px;
   color: var(--ink);
@@ -1137,8 +1137,39 @@ body[data-motion="rich"] .hero-slide.active .hero-image { animation-duration: 7s
 
 /* ===== VIDEO SECTION ===== */
 .video-section { padding: 72px 0; }
-.video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
-@media (max-width: 640px) { .video-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; } }
+.video-grid { display: grid; grid-template-columns: repeat(3, 1fr) 190px; gap: 22px; margin-top: 40px; align-items: stretch; }
+
+/* The See-all card on the right end of the video row */
+.video-more {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  border-radius: var(--radius, 20px); border: 2px solid var(--blue-700);
+  color: var(--blue-700); font-weight: 700; font-size: 19px; text-align: center;
+  padding: 20px; transition: background .2s var(--ease), color .2s var(--ease);
+}
+.video-more:hover { background: var(--blue-700); color: #fff; }
+
+/* Featured player: the stage takes the left, cards become a compact side rail */
+.video-stage { display: none; }
+.video-grid.has-player { grid-template-columns: 2.5fr 1fr; }
+.video-grid.has-player .video-stage {
+  display: block; grid-row: 1 / span 4; grid-column: 1;
+  aspect-ratio: 16 / 9; border-radius: var(--radius, 20px); overflow: hidden;
+  background: var(--ink); align-self: start;
+}
+.video-grid.has-player .video-stage iframe { width: 100%; height: 100%; border: 0; display: block; }
+.video-grid.has-player .video-card { aspect-ratio: 16 / 9; grid-column: 2; }
+.video-grid.has-player .video-card .v-title { font-size: 15px; }
+.video-grid.has-player .video-card.now-playing { outline: 3px solid var(--blue); outline-offset: 2px; }
+.video-grid.has-player .video-more { grid-column: 2; aspect-ratio: auto; min-height: 64px; flex-direction: row; }
+@media (max-width: 900px) {
+  .video-grid, .video-grid.has-player { grid-template-columns: 1fr 1fr; }
+  .video-grid.has-player .video-stage { grid-column: 1 / -1; grid-row: 1; }
+  .video-grid.has-player .video-card { grid-column: auto; }
+  .video-grid.has-player .video-more { grid-column: auto; }
+}
+@media (max-width: 640px) {
+  .video-grid, .video-grid.has-player { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; }
+}
 .video-card {
   position: relative;
   aspect-ratio: 4 / 5;

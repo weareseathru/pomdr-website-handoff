@@ -69,7 +69,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
     <div class="container promo-inner">
       <div class="promo-text">
         <span class="promo-label">
-          <svg class="promo-paw" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#fff"/><g fill="#632F88"><ellipse cx="10.5" cy="13" rx="2" ry="2.5"/><ellipse cx="14.7" cy="10.6" rx="2" ry="2.5"/><ellipse cx="18.3" cy="10.6" rx="2" ry="2.5"/><ellipse cx="22" cy="13.4" rx="2" ry="2.5"/><path d="M16.2 15.4c-3 0-5.4 2.2-5.4 4.7 0 1.8 1.5 2.8 3.2 2.8.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.7 0 3.2-1 3.2-2.8 0-2.5-2.4-4.7-5.4-4.7z"/></g></svg>
+          <svg class="promo-paw" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#632F88"/><g fill="#fff"><ellipse cx="14.5" cy="30" rx="5.2" ry="7" transform="rotate(-24 14.5 30)"/><ellipse cx="25" cy="19.5" rx="5.4" ry="7.4" transform="rotate(-8 25 19.5)"/><ellipse cx="39" cy="19.5" rx="5.4" ry="7.4" transform="rotate(8 39 19.5)"/><ellipse cx="49.5" cy="30" rx="5.2" ry="7" transform="rotate(24 49.5 30)"/><path d="M32 36.9 C29.3 33.8 25.3 32.7 22 34.1 C16.6 36.5 13.9 42.6 16.1 48.2 C17.8 52.7 22 56 26.8 56.9 C28.7 57.3 30.5 56.3 32 54.8 C33.5 56.3 35.3 57.3 37.2 56.9 C42 56 46.2 52.7 47.9 48.2 C50.1 42.6 47.4 36.5 42 34.1 C38.7 32.7 34.7 33.8 32 36.9 Z"/></g></svg>
           Adoption Promotion
         </span>
         <p class="promo-message">This month, senior dog adoption fees are waived for adopters 65 and older. Give a gray muzzle a soft place to land.</p>
@@ -132,7 +132,6 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <div class="section-header">
           <span class="eyebrow" style="color:var(--purple)">Our Mission</span>
           <h2 class="section-title">Programs for senior dogs <em>and senior people.</em></h2>
-          <p class="section-lead">Who will care for your dog if you no longer can? We help senior dogs and senior people on California's Central Coast through rescue, foster, adoption, hospice, and lifelong care, so no dog is left without someone to love them.</p>
         </div>
       </div>
       <div class="programs-grid">
@@ -168,7 +167,6 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <div class="section-header">
           <span class="eyebrow">Adoptable Dogs</span>
           <h2 class="section-title">Adoptable dogs, <em>updated daily.</em></h2>
-          <p class="section-lead">A few of the seniors waiting for their next chapter. Each has a full heart, a few grey hairs, and a story that is not finished yet.</p>
         </div>
       </div>
       <?php echo do_shortcode("[pet_home]"); ?>
@@ -182,31 +180,34 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <div class="section-header">
           <span class="eyebrow">Watch</span>
           <h2 class="section-title">POMDR <em>Videos.</em></h2>
-          <p class="section-lead">Our dogs and our people, in their own words. Short films from inside the rescue, from foster homes to morning walks.</p>
         </div>
       </div>
-      <!-- To go live: paste a YouTube video ID into data-youtube-id (the 11
-           characters after watch?v=). The video then plays inline on click,
-           privacy-friendly (youtube-nocookie) and only loaded when clicked. -->
-      <div class="video-grid reveal">
-        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Meet our senior dogs">
-          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog12.webp"><img class="poster" src="<?php echo $img; ?>/dog12.jpeg" alt="A senior dog looking calmly toward the camera" loading="lazy"></picture>
+      <!-- Real POMDR videos (ids from the live videos page). Click a card and
+           it becomes the featured player; the others slide into a side rail.
+           Posters come from YouTube (ytimg is an allowlisted host). -->
+      <div class="video-grid reveal" id="video-grid">
+        <div class="video-card" data-youtube-id="B7RQI4beRZU" data-title="A message to you">
+          <img class="poster" src="https://i.ytimg.com/vi/B7RQI4beRZU/hqdefault.jpg" alt="A message to you from POMDR" loading="lazy">
           <div class="scrim"></div>
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="v-title">Meet our senior dogs</div>
+          <div class="v-title">A message to you</div>
         </div>
-        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Inside the Helping Paw program">
-          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog9.webp"><img class="poster" src="<?php echo $img; ?>/dog9.jpeg" alt="A volunteer spending time with a small dog" loading="lazy"></picture>
+        <div class="video-card" data-youtube-id="HVv8rEJjnvs" data-title="The team behind every rescue">
+          <img class="poster" src="https://i.ytimg.com/vi/HVv8rEJjnvs/hqdefault.jpg" alt="The POMDR team at work" loading="lazy">
           <div class="scrim"></div>
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="v-title">Inside the Helping Paw program</div>
+          <div class="v-title">The team behind every rescue</div>
         </div>
-        <div class="video-card" data-youtube-id="PLACEHOLDER" data-title="Why we foster">
-          <picture><source type="image/webp" srcset="<?php echo $img; ?>/dog16.webp"><img class="poster" src="<?php echo $img; ?>/dog16.jpeg" alt="A foster dog resting comfortably at home" loading="lazy"></picture>
+        <div class="video-card" data-youtube-id="KXY3ANV4V84" data-title="Grandpa Joe's story">
+          <img class="poster" src="https://i.ytimg.com/vi/KXY3ANV4V84/hqdefault.jpg" alt="Grandpa Joe, a senior dog rescued by POMDR" loading="lazy">
           <div class="scrim"></div>
           <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-          <div class="v-title">Why we foster</div>
+          <div class="v-title">Grandpa Joe's story</div>
         </div>
+        <a class="video-more" href="/videos/">
+          <span>See all videos</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -246,7 +247,6 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
         <div class="section-header">
           <span class="eyebrow">Testimonials</span>
           <h2 class="section-title">Hear from <em>our clients.</em></h2>
-          <p class="section-lead">Adopters, fosters, and Helping Paw families on what POMDR has meant to them and their senior dogs.</p>
         </div>
       </div>
       <div class="tails-grid">

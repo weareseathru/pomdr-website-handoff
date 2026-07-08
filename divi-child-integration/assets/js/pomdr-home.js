@@ -73,25 +73,38 @@
     schedule();
   }
 
-  /* YouTube video facade: load the iframe only on click (fast first paint),
-     play inline, privacy-friendly via youtube-nocookie. */
-  document.querySelectorAll('.video-card').forEach(function (card) {
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    var play = function () {
+  /* YouTube videos: click a card and it becomes the featured player (a stage
+     is inserted at the head of the grid, the other cards slide into a side
+     rail). Iframes only load on click, privacy-friendly via youtube-nocookie. */
+  var videoGrid = document.getElementById('video-grid');
+  if (videoGrid) {
+    var playIn = function (card) {
       var id = card.getAttribute('data-youtube-id');
       if (!id || id === 'PLACEHOLDER') return;
-      var ifr = document.createElement('iframe');
-      ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-      ifr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
-      ifr.setAttribute('allowfullscreen', '');
-      ifr.setAttribute('title', card.getAttribute('data-title') || 'POMDR video');
-      card.innerHTML = '';
-      card.appendChild(ifr);
+      var stage = videoGrid.querySelector('.video-stage');
+      if (!stage) {
+        stage = document.createElement('div');
+        stage.className = 'video-stage';
+        videoGrid.insertBefore(stage, videoGrid.firstChild);
+        videoGrid.classList.add('has-player');
+      }
+      stage.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0"' +
+        ' allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen' +
+        ' title="' + (card.getAttribute('data-title') || 'POMDR video') + '"></iframe>';
+      videoGrid.querySelectorAll('.video-card').forEach(function (c) {
+        c.classList.toggle('now-playing', c === card);
+      });
+      stage.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     };
-    card.addEventListener('click', play);
-    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
-  });
+    videoGrid.querySelectorAll('.video-card').forEach(function (card) {
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', function () { playIn(card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playIn(card); }
+      });
+    });
+  }
 
   /* Happy Tails hover (lift, grow, reverse to purple) is handled purely in CSS. */
 
