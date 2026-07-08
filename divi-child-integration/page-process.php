@@ -51,6 +51,12 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </li>
     </ol>
+
+    <div class="card" style="max-width:840px;margin:32px 0 0;padding:28px;background:var(--blue-50);border-radius:var(--radius-lg)">
+      <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 10px">Fees and what is included</h3>
+      <p style="margin:0 0 10px;color:var(--ink-2);font-size:17px;line-height:1.7">Adoption fees range from $155 to $305, depending on the age and health of the dog and the expected future medical expenses the adopter takes on. Every dog is altered, microchipped, and vaccinated unless our veterinarian advises against it for health reasons. Senior dogs also get a senior blood panel, and in many cases a dental cleaning with any needed extractions.</p>
+      <p style="margin:0;color:var(--ink-2);font-size:17px;line-height:1.7">After adoption, we check in with an annual follow-up call for the life of the dog, and our phone number is always yours to use.</p>
+    </div>
   </div>
 </section>
 

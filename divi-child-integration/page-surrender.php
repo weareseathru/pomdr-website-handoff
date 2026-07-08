@@ -132,6 +132,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3>Surrender to POMDR</h3>
         <p style="color:rgba(255,255,255,.85);">Place your dog directly into our care. We accept dogs from Monterey, Santa Cruz and San Benito counties. We work with a waitlist, so please plan ahead when possible.</p>
         <div style="font-size:15px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);margin-bottom:16px;">We are rarely able to accept dogs outside our tri-county area.</div>
+        <div style="font-size:15px;color:rgba(255,255,255,.8);margin-bottom:16px;" lang="es">Si necesita ayuda para colocar a su perro y para completar el cuestionario de admisi&oacute;n en l&iacute;nea, ll&aacute;menos al (831) 718-9122. Tenga en cuenta que esto puede retrasar el procesamiento de su solicitud.</div>
         <a href="/intake-questionnaire/" class="opt-link">Start Surrender Application</a>
       </div>
       <div class="option-card">
