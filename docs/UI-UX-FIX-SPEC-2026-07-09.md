@@ -142,19 +142,34 @@ Status mapping against the current mirror, maintained by the build sessions.
 - **§5 event cards**: redesigned to the design system (uniform frame, whole
   flyer visible) in the events-upgrade PR.
 
-## Buildable now (this session onward)
+## Done 2026-07-09 (per Andrew's answers: #E8F2F6, blue primary, caps tuned, chip gone)
 
-- §0 background swap (pending hex decision), black-bar hunt.
-- §1 button consolidation + ALL CAPS (pending default-color decision; see the
-  senior-readability note flagged to Andrew).
-- §3 sort expansion (pending final field list), Available-filter removal
-  (pending semantics decision).
-- §4 bullet-point template for dog pages (pending "Helping Paw" data-model
-  answer).
-- §5 Events in the main nav; quick view.
-- §6 Safari sizing investigation.
+- **§0 backgrounds**: the warm cream token family became the brand light blue
+  (`--cream` #E8F2F6, `--cream-2` #D9E9F0 for wells, `--line` #cfe0e9 cool
+  hairline) in both token files; the whole site flipped at once because every
+  page reads the vars. DESIGN-TOKENS.md updated as source of truth.
+  **Black bars: none found** in theme code or published Divi content (searched
+  both); likely a memory of the old live site. Flag a URL if one reappears.
+- **§1 buttons**: two variants sitewide. Solid = blue primary
+  (`--blue-700`), purple for deliberate emphasis (`.btn-purple`, and
+  `.btn-outline` recast as solid purple since outline-on-light is banned).
+  White outline (2px, hover fills white with purple text) =
+  `.btn-ghost`/`.btn-light`/`.btn-white`, verified used only on dark bands
+  (one violation found on the light newsletter band, converted to solid).
+  ALL CAPS via text-transform on every button class, tuned for seniors
+  (0.04em letterspacing, labels at 17px or larger).
+- **§3 Available bubble removed everywhere**: the adopt-page filter chip is
+  deleted (All / Foster Needed / Sponsor Needed / Adoption Pending remain) and
+  plain-Adoptable dogs no longer carry a card badge anywhere; special-status
+  badges (Foster Needed, Hospice, Adopted...) stay. All adoptable dogs still
+  display by default.
+- **§5 Events added to the main nav** (secondary row + mobile drawer).
 
-## Blocked on Andrew (the spec's own open questions)
+## Still owed by Andrew (the spec's remaining open questions)
 
-1, 2, 3, 4 asked via the session Q&A. 5 ("Helping Paw" in the data model),
-6 (calendar repro steps), 7 (mission copy sign-off) still owed.
+- Final sort-field list for the adoption page (§3).
+- What "Helping Paw" refers to in the data model for the 3-5 bullet template (§4).
+- Calendar bug repro steps (§5 quick view will be designed alongside the fix).
+- Mission statement copy sign-off (§2; the current mission block is live).
+- Safari sizing repro (§6): needs a side-by-side on Andrew's machine; nothing
+  reproducible in Chrome-only tooling here.

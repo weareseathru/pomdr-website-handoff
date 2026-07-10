@@ -497,6 +497,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 999px;
   font-weight: 700;
   font-size: 20px; /* text fills the button (was 19px); padding stays generous */
+  text-transform: uppercase; /* leadership spec 2026-07-09 */
+  letter-spacing: 0.04em;    /* tuned for senior readability in caps */
   line-height: 1.05;
   font-family: var(--font-sans);
   cursor: pointer;
@@ -529,32 +531,38 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .btn-orange:hover { background: #54307a; transform: translateY(-2px); }
 
+/* Leadership spec 2026-07-09: outline buttons are banned on light
+   backgrounds. .btn-outline (used on light sections sitewide) is now the
+   solid purple emphasis variant; .btn-ghost is the white outline for dark
+   and photo backgrounds only. */
 .btn-outline {
-  background: transparent;
-  color: var(--ink);
-  border: 1.5px solid rgba(22, 32, 43, 0.25);
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 24px -6px rgba(99, 47, 136, 0.45);
 }
-.btn-outline:hover { border-color: var(--ink); background: var(--ink); color: white; }
+.btn-outline:hover { background: #4b2268; transform: translateY(-2px); }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.12);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
 }
-.btn-ghost:hover { background: rgba(255, 255, 255, 0.22); }
+.btn-ghost:hover { background: #fff; color: var(--purple); }
 
 .btn-white {
-  background: white;
-  color: var(--purple);
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
 }
-.btn-white:hover { background: var(--purple-100); }
+.btn-white:hover { background: #fff; color: var(--purple); }
 
 .btn-light {
-  background: white;
-  color: var(--ink);
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
 }
-.btn-light:hover { background: var(--cream); transform: translateY(-2px); }
+.btn-light:hover { background: #fff; color: var(--purple); }
 
 /* ===== FOOTER ===== */
 .footer {

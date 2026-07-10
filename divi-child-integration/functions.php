@@ -605,7 +605,9 @@ function pom_pet_badge($post_id) {
     if (in_array('Sponsor Needed', $status, true))   return ['sponsor_needed', 'Sponsor Needed'];
     if (in_array('Courtesy Listing', $status, true)) return ['courtesy_listing', 'Courtesy Listing'];
     if (in_array('Adopted', $status, true))          return ['recently_adopted', 'Adopted'];
-    if (in_array('Adoptable', $status, true))        return ['available', 'Available'];
+    // Plain Adoptable gets NO badge (leadership spec 2026-07-09): available is
+    // the default state, so the bubble carried no information. Badges are for
+    // special situations only.
     return ['', ''];
 }
 

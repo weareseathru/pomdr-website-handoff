@@ -87,9 +87,11 @@ $q_adopted  = pom_adopt_group_query( 'Adopted', 24 );
 
 // Category filter buttons output server-side (not JS-populated). Slugs match
 // the data-status values on each card.
+// "Available" chip removed 2026-07-09 (leadership spec): every dog in this
+// group IS available, so the chip was noise. All adoptable dogs show by
+// default; the remaining chips filter for special situations.
 $adopt_filters = array(
     'all'              => 'All',
-    'adoptable'        => 'Available',
     'foster-needed'    => 'Foster Needed',
     'sponsor-needed'   => 'Sponsor Needed',
     'adoption-pending' => 'Adoption Pending',

@@ -56,6 +56,7 @@ function pomdr_render_chrome() {
               <div class="nav-item"><a href="<?php echo $home; ?>">Home</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('about'); ?>">About</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('surrender'); ?>">Surrender</a></div>
+              <div class="nav-item"><a href="<?php echo pomdr_url('events'); ?>">Events</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('benefit-shop'); ?>">Benefit Shop</a></div>
               <div class="nav-item"><a href="mailto:info@pomdr.org">Contact</a></div>
             </div>
@@ -73,6 +74,7 @@ function pomdr_render_chrome() {
         <a href="<?php echo pomdr_url('helping-paw'); ?>">Helping Paw</a>
         <a href="<?php echo pomdr_url('about'); ?>">About</a>
         <a href="<?php echo pomdr_url('surrender'); ?>">Surrender</a>
+        <a href="<?php echo pomdr_url('events'); ?>">Events</a>
         <a href="<?php echo pomdr_url('benefit-shop'); ?>">Benefit Shop</a>
         <a href="mailto:info@pomdr.org">Contact</a>
         <a href="<?php echo pomdr_url('donate'); ?>" class="m-cta">Donate</a>

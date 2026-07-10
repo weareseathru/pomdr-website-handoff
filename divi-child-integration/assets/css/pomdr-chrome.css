@@ -38,6 +38,8 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 .action-bar-actions { display: flex; gap: 10px; flex-shrink: 0; }
 .ab-btn {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 42px; padding: 8px 18px; border-radius: 999px;
   font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none;
@@ -121,6 +123,8 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
    card, stretching the height of both menu rows. AA contrast (white on
    --blue-700, about 6:1). */
 .nav-donate {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   align-self: stretch;
   display: grid;
   place-items: center;

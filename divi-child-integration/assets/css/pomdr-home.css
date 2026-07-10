@@ -39,12 +39,12 @@ body {
   /* Subtle, continuous wash so sections shift gently instead of hard color
      blocks. Cream with the faintest warm, blue, and purple hints. */
   background: linear-gradient(180deg,
-    #FAF6F0 0%,
+    var(--cream) 0%,
     #F6F1EC 16%,
     #F1EEF3 40%,
     #ECF1F4 62%,
     #F4EFEA 82%,
-    #FAF6F0 100%);
+    var(--cream) 100%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -341,7 +341,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* Buttons must contrast with the teal card (primary blue would blend in) */
 .hero-card .btn-primary { background: #fff; color: var(--blue-700); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.4); }
 .hero-card .btn-primary:hover { background: var(--cream); }
-.hero-card .btn-ghost { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.55); color: #fff; }
+.hero-card .btn-ghost { background: transparent; border: 2px solid #fff; color: #fff; }
 
 /* Promo banner (staff-toggleable announcement below the hero) */
 .promo-banner { background: var(--purple); color: #fff; }
@@ -373,15 +373,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   min-height: 48px; padding: 11px 22px; border-radius: 999px; font-weight: 700; font-size: 19px; line-height: 1.05;
   transition: all 0.25s var(--ease);
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 .btn-primary { background: var(--blue); color: white; box-shadow: 0 10px 24px -6px rgba(0,139,176,0.5); }
 .btn-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 14px 32px -6px rgba(0,139,176,0.55); }
-.btn-light { background: white; color: var(--ink); }
-.btn-light:hover { background: var(--cream); transform: translateY(-2px); }
-.btn-ghost { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); }
-.btn-ghost:hover { background: rgba(255,255,255,0.2); }
-.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
-.btn-outline:hover { background: var(--ink); color: var(--cream); }
+.btn-light { background: transparent; color: #fff; border: 2px solid #fff; }
+.btn-light:hover { background: #fff; color: var(--purple); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: #fff; border: 2px solid #fff; }
+.btn-ghost:hover { background: #fff; color: var(--purple); }
+.btn-outline { background: var(--purple); color: #fff; border: none; box-shadow: 0 10px 24px -6px rgba(99,47,136,0.45); }
+.btn-outline:hover { background: #4b2268; transform: translateY(-2px); }
 .btn-purple { background: var(--purple); color: white; box-shadow: 0 10px 24px -6px rgba(99,47,136,0.5); }
 .btn-purple:hover { background: #4b2268; transform: translateY(-2px); }
 .btn svg { width: 16px; height: 16px; }

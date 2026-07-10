@@ -28,14 +28,14 @@
   --purple-100: #C9BBD7;
 
   --orange: #6E4B9E;
-  --orange-50: #FFF5E8;
+  --orange-50: #E8F2F6; /* beige retired to the light blue */
 
   --ink: #16202b;
   --ink-2: #3c4a57;
   --ink-3: #5d6a77;  /* darkened 2026-07-07 to clear 4.5:1 on warm-white event cards (was #6b7885, 4.35) */
-  --line: #e5ddd0;
-  --cream: #FAF6F0;
-  --cream-2: #F3ECDF;
+  --line: #cfe0e9;    /* cool hairline to match (was warm #e5ddd0) */
+  --cream: #E8F2F6;   /* light blue (was warm cream #FAF6F0); leadership spec 2026-07-09 */
+  --cream-2: #D9E9F0; /* deeper blue tint for wells/frames (was #F3ECDF) */
   --white: #ffffff;
 
   --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -464,6 +464,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 999px;
   font-weight: 600;
   font-size: 17px; /* text fills the button (was 15px) */
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   font-family: var(--font-sans);
   cursor: pointer;
   border: none;

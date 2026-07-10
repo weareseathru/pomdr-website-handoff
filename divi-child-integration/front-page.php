@@ -371,7 +371,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
       ?>
       <div class="newsletter-form">
         <div class="nform-row">
-          <a class="btn btn-light" style="min-height:52px;display:inline-flex;align-items:center;gap:8px" href="<?php echo esc_url( home_url('/mailing-list/') ); ?>">Join the mailing list <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a class="btn btn-primary" style="min-height:52px;display:inline-flex;align-items:center;gap:8px" href="<?php echo esc_url( home_url('/mailing-list/') ); ?>">Join the mailing list <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
         <div class="fine">One thoughtful email a month. Unsubscribe anytime.</div>
       </div>
