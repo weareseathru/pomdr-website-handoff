@@ -251,6 +251,10 @@ function render_module_fragment($layout, $post_id)
             break;
 
         case 'bio_section':
+            // The 3-5 highlight bullets lead the bio (leadership spec).
+            if (function_exists('pom_pet_highlights_html')) {
+                echo pom_pet_highlights_html($post_id);
+            }
             $pet_description = get_field('pet_description', $post_id);
             $foster_start    = get_field('foster_start_date', $post_id);
             $foster_end      = get_field('foster_end_date', $post_id);

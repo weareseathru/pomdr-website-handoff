@@ -589,6 +589,47 @@ add_shortcode('random_pet', 'random_pet_shortcode');
  * Priority is most-urgent-first so a multi-status dog shows the right badge.
  * Returns [class, label] or ['',''] when no recognized status.
  */
+/**
+ * Dog highlights: the 3 to 5 quick facts an adopter needs (leadership spec,
+ * 2026-07-09). A code-registered ACF field so it is version-controlled; staff
+ * type one bullet per line on the dog's edit screen. Display is hard-capped
+ * at 5 on the dog page.
+ */
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_local_field_group')) { return; }
+    acf_add_local_field_group(array(
+        'key'    => 'group_pomdr_highlights',
+        'title'  => 'Dog Highlights (shown at the top of the dog\'s page)',
+        'fields' => array(array(
+            'key'          => 'field_pomdr_highlights',
+            'label'        => 'Highlights',
+            'name'         => 'highlights',
+            'type'         => 'textarea',
+            'instructions' => 'The 3 to 5 things an adopter should know, one per line (for example: Loves slow morning walks). The page shows at most 5.',
+            'rows'         => 5,
+            'new_lines'    => '',
+        )),
+        'location'   => array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'pets'))),
+        'menu_order' => 1,
+        'position'   => 'normal',
+    ));
+});
+
+/**
+ * The capped bullet list for the dog page. Returns '' when staff have not
+ * filled the field yet.
+ */
+function pom_pet_highlights_html($post_id) {
+    $raw = function_exists('get_field') ? get_field('highlights', $post_id) : '';
+    if (!$raw) { return ''; }
+    $lines = array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', (string) $raw)));
+    if (empty($lines)) { return ''; }
+    $lines = array_slice(array_values($lines), 0, 5); // hard cap per the spec
+    $out = '<ul class="pdp-bullets">';
+    foreach ($lines as $line) { $out .= '<li>' . esc_html($line) . '</li>'; }
+    return $out . '</ul>';
+}
+
 function pom_pet_badge($post_id) {
     $status = get_field('status', $post_id);
     $status = is_array($status)
@@ -807,41 +848,69 @@ function events_shortcode($atts = array()) {
             'type'    => 'DATETIME',
         )),
     ));
-    ob_start();
-    if ($q->have_posts()) :
-        echo '<div class="events-grid">';
-        while ($q->have_posts()) : $q->the_post();
+
+    // Gather first so the page can show the at-a-glance strip above the cards.
+    $events = array();
+    if ($q->have_posts()) {
+        while ($q->have_posts()) { $q->the_post();
             $id      = get_the_ID();
-            $type    = trim((string) get_field('event_type', $id));
-            $start   = pomdr_event_date(get_field('event_start', $id));
-            // event_end is a time_picker (for example "6:00 pm"), not a date.
-            // Append it as an end time; do NOT run it through the date parser,
-            // which would resolve a bare time to today and print a bogus range.
+            $raw     = (string) get_post_meta($id, 'event_start', true); // Y-m-d H:i:s
+            $ts      = $raw ? strtotime($raw) : false;
             $end_raw = trim((string) get_field('event_end', $id));
-            $details = trim((string) get_field('event_details', $id));
-            // Event photo: the Featured Image, falling back to the legacy
-            // event_image field so older events keep their picture.
             $thumb   = get_post_thumbnail_id($id);
             if (!$thumb) {
                 $legacy = get_field('event_image', $id);
                 if (is_array($legacy) && !empty($legacy['ID'])) { $thumb = (int) $legacy['ID']; }
                 elseif (is_numeric($legacy))                    { $thumb = (int) $legacy; }
             }
-            $when    = $start . ($end_raw !== '' ? ' to ' . esc_html($end_raw) : '');
-            echo '<article class="event-card">';
-            if ($thumb) echo '<div class="event-photo">' . wp_get_attachment_image($thumb, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
-            echo '<div class="event-body">';
-            if ($type !== '')    echo '<div class="eyebrow">' . esc_html($type) . '</div>';
-            echo '<' . $hlevel . ' class="event-title">' . esc_html(get_the_title()) . '</' . $hlevel . '>';
-            if ($when !== '')    echo '<div class="event-meta">' . wp_kses_post($when) . '</div>';
-            if ($details !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($details, 36)) . '</p>';
-            echo '</div></article>';
-        endwhile;
-        echo '</div>';
+            $events[] = array(
+                'id'      => $id,
+                'title'   => get_the_title($id),
+                'type'    => trim((string) get_field('event_type', $id)),
+                'ts'      => $ts,
+                'time'    => $ts ? date('g:i a', $ts) . ($end_raw !== '' ? ' to ' . $end_raw : '') : '',
+                'details' => trim((string) get_field('event_details', $id)),
+                'thumb'   => $thumb,
+            );
+        }
         wp_reset_postdata();
-    else :
+    }
+
+    ob_start();
+    if ($events) {
+        // Quick view: every upcoming event at a glance (a condensed list, not a
+        // hover preview, so it works for keyboard and touch too).
+        echo '<div class="events-glance" aria-label="Upcoming events at a glance">';
+        foreach ($events as $ev) {
+            echo '<a class="glance-row" href="#event-' . (int) $ev['id'] . '">';
+            echo '<span class="glance-date">' . esc_html($ev['ts'] ? date('M j', $ev['ts']) : '') . '</span>';
+            echo '<span class="glance-title">' . esc_html($ev['title']) . '</span>';
+            if ($ev['time']) { echo '<span class="glance-time">' . esc_html($ev['time']) . '</span>'; }
+            echo '</a>';
+        }
+        echo '</div>';
+
+        // The cards: siblings of the dog cards (same radius, hover, hairline),
+        // with the date square from the homepage events band.
+        echo '<div class="events-grid">';
+        foreach ($events as $ev) {
+            echo '<article class="event-card" id="event-' . (int) $ev['id'] . '">';
+            if ($ev['thumb']) echo '<div class="event-photo">' . wp_get_attachment_image($ev['thumb'], 'medium_large', false, array('alt' => $ev['title'], 'loading' => 'lazy')) . '</div>';
+            echo '<div class="event-body">';
+            echo '<div class="event-when">';
+            echo '<div class="event-date-sq"><span class="month">' . esc_html($ev['ts'] ? date('M', $ev['ts']) : '') . '</span><span class="day">' . esc_html($ev['ts'] ? date('d', $ev['ts']) : '') . '</span></div>';
+            echo '<div class="event-when-text">';
+            if ($ev['type'] !== '') { echo '<div class="eyebrow event-type">' . esc_html($ev['type']) . '</div>'; }
+            if ($ev['time'])        { echo '<div class="event-meta">' . esc_html($ev['time']) . '</div>'; }
+            echo '</div></div>';
+            echo '<' . $hlevel . ' class="event-title">' . esc_html($ev['title']) . '</' . $hlevel . '>';
+            if ($ev['details'] !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($ev['details'], 36)) . '</p>';
+            echo '</div></article>';
+        }
+        echo '</div>';
+    } else {
         echo '<p>No upcoming events right now. Call (831) 718-9122 or check our Facebook for dates.</p>';
-    endif;
+    }
     return ob_get_clean();
 }
 add_shortcode('events', 'events_shortcode');

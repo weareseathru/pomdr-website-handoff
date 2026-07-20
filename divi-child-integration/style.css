@@ -576,3 +576,16 @@ html.pomdr-lightbox-open {
    layout uses the full section width. */
 .pom-row { width: 100%; max-width: none; padding: 0; }
 .pom-row--header { padding: 0; }
+
+/* Dog highlights: the 3-5 quick facts at the top of the info card */
+.pdp-bullets { list-style: none; margin: 0 0 6px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pdp-bullets li {
+  position: relative; padding-left: 30px;
+  font-size: 17px; line-height: 1.5; color: var(--ink);
+  font-weight: 600;
+}
+.pdp-bullets li::before {
+  content: ""; position: absolute; left: 0; top: 2px;
+  width: 18px; height: 18px;
+  background: url('assets/images/paw-cyan.svg') center/contain no-repeat;
+}

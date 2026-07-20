@@ -569,10 +569,10 @@ section { position: relative; }
   font-size: 15px; color: var(--ink-3);
 }
 .dog-card .arrow {
-  width: 30px; height: 30px; border-radius: 50%; background: var(--ink);
+  width: 30px; height: 30px; border-radius: 50%; background: var(--blue-700); /* was near-black (the "black bar" note) */
   display: grid; place-items: center; transition: all 0.3s var(--ease);
 }
-.dog-card:hover .arrow { background: var(--blue); transform: rotate(-45deg); }
+.dog-card:hover .arrow { background: var(--purple); transform: rotate(-45deg); }
 .dog-card .arrow svg { width: 13px; height: 13px; stroke: white; fill: none; stroke-width: 2; }
 
 .dog-card.see-more {

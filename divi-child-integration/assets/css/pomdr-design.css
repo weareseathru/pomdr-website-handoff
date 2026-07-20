@@ -497,11 +497,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-orange:hover { background: #a05800; transform: translateY(-2px); }
 
 .btn-outline {
-  background: transparent;
-  color: var(--ink);
-  border: 1.5px solid rgba(22, 32, 43, 0.25);
+  background: var(--purple);
+  color: #fff;
+  border: none;
 }
-.btn-outline:hover { border-color: var(--ink); background: var(--ink); color: white; }
+.btn-outline:hover { background: #4b2268; }
 
 .btn-ghost {
   background: rgba(255, 255, 255, 0.12);
@@ -899,13 +899,13 @@ html.js .reveal.in { opacity: 1; transform: translateY(0); }
   height: 100%;
 }
 .dog-card-link:hover .dog-card {
-  transform: translateY(-4px);
+  transform: translateY(-6px); /* matches the front-page card hover exactly */
   box-shadow: var(--shadow-lg);
 }
 .dog-card-link:hover .photo-wrap img { transform: scale(1.05); }
 
 .photo-wrap {
-  position: relative; aspect-ratio: 4 / 3;
+  position: relative; aspect-ratio: 1 / 1; /* square, matching the front-page cards */
   overflow: hidden;
   background: var(--cream-2);
 }
@@ -994,12 +994,16 @@ html.js .reveal.in { opacity: 1; transform: translateY(0); }
   font-size: 13px; font-weight: 600; color: var(--blue-700);
   margin-top: 8px;
 }
-.dog-card .cta-row .arrow svg {
-  width: 14px; height: 14px; fill: none;
-  stroke: currentColor; stroke-width: 2.5;
-  transition: transform var(--ease) 200ms;
+/* The same blue circle arrow as the front-page cards */
+.dog-card .cta-row .arrow {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--blue-700);
+  display: grid; place-items: center; transition: all 0.3s var(--ease);
 }
-.dog-card-link:hover .cta-row .arrow svg { transform: translateX(4px); }
+.dog-card .cta-row .arrow svg {
+  width: 13px; height: 13px; fill: none;
+  stroke: #fff; stroke-width: 2;
+}
+.dog-card-link:hover .cta-row .arrow { background: var(--purple); transform: rotate(-45deg); }
 
 /* Personality / derived tags (e.g. Senior). Site-wide so listing pages match
    the homepage showcase cards. */
@@ -1438,3 +1442,35 @@ html.js .reveal.in { opacity: 1; transform: translateY(0); }
 .event-meta { font-size: 15px; font-weight: 600; color: var(--blue-700); letter-spacing: 0.01em; }
 .event-desc { font-size: 16px; color: var(--ink-2); margin: 6px 0 0; }
 @media (max-width: 560px) { .team-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); } }
+
+/* ===== EVENTS: at-a-glance strip + standardized cards (2026-07-09) ===== */
+.events-glance {
+  display: flex; flex-direction: column; gap: 0;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  margin-bottom: 36px; overflow: hidden;
+}
+.glance-row {
+  display: grid; grid-template-columns: 92px 1fr auto; gap: 16px; align-items: center;
+  padding: 14px 22px; min-height: 52px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink); text-decoration: none;
+  transition: background 0.15s var(--ease);
+}
+.glance-row:last-child { border-bottom: none; }
+.glance-row:hover { background: var(--blue-50); }
+.glance-row:focus-visible { outline: var(--focus-w) solid var(--focus-color); outline-offset: -3px; }
+.glance-date { font-weight: 700; color: var(--blue-text); font-size: 16px; white-space: nowrap; }
+.glance-title { font-weight: 600; font-size: 17px; }
+.glance-time { color: var(--ink-3); font-size: 16px; white-space: nowrap; }
+@media (max-width: 560px) { .glance-row { grid-template-columns: 74px 1fr; } .glance-time { display: none; } }
+
+.event-when { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.event-date-sq {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 62px; height: 62px; flex-shrink: 0;
+  background: var(--blue-50); border-radius: 14px;
+}
+.event-date-sq .month { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-text); }
+.event-date-sq .day { font-family: var(--font-serif); font-size: 26px; line-height: 1; color: var(--ink); }
+.event-when-text { display: flex; flex-direction: column; gap: 2px; }
+.event-when-text .eyebrow { margin: 0; font-size: 13px; }

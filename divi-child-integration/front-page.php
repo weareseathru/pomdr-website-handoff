@@ -42,8 +42,8 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
             <div>to land.</div>
           </h1>
           <div class="hero-ctas" id="hero-ctas">
-            <a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-            <a href="/foster/" class="btn btn-purple">Foster</a>
+            <a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a href="/foster/" class="btn btn-ghost">Foster</a>
             <a href="/adopt/" class="btn btn-ghost">See all dogs</a>
           </div>
         </div>

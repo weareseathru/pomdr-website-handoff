@@ -45,10 +45,10 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none;
   transition: transform 0.2s var(--ease), background 0.2s;
 }
-.ab-adopt { background: #fff; color: var(--blue-700); }
-.ab-donate { background: transparent; color: #fff; border: 2px solid #fff; }
-.ab-donate:hover { background: rgba(255, 255, 255, 0.15); }
-.ab-volunteer { background: var(--purple); color: #fff; }
+/* The action bar sits on the teal band (dark), so both buttons use the
+   white outline variant per the leadership contrast rule. */
+.ab-adopt, .ab-volunteer { background: transparent; color: #fff; border: 2px solid #fff; }
+.ab-adopt:hover, .ab-volunteer:hover { background: #fff; color: var(--purple); }
 .ab-btn:hover { transform: translateY(-1px); }
 .ab-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
