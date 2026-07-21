@@ -53,7 +53,6 @@ function pomdr_render_chrome() {
               <div class="nav-item"><a href="<?php echo pomdr_url('helping-paw'); ?>">Helping Paw</a></div>
             </div>
             <div class="nav-row nav-row--secondary">
-              <div class="nav-item"><a href="<?php echo $home; ?>">Home</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('about'); ?>">About</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('surrender'); ?>">Surrender</a></div>
               <div class="nav-item"><a href="<?php echo pomdr_url('events'); ?>">Events</a></div>

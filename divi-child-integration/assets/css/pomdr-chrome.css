@@ -123,6 +123,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
    card, stretching the height of both menu rows. AA contrast (white on
    --blue-700, about 6:1). */
 .nav-donate {
+  flex-shrink: 0; /* never pushed out of or squeezed off the white card */
   text-transform: uppercase;
   letter-spacing: 0.04em;
   align-self: stretch;
@@ -153,6 +154,11 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-row--secondary .nav-item > button {
   font-size: 15px; font-weight: 500; color: var(--ink-3); padding: 6px 12px;
 }
+
+/* The menu may flex; the decorative tagline absorbs any squeeze so the
+   Donate block always stays fully on the white card. */
+.nav-menu { min-width: 0; }
+.nav-tagline { flex: 0 1 auto; min-width: 0; overflow: hidden; }
 
 /* legacy single-row container (kept harmless) */
 .nav-links {
