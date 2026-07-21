@@ -1474,3 +1474,9 @@ html.js .reveal.in { opacity: 1; transform: translateY(0); }
 .event-date-sq .day { font-family: var(--font-serif); font-size: 26px; line-height: 1; color: var(--ink); }
 .event-when-text { display: flex; flex-direction: column; gap: 2px; }
 .event-when-text .eyebrow { margin: 0; font-size: 13px; }
+
+/* The adopted-names wall */
+.adopted-wall-names {
+  font-size: 15px; line-height: 2; color: var(--ink-3);
+  text-align: center; max-width: 1080px; margin: 0 auto;
+}

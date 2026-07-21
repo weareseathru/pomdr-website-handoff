@@ -356,9 +356,29 @@ function adopted_pets_shortcode() {
     }
     $out = '<div class="dogs-grid">';
     foreach ($ids as $id) { $out .= pom_render_dog_card($id); }
-    return $out . '</div>';
+    $out .= '</div>';
+    $out .= pomdr_adopted_wall_html();
+    return $out;
 }
 add_shortcode('adopted_pets', 'adopted_pets_shortcode');
+
+/**
+ * The adopted-names wall: every dog POMDR has ever adopted out (synced from
+ * the live site, data/dogsync/adopted_names.json in the theme). Rendered as a
+ * compact flowing wall under the recent-adoption cards.
+ */
+function pomdr_adopted_wall_html() {
+    $file = get_stylesheet_directory() . '/data/dogsync/adopted_names.json';
+    if (!is_readable($file)) { return ''; }
+    $names = json_decode((string) file_get_contents($file), true);
+    if (!is_array($names) || !$names) { return ''; }
+    $count = count($names);
+    $out  = '<div class="adopted-wall">';
+    $out .= '<h2 class="section-title" style="text-align:center;margin-top:72px">' . esc_html(number_format($count)) . ' dogs, <em>all adopted.</em></h2>';
+    $out .= '<p style="text-align:center;color:var(--ink-2);font-size:17px;margin:0 0 28px">What do all these dogs have in common? They are all adopted!</p>';
+    $out .= '<p class="adopted-wall-names">' . esc_html(implode(' · ', array_map('trim', $names))) . '</p>';
+    return $out . '</div>';
+}
 
 
 // *********** HOSPICE LIST VIEW ***********
@@ -383,6 +403,10 @@ function pomdr_dogs_by_status($status, $args = array()) {
     }
     return ob_get_clean();
 }
+
+/* Foster Needs page: every dog with Foster Needed status, newest first. */
+function foster_needed_dogs_shortcode() { return pomdr_dogs_by_status('Foster Needed', array('orderby' => 'date', 'order' => 'DESC')); }
+add_shortcode('foster_needed_dogs', 'foster_needed_dogs_shortcode');
 
 function hospice_care_shortcode() { return pomdr_dogs_by_status('Hospice'); }
 add_shortcode('hospice_care', 'hospice_care_shortcode');
@@ -684,6 +708,7 @@ function pom_render_dog_card($post_id, $card_args = array()) {
 
     $tags = [];
     if (is_numeric($age) && intval($age) >= 10) $tags[] = 'Senior';
+    if (get_post_meta($post_id, 'aged_to_perfection', true)) $tags[] = 'Aged to Perfection';
 
     $thumb_id = get_post_thumbnail_id($post_id);
 

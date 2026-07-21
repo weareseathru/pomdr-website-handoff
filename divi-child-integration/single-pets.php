@@ -188,8 +188,11 @@ function pom_pdp_header_html($post_id)
     $name = get_the_title($post_id);
     list($badge_class, $badge_label) = function_exists('pom_pet_badge') ? pom_pet_badge($post_id) : array('', '');
 
-    $status     = get_field('status', $post_id);
-    $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
+    $status      = get_field('status', $post_id);
+    $status_arr  = is_array($status) ? $status : array_filter(array_map('trim', explode(',', (string) $status)));
+    $is_adopted  = in_array('Adopted', $status_arr, true);
+    $is_courtesy = in_array('Courtesy Listing', $status_arr, true);
+    $is_hospice  = in_array('Hospice', $status_arr, true);
 
     $age    = get_field('age', $post_id);
     $sex    = function_exists('pom_acf_sex_display') ? pom_acf_sex_display($post_id) : '';
@@ -211,11 +214,34 @@ function pom_pdp_header_html($post_id)
         $out .= '<p class="pdp-meta">' . esc_html(implode(' · ', $bits)) . '</p>';
     }
     $out .= '<div class="pdp-ctas">';
-    if (!$is_adopted) {
+    // Live-site contract: adopted, hospice, and courtesy dogs are not offered
+    // an Adopt button (courtesy adoptions go through the listed contact, and
+    // hospice dogs live out their days in POMDR care).
+    if (!$is_adopted && !$is_courtesy && !$is_hospice) {
         $out .= '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', $name, home_url('/adoption-questionnaire/'))) . '">Adopt ' . esc_html($name) . '</a>';
     }
-    $out .= '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', $name, home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
-    $out .= '</div></header></div>';
+    if (!$is_courtesy) {
+        $out .= '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', $name, home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
+    }
+    $out .= '</div>';
+
+    // Courtesy listings: the listed person is the contact, not POMDR.
+    if ($is_courtesy) {
+        $contact = trim((string) get_post_meta($post_id, 'courtesy_contact', true));
+        $posted  = trim((string) get_post_meta($post_id, 'courtesy_posted', true));
+        $updated = trim((string) get_post_meta($post_id, 'courtesy_updated', true));
+        $out .= '<div class="pdp-courtesy">';
+        $out .= '<p class="pdp-courtesy-note"><strong>Courtesy listing.</strong> This dog is listed on behalf of their current guardian or another rescue; adoption is arranged directly with the contact below, not through POMDR.</p>';
+        if ($contact !== '') { $out .= '<p class="pdp-courtesy-contact">' . esc_html($contact) . '</p>'; }
+        if ($posted !== '' || $updated !== '') {
+            $bits2 = array();
+            if ($posted !== '')  { $bits2[] = 'Posted ' . $posted; }
+            if ($updated !== '') { $bits2[] = 'Updated ' . $updated; }
+            $out .= '<p class="pdp-courtesy-dates">' . esc_html(implode(' · ', $bits2)) . '</p>';
+        }
+        $out .= '</div>';
+    }
+    $out .= '</header></div>';
     return $out;
 }
 
@@ -435,12 +461,13 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             if ($layout === 'header_section') {
                                 pom_flush_row_buffers($left_buffer, $right_buffer);
 
-                                $status     = get_field('status', $post_id);
-                                $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
+                                $status      = get_field('status', $post_id);
+                                $status_arr  = is_array($status) ? $status : array_filter(array_map('trim', explode(',', (string) $status)));
+                                $is_adopted  = in_array('Adopted', $status_arr, true) || in_array('Courtesy Listing', $status_arr, true) || in_array('Hospice', $status_arr, true);
 
                                 $adopt_link = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . '</a>';
-                                $sponsor_html = '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
+                                $sponsor_html = in_array('Courtesy Listing', $status_arr, true) ? '' : '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
 
                                 echo pom_pdp_header_html($post_id);
                                 echo '</div>';
@@ -449,12 +476,13 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             }
 
                             if ($layout === 'header_section_buttons') {
-                                $status     = get_field('status', $post_id);
-                                $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
+                                $status      = get_field('status', $post_id);
+                                $status_arr  = is_array($status) ? $status : array_filter(array_map('trim', explode(',', (string) $status)));
+                                $is_adopted  = in_array('Adopted', $status_arr, true) || in_array('Courtesy Listing', $status_arr, true) || in_array('Hospice', $status_arr, true);
 
                                 $adopt_link   = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html   = $is_adopted ? '' : '<a class="btn btn-primary" href="' . $adopt_link . '">' . esc_html__('Adopt', 'pom') . ' ' . esc_html(get_the_title($post_id)) . '</a>';
-                                $sponsor_html = '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
+                                $sponsor_html = in_array('Courtesy Listing', $status_arr, true) ? '' : '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
 
                                 $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">Browse all dogs</a></div></div>';
                                 continue;
@@ -520,8 +548,9 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             if ($layout === 'header_section') {
                                 pom_flush_row_buffers($left_buffer, $right_buffer);
 
-                                $status     = get_field('status', $post_id);
-                                $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
+                                $status      = get_field('status', $post_id);
+                                $status_arr  = is_array($status) ? $status : array_filter(array_map('trim', explode(',', (string) $status)));
+                                $is_adopted  = in_array('Adopted', $status_arr, true) || in_array('Courtesy Listing', $status_arr, true) || in_array('Hospice', $status_arr, true);
 
                                 $adopt_link = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">Adopt</a>';
@@ -532,12 +561,13 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             }
 
                             if ($layout === 'header_section_buttons') {
-                                $status     = get_field('status', $post_id);
-                                $is_adopted = is_array($status) ? in_array('Adopted', $status, true) : (stripos((string) $status, 'Adopted') !== false);
+                                $status      = get_field('status', $post_id);
+                                $status_arr  = is_array($status) ? $status : array_filter(array_map('trim', explode(',', (string) $status)));
+                                $is_adopted  = in_array('Adopted', $status_arr, true) || in_array('Courtesy Listing', $status_arr, true) || in_array('Hospice', $status_arr, true);
 
                                 $adopt_link   = esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/')));
                                 $adopt_html   = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">Adopt</a>';
-                                $sponsor_html = '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
+                                $sponsor_html = in_array('Courtesy Listing', $status_arr, true) ? '' : '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
 
                                 $right_buffer[] = '<div class="pom-buttons"><div class="pom-buttons-row">' . $adopt_html . $sponsor_html . '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">Browse all dogs</a></div></div>';
                                 continue;

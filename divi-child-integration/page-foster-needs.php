@@ -73,6 +73,18 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
   </div>
 </section>
 
+<section class="section" id="foster-dogs">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow purple">Dogs Needing Foster</span>
+      <h2 class="section-title">These pups need a <em>place to land.</em></h2>
+    </div>
+    <p style="max-width:70ch;margin:0 auto 14px;font-size:17px;color:var(--ink-2);text-align:center">Some dogs in our program are very popular, and multiple foster volunteers may be interested in fostering the same one. If the dog you are interested in is no longer available, please be patient, many others still need a foster home.</p>
+    <p style="max-width:70ch;margin:0 auto 36px;font-size:17px;color:var(--ink-2);text-align:center">If you are interested in fostering and you are already a POMDR volunteer, email <a href="mailto:info@pomdr.org" style="color:var(--blue-text);text-decoration:underline">info@pomdr.org</a>. If you are not a volunteer yet, please fill out a <a href="/volunteer-application/" style="color:var(--blue-text);text-decoration:underline">volunteer application</a>. Or, if you are interested in adopting, fill out an <a href="/adoption-questionnaire/" style="color:var(--blue-text);text-decoration:underline">adoption questionnaire</a>.</p>
+    <?php echo do_shortcode('[foster_needed_dogs]'); ?>
+  </div>
+</section>
+
 <section class="cta-strip" style="background:var(--blue-50)">
   <div class="container">
     <h2 class="serif">Ready to foster? <em>We need you.</em></h2>
