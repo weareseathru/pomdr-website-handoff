@@ -134,6 +134,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   .wwd-row--flip .wwd-media, .wwd-row--flip .wwd-body { order: 0; }
   .wwd-row--text .wwd-paw { width: 100px; height: 100px; opacity: 0.07; }
 }
+
+.section-sm ul a { color: var(--blue-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; min-height: 40px; align-items: center; }
 </style>
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -175,8 +177,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="eyebrow">By the Numbers</div>
     <h2 class="section-title">16 years of <em>quiet, steady love.</em></h2>
     <div class="stats-row">
-      <div class="stat-item"><div class="num">3,200+</div><div class="lbl">Senior dogs rescued</div></div>
-      <div class="stat-item"><div class="num">1,800+</div><div class="lbl">Active volunteers</div></div>
+      <div class="stat-item"><div class="num">3,500+</div><div class="lbl">Senior dogs adopted</div></div>
+      <div class="stat-item"><div class="num">1,500+</div><div class="lbl">Volunteers</div></div>
       <div class="stat-item"><div class="num">16 yrs</div><div class="lbl">Of lifetime commitment</div></div>
       <div class="stat-item"><div class="num">3</div><div class="lbl">Tri-county area served</div></div>
     </div>
@@ -256,6 +258,23 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
+<!-- REPORTS AND FILINGS -->
+<section class="section-sm">
+  <div class="container" style="max-width:840px">
+    <div class="eyebrow">Accountability</div>
+    <h2 class="section-title">Reports and <em>filings.</em></h2>
+    <ul style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 32px">
+        <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDRImpactReport2025" target="_blank" rel="noopener">2025 Impact Report</a></li>
+        <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDRImpactReport2024.pdf" target="_blank" rel="noopener">2024 Impact Report</a></li>
+        <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDRAnnualReport2023.pdf" target="_blank" rel="noopener">2023 Annual Report</a></li>
+        <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDR990form2024.pdf" target="_blank" rel="noopener">2024 990 Form</a></li>
+        <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDR990form2023.pdf" target="_blank" rel="noopener">2023 990 Form</a></li>
+        <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDR990form2022.pdf" target="_blank" rel="noopener">2022 990 Form</a></li>
+    </ul>
+    <p style="margin-top:18px;color:var(--ink-3);font-size:15px">These files are currently hosted on the existing site; they move into this site&rsquo;s media library at launch.</p>
+  </div>
+</section>
+
 <!-- FOUNDERS QUOTE -->
 <div class="founders-band">
   <div class="container">
@@ -301,8 +320,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="tl-item">
         <div class="tl-year">2025</div>
         <div class="tl-content">
-          <h4>1,800+ Volunteers & Growing</h4>
-          <p>Our volunteer base reaches over 1,800 dedicated community members, fostering, transporting, walking, writing bios, and championing senior dogs every day.</p>
+          <h4>1,500+ Volunteers & Growing</h4>
+          <p>Our volunteer base reaches over 1,500 dedicated community members, fostering, transporting, walking, writing bios, and championing senior dogs every day.</p>
         </div>
       </div>
     </div>

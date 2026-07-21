@@ -39,23 +39,38 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="values-grid">
       <div class="value-card">
         <div class="vk">1</div>
-        <h3>Compassion first</h3>
-        <p>We meet every dog and every person with patience and respect. The senior owner in a hard moment and the dog who has waited the longest both deserve our full kindness.</p>
+        <h3>Feedback</h3>
+        <p>To be open to positive and constructive feedback from supervisors, co-workers, volunteer, and general public in an effort to take advantage of all opportunities to grow and improve.</p>
       </div>
       <div class="value-card">
         <div class="vk">2</div>
-        <h3>Honesty always</h3>
-        <p>We tell the truth about a dog's health, history, and needs. Trust is the foundation of every adoption, and we protect it carefully.</p>
+        <h3>Best Practices</h3>
+        <p>To continually strive to explore best practices and ways to improve our programs, policies, procedures and organization effectiveness.</p>
       </div>
       <div class="value-card">
         <div class="vk">3</div>
-        <h3>Dignity to the end</h3>
-        <p>Through Perpetual Care, no dog is abandoned for being old or ill. Every dog in our care is seen through to the end with comfort and love.</p>
+        <h3>Positive Attitude</h3>
+        <p>To maintain a solution oriented, optimistic outlook on our ability to make a difference.</p>
       </div>
       <div class="value-card">
         <div class="vk">4</div>
-        <h3>Community over ego</h3>
-        <p>Staff, volunteers, fosters, and donors are one team. We share the work, share the credit, and keep our focus on the dogs.</p>
+        <h3>Solution-driven</h3>
+        <p>To strive for creative solutions to any challenges that we may face.</p>
+      </div>
+      <div class="value-card">
+        <div class="vk">5</div>
+        <h3>Responsibility</h3>
+        <p>To agree that it is everyone’s responsibility to create a positive experience for volunteers, guardian surrenders, donors, adopters and the general public whether or not what they need is in our job description.</p>
+      </div>
+      <div class="value-card">
+        <div class="vk">6</div>
+        <h3>Professional</h3>
+        <p>To hold ourselves to the utmost standards of professionalism in appearance and attitude at all times.</p>
+      </div>
+      <div class="value-card">
+        <div class="vk">7</div>
+        <h3>Volunteer and Donor Appreciation</h3>
+        <p>To express our sincere appreciation for our volunteers and donors in every interaction.</p>
       </div>
     </div>
   </div>

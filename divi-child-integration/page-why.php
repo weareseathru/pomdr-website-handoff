@@ -113,5 +113,47 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
+
+<section class="section" style="background:var(--cream-2)">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow purple">From Real Adopters</span>
+      <h2 class="section-title">They said it <em>best.</em></h2>
+    </div>
+    <div class="why-quotes">
+      <figure class="why-quote">
+        <blockquote>Getting to watch an animal go from neglected and…just plain sad to enjoying his new life is just incredibly rewarding in a way that’s very different from raising a puppy and molding him in your own image.</blockquote>
+        <figcaption>Wes, IndefinitelyWild.Gizmodo.com</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>They appreciate the smallest gestures--cuddles, a nap on the bed, a brisk walk--because they had to ‘go without’ at some point. It makes them, and more importantly us humans, appreciate every little thing, a bit more!</blockquote>
+        <figcaption>Dina Eastwood, POMDR Adopter & Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>Sasha was the first senior dog that I adopted. Though I had fostered many dogs before her, Sasha chose me. While I thought I might get 4-5 years with her, she is still healthy and happy over 5 years later. Having a senior dog makes me cherish the time that I have with my pets even more, knowing that our time together is limited.</blockquote>
+        <figcaption>Christine D., POMDR Adopter & Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>Senior dogs have more ‘life experiences under their collar,’ and because of that they are more appreciative of having a loving forever home. I have adopted many, and their wisdom and love has enhanced my life in many ways.</blockquote>
+        <figcaption>Linda L., POMDR Adopter & Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>Senior dogs are usually easier to bring in to your home. They are potty trained and [it’s] so nice to have another old lady to keep me company.</blockquote>
+        <figcaption>Sue C., POMDR Foster Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>I adopted Disney aka Joe and all I can say is he is the best thing that has happened to me in a long time. Everything you said about older dogs is true: they are pretty much trained when you get them and he is been such a wonderful addition to my life and even though I&#039;ve had him a little over two months he has become my best little buddy and we are so bonded you would not believe it. So I want everybody out there to know this and to give these senior dogs a home. I will be forever grateful!</blockquote>
+        <figcaption>Sharon S., POMDR Adopter</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<style>
+.why-quotes { columns: 2 380px; column-gap: 24px; }
+.why-quote { break-inside: avoid; margin: 0 0 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; }
+.why-quote blockquote { margin: 0 0 12px; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+.why-quote figcaption { font-weight: 700; font-size: 16px; }
+</style>
+
 </main>
 <?php get_footer();

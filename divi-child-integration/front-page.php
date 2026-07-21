@@ -225,16 +225,16 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
            In WP these become editable (ACF options) or dynamic counts. -->
       <div class="stats-3 reveal">
         <div class="stat-block">
-          <div class="num">250<span class="sym">+</span></div>
-          <div class="lbl">Seniors supported through Helping Paw</div>
-        </div>
-        <div class="stat-block">
-          <div class="num">3,200<span class="sym">+</span></div>
+          <div class="num">3,500<span class="sym">+</span></div>
           <div class="lbl">Dogs adopted into loving homes</div>
         </div>
         <div class="stat-block">
-          <div class="num">1,800<span class="sym">+</span></div>
-          <div class="lbl">Active volunteers</div>
+          <div class="num">1,500<span class="sym">+</span></div>
+          <div class="lbl">Volunteers</div>
+        </div>
+        <div class="stat-block">
+          <div class="num">16<span class="sym">+</span></div>
+          <div class="lbl">Years of lifetime commitment</div>
         </div>
       </div>
     </div>
@@ -252,26 +252,26 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
       <div class="tails-grid">
         <div class="reveal"><div class="tail-card">
           <div class="quote-mark">"</div>
-          <blockquote>Rosie walked into our home unsure, and two weeks later she was napping at my feet like she had always been here. Thank you for trusting us with her golden years.</blockquote>
+          <blockquote>We adopted our dog Bowie via POMDR years ago. It was love at first sight. They worked with us every step of the way, and they call or email me regularly to see how she&#039;s doing even 11 years after adoption.</blockquote>
           <div class="person">
-            <div class="av" style="background:linear-gradient(160deg,var(--purple-100),var(--purple));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">R</div>
-            <div><strong>The Alvarez Family</strong><span>adopted Rosie · Pacific Grove, CA</span></div>
+            <div class="av" style="background:linear-gradient(160deg,var(--purple-100),var(--purple));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">D</div>
+            <div><strong>Debra S.</strong><span>POMDR Adopter</span></div>
           </div>
         </div></div>
         <div class="reveal"><div class="tail-card">
           <div class="quote-mark">"</div>
-          <blockquote>They did not just match us with a dog. They matched us with a companion who understood quiet mornings.</blockquote>
+          <blockquote>Peace of Mind Dog Rescue really helped me and my puppy out when we needed it most. So grateful for this organization.</blockquote>
           <div class="person">
-            <div class="av" style="background:linear-gradient(160deg,var(--blue-100),var(--blue));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">F</div>
-            <div><strong>Eleanor W.</strong><span>adopted Finn · Carmel</span></div>
+            <div class="av" style="background:linear-gradient(160deg,var(--blue-100),var(--blue));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">D</div>
+            <div><strong>Douglas G.</strong><span>Helping Paw Client</span></div>
           </div>
         </div></div>
         <div class="reveal"><div class="tail-card">
           <div class="quote-mark">"</div>
-          <blockquote>POMDR stayed in touch long after adoption day. That is what a lifetime commitment looks like.</blockquote>
+          <blockquote>Walking dogs and being able to give a hand to someone that needs it - it gives life a purpose. It makes us feel richer. Thank you to POMDR for giving us the opportunity to find meaning and make our hearts richer.</blockquote>
           <div class="person">
-            <div class="av" style="background:linear-gradient(160deg,#e8d5c4,#8b5a2b);display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">B</div>
-            <div><strong>David and Marta</strong><span>adopted Biscuit · Santa Cruz</span></div>
+            <div class="av" style="background:linear-gradient(160deg,var(--blue-100),var(--blue-700));display:grid;place-items:center;color:#fff;font-family:var(--font-serif);font-style:italic;font-size:22px">S</div>
+            <div><strong>Sonia C.</strong><span>POMDR Volunteer</span></div>
           </div>
         </div></div>
       </div>

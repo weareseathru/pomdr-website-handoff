@@ -138,6 +138,16 @@ Mirror-internal issues: /adoption-events/ is an orphan placeholder page; /wishli
 
 ## D. RANKED IMPLEMENTATION PLAN
 
+> STATUS 2026-07-21 (same day, implementation session): items 1-4, 6-10, 12-20
+> are DONE on the mirror (dog re-sync with repeatable importer, foster listing,
+> courtesy contract, CTA logic, monthly/annual/dog-tag/doggie-suite forms, fund
+> passthrough, link repointing, Max's Fund page, Thank You wall, Perpetual Care
+> FAQ, jobs quotes, real testimonials + honest stats, media archive, news page,
+> About roster + reports, real culture values, real terms/privacy pending
+> counsel). Remaining: item 5 (per-dog redirects, waiting on the production
+> redirect import), item 11 tribute donor lists (Andrew's call, 800KB), item 21
+> partials (recources slug rename decision), and PDF media migration at launch.
+
 Adoption funnel:
 1. Dog data re-sync from live (adopt/courtesy/hospice/adopted rosters, statuses, foster dates, Aged to Perfection flag). Effort M (ideally a repeatable import script, not one-off). Goes to: pets CPT.
 2. Foster Needs dog listing: query Foster Needed pets with writeups + tri-CTA block. Effort M. Goes to: /foster-needs/ template.

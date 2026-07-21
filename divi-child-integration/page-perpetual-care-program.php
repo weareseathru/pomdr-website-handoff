@@ -74,6 +74,13 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   </div>
 </section>
 
+<section class="section-sm">
+  <div class="container" style="max-width:760px;text-align:center">
+    <p style="font-size:18px;color:var(--ink-2);margin:0 0 16px">For more information, visit our page of frequently asked questions.</p>
+    <a href="/perpetual-care-faq/" class="btn btn-primary">Perpetual Care FAQ</a>
+  </div>
+</section>
+
 </main>
 
 </main>
