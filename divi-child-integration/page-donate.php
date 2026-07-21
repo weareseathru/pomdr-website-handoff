@@ -63,6 +63,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-card p{font-size:16px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
 .way-link{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#fff;margin-top:auto;text-shadow:0 1px 8px rgba(0,0,0,.55);transition:gap .25s;}
 .way-card:hover .way-link{gap:10px;}
+.way-card--flat::before{background:linear-gradient(135deg,var(--blue-900),var(--purple));}
+.way-card--flat::after{background:linear-gradient(180deg,rgba(22,32,43,.15) 0%,rgba(22,32,43,.5) 100%);}
 @media(max-width:900px){.ways-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.ways-grid{grid-template-columns:1fr;}}
 </style>
@@ -115,7 +117,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="eyebrow" style="color:var(--purple-100);justify-content:center;">Sustaining Donors</div>
     <h2>Become a monthly donor. <em>Steady love for senior dogs.</em></h2>
     <p>Your credit card will be charged your pledged amount at the first of every month. Cancel anytime.</p>
-    <a href="https://www.peaceofminddogrescue.org/POMDRMonthlyDonation.php" target="_blank" class="btn btn-white">
+    <a href="/monthly-donation/" class="btn btn-white">
       Set Up Monthly Gift
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
@@ -133,21 +135,21 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
         <h3>Max's Helping Paws Fund</h3>
         <p style="color:rgba(255,255,255,.85);">Financial assistance for low-income guardians facing unexpected, urgent veterinary care, including surgery and specialist visits.</p>
-        <a href="https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Max's%20Helping%20Paws%20Fund" target="_blank" class="way-link" style="color:rgba(255,255,255,.8);">Donate to Max's Fund →</a>
+        <a href="/donation/?fund=Max's%20Helping%20Paws%20Fund" class="way-link" style="color:rgba(255,255,255,.8);">Donate to Max's Fund →</a>
       </div>
 
       <div class="way-card">
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1 3-6z"/></svg></div>
         <h3>Monica Rua Silver Hearts Fund</h3>
         <p>For dogs with dire medical needs. Special surgeries, specialist visits, physical rehabilitation, supplements. Named in honor of co-founder Monica Rua.</p>
-        <a href="https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Silver%20Hearts%20Fund" target="_blank" class="way-link">Give to Silver Hearts →</a>
+        <a href="/donation/?fund=Silver%20Hearts%20Fund" class="way-link">Give to Silver Hearts →</a>
       </div>
 
       <div class="way-card">
         <div class="way-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3>Tribute Donation</h3>
         <p>Make a donation in honor of or in memory of a special person or animal. We'll send a beautiful tribute card announcing your gift.</p>
-        <a href="https://www.peaceofminddogrescue.org/POMDRDonation.php?donationtype=tribute" target="_blank" class="way-link">Give a Tribute Gift →</a>
+        <a href="/donation/?donationtype=tribute" class="way-link">Give a Tribute Gift →</a>
       </div>
 
       <div class="way-card">
@@ -168,7 +170,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
         <h3>Helping Paw Fund</h3>
         <p>Donate to our Food Fund or Helping Paw Veterinary Assistance Fund to keep pet guardians and their pets together during difficult times.</p>
-        <a href="https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Helping%20Paw%20Fund" target="_blank" class="way-link">Donate to Helping Paw →</a>
+        <a href="/donation/?fund=Helping%20Paw%20Fund" class="way-link">Donate to Helping Paw →</a>
       </div>
 
       <div class="way-card">
@@ -213,6 +215,41 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <a href="/wish-list/" class="way-link">View Wish List →</a>
       </div>
 
+      <div class="way-card way-card--flat">
+        <div class="way-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6"/></svg></div>
+        <h3>Dog Tag Donor</h3>
+        <p>Become a Dog Tag Donor with a gift of $500, and carry a POMDR dog tag that shows you are part of the pack.</p>
+        <a href="/dog-tag-donor/" class="way-link">Become a Dog Tag Donor →</a>
+      </div>
+
+      <div class="way-card way-card--flat">
+        <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-8h6v8"/></svg></div>
+        <h3>Sponsor a Doggie Suite</h3>
+        <p>Sponsor a doggie suite at the Bauer Center for $5,000 a year and give recovering dogs a comfortable place to land.</p>
+        <a href="/doggie-suite-sponsorship/" class="way-link">Sponsor a Suite →</a>
+      </div>
+
+      <div class="way-card way-card--flat">
+        <div class="way-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+        <h3>Plaques and River Stones</h3>
+        <p>Sponsor a mural plaque, welcome room plaque, or garden river stone at the Bauer Center, a lasting tribute in a place full of wagging tails.</p>
+        <a href="/sponsorship/" class="way-link">See Sponsorships →</a>
+      </div>
+
+      <div class="way-card way-card--flat">
+        <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>Corporate Sponsor</h3>
+        <p>Partner your business with POMDR and put your name behind senior dogs and senior people in our community.</p>
+        <a href="mailto:info@pomdr.org?subject=Corporate%20Sponsorship" class="way-link">Email Us →</a>
+      </div>
+
+      <div class="way-card way-card--flat">
+        <div class="way-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Annual Gift</h3>
+        <p>Set up an annual gift and we will contact you each year to renew it. One decision, a whole year of impact.</p>
+        <a href="/annual-donation/" class="way-link">Set Up an Annual Gift →</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -241,7 +278,7 @@ customInput.addEventListener('input', () => {
 donateBtn.addEventListener('click', () => {
   const amt = customInput.value ? parseInt(customInput.value) : selectedAmount;
   if (amt > 0) {
-    window.open(`https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=${amt}`, '_blank');
+    window.location.href = `/donation/?initialdonation=${amt}`;
   }
 });
 </script>

@@ -102,6 +102,16 @@ get_header();
         <li><a href="https://www.peaceofminddogrescue.org/downloads/whenadogmoves.pdf" target="_blank" rel="noopener">When a Dog Moves</a></li>
       </ul>
     </section>
+    <section class="forms-group">
+      <h2>Educational videos</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=ra6ob7pEgaA" target="_blank" rel="noopener">Dog Body Language (20 minutes)</a></li>
+        <li><a href="https://www.youtube.com/watch?v=NHQm2N6wDZY" target="_blank" rel="noopener">Dog Body Language (60 minutes)</a></li>
+        <li><a href="https://www.youtube.com/watch?v=0IhK0ytrr4E" target="_blank" rel="noopener">Foster Training</a></li>
+        <li><a href="https://www.youtube.com/watch?v=spJoNCP6XrI" target="_blank" rel="noopener">The Importance of Management</a></li>
+        <li><a href="https://www.youtube.com/watch?v=ydN8stWwYo0" target="_blank" rel="noopener">Vet Packs</a></li>
+      </ul>
+    </section>
   </div>
 </section>
 
