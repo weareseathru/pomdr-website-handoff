@@ -161,7 +161,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="way-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
         <h3>Benefit Shop</h3>
         <p>Visit the POMDR Benefit Shop at 223 Grand Ave, Suite 1 in Pacific Grove. Shop for hidden gems and support senior dogs with every purchase.</p>
-        <a href="https://www.peaceofminddogrescue.org/benefitshop.html" target="_blank" class="way-link">Visit the Shop →</a>
+        <a href="/benefit-shop/" class="way-link">Visit the Shop →</a>
       </div>
 
       <div class="way-card">
@@ -175,14 +175,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
         <h3>Sponsor a Newspaper Ad</h3>
         <p>Placing ads in local newspapers is very effective in finding homes for our dogs. Ad sponsorships are $120 per ad.</p>
-        <a href="https://www.peaceofminddogrescue.org/sponsorad.html" target="_blank" class="way-link">Sponsor an Ad →</a>
+        <a href="/sponsor-an-ad/" class="way-link">Sponsor an Ad →</a>
       </div>
 
       <div class="way-card">
         <div class="way-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
         <h3>Legacy Donor</h3>
         <p>Legacy Donors are keystone supporters of our mission. Be an invaluable part of our work with an annual gift of $5,000 or more.</p>
-        <a href="https://www.peaceofminddogrescue.org/legacydonor.html" target="_blank" class="way-link">Become a Legacy Donor →</a>
+        <a href="/legacy/" class="way-link">Become a Legacy Donor →</a>
       </div>
 
       <div class="way-card">
@@ -203,14 +203,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
         <h3>Planned Giving</h3>
         <p>Make a lasting gift to help animals in need. Planned giving can provide tax benefits while ensuring POMDR can continue its work long into the future.</p>
-        <a href="https://www.peaceofminddogrescue.org/plannedgiving.html" target="_blank" class="way-link">Learn About Planned Giving →</a>
+        <a href="/planned-giving/" class="way-link">Learn About Planned Giving →</a>
       </div>
 
       <div class="way-card">
         <div class="way-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <h3>Wish List</h3>
         <p>Donate supplies directly to help our senior dogs while in foster care. See exactly what our dogs need, from food to crates to cozy beds.</p>
-        <a href="https://www.peaceofminddogrescue.org/wishlist.html" target="_blank" class="way-link">View Wish List →</a>
+        <a href="/wish-list/" class="way-link">View Wish List →</a>
       </div>
 
     </div>

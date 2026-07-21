@@ -104,7 +104,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
         <h3>Foster Home</h3>
         <p>Foster volunteers are the heart and soul of what we do. POMDR covers all approved medical expenses, supplies crates, beds and toys as available, and provides a foster manual, training, an emergency contact number, and a dedicated mentor.</p>
-        <a href="https://www.peaceofminddogrescue.org/fostering.html" target="_blank" class="learn">Learn more about fostering</a>
+        <a href="/fostering/" class="learn">Learn more about fostering</a>
       </div>
 
       <div class="role-card">
@@ -140,7 +140,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
         <h3>Benefit Shop</h3>
         <p>Our Benefit Shop at 223 Grand Ave, Pacific Grove needs help greeting visitors, running the register, sorting and pricing donations, and creating displays. Truck owners can help with donation pickups too!</p>
-        <a href="https://www.peaceofminddogrescue.org/benefitshop.html" target="_blank" class="learn">Visit the Benefit Shop</a>
+        <a href="/benefit-shop/" class="learn">Visit the Benefit Shop</a>
       </div>
 
       <div class="role-card">

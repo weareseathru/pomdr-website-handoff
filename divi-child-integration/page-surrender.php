@@ -140,7 +140,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h3>Courtesy Listing</h3>
         <p>If we are unable to take your dog directly, we can list them on our website as a courtesy listing, helping you find a home on your own while we provide resources and support.</p>
         <div style="font-size:15px;color:var(--ink-3);padding-top:16px;border-top:1px dashed var(--line);margin-bottom:16px;">Guardian remains responsible for dog during listing period.</div>
-        <a href="https://www.peaceofminddogrescue.org/POMDRsurrendercourtesy.php" target="_blank" class="opt-link">Request a Courtesy Listing</a>
+        <a href="/intake-questionnaire/" class="opt-link">Request a Courtesy Listing</a>
       </div>
       <div class="option-card">
         <div class="opt-icon" style="background:#F1EBF5;color:#632F88;"><svg viewBox="0 0 24 24"><path d="M22 12s-2.5 7-10 7S2 12 2 12s2.5-7 10-7 10 7 10 7z"/><circle cx="12" cy="12" r="3"/></svg></div>
