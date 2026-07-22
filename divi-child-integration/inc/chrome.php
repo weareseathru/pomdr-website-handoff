@@ -46,37 +46,105 @@ function pomdr_render_chrome() {
             <span class="nav-tagline-2"><?php echo $paw; ?><span class="nav-since">SINCE 2009</span><?php echo $paw; ?></span>
           </div>
           <div class="nav-menu">
-            <div class="nav-row nav-row--primary">
-              <div class="nav-item"><a href="<?php echo pomdr_url('adopt'); ?>">Adopt</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('foster'); ?>">Foster</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('volunteer'); ?>">Volunteer</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('helping-paw'); ?>">Helping Paw</a></div>
+            <?php
+            // Same top-level items as before; each opens a dropdown of the
+            // site's existing pages (no new sections). Dropdowns are
+            // click-to-open (no hover-only per the accessibility charter).
+            $pomdr_nav = array(
+                'primary' => array(
+                    array( 'label' => 'Adopt', 'url' => 'adopt', 'items' => array(
+                        array( 'Adoptable Dogs', 'adopt' ),
+                        array( 'Adoption Process', 'process' ),
+                        array( 'Why a Senior Dog', 'why' ),
+                        array( 'Courtesy Listings', 'courtesy-listings' ),
+                        array( 'Hospice Dogs', 'hospice' ),
+                        array( 'Happy Tails', 'adopted' ),
+                        array( 'Apply to Adopt', 'adoption-questionnaire' ),
+                    ) ),
+                    array( 'label' => 'Foster', 'url' => 'fostering', 'items' => array(
+                        array( 'About Fostering', 'fostering' ),
+                        array( 'Dogs Needing Foster', 'foster-needs' ),
+                        array( 'Volunteer Application', 'volunteer-application' ),
+                    ) ),
+                    array( 'label' => 'Volunteer', 'url' => 'volunteer', 'items' => array(
+                        array( 'Volunteering', 'volunteer' ),
+                        array( 'Volunteer Application', 'volunteer-application' ),
+                    ) ),
+                    array( 'label' => 'Helping Paw', 'url' => 'helping-paw', 'items' => array(
+                        array( 'About Helping Paw', 'helping-paw' ),
+                        array( 'Apply for Assistance', 'helping-paw-application' ),
+                        array( "Max's Helping Paws Fund", 'maxs-fund' ),
+                    ) ),
+                ),
+                'secondary' => array(
+                    array( 'label' => 'About', 'url' => 'about', 'items' => array(
+                        array( 'Our Story', 'about' ),
+                        array( 'Our Culture', 'about/culture' ),
+                        array( 'Testimonials', 'testimonials' ),
+                        array( 'Videos', 'videos' ),
+                        array( 'In the Media', 'media' ),
+                        array( 'Bauer Center', 'bauer-center' ),
+                        array( 'Vet Clinic', 'clinic' ),
+                        array( 'Resources', 'recources' ),
+                        array( 'Jobs', 'jobs' ),
+                        array( 'Mailing List', 'mailing-list' ),
+                    ) ),
+                    array( 'label' => 'Surrender', 'url' => 'surrender', 'items' => array(
+                        array( 'Placing Your Dog', 'surrender' ),
+                        array( 'Intake Questionnaire', 'intake-questionnaire' ),
+                        array( 'Perpetual Care', 'perpetual-care-program' ),
+                        array( 'Perpetual Care FAQ', 'perpetual-care-faq' ),
+                    ) ),
+                    array( 'label' => 'Events', 'url' => 'events', 'items' => array(
+                        array( 'Event Calendar', 'events' ),
+                        array( "What's Happening", 'news' ),
+                    ) ),
+                    array( 'label' => 'Benefit Shop', 'url' => 'benefit-shop', 'items' => array() ),
+                    array( 'label' => 'Contact', 'url' => 'mailto:info@pomdr.org', 'items' => array() ),
+                ),
+            );
+            foreach ( array( 'primary', 'secondary' ) as $row ) :
+            ?>
+            <div class="nav-row nav-row--<?php echo esc_attr( $row ); ?>">
+              <?php foreach ( $pomdr_nav[ $row ] as $item ) :
+                  $href = ( 0 === strpos( $item['url'], 'mailto:' ) ) ? $item['url'] : pomdr_url( $item['url'] );
+                  $has_drop = ! empty( $item['items'] );
+              ?>
+              <div class="nav-item<?php echo $has_drop ? ' has-drop' : ''; ?>">
+                <a href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+                <?php if ( $has_drop ) : ?>
+                <button type="button" class="nav-caret" aria-expanded="false" aria-label="<?php echo esc_attr( 'Open ' . $item['label'] . ' menu' ); ?>">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="nav-drop" hidden>
+                  <?php foreach ( $item['items'] as $sub ) : ?>
+                  <a href="<?php echo esc_url( pomdr_url( $sub[1] ) ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
+                  <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+              </div>
+              <?php endforeach; ?>
             </div>
-            <div class="nav-row nav-row--secondary">
-              <div class="nav-item"><a href="<?php echo pomdr_url('about'); ?>">About</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('surrender'); ?>">Surrender</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('events'); ?>">Events</a></div>
-              <div class="nav-item"><a href="<?php echo pomdr_url('benefit-shop'); ?>">Benefit Shop</a></div>
-              <div class="nav-item"><a href="mailto:info@pomdr.org">Contact</a></div>
-            </div>
+            <?php endforeach; ?>
           </div>
           <a href="<?php echo pomdr_url('donate'); ?>" class="nav-donate">Donate</a>
           <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile"><span></span><span></span><span></span></button>
         </div>
       </div>
       <div class="nav-mobile" id="nav-mobile" hidden>
-        <a href="<?php echo $home; ?>">Home</a>
-        <a href="<?php echo pomdr_url('adopt'); ?>">Adopt</a>
-        <a href="<?php echo pomdr_url('foster'); ?>">Foster</a>
-        <a href="<?php echo pomdr_url('donate'); ?>">Donate</a>
-        <a href="<?php echo pomdr_url('volunteer'); ?>">Volunteer</a>
-        <a href="<?php echo pomdr_url('helping-paw'); ?>">Helping Paw</a>
-        <a href="<?php echo pomdr_url('about'); ?>">About</a>
-        <a href="<?php echo pomdr_url('surrender'); ?>">Surrender</a>
-        <a href="<?php echo pomdr_url('events'); ?>">Events</a>
-        <a href="<?php echo pomdr_url('benefit-shop'); ?>">Benefit Shop</a>
-        <a href="mailto:info@pomdr.org">Contact</a>
+        <?php foreach ( array( 'primary', 'secondary' ) as $row ) : ?>
+          <?php foreach ( $pomdr_nav[ $row ] as $item ) :
+              $href = ( 0 === strpos( $item['url'], 'mailto:' ) ) ? $item['url'] : pomdr_url( $item['url'] );
+          ?>
+          <a class="m-top" href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
+          <?php foreach ( ( $item['items'] ?? array() ) as $sub ) :
+              if ( $sub[1] === $item['url'] ) { continue; } ?>
+          <a class="m-sub" href="<?php echo esc_url( pomdr_url( $sub[1] ) ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
+          <?php endforeach; ?>
+          <?php endforeach; ?>
+        <?php endforeach; ?>
         <a href="<?php echo pomdr_url('donate'); ?>" class="m-cta">Donate</a>
+      </div>
       </div>
     </nav>
     <?php

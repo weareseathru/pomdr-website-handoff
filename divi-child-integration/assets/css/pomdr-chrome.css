@@ -109,7 +109,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
 .nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
 .nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
-@media (max-width: 1440px) { .nav-tagline { display: none; } } /* was 1200px; the tagline squeezed the menu off its card at laptop widths */
+@media (max-width: 1680px) { .nav-tagline { display: none; } } /* was 1440; the dropdown carets widened the rows */
 
 /* Two visible rows of menu items */
 .nav-menu {
@@ -505,3 +505,35 @@ body #main-content .container { padding-top: 0 !important; }
    as an oval; box-sizing:border-box keeps it from shifting the row. */
 /* The Donate nav item is now the standalone .nav-donate block (solid blue, double height). */
 .nav-item--donate:hover > a, .nav-item--donate > a:hover { background: var(--blue-700) !important; color: #fff !important; }
+
+/* ===== NAV DROPDOWNS (2026-07-21): click-to-open panels of existing pages ===== */
+.nav-item.has-drop { display: inline-flex; align-items: center; }
+.nav-caret {
+  display: inline-grid; place-items: center;
+  width: 26px; height: 32px; padding: 0; margin-left: -6px;
+  color: var(--ink-3); border-radius: 8px; cursor: pointer;
+  transition: transform 0.2s var(--ease), color 0.2s;
+}
+.nav-caret svg { width: 15px; height: 15px; }
+.nav-caret:hover { color: var(--blue-text); }
+.nav-caret[aria-expanded="true"] { transform: rotate(180deg); color: var(--blue-text); }
+.nav-caret:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 1px; }
+.nav-drop {
+  position: absolute; top: calc(100% + 10px); left: 0; z-index: 200;
+  min-width: 240px; padding: 10px;
+  background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column;
+}
+.nav-drop[hidden] { display: none; }
+.nav-drop a {
+  display: flex; align-items: center; min-height: 44px; padding: 8px 14px;
+  border-radius: 10px; font-size: 16px; font-weight: 600; color: var(--ink-2);
+  text-decoration: none; white-space: nowrap;
+}
+.nav-drop a:hover { background: var(--blue-50); color: var(--blue-text); }
+.nav-drop a:focus-visible { outline: 3px solid var(--focus-color); outline-offset: -3px; }
+/* Right-edge items must not overflow the viewport */
+.nav-row--secondary .nav-item:nth-last-child(-n+2) .nav-drop { left: auto; right: 0; }
+.nav-mobile .m-top { font-weight: 700; }
+.nav-mobile .m-sub { padding-left: 34px; font-size: 16px; color: var(--ink-2); }

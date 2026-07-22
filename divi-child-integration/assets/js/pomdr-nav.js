@@ -32,4 +32,36 @@
       if (e.target.closest('a')) setMobile(false);
     });
   }
+
+  /* ---- Nav dropdowns: click-to-open (no hover-only), Esc and outside-click
+     close, one open at a time. ---- */
+  (function () {
+    var carets = document.querySelectorAll(".nav-caret");
+    if (!carets.length) return;
+    function closeAll(except) {
+      carets.forEach(function (c) {
+        if (c === except) return;
+        c.setAttribute("aria-expanded", "false");
+        var d = c.parentElement.querySelector(".nav-drop");
+        if (d) d.hidden = true;
+      });
+    }
+    carets.forEach(function (c) {
+      c.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var d = c.parentElement.querySelector(".nav-drop");
+        var open = c.getAttribute("aria-expanded") === "true";
+        closeAll(c);
+        c.setAttribute("aria-expanded", open ? "false" : "true");
+        if (d) d.hidden = open;
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".nav-item.has-drop")) closeAll(null);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeAll(null);
+    });
+  })();
+
 })();
