@@ -52,7 +52,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .ab-btn:hover { transform: translateY(-1px); }
 .ab-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
-/* ===== NAVIGATION (two-row, sits below the action bar) ===== */
+/* ===== NAVIGATION (single row of dropdowns, sits below the action bar) ===== */
 .nav {
   position: fixed; top: 50px; left: 0; right: 0;
   z-index: 100;
@@ -60,12 +60,15 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   transition: padding 0.3s var(--ease);
 }
 .nav.scrolled { padding: 8px 0; }
+/* The single-row nav needs more width than the content container (which is
+   width:80%): logo + seven items + Donate is about 1280px. */
+.nav > .container { width: min(1400px, calc(100% - 48px)); max-width: none; }
 
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -100,8 +103,10 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   padding-left: 12px;
 }
 
-/* Centered brand tagline lockup (desktop only; hidden when space is tight) */
-.nav-tagline { flex: 0 0 auto; margin: 0 auto; text-align: center; padding: 0 16px; line-height: 1; }
+/* Brand tagline lockup: retired with the single-row nav (2026-07-23). The
+   seven dropdown items plus Donate use the full card width, so the tagline
+   no longer has room at any viewport. Markup stays for possible reuse. */
+.nav-tagline { display: none; }
 .nav-tagline-1 {
   display: block; font-family: var(--font-sans); font-style: italic; font-weight: 700;
   font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
@@ -109,15 +114,16 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
 .nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
 .nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
-@media (max-width: 1680px) { .nav-tagline { display: none; } } /* was 1440; the dropdown carets widened the rows */
 
-/* Two visible rows of menu items */
+/* Single row of menu items; dropdowns hold the depth (2026-07-23) */
 .nav-menu {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
 }
+.nav-row--main { display: flex; align-items: center; gap: 2px; }
 
 /* The primary Donate action: a solid blue block on the far right of the nav
    card, stretching the height of both menu rows. AA contrast (white on
@@ -126,11 +132,12 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   flex-shrink: 0; /* never pushed out of or squeezed off the white card */
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  align-self: stretch;
-  display: grid;
-  place-items: center;
-  margin-left: 10px;
-  padding: 0 30px;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  margin-left: 12px;
+  padding: 0 28px;
   background: var(--blue-700);
   color: #fff !important;
   font-size: 20px;
@@ -146,19 +153,21 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   align-items: center;
   gap: 8px;
 }
-.nav-row--primary .nav-item > a,
-.nav-row--primary .nav-item > button {
-  font-size: 18px; font-weight: 700; color: var(--ink);
+.nav-row--main .nav-item > a {
+  font-size: 17px; font-weight: 700; color: var(--ink); padding: 10px 10px;
 }
-.nav-row--secondary .nav-item > a,
-.nav-row--secondary .nav-item > button {
-  font-size: 15px; font-weight: 500; color: var(--ink-3); padding: 6px 12px;
-}
+.nav-row--main .nav-item > a:hover { color: var(--blue-text); }
 
-/* The menu may flex; the decorative tagline absorbs any squeeze so the
-   Donate block always stays fully on the white card. */
-.nav-menu { min-width: 0; }
-.nav-tagline { flex: 0 1 auto; min-width: 0; overflow: hidden; }
+/* Slim tier: below 1500px the full-size row would collide with the logo,
+   so tighten type and padding until the 1200px hamburger takes over. */
+@media (max-width: 1500px) {
+  .nav > .container { padding: 0 20px; }
+  .logo-img { height: 44px; }
+  .nav-inner { padding: 12px 14px 12px 20px; gap: 12px; }
+  .nav-row--main .nav-item > a { font-size: 16px; padding: 10px 5px; }
+  .nav-row--main .nav-item > button.nav-caret { width: 20px; margin-left: -4px; }
+  .nav-donate { padding: 0 16px; font-size: 18px; }
+}
 
 /* legacy single-row container (kept harmless) */
 .nav-links {
@@ -418,7 +427,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 
 /* Mobile: collapse nav links into drawer */
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
   .nav-menu { display: none; }
   .nav-donate { display: none; }
   .nav-toggle { display: inline-flex; }
@@ -506,18 +515,23 @@ body #main-content .container { padding-top: 0 !important; }
 /* The Donate nav item is now the standalone .nav-donate block (solid blue, double height). */
 .nav-item--donate:hover > a, .nav-item--donate > a:hover { background: var(--blue-700) !important; color: #fff !important; }
 
-/* ===== NAV DROPDOWNS (2026-07-21): click-to-open panels of existing pages ===== */
+/* ===== NAV DROPDOWNS (2026-07-21): click-to-open panels of existing pages =====
+   Selectors are written as .nav-item > button.nav-caret because the generic
+   nav pill rule (.nav-item > a, .nav-item > button) otherwise outranks a bare
+   .nav-caret and its 9px 14px padding collapses the 26px button's content box
+   to zero, hiding the chevron. */
 .nav-item.has-drop { display: inline-flex; align-items: center; }
-.nav-caret {
+.nav-item > button.nav-caret {
   display: inline-grid; place-items: center;
   width: 26px; height: 32px; padding: 0; margin-left: -6px;
+  border: 0; background: transparent;
   color: var(--ink-3); border-radius: 8px; cursor: pointer;
   transition: transform 0.2s var(--ease), color 0.2s;
 }
-.nav-caret svg { width: 15px; height: 15px; }
-.nav-caret:hover { color: var(--blue-text); }
-.nav-caret[aria-expanded="true"] { transform: rotate(180deg); color: var(--blue-text); }
-.nav-caret:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 1px; }
+.nav-item > button.nav-caret svg { width: 15px; height: 15px; }
+.nav-item > button.nav-caret:hover { color: var(--blue-text); }
+.nav-item > button.nav-caret[aria-expanded="true"] { transform: rotate(180deg); color: var(--blue-text); }
+.nav-item > button.nav-caret:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 1px; }
 .nav-drop {
   position: absolute; top: calc(100% + 10px); left: 0; z-index: 200;
   min-width: 240px; padding: 10px;
@@ -534,6 +548,6 @@ body #main-content .container { padding-top: 0 !important; }
 .nav-drop a:hover { background: var(--blue-50); color: var(--blue-text); }
 .nav-drop a:focus-visible { outline: 3px solid var(--focus-color); outline-offset: -3px; }
 /* Right-edge items must not overflow the viewport */
-.nav-row--secondary .nav-item:nth-last-child(-n+2) .nav-drop { left: auto; right: 0; }
+.nav-row--main .nav-item:nth-last-child(-n+2) .nav-drop { left: auto; right: 0; }
 .nav-mobile .m-top { font-weight: 700; }
 .nav-mobile .m-sub { padding-left: 34px; font-size: 16px; color: var(--ink-2); }

@@ -51,7 +51,7 @@ function pomdr_render_chrome() {
             // site's existing pages (no new sections). Dropdowns are
             // click-to-open (no hover-only per the accessibility charter).
             $pomdr_nav = array(
-                'primary' => array(
+                'main' => array(
                     array( 'label' => 'Adopt', 'url' => 'adopt', 'items' => array(
                         array( 'Adoptable Dogs', 'adopt' ),
                         array( 'Adoption Process', 'process' ),
@@ -75,20 +75,6 @@ function pomdr_render_chrome() {
                         array( 'Apply for Assistance', 'helping-paw-application' ),
                         array( "Max's Helping Paws Fund", 'maxs-fund' ),
                     ) ),
-                ),
-                'secondary' => array(
-                    array( 'label' => 'About', 'url' => 'about', 'items' => array(
-                        array( 'Our Story', 'about' ),
-                        array( 'Our Culture', 'about/culture' ),
-                        array( 'Testimonials', 'testimonials' ),
-                        array( 'Videos', 'videos' ),
-                        array( 'In the Media', 'media' ),
-                        array( 'Bauer Center', 'bauer-center' ),
-                        array( 'Vet Clinic', 'clinic' ),
-                        array( 'Resources', 'recources' ),
-                        array( 'Jobs', 'jobs' ),
-                        array( 'Mailing List', 'mailing-list' ),
-                    ) ),
                     array( 'label' => 'Surrender', 'url' => 'surrender', 'items' => array(
                         array( 'Placing Your Dog', 'surrender' ),
                         array( 'Intake Questionnaire', 'intake-questionnaire' ),
@@ -99,11 +85,24 @@ function pomdr_render_chrome() {
                         array( 'Event Calendar', 'events' ),
                         array( "What's Happening", 'news' ),
                     ) ),
-                    array( 'label' => 'Benefit Shop', 'url' => 'benefit-shop', 'items' => array() ),
-                    array( 'label' => 'Contact', 'url' => 'mailto:info@pomdr.org', 'items' => array() ),
+                    array( 'label' => 'About', 'url' => 'about', 'items' => array(
+                        array( 'Our Story', 'about' ),
+                        array( 'Our Culture', 'about/culture' ),
+                        array( 'Testimonials', 'testimonials' ),
+                        array( 'Videos', 'videos' ),
+                        array( 'In the Media', 'media' ),
+                        array( 'Bauer Center', 'bauer-center' ),
+                        array( 'Vet Clinic', 'clinic' ),
+                        array( 'Benefit Shop', 'benefit-shop' ),
+                        array( 'Resources', 'recources' ),
+                        array( 'Jobs', 'jobs' ),
+                        array( 'Mailing List', 'mailing-list' ),
+                        array( 'Contact', 'mailto:info@pomdr.org' ),
+                    ) ),
                 ),
             );
-            foreach ( array( 'primary', 'secondary' ) as $row ) :
+            foreach ( array( 'main' ) as $row ) :
+
             ?>
             <div class="nav-row nav-row--<?php echo esc_attr( $row ); ?>">
               <?php foreach ( $pomdr_nav[ $row ] as $item ) :
@@ -117,8 +116,10 @@ function pomdr_render_chrome() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="nav-drop" hidden>
-                  <?php foreach ( $item['items'] as $sub ) : ?>
-                  <a href="<?php echo esc_url( pomdr_url( $sub[1] ) ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
+                  <?php foreach ( $item['items'] as $sub ) :
+                      $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
+                  ?>
+                  <a href="<?php echo esc_url( $sub_href ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
                   <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
@@ -132,14 +133,16 @@ function pomdr_render_chrome() {
         </div>
       </div>
       <div class="nav-mobile" id="nav-mobile" hidden>
-        <?php foreach ( array( 'primary', 'secondary' ) as $row ) : ?>
+        <?php foreach ( array( 'main' ) as $row ) : ?>
           <?php foreach ( $pomdr_nav[ $row ] as $item ) :
               $href = ( 0 === strpos( $item['url'], 'mailto:' ) ) ? $item['url'] : pomdr_url( $item['url'] );
           ?>
           <a class="m-top" href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
           <?php foreach ( ( $item['items'] ?? array() ) as $sub ) :
-              if ( $sub[1] === $item['url'] ) { continue; } ?>
-          <a class="m-sub" href="<?php echo esc_url( pomdr_url( $sub[1] ) ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
+              if ( $sub[1] === $item['url'] ) { continue; }
+              $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
+          ?>
+          <a class="m-sub" href="<?php echo esc_url( $sub_href ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
           <?php endforeach; ?>
           <?php endforeach; ?>
         <?php endforeach; ?>
