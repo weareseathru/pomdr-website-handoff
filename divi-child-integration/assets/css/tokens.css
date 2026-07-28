@@ -37,7 +37,7 @@
   --ink-3: #5a6773;
   --line: #cfe0e9;    /* cool hairline to match (was warm #e5ddd0) */
   --cream: #E8F2F6;   /* light blue (was warm cream #FAF6F0); leadership spec 2026-07-09 */
-  --cream-2: #D9E9F0; /* deeper blue tint for wells/frames (was #F3ECDF) */
+  --cream-2: #E8F2F6; /* unified to the light blue (was #D9E9F0 blue-grey); matches --cream site-wide 2026-07-27 */
   --white: #ffffff;
 
   --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;

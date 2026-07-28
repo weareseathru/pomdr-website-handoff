@@ -875,7 +875,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   font-size: 14px; font-weight: 700;
   background: rgba(255,255,255,.18);
 }
-.tab:not(.active) .tab-count { background: var(--cream-2); color: var(--ink-3); }
+.tab:not(.active) .tab-count { background: #E9ECEF; color: var(--ink-3); }
 
 .filters { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
 .filter {
@@ -988,7 +988,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .badge.adoption_pending    { background: var(--purple); color: var(--white); }
 .badge.recently_adopted    { background: var(--blue); color: var(--white); }
 .badge.hospice             { background: var(--purple-100); color: var(--purple); }
-.badge.courtesy_listing    { background: var(--cream-2); color: var(--ink-2); }
+.badge.courtesy_listing    { background: #E9ECEF; color: var(--ink-2); }
 /* Legacy class names kept for any markup still using them. */
 .badge.foster  { background: var(--orange); color: var(--white); }
 .badge.pending { background: var(--purple); color: var(--white); }
@@ -1297,7 +1297,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .dog-status[data-status="hospice"] .dog-status-dot { background: var(--purple-400); box-shadow: 0 0 0 4px rgba(127,90,157,0.15); }
 .dog-status[data-status="hospice"] .dog-status-cta { color: var(--purple); }
 
-.dog-status[data-status="courtesy_listing"] { background: var(--cream-2); color: var(--ink-2); }
+.dog-status[data-status="courtesy_listing"] { background: #E9ECEF; color: var(--ink-2); }
 .dog-status[data-status="courtesy_listing"] .dog-status-dot { background: var(--ink-3); box-shadow: 0 0 0 4px rgba(107,120,133,0.15); }
 .dog-status[data-status="courtesy_listing"] .dog-status-cta { color: var(--ink); }
 
