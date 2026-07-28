@@ -855,26 +855,42 @@ add_shortcode('adopt_a_pet_plp', 'adopt_a_pet_plp_shortcode');
 
 
 // ********************* EVENTS *********************
-function events_shortcode($atts = array()) {
-    $atts   = shortcode_atts(array('hlevel' => 'h3'), $atts, 'events');
-    $hlevel = in_array($atts['hlevel'], array('h2', 'h3', 'h4'), true) ? $atts['hlevel'] : 'h3';
-    // Upcoming events only (today or later), soonest first. Past events drop off
-    // automatically, and any event type shows (nothing hidden by its label).
+
+/**
+ * Query upcoming events (today or later), soonest first.
+ *
+ * @param array $types Optional list of event_type values to include, e.g.
+ *                     array('Adoption Event') or array('Special Event','Perpetual Event').
+ *                     Empty means every type. This is what powers the two
+ *                     co-equal sections on the What's Happening page.
+ * @return array List of event display arrays.
+ */
+function pomdr_collect_events($types = array()) {
+    $meta = array(
+        array(
+            'key'     => 'event_start',
+            'value'   => current_time('Y-m-d') . ' 00:00:00',
+            'compare' => '>=',
+            'type'    => 'DATETIME',
+        ),
+    );
+    if (!empty($types)) {
+        $meta['relation'] = 'AND';
+        $meta[] = array(
+            'key'     => 'event_type',
+            'value'   => (array) $types,
+            'compare' => 'IN',
+        );
+    }
     $q = new WP_Query(array(
         'post_type'      => 'events',
         'posts_per_page' => 50,
         'meta_key'       => 'event_start',
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
-        'meta_query'     => array(array(
-            'key'     => 'event_start',
-            'value'   => current_time('Y-m-d') . ' 00:00:00',
-            'compare' => '>=',
-            'type'    => 'DATETIME',
-        )),
+        'meta_query'     => $meta,
     ));
 
-    // Gather first so the page can show the at-a-glance strip above the cards.
     $events = array();
     if ($q->have_posts()) {
         while ($q->have_posts()) { $q->the_post();
@@ -900,20 +916,35 @@ function events_shortcode($atts = array()) {
         }
         wp_reset_postdata();
     }
+    return $events;
+}
 
+/**
+ * Render a set of events (an at-a-glance strip plus the card grid) to HTML.
+ * Shared by the [events] shortcode and the What's Happening page template.
+ *
+ * @param array  $events      From pomdr_collect_events().
+ * @param string $hlevel      Heading level for card titles (h2/h3/h4).
+ * @param bool   $show_glance Whether to print the condensed at-a-glance list.
+ * @param string $empty_msg   Message when there are no events in this set.
+ */
+function pomdr_render_events($events, $hlevel = 'h3', $show_glance = true, $empty_msg = '') {
+    $hlevel = in_array($hlevel, array('h2', 'h3', 'h4'), true) ? $hlevel : 'h3';
     ob_start();
     if ($events) {
-        // Quick view: every upcoming event at a glance (a condensed list, not a
-        // hover preview, so it works for keyboard and touch too).
-        echo '<div class="events-glance" aria-label="Upcoming events at a glance">';
-        foreach ($events as $ev) {
-            echo '<a class="glance-row" href="#event-' . (int) $ev['id'] . '">';
-            echo '<span class="glance-date">' . esc_html($ev['ts'] ? date('M j', $ev['ts']) : '') . '</span>';
-            echo '<span class="glance-title">' . esc_html($ev['title']) . '</span>';
-            if ($ev['time']) { echo '<span class="glance-time">' . esc_html($ev['time']) . '</span>'; }
-            echo '</a>';
+        // Quick view: every event at a glance (a condensed list, not a hover
+        // preview, so it works for keyboard and touch too).
+        if ($show_glance) {
+            echo '<div class="events-glance" aria-label="Upcoming events at a glance">';
+            foreach ($events as $ev) {
+                echo '<a class="glance-row" href="#event-' . (int) $ev['id'] . '">';
+                echo '<span class="glance-date">' . esc_html($ev['ts'] ? date('M j', $ev['ts']) : '') . '</span>';
+                echo '<span class="glance-title">' . esc_html($ev['title']) . '</span>';
+                if ($ev['time']) { echo '<span class="glance-time">' . esc_html($ev['time']) . '</span>'; }
+                echo '</a>';
+            }
+            echo '</div>';
         }
-        echo '</div>';
 
         // The cards: siblings of the dog cards (same radius, hover, hairline),
         // with the date square from the homepage events band.
@@ -934,9 +965,19 @@ function events_shortcode($atts = array()) {
         }
         echo '</div>';
     } else {
-        echo '<p>No upcoming events right now. Call (831) 718-9122 or check our Facebook for dates.</p>';
+        echo '<p>' . esc_html($empty_msg !== '' ? $empty_msg : 'No upcoming events right now. Call (831) 718-9122 or check our Facebook for dates.') . '</p>';
     }
     return ob_get_clean();
+}
+
+/**
+ * [events] shortcode: all upcoming types, glance + grid. Kept for any Divi page.
+ * Optional attribute: [events types="Adoption Event"] to limit the set.
+ */
+function events_shortcode($atts = array()) {
+    $atts  = shortcode_atts(array('hlevel' => 'h3', 'types' => ''), $atts, 'events');
+    $types = array_filter(array_map('trim', explode(',', (string) $atts['types'])));
+    return pomdr_render_events(pomdr_collect_events($types), $atts['hlevel'], true);
 }
 add_shortcode('events', 'events_shortcode');
 
@@ -2223,3 +2264,19 @@ add_shortcode('promo_banner', 'pomdr_promo_banner_shortcode');
 
 require_once get_stylesheet_directory() . '/inc/chrome.php';
 require_once get_stylesheet_directory() . '/inc/enqueue.php';
+require_once get_stylesheet_directory() . '/inc/videos.php';
+
+/**
+ * Accessibility: restore pinch-zoom (WCAG 2.2, SC 1.4.4 Resize Text).
+ * Divi hardcodes `maximum-scale=1.0, user-scalable=0` in its viewport meta,
+ * which stops people (older adopters especially) from zooming the page on a
+ * phone. Remove Divi's tag and emit a zoom-allowing one instead. The removal
+ * runs on `init` (after the parent theme has registered its hook), and our own
+ * meta is added at a late priority so it wins even if the removal ever no-ops.
+ */
+add_action( 'init', function () {
+	remove_action( 'wp_head', 'et_add_viewport_meta' );
+} );
+add_action( 'wp_head', function () {
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
+}, 99 );

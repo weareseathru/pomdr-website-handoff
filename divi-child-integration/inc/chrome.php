@@ -81,9 +81,10 @@ function pomdr_render_chrome() {
                         array( 'Perpetual Care', 'perpetual-care-program' ),
                         array( 'Perpetual Care FAQ', 'perpetual-care-faq' ),
                     ) ),
-                    array( 'label' => 'Events', 'url' => 'events', 'items' => array(
-                        array( 'Event Calendar', 'events' ),
-                        array( "What's Happening", 'news' ),
+                    array( 'label' => "What's Happening", 'url' => 'events', 'items' => array(
+                        array( 'Fundraisers and Special Events', 'events/#whats-happening' ),
+                        array( 'Adoption Events', 'events/#adoption-events' ),
+                        array( 'News and Updates', 'news' ),
                     ) ),
                     array( 'label' => 'About', 'url' => 'about', 'items' => array(
                         array( 'Our Story', 'about' ),
@@ -183,7 +184,7 @@ function pomdr_render_footer() {
               <ul>
                 <li><a href="<?php echo pomdr_url('adopt'); ?>">Available Dogs</a></li>
                 <li><a href="<?php echo pomdr_url('process'); ?>">Adoption Process</a></li>
-                <li><a href="<?php echo pomdr_url('events'); ?>">Adoption Events</a></li>
+                <li><a href="<?php echo pomdr_url('events/#adoption-events'); ?>">Adoption Events</a></li>
                 <li><a href="<?php echo pomdr_url('foster-needs'); ?>">Foster a Dog</a></li>
               </ul>
             </div>
