@@ -7,7 +7,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(99,47,136,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
 .hero-stat-row{display:flex;gap:36px;margin-top:44px;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;}
 .hero-stat .num{font-family:var(--font-serif);font-size:40px;font-weight:300;color:var(--purple);line-height:1;}
-.hero-stat .lbl{font-size:15px;color:var(--ink-3);margin-top:3px;}
+.hero-stat .lbl{font-size: 16px;color:var(--ink-3);margin-top:3px;}
 /* Lead copy + the three stats share one row (mirrors the adopt header). */
 .hero-row{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin:22px 0 26px;}
 .hero-row .lead{margin:0;}

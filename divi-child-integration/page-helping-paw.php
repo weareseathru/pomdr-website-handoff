@@ -18,7 +18,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .program-card .card-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;}
 .program-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
 .program-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.program-card .card-link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--orange);margin-top:auto;}
+.program-card .card-link{display:inline-flex;align-items:center;gap:6px;font-size: 16px;font-weight:600;color:var(--orange);margin-top:auto;}
 .program-card .card-link::after{content:"→";transition:transform .25s;}
 .program-card:hover .card-link::after{transform:translateX(4px);}
 @media(max-width:900px){.programs-grid{grid-template-columns:1fr 1fr;}}
@@ -29,11 +29,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .brigade-img{border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/5;}
 .brigade-img img{width:100%;height:100%;object-fit:cover;}
 .brigade-list{margin:20px 0;display:flex;flex-direction:column;gap:12px;}
-.brigade-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;padding:12px;background:#fff;border-radius:12px;border:1px solid rgba(99,47,136,.12);}
+.brigade-list li{display:flex;align-items:flex-start;gap:12px;font-size: 16px;padding:12px;background:#fff;border-radius:12px;border:1px solid rgba(99,47,136,.12);}
 .li-icon{width:34px;height:34px;border-radius:9px;background:var(--orange-50);display:grid;place-items:center;color:var(--orange);flex-shrink:0;}
 .li-icon svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;}
 .li-text strong{display:block;font-weight:600;font-size:16px;color:var(--ink);}
-.li-text span{font-size:15px;color:var(--ink-3);}
+.li-text span{font-size: 16px;color:var(--ink-3);}
 @media(max-width:800px){.brigade-inner{grid-template-columns:1fr;gap:36px;}}
 /* FUNDS */
 .funds-section{padding:100px 0;}
@@ -53,9 +53,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .fund-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;}
 .fund-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
 .fund-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.fund-card .conditions{font-size:14px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--line);}
+.fund-card .conditions{font-size: 15px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--line);}
 .fund-card.featured .conditions{color:rgba(255,255,255,.6);border-top-color:rgba(255,255,255,.2);}
-.fund-link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--blue);margin-top:14px;}
+.fund-link{display:inline-flex;align-items:center;gap:6px;font-size: 16px;font-weight:600;color:var(--blue);margin-top:14px;}
 .fund-card.featured .fund-link{color:rgba(255,255,255,.88);}
 .fund-link::after{content:"→";transition:transform .25s;}
 .fund-card:hover .fund-link::after{transform:translateX(4px);}
@@ -229,7 +229,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           Apply Online
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <div style="margin-top:16px;font-size:15px;color:rgba(255,255,255,.5);">Or call <a href="tel:8317189122" style="color:var(--blue-200);">(831) 718-9122</a></div>
+        <div style="margin-top:16px;font-size: 16px;color:rgba(255,255,255,.5);">Or call <a href="tel:8317189122" style="color:var(--blue-200);">(831) 718-9122</a></div>
       </div>
       <div>
         <ul class="check-list">

@@ -46,6 +46,6 @@ if ( ! is_array( $testimonials ) ) { $testimonials = array(); }
 }
 .tmn-card blockquote { margin: 0 0 14px; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
 .tmn-card figcaption { font-weight: 700; color: var(--ink); font-size: 16px; }
-.tmn-card .tmn-role { display: block; font-weight: 600; color: var(--blue-text); font-size: 14px; margin-top: 2px; }
+.tmn-card .tmn-role { display: block; font-weight: 600; color: var(--blue-text); font-size: 15px; margin-top: 2px; }
 </style>
 <?php get_footer();

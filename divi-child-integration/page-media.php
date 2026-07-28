@@ -42,7 +42,7 @@ if ( ! is_array( $items ) ) { $items = array(); }
 .press-item a { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; padding: 18px 4px; min-height: 44px; color: inherit; text-decoration: none; }
 .press-item a:hover .press-title { color: var(--blue-text); text-decoration: underline; text-underline-offset: 3px; }
 .press-title { font-size: 18px; font-weight: 600; }
-.press-meta { font-size: 15px; color: var(--ink-3); white-space: nowrap; }
+.press-meta { font-size: 16px; color: var(--ink-3); white-space: nowrap; }
 @media (max-width: 640px) { .press-item a { flex-direction: column; gap: 4px; } .press-meta { white-space: normal; } }
 </style>
 <?php get_footer();

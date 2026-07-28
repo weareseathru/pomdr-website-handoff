@@ -152,12 +152,12 @@ $adopt_filters = array(
 .dog-tab:hover{color:var(--blue-700);}
 .dog-tab.active{color:var(--blue-900);border-bottom-color:var(--blue-700);}
 .dog-tab:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px 6px 0 0;}
-.dog-tab-count{font-size:13px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:2px 9px;line-height:1.5;}
+.dog-tab-count{font-size: 14px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:2px 9px;line-height:1.5;}
 .dog-tab.active .dog-tab-count{background:var(--blue-100);}
 .dog-group[hidden]{display:none;}
 .group-intro{font-size:17px;color:var(--ink-2);max-width:70ch;margin:26px 0 4px;line-height:1.55;}
 .group-empty{grid-column:1/-1;padding:56px 40px;text-align:center;color:var(--ink-3);border:1px dashed var(--line);border-radius:var(--radius);font-size:16px;}
-@media (max-width:600px){.dog-tab{padding:11px 12px;font-size:15px;}}
+@media (max-width:600px){.dog-tab{padding:11px 12px;font-size: 16px;}}
 
 /* Slim results count above the grid. */
 .results-head{padding:30px 0 20px;}

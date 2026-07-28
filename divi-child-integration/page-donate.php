@@ -85,10 +85,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div>
         <p>POMDR relies heavily on donations to further our mission of helping senior dogs and senior people stay together. Our biggest expense is medical care for the senior dogs we rescue.</p>
         <p>Peace of Mind Dog Rescue is a non-profit 501(c)(3). Your donations are tax-deductible to the extent allowable by law.</p>
-        <div class="tax" style="font-size:14px;color:rgba(255,255,255,.6);">501(c)(3) nonprofit · EIN 27-1154816</div>
+        <div class="tax" style="font-size: 15px;color:rgba(255,255,255,.6);">501(c)(3) nonprofit · EIN 27-1154816</div>
       </div>
       <div>
-        <div style="font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:14px;">Choose an amount</div>
+        <div style="font-size: 16px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:14px;">Choose an amount</div>
         <div class="amounts" id="amounts">
           <button class="amount-btn" data-amount="60">$60</button>
           <button class="amount-btn active" data-amount="125">$125</button>

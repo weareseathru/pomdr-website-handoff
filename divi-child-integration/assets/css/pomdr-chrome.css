@@ -93,7 +93,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .logo-img { height: 52px; width: auto; display: block; transition: height 0.3s var(--ease); }
 .nav.scrolled .logo-img { height: 44px; }
 .logo-since {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -112,7 +112,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
 }
 .nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
-.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
+.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 14px; color: var(--blue); }
 .nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
 
 /* Single row of menu items; dropdowns hold the depth (2026-07-23) */
@@ -300,7 +300,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 
 .dd-section {
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -444,7 +444,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 /* Very narrow phones: shrink the 3 action-bar buttons so they never overflow */
 @media (max-width: 360px) {
   .action-bar-actions { gap: 6px; }
-  .ab-btn { padding: 7px 12px; font-size: 15px; min-height: 38px; }
+  .ab-btn { padding: 7px 12px; font-size: 16px; min-height: 38px; }
 }
 @media (max-width: 540px) {
   .nav-cta { display: none !important; }
