@@ -33,29 +33,55 @@
     });
   }
 
-  /* ---- Nav dropdowns: click-to-open (no hover-only), Esc and outside-click
-     close, one open at a time. ---- */
+  /* ---- Nav dropdowns: hover to open on a mouse, click/tap and keyboard
+     everywhere (never hover-only), Esc and outside-click close, one open at a
+     time. ---- */
   (function () {
-    var carets = document.querySelectorAll(".nav-caret");
-    if (!carets.length) return;
-    function closeAll(except) {
-      carets.forEach(function (c) {
-        if (c === except) return;
-        c.setAttribute("aria-expanded", "false");
-        var d = c.parentElement.querySelector(".nav-drop");
-        if (d) d.hidden = true;
-      });
+    var items = document.querySelectorAll(".nav-item.has-drop");
+    if (!items.length) return;
+
+    var caret = function (item) { return item.querySelector(".nav-caret"); };
+    var drop  = function (item) { return item.querySelector(".nav-drop"); };
+
+    function open(item) {
+      var c = caret(item), d = drop(item);
+      if (c) c.setAttribute("aria-expanded", "true");
+      if (d) d.hidden = false;
     }
-    carets.forEach(function (c) {
-      c.addEventListener("click", function (e) {
+    function close(item) {
+      var c = caret(item), d = drop(item);
+      if (c) c.setAttribute("aria-expanded", "false");
+      if (d) d.hidden = true;
+    }
+    function closeAll(except) {
+      items.forEach(function (it) { if (it !== except) close(it); });
+    }
+
+    // Only wire hover on devices that genuinely hover with a fine pointer, so
+    // touch users are not stuck opening a menu they meant to tap through.
+    var canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    items.forEach(function (item) {
+      var c = caret(item), hideTimer;
+
+      if (c) c.addEventListener("click", function (e) {
         e.stopPropagation();
-        var d = c.parentElement.querySelector(".nav-drop");
-        var open = c.getAttribute("aria-expanded") === "true";
-        closeAll(c);
-        c.setAttribute("aria-expanded", open ? "false" : "true");
-        if (d) d.hidden = open;
+        var isOpen = c.getAttribute("aria-expanded") === "true";
+        closeAll(item);
+        if (isOpen) { close(item); } else { open(item); }
+      });
+
+      if (canHover) {
+        item.addEventListener("mouseenter", function () { clearTimeout(hideTimer); closeAll(item); open(item); });
+        item.addEventListener("mouseleave", function () { hideTimer = setTimeout(function () { close(item); }, 140); });
+      }
+
+      // Keyboard: close when focus leaves the whole item (tabbing past it).
+      item.addEventListener("focusout", function (e) {
+        if (!item.contains(e.relatedTarget)) close(item);
       });
     });
+
     document.addEventListener("click", function (e) {
       if (!e.target.closest(".nav-item.has-drop")) closeAll(null);
     });

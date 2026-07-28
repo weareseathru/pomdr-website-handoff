@@ -26,19 +26,19 @@
     { tag: "Adoption · Senior dogs, ready to love",
       title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
       sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
-      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Helping Paw · Support for senior guardians",
       title: "<div>Helping seniors</div><div>and their dogs stay</div><div><em>together</em> longer.</div>",
       sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
-      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Our Mission · Since 2009",
       title: "<div>A lifetime</div><div><em>commitment</em>,</div><div>every time.</div>",
       sub: "Every dog in our care is ours for life. If a placement does not work, for any reason, ever, they come home to us.",
-      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Foster · Donate · Volunteer",
       title: "<div>Be the reason</div><div>a <em>gray muzzle</em></div><div>finds home.</div>",
       sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
-      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' }
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-ghost">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' }
   ];
   var heroSlides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('#hero-progress button[data-i]');

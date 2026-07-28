@@ -256,7 +256,7 @@ function render_module_fragment($layout, $post_id)
                 $thumb_url  = get_the_post_thumbnail_url($post_id, 'large');
                 ?>
                 <div class="pom-image">
-                    <a data-fancybox="gallery" href="<?php echo esc_url($thumb_url); ?>">
+                    <a data-fancybox="gallery" href="<?php echo esc_url($thumb_url); ?>" aria-label="<?php echo esc_attr('View a larger photo of ' . get_the_title($post_id)); ?>">
                         <?php echo $thumb_html; ?>
                     </a>
                 </div>
@@ -415,7 +415,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
 
 ?>
-<div id="main-content">
+<main id="main-content">
     <div class="et-l et-l--body">
         <div class="et_builder_inner_content et_pb_gutters3">
 
@@ -470,7 +470,6 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                                 $sponsor_html = in_array('Courtesy Listing', $status_arr, true) ? '' : '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>';
 
                                 echo pom_pdp_header_html($post_id);
-                                echo '</div>';
 
                                 continue;
                             }
@@ -556,7 +555,6 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                                 $adopt_html = $is_adopted ? '' : '<a class="et_pb_button" href="' . $adopt_link . '">Adopt</a>';
 
                                 echo pom_pdp_header_html($post_id);
-                                echo '</div>';
                                 continue;
                             }
 
@@ -605,6 +603,6 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
         </div> <!-- /.et_builder_inner_content -->
     </div> <!-- /.et-l -->
-</div> <!-- /#main-content -->
+</main> <!-- /#main-content -->
 
 <?php get_footer(); ?>

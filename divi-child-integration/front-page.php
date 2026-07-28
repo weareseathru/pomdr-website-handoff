@@ -43,7 +43,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           </h1>
           <div class="hero-ctas" id="hero-ctas">
             <a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-            <a href="/foster/" class="btn btn-ghost">Foster</a>
+            <a href="/fostering/" class="btn btn-ghost">Foster</a>
             <a href="/adopt/" class="btn btn-ghost">See all dogs</a>
           </div>
         </div>
@@ -98,7 +98,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-adopt.webp"><img src="<?php echo $img; ?>/pillar-adopt.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
-            <h3 class="pillar-label">Adopt</h3>
+            <h2 class="pillar-label">Adopt</h2>
             <p>Match with a senior pup whose quiet mornings suit yours.</p>
             <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
@@ -107,7 +107,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-donate.webp"><img src="<?php echo $img; ?>/pillar-donate.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
-            <h3 class="pillar-label">Donate</h3>
+            <h2 class="pillar-label">Donate</h2>
             <p>Your gift funds medical care, foster stipends and a lifetime promise.</p>
             <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
@@ -116,7 +116,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <div style="position:absolute;inset:0;z-index:0;overflow:hidden"><picture><source type="image/webp" srcset="<?php echo $img; ?>/pillar-volunteer.webp"><img src="<?php echo $img; ?>/pillar-volunteer.jpeg" alt="" role="presentation" style="width:100%;height:100%;object-fit:cover;object-position:center"></picture></div>
           <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent 30%, rgba(22,32,43,0.85) 100%);z-index:1"></div>
           <div style="position:relative;z-index:2">
-            <h3 class="pillar-label">Volunteer</h3>
+            <h2 class="pillar-label">Volunteer</h2>
             <p>Foster, transport, write bios. Every hour makes a difference.</p>
             <span class="pillar-cta">Learn more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
