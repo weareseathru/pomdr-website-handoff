@@ -741,7 +741,9 @@ function pom_render_dog_card($post_id, $card_args = array()) {
                 echo wp_get_attachment_image($thumb_id, 'medium_large', false, [
                     'alt'     => $name,
                     'loading' => $img_loading,
-                    'style'   => 'width:100%;height:100%;object-fit:cover;object-position:center top;display:block',
+                    // center 30% keeps a dog's face (usually upper-middle) framed
+                    // instead of pinning to the very top and cropping the subject.
+                    'style'   => 'width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block',
                 ]);
             }
         ?></div>

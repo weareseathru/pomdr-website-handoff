@@ -479,29 +479,25 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   font-family: var(--font-serif); font-size: 18px; font-style: italic;
   opacity: 0.85;
 }
-.pillar h3 {
-  font-family: var(--font-serif); font-size: 50px; font-weight: 500; letter-spacing: -0.02em;
-  margin: 0 0 12px;
-  text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+/* The whole pillar is the button: a big title and a big arrow, no sub-copy. */
+.pillar-label {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--font-serif); font-size: clamp(36px, 4.2vw, 54px); font-weight: 500;
+  letter-spacing: -0.02em; line-height: 1;
+  margin: 0; color: #fff;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.5);
 }
-.pillar p {
-  font-size: 16px; opacity: 1; margin: 0 0 22px; max-width: 32ch;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+.pillar-arrow {
+  width: 0.72em; height: 0.72em; flex-shrink: 0;
+  stroke: currentColor; stroke-width: 2.4; fill: none;
+  transition: transform 0.3s var(--ease);
 }
-/* Solid, high-contrast button so the call to action is always easy to read on
-   top of the photo (dark ink on white, not a translucent tint). */
-.pillar-cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 16px; font-weight: 700;
-  padding: 13px 24px; border-radius: 999px;
-  background: #fff; color: var(--blue-900);
-  border: none;
-  width: fit-content;
-  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5);
-  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
-}
-.pillar:hover .pillar-cta { background: var(--blue-50); transform: translateY(-2px); }
+.pillar:hover .pillar-arrow,
+.pillar:focus-visible .pillar-arrow { transform: translateX(10px); }
+.pillar:hover,
+.pillar:focus-visible { transform: translateY(-6px); }
+/* box-shadow ring survives the card's overflow:hidden (an outline would clip). */
+.pillar:focus-visible { outline: none; box-shadow: 0 0 0 3px #fff, 0 0 0 7px var(--blue-700); }
 
 /* ===== MISSION ===== */
 .mission { background: var(--cream); padding: 140px 0; }

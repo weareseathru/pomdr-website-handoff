@@ -1006,15 +1006,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .heart.active svg { fill: #e63946; stroke: #e63946; }
 
 .dog-card .info {
-  padding: 18px 20px 22px;
-  display: flex; flex-direction: column; gap: 8px;
+  padding: 22px 24px 24px;
+  display: flex; flex-direction: column; gap: 10px;
   flex: 1;
 }
 .dog-card .name {
-  display: flex; justify-content: space-between; align-items: baseline;
   font-family: var(--font-serif);
-  font-size: 26px; font-weight: 400;
-  letter-spacing: -0.015em; line-height: 1;
+  font-size: 28px; font-weight: 400;
+  letter-spacing: -0.015em; line-height: 1.05;
+  color: var(--ink);
 }
 .meta-inline {
   font-family: var(--font-sans);
@@ -1036,8 +1036,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .dog-card .cta-row {
   display: flex; align-items: center; justify-content: space-between;
-  font-size: 16px; font-weight: 600; color: var(--blue-700);
-  margin-top: 8px;
+  font-size: 17px; font-weight: 700; color: var(--blue-700);
+  margin-top: auto; padding-top: 14px;
+  border-top: 1px solid var(--line);
 }
 .dog-card .cta-row .arrow svg {
   width: 14px; height: 14px; fill: none;
