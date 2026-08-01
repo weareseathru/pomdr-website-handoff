@@ -12,10 +12,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero .page-headline{color:#fff;margin-top:8px;}
 .page-hero .page-headline-sub{color:var(--blue-200);}
 .page-hero .page-narrative{color:rgba(255,255,255,.92);}
-.page-hero .page-narrative em{color:var(--blue-200);}
+.page-hero .page-narrative em{color:#fff;} /* tints never on colored bands (benchmark 2026-08-01) */
 .donate-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:36px;margin-top:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:start;}
 .donate-card h1{font-family:var(--font-serif);font-size:clamp(18px,2.4vw,32px);line-height:1.1;letter-spacing:-.02em;font-weight:400;margin:0 0 14px;}
-.donate-card h1 em{font-style:italic;color:var(--blue-200);}
+.donate-card h1 em{font-style:italic;color:#fff;}
 .donate-card p{font-size:16px;color:rgba(255,255,255,.85);margin:0 0 10px;}
 .donate-card .tax{font-size:16px;color:rgba(255,255,255,.78);margin-top:14px;}
 .amounts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;}
@@ -31,40 +31,22 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 /* MONTHLY */
 .monthly-band{background:var(--purple);color:#fff;padding:72px 0;text-align:center;}
 .monthly-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;letter-spacing:-.02em;margin:10px 0 16px;}
-.monthly-band h2 em{font-style:italic;color:var(--purple-100);}
+.monthly-band h2 em{font-style:italic;color:#fff;}
 .monthly-band p{font-size:17px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto 28px;}
 /* WAYS GRID */
 .ways-section{padding:80px 0 100px;}
 .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px;}
-/* Standard photo card (matches the homepage pillars): the photo fills the card,
-   a dark gradient keeps the icon and text legible, content overlays in white. */
-.way-card{position:relative;overflow:hidden;border-radius:var(--radius-lg);min-height:330px;padding:26px;color:#fff;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
+/* Light directory cards (benchmark 2026-08-01): the giving directory reads as
+   a calm, white index. Dark photo scrims removed; the hero ask and the monthly
+   band above carry the emotion, this grid carries the information. */
+.way-card{position:relative;border-radius:var(--radius-lg);padding:28px;color:var(--ink);display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);transition:transform .4s var(--ease),box-shadow .4s var(--ease);}
 .way-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.way-card::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink-2) center/cover no-repeat;transition:transform .7s var(--ease);}
-.way-card:hover::before{transform:scale(1.05);}
-.way-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.55) 0%,rgba(22,32,43,.65) 42%,rgba(22,32,43,.92) 100%);}
-.way-card>*{position:relative;z-index:2;}
-/* Real category photos for each way to give (from peaceofminddogrescue.org/donateoverview). */
-.way-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/donate/maxsfundlogo.jpg);}
-.way-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/donate/monicazorro.jpg);}
-.way-card:nth-of-type(3)::before{background-image:url(<?php echo $img; ?>/donate/tribute.jpg);}
-.way-card:nth-of-type(4)::before{background-image:url(<?php echo $img; ?>/donate/sponsoradog.jpg);}
-.way-card:nth-of-type(5)::before{background-image:url(<?php echo $img; ?>/donate/benefitshop.jpg);}
-.way-card:nth-of-type(6)::before{background-image:url(<?php echo $img; ?>/donate/helpingpawfund.jpg);}
-.way-card:nth-of-type(7)::before{background-image:url(<?php echo $img; ?>/donate/sponsoranad.jpg);}
-.way-card:nth-of-type(8)::before{background-image:url(<?php echo $img; ?>/donate/legacydonor.jpg);}
-.way-card:nth-of-type(9)::before{background-image:url(<?php echo $img; ?>/donate/perpetualcare.jpg);}
-.way-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/donate/stock.jpg);}
-.way-card:nth-of-type(11)::before{background-image:url(<?php echo $img; ?>/donate/plannedgiving.jpg);}
-.way-card:nth-of-type(12)::before{background-image:url(<?php echo $img; ?>/donate/wishlist.jpg);}
-.way-icon{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.2);backdrop-filter:blur(3px);display:grid;place-items:center;color:#fff;margin-bottom:16px;}
+.way-icon{width:46px;height:46px;border-radius:14px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue-700);margin-bottom:16px;}
 .way-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;}
-.way-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
-.way-card p{font-size:16px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
-.way-link{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#fff;margin-top:auto;text-shadow:0 1px 8px rgba(0,0,0,.55);transition:gap .25s;}
+.way-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:var(--ink);}
+.way-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
+.way-link{display:inline-flex;align-items:center;gap:6px;font-size:17px;font-weight:700;color:var(--blue-700);margin-top:auto;transition:gap .25s;}
 .way-card:hover .way-link{gap:10px;}
-.way-card--flat::before{background:linear-gradient(135deg,var(--blue-900),var(--purple));}
-.way-card--flat::after{background:linear-gradient(180deg,rgba(22,32,43,.15) 0%,rgba(22,32,43,.5) 100%);}
 @media(max-width:900px){.ways-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.ways-grid{grid-template-columns:1fr;}}
 </style>
@@ -134,8 +116,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="way-card featured">
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
         <h3>Max's Helping Paws Fund</h3>
-        <p style="color:rgba(255,255,255,.85);">Financial assistance for low-income guardians facing unexpected, urgent veterinary care, including surgery and specialist visits.</p>
-        <a href="/donation/?fund=Max's%20Helping%20Paws%20Fund" class="way-link" style="color:rgba(255,255,255,.8);">Donate to Max's Fund →</a>
+        <p>Financial assistance for low-income guardians facing unexpected, urgent veterinary care, including surgery and specialist visits.</p>
+        <a href="/donation/?fund=Max's%20Helping%20Paws%20Fund" class="way-link">Donate to Max's Fund →</a>
       </div>
 
       <div class="way-card">

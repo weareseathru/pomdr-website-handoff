@@ -50,9 +50,13 @@ function pomdr_render_chrome() {
             // Same top-level items as before; each opens a dropdown of the
             // site's existing pages (no new sections). Dropdowns are
             // click-to-open (no hover-only per the accessibility charter).
+            // Consolidated to four dropdowns plus Donate (benchmark 2026-08-01,
+            // matching the 3-4 item pattern of WWF / water.org / GWC). Entries
+            // with an empty url render as section headers inside the dropdown.
             $pomdr_nav = array(
                 'main' => array(
-                    array( 'label' => 'Adopt', 'url' => 'adopt', 'items' => array(
+                    array( 'label' => 'Dogs', 'url' => 'adopt', 'items' => array(
+                        array( 'Adopt', '' ),
                         array( 'Adoptable Dogs', 'adopt' ),
                         array( 'Adoption Process', 'process' ),
                         array( 'Why a Senior Dog', 'why' ),
@@ -60,26 +64,23 @@ function pomdr_render_chrome() {
                         array( 'Hospice Dogs', 'hospice' ),
                         array( 'Happy Tails', 'adopted' ),
                         array( 'Apply to Adopt', 'adoption-questionnaire' ),
-                    ) ),
-                    array( 'label' => 'Foster', 'url' => 'fostering', 'items' => array(
+                        array( 'Foster', '' ),
                         array( 'About Fostering', 'fostering' ),
                         array( 'Dogs Needing Foster', 'foster-needs' ),
-                        array( 'Volunteer Application', 'volunteer-application' ),
-                    ) ),
-                    array( 'label' => 'Volunteer', 'url' => 'volunteer', 'items' => array(
-                        array( 'Volunteering', 'volunteer' ),
-                        array( 'Volunteer Application', 'volunteer-application' ),
-                    ) ),
-                    array( 'label' => 'Helping Paw', 'url' => 'helping-paw', 'items' => array(
-                        array( 'About Helping Paw', 'helping-paw' ),
-                        array( 'Apply for Assistance', 'helping-paw-application' ),
-                        array( "Max's Helping Paws Fund", 'maxs-fund' ),
-                    ) ),
-                    array( 'label' => 'Surrender', 'url' => 'surrender', 'items' => array(
+                        array( 'Surrender', '' ),
                         array( 'Placing Your Dog', 'surrender' ),
                         array( 'Intake Questionnaire', 'intake-questionnaire' ),
                         array( 'Perpetual Care', 'perpetual-care-program' ),
                         array( 'Perpetual Care FAQ', 'perpetual-care-faq' ),
+                    ) ),
+                    array( 'label' => 'Get Involved', 'url' => 'volunteer', 'items' => array(
+                        array( 'Volunteer', '' ),
+                        array( 'Volunteering', 'volunteer' ),
+                        array( 'Volunteer Application', 'volunteer-application' ),
+                        array( 'Helping Paw', '' ),
+                        array( 'About Helping Paw', 'helping-paw' ),
+                        array( 'Apply for Assistance', 'helping-paw-application' ),
+                        array( "Max's Helping Paws Fund", 'maxs-fund' ),
                     ) ),
                     array( 'label' => "What's Happening", 'url' => 'events', 'items' => array(
                         array( 'Fundraisers and Special Events', 'events/#whats-happening' ),
@@ -117,10 +118,14 @@ function pomdr_render_chrome() {
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="nav-drop" hidden>
-                  <?php foreach ( $item['items'] as $sub ) :
+                  <?php foreach ( $item['items'] as $sub ) : ?>
+                  <?php if ( '' === $sub[1] ) : // section header inside the dropdown ?>
+                  <span class="dd-section"><?php echo esc_html( $sub[0] ); ?></span>
+                  <?php else :
                       $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
                   ?>
                   <a href="<?php echo esc_url( $sub_href ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
+                  <?php endif; ?>
                   <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
@@ -140,7 +145,7 @@ function pomdr_render_chrome() {
           ?>
           <a class="m-top" href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
           <?php foreach ( ( $item['items'] ?? array() ) as $sub ) :
-              if ( $sub[1] === $item['url'] ) { continue; }
+              if ( $sub[1] === $item['url'] || '' === $sub[1] ) { continue; } // skip self-links and section headers
               $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
           ?>
           <a class="m-sub" href="<?php echo esc_url( $sub_href ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
