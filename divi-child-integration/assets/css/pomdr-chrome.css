@@ -153,7 +153,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   gap: 8px;
 }
 .nav-row--main .nav-item > a {
-  font-size: 18px; font-weight: 700; color: var(--ink); padding: 10px 11px;
+  font-size: 20px; font-weight: 700; color: var(--ink); padding: 12px 14px;
 }
 .nav-row--main .nav-item > a:hover { color: var(--blue-text); }
 
@@ -163,7 +163,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   .nav > .container { padding: 0 20px; }
   .logo-img { height: 44px; }
   .nav-inner { padding: 12px 14px 12px 20px; gap: 12px; }
-  .nav-row--main .nav-item > a { font-size: 17px; padding: 10px 6px; }
+  .nav-row--main .nav-item > a { font-size: 18px; padding: 11px 8px; }
   /* 24px min touch target (WCAG 2.2 SC 2.5.8); negative margin keeps the same
      net footprint (24 - 8 = 16px, as the old 20 - 4) so the single row holds. */
   .nav-row--main .nav-item > button.nav-caret { width: 24px; margin-left: -8px; }
@@ -547,7 +547,7 @@ body #main-content .container { padding-top: 0 !important; }
 .nav-drop[hidden] { display: none; }
 .nav-drop a {
   display: flex; align-items: center; min-height: 44px; padding: 8px 14px;
-  border-radius: 10px; font-size: 16px; font-weight: 600; color: var(--ink-2);
+  border-radius: 10px; font-size: 17px; font-weight: 600; color: var(--ink-2);
   text-decoration: none; white-space: nowrap;
 }
 .nav-drop a:hover { background: var(--blue-50); color: var(--blue-text); }
@@ -566,3 +566,13 @@ body #main-content .container { padding-top: 0 !important; }
   padding: 12px 14px 4px;
 }
 .nav-drop .dd-section:not(:first-child) { border-top: 1px solid var(--line); margin-top: 6px; }
+
+/* Two-column dropdown panels (Dogs, About): each column is a .dd-col. */
+.nav-drop--wide { flex-direction: row; gap: 4px; }
+.nav-drop--wide .dd-col { display: flex; flex-direction: column; min-width: 250px; }
+.nav-drop--wide .dd-col + .dd-col { border-left: 1px solid var(--line); padding-left: 4px; }
+/* Columns reset the header divider logic (each column's first header is flush). */
+.nav-drop--wide .dd-col .dd-section:first-child { border-top: none; margin-top: 0; }
+/* Menus near the right edge open right-aligned so wide panels stay on screen. */
+.nav-row--main .nav-item:last-child .nav-drop { left: auto; right: 0; }
+

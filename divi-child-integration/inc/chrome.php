@@ -50,34 +50,39 @@ function pomdr_render_chrome() {
             // Same top-level items as before; each opens a dropdown of the
             // site's existing pages (no new sections). Dropdowns are
             // click-to-open (no hover-only per the accessibility charter).
-            // Consolidated to four dropdowns plus Donate (benchmark 2026-08-01,
-            // matching the 3-4 item pattern of WWF / water.org / GWC). Entries
-            // with an empty url render as section headers inside the dropdown.
+            // Five dropdowns plus Donate (2026-08-01 round two): Helping Paw is
+            // its own section, and the two big menus (Dogs, About) lay out in
+            // two columns. Entries with an empty url render as section headers;
+            // a 'cols' key (array of columns) renders a wide two-column panel.
             $pomdr_nav = array(
                 'main' => array(
-                    array( 'label' => 'Dogs', 'url' => 'adopt', 'items' => array(
-                        array( 'Adopt', '' ),
-                        array( 'Adoptable Dogs', 'adopt' ),
-                        array( 'Adoption Process', 'process' ),
-                        array( 'Why a Senior Dog', 'why' ),
-                        array( 'Courtesy Listings', 'courtesy-listings' ),
-                        array( 'Hospice Dogs', 'hospice' ),
-                        array( 'Happy Tails', 'adopted' ),
-                        array( 'Apply to Adopt', 'adoption-questionnaire' ),
-                        array( 'Foster', '' ),
-                        array( 'About Fostering', 'fostering' ),
-                        array( 'Dogs Needing Foster', 'foster-needs' ),
-                        array( 'Surrender', '' ),
-                        array( 'Placing Your Dog', 'surrender' ),
-                        array( 'Intake Questionnaire', 'intake-questionnaire' ),
-                        array( 'Perpetual Care', 'perpetual-care-program' ),
-                        array( 'Perpetual Care FAQ', 'perpetual-care-faq' ),
+                    array( 'label' => 'Dogs', 'url' => 'adopt', 'cols' => array(
+                        array(
+                            array( 'Adopt', '' ),
+                            array( 'Adoptable Dogs', 'adopt' ),
+                            array( 'Adoption Process', 'process' ),
+                            array( 'Why a Senior Dog', 'why' ),
+                            array( 'Courtesy Listings', 'courtesy-listings' ),
+                            array( 'Hospice Dogs', 'hospice' ),
+                            array( 'Happy Tails', 'adopted' ),
+                            array( 'Apply to Adopt', 'adoption-questionnaire' ),
+                        ),
+                        array(
+                            array( 'Foster', '' ),
+                            array( 'About Fostering', 'fostering' ),
+                            array( 'Dogs Needing Foster', 'foster-needs' ),
+                            array( 'Surrender', '' ),
+                            array( 'Placing Your Dog', 'surrender' ),
+                            array( 'Intake Questionnaire', 'intake-questionnaire' ),
+                            array( 'Perpetual Care', 'perpetual-care-program' ),
+                            array( 'Perpetual Care FAQ', 'perpetual-care-faq' ),
+                        ),
                     ) ),
-                    array( 'label' => 'Get Involved', 'url' => 'volunteer', 'items' => array(
-                        array( 'Volunteer', '' ),
+                    array( 'label' => 'Volunteer', 'url' => 'volunteer', 'items' => array(
                         array( 'Volunteering', 'volunteer' ),
                         array( 'Volunteer Application', 'volunteer-application' ),
-                        array( 'Helping Paw', '' ),
+                    ) ),
+                    array( 'label' => 'Helping Paw', 'url' => 'helping-paw', 'items' => array(
                         array( 'About Helping Paw', 'helping-paw' ),
                         array( 'Apply for Assistance', 'helping-paw-application' ),
                         array( "Max's Helping Paws Fund", 'maxs-fund' ),
@@ -87,19 +92,25 @@ function pomdr_render_chrome() {
                         array( 'Adoption Events', 'events/#adoption-events' ),
                         array( 'News and Updates', 'news' ),
                     ) ),
-                    array( 'label' => 'About', 'url' => 'about', 'items' => array(
-                        array( 'Our Story', 'about' ),
-                        array( 'Our Culture', 'about/culture' ),
-                        array( 'Testimonials', 'testimonials' ),
-                        array( 'Videos', 'videos' ),
-                        array( 'In the Media', 'media' ),
-                        array( 'Bauer Center', 'bauer-center' ),
-                        array( 'Vet Clinic', 'clinic' ),
-                        array( 'Benefit Shop', 'benefit-shop' ),
-                        array( 'Resources', 'recources' ),
-                        array( 'Jobs', 'jobs' ),
-                        array( 'Mailing List', 'mailing-list' ),
-                        array( 'Contact', 'mailto:info@pomdr.org' ),
+                    array( 'label' => 'About', 'url' => 'about', 'cols' => array(
+                        array(
+                            array( 'Who We Are', '' ),
+                            array( 'Our Story', 'about' ),
+                            array( 'Our Culture', 'about/culture' ),
+                            array( 'Testimonials', 'testimonials' ),
+                            array( 'Videos', 'videos' ),
+                            array( 'In the Media', 'media' ),
+                            array( 'Jobs', 'jobs' ),
+                        ),
+                        array(
+                            array( 'Visit and Connect', '' ),
+                            array( 'Bauer Center', 'bauer-center' ),
+                            array( 'Vet Clinic', 'clinic' ),
+                            array( 'Benefit Shop', 'benefit-shop' ),
+                            array( 'Resources', 'recources' ),
+                            array( 'Mailing List', 'mailing-list' ),
+                            array( 'Contact', 'mailto:info@pomdr.org' ),
+                        ),
                     ) ),
                 ),
             );
@@ -109,7 +120,9 @@ function pomdr_render_chrome() {
             <div class="nav-row nav-row--<?php echo esc_attr( $row ); ?>">
               <?php foreach ( $pomdr_nav[ $row ] as $item ) :
                   $href = ( 0 === strpos( $item['url'], 'mailto:' ) ) ? $item['url'] : pomdr_url( $item['url'] );
-                  $has_drop = ! empty( $item['items'] );
+                  // Normalize: single-column menus use 'items'; wide menus use 'cols'.
+                  $drop_cols = isset( $item['cols'] ) ? $item['cols'] : ( ! empty( $item['items'] ) ? array( $item['items'] ) : array() );
+                  $has_drop  = ! empty( $drop_cols );
               ?>
               <div class="nav-item<?php echo $has_drop ? ' has-drop' : ''; ?>">
                 <a href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
@@ -117,15 +130,19 @@ function pomdr_render_chrome() {
                 <button type="button" class="nav-caret" aria-expanded="false" aria-label="<?php echo esc_attr( 'Open ' . $item['label'] . ' menu' ); ?>">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
-                <div class="nav-drop" hidden>
-                  <?php foreach ( $item['items'] as $sub ) : ?>
-                  <?php if ( '' === $sub[1] ) : // section header inside the dropdown ?>
-                  <span class="dd-section"><?php echo esc_html( $sub[0] ); ?></span>
-                  <?php else :
-                      $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
-                  ?>
-                  <a href="<?php echo esc_url( $sub_href ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
-                  <?php endif; ?>
+                <div class="nav-drop<?php echo count( $drop_cols ) > 1 ? ' nav-drop--wide' : ''; ?>" hidden>
+                  <?php foreach ( $drop_cols as $col ) : ?>
+                  <div class="dd-col">
+                    <?php foreach ( $col as $sub ) : ?>
+                    <?php if ( '' === $sub[1] ) : // section header inside the dropdown ?>
+                    <span class="dd-section"><?php echo esc_html( $sub[0] ); ?></span>
+                    <?php else :
+                        $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
+                    ?>
+                    <a href="<?php echo esc_url( $sub_href ); ?>"><?php echo esc_html( $sub[0] ); ?></a>
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                  </div>
                   <?php endforeach; ?>
                 </div>
                 <?php endif; ?>
@@ -144,7 +161,10 @@ function pomdr_render_chrome() {
               $href = ( 0 === strpos( $item['url'], 'mailto:' ) ) ? $item['url'] : pomdr_url( $item['url'] );
           ?>
           <a class="m-top" href="<?php echo esc_url( $href ); ?>"><?php echo esc_html( $item['label'] ); ?></a>
-          <?php foreach ( ( $item['items'] ?? array() ) as $sub ) :
+          <?php
+          // Flatten wide (multi-column) menus for the drawer.
+          $m_items = isset( $item['cols'] ) ? array_merge( ...$item['cols'] ) : ( $item['items'] ?? array() );
+          foreach ( $m_items as $sub ) :
               if ( $sub[1] === $item['url'] || '' === $sub[1] ) { continue; } // skip self-links and section headers
               $sub_href = ( 0 === strpos( $sub[1], 'mailto:' ) ) ? $sub[1] : pomdr_url( $sub[1] );
           ?>

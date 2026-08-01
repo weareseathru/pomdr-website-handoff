@@ -1573,3 +1573,11 @@ body.has-breadcrumb .page-header { padding-top: 48px; }
 }
 /* Card photos bias to the upper-middle so the subject's face stays in view. */
 .event-photo img, .foster-story img { object-position: center 30%; }
+
+/* Cross-browser type fixes (2026-08-01). iOS Safari must not shrink or
+   inflate text, and the body font is ours, not Divi's Merriweather (the
+   customizer's higher-specificity body rule was hijacking base text). */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body, html body.et_divi_theme, html body.et_divi_theme #page-container {
+  font-family: var(--font-sans);
+}

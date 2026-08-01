@@ -6,14 +6,32 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// Font host preconnect (before the stylesheet request, cheap win for LCP).
+add_action( 'wp_head', function () {
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}, 5 );
+
 add_action( 'wp_enqueue_scripts', function () {
+
+    // Brand webfonts. Divi happens to load Source Sans 3 for its own modules,
+    // but nothing loaded Source Serif 4, so every serif headline silently fell
+    // back to Iowan Old Style / Palatino (smaller metrics, and different per
+    // browser; the "Safari looks small" report, 2026-08-01). Load both
+    // families ourselves so typography does not depend on Divi's font kit.
+    wp_enqueue_style(
+        'pomdr-fonts',
+        'https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap',
+        array(),
+        null
+    );
 
     // Design tokens (full set, mirrors the prototype tokens.css). First, so
     // every later stylesheet resolves its custom properties.
     wp_enqueue_style(
         'pomdr-tokens',
         get_stylesheet_directory_uri() . '/assets/css/tokens.css',
-        array( 'divi-style' ),
+        array( 'divi-style', 'pomdr-fonts' ),
         filemtime( get_stylesheet_directory() . '/assets/css/tokens.css' )
     );
 
