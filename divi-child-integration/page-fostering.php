@@ -22,8 +22,8 @@ if ( ! is_array( $stories ) ) { $stories = array(); }
 @media (max-width: 620px) { .foster-stories { grid-template-columns: 1fr; } }
 .foster-story { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
 .foster-story img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
-.foster-story__body { padding: 20px 22px 24px; }
-.foster-story__name { font-family: var(--font-serif); font-size: 21px; font-weight: 500; margin: 0 0 8px; color: var(--ink); }
+.foster-story__body { padding: 26px 28px 28px; }
+.foster-story__name { font-family: var(--font-serif); font-size: 22px; font-weight: 500; margin: 0 0 8px; color: var(--ink); }
 .foster-story__quote { font-size: 16px; line-height: 1.62; color: var(--ink-2); margin: 0; }
 .foster-lede { max-width: 74ch; font-size: 18px; line-height: 1.7; color: var(--ink-2); }
 .foster-lede p { margin: 0 0 18px; }

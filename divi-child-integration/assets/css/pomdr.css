@@ -65,8 +65,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .eyebrow.purple::before { background: var(--purple); }
 .eyebrow.orange { color: var(--orange-text); }
 .eyebrow.orange::before { background: var(--orange); }
-.eyebrow.light { color: var(--blue-200); }
-.eyebrow.light::before { background: var(--blue-200); }
+.eyebrow.light { color: #fff; } /* tints never sit on colored bands (benchmark 2026-08-01) */
+.eyebrow.light::before { background: #fff; }
 
 .display {
   font-family: var(--font-serif);
@@ -92,7 +92,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section-lead { font-size: 18px; color: var(--ink-2); max-width: 56ch; margin: 0 0 40px; }
 
 /* ===== SECTIONS ===== */
-.section { padding: 100px 0; }
+.section { padding: var(--section-pad, 80px) 0; }
 .section-sm { padding: 60px 0; }
 
 .page-hero {
@@ -492,12 +492,12 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 48px;
-  padding: 11px 24px;
+  min-height: 52px;
+  padding: 12px 26px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 20px; /* text fills the button (was 19px); padding stays generous */
-  text-transform: uppercase; /* leadership spec 2026-07-09 */
+  font-size: 20px;
+  text-transform: none; /* sentence case (benchmark 2026-08-01, supersedes the caps spec) */
   letter-spacing: 0.04em;    /* tuned for senior readability in caps */
   line-height: 1.05;
   font-family: var(--font-sans);
@@ -1006,7 +1006,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .heart.active svg { fill: #e63946; stroke: #e63946; }
 
 .dog-card .info {
-  padding: 22px 24px 24px;
+  padding: 24px 28px 28px;
   display: flex; flex-direction: column; gap: 10px;
   flex: 1;
 }
@@ -1125,11 +1125,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .footer-top { grid-template-columns: 1fr 1fr; }
-  .section { padding: 70px 0; }
+  .section { padding: var(--section-pad-m, 56px) 0; }
 }
 @media (max-width: 580px) {
   .footer-top { grid-template-columns: 1fr; }
-  .section { padding: 60px 0; }
+  .section { padding: var(--section-pad-m, 56px) 0; }
   .display { font-size: clamp(38px, 10vw, 72px); }
 }
 
@@ -1564,3 +1564,12 @@ body.has-breadcrumb .page-header { padding-top: 48px; }
 .ph-media { border-radius: var(--radius-xl); overflow: hidden; min-height: 360px; background: var(--cream-2); }
 .ph-media picture, .ph-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 @media (max-width: 860px) { .ph-split { grid-template-columns: 1fr; gap: 26px; } .ph-media { min-height: 0; aspect-ratio: 16/10; } }
+
+/* ===== Benchmark 2026-08-01 additions ===== */
+/* In-paragraph links are underlined, never color-only (water.org discipline). */
+#main-content p a:not([class*="btn"]) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* Card photos bias to the upper-middle so the subject's face stays in view. */
+.event-photo img, .foster-story img { object-position: center 30%; }

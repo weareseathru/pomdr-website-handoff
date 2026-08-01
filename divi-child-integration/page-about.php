@@ -21,7 +21,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 /* Top-align so the large title and the smaller body text start on the same line. */
 .mission-band .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
 .mission-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin:0;}
-.mission-band h2 em{font-style:italic;color:var(--blue-200);}
+.mission-band h2 em{font-style:italic;color:#fff;} /* tints never on colored bands (benchmark 2026-08-01) */
 .mission-band p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.88);margin:0 0 14px;}
 .mission-band p:last-child{margin-bottom:0;}
 @media(max-width:800px){.mission-band .container{grid-template-columns:1fr;gap:24px;}}

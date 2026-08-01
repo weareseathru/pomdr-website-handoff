@@ -38,15 +38,15 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 .action-bar-actions { display: flex; gap: 10px; flex-shrink: 0; }
 .ab-btn {
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  text-transform: none;
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 42px; padding: 8px 18px; border-radius: 999px;
   font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none;
   transition: transform 0.2s var(--ease), background 0.2s;
 }
 /* The action bar sits on the teal band (dark), so both buttons use the
-   white outline variant per the leadership contrast rule. */
+   white outline variant per the leadership contrast rule. Sentence case per
+   the 2026-08-01 benchmark (caps stay reserved for tiny labels). */
 .ab-adopt, .ab-volunteer { background: transparent; color: #fff; border: 2px solid #fff; }
 .ab-adopt:hover, .ab-volunteer:hover { background: #fff; color: var(--purple); }
 .ab-btn:hover { transform: translateY(-1px); }
@@ -130,8 +130,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
    --blue-700, about 6:1). */
 .nav-donate {
   flex-shrink: 0; /* never pushed out of or squeezed off the white card */
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  text-transform: none;
   align-self: center;
   display: inline-flex;
   align-items: center;
@@ -538,9 +537,11 @@ body #main-content .container { padding-top: 0 !important; }
 .nav-item > button.nav-caret:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 1px; }
 .nav-drop {
   position: absolute; top: calc(100% + 10px); left: 0; z-index: 200;
-  min-width: 240px; padding: 10px;
+  min-width: 250px; padding: 10px;
   background: #fff; border: 1px solid var(--line); border-radius: 18px;
   box-shadow: var(--shadow-lg);
+  /* The consolidated Dogs menu is tall; never let it run off the viewport. */
+  max-height: calc(100vh - 250px); overflow-y: auto;
   display: flex; flex-direction: column;
 }
 .nav-drop[hidden] { display: none; }
@@ -555,3 +556,13 @@ body #main-content .container { padding-top: 0 !important; }
 .nav-row--main .nav-item:nth-last-child(-n+2) .nav-drop { left: auto; right: 0; }
 .nav-mobile .m-top { font-weight: 700; }
 .nav-mobile .m-sub { padding-left: 34px; font-size: 16px; color: var(--ink-2); }
+
+/* Section headers inside the consolidated dropdowns (benchmark 2026-08-01):
+   small caps labels that group Adopt / Foster / Surrender within one menu. */
+.nav-drop .dd-section {
+  display: block;
+  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink-3);
+  padding: 12px 14px 4px;
+}
+.nav-drop .dd-section:not(:first-child) { border-top: 1px solid var(--line); margin-top: 6px; }

@@ -48,6 +48,10 @@
   --radius-lg: 32px;
   --radius-xl: 44px;
 
+  /* One section rhythm site-wide (benchmark 2026-08-01): 80px desktop beat. */
+  --section-pad: 80px;
+  --section-pad-m: 56px;
+
   --shadow-sm: 0 2px 8px rgba(22,32,43,.04);
   --shadow: 0 12px 32px -8px rgba(22,32,43,.12), 0 2px 6px rgba(22,32,43,.04);
   --shadow-lg: 0 30px 60px -20px rgba(22,32,43,.25);
