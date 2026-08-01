@@ -130,7 +130,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="option-card featured">
         <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-8 11-8 11z"/></svg></div>
         <h3>Surrender to POMDR</h3>
-        <p style="color:rgba(255,255,255,.85);">Place your dog directly into our care. We accept dogs from Monterey, Santa Cruz and San Benito counties. We work with a waitlist, so please plan ahead when possible.</p>
+        <p style="color:rgba(255,255,255,.85);">Place your dog directly into our care. We accept dogs from Monterey, Santa Cruz and San Benito counties. Please reach out as early as you can so we can plan with you.</p>
         <div style="font-size: 16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);margin-bottom:16px;">We are rarely able to accept dogs outside our tri-county area.</div>
         <div style="font-size: 16px;color:rgba(255,255,255,.8);margin-bottom:16px;" lang="es">Si necesita ayuda para colocar a su perro y para completar el cuestionario de admisi&oacute;n en l&iacute;nea, ll&aacute;menos al (831) 718-9122. Tenga en cuenta que esto puede retrasar el procesamiento de su solicitud.</div>
         <a href="/intake-questionnaire/" class="opt-link">Start Surrender Application</a>
@@ -139,7 +139,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="opt-icon" style="background:var(--purple-50);color:var(--purple);"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3>Courtesy Listing</h3>
         <p>If we are unable to take your dog directly, we can list them on our website as a courtesy listing, helping you find a home on your own while we provide resources and support.</p>
-        <div style="font-size: 16px;color:var(--ink-3);padding-top:16px;border-top:1px dashed var(--line);margin-bottom:16px;">Guardian remains responsible for dog during listing period.</div>
+        <div style="font-size: 16px;color:var(--ink-3);padding-top:16px;border-top:1px dashed var(--line);margin-bottom:16px;">Your dog stays with you while listed; adopters contact you directly.</div>
         <a href="/intake-questionnaire/" class="opt-link">Request a Courtesy Listing</a>
       </div>
       <div class="option-card">
@@ -179,7 +179,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="step-num">02</div>
         <div>
           <h3>We Review &amp; Reach Out</h3>
-          <p>Our team reviews every application. We may reach out with follow-up questions or to schedule a phone call. We work with a waitlist, so the more notice you can give us, the better.</p>
+          <p>Our team reviews every application. We may reach out with follow-up questions or to schedule a phone call. The more notice you can give us, the better.</p>
         </div>
       </div>
       <div class="step">
@@ -254,7 +254,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <div class="quote-band">
   <div class="container">
     <blockquote>"We have a lifetime commitment to every senior dog in our care."</blockquote>
-    <cite>POMDR Mission</cite>
+    <cite>The POMDR promise</cite>
   </div>
 </div>
 
@@ -321,11 +321,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="faq-grid">
       <div class="faq-item">
         <h4>Do you accept dogs from outside your tri-county area?</h4>
-        <p>We usually work with a waitlist of dogs from our Monterey, Santa Cruz and San Benito county area and are rarely able to bring in dogs from outside our area. Please contact us to discuss your situation.</p>
+        <p>Our program serves Monterey, Santa Cruz and San Benito counties. If you are outside our area, contact us and we will do our best to point you toward help closer to home.</p>
       </div>
       <div class="faq-item">
         <h4>What do you mean by "lifetime commitment"?</h4>
-        <p>Every dog that enters our program has a commitment from POMDR. If an adoption doesn't work out at any point, the dog comes back to us. We never re-surrender a dog.</p>
+        <p>Every dog that enters our program has a commitment from POMDR. If an adoption doesn't work out at any point, the dog comes back to us.</p>
       </div>
       <div class="faq-item">
         <h4>What happens to my dog medically?</h4>
@@ -333,7 +333,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       </div>
       <div class="faq-item">
         <h4>How long does the surrender process take?</h4>
-        <p>It varies based on our current capacity. We work with a waitlist, so the more notice you can give us, the better. Please contact us early. We will always do our best.</p>
+        <p>It varies based on our current capacity. The more notice you can give us, the better. Please contact us early. We will always do our best.</p>
       </div>
       <div class="faq-item">
         <h4>Can I stay in touch with my dog after surrendering?</h4>

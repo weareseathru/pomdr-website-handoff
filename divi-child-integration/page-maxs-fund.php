@@ -13,8 +13,15 @@ $d    = is_readable( $file ) ? json_decode( (string) file_get_contents( $file ),
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline"><?php echo esc_html( $d['headline'] ?? "Max's Helping Paws Fund" ); ?></h1>
     <p class="page-narrative">Veterinary help when it <em>matters most.</em></p>
+      </div>
+      <div class="ph-media">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/donate/maxsfundlogo.jpg" alt="Max's Helping Paws Fund">
+      </div>
+    </div>
   </div>
 </header>
 

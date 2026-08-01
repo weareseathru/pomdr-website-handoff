@@ -14,9 +14,19 @@ if ( ! is_array( $items ) ) { $items = array(); }
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">What&rsquo;s Happening</h1>
     <p class="page-narrative">News, fundraisers, and <em>good causes.</em></p>
     <p class="page-lead">Upcoming happenings and ongoing ways to support the dogs. For dated events, see the <a href="/events/" style="color:var(--blue-text);text-decoration:underline">events calendar</a>.</p>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog3.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog3.jpeg" alt="A POMDR senior dog out in the community">
+        </picture>
+      </div>
+    </div>
   </div>
 </header>
 

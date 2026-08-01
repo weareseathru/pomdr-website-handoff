@@ -9,9 +9,16 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Careers</h1>
     <p class="page-narrative">Work <em>with us</em>.</p>
     <p class="page-lead">POMDR is a small organization with a big mission. When we hire, this is where the openings appear.</p>
+      </div>
+      <div class="ph-media">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pages/pomdr-house.jpg" alt="The Patricia J. Bauer Center, POMDR headquarters">
+      </div>
+    </div>
   </div>
 </header>
 

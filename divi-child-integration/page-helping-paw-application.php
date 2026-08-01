@@ -44,7 +44,7 @@ $self       = home_url( '/helping-paw-application/' );
     <noscript><p><a href="<?php echo esc_url( $iframe_src ); ?>"><?php echo ( 'es' === $lang ) ? 'Abrir la solicitud' : 'Open the application form'; ?></a></p></noscript>
 
     <p style="margin-top:32px;color:var(--ink-3);font-size:16px"><?php echo ( 'es' === $lang )
-        ? 'Preguntas? Llame al (831) 718-9122 o escriba a <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a>.'
+        ? '¿Preguntas? Llame al (831) 718-9122 o escriba a <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a>.'
         : 'Questions first? Call (831) 718-9122 or email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a>. Program guidelines are on the <a href="' . esc_url( home_url( '/helping-paw/' ) ) . '" style="color:var(--blue-text)">Helping Paw page</a>.'; ?></p>
   </div>
 </section>

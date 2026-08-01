@@ -129,7 +129,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="card-body">
           <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3>Financial Assistance</h3>
-          <p>We offer two funds to help guardians facing unexpected veterinary expenses. Max's Helping Paws Fund for urgent care, and a Food Fund to keep dogs fed during financial hardship.</p>
+          <p>We offer help through three funds: Max's Helping Paws Fund and the Helping Paw Veterinary Assistance Fund for urgent veterinary care, and the Food Fund to keep dogs fed during financial hardship.</p>
           <a href="/helping-paw-application/" class="card-link">Apply for Assistance</a>
         </div>
       </div>
@@ -188,7 +188,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <section class="funds-section">
   <div class="container">
     <div class="eyebrow blue">Financial Assistance</div>
-    <h2 class="section-title blue">Two funds. <em style="color:var(--blue)">One mission.</em></h2>
+    <h2 class="section-title blue">Three funds. <em style="color:var(--blue)">One mission.</em></h2>
     <p class="section-lead">Our financial assistance programs help low-income guardians facing unexpected expenses so they never have to choose between their dog and their budget.</p>
     <div class="funds-grid">
       <div class="fund-card featured">
@@ -208,7 +208,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="fund-card">
         <div class="fund-icon" style="background:var(--purple-50);color:var(--purple);"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
         <h3>Helping Paw Veterinary Fund</h3>
-        <p>For non-emergency but necessary veterinary care that a guardian cannot afford. Routine treatments, dental care, and ongoing medical management for chronic conditions.</p>
+        <p>For urgent veterinary needs that will alleviate an animal's suffering when a guardian cannot afford care. Routine veterinary care is not covered.</p>
         <div class="conditions">For non-emergency care · Income verification required</div>
         <a href="/helping-paw-application/" class="fund-link">Apply for Vet Assistance</a>
       </div>

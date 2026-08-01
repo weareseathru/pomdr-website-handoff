@@ -17,8 +17,18 @@ $pomdr_videos = function_exists( 'pomdr_get_videos' ) ? pomdr_get_videos() : arr
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Videos</h1>
     <p class="page-narrative">Our dogs and our people, <em>in their own words.</em></p>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog16.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog16.jpeg" alt="A POMDR senior dog on camera">
+        </picture>
+      </div>
+    </div>
   </div>
 </header>
 

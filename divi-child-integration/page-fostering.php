@@ -58,7 +58,7 @@ if ( ! is_array( $stories ) ) { $stories = array(); }
     <h2 class="section-title">A safe place to land, for however long it <em>takes</em>.</h2>
     <div class="foster-lede">
       <p>Foster parents help a dog move from wherever they have been, a beloved home, a shelter, or a hard situation, into a calm new routine. For a dog who has lost their family, that change can be stressful, and a patient foster home makes all the difference.</p>
-      <p>Many of our foster parents say they receive as much as they give. We provide the crate, bed, supplies, and every bit of vet care. You provide the food, the couch, and the love, until the right adopter comes along.</p>
+      <p>Many of our foster parents say they receive as much as they give. We provide the crate, bed, donated food and supplies as available, and every bit of vet care. You provide the couch and the love, until the right adopter comes along.</p>
     </div>
     <div class="page-cta" style="margin-top:26px">
       <a href="/volunteer-application/" class="btn btn-primary">Become a Foster</a>

@@ -279,7 +279,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <div class="founders-band">
   <div class="container">
     <blockquote>"Every senior dog deserves a second chance. Every senior person deserves peace of mind."</blockquote>
-    <cite>Monica Rua and Carie Broecker, Co-Founders</cite>
+    <cite>The POMDR promise</cite>
   </div>
 </div>
 
@@ -304,14 +304,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-year">2017</div>
+        <div class="tl-year">2011</div>
         <div class="tl-content">
           <h4>Patricia J. Bauer Center Opens</h4>
-          <p>POMDR opens its forever home at 615 Forest Avenue, Pacific Grove. The Patricia J. Bauer Center, a dedicated space for dogs, volunteers, and community.</p>
+          <p>Patricia J. Bauer donates the house at 615 Forest Avenue, Pacific Grove. It becomes the Patricia J. Bauer Center, POMDR's home for dogs, volunteers, and community.</p>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-year">2021</div>
+        <div class="tl-year">2019</div>
         <div class="tl-content">
           <h4>Harry and Jaynne Boand Veterinary Clinic</h4>
           <p>The POMDR Boand Clinic opens at 1251 10th St, Monterey, giving our dogs access to in-house veterinary care and specialist services.</p>

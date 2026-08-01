@@ -68,7 +68,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <div class="hero-stat-row">
             <div class="hero-stat"><div class="num">1,800+</div><div class="lbl">Active volunteers</div></div>
             <div class="hero-stat"><div class="num">10+</div><div class="lbl">Ways to volunteer</div></div>
-            <div class="hero-stat"><div class="num">16 yrs</div><div class="lbl">Of community support</div></div>
+            <div class="hero-stat"><div class="num"><?php echo date('Y') - 2009; ?> yrs</div><div class="lbl">Of community support</div></div>
           </div>
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap;">
@@ -103,7 +103,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Foster Home</h3>
-        <p>Foster volunteers are the heart and soul of what we do. POMDR covers all approved medical expenses, supplies crates, beds and toys as available, and provides a foster manual, training, an emergency contact number, and a dedicated mentor.</p>
+        <p>Foster volunteers are the heart and soul of what we do. POMDR covers all approved medical expenses, supplies donated food, crates, beds, blankets, and toys as available, and provides a foster manual, training, an emergency contact number, and a dedicated mentor.</p>
         <a href="/fostering/" class="learn">Learn more about fostering</a>
       </div>
 

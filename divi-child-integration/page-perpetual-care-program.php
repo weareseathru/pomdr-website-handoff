@@ -22,7 +22,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="ph-text">
         <h1 class="page-headline">Perpetual Care</h1>
         <p class="page-narrative">A plan for <em>after you</em>.</p>
-        <p class="page-lead">If something happens to you, POMDR can take your dog. The Lifetime Care Program is for senior people who want to know their senior dog has a soft landing.</p>
+        <p class="page-lead">If something happens to you, POMDR can take your dog. The Perpetual Care Program gives you the peace of mind of knowing your dog will always have a soft landing.</p>
       </div>
       <div class="ph-media">
         <picture>

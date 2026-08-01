@@ -65,7 +65,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <p class="page-narrative">Your gift <em>saves lives.</em></p>
     <div class="donate-card">
       <div>
-        <p>POMDR relies heavily on donations to further our mission of helping senior dogs and senior people stay together. Our biggest expense is medical care for the senior dogs we rescue.</p>
+        <p>POMDR relies heavily on donations to further our mission of helping senior dogs and senior people stay together. Our biggest expense is medical care for the dogs we rescue.</p>
         <p>Peace of Mind Dog Rescue is a non-profit 501(c)(3). Your donations are tax-deductible to the extent allowable by law.</p>
         <div class="tax" style="font-size: 15px;color:rgba(255,255,255,.6);">501(c)(3) nonprofit · EIN 27-1154816</div>
       </div>
@@ -200,14 +200,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="way-card way-card--flat">
         <div class="way-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 10h6"/></svg></div>
         <h3>Dog Tag Donor</h3>
-        <p>Become a Dog Tag Donor with a gift of $500, and carry a POMDR dog tag that shows you are part of the pack.</p>
+        <p>Become a Dog Tag Donor with a gift of $500. Your name is displayed on a tag on the Dog Tag Donor Board at the POMDR Boand Clinic.</p>
         <a href="/dog-tag-donor/" class="way-link">Become a Dog Tag Donor →</a>
       </div>
 
       <div class="way-card way-card--flat">
         <div class="way-icon"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-8h6v8"/></svg></div>
         <h3>Sponsor a Doggie Suite</h3>
-        <p>Sponsor a doggie suite at the Bauer Center for $5,000 a year and give recovering dogs a comfortable place to land.</p>
+        <p>Sponsor a doggie suite at the Boand Clinic for $5,000 a year and give dogs a comfortable place to stay while their veterinary care is completed.</p>
         <a href="/doggie-suite-sponsorship/" class="way-link">Sponsor a Suite →</a>
       </div>
 

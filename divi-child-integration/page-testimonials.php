@@ -15,9 +15,19 @@ if ( ! is_array( $testimonials ) ) { $testimonials = array(); }
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Testimonials</h1>
     <p class="page-narrative">In their <em>own words.</em></p>
     <p class="page-lead"><?php echo esc_html( count( $testimonials ) ); ?> notes from adopters, fosters, volunteers, and Helping Paw clients, exactly as they wrote them.</p>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog15.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog15.jpeg" alt="A happy senior dog with their adopter">
+        </picture>
+      </div>
+    </div>
   </div>
 </header>
 

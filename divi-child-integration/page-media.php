@@ -14,9 +14,19 @@ if ( ! is_array( $items ) ) { $items = array(); }
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">In the Media</h1>
     <p class="page-narrative">The press has <em>noticed.</em></p>
     <p class="page-lead">Coverage of POMDR and our dogs, from local papers to CNN, newest first.</p>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog14.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog14.jpeg" alt="A POMDR senior dog">
+        </picture>
+      </div>
+    </div>
   </div>
 </header>
 

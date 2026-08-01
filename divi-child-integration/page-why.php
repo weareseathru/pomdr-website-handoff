@@ -25,12 +25,22 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Why Senior Dogs</h1>
     <p class="page-narrative">The best dogs are sometimes the <em>oldest</em>.</p>
     <p class="page-lead">Peace of Mind Dog Rescue exists for the dogs other shelters overlook, the gray-muzzled, the slow-walking, the deeply loyal. Here is why a senior dog may be the right dog, and why supporting them matters.</p>
     <div class="page-cta">
       <a href="/adopt/" class="btn btn-primary">Adopt a senior dog</a>
       <a href="/foster-needs/" class="btn btn-outline">Foster a senior dog</a>
+    </div>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog9.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog9.jpeg" alt="A gray-muzzled senior dog resting at home">
+        </picture>
+      </div>
     </div>
   </div>
 </header>

@@ -21,12 +21,22 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Our Culture</h1>
     <p class="page-narrative">Kindness, run like a <em>professional</em>.</p>
     <p class="page-lead">Behind every rescued dog is a team that shows up with warmth, honesty, and care. This is what it feels like to work and volunteer at Peace of Mind Dog Rescue.</p>
     <div class="page-cta">
       <a href="/jobs/" class="btn btn-purple">Join our team</a>
       <a href="/volunteer/" class="btn btn-outline">Volunteer with us</a>
+    </div>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-volunteer.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-volunteer.jpg" alt="POMDR volunteers together at an event">
+        </picture>
+      </div>
     </div>
   </div>
 </header>

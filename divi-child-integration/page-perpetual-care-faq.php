@@ -14,9 +14,16 @@ if ( ! is_array( $faqs ) ) { $faqs = array(); }
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Perpetual Care FAQ</h1>
     <p class="page-narrative">Peace of mind, <em>answered.</em></p>
     <p class="page-lead">Common questions about the Perpetual Care Program. For the program overview, see the <a href="/perpetual-care-program/" style="color:var(--blue-text);text-decoration:underline">Perpetual Care page</a>.</p>
+      </div>
+      <div class="ph-media">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/pages/perpetualcare.jpg" alt="A senior dog cared for at home">
+      </div>
+    </div>
   </div>
 </header>
 
