@@ -771,7 +771,7 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
   background: radial-gradient(ellipse at 30% 0%, rgba(0,139,176,0.05), transparent 60%);
 }
 .newsletter .container { position: relative; display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
-.newsletter h2 { font-family: var(--font-serif); font-weight: 300; font-size: clamp(36px, 4vw, 54px); line-height: 1.05; letter-spacing: -0.02em; margin: 16px 0 18px; }
+.newsletter h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(36px, 4vw, 54px); line-height: 1.05; letter-spacing: -0.02em; margin: 16px 0 18px; }
 .newsletter h2 em { font-style: italic; color: var(--blue); }
 .newsletter p { font-size: 23px; color: var(--ink-2); max-width: 46ch; }
 .newsletter .eyebrow { color: var(--blue-700); }
