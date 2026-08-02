@@ -515,14 +515,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: white;
   box-shadow: 0 10px 24px -6px rgba(0, 139, 176, 0.5);
 }
-.btn-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 14px 32px -6px rgba(0,139,176,.55); }
+.btn-primary:hover { background: #fff; color: var(--blue-900); box-shadow: inset 0 0 0 2px var(--blue-700), 0 14px 32px -6px rgba(0,139,176,.35); transform: translateY(-2px); }
 
 .btn-purple {
   background: var(--purple);
   color: white;
   box-shadow: 0 10px 24px -6px rgba(99, 47, 136, 0.45);
 }
-.btn-purple:hover { background: #4b2268; transform: translateY(-2px); }
+.btn-purple:hover { background: #fff; color: var(--purple); box-shadow: inset 0 0 0 2px var(--purple); transform: translateY(-2px); }
 
 .btn-orange {
   background: var(--orange);
@@ -541,28 +541,28 @@ ul { margin: 0; padding: 0; list-style: none; }
   border: none;
   box-shadow: 0 10px 24px -6px rgba(99, 47, 136, 0.45);
 }
-.btn-outline:hover { background: #4b2268; transform: translateY(-2px); }
+.btn-outline:hover { background: #fff; color: var(--purple); box-shadow: inset 0 0 0 2px var(--purple); transform: translateY(-2px); }
 
 .btn-ghost {
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
 }
-.btn-ghost:hover { background: #fff; color: var(--purple); }
+.btn-ghost:hover { background: #fff; color: var(--blue-900); }
 
 .btn-white {
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
 }
-.btn-white:hover { background: #fff; color: var(--purple); }
+.btn-white:hover { background: #fff; color: var(--blue-900); }
 
 .btn-light {
   background: transparent;
   color: #fff;
   border: 2px solid #fff;
 }
-.btn-light:hover { background: #fff; color: var(--purple); }
+.btn-light:hover { background: #fff; color: var(--blue-900); }
 
 /* ===== FOOTER ===== */
 .footer {
@@ -1582,4 +1582,23 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
   font-family: var(--font-sans);
   font-size: var(--fs-base);
   line-height: var(--leading);
+}
+
+
+/* Buttons on dark color bands (2026-08-01 button system): white stroke,
+   reversing to a white fill with the deep blue text on hover. */
+.btn-band { background: transparent; color: #fff; border: 2px solid #fff; }
+.btn-band:hover { background: #fff; color: var(--blue-900); transform: translateY(-2px); }
+
+
+/* ===== Layout and wrapping common sense (2026-08-01) =====
+   Headings balance their line breaks, paragraphs avoid orphan words, and no
+   long word or URL can ever overflow its box. */
+#main-content h1, #main-content h2, #main-content h3, #main-content h4 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+#main-content p, #main-content li, #main-content blockquote {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
 }

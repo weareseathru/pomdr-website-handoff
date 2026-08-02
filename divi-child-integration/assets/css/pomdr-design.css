@@ -483,14 +483,14 @@ ul { margin: 0; padding: 0; list-style: none; }
   color: white;
   box-shadow: 0 10px 24px -6px rgba(0, 139, 176, 0.5);
 }
-.btn-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 14px 32px -6px rgba(0,139,176,.55); }
+.btn-primary:hover { background: #fff; color: var(--blue-900); box-shadow: inset 0 0 0 2px var(--blue-700), 0 14px 32px -6px rgba(0,139,176,.35); transform: translateY(-2px); }
 
 .btn-purple {
   background: var(--purple);
   color: white;
   box-shadow: 0 10px 24px -6px rgba(99, 47, 136, 0.45);
 }
-.btn-purple:hover { background: #4b2268; transform: translateY(-2px); }
+.btn-purple:hover { background: #fff; color: var(--purple); box-shadow: inset 0 0 0 2px var(--purple); transform: translateY(-2px); }
 
 .btn-orange {
   background: var(--orange);
@@ -1483,3 +1483,9 @@ html.js .reveal.in { opacity: 1; transform: translateY(0); }
   font-size: 21px; line-height: 2; color: var(--ink-3);
   text-align: center; max-width: 1080px; margin: 0 auto;
 }
+
+
+/* Buttons on dark color bands (2026-08-01 button system): white stroke,
+   reversing to a white fill with the deep blue text on hover. */
+.btn-band { background: transparent; color: #fff; border: 2px solid #fff; }
+.btn-band:hover { background: #fff; color: var(--blue-900); transform: translateY(-2px); }

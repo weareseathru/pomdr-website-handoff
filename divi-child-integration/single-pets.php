@@ -534,6 +534,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                         echo '<div class="pdp-flow">';
                         echo pom_pdp_header_html($post_id);
 
+                        echo '<div class="pdp-cols"><div class="pdp-media">';
                         if (has_post_thumbnail($post_id)) {
                             $full_url = get_the_post_thumbnail_url($post_id, 'full');
                             echo '<figure class="pdp-photo"><a data-fancybox="gallery" href="' . esc_url($full_url) . '" aria-label="' . esc_attr('View a larger photo of ' . get_the_title($post_id)) . '">';
@@ -571,6 +572,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             if ($video) { echo '<div class="pom-video">' . $video . '</div>'; }
                         }
 
+                        echo '</div><div class="pdp-info">';
                         echo '<section class="pdp-card">';
                         echo '<div class="pdp-vitals">' . do_shortcode('[pet_age_sex_weight_shortcode]') . '</div>';
                         if (function_exists('pom_pet_highlights_html')) { echo pom_pet_highlights_html($post_id); }
@@ -598,6 +600,7 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                         if (!$is_courtesy) { echo '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>'; }
                         echo '<a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
                         echo '</section>';
+                        echo '</div></div>';
 
 
 

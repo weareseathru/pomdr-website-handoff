@@ -65,7 +65,6 @@ function pomdr_render_chrome() {
                             array( 'Courtesy Listings', 'courtesy-listings' ),
                             array( 'Hospice Dogs', 'hospice' ),
                             array( 'Happy Tails', 'adopted' ),
-                            array( 'Apply to Adopt', 'adoption-questionnaire' ),
                         ),
                         array(
                             array( 'Foster', '' ),

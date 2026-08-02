@@ -49,7 +49,7 @@ if ( ! is_array( $testimonials ) ) { $testimonials = array(); }
 
 </main>
 <style>
-.tmn-wall { columns: 3 340px; column-gap: 24px; }
+.tmn-wall { columns: 2 420px; column-gap: 26px; }
 .tmn-card {
   break-inside: avoid; margin: 0 0 24px; padding: 26px 28px;
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);

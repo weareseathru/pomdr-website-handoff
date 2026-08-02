@@ -8,7 +8,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero .eyebrow{color:#fff;}
 .page-hero .page-headline{color:#fff;}
 .page-hero .page-narrative{color:rgba(255,255,255,.92);}
-.page-hero .page-narrative em{color:var(--blue-200);}
+.page-hero .page-narrative em{color:#fff;}
 .page-hero .eyebrow::before{background:rgba(255,255,255,.65);}
 .page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(0,139,176,.3),transparent 55%),radial-gradient(ellipse at 100% 100%,rgba(99,47,136,.2),transparent 55%);}
 .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:end;}
@@ -86,23 +86,23 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <p class="page-narrative">We'll be here, <em>whatever comes next.</em></p>
         <p class="hero-lead">Whether you need to surrender your dog now, or want peace of mind for the future, POMDR is a resource and partner, not just a rescue.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="/intake-questionnaire/" style="background:var(--blue-700);color:#fff;padding:16px 26px;border-radius:999px;font-weight:600;font-size: 21px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;box-shadow:0 10px 24px -6px rgba(0,139,176,.5);">
+          <a href="/intake-questionnaire/" class="btn btn-band">
             Start the Process
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="#perpetual" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:16px 26px;border-radius:999px;font-weight:600;font-size: 21px;display:inline-flex;align-items:center;gap:10px;transition:all .25s;">Learn About Perpetual Care</a>
+          <a href="#perpetual" class="btn btn-band">Learn About Perpetual Care</a>
         </div>
         <div class="hero-card" style="margin-top:28px;">
           <h3>Have a question first?</h3>
           <p>We understand this is a difficult decision. Please reach out. We are here to listen and help you find the best path forward for you and your dog.</p>
           <div style="display:flex;flex-direction:column;gap:12px;font-size: 21px;">
-            <a href="tel:8317189122" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
+            <a href="tel:8317189122" style="display:flex;align-items:center;gap:12px;color:var(--blue-100);font-weight:500;">
               <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </span>
               (831) 718-9122
             </a>
-            <a href="mailto:info@pomdr.org" style="display:flex;align-items:center;gap:12px;color:var(--blue-200);font-weight:500;">
+            <a href="mailto:info@pomdr.org" style="display:flex;align-items:center;gap:12px;color:var(--blue-100);font-weight:500;">
               <span style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </span>
