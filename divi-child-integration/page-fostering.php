@@ -17,8 +17,7 @@ $stories = file_exists( $stories_file ) ? json_decode( (string) file_get_content
 if ( ! is_array( $stories ) ) { $stories = array(); }
 ?>
 <style>
-.foster-stories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px 28px; }
-@media (max-width: 980px) { .foster-stories { grid-template-columns: 1fr 1fr; } }
+.foster-stories { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 28px; }
 @media (max-width: 620px) { .foster-stories { grid-template-columns: 1fr; } }
 .foster-story { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; }
 .foster-story img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }

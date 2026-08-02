@@ -657,13 +657,4 @@ html.pomdr-lightbox-open {
 .pdp-card .pom-buttons { margin-top: 24px; padding-top: 0; }
 
 
-/* Wide screens put the photo and gallery beside the info card; narrow screens
-   keep the stacked flow (2026-08-01 layout rules). */
-.pdp-cols { display: flex; flex-direction: column; gap: 28px; }
-.pdp-media { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
-.pdp-info { min-width: 0; }
-@media (min-width: 1080px) {
-  .pdp-flow { max-width: 1200px; }
-  .pdp-cols { display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 36px; align-items: start; }
-  .pdp-info { position: sticky; top: 200px; }
-}
+

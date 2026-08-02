@@ -267,7 +267,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <h2>What happens to your dog if <em>you can no longer care for them?</em></h2>
         <p>Our Perpetual Care program gives you peace of mind that your dog will be loved and cared for, no matter what life brings. This is a promise, not a program.</p>
         <p>By creating a Pet Trust and making an annual gift to POMDR, you establish a formal arrangement ensuring we will place your dog in a loving home if you pass away or can no longer provide care.</p>
-        <a href="/perpetual-care-program/" class="btn-white">
+        <a href="/perpetual-care-program/" class="btn btn-white">
           Apply for Perpetual Care
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -306,7 +306,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div class="perp-cta">
           <h3>Questions about Perpetual Care?</h3>
           <p>Call us at (831) 718-9122 or email info@pomdr.org. We're happy to walk you through the process.</p>
-          <a href="mailto:info@pomdr.org" class="btn-white">Email Us</a>
+          <a href="mailto:info@pomdr.org" class="btn btn-white">Email Us</a>
         </div>
       </div>
     </div>
@@ -364,12 +364,12 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <h2>Ready to take the <em>next step?</em></h2>
     <div class="ctas">
-      <a href="/intake-questionnaire/" class="btn-primary">
+      <a href="/intake-questionnaire/" class="btn btn-primary">
         Surrender Application
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="/perpetual-care-program/" class="btn-ghost">Perpetual Care Application</a>
-      <a href="/helping-paw/" class="btn-ghost">Helping Paw Program</a>
+      <a href="/perpetual-care-program/" class="btn btn-ghost">Perpetual Care Application</a>
+      <a href="/helping-paw/" class="btn btn-ghost">Helping Paw Program</a>
     </div>
   </div>
 </section>

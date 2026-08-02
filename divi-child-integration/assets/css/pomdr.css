@@ -1602,3 +1602,8 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
   text-wrap: pretty;
   overflow-wrap: break-word;
 }
+
+/* Variant classes used without the .btn base still get the pill shape. */
+.btn-primary, .btn-purple, .btn-outline, .btn-ghost, .btn-white, .btn-light, .btn-band, .btn-orange {
+  border-radius: 999px;
+}
