@@ -177,7 +177,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="eyebrow">By the Numbers</div>
     <h2 class="section-title">16 years of <em>quiet, steady love.</em></h2>
     <div class="stats-row">
-      <div class="stat-item"><div class="num">3,500+</div><div class="lbl">Senior dogs adopted</div></div>
+      <div class="stat-item"><div class="num">4,500+</div><div class="lbl">Senior dogs adopted</div></div>
       <div class="stat-item"><div class="num">1,500+</div><div class="lbl">Volunteers</div></div>
       <div class="stat-item"><div class="num">16 yrs</div><div class="lbl">Of lifetime commitment</div></div>
       <div class="stat-item"><div class="num">3</div><div class="lbl">Tri-county area served</div></div>
