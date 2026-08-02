@@ -195,12 +195,6 @@ function pomdr_render_footer() {
               <img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/logo-horizontal.png' ); ?>" alt="Peace of Mind Dog Rescue" class="footer-logo-img" width="600" height="133">
             </a>
             <p class="footer-tagline">Helping senior dogs and senior people since 2009.</p>
-            <p class="footer-mission">A 501(c)(3) nonprofit serving Monterey, Santa Cruz and San Benito counties.</p>
-            <div class="footer-contact">
-              <a href="tel:8317189122">(831) 718-9122</a>
-              <a href="mailto:info@pomdr.org">info@pomdr.org</a>
-              <span>615 Forest Avenue, Pacific Grove, CA 93950</span>
-            </div>
           </div>
           <nav class="footer-cols" aria-label="Footer">
             <div class="footer-col">
@@ -232,9 +226,14 @@ function pomdr_render_footer() {
             </div>
           </nav>
         </div>
+        <div class="footer-contact footer-contact--row">
+          <a href="tel:8317189122">(831) 718-9122</a>
+          <a href="mailto:info@pomdr.org">info@pomdr.org</a>
+          <span>615 Forest Avenue, Pacific Grove, CA 93950</span>
+        </div>
         <div class="footer-bottom">
           <div class="footer-legal">
-            <span>&copy; <?php echo esc_html( date('Y') ); ?> Peace of Mind Dog Rescue. 501(c)(3) nonprofit.</span>
+            <span>&copy; <?php echo esc_html( date('Y') ); ?> Peace of Mind Dog Rescue. 501(c)(3) nonprofit serving Monterey, Santa Cruz and San Benito counties.</span>
             <span>EIN 27-1154816</span>
           </div>
           <div class="footer-bottom-right">

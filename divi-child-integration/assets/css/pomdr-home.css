@@ -804,10 +804,10 @@ body[data-card-style="polaroid"] .dog-card .tags { justify-content: center; }
    Two calm tiers: a brand block beside three tidy link columns, then a single
    bottom bar that carries the legal line, EIN, utility links, and socials.
    Everything aligns to one grid so the footer reads as organized, not busy. */
-.footer { background: var(--blue-900); color: #fff; padding: 84px 0 36px; }
+.footer { background: var(--blue-900); color: #fff; padding: 52px 0 28px; }
 .footer-main {
   display: grid; grid-template-columns: 1.5fr 2.4fr; gap: 64px;
-  padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .footer-logo { margin-bottom: 20px; }
 .footer-logo .logo-mark { background: #fff; color: var(--blue-900); }
@@ -1059,3 +1059,12 @@ body #main-content .promo-banner .promo-inner { padding-top: 12px !important; pa
 
 /* On the purple promo band the light button reverses to purple, its band tone. */
 .promo-banner .btn-light:hover { background: #fff; color: var(--purple); }
+
+/* Compact footer (2026-08-01): brand and links share one band, contact runs
+   horizontally below, everything tighter vertically. */
+.footer-contact--row {
+  flex-direction: row; flex-wrap: wrap; align-items: center;
+  gap: 10px 44px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
