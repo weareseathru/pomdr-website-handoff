@@ -621,15 +621,15 @@ html.pomdr-lightbox-open {
 .pdp-bio p { margin: 0 0 16px; }
 .pdp-note { font-size: 22px; color: var(--ink-2); margin: 14px 0 0; }
 .pdp-gallery {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  margin-top: -14px; /* tuck the strip up under the main photo */
 }
-@media (max-width: 800px) { .pdp-gallery { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 520px) { .pdp-gallery { grid-template-columns: repeat(2, 1fr); } }
 .pdp-gallery a {
   display: block; position: relative;
-  aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden;
+  width: 104px; height: 104px; border-radius: 12px; overflow: hidden;
   border: 1px solid var(--line);
 }
+@media (max-width: 520px) { .pdp-gallery a { width: 84px; height: 84px; } }
 .pdp-gallery a:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; }
 .pdp-gallery .pdp-thumb { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; transition: transform 0.3s var(--ease); }
 .pdp-gallery a:hover .pdp-thumb { transform: scale(1.05); }
@@ -637,7 +637,7 @@ html.pomdr-lightbox-open {
   position: absolute; inset: 0; display: grid; place-items: center;
   background: rgba(22, 32, 43, 0.25);
 }
-.pdp-play svg { width: 44px; height: 44px; color: #fff; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.5)); }
+.pdp-play svg { width: 34px; height: 34px; color: #fff; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.5)); }
 
 
 /* Header row: name and vitals left, actions right, one line (wraps on mobile). */

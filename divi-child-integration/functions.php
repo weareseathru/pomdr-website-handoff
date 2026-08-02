@@ -712,6 +712,16 @@ function pom_render_dog_card($post_id, $card_args = array()) {
 
     $thumb_id = get_post_thumbnail_id($post_id);
 
+    // Extra photos for the adopt-page hover cycle (first few gallery images).
+    $cycle_urls = array();
+    $cycle_gal  = get_field('photo_gallery', $post_id);
+    if (is_array($cycle_gal)) {
+        foreach (array_slice($cycle_gal, 0, 4) as $g) {
+            if (is_array($g) && !empty($g['sizes']['medium_large'])) { $cycle_urls[] = $g['sizes']['medium_large']; }
+            elseif (is_array($g) && !empty($g['url'])) { $cycle_urls[] = $g['url']; }
+        }
+    }
+
     // Filter/sort data attributes for the Adopt page JS. The grid stays
     // CPT-driven; these only describe each rendered card so vanilla JS can
     // search, filter, and sort the existing DOM nodes.
@@ -734,7 +744,7 @@ function pom_render_dog_card($post_id, $card_args = array()) {
        data-breed="<?php echo esc_attr($looks_like); ?>"
        data-status="<?php echo esc_attr($data_status); ?>"
        data-age="<?php echo esc_attr($data_age); ?>"
-       data-weight="<?php echo esc_attr($data_weight); ?>">
+       data-weight="<?php echo esc_attr($data_weight); ?>"<?php if ($cycle_urls) : ?> data-photos="<?php echo esc_attr(wp_json_encode($cycle_urls)); ?>"<?php endif; ?>>
       <div class="dog-card"><div class="photo-wrap">
         <div class="dog-photo"><?php
             if ($thumb_id) {

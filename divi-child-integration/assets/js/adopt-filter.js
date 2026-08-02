@@ -144,4 +144,42 @@
       if ( searchInput ) { searchInput.focus(); }
     } );
   }
+
+  // Hovering a card slideshows its gallery every 3 seconds (adopt page only).
+  // Skipped for reduced-motion users and touch devices (no reliable hover).
+  var canHoverCycle = window.matchMedia &&
+    window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches &&
+    ! window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+  if ( canHoverCycle ) {
+    cards.forEach( function ( card ) {
+      var raw = card.getAttribute( 'data-photos' );
+      if ( ! raw ) { return; }
+      var photos;
+      try { photos = JSON.parse( raw ); } catch ( e ) { return; }
+      if ( ! photos || ! photos.length ) { return; }
+      var img = card.querySelector( '.dog-photo img' );
+      if ( ! img ) { return; }
+      var original = { src: img.src, srcset: img.getAttribute( 'srcset' ), sizes: img.getAttribute( 'sizes' ) };
+      var timer = null;
+      var idx = -1;
+      card.addEventListener( 'mouseenter', function () {
+        if ( timer ) { return; }
+        photos.forEach( function ( u ) { var p = new Image(); p.src = u; } );
+        timer = setInterval( function () {
+          idx = ( idx + 1 ) % photos.length;
+          img.removeAttribute( 'srcset' );
+          img.removeAttribute( 'sizes' );
+          img.src = photos[ idx ];
+        }, 3000 );
+      } );
+      card.addEventListener( 'mouseleave', function () {
+        clearInterval( timer );
+        timer = null;
+        idx = -1;
+        img.src = original.src;
+        if ( original.srcset ) { img.setAttribute( 'srcset', original.srcset ); }
+        if ( original.sizes ) { img.setAttribute( 'sizes', original.sizes ); }
+      } );
+    } );
+  }
 }() );

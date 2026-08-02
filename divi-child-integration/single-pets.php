@@ -541,34 +541,6 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             echo '</a></figure>';
                         }
 
-                        echo '<section class="pdp-card">';
-                        echo '<div class="pdp-vitals">' . do_shortcode('[pet_age_sex_weight_shortcode]') . '</div>';
-                        if (function_exists('pom_pet_highlights_html')) { echo pom_pet_highlights_html($post_id); }
-                        $foster_start = get_field('foster_start_date', $post_id);
-                        $foster_end   = get_field('foster_end_date', $post_id);
-                        if (in_array('Foster Needed', $status_arr, true)) {
-                            $range = trim(($foster_start ?: '') . (($foster_start && $foster_end) ? ' - ' : '') . ($foster_end ?: ''));
-                            echo '<p class="pdp-note"><strong>' . esc_html__('Foster Needed', 'pom') . ($range !== '' ? ':' : '') . '</strong> ' . esc_html($range) . '</p>';
-                        }
-                        $pet_description = get_field('pet_description', $post_id);
-                        if ($pet_description) { echo '<div class="pdp-bio">' . wpautop(wp_kses_post($pet_description)) . '</div>'; }
-                        $sponsor = get_field('sponsored_by', $post_id);
-                        // Some synced writeups already end with a Sponsored By line; skip the field note then.
-                        if ($sponsor && stripos((string) $pet_description, 'sponsored by') === false) {
-                            echo '<p class="pdp-note"><strong>' . esc_html__('Sponsored By:', 'pom') . '</strong> ' . esc_html($sponsor) . '</p>';
-                        }
-                        if ($is_hospice) { echo '<p class="pdp-note"><strong>' . esc_html__('Hospice Care.', 'pom') . '</strong> ' . esc_html__('Please contact the rescue for special care details.', 'pom') . '</p>'; }
-                        if (!$no_adopt) {
-                            echo '<p class="pdp-note">' . esc_html(get_the_title($post_id)) . ' ' . esc_html__('could be your new old best friend. Press Adopt to fill out our online form, and a real person will get back to you.', 'pom') . '</p>';
-                        }
-                        // Actions live inside the info card (design method: primary action
-                        // above the fold and again after the story).
-                        echo '<div class="pom-buttons"><div class="pom-buttons-row pom-buttons-row--inline">';
-                        if (!$no_adopt) { echo '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/'))) . '">' . esc_html__('Adopt', 'pom') . '</a>'; }
-                        if (!$is_courtesy) { echo '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>'; }
-                        echo '<a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
-                        echo '</section>';
-
                         // Gallery + the video as the last slide (Fancybox plays
                         // YouTube links natively; the tile shows a play badge).
                         $gallery   = get_field('photo_gallery', $post_id);
@@ -598,6 +570,35 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             $video = get_field('youtube_video', $post_id);
                             if ($video) { echo '<div class="pom-video">' . $video . '</div>'; }
                         }
+
+                        echo '<section class="pdp-card">';
+                        echo '<div class="pdp-vitals">' . do_shortcode('[pet_age_sex_weight_shortcode]') . '</div>';
+                        if (function_exists('pom_pet_highlights_html')) { echo pom_pet_highlights_html($post_id); }
+                        $foster_start = get_field('foster_start_date', $post_id);
+                        $foster_end   = get_field('foster_end_date', $post_id);
+                        if (in_array('Foster Needed', $status_arr, true)) {
+                            $range = trim(($foster_start ?: '') . (($foster_start && $foster_end) ? ' - ' : '') . ($foster_end ?: ''));
+                            echo '<p class="pdp-note"><strong>' . esc_html__('Foster Needed', 'pom') . ($range !== '' ? ':' : '') . '</strong> ' . esc_html($range) . '</p>';
+                        }
+                        $pet_description = get_field('pet_description', $post_id);
+                        if ($pet_description) { echo '<div class="pdp-bio">' . wpautop(wp_kses_post($pet_description)) . '</div>'; }
+                        $sponsor = get_field('sponsored_by', $post_id);
+                        // Some synced writeups already end with a Sponsored By line; skip the field note then.
+                        if ($sponsor && stripos((string) $pet_description, 'sponsored by') === false) {
+                            echo '<p class="pdp-note"><strong>' . esc_html__('Sponsored By:', 'pom') . '</strong> ' . esc_html($sponsor) . '</p>';
+                        }
+                        if ($is_hospice) { echo '<p class="pdp-note"><strong>' . esc_html__('Hospice Care.', 'pom') . '</strong> ' . esc_html__('Please contact the rescue for special care details.', 'pom') . '</p>'; }
+                        if (!$no_adopt) {
+                            echo '<p class="pdp-note">' . esc_html(get_the_title($post_id)) . ' ' . esc_html__('could be your new old best friend. Press Adopt to fill out our online form, and a real person will get back to you.', 'pom') . '</p>';
+                        }
+                        // Actions live inside the info card (design method: primary action
+                        // above the fold and again after the story).
+                        echo '<div class="pom-buttons"><div class="pom-buttons-row pom-buttons-row--inline">';
+                        if (!$no_adopt) { echo '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/'))) . '">' . esc_html__('Adopt', 'pom') . '</a>'; }
+                        if (!$is_courtesy) { echo '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>'; }
+                        echo '<a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
+                        echo '</section>';
+
 
 
                         echo '</div>';
