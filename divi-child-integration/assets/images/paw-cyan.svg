@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
-  <!-- POMDR cyan paw print, vectorized 1:1 from the brand PNG (2026-07-07):
-       four tilted toe pads over a wide notched main pad. Fill is the brand
-       cyan token value (--blue #008bb0). Swap this file for the original PNG
-       export at any time; all templates reference it by this path. -->
+  <!-- POMDR cyan paw print, unified brand mark (2026-08-01): four clean toes
+       over one dome-top pad with a gentle bottom notch. Fill is the brand
+       cyan token value (--blue #008bb0). All templates reference this path. -->
   <g fill="#008bb0">
-    <ellipse cx="11.5" cy="27" rx="5.6" ry="7.4" transform="rotate(-24 11.5 27)"/>
-    <ellipse cx="23.5" cy="15.5" rx="5.8" ry="8" transform="rotate(-8 23.5 15.5)"/>
-    <ellipse cx="40.5" cy="15.5" rx="5.8" ry="8" transform="rotate(8 40.5 15.5)"/>
-    <ellipse cx="52.5" cy="27" rx="5.6" ry="7.4" transform="rotate(24 52.5 27)"/>
-    <path d="M32 34.2 C29 30.8 24.6 29.6 20.9 31.2 C14.9 33.8 11.9 40.6 14.3 46.9 C16.2 51.9 20.9 55.6 26.2 56.6 C28.4 57 30.3 55.9 32 54.2 C33.7 55.9 35.6 57 37.8 56.6 C43.1 55.6 47.8 51.9 49.7 46.9 C52.1 40.6 49.1 33.8 43.1 31.2 C39.4 29.6 35 30.8 32 34.2 Z"/>
+    <ellipse cx="9.9" cy="30.9" rx="7.5" ry="9.9" transform="rotate(-20 9.9 30.9)"/>
+    <ellipse cx="23.2" cy="15.7" rx="8.3" ry="11.5" transform="rotate(-7 23.2 15.7)"/>
+    <ellipse cx="40.8" cy="15.7" rx="8.3" ry="11.5" transform="rotate(7 40.8 15.7)"/>
+    <ellipse cx="54.1" cy="30.9" rx="7.5" ry="9.9" transform="rotate(20 54.1 30.9)"/>
+    <path d="M32 28.5 C22.9 28.5 13.9 35.7 13.9 45.6 C13.9 53.1 19.2 58.4 25.3 58.4 C28.3 58.4 30.1 56.3 32 56.3 C33.9 56.3 35.7 58.4 38.7 58.4 C44.8 58.4 50.1 53.1 50.1 45.6 C50.1 35.7 41.1 28.5 32 28.5 Z"/>
   </g>
 </svg>
