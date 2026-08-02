@@ -212,15 +212,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: normal;
 }
 .btn-primary { background: var(--blue); color: white; box-shadow: 0 10px 24px -6px rgba(0,139,176,0.5); }
-.btn-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 14px 32px -6px rgba(0,139,176,0.55); }
+.btn-primary:hover { background: #fff; color: var(--blue-700); box-shadow: inset 0 0 0 2px var(--blue-700), 0 14px 32px -6px rgba(0,139,176,0.35); transform: translateY(-2px); }
 .btn-light { background: transparent; color: #fff; border: 2px solid #fff; }
 .btn-light:hover { background: #fff; color: var(--blue-900); transform: translateY(-2px); }
 .btn-ghost { background: transparent; color: #fff; border: 2px solid #fff; }
 .btn-ghost:hover { background: #fff; color: var(--blue-900); }
 .btn-outline { background: var(--purple); color: #fff; border: none; box-shadow: 0 10px 24px -6px rgba(99,47,136,0.45); }
-.btn-outline:hover { background: #4b2268; transform: translateY(-2px); }
+.btn-outline:hover { background: #fff; color: var(--purple); box-shadow: inset 0 0 0 2px var(--purple); transform: translateY(-2px); }
 .btn-purple { background: var(--purple); color: white; box-shadow: 0 10px 24px -6px rgba(99,47,136,0.5); }
-.btn-purple:hover { background: #4b2268; transform: translateY(-2px); }
+.btn-purple:hover { background: #fff; color: var(--purple); box-shadow: inset 0 0 0 2px var(--purple); transform: translateY(-2px); }
 .btn svg { width: 16px; height: 16px; }
 
 /* Hero dog meta card */
@@ -1056,3 +1056,6 @@ body #main-content .promo-banner .promo-inner { padding-top: 12px !important; pa
 .promo-banner .promo-text { gap: 14px; }
 .promo-banner .promo-label { font-size: 21px; }
 .promo-banner .promo-message { font-size: 25px; line-height: 1.35; margin: 0; }
+
+/* On the purple promo band the light button reverses to purple, its band tone. */
+.promo-banner .btn-light:hover { background: #fff; color: var(--purple); }
