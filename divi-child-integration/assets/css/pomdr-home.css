@@ -173,6 +173,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-card .btn-primary { background: #fff; color: var(--blue-700); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.4); }
 .hero-card .btn-primary:hover { background: var(--cream); }
 .hero-card .btn-ghost { background: transparent; border: 2px solid #fff; color: #fff; }
+/* The purple Foster action matches its outlined siblings: white stroke, and on
+   hover it reverses to a white fill with purple text. */
+.hero-card .btn-purple { border: 2px solid #fff; }
+.hero-card .btn-purple:hover { background: #fff; color: var(--purple); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.4); }
 
 /* Promo banner (staff-toggleable announcement below the hero) */
 .promo-banner { background: var(--purple); color: #fff; }
