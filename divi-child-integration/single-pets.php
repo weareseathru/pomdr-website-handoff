@@ -206,6 +206,8 @@ function pom_pdp_header_html($post_id)
 
     $out  = '<div class="pom-section pom-section--header"><header class="pdp-header">';
     $out .= '<a class="pdp-back" href="' . esc_url(home_url('/adopt/')) . '">&larr; All adoptable dogs</a>';
+    // Name and vitals on the left, the actions on the right of the same line.
+    $out .= '<div class="pdp-header-row"><div class="pdp-header-left">';
     if ($badge_label) {
         $out .= '<span class="pdp-badge pdp-badge--' . esc_attr($badge_class) . '">' . esc_html($badge_label) . '</span>';
     }
@@ -213,6 +215,7 @@ function pom_pdp_header_html($post_id)
     if ($bits) {
         $out .= '<p class="pdp-meta">' . esc_html(implode(' · ', $bits)) . '</p>';
     }
+    $out .= '</div>';
     $out .= '<div class="pdp-ctas">';
     // Live-site contract: adopted, hospice, and courtesy dogs are not offered
     // an Adopt button (courtesy adoptions go through the listed contact, and
@@ -223,7 +226,7 @@ function pom_pdp_header_html($post_id)
     if (!$is_courtesy) {
         $out .= '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', $name, home_url('/sponsor-a-dog/'))) . '">Sponsor</a>';
     }
-    $out .= '</div>';
+    $out .= '</div></div>';
 
     // Courtesy listings: the listed person is the contact, not POMDR.
     if ($is_courtesy) {
@@ -550,7 +553,10 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                         $pet_description = get_field('pet_description', $post_id);
                         if ($pet_description) { echo '<div class="pdp-bio">' . wpautop(wp_kses_post($pet_description)) . '</div>'; }
                         $sponsor = get_field('sponsored_by', $post_id);
-                        if ($sponsor) { echo '<p class="pdp-note"><strong>' . esc_html__('Sponsored By:', 'pom') . '</strong> ' . esc_html($sponsor) . '</p>'; }
+                        // Some synced writeups already end with a Sponsored By line; skip the field note then.
+                        if ($sponsor && stripos((string) $pet_description, 'sponsored by') === false) {
+                            echo '<p class="pdp-note"><strong>' . esc_html__('Sponsored By:', 'pom') . '</strong> ' . esc_html($sponsor) . '</p>';
+                        }
                         if ($is_hospice) { echo '<p class="pdp-note"><strong>' . esc_html__('Hospice Care.', 'pom') . '</strong> ' . esc_html__('Please contact the rescue for special care details.', 'pom') . '</p>'; }
                         if (!$no_adopt) {
                             echo '<p class="pdp-note">' . esc_html(get_the_title($post_id)) . ' ' . esc_html__('could be your new old best friend. Press Adopt to fill out our online form, and a real person will get back to you.', 'pom') . '</p>';
@@ -589,10 +595,10 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
 
                         // Actions repeated at the end (design method: primary action
                         // above the fold and again after the story).
-                        echo '<div class="pom-buttons"><div class="pom-buttons-row">';
+                        echo '<div class="pom-buttons"><div class="pom-buttons-row pom-buttons-row--inline">';
                         if (!$no_adopt) { echo '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/'))) . '">' . esc_html__('Adopt', 'pom') . '</a>'; }
                         if (!$is_courtesy) { echo '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>'; }
-                        echo '</div><div class="pom-buttons-row pom-buttons-row--browse"><a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
+                        echo '<a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
 
                         echo '</div>';
 
