@@ -35,8 +35,6 @@ if ( ! function_exists( 'pom_adopt_count_status' ) ) {
     }
 }
 
-// Available now = status includes Adoptable.
-$count_available = pom_adopt_count_status( 'Adoptable' );
 // Need foster = status includes Foster Needed.
 $count_foster = pom_adopt_count_status( 'Foster Needed' );
 
@@ -181,7 +179,6 @@ $adopt_filters = array(
       <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>
       <div class="hero-meta">
         <div><strong id="count-total"><?php echo esc_html( $count_total ); ?></strong>Adoptable dogs</div>
-        <div><strong id="count-available"><?php echo esc_html( $count_available ); ?></strong>Available now</div>
         <div><strong id="count-foster"><?php echo esc_html( $count_foster ); ?></strong>Need foster</div>
       </div>
     </div>
