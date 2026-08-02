@@ -179,7 +179,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="stats-row">
       <div class="stat-item"><div class="num">4,500+</div><div class="lbl">Senior dogs adopted</div></div>
       <div class="stat-item"><div class="num">1,500+</div><div class="lbl">Volunteers</div></div>
-      <div class="stat-item"><div class="num">16 yrs</div><div class="lbl">Of lifetime commitment</div></div>
+      <div class="stat-item"><div class="num"><?php echo date('Y') - 2009; ?> yrs</div><div class="lbl">Of lifetime commitment</div></div>
       <div class="stat-item"><div class="num">3</div><div class="lbl">Tri-county area served</div></div>
     </div>
   </div>

@@ -215,19 +215,18 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           <h2 class="section-title" id="impact-title">Senior dogs and senior people, <em>helped together.</em></h2>
         </div>
       </div>
-      <!-- NOTE: stat values are PLACEHOLDERS pending real totals from POMDR.
-           In WP these become editable (ACF options) or dynamic counts. -->
+      <!-- Staff-confirmed totals (2026-08-01), kept in step with the About page. -->
       <div class="stats-3 reveal">
         <div class="stat-block">
-          <div class="num">3,500<span class="sym">+</span></div>
-          <div class="lbl">Dogs adopted into loving homes</div>
+          <div class="num">4,500<span class="sym">+</span></div>
+          <div class="lbl">Senior dogs adopted</div>
         </div>
         <div class="stat-block">
           <div class="num">1,500<span class="sym">+</span></div>
           <div class="lbl">Volunteers</div>
         </div>
         <div class="stat-block">
-          <div class="num">16<span class="sym">+</span></div>
+          <div class="num"><?php echo date('Y') - 2009; ?><span class="sym">+</span></div>
           <div class="lbl">Years of lifetime commitment</div>
         </div>
       </div>
