@@ -45,8 +45,8 @@ if ( ! is_array( $faqs ) ) { $faqs = array(); }
 </main>
 <style>
 .faq-acc { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 14px; padding: 0 26px; }
-.faq-acc summary { cursor: pointer; font-family: var(--font-serif); font-size: 21px; font-weight: 500; padding: 20px 0; min-height: 44px; }
+.faq-acc summary { cursor: pointer; font-family: var(--font-serif); font-size: 26px; font-weight: 500; padding: 20px 0; min-height: 44px; }
 .faq-acc summary:hover { color: var(--blue-text); }
-.faq-acc p { margin: 0 0 22px; font-size: 17px; line-height: 1.7; color: var(--ink-2); }
+.faq-acc p { margin: 0 0 22px; font-size: 22px; line-height: 1.7; color: var(--ink-2); }
 </style>
 <?php get_footer();

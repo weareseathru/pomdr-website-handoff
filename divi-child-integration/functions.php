@@ -375,7 +375,7 @@ function pomdr_adopted_wall_html() {
     $count = count($names);
     $out  = '<div class="adopted-wall">';
     $out .= '<h2 class="section-title" style="text-align:center;margin-top:72px">' . esc_html(number_format($count)) . ' dogs, <em>all adopted.</em></h2>';
-    $out .= '<p style="text-align:center;color:var(--ink-2);font-size:17px;margin:0 0 28px">What do all these dogs have in common? They are all adopted!</p>';
+    $out .= '<p style="text-align:center;color:var(--ink-2);font-size: 22px;margin:0 0 28px">What do all these dogs have in common? They are all adopted!</p>';
     $out .= '<p class="adopted-wall-names">' . esc_html(implode(' · ', array_map('trim', $names))) . '</p>';
     return $out . '</div>';
 }

@@ -34,14 +34,14 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 .action-bar-tag {
   margin: 0; color: rgba(255, 255, 255, 0.93);
-  font-size: 16px; font-weight: 600; letter-spacing: 0.01em;
+  font-size: 21px; font-weight: 600; letter-spacing: 0.01em;
 }
 .action-bar-actions { display: flex; gap: 10px; flex-shrink: 0; }
 .ab-btn {
   text-transform: none;
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 42px; padding: 8px 18px; border-radius: 999px;
-  font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none;
+  font-weight: 700; font-size: 22px; line-height: 1; text-decoration: none;
   transition: transform 0.2s var(--ease), background 0.2s;
 }
 /* The action bar sits on the teal band (dark), so both buttons use the
@@ -93,7 +93,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .logo-img { height: 52px; width: auto; display: block; transition: height 0.3s var(--ease); }
 .nav.scrolled .logo-img { height: 44px; }
 .logo-since {
-  font-size: 13px;
+  font-size: 18px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -109,10 +109,10 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-tagline { display: none; }
 .nav-tagline-1 {
   display: block; font-family: var(--font-sans); font-style: italic; font-weight: 700;
-  font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
+  font-size: 22px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
 }
 .nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
-.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 14px; color: var(--blue); }
+.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 19px; color: var(--blue); }
 .nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
 
 /* Single row of menu items; dropdowns hold the depth (2026-07-23) */
@@ -139,7 +139,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   padding: 0 28px;
   background: var(--blue-700);
   color: #fff !important;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   letter-spacing: 0.01em;
   border-radius: 18px;
@@ -153,7 +153,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   gap: 8px;
 }
 .nav-row--main .nav-item > a {
-  font-size: 20px; font-weight: 700; color: var(--ink); padding: 12px 14px;
+  font-size: 22px; font-weight: 700; color: var(--ink); padding: 12px 14px;
 }
 .nav-row--main .nav-item > a:hover { color: var(--blue-text); }
 
@@ -163,11 +163,11 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   .nav > .container { padding: 0 20px; }
   .logo-img { height: 44px; }
   .nav-inner { padding: 12px 14px 12px 20px; gap: 12px; }
-  .nav-row--main .nav-item > a { font-size: 18px; padding: 11px 8px; }
+  .nav-row--main .nav-item > a { font-size: 20px; padding: 11px 8px; }
   /* 24px min touch target (WCAG 2.2 SC 2.5.8); negative margin keeps the same
      net footprint (24 - 8 = 16px, as the old 20 - 4) so the single row holds. */
   .nav-row--main .nav-item > button.nav-caret { width: 24px; margin-left: -8px; }
-  .nav-donate { padding: 0 16px; font-size: 18px; }
+  .nav-donate { padding: 0 16px; font-size: 23px; }
 }
 
 /* legacy single-row container (kept harmless) */
@@ -190,7 +190,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   gap: 5px;
   padding: 9px 14px;
   border-radius: 999px;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--ink-2);
   background: none;
@@ -286,7 +286,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   gap: 10px;
   padding: 10px 14px;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--ink-2);
   text-decoration: none;
@@ -299,7 +299,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 
 .dd-section {
-  font-size: 14px;
+  font-size: 19px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -335,7 +335,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   border-radius: 999px !important;
   background: var(--blue-700) !important;
   color: white !important;
-  font-size: 16px !important;
+  font-size: 21px !important;
   font-weight: 600 !important;
   box-shadow: 0 6px 16px -4px rgba(0, 139, 176, 0.4);
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
@@ -397,7 +397,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-mobile a {
   display: flex; align-items: center; gap: 10px;
   padding: 13px 16px; border-radius: 14px; min-height: 48px;
-  font-size: 18px; font-weight: 600; color: var(--ink);
+  font-size: 23px; font-weight: 600; color: var(--ink);
   text-decoration: none;
   transition: background .22s var(--ease), color .22s var(--ease), transform .12s var(--ease), padding-left .22s var(--ease);
 }
@@ -430,7 +430,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 /* Mobile: collapse nav links into the drawer. Breakpoint raised to 1260px so
    the single-row nav (logo + seven items + Donate, at the larger text) only
    shows when it comfortably fits, and the first item can never crowd the logo. */
-@media (max-width: 1260px) {
+@media (max-width: 1340px) {
   .nav-menu { display: none; }
   .nav-donate { display: none; }
   .nav-toggle { display: inline-flex; }
@@ -443,7 +443,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 /* Very narrow phones: shrink the 3 action-bar buttons so they never overflow */
 @media (max-width: 360px) {
   .action-bar-actions { gap: 6px; }
-  .ab-btn { padding: 7px 12px; font-size: 16px; min-height: 38px; }
+  .ab-btn { padding: 7px 12px; font-size: 21px; min-height: 38px; }
 }
 @media (max-width: 540px) {
   .nav-cta { display: none !important; }
@@ -478,22 +478,22 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 .footer-logo { display: inline-block; margin-bottom: 20px; }
 .footer-logo-img { height: 52px; width: auto; display: block; filter: brightness(0) invert(1); }
-.footer-tagline { font-family: var(--font-serif); font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; }
-.footer-mission { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.86); margin: 0 0 22px; max-width: 40ch; }
-.footer-contact { display: flex; flex-direction: column; gap: 7px; font-size: 18px; }
+.footer-tagline { font-family: var(--font-serif); font-size: 29px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; }
+.footer-mission { font-size: 22px; line-height: 1.65; color: rgba(255,255,255,0.86); margin: 0 0 22px; max-width: 40ch; }
+.footer-contact { display: flex; flex-direction: column; gap: 7px; font-size: 23px; }
 .footer-contact a { color: var(--blue-100); } /* AA contrast on --blue-900 footer */
 .footer-contact a:hover { color: #fff; }
 .footer-contact span { color: rgba(255,255,255,0.86); }
 .footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.footer-col h2 { font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--blue-100); margin: 0 0 18px; } /* AA contrast on --blue-900 footer */
+.footer-col h2 { font-size: 21px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--blue-100); margin: 0 0 18px; } /* AA contrast on --blue-900 footer */
 .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-.footer-col a { color: rgba(255,255,255,0.94); font-size: 18px; font-weight: 500; }
+.footer-col a { color: rgba(255,255,255,0.94); font-size: 23px; font-weight: 500; }
 .footer-col a:hover { color: #fff; text-decoration: underline; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px 28px; flex-wrap: wrap; padding-top: 26px; }
-.footer-legal { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 17px; color: rgba(255,255,255,0.92); }
+.footer-legal { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 22px; color: rgba(255,255,255,0.92); }
 .footer-bottom-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .footer-legal-links { display: flex; gap: 18px; }
-.footer-legal-links a { font-size: 17px; color: rgba(255,255,255,0.92); }
+.footer-legal-links a { font-size: 22px; color: rgba(255,255,255,0.92); }
 .footer-legal-links a:hover { color: #fff; }
 .socials { display: flex; gap: 10px; }
 .socials a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: grid; place-items: center; transition: background 0.2s, transform 0.2s; }
@@ -547,7 +547,7 @@ body #main-content .container { padding-top: 0 !important; }
 .nav-drop[hidden] { display: none; }
 .nav-drop a {
   display: flex; align-items: center; min-height: 44px; padding: 8px 14px;
-  border-radius: 10px; font-size: 17px; font-weight: 600; color: var(--ink-2);
+  border-radius: 10px; font-size: 22px; font-weight: 600; color: var(--ink-2);
   text-decoration: none; white-space: nowrap;
 }
 .nav-drop a:hover { background: var(--blue-50); color: var(--blue-text); }
@@ -555,13 +555,13 @@ body #main-content .container { padding-top: 0 !important; }
 /* Right-edge items must not overflow the viewport */
 .nav-row--main .nav-item:nth-last-child(-n+2) .nav-drop { left: auto; right: 0; }
 .nav-mobile .m-top { font-weight: 700; }
-.nav-mobile .m-sub { padding-left: 34px; font-size: 16px; color: var(--ink-2); }
+.nav-mobile .m-sub { padding-left: 34px; font-size: 21px; color: var(--ink-2); }
 
 /* Section headers inside the consolidated dropdowns (benchmark 2026-08-01):
    small caps labels that group Adopt / Foster / Surrender within one menu. */
 .nav-drop .dd-section {
   display: block;
-  font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase;
   font-weight: 700; color: var(--ink-3);
   padding: 12px 14px 4px;
 }

@@ -25,7 +25,7 @@ $dogname     = isset( $_GET['dogname'] ) ? sanitize_text_field( wp_unslash( $_GE
 <section class="section">
   <div class="container" style="max-width:820px">
     <?php if ( '' !== $dogname ) : ?>
-      <p style="font-weight:600;color:var(--purple);margin:0 0 18px;font-size:18px;"><?php echo esc_html( 'Sponsoring: ' . $dogname . ' (write the name in the form so we credit the right pup)' ); ?></p>
+      <p style="font-weight:600;color:var(--purple);margin:0 0 18px;font-size: 23px;"><?php echo esc_html( 'Sponsoring: ' . $dogname . ' (write the name in the form so we credit the right pup)' ); ?></p>
     <?php endif; ?>
     <iframe id="sponsor-iframe"
             src="<?php echo esc_url( $iframe_src ); ?>"
@@ -34,7 +34,7 @@ $dogname     = isset( $_GET['dogname'] ) ? sanitize_text_field( wp_unslash( $_GE
             style="border:0;max-width:760px;margin:0 auto;display:block;background:#fff;border-radius:14px;"></iframe>
     <noscript><p>To sponsor, visit <a href="<?php echo esc_url( $iframe_src ); ?>">our sponsor form</a>.</p></noscript>
 
-    <p style="margin-top:32px;color:var(--ink-3);font-size:16px">Questions about sponsorship? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
+    <p style="margin-top:32px;color:var(--ink-3);font-size: 21px">Questions about sponsorship? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
   </div>
 </section>
 

@@ -8,7 +8,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(0,139,176,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
 .page-hero .container{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
 /* Title uses the same serif as the other titles, with italic-blue emphasis. */
-.page-hero h1{font-family:var(--font-serif);font-size:clamp(22px,2.9vw,40px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin:0 0 16px;max-width:24ch;}
+.page-hero h1{font-family:var(--font-serif);font-size:clamp(27px, 2.9vw, 45px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin:0 0 16px;max-width:24ch;}
 .page-hero h1 em{font-style:italic;font-weight:300;color:var(--blue);}
 /* Placeholder slots for transparent dog cutout PNGs (added later). */
 .hero-cutouts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;}
@@ -22,39 +22,39 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .mission-band .container{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
 .mission-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:400;line-height:1.1;letter-spacing:-.02em;margin:0;}
 .mission-band h2 em{font-style:italic;color:#fff;} /* tints never on colored bands (benchmark 2026-08-01) */
-.mission-band p{font-size:16px;line-height:1.65;color:rgba(255,255,255,.88);margin:0 0 14px;}
+.mission-band p{font-size: 21px;line-height:1.65;color:rgba(255,255,255,.88);margin:0 0 14px;}
 .mission-band p:last-child{margin-bottom:0;}
 @media(max-width:800px){.mission-band .container{grid-template-columns:1fr;gap:24px;}}
 /* STATS */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:48px;background:var(--blue-50);border-radius:var(--radius-xl);margin-top:48px;}
 .stat-item .num{font-family:var(--font-serif);font-size:clamp(36px,4.5vw,64px);font-weight:300;line-height:1;color:var(--blue-700);}
-.stat-item .lbl{font-size: 15px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-3);margin-top:8px;}
+.stat-item .lbl{font-size: 20px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-3);margin-top:8px;}
 @media(max-width:700px){.stats-row{grid-template-columns:1fr 1fr;padding:28px;}}
 /* FOUNDERS QUOTE */
 .founders-band{background:var(--purple);color:#fff;padding:72px 0;text-align:center;}
 .founders-band blockquote{font-family:var(--font-serif);font-size:clamp(24px,3.5vw,42px);font-weight:300;font-style:italic;line-height:1.15;letter-spacing:-.02em;max-width:860px;margin:0 auto 20px;}
-.founders-band cite{font-size: 16px;letter-spacing:.18em;text-transform:uppercase;opacity:.75;}
+.founders-band cite{font-size: 21px;letter-spacing:.18em;text-transform:uppercase;opacity:.75;}
 /* TIMELINE */
 .timeline{margin-top:40px;display:flex;flex-direction:column;}
 .tl-item{display:grid;grid-template-columns:90px 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--line);}
 .tl-item:last-child{border-bottom:1px solid var(--line);}
-.tl-year{font-family:var(--font-serif);font-size:32px;font-weight:300;color:var(--blue);line-height:1;}
-.tl-content h4{font-family:var(--font-serif);font-size:20px;font-weight:500;margin:0 0 6px;}
-.tl-content p{font-size:16px;color:var(--ink-2);margin:0;}
+.tl-year{font-family:var(--font-serif);font-size: 37px;font-weight:300;color:var(--blue);line-height:1;}
+.tl-content h4{font-family:var(--font-serif);font-size: 25px;font-weight:500;margin:0 0 6px;}
+.tl-content p{font-size: 21px;color:var(--ink-2);margin:0;}
 /* TEAM */
 .team-section{background:var(--cream-2);padding:100px 0;}
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px;}
 .person-card{background:#fff;border-radius:var(--radius);padding:22px;text-align:center;border:1px solid var(--line);}
-.person-card .avatar{width:72px;height:72px;border-radius:50%;background:var(--blue-100);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:24px;color:var(--blue-700);}
-.person-card h4{font-family:var(--font-serif);font-size:18px;font-weight:500;margin:0 0 5px;}
-.person-card .role{font-size: 15px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--blue);}
+.person-card .avatar{width:72px;height:72px;border-radius:50%;background:var(--blue-100);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size: 29px;color:var(--blue-700);}
+.person-card h4{font-family:var(--font-serif);font-size: 23px;font-weight:500;margin:0 0 5px;}
+.person-card .role{font-size: 20px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--blue);}
 @media(max-width:1000px){.team-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:700px){.team-grid{grid-template-columns:repeat(2,1fr);}}
 /* BOARD */
 .board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;}
 .board-card{background:var(--ink);color:#fff;border-radius:var(--radius);padding:26px;}
-.board-card .bname{font-family:var(--font-serif);font-size:20px;font-weight:400;margin:0 0 6px;}
-.board-card .brole{font-size: 15px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-200);font-weight:600;}
+.board-card .bname{font-family:var(--font-serif);font-size: 25px;font-weight:400;margin:0 0 6px;}
+.board-card .brole{font-size: 20px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-200);font-weight:600;}
 @media(max-width:700px){.board-grid{grid-template-columns:1fr 1fr;}.team-grid{grid-template-columns:1fr 1fr;}}
 /* LOCATIONS */
 .locations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
@@ -62,9 +62,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .location-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .location-card .loc-icon{width:48px;height:48px;border-radius:14px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:18px;}
 .location-card .loc-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.location-card h3{font-family:var(--font-serif);font-size:20px;font-weight:500;margin:0 0 8px;}
-.location-card p{font-size:16px;color:var(--ink-2);margin:0 0 5px;}
-.location-card .hours{font-size: 16px;color:var(--ink-3);margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);}
+.location-card h3{font-family:var(--font-serif);font-size: 25px;font-weight:500;margin:0 0 8px;}
+.location-card p{font-size: 21px;color:var(--ink-2);margin:0 0 5px;}
+.location-card .hours{font-size: 21px;color:var(--ink-3);margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);}
 @media(max-width:800px){.locations-grid{grid-template-columns:1fr;}}
 /* CTA STRIP */
 .cta-strip{padding:72px 0;background:var(--blue-50);}
@@ -108,7 +108,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 }
 .wwd-row:last-child { border-bottom: 1px solid var(--line); }
 .wwd-num {
-  font-family: var(--font-serif); font-size: 22px; color: var(--blue-text);
+  font-family: var(--font-serif); font-size: 27px; color: var(--blue-text);
   letter-spacing: 0.06em; align-self: start; padding-top: 14px;
 }
 .wwd-title {
@@ -117,7 +117,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   margin: 0 0 16px; color: var(--ink);
 }
 .wwd-title em { font-style: italic; color: var(--blue); }
-.wwd-row p { font-size: 17px; line-height: 1.7; color: var(--ink-2); max-width: 54ch; margin: 0 0 20px; }
+.wwd-row p { font-size: 22px; line-height: 1.7; color: var(--ink-2); max-width: 54ch; margin: 0 0 20px; }
 .wwd-media { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; }
 .wwd-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .wwd-row--flip { grid-template-columns: 88px 0.85fr 1.15fr; }
@@ -243,12 +243,12 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <h2 class="section-title">How we <em>show up.</em></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;">
       <article class="card" style="padding:28px;">
-        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 12px;">Compassionate Food Policy</h3>
-        <p style="color:var(--ink-2);font-size:16px;line-height:1.65;margin:0;">We believe all animals should be treated humanely and with compassion throughout their lives. To honor that, POMDR serves only vegetarian food at all POMDR events, from small staff and volunteer meetings to large gatherings like our annual Lucky Dog Gala. We recommend the same when others host, though we do not control food options at outside-hosted events.</p>
+        <h3 style="font-family:var(--font-serif);font-size: 25px;margin:0 0 12px;">Compassionate Food Policy</h3>
+        <p style="color:var(--ink-2);font-size: 21px;line-height:1.65;margin:0;">We believe all animals should be treated humanely and with compassion throughout their lives. To honor that, POMDR serves only vegetarian food at all POMDR events, from small staff and volunteer meetings to large gatherings like our annual Lucky Dog Gala. We recommend the same when others host, though we do not control food options at outside-hosted events.</p>
       </article>
       <article class="card" style="padding:28px;">
-        <h3 style="font-family:var(--font-serif);font-size:20px;margin:0 0 12px;">Diversity, Equity and Inclusion</h3>
-        <p style="color:var(--ink-2);font-size:16px;line-height:1.65;margin:0;">Diversity, equity, and inclusion matter to POMDR across our staff, volunteers, adopters, and Helping Paw clients. We do not tolerate discrimination or harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, disability, genetic information, or pregnancy. Hiring decisions are based solely on qualifications, merit, and business needs. Adoption decisions are based on the best match for the dog and adopter, considering the dog's activity level, special needs, size, health, and temperament.</p>
+        <h3 style="font-family:var(--font-serif);font-size: 25px;margin:0 0 12px;">Diversity, Equity and Inclusion</h3>
+        <p style="color:var(--ink-2);font-size: 21px;line-height:1.65;margin:0;">Diversity, equity, and inclusion matter to POMDR across our staff, volunteers, adopters, and Helping Paw clients. We do not tolerate discrimination or harassment of any kind based on race, color, sex, religion, sexual orientation, national origin, disability, genetic information, or pregnancy. Hiring decisions are based solely on qualifications, merit, and business needs. Adoption decisions are based on the best match for the dog and adopter, considering the dog's activity level, special needs, size, health, and temperament.</p>
       </article>
     </div>
     <div class="recognition-row">
@@ -271,7 +271,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDR990form2023.pdf" target="_blank" rel="noopener">2023 990 Form</a></li>
         <li><a href="https://www.peaceofminddogrescue.org/downloads/POMDR990form2022.pdf" target="_blank" rel="noopener">2022 990 Form</a></li>
     </ul>
-    <p style="margin-top:18px;color:var(--ink-3);font-size: 16px">These files are currently hosted on the existing site; they move into this site&rsquo;s media library at launch.</p>
+    <p style="margin-top:18px;color:var(--ink-3);font-size: 21px">These files are currently hosted on the existing site; they move into this site&rsquo;s media library at launch.</p>
   </div>
 </section>
 

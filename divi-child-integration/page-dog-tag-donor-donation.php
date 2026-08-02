@@ -25,7 +25,7 @@ $iframe_src = 'https://secure.lglforms.com/form_engine/s/6PuyQVxzC0csoooyizCrhQ'
             width="100%" height="1600"
             style="border:0;max-width:800px;margin:0 auto;display:block;background:#fff;border-radius:14px;"></iframe>
     <noscript><p><a href="<?php echo esc_url( $iframe_src ); ?>">Open the form</a>.</p></noscript>
-    <p style="margin-top:28px;color:var(--ink-3);font-size:16px">Questions? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
+    <p style="margin-top:28px;color:var(--ink-3);font-size: 21px">Questions? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
   </div>
 </section>
 

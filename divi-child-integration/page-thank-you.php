@@ -48,11 +48,11 @@ $categories = $d['categories'] ?? array();
 
 </main>
 <style>
-.ty-intro { font-size: 17px; color: var(--ink-2); max-width: 70ch; }
+.ty-intro { font-size: 22px; color: var(--ink-2); max-width: 70ch; }
 .ty-tier { margin: 22px 0; }
-.ty-tier h3, .ty-cat h3 { font-family: var(--font-serif); font-size: 24px; font-weight: 500; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
-.ty-cat h4 { font-size: 16px; font-weight: 700; color: var(--blue-text); margin: 10px 0 6px; }
-.ty-tier p, .ty-cat p { font-size: 16px; line-height: 1.9; color: var(--ink-2); margin: 0; }
+.ty-tier h3, .ty-cat h3 { font-family: var(--font-serif); font-size: 29px; font-weight: 500; margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.ty-cat h4 { font-size: 21px; font-weight: 700; color: var(--blue-text); margin: 10px 0 6px; }
+.ty-tier p, .ty-cat p { font-size: 21px; line-height: 1.9; color: var(--ink-2); margin: 0; }
 .ty-cat { margin: 34px 0; }
 </style>
 <?php get_footer();

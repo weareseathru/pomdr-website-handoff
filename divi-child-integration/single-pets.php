@@ -561,6 +561,12 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                         if (!$no_adopt) {
                             echo '<p class="pdp-note">' . esc_html(get_the_title($post_id)) . ' ' . esc_html__('could be your new old best friend. Press Adopt to fill out our online form, and a real person will get back to you.', 'pom') . '</p>';
                         }
+                        // Actions live inside the info card (design method: primary action
+                        // above the fold and again after the story).
+                        echo '<div class="pom-buttons"><div class="pom-buttons-row pom-buttons-row--inline">';
+                        if (!$no_adopt) { echo '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/'))) . '">' . esc_html__('Adopt', 'pom') . '</a>'; }
+                        if (!$is_courtesy) { echo '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>'; }
+                        echo '<a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
                         echo '</section>';
 
                         // Gallery + the video as the last slide (Fancybox plays
@@ -593,12 +599,6 @@ function pom_flush_row_buffers(&$left_buf, &$right_buf)
                             if ($video) { echo '<div class="pom-video">' . $video . '</div>'; }
                         }
 
-                        // Actions repeated at the end (design method: primary action
-                        // above the fold and again after the story).
-                        echo '<div class="pom-buttons"><div class="pom-buttons-row pom-buttons-row--inline">';
-                        if (!$no_adopt) { echo '<a class="btn btn-primary" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/adoption-questionnaire/'))) . '">' . esc_html__('Adopt', 'pom') . '</a>'; }
-                        if (!$is_courtesy) { echo '<a class="btn btn-purple" href="' . esc_url(add_query_arg('dogname', get_the_title($post_id), home_url('/sponsor-a-dog/'))) . '">' . esc_html__('Sponsor', 'pom') . '</a>'; }
-                        echo '<a class="btn btn-outline" href="' . esc_url(home_url('/adopt/')) . '">' . esc_html__('Browse all dogs', 'pom') . '</a></div></div>';
 
                         echo '</div>';
 

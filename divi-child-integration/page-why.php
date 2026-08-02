@@ -7,19 +7,19 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px;}
 .reason-card{background:#fff;border-radius:var(--radius-lg);padding:28px;border:1px solid var(--line);transition:all .35s var(--ease);}
 .reason-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.reason-card .num{font-family:var(--font-serif);font-size:34px;font-weight:300;color:var(--blue);line-height:1;margin-bottom:14px;}
-.reason-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
-.reason-card p{font-size:17px;color:var(--ink-2);margin:0;}
+.reason-card .num{font-family:var(--font-serif);font-size: 39px;font-weight:300;color:var(--blue);line-height:1;margin-bottom:14px;}
+.reason-card h3{font-family:var(--font-serif);font-size: 27px;font-weight:500;margin:0 0 8px;}
+.reason-card p{font-size: 22px;color:var(--ink-2);margin:0;}
 @media(max-width:900px){.reasons-grid{grid-template-columns:1fr;}}
 .twocol{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-.twocol p{font-size:17px;color:var(--ink-2);margin:0 0 18px;}
+.twocol p{font-size: 22px;color:var(--ink-2);margin:0 0 18px;}
 .twocol h2{font-family:var(--font-serif);font-size:clamp(28px,3.4vw,44px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
 .twocol h2 em{font-style:italic;color:var(--purple);}
 @media(max-width:800px){.twocol{grid-template-columns:1fr;gap:32px;}}
 .myth-list{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
 .myth-list li{list-style:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
-.myth-list strong{display:block;font-size:18px;color:var(--ink);margin-bottom:6px;font-weight:600;}
-.myth-list span{display:block;font-size:17px;color:var(--ink-2);}
+.myth-list strong{display:block;font-size: 23px;color:var(--ink);margin-bottom:6px;font-weight:600;}
+.myth-list span{display:block;font-size: 22px;color:var(--ink-2);}
 </style>
 <main id="main-content">
 
@@ -119,7 +119,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <a href="/foster-needs/" class="btn btn-outline">Foster a senior dog</a>
       <a href="/donate/" class="btn btn-outline">Support our work</a>
     </div>
-    <p style="margin-top:20px;font-size:17px;color:var(--ink-2);">Questions? Call <a href="tel:8317189122" style="color:var(--blue-700);font-weight:600;">(831) 718-9122</a> or email <a href="mailto:info@pomdr.org" style="color:var(--blue-700);font-weight:600;">info@pomdr.org</a>.</p>
+    <p style="margin-top:20px;font-size: 22px;color:var(--ink-2);">Questions? Call <a href="tel:8317189122" style="color:var(--blue-700);font-weight:600;">(831) 718-9122</a> or email <a href="mailto:info@pomdr.org" style="color:var(--blue-700);font-weight:600;">info@pomdr.org</a>.</p>
   </div>
 </section>
 
@@ -161,8 +161,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <style>
 .why-quotes { columns: 2 380px; column-gap: 24px; }
 .why-quote { break-inside: avoid; margin: 0 0 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; }
-.why-quote blockquote { margin: 0 0 12px; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
-.why-quote figcaption { font-weight: 700; font-size: 16px; }
+.why-quote blockquote { margin: 0 0 12px; font-size: 22px; line-height: 1.65; color: var(--ink-2); }
+.why-quote figcaption { font-weight: 700; font-size: 21px; }
 </style>
 
 </main>

@@ -78,12 +78,12 @@ $pomdr_videos = function_exists( 'pomdr_get_videos' ) ? pomdr_get_videos() : arr
 .vid-play { position: absolute; inset: 0; display: grid; place-items: center; }
 .vid-play svg { width: 58px; height: 58px; color: #fff; filter: drop-shadow(0 4px 14px rgba(0,0,0,.5)); }
 .vid-frame--ext { display: grid; place-items: center; background: var(--blue-900); color: #fff; text-decoration: none; }
-.vid-frame--ext .vid-ext-label { font-weight: 700; font-size: 18px; z-index: 1; }
+.vid-frame--ext .vid-ext-label { font-weight: 700; font-size: 23px; z-index: 1; }
 .vid-frame--ext .vid-play svg { width: 34px; height: 34px; opacity: .6; }
-.vid-title { font-family: var(--font-serif); font-size: 24px; font-weight: 500; margin: 14px 0 6px; }
-.vid-year { font-family: var(--font-sans); font-size: 16px; font-weight: 600; color: var(--blue-text); margin-left: 8px; }
-.vid-caption { font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 0 0 6px; }
-.vid-credits { font-size: 15px; color: var(--ink-3); margin: 0; }
+.vid-title { font-family: var(--font-serif); font-size: 29px; font-weight: 500; margin: 14px 0 6px; }
+.vid-year { font-family: var(--font-sans); font-size: 21px; font-weight: 600; color: var(--blue-text); margin-left: 8px; }
+.vid-caption { font-size: 21px; line-height: 1.6; color: var(--ink-2); margin: 0 0 6px; }
+.vid-credits { font-size: 20px; color: var(--ink-3); margin: 0; }
 </style>
 <script>
 (function () {

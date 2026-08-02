@@ -28,7 +28,7 @@ $d    = is_readable( $file ) ? json_decode( (string) file_get_contents( $file ),
 <section class="section">
   <div class="container" style="max-width:800px">
     <?php foreach ( ( $d['body_paragraphs'] ?? array() ) as $para ) : ?>
-    <p style="font-size:18px;line-height:1.75;color:var(--ink-2);margin:0 0 18px"><?php echo esc_html( $para ); ?></p>
+    <p style="font-size: 23px;line-height:1.75;color:var(--ink-2);margin:0 0 18px"><?php echo esc_html( $para ); ?></p>
     <?php endforeach; ?>
     <div style="margin-top:30px">
       <a href="<?php echo esc_url( home_url( '/donation/?fund=' . rawurlencode( "Max's Helping Paws Fund" ) ) ); ?>" class="btn btn-primary"><?php echo esc_html( $d['cta_text'] ?? "Donate to Max's Fund" ); ?></a>

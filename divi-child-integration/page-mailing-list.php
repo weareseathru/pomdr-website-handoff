@@ -7,12 +7,12 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .signup-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;}
 @media(max-width:800px){.signup-grid{grid-template-columns:1fr;gap:36px;}}
 .signup-card{background:#fff;padding:32px;border-radius:var(--radius-lg);border:1px solid var(--line);box-shadow:var(--shadow-sm);}
-.signup-card label{display:block;font-size:16px;font-weight:600;margin-bottom:6px;}
-.signup-card input{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;font-size:16px;margin-bottom:18px;min-height:44px;}
+.signup-card label{display:block;font-size: 21px;font-weight:600;margin-bottom:6px;}
+.signup-card input{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;font:inherit;font-size: 21px;margin-bottom:18px;min-height:44px;}
 .signup-card input:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;}
-.signup-note{font-size:16px;color:var(--ink-2);margin:16px 0 0;}
+.signup-note{font-size: 21px;color:var(--ink-2);margin:16px 0 0;}
 .benefit-list{display:flex;flex-direction:column;gap:14px;margin:24px 0 0;}
-.benefit-list li{display:flex;align-items:flex-start;gap:12px;font-size:17px;color:var(--ink-2);}
+.benefit-list li{display:flex;align-items:flex-start;gap:12px;font-size: 22px;color:var(--ink-2);}
 .benefit-list .ck{width:28px;height:28px;border-radius:8px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;flex-shrink:0;}
 .benefit-list .ck svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.5;}
 </style>
@@ -49,7 +49,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
            (peaceofminddogrescue.org/POMDRMailingList.php). Signups land in the
            LGL constituent database, which feeds Mailchimp. -->
       <div id="signup" class="signup-card">
-        <h3 style="font-family:var(--font-serif);font-size:24px;font-weight:500;margin:0 0 20px">Join the mailing list</h3>
+        <h3 style="font-family:var(--font-serif);font-size: 29px;font-weight:500;margin:0 0 20px">Join the mailing list</h3>
         <iframe src="https://secure.lglforms.com/form_engine/s/gTxA6GdJUmSjS2J4hXvcKg"
                 title="Join the POMDR mailing list"
                 width="100%" height="620"

@@ -47,6 +47,6 @@ $adoption_events = pomdr_collect_events( array( 'Adoption Event' ) );
 /* The two sections carry equal weight: same title size, same spacing; the
    second gets a soft tint so the split reads clearly. */
 .section--tint { background: var(--purple-50); }
-.section-intro { font-size: 18px; line-height: 1.6; color: var(--ink-2); margin: 0 0 28px; max-width: 60ch; }
+.section-intro { font-size: 23px; line-height: 1.6; color: var(--ink-2); margin: 0 0 28px; max-width: 60ch; }
 </style>
 <?php get_footer();

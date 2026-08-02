@@ -7,14 +7,14 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:8px;}
 .value-card{background:#fff;border-radius:var(--radius-lg);padding:30px;border:1px solid var(--line);transition:all .35s var(--ease);}
 .value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.value-card .vk{width:46px;height:46px;border-radius:14px;background:var(--purple-50);display:grid;place-items:center;color:var(--purple);margin-bottom:16px;font-family:var(--font-serif);font-size:22px;font-weight:500;}
-.value-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 8px;}
-.value-card p{font-size:17px;color:var(--ink-2);margin:0;}
+.value-card .vk{width:46px;height:46px;border-radius:14px;background:var(--purple-50);display:grid;place-items:center;color:var(--purple);margin-bottom:16px;font-family:var(--font-serif);font-size: 27px;font-weight:500;}
+.value-card h3{font-family:var(--font-serif);font-size: 28px;font-weight:500;margin:0 0 8px;}
+.value-card p{font-size: 22px;color:var(--ink-2);margin:0;}
 @media(max-width:760px){.values-grid{grid-template-columns:1fr;}}
 .people-band{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
 .people-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.4vw,44px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
 .people-band h2 em{font-style:italic;color:var(--purple);}
-.people-band p{font-size:17px;color:var(--ink-2);margin:0 0 18px;}
+.people-band p{font-size: 22px;color:var(--ink-2);margin:0 0 18px;}
 @media(max-width:800px){.people-band{grid-template-columns:1fr;gap:32px;}}
 </style>
 <main id="main-content">
@@ -101,10 +101,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;">
           <span class="eyebrow purple">Ways to belong</span>
           <ul style="list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;">
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Staff roles.</strong> Mission-driven work with a team that values balance and respect.</li>
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Volunteers.</strong> Walk dogs, foster, drive, photograph, or lend a skill. Every hour matters.</li>
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Fosters.</strong> Open your home and give a senior dog comfort while we find their person.</li>
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Donors and sponsors.</strong> Fund the care that makes all of this possible.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Staff roles.</strong> Mission-driven work with a team that values balance and respect.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Volunteers.</strong> Walk dogs, foster, drive, photograph, or lend a skill. Every hour matters.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Fosters.</strong> Open your home and give a senior dog comfort while we find their person.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Donors and sponsors.</strong> Fund the care that makes all of this possible.</li>
           </ul>
         </div>
       </div>
@@ -128,7 +128,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <a href="/jobs/" class="btn btn-purple">Join our team</a>
       <a href="/volunteer/" class="btn btn-outline">Volunteer with us</a>
     </div>
-    <p style="margin-top:20px;font-size:17px;color:var(--ink-2);">Reach us at <a href="tel:8317189122" style="color:var(--purple);font-weight:600;">(831) 718-9122</a> or <a href="mailto:info@pomdr.org" style="color:var(--purple);font-weight:600;">info@pomdr.org</a>.</p>
+    <p style="margin-top:20px;font-size: 22px;color:var(--ink-2);">Reach us at <a href="tel:8317189122" style="color:var(--purple);font-weight:600;">(831) 718-9122</a> or <a href="mailto:info@pomdr.org" style="color:var(--purple);font-weight:600;">info@pomdr.org</a>.</p>
   </div>
 </section>
 

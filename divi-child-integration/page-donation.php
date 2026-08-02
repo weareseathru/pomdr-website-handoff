@@ -47,7 +47,7 @@ if ( $args ) { $iframe_src = add_query_arg( array_map( 'rawurlencode', $args ), 
             width="100%" height="2200"
             style="border:0;max-width:800px;margin:0 auto;display:block;background:#fff;border-radius:14px;"></iframe>
     <noscript><p>To donate, visit <a href="<?php echo esc_url( $iframe_src ); ?>">our donation form</a>.</p></noscript>
-    <p style="margin-top:28px;color:var(--ink-3);font-size:16px">Peace of Mind Dog Rescue is a 501(c)(3) nonprofit. EIN 27-1154816. Questions? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
+    <p style="margin-top:28px;color:var(--ink-3);font-size: 21px">Peace of Mind Dog Rescue is a 501(c)(3) nonprofit. EIN 27-1154816. Questions? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
   </div>
 </section>
 

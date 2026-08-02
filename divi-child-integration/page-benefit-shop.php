@@ -10,7 +10,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .shop-intro .media{aspect-ratio:4/5;background:var(--cream-2);border-radius:var(--radius-lg);overflow:hidden;}
 .shop-intro .media img{width:100%;height:100%;object-fit:cover;display:block;}
 .lists-2col{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;margin-top:8px;}
-.lists-2col ul{font-size:16px;line-height:1.7;padding-left:1.2em;columns:2;column-gap:32px;}
+.lists-2col ul{font-size: 21px;line-height:1.7;padding-left:1.2em;columns:2;column-gap:32px;}
 .lists-2col li{break-inside:avoid;}
 @media(max-width:860px){.shop-intro{grid-template-columns:1fr;gap:26px;}.lists-2col{grid-template-columns:1fr;gap:24px;}.lists-2col ul{columns:1;}}
 </style>
@@ -37,9 +37,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="shop-intro">
       <div>
         <h2 class="section-title" style="margin-bottom:16px">Visit the shop</h2>
-        <p style="font-size:17px;line-height:1.7">223 Grand Avenue, Suite 1, Pacific Grove, CA 93950<br/>Shop phone: (831) 312-8991</p>
-        <p style="font-size:17px;line-height:1.7"><strong>Hours:</strong><br/>Tuesday through Saturday, 11:00 am to 5:00 pm<br/>Closed Sunday and Monday</p>
-        <p style="font-size:17px;line-height:1.7">Come check out our artwork, clothing, jewelry, home goods, furniture, and other merchandise. The shop specializes in higher-end, lightly used items at reasonable prices.</p>
+        <p style="font-size: 22px;line-height:1.7">223 Grand Avenue, Suite 1, Pacific Grove, CA 93950<br/>Shop phone: (831) 312-8991</p>
+        <p style="font-size: 22px;line-height:1.7"><strong>Hours:</strong><br/>Tuesday through Saturday, 11:00 am to 5:00 pm<br/>Closed Sunday and Monday</p>
+        <p style="font-size: 22px;line-height:1.7">Come check out our artwork, clothing, jewelry, home goods, furniture, and other merchandise. The shop specializes in higher-end, lightly used items at reasonable prices.</p>
       </div>
       <div class="media">
         <img src="<?php echo $img; ?>/dog12.jpeg" alt="A senior dog cared for thanks to Benefit Shop sales" loading="lazy"/>
@@ -47,10 +47,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
 
     <h2 class="section-title" style="margin:48px 0 16px">Donate goods</h2>
-    <p style="font-size:17px;line-height:1.7">To make a donation, email <a href="mailto:shop@pomdr.org">shop@pomdr.org</a>. Please let us know what you have to donate and your preferred day and time frame. If an item is large, email a photo first so our shop manager can confirm we have space.</p>
+    <p style="font-size: 22px;line-height:1.7">To make a donation, email <a href="mailto:shop@pomdr.org">shop@pomdr.org</a>. Please let us know what you have to donate and your preferred day and time frame. If an item is large, email a photo first so our shop manager can confirm we have space.</p>
     <div class="lists-2col">
       <div>
-        <h3 style="font-size:19px;margin:20px 0 8px">Items we take</h3>
+        <h3 style="font-size: 24px;margin:20px 0 8px">Items we take</h3>
         <ul>
           <li>Accessories such as jewelry, purses, and scarves</li>
           <li>Home decor such as artwork and frames</li>
@@ -69,7 +69,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </ul>
       </div>
       <div>
-        <h3 style="font-size:19px;margin:20px 0 8px">Items we cannot use</h3>
+        <h3 style="font-size: 24px;margin:20px 0 8px">Items we cannot use</h3>
         <ul>
           <li>Mattresses</li>
           <li>Baby equipment such as car seats and high chairs (safety regulations and recalls)</li>
@@ -84,7 +84,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
 
     <h2 class="section-title" style="margin:48px 0 16px">Volunteer</h2>
-    <p style="font-size:17px;line-height:1.7">The shop runs on volunteers. Sorting, staging, retail shifts, pickups. A few hours a month makes a real difference.</p>
+    <p style="font-size: 22px;line-height:1.7">The shop runs on volunteers. Sorting, staging, retail shifts, pickups. A few hours a month makes a real difference.</p>
     <a href="/volunteer/" class="btn btn-primary" style="margin-top:24px">Volunteer at the Shop</a>
   </div>
 </section>

@@ -30,7 +30,7 @@ if ( '' !== $prefill ) {
   <section class="section">
     <div class="container">
       <?php if ( '' !== $prefill ) : ?>
-        <p style="font-weight:600;color:var(--purple);margin:0 0 18px;font-size:18px;"><?php echo esc_html( 'Applying to adopt: ' . $prefill ); ?></p>
+        <p style="font-weight:600;color:var(--purple);margin:0 0 18px;font-size: 23px;"><?php echo esc_html( 'Applying to adopt: ' . $prefill ); ?></p>
       <?php endif; ?>
       <iframe id="adoption-iframe"
               src="<?php echo esc_url( $iframe_src ); ?>"

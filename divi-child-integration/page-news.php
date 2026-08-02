@@ -51,8 +51,8 @@ if ( ! is_array( $items ) ) { $items = array(); }
 </main>
 <style>
 .news-item { padding: 30px 0; border-bottom: 1px solid var(--line); }
-.news-item h2 { font-family: var(--font-serif); font-size: 27px; font-weight: 500; margin: 0 0 10px; }
-.news-item p { font-size: 17px; line-height: 1.7; color: var(--ink-2); margin: 0 0 10px; max-width: 72ch; }
+.news-item h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 500; margin: 0 0 10px; }
+.news-item p { font-size: 22px; line-height: 1.7; color: var(--ink-2); margin: 0 0 10px; max-width: 72ch; }
 .news-links a { display: inline-flex; align-items: center; min-height: 44px; margin-right: 22px; color: var(--blue-text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 </style>
 <?php get_footer();

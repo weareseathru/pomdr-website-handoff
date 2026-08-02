@@ -14,25 +14,25 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .page-hero .page-narrative{color:rgba(255,255,255,.92);}
 .page-hero .page-narrative em{color:#fff;} /* tints never on colored bands (benchmark 2026-08-01) */
 .donate-card{background:rgba(255,255,255,.08);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:36px;margin-top:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:44px;align-items:start;}
-.donate-card h1{font-family:var(--font-serif);font-size:clamp(18px,2.4vw,32px);line-height:1.1;letter-spacing:-.02em;font-weight:400;margin:0 0 14px;}
+.donate-card h1{font-family:var(--font-serif);font-size:clamp(23px, 2.4vw, 37px);line-height:1.1;letter-spacing:-.02em;font-weight:400;margin:0 0 14px;}
 .donate-card h1 em{font-style:italic;color:#fff;}
-.donate-card p{font-size:16px;color:rgba(255,255,255,.85);margin:0 0 10px;}
-.donate-card .tax{font-size:16px;color:rgba(255,255,255,.78);margin-top:14px;}
+.donate-card p{font-size: 21px;color:rgba(255,255,255,.85);margin:0 0 10px;}
+.donate-card .tax{font-size: 21px;color:rgba(255,255,255,.78);margin-top:14px;}
 .amounts{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px;}
-.amount-btn{min-height:44px;padding:13px 18px;border-radius:999px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-size:16px;font-weight:600;font-family:var(--font-sans);cursor:pointer;transition:all .2s;}
+.amount-btn{min-height:44px;padding:13px 18px;border-radius:999px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.4);color:#fff;font-size: 21px;font-weight:600;font-family:var(--font-sans);cursor:pointer;transition:all .2s;}
 .amount-btn:hover,.amount-btn.active{background:var(--blue-700);border-color:var(--blue);}
 .custom-row{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 6px 6px 20px;}
-.custom-row input{flex:1;min-height:44px;border:none;background:transparent;font:inherit;font-size:16px;color:#fff;outline:none;}
+.custom-row input{flex:1;min-height:44px;border:none;background:transparent;font:inherit;font-size: 21px;color:#fff;outline:none;}
 .custom-row input::placeholder{color:rgba(255,255,255,.78);}
-.donate-btn{min-height:44px;background:var(--blue-700);color:#fff;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px;box-shadow:0 6px 18px -4px rgba(0,139,176,.55);transition:all .25s;border:none;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;}
+.donate-btn{min-height:44px;background:var(--blue-700);color:#fff;padding:13px 24px;border-radius:999px;font-weight:600;font-size: 21px;box-shadow:0 6px 18px -4px rgba(0,139,176,.55);transition:all .25s;border:none;font-family:var(--font-sans);cursor:pointer;white-space:nowrap;}
 .donate-btn:hover{background:var(--blue-700);}
-.donate-meta{display:flex;gap:20px;margin-top:18px;font-size:16px;color:rgba(255,255,255,.85);flex-wrap:wrap;}
+.donate-meta{display:flex;gap:20px;margin-top:18px;font-size: 21px;color:rgba(255,255,255,.85);flex-wrap:wrap;}
 @media(max-width:800px){.donate-card{grid-template-columns:1fr;gap:28px;}}
 /* MONTHLY */
 .monthly-band{background:var(--purple);color:#fff;padding:72px 0;text-align:center;}
 .monthly-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;letter-spacing:-.02em;margin:10px 0 16px;}
 .monthly-band h2 em{font-style:italic;color:#fff;}
-.monthly-band p{font-size:17px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto 28px;}
+.monthly-band p{font-size: 22px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto 28px;}
 /* WAYS GRID */
 .ways-section{padding:80px 0 100px;}
 .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:16px;}
@@ -43,9 +43,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .way-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .way-icon{width:46px;height:46px;border-radius:14px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue-700);margin-bottom:16px;}
 .way-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;}
-.way-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:var(--ink);}
-.way-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.way-link{display:inline-flex;align-items:center;gap:6px;font-size:17px;font-weight:700;color:var(--blue-700);margin-top:auto;transition:gap .25s;}
+.way-card h3{font-family:var(--font-serif);font-size: 28px;font-weight:500;margin:0 0 8px;letter-spacing:-.01em;color:var(--ink);}
+.way-card p{font-size: 21px;color:var(--ink-2);margin:0 0 14px;flex:1;}
+.way-link{display:inline-flex;align-items:center;gap:6px;font-size: 22px;font-weight:700;color:var(--blue-700);margin-top:auto;transition:gap .25s;}
 .way-card:hover .way-link{gap:10px;}
 @media(max-width:900px){.ways-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:580px){.ways-grid{grid-template-columns:1fr;}}
@@ -67,10 +67,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div>
         <p>POMDR relies heavily on donations to further our mission of helping senior dogs and senior people stay together. Our biggest expense is medical care for the dogs we rescue.</p>
         <p>Peace of Mind Dog Rescue is a non-profit 501(c)(3). Your donations are tax-deductible to the extent allowable by law.</p>
-        <div class="tax" style="font-size: 15px;color:rgba(255,255,255,.6);">501(c)(3) nonprofit · EIN 27-1154816</div>
+        <div class="tax" style="font-size: 20px;color:rgba(255,255,255,.6);">501(c)(3) nonprofit · EIN 27-1154816</div>
       </div>
       <div>
-        <div style="font-size: 16px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:14px;">Choose an amount</div>
+        <div style="font-size: 21px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:14px;">Choose an amount</div>
         <div class="amounts" id="amounts">
           <button class="amount-btn" data-amount="60">$60</button>
           <button class="amount-btn active" data-amount="125">$125</button>

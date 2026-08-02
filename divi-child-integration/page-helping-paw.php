@@ -16,9 +16,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .program-card .card-body{padding:24px;flex:1;display:flex;flex-direction:column;}
 .program-card .card-icon{width:44px;height:44px;border-radius:14px;background:var(--orange-50);display:grid;place-items:center;color:var(--orange);margin-bottom:14px;}
 .program-card .card-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.program-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
-.program-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.program-card .card-link{display:inline-flex;align-items:center;gap:6px;font-size: 16px;font-weight:600;color:var(--orange);margin-top:auto;}
+.program-card h3{font-family:var(--font-serif);font-size: 27px;font-weight:500;margin:0 0 8px;}
+.program-card p{font-size: 21px;color:var(--ink-2);margin:0 0 14px;flex:1;}
+.program-card .card-link{display:inline-flex;align-items:center;gap:6px;font-size: 21px;font-weight:600;color:var(--orange);margin-top:auto;}
 .program-card .card-link::after{content:"→";transition:transform .25s;}
 .program-card:hover .card-link::after{transform:translateX(4px);}
 @media(max-width:900px){.programs-grid{grid-template-columns:1fr 1fr;}}
@@ -29,11 +29,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .brigade-img{border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/5;}
 .brigade-img img{width:100%;height:100%;object-fit:cover;}
 .brigade-list{margin:20px 0;display:flex;flex-direction:column;gap:12px;}
-.brigade-list li{display:flex;align-items:flex-start;gap:12px;font-size: 16px;padding:12px;background:#fff;border-radius:12px;border:1px solid rgba(99,47,136,.12);}
+.brigade-list li{display:flex;align-items:flex-start;gap:12px;font-size: 21px;padding:12px;background:#fff;border-radius:12px;border:1px solid rgba(99,47,136,.12);}
 .li-icon{width:34px;height:34px;border-radius:9px;background:var(--orange-50);display:grid;place-items:center;color:var(--orange);flex-shrink:0;}
 .li-icon svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.li-text strong{display:block;font-weight:600;font-size:16px;color:var(--ink);}
-.li-text span{font-size: 16px;color:var(--ink-3);}
+.li-text strong{display:block;font-weight:600;font-size: 21px;color:var(--ink);}
+.li-text span{font-size: 21px;color:var(--ink-3);}
 @media(max-width:800px){.brigade-inner{grid-template-columns:1fr;gap:36px;}}
 /* FUNDS */
 .funds-section{padding:100px 0;}
@@ -51,11 +51,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .fund-icon{width:48px;height:48px;border-radius:15px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:18px;}
 .fund-card.featured .fund-icon{background:rgba(255,255,255,.15);color:#fff;}
 .fund-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.fund-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
-.fund-card p{font-size:16px;color:var(--ink-2);margin:0 0 14px;flex:1;}
-.fund-card .conditions{font-size: 15px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--line);}
+.fund-card h3{font-family:var(--font-serif);font-size: 27px;font-weight:500;margin:0 0 8px;}
+.fund-card p{font-size: 21px;color:var(--ink-2);margin:0 0 14px;flex:1;}
+.fund-card .conditions{font-size: 20px;color:var(--ink-3);padding-top:14px;border-top:1px dashed var(--line);}
 .fund-card.featured .conditions{color:rgba(255,255,255,.6);border-top-color:rgba(255,255,255,.2);}
-.fund-link{display:inline-flex;align-items:center;gap:6px;font-size: 16px;font-weight:600;color:var(--blue);margin-top:14px;}
+.fund-link{display:inline-flex;align-items:center;gap:6px;font-size: 21px;font-weight:600;color:var(--blue);margin-top:14px;}
 .fund-card.featured .fund-link{color:rgba(255,255,255,.88);}
 .fund-link::after{content:"→";transition:transform .25s;}
 .fund-card:hover .fund-link::after{transform:translateX(4px);}
@@ -65,7 +65,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .eligibility-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
 .eligibility-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,48px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
 .eligibility-band h2 em{font-style:italic;color:var(--blue-200);}
-.eligibility-band p{color:rgba(255,255,255,.8);font-size:16px;margin:0 0 20px;}
+.eligibility-band p{color:rgba(255,255,255,.8);font-size: 21px;margin:0 0 20px;}
 @media(max-width:800px){.eligibility-inner{grid-template-columns:1fr;gap:28px;}}
 /* CTA STRIP */
 .cta-strip{padding:72px 0;background:var(--blue-50);}
@@ -153,7 +153,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div>
         <div class="eyebrow">Walking Brigade</div>
         <h2 class="section-title" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:400;margin:12px 0 16px;">Volunteer walkers. <em style="font-style:italic;color:var(--orange)">Real bonds.</em></h2>
-        <p style="font-size:17px;color:var(--ink-2);margin:0 0 24px;">Our walking volunteers are matched with senior or ill guardians in the Monterey, Santa Cruz, and San Benito county areas. Walks happen on a regular schedule, giving the dog exercise and the guardian peace of mind.</p>
+        <p style="font-size: 22px;color:var(--ink-2);margin:0 0 24px;">Our walking volunteers are matched with senior or ill guardians in the Monterey, Santa Cruz, and San Benito county areas. Walks happen on a regular schedule, giving the dog exercise and the guardian peace of mind.</p>
         <ul class="brigade-list">
           <li>
             <div class="li-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
@@ -221,15 +221,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container">
     <div class="eligibility-inner">
       <div>
-        <div style="font-size:17px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue-200);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:24px;height:1px;background:var(--blue-200);display:inline-block;"></span>Who Qualifies</div>
+        <div style="font-size: 22px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--blue-200);display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;"><span style="width:24px;height:1px;background:var(--blue-200);display:inline-block;"></span>Who Qualifies</div>
         <h2>Are you <em>eligible?</em></h2>
         <p>The Helping Paw Program is designed for people in our tri-county area who need support caring for their dog due to age, disability, or financial hardship.</p>
         <p>We review each application individually and do our best to help as many people as we can. If we are unable to help, we provide referrals to other resources.</p>
-        <a href="/helping-paw-application/" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-700);color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;font-size:16px;margin-top:8px;transition:all .25s;">
+        <a href="/helping-paw-application/" style="display:inline-flex;align-items:center;gap:8px;background:var(--blue-700);color:#fff;padding:14px 24px;border-radius:999px;font-weight:600;font-size: 21px;margin-top:8px;transition:all .25s;">
           Apply Online
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <div style="margin-top:16px;font-size: 16px;color:rgba(255,255,255,.5);">Or call <a href="tel:8317189122" style="color:var(--blue-200);">(831) 718-9122</a></div>
+        <div style="margin-top:16px;font-size: 21px;color:rgba(255,255,255,.5);">Or call <a href="tel:8317189122" style="color:var(--blue-200);">(831) 718-9122</a></div>
       </div>
       <div>
         <ul class="check-list">
@@ -283,7 +283,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div>
         <div class="eyebrow">Volunteer assistance</div>
         <h2 class="section-title" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:400;margin:12px 0 16px;">Hands-on help, <em style="font-style:italic;color:var(--orange)">no income limit.</em></h2>
-        <p style="font-size:17px;color:var(--ink-2);margin:0 0 24px;">We provide short-term dog walking for emergencies, emergency short-term foster or boarding for guardians in the hospital or recovering from illness or surgery, and transportation to the vet or groomer for disabled and senior guardians. There are no income restrictions for volunteer assistance, and donations are welcomed.</p>
+        <p style="font-size: 22px;color:var(--ink-2);margin:0 0 24px;">We provide short-term dog walking for emergencies, emergency short-term foster or boarding for guardians in the hospital or recovering from illness or surgery, and transportation to the vet or groomer for disabled and senior guardians. There are no income restrictions for volunteer assistance, and donations are welcomed.</p>
         <ul class="brigade-list">
           <li>
             <div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -302,7 +302,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div>
         <div class="eyebrow">Supplies, as available</div>
         <h2 class="section-title" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-.02em;font-weight:400;margin:12px 0 16px;">Donated gear for <em style="font-style:italic;color:var(--orange)">your pet.</em></h2>
-        <p style="font-size:17px;color:var(--ink-2);margin:0 0 24px;">When we have them, we can share donated supplies. They are picked up at our headquarters in Pacific Grove.</p>
+        <p style="font-size: 22px;color:var(--ink-2);margin:0 0 24px;">When we have them, we can share donated supplies. They are picked up at our headquarters in Pacific Grove.</p>
         <ul class="brigade-list">
           <li><div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="li-text"><strong>Dog and cat food</strong><span>Flea prevention</span></div></li>
           <li><div class="li-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="li-text"><strong>Collars, leashes, ID tags</strong><span>Crates and blankets</span></div></li>

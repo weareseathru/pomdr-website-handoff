@@ -6,8 +6,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <style>
 .page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(99,47,136,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
 .hero-stat-row{display:flex;gap:36px;margin-top:44px;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;}
-.hero-stat .num{font-family:var(--font-serif);font-size:40px;font-weight:300;color:var(--purple);line-height:1;}
-.hero-stat .lbl{font-size: 16px;color:var(--ink-3);margin-top:3px;}
+.hero-stat .num{font-family:var(--font-serif);font-size: 45px;font-weight:300;color:var(--purple);line-height:1;}
+.hero-stat .lbl{font-size: 21px;color:var(--ink-3);margin-top:3px;}
 /* Lead copy + the three stats share one row (mirrors the adopt header). */
 .hero-row{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin:22px 0 26px;}
 .hero-row .lead{margin:0;}
@@ -36,9 +36,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .role-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/dog16.jpeg);}
 .role-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:rgba(255,255,255,.2)!important;color:#fff!important;backdrop-filter:blur(3px);}
 .role-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;}
-.role-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
-.role-card p{font-size:16px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
-.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size:16px;font-weight:700;color:#fff;margin-top:auto;}
+.role-card h3{font-family:var(--font-serif);font-size: 28px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
+.role-card p{font-size: 21px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size: 21px;font-weight:700;color:#fff;margin-top:auto;}
 .role-card .learn::after{content:"→";transition:transform .25s var(--ease);}
 .role-card:hover .learn::after{transform:translateX(5px);}
 @media(max-width:900px){.roles-grid{grid-template-columns:1fr 1fr;}}
@@ -47,7 +47,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .apply-band{background:var(--blue-900);color:#fff;padding:100px 0;text-align:center;}
 .apply-band h2{font-family:var(--font-serif);font-size:clamp(32px,4.5vw,60px);font-weight:300;letter-spacing:-.025em;margin:10px 0 18px;}
 .apply-band h2 em{font-style:italic;color:var(--blue-200);}
-.apply-band p{font-size:18px;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 32px;}
+.apply-band p{font-size: 23px;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 32px;}
 </style>
 <main id="main-content">
 
@@ -204,7 +204,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       Fill Out Volunteer Application
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
-    <div style="margin-top:32px;font-size:16px;color:rgba(255,255,255,.55);">Questions? <a href="mailto:info@pomdr.org" style="color:var(--blue-200);">info@pomdr.org</a> · (831) 718-9122</div>
+    <div style="margin-top:32px;font-size: 21px;color:rgba(255,255,255,.55);">Questions? <a href="mailto:info@pomdr.org" style="color:var(--blue-200);">info@pomdr.org</a> · (831) 718-9122</div>
   </div>
 </section>
 

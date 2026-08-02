@@ -43,9 +43,9 @@ $lines = preg_split( '/\r\n|\r|\n/', $raw );
 
 </main>
 <style>
-.legal-copy h2 { font-family: var(--font-serif); font-size: 30px; font-weight: 500; margin: 40px 0 14px; }
-.legal-copy h3 { font-size: 18px; font-weight: 700; letter-spacing: 0.04em; margin: 28px 0 10px; }
-.legal-copy p { font-size: 17px; line-height: 1.75; color: var(--ink-2); margin: 0 0 14px; }
+.legal-copy h2 { font-family: var(--font-serif); font-size: 35px; font-weight: 500; margin: 40px 0 14px; }
+.legal-copy h3 { font-size: 23px; font-weight: 700; letter-spacing: 0.04em; margin: 28px 0 10px; }
+.legal-copy p { font-size: 22px; line-height: 1.75; color: var(--ink-2); margin: 0 0 14px; }
 .legal-copy .legal-li { padding-left: 22px; position: relative; }
 .legal-copy .legal-li::before { content: "\2022"; position: absolute; left: 6px; color: var(--blue-text); }
 </style>

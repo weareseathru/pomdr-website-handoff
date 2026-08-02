@@ -65,9 +65,9 @@
   /* ===== Accessibility knobs =====
      These are the levers the opt-in senior mode flips (in a11y.css under
      html[data-a11y="senior"]). Components read them so one override cascades. */
-  --fs-base: 19px;                 /* base body text (senior-readable; was 18px) */
-  --fs-lead: 21px;                 /* intro / lead paragraphs */
-  --fs-small: 16px;                /* smallest UI text; never below 16 */
+  --fs-base: 24px;                 /* base body text (senior-readable; was 18px) */
+  --fs-lead: 26px;                 /* intro / lead paragraphs */
+  --fs-small: 20px;                /* smallest UI text; never below 16 */
   --leading: 1.6;                  /* base line-height */
   --measure: 70ch;                 /* max readable line length for prose */
   --tap-min: 44px;                 /* min interactive target; senior mode raises to 48px */

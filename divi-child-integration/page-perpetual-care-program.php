@@ -8,7 +8,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
    so the page reads horizontally instead of one tall vertical column. */
 .perp-intro{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;}
 .perp-intro__media{width:100%;height:100%;min-height:280px;max-height:380px;object-fit:cover;border-radius:var(--radius-lg);display:block;}
-.perp-howlist{font-size:17px;line-height:1.8;padding-left:24px;margin:0;columns:2;column-gap:56px;}
+.perp-howlist{font-size: 22px;line-height:1.8;padding-left:24px;margin:0;columns:2;column-gap:56px;}
 .perp-howlist li{margin:0 0 14px;break-inside:avoid;}
 @media(max-width:860px){.perp-intro{grid-template-columns:1fr;gap:26px;}.perp-howlist{columns:1;}}
 </style>
@@ -46,18 +46,18 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <li>We honor any specific requests on file: medical, behavioral, and lifestyle preferences for the dog's next home.</li>
         </ol>
 
-        <p style="font-size:17px;line-height:1.7;margin-top:24px">If you are unable to set up a pet trust or make an annual gift but would still like to enroll your dog, please contact us to discuss the next steps. Your attorney or our resources page can help you set up a pet trust and plan for your pet's future should you predecease them.</p>
+        <p style="font-size: 22px;line-height:1.7;margin-top:24px">If you are unable to set up a pet trust or make an annual gift but would still like to enroll your dog, please contact us to discuss the next steps. Your attorney or our resources page can help you set up a pet trust and plan for your pet's future should you predecease them.</p>
 
         <h2 class="section-title" style="margin:48px 0 16px">What it costs</h2>
-        <p style="font-size:17px;line-height:1.7">We suggest a legal pet trust to ensure the resources are available for your dog's lifetime care, plus an annual gift in any amount to support our mission. At the time of your dog's death, any remainder of the trust goes into POMDR's general fund to help more dogs, carrying on the legacy of your love for dogs.</p>
+        <p style="font-size: 22px;line-height:1.7">We suggest a legal pet trust to ensure the resources are available for your dog's lifetime care, plus an annual gift in any amount to support our mission. At the time of your dog's death, any remainder of the trust goes into POMDR's general fund to help more dogs, carrying on the legacy of your love for dogs.</p>
       </div>
       <div>
         <h2 class="section-title" style="margin-bottom:16px">Who it is for</h2>
-        <p style="font-size:17px;line-height:1.7">The program is for guardians without a friend or family member who can care for their dog. Eligibility for enrollment is determined by our staff and depends on the dog's age, size, temperament, and any special medical needs. Many of our Perpetual Care members also receive Helping Paw support during their lifetime.</p>
+        <p style="font-size: 22px;line-height:1.7">The program is for guardians without a friend or family member who can care for their dog. Eligibility for enrollment is determined by our staff and depends on the dog's age, size, temperament, and any special medical needs. Many of our Perpetual Care members also receive Helping Paw support during their lifetime.</p>
         <h2 class="section-title" style="margin:48px 0 16px">Our promise to you</h2>
-        <p style="font-size:17px;line-height:1.7">A lifetime commitment. Once your dog is in our care, we guarantee a loving, warm, and safe home, either in a POMDR foster home or with a new adoptive family, for the rest of their life. You can have peace of mind that your dog will never end up alone and frightened in an animal shelter.</p>
+        <p style="font-size: 22px;line-height:1.7">A lifetime commitment. Once your dog is in our care, we guarantee a loving, warm, and safe home, either in a POMDR foster home or with a new adoptive family, for the rest of their life. You can have peace of mind that your dog will never end up alone and frightened in an animal shelter.</p>
         <h2 class="section-title" style="margin:48px 0 16px">Get started</h2>
-        <p style="font-size:17px;line-height:1.7">Call us first. We sit down with you, meet your dog, and walk through paperwork together.</p>
+        <p style="font-size: 22px;line-height:1.7">Call us first. We sit down with you, meet your dog, and walk through paperwork together.</p>
         <a href="mailto:info@pomdr.org" class="btn btn-primary" style="margin-top:16px">Schedule a Conversation</a>
       </div>
     </div>
@@ -76,7 +76,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 
 <section class="section-sm">
   <div class="container" style="max-width:760px;text-align:center">
-    <p style="font-size:18px;color:var(--ink-2);margin:0 0 16px">For more information, visit our page of frequently asked questions.</p>
+    <p style="font-size: 23px;color:var(--ink-2);margin:0 0 16px">For more information, visit our page of frequently asked questions.</p>
     <a href="/perpetual-care-faq/" class="btn btn-primary">Perpetual Care FAQ</a>
   </div>
 </section>

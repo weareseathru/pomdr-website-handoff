@@ -92,6 +92,10 @@
       }
     } );
 
+    var noResults = document.getElementById( 'no-results' );
+    if ( noResults ) {
+      noResults.hidden = visible !== 0;
+    }
     if ( resultsCount ) {
       resultsCount.textContent = visible === 1 ? '1 dog' : visible + ' dogs';
     }
@@ -122,6 +126,22 @@
     sortSelect.addEventListener( 'change', function ( e ) {
       state.sort = e.target.value;
       apply();
+    } );
+  }
+  // Empty-state escape hatch: one tap back to the full list.
+  var clearBtn = document.getElementById( 'clear-filters' );
+  if ( clearBtn ) {
+    clearBtn.addEventListener( 'click', function () {
+      state.search = '';
+      state.filter = 'all';
+      if ( searchInput ) { searchInput.value = ''; }
+      if ( filtersEl ) {
+        Array.prototype.forEach.call( filtersEl.querySelectorAll( '.filter' ), function ( b ) {
+          b.classList.toggle( 'active', b.getAttribute( 'data-filter' ) === 'all' );
+        } );
+      }
+      apply();
+      if ( searchInput ) { searchInput.focus(); }
     } );
   }
 }() );
