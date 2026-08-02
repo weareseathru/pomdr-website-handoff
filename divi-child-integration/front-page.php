@@ -43,7 +43,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
           </h1>
           <div class="hero-ctas" id="hero-ctas">
             <a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-            <a href="/fostering/" class="btn btn-ghost">Foster</a>
+            <a href="/fostering/" class="btn btn-purple">Foster</a>
             <a href="/adopt/" class="btn btn-ghost">See all dogs</a>
           </div>
         </div>
@@ -69,7 +69,7 @@ $img = get_stylesheet_directory_uri() . '/assets/images';
     <div class="container promo-inner">
       <div class="promo-text">
         <span class="promo-label">
-          <svg class="promo-paw" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#632F88"/><g fill="#fff"><ellipse cx="14.5" cy="30" rx="5.2" ry="7" transform="rotate(-24 14.5 30)"/><ellipse cx="25" cy="19.5" rx="5.4" ry="7.4" transform="rotate(-8 25 19.5)"/><ellipse cx="39" cy="19.5" rx="5.4" ry="7.4" transform="rotate(8 39 19.5)"/><ellipse cx="49.5" cy="30" rx="5.2" ry="7" transform="rotate(24 49.5 30)"/><path d="M32 36.9 C29.3 33.8 25.3 32.7 22 34.1 C16.6 36.5 13.9 42.6 16.1 48.2 C17.8 52.7 22 56 26.8 56.9 C28.7 57.3 30.5 56.3 32 54.8 C33.5 56.3 35.3 57.3 37.2 56.9 C42 56 46.2 52.7 47.9 48.2 C50.1 42.6 47.4 36.5 42 34.1 C38.7 32.7 34.7 33.8 32 36.9 Z"/></g></svg>
+          <svg class="promo-paw" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#632F88"/><g fill="#fff" transform="translate(5.6 5.2) scale(2.2)"><ellipse cx="3.7" cy="11.6" rx="2.8" ry="3.7" transform="rotate(-20 3.7 11.6)"/><ellipse cx="8.7" cy="5.9" rx="3.1" ry="4.3" transform="rotate(-7 8.7 5.9)"/><ellipse cx="15.3" cy="5.9" rx="3.1" ry="4.3" transform="rotate(7 15.3 5.9)"/><ellipse cx="20.3" cy="11.6" rx="2.8" ry="3.7" transform="rotate(20 20.3 11.6)"/><path d="M12 10.7 C8.6 10.7 5.2 13.4 5.2 17.1 C5.2 19.9 7.2 21.9 9.5 21.9 C10.6 21.9 11.3 21.1 12 21.1 C12.7 21.1 13.4 21.9 14.5 21.9 C16.8 21.9 18.8 19.9 18.8 17.1 C18.8 13.4 15.4 10.7 12 10.7 Z"/></g></svg>
           Adoption Promotion
         </span>
         <p class="promo-message">This month, senior dog adoption fees are waived for adopters 65 and older. Give a gray muzzle a soft place to land.</p>
