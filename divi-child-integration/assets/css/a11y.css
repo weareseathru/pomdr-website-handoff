@@ -96,50 +96,24 @@ html.js .reveal.in { opacity: 1; transform: none; }
 /* ===== 3. OPT-IN SENIOR COMFORT MODE ===== */
 
 html[data-a11y="senior"] {
-  --fs-base: 30px;
-  --leading: 1.8;
   --tap-min: 48px;
   --focus-w: 4px;
 }
 
-/* Body text scales up noticeably across Divi text modules and plain content.
-   The !important is needed to beat Divi's own module font sizes (some are set
-   inline), so the toggle actually feels like a change. About +30% on body
-   prose (17px to 22px), which is a real help without being oversized. */
-html[data-a11y="senior"] body { font-size: var(--fs-base); line-height: var(--leading); letter-spacing: 0.01em; }
-html[data-a11y="senior"] :where(.et_pb_text, .et_pb_post_content, main) p,
-html[data-a11y="senior"] li,
-html[data-a11y="senior"] dd,
-html[data-a11y="senior"] blockquote,
-html[data-a11y="senior"] .et_pb_blurb_description,
-html[data-a11y="senior"] .et_pb_toggle_content,
-html[data-a11y="senior"] .section-lead,
-html[data-a11y="senior"] .page-lead,
-html[data-a11y="senior"] .lead,
-html[data-a11y="senior"] label,
-html[data-a11y="senior"] .gfield_label {
-  font-size: 1.375rem !important;
-  line-height: 1.75 !important;
+/* One proportional page scale (senior-site audit, 2026-08-02). The old mode
+   bumped a curated list of selectors, which went stale as the site's type
+   grew and ended up SHRINKING body copy. Best practice on the reference
+   senior sites is browser-zoom behavior: everything grows together and the
+   layout reflows. CSS zoom does exactly that for our px-based pages. The
+   fixed chrome (action bar and nav) keeps its tuned size so the menu row
+   cannot overflow; content and footer scale about 15%. */
+html[data-a11y="senior"] #et-main-area,
+html[data-a11y="senior"] #site-footer {
+  zoom: 1.15;
 }
 
-/* Section leads and intros go a touch larger still. */
-html[data-a11y="senior"] .section-lead,
-html[data-a11y="senior"] .page-lead,
-html[data-a11y="senior"] .lead {
-  font-size: 1.5rem !important;
-}
-
-/* Headings in content grow proportionally so the hierarchy holds. */
-html[data-a11y="senior"] :where(main, .et_pb_text) :where(h2, h3, h4) {
-  font-size: 1.15em;
-}
-
-/* Navigation text larger. */
-html[data-a11y="senior"] #top-menu li a,
-html[data-a11y="senior"] .et_pb_menu a,
-html[data-a11y="senior"] .et_mobile_menu a {
-  font-size: 1.15rem;
-}
+/* Gentle reading comfort on top of the scale. */
+html[data-a11y="senior"] body { letter-spacing: 0.01em; }
 
 /* Interactive targets reach 48x48 with comfortable padding (Divi + redesign). */
 html[data-a11y="senior"] :where(.et_pb_button, a.et_pb_button, .et_pb_contact_submit,
@@ -147,10 +121,6 @@ html[data-a11y="senior"] :where(.et_pb_button, a.et_pb_button, .et_pb_contact_su
   button, [role="button"], input, select, textarea) {
   min-height: var(--tap-min);
   min-width: var(--tap-min);
-}
-html[data-a11y="senior"] :where(.et_pb_button, .btn, .nav-cta, .et_pb_contact_submit) {
-  padding-block: 14px;
-  font-size: 23px;
 }
 html[data-a11y="senior"] .heart { width: 48px; height: 48px; }
 html[data-a11y="senior"] .heart svg { width: 22px; height: 22px; }
@@ -173,13 +143,10 @@ html[data-a11y="senior"] :where(.et_pb_text, .et_pb_post_content, main) a:not(.e
   min-height: 44px;
 }
 
-/* The hero progress dots keep their 3px-bar look (the bar is the button
-   background) while the touchable area grows to 23px tall. */
-.hero-progress button {
-  height: 23px;
-  padding-block: 10px;
-  background-clip: content-box;
-}
+/* Larger-text mode: the hero progress bars thicken for visibility (they are
+   skinny 4px tracks by default; see pomdr-home.css). */
+html[data-a11y="senior"] .hero-progress button { padding-block: 6px; }
+html[data-a11y="senior"] .hero-progress button .bar { height: 12px; }
 
 /* On the homepage the FAB sits above the hero's pause control so both stay
    clickable; elsewhere it keeps the standard corner. */

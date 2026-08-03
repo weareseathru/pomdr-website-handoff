@@ -272,12 +272,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   display: flex; gap: 8px; align-items: center;
 }
 .hero-progress button {
-  width: 44px; height: 2px; background: rgba(255,255,255,0.3); border-radius: 2px;
+  /* Skinny 4px visible track; the 24px box keeps the touch target comfortable. */
+  width: 44px; height: 24px; padding-block: 10px;
+  background: rgba(255,255,255,0.3); background-clip: content-box; border-radius: 2px;
   position: relative; overflow: hidden; transition: width 0.3s;
 }
 .hero-progress button.active { width: 88px; }
 .hero-progress button .bar {
-  position: absolute; inset: 0 auto 0 0; background: white; width: 0%;
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  height: 4px; border-radius: 2px; background: white; width: 0%;
 }
 .hero-progress button.active .bar {
   animation: fill 6s linear forwards;
