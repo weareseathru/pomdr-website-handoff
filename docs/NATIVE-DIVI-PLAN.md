@@ -1,6 +1,59 @@
 # Native Divi Conversion Plan (council-hardened, v2)
 
-Date: 2026-08-18. Owner: Andrew Z. Status: awaiting Andrew's G0 decisions below.
+Date: 2026-08-18. Owner: Andrew Z. Status: G0 decided, G1 PASSED, Phase 1 in
+progress.
+
+## G0 decisions (Andrew, 2026-08-18)
+
+1. **Divi-native first, for everything.** Every obstacle gets a genuine
+   solve-it-inside-Divi attempt (stock modules, presets, Theme Builder, Loop
+   Builder, Divi options) before any custom fallback. The hybrid boundary in
+   this plan is now a fallback of last resort per component, not a starting
+   assumption. If the native path truly fails for a component, fall back to
+   the documented custom approach for that component.
+2. Fallback if the conversion itself dies: keep the sidecar theme and ship
+   it with the layered deploy (section 8), which alone fixes the original
+   deploy failure. Adopted.
+3. Design Variables: Option A (bind global colors so pages consume tokens
+   natively). Follows from decision 1.
+4. Timeline: run at AI pace, compressed from the council's calendar; gates
+   stay, waiting does not.
+
+## G1 result (2026-08-18): PASSED
+
+The D4-to-D5 pipeline was ground-truthed on the live local site (test page
+3350, draft, slug d5-ground-truth-test). Findings, all now baked into the
+validator design:
+
+- Conversion works end to end from wp-cli: requires loading
+  `ET_D5_Readiness::includes()` manually (they only load in admin requests)
+  and calling `Conversion::initialize_shortcode_framework()` first.
+- Output is real D5 blocks: `wp:divi/placeholder` wrapper present, ZERO
+  `divi/shortcode-module` fallbacks, parse round-trip byte-stable,
+  `_et_pb_divi_4_content` rollback meta stored.
+- **Divi's `saveVerification` flag is itself buggy** (it compares saved
+  content against `stripslashes()` of never-slashed content, so any page
+  containing JSON escapes reports false). Proven by a one-run byte-diff:
+  the save cycle is actually lossless. The validator uses its own read-back
+  byte-diff, not Divi's flag.
+- The converter regenerates custom-attribute UUIDs on every run, so
+  cross-run idempotency checks must normalize UUIDs before diffing.
+- `module_class` survives as a custom attribute and RENDERS on the front
+  end: the test button carries `btn btn-primary` and picks up the design
+  system. The cssClass hook strategy works.
+- The Visual Builder mounts on the converted page with zero console errors;
+  section, row, text, and button appear as editable D5 modules with admin
+  labels intact (screenshot verified).
+- Theme Builder header/footer sections render identically on sidecar and
+  native pages, so baseline parity holds.
+- Found and fixed a latent landmine: the DB `siteurl`/`home` options were
+  malformed (`https:pomdrsite.local`, no slashes, wrong host), masked in
+  browsers by a wp-config override but live in every wp-cli run. Repaired to
+  `http://newpomdr-local.local`. All wp-cli conversion runs also pass
+  `--url=http://newpomdr-local.local` explicitly.
+- Dedicated `vb-smoke` administrator created on local for browser-driven VB
+  smoke tests (Andrew's account untouched; its original password hash was
+  preserved).
 
 This supersedes the v1 draft. It was stress-tested by a five-seat review
 (platform engineer, nonprofit-management PhD, creative executive, delivery
