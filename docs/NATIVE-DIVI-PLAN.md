@@ -1,7 +1,43 @@
 # Native Divi Conversion Plan (council-hardened, v2)
 
-Date: 2026-08-18. Owner: Andrew Z. Status: G0 decided, G1 PASSED, Phase 1 in
-progress.
+Date: 2026-08-18. Owner: Andrew Z. Status: G0 decided, G1 PASSED, Phase 1
+foundation landed (see "Phase 1 progress" below). Next: Divi default
+neutralization measured at the pilot, then the generator (Phase 2).
+
+## Phase 1 progress (2026-08-18)
+
+- **CPT self-sufficiency: DONE.** `inc/post-types.php` registers pets,
+  events, and team from the theme whenever the ACF database definitions are
+  absent (post_type_exists guard at init priority 20, so existing ACF
+  records win untouched). Args mirror the live runtime registration.
+- **ACF JSON sync: DONE.** The five DB field groups (Pets 14 fields, Events,
+  Team, PDP Logic Builder, PDP Sections) are exported to the theme's
+  `acf-json/` and load from version control; the save_json filter keeps
+  future wp-admin field edits writing back to the folder. The Pets export
+  matches the canonical status vocabulary exactly. FLAG for Andrew: the DB
+  contains duplicate-key copies of the Pets and Events field groups; the
+  duplicates were ignored at export and should be deleted in wp-admin.
+- **Global colors seeded and BOUND at the source: DONE, verified by
+  read-back.** 11 brand colors (gcid-pomdr-*) stored via
+  GlobalData::set_global_colors, and the four Customizer-routed ids
+  (gcid-primary-color, gcid-secondary-color, gcid-heading-color,
+  gcid-body-color) now carry brand values, which rewrote Divi's own
+  accent_color (#008bb0), secondary accent (#632F88), and heading/body text
+  (#16202b) options. Divi's default blue-and-gray is gone at the root, which
+  is the first and largest piece of default neutralization.
+- **Design Variables seeded: DONE, verified by read-back.** Fonts (Source
+  Sans 3, Source Serif 4) and numbers (80px/56px section padding, 24/26/20px
+  type scale, 22/32px radii) stored via GlobalData::set_global_variables
+  under stable gvid-pomdr-* ids the generator will reference. Two API traps
+  documented: the getters return stdClass and synthesize extra buckets
+  (write payloads must come from the raw option, arrays only), and the
+  variables option stores only numbers/strings/images/links/fonts (colors
+  live in et_global_data).
+- **Remaining Phase 1:** neutralize the rest of Divi's defaults (section/row
+  padding, button hover icon and padding shift, Divi Google Fonts loading)
+  measured against the pilot page's computed-style diff, evidence-first
+  rather than guessed; verify the seeded variables appear in the VB
+  variables panel during the pilot's VB smoke.
 
 ## G0 decisions (Andrew, 2026-08-18)
 
