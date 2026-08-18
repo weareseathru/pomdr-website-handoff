@@ -1,0 +1,289 @@
+{
+    "key": "group_pdp_logic",
+    "title": "PDP Logic Builder",
+    "fields": [
+        {
+            "key": "field_pdp_logic_groups",
+            "label": "PDP Logic Groups",
+            "name": "pdp_logic",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "Add Logic Group",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_group_name",
+                    "label": "Group Name",
+                    "name": "group_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_pdp_logic_groups"
+                },
+                {
+                    "key": "field_group_operator",
+                    "label": "Group Operator",
+                    "name": "group_operator",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "AND": "AND",
+                        "OR": "OR"
+                    },
+                    "default_value": "AND",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_pdp_logic_groups"
+                },
+                {
+                    "key": "field_group_priority",
+                    "label": "Priority",
+                    "name": "priority",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Higher number = evaluated earlier",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "step": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_pdp_logic_groups"
+                },
+                {
+                    "key": "field_group_rules",
+                    "label": "Rules",
+                    "name": "rules",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "button_label": "Add Rule",
+                    "min": 0,
+                    "max": 0,
+                    "layout": "table",
+                    "collapsed": "",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_rule_field_name",
+                            "label": "Field Name",
+                            "name": "field_name",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "ACF field name or derived field (e.g. photo_count, has_video, age, status)",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_group_rules"
+                        },
+                        {
+                            "key": "field_rule_operator",
+                            "label": "Operator",
+                            "name": "operator",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "=": "=",
+                                "!=": "!=",
+                                ">": ">",
+                                "<": "<",
+                                "contains": "contains",
+                                "empty": "empty",
+                                "not_empty": "not_empty"
+                            },
+                            "default_value": "=",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0,
+                            "parent_repeater": "field_group_rules"
+                        },
+                        {
+                            "key": "field_rule_value",
+                            "label": "Value",
+                            "name": "value",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Leave empty for empty\/not_empty operators",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_group_rules"
+                        }
+                    ],
+                    "parent_repeater": "field_pdp_logic_groups"
+                },
+                {
+                    "key": "field_group_action",
+                    "label": "Action",
+                    "name": "action",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "show": "Show Section(s)",
+                        "hide": "Hide Section(s)"
+                    },
+                    "default_value": "show",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_pdp_logic_groups"
+                },
+                {
+                    "key": "field_group_target_sections",
+                    "label": "Target Sections",
+                    "name": "target_sections",
+                    "aria-label": "",
+                    "type": "checkbox",
+                    "instructions": "Select which sections this group affects.",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "header_section": "Header Section",
+                        "gallery_section": "Gallery Section",
+                        "quick_info_section": "Quick Info Section",
+                        "bio_section": "Bio Section",
+                        "foster_banner_section": "Foster Banner Section",
+                        "video_section": "Video Section",
+                        "sponsor_section": "Sponsor Section",
+                        "hospice_section": "Hospice Section",
+                        "previous_pet_section": "Previous Pet Section",
+                        "adoption_prompt_section": "Adoption Prompt Section",
+                        "custom_html_section": "Custom HTML Section"
+                    },
+                    "layout": "vertical",
+                    "default_value": [],
+                    "allow_custom": 0,
+                    "save_custom": 0,
+                    "toggle": 0,
+                    "return_format": "value",
+                    "custom_choice_button_text": "Add new choice",
+                    "parent_repeater": "field_pdp_logic_groups"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pets"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1764752935
+}

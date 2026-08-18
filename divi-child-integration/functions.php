@@ -2277,6 +2277,7 @@ add_shortcode('promo_banner', 'pomdr_promo_banner_shortcode');
 require_once get_stylesheet_directory() . '/inc/chrome.php';
 require_once get_stylesheet_directory() . '/inc/enqueue.php';
 require_once get_stylesheet_directory() . '/inc/videos.php';
+require_once get_stylesheet_directory() . '/inc/post-types.php';
 
 /**
  * Accessibility: restore pinch-zoom (WCAG 2.2, SC 1.4.4 Resize Text).
