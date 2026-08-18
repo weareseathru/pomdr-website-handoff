@@ -257,12 +257,57 @@ conditional on the upgrade rehearsal passing.
 
 ## 6. The per-page validator (the gate that makes every other gate real)
 
+2026-08-18 deploy-council amendments (QA seat + inline adjudication), which
+refine the checks below and fix their ORDER:
+
+- Step 0 first: load pinned fixtures AND freeze the clock (event queries
+  filter on today's date; unfrozen, those diffs go nondeterministic at
+  midnight).
+- A functional smoke runs BEFORE any visual capture: HTTP 200, h1 present,
+  landmark/word counts within tolerance of the content model, zero console
+  and PHP-log errors, enqueued-handle parity vs the sidecar, and
+  document.fonts.ready awaited.
+- The computed-style selector list is DERIVED from the sidecar DOM (li, em,
+  figcaption, inline-styled nodes included), not a fixed list; properties
+  include border-radius, box-shadow, border-width.
+- The pixel diff is sliced per section (a whole-page 0.5% hides a missing
+  button row on a 7000px page); breakpoints are the union of Divi's stack
+  boundaries AND each template's own media queries (culture: 760/800px).
+  Divi lazyload disabled or scrolled through before capture.
+- VB smoke runs AFTER visual baselines (its edit-save mutates the page) and
+  runs TWICE: once as admin, once as a Divi-Role-locked Editor (kses and
+  capability behavior differ by role; staff saves are the permanent
+  operating condition). Then a quick re-pass of style and pixel checks.
+- Lighthouse full runs on pilot pages; batch pages get a deterministic
+  budget instead (transfer bytes, request count, DOM nodes). Senior-mode
+  full sweep on pilot; single-width spot check in batch.
+- LGL form pages get functional assertions, not just a masked diff region:
+  iframe present with the exact form id, frame responds, height grows after
+  tfs_iframe.js, noscript link intact, external script survives an
+  Editor-role save, prefill query params round-trip.
+- Dog/CPT fixtures include the pathological rows the renderers branch on:
+  multi-status (Hospice + Sponsor Needed), no photo, missing age/weight,
+  apostrophe-and-ampersand name, 4-photo gallery, zero-results state,
+  longest description. Shortcode islands must survive conversion
+  un-entity-encoded, and wpautop must not wrap grid markup.
+- Downstream consumers: og:title/og:image/canonical parity sidecar vs
+  native, and a no-JS pass asserting core content visible.
+
+Cutover mechanism and deploy sequence are decided and live in
+docs/DEPLOY-RUNBOOK.md: same-record cutover gated on the dedicated
+`_pomdr_native` meta (NEVER `_et_pb_use_divi_5`: 27 of 40 sidecar-covered
+records already carry it with stale base-build content), template_include
+filter, per-page dump rollback, transplant rehearsal from the TARGET's own
+export before any real deploy.
+
 A converted page passes only when ALL of the following hold:
 
 1. **No silent fallback:** converted post_content contains zero
-   `divi/shortcode-module` occurrences, and the converter's
-   `saveVerification === true`. Log `_et_pb_divi_5_conversion_status` per
-   page into the batch report.
+   `divi/shortcode-module` occurrences, verified by our own read-back
+   byte-diff of the saved content. (Divi's `saveVerification` flag is NOT
+   used: G1 proved it reports false for all real content due to a
+   stripslashes bug in convert_single_post.) Log
+   `_et_pb_divi_5_conversion_status` per page into the batch report.
 2. **Parse round-trip:** parse_blocks() and Divi BlockParser round-trip
    byte-stable.
 3. **VB smoke + save idempotency:** Playwright logs in as admin, opens
