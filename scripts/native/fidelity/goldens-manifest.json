@@ -1,0 +1,67 @@
+{
+ "pages": {
+  "culture": {
+   "390": {
+    "sha256": "099411a91d7ea25d1376420ede2d232b500edbe8e3b0e908b60c7462e8926e2f",
+    "bytes": 761158
+   },
+   "767": {
+    "sha256": "75ebfe00188f09bee6b525fcb768751c8aae05e6f52f2fe215c4d7404d4e15af",
+    "bytes": 1051743
+   },
+   "980": {
+    "sha256": "df879b91ade31535be27d838d2510cc5ee90b677626036db4907fd413b061ab0",
+    "bytes": 1052996
+   },
+   "1440": {
+    "sha256": "b891c66b2bfca3be47bb654501d3acc6f4112b016cc5159a90d3a58954cf526d",
+    "bytes": 1133778
+   }
+  },
+  "process": {
+   "390": {
+    "sha256": "75f828c82139c38b0768492ea9d9a73b4087c752a7d936dc845617b18ac0448c",
+    "bytes": 459809
+   },
+   "767": {
+    "sha256": "b498d7b9d9a9ab8f220526fd6c9206a95b67e97cd48a2041f2b2a6e53bdf34ec",
+    "bytes": 612620
+   },
+   "980": {
+    "sha256": "7d791e3fadfdc7d5ab818a0154d368008ba374961dbecd34c6d400aa8f51fadb",
+    "bytes": 597384
+   },
+   "1440": {
+    "sha256": "697ee3a9d6a10c8fee139366450d75af4a0285c23b3814882e584e4d66fc0ce1",
+    "bytes": 657298
+   }
+  },
+  "why": {
+   "390": {
+    "sha256": "bd5d356b74c09ad82068856b0913e7ebb55750b5b5ad20b47bcc314b39d29c91",
+    "bytes": 1077832
+   },
+   "767": {
+    "sha256": "a5b1b28c201ccb0dd87612fadac5fdce5ee5031c4c26fe1462da6ac60988ac54",
+    "bytes": 1187448
+   },
+   "980": {
+    "sha256": "0f112503487efd1fa2529cdd77b3c9262ea6f5c53212a27598fb67cff834f48f",
+    "bytes": 1308124
+   },
+   "1440": {
+    "sha256": "250417f00b3076bdd7e3abda5e197539b1a39b3e527437c67e94363e898cdce9",
+    "bytes": 1390518
+   }
+  }
+ },
+ "capturedAt": "2026-08-19T23:37:00.830Z",
+ "gitSha": "16e33dec95b88d391efe28d6d1f0f7f39b3de909",
+ "cssHashes": {
+  "tokens.css": "da2b98ba32822a8a68b9edbf01da42e1f1f13b57d1fe6c472b6b4e4b61171bc5",
+  "pomdr.css": "298251a7de1c96af5827f0a752fa847165d5aff8cf0551716bddc92ca0dd624a",
+  "pomdr-design.css": "8c1295cbad4b5945eaa87b4b3a095e01c2c7bd744fe34430d26e5ceba20bd2fd",
+  "native-pages.css": "52bbd08a6551df93518625722650e81716e3bd525ada91a229293737aa802b93",
+  "a11y.css": "f356507e8e07dc45be01a27ab075e13d50ee40b6f3033b2ceb0d7e47beddf0c7"
+ }
+}

@@ -1700,8 +1700,7 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
 .et_pb_button.btn,
 .et_pb_button.btn:hover { padding-left: revert; padding-right: revert; }
 
-/* Divi text modules inherit the page type scale, not Merriweather. */
-.et_pb_text, .et_pb_text p { font-family: var(--font-sans); }
+
 
 /* Consecutive buttons in a text column sit inline, like .page-cta rows. */
 .et_pb_column.ph-text .et_pb_button_module_wrapper,
@@ -1715,3 +1714,11 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
    so the inner one stands down (double-constraint made native text 64px
    narrower and rewrapped every line; fidelity probe 2026-08-19). */
 .et_pb_text .container { max-width: none; padding-left: 0; padding-right: 0; }
+
+/* Divi's text-module WRAPPER carries its own font-size and line-height,
+   which classless paragraphs inherit (measured: 26px line-height instead
+   of the page's 1.6). Make the wrapper transparent; elements with their
+   own class rules are direct-styled and unaffected. Doubled class beats
+   Divi's (0,1,0) regardless of load order. */
+.et_pb_module.et_pb_text,
+.et_pb_text .et_pb_text_inner { font-size: inherit; line-height: inherit; }

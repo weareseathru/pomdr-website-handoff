@@ -37,7 +37,27 @@ add_filter( 'template_include', function ( $template ) {
 		return $template;
 	}
 
-	$divi_page = get_template_directory() . '/page.php';
+	$native = get_stylesheet_directory() . '/page-native.php';
 
-	return file_exists( $divi_page ) ? $divi_page : $template;
+	return file_exists( $native ) ? $native : $template;
 }, 99 );
+
+/**
+ * Staging pages (native-staging-{slug}) have no sidecar template and no
+ * _pomdr_native meta, so WordPress falls through to the PARENT page.php,
+ * which lacks the <main> landmark. Route every builder-built page without
+ * a sidecar match through page-native.php as well.
+ */
+add_filter( 'template_include', function ( $template ) {
+	if ( ! is_page() ) {
+		return $template;
+	}
+	if ( basename( $template ) !== 'page.php' ) {
+		return $template;
+	}
+	if ( 'on' !== get_post_meta( get_queried_object_id(), '_et_pb_use_divi_5', true ) ) {
+		return $template;
+	}
+	$native = get_stylesheet_directory() . '/page-native.php';
+	return file_exists( $native ) ? $native : $template;
+}, 100 );

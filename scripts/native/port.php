@@ -42,8 +42,12 @@ if ( ! class_exists( 'Divi\\D5_Readiness\\Server\\Conversion' ) ) {
 }
 \ET\Builder\Packages\Conversion\Conversion::initialize_shortcode_framework();
 
-$css_file  = get_stylesheet_directory() . '/assets/css/native-pages.css';
-$css_known = file_exists( $css_file ) ? file_get_contents( $css_file ) : "/* Page-local styles harvested by scripts/native/port.php. */\n";
+/* Harvested page-local styles land in per-page raw files; the node script
+   gen-pages-css.mjs compiles them into native-pages.css with a .pg-{slug}
+   scope prefix. Unscoped harvesting once leaked one page's dark CTA band
+   onto every page INCLUDING the reference standard (found 2026-08-19). */
+$css_raw_dir = dirname( __FILE__ ) . '/fidelity/pages-css';
+if ( ! is_dir( $css_raw_dir ) ) { mkdir( $css_raw_dir, 0755, true ); }
 
 $backup_dir = __DIR__ . '/backups';
 if ( ! is_dir( $backup_dir ) ) { mkdir( $backup_dir, 0755, true ); }
@@ -98,12 +102,13 @@ foreach ( $pom_args as $slug ) {
 	}
 	$main_html = $mm[1];
 
-	/* Harvest page-local <style> blocks into the shared file (dedup). */
+	/* Harvest page-local <style> blocks into this page's raw css file. */
 	$style_count = 0;
-	$main_html   = preg_replace_callback( '~<style\b[^>]*>(.*?)</style>~s', function ( $m ) use ( &$css_known, &$style_count, $slug ) {
+	$page_css    = '';
+	$main_html   = preg_replace_callback( '~<style\b[^>]*>(.*?)</style>~s', function ( $m ) use ( &$page_css, &$style_count ) {
 		$css = trim( $m[1] );
-		if ( '' !== $css && false === strpos( $css_known, $css ) ) {
-			$css_known .= "\n/* ---- from page-$slug.php ---- */\n" . $css . "\n";
+		if ( '' !== $css && false === strpos( $page_css, $css ) ) {
+			$page_css .= $css . "\n";
 			$style_count++;
 		}
 		return '';
@@ -115,13 +120,21 @@ foreach ( $pom_args as $slug ) {
 	foreach ( $head_styles[1] as $css ) {
 		$css = trim( $css );
 		// Only take blocks that reference page-scoped classes, not WP/Divi core inline CSS.
-		if ( '' !== $css && false === strpos( $css_known, $css )
+		if ( '' !== $css && false === strpos( $page_css, $css )
 			&& ! preg_match( '~^(img|\.wp-|:root\{--wp|\.et[-_])~', $css )
 			&& preg_match( '~\.(values-|people-|ph-|steps|story|faq|way-|foster|tmn|hp-|donate|jobs|media|why|team|about|clinic|shop|care|fund)~', $css ) ) {
-			$css_known .= "\n/* ---- from page-$slug.php (head) ---- */\n" . $css . "\n";
+			$page_css .= $css . "\n";
 			$style_count++;
 		}
 	}
+	if ( '' !== $page_css ) {
+		file_put_contents( "$css_raw_dir/$slug.css", $page_css );
+	}
+
+	/* Collapse whitespace runs: wpautop turns raw newlines inside captured
+	   markup into <br> tags, silently rewrapping paragraphs (fidelity probe
+	   2026-08-19). No <pre> content exists in these pages. */
+	$main_html = preg_replace( '/\s+/', ' ', $main_html );
 
 	/* Localize URLs: absolute internal -> root-relative. */
 	foreach ( $home_hosts as $h ) {
@@ -195,7 +208,7 @@ foreach ( $pom_args as $slug ) {
 
 		$label = ucwords( str_replace( array( '-', '_' ), ' ', $classes ? preg_split( '/\s+/', $classes )[0] : $node->nodeName ) );
 		$d4   .= pom_d4_section(
-			array( 'module_class' => $classes, 'admin_label' => $label ?: 'Section' ),
+			array( 'module_class' => trim( $classes . " pg-$slug" ), 'admin_label' => $label ?: 'Section' ),
 			pom_d4_row(
 				array( 'admin_label' => $label . ' row' ),
 				pom_d4_column( '4_4', array(), pom_d4_text( array( 'admin_label' => $label . ' content' ), trim( $inner ) ) )
@@ -211,7 +224,9 @@ foreach ( $pom_args as $slug ) {
 	$existing     = get_page_by_path( $staging_slug, OBJECT, 'page' );
 	if ( $existing ) {
 		$post_id = $existing->ID;
-		wp_update_post( array( 'ID' => $post_id, 'post_content' => $d4, 'post_status' => 'draft' ) );
+		// Preserve publish state: re-drafting a published staging page makes
+		// anonymous fidelity captures hit a 404 and poisons every measurement.
+		wp_update_post( array( 'ID' => $post_id, 'post_content' => $d4, 'post_status' => $existing->post_status ) );
 		delete_post_meta( $post_id, '_et_pb_use_divi_5' );
 	} else {
 		$post_id = wp_insert_post( array(
@@ -262,10 +277,8 @@ foreach ( $pom_args as $slug ) {
 		. " (sections=$sections, styles+$style_count, post=$post_id)";
 }
 
-file_put_contents( $css_file, $css_known );
-
 echo "\n==== PORT SUMMARY ====\n";
 foreach ( $summary as $slug => $line ) {
 	echo str_pad( $slug, 28 ) . $line . "\n";
 }
-echo 'native-pages.css bytes: ' . strlen( $css_known ) . "\n";
+echo "raw page css in scripts/native/fidelity/pages-css; run gen-pages-css.mjs then gen-boost.mjs\n";
