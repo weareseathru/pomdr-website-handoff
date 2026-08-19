@@ -1709,3 +1709,9 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
   display: inline-block;
   margin: 6px 14px 0 0;
 }
+
+/* Ported content keeps its original .container markup inside the text
+   module; the Divi row already provides the exact container constraint,
+   so the inner one stands down (double-constraint made native text 64px
+   narrower and rewrapped every line; fidelity probe 2026-08-19). */
+.et_pb_text .container { max-width: none; padding-left: 0; padding-right: 0; }
