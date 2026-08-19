@@ -53,6 +53,18 @@ add_action( 'wp_enqueue_scripts', function () {
         filemtime( get_stylesheet_directory() . '/assets/css/pomdr.css' )
     );
 
+    // Page-local styles harvested from the sidecar templates by the native
+    // port (scripts/native/port.php). Native Divi pages depend on these; the
+    // sidecars keep their inline copies until retirement (rules identical).
+    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-pages.css' ) ) {
+        wp_enqueue_style(
+            'pomdr-native-pages',
+            get_stylesheet_directory_uri() . '/assets/css/native-pages.css',
+            array( 'pomdr-shared' ),
+            filemtime( get_stylesheet_directory() . '/assets/css/native-pages.css' )
+        );
+    }
+
     // Site chrome (action bar, two-row nav, tagline, logo, mobile drawer).
     // Loaded after pomdr-design; hides Divi's Theme Builder header.
     wp_enqueue_style(
