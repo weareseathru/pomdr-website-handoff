@@ -136,6 +136,28 @@ $check( 'content_width = 1320 (design container)', '1320' === (string) et_get_op
 et_update_option( 'all_buttons_icon', 'no' );
 $check( 'all_buttons_icon = no', 'no' === (string) et_get_option( 'all_buttons_icon' ) );
 
+/* Typography neutralization (council round 3, correction 1): Divi's
+   Customizer body scale must match the design system so target-generated
+   CSS never fights the stylesheet reclaim. Fonts stay 'none' (the theme
+   loads and applies Source Sans 3 / Source Serif 4 itself). */
+et_update_option( 'body_font_size', '24' );
+$check( 'body_font_size = 24', '24' === (string) et_get_option( 'body_font_size' ) );
+et_update_option( 'body_font_height', '1.6' );
+$check( 'body_font_height = 1.6', '1.6' === (string) et_get_option( 'body_font_height' ) );
+et_update_option( 'body_font', 'none' );
+et_update_option( 'heading_font', 'none' );
+$check( 'body_font/heading_font = none', 'none' === (string) et_get_option( 'body_font' ) && 'none' === (string) et_get_option( 'heading_font' ) );
+
+/* Divi's own Google Fonts loading OFF: the theme already serves the brand
+   fonts; a second loader is bytes and a FOUT source. Stored inside the
+   et_google_api_settings array option. */
+$gapi = get_option( 'et_google_api_settings', array() );
+if ( ! is_array( $gapi ) ) { $gapi = array(); }
+$gapi['use_google_fonts'] = 'off';
+update_option( 'et_google_api_settings', $gapi );
+$gapi_after = get_option( 'et_google_api_settings', array() );
+$check( 'et_google_api_settings.use_google_fonts = off', 'off' === ( $gapi_after['use_google_fonts'] ?? '' ) );
+
 /* Static CSS caches must regenerate after option changes. */
 if ( class_exists( 'ET_Core_PageResource' ) ) {
 	ET_Core_PageResource::remove_static_resources( 'all', 'all', true );

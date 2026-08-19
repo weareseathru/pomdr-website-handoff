@@ -233,7 +233,9 @@ EXACTLY the same. Freeze point: branch `design-freeze-sidecar-v1`, tag
   the most-requested edit stops requiring a developer.
 - Named Promotion system (options page: promotion name + on/off; per-dog
   checkbox; title banner on the card; seed from aged_to_perfection).
-- Run the fresh-local All-in-One rehearsal now, so the migration pipeline is
+- Run the transplant rehearsal now, built FROM THE TARGET'S OWN export per
+  DEPLOY-RUNBOOK.md section 4 (which supersedes earlier fresh-local
+  wording), so the migration pipeline is
   proven before 30 pages depend on it.
 
 **Phase 4, batch conversion.**

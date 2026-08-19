@@ -127,7 +127,9 @@ preg_match_all( '/module_class="([^"]+)"/', $d4, $m );
 $emitted_classes = array_unique( array_filter( array_map( 'trim', preg_split( '/\s+/', implode( ' ', $m[1] ) ) ) ) );
 $missing = array();
 foreach ( $emitted_classes as $cls ) {
-	if ( false === strpos( $saved, $cls ) ) {
+	// Token-boundary match: 'btn' must not be satisfied by 'btn-purple',
+	// 'section' not by 'section-cream' (council round 3, correction 6).
+	if ( ! preg_match( '/[^A-Za-z0-9_-]' . preg_quote( $cls, '/' ) . '[^A-Za-z0-9_-]/', ' ' . $saved . ' ' ) ) {
 		$missing[] = $cls;
 	}
 }

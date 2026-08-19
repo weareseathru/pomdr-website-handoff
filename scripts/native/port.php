@@ -50,6 +50,28 @@ if ( ! is_dir( $backup_dir ) ) { mkdir( $backup_dir, 0755, true ); }
 
 $home_hosts = array( home_url(), 'http://newpomdr-local.local', 'https://newpomdr-local.local' );
 
+/**
+ * Dynamic islands: elements in the captured HTML that must stay LIVE data,
+ * replaced with the shortcode that renders them. Keyed by slug; 'find' is
+ * a class or id the element carries; the whole element is swapped for the
+ * shortcode text (shortcodes execute inside D5 text modules; verified).
+ */
+$islands = array(
+	'foster-needs' => array(
+		array( 'find' => 'dogs-grid', 'with' => '[foster_needed_dogs]' ),
+	),
+	'videos'       => array(
+		array( 'find' => 'vids-grid', 'with' => '[pomdr_videos]' ),
+	),
+	'events'       => array(
+		// The events renderer has no single wrapper, so: inside the named
+		// section keep the heading and intro (first 2 element children of
+		// its .container) and replace the rest with the live shortcode.
+		array( 'section_id' => 'whats-happening', 'keep_first' => 2, 'append' => '[events types="Special Event,Perpetual Event"]' ),
+		array( 'section_id' => 'adoption-events', 'keep_first' => 2, 'append' => '[events types="Adoption Event"]' ),
+	),
+);
+
 $summary = array();
 
 foreach ( $pom_args as $slug ) {
@@ -113,6 +135,45 @@ foreach ( $pom_args as $slug ) {
 	libxml_clear_errors();
 	$root = $doc->getElementById( 'pom-root' );
 	if ( ! $root ) { $summary[ $slug ] = 'DOM PARSE FAILED'; continue; }
+
+	/* Apply dynamic-island swaps before serialization. */
+	if ( isset( $islands[ $slug ] ) ) {
+		$xp = new DOMXPath( $doc );
+		foreach ( $islands[ $slug ] as $op ) {
+			if ( isset( $op['find'] ) ) {
+				$hits = $xp->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' {$op['find']} ')]" );
+				if ( $hits->length ) {
+					$el = $hits->item( 0 );
+					$el->parentNode->replaceChild( $doc->createTextNode( "\n" . $op['with'] . "\n" ), $el );
+				} else {
+					echo "island WARN [$slug]: .{$op['find']} not found\n";
+				}
+			} elseif ( isset( $op['section_id'] ) ) {
+				$sec = $doc->getElementById( $op['section_id'] );
+				if ( $sec ) {
+					// Work inside the .container child when present.
+					$scope = $sec;
+					foreach ( $sec->childNodes as $c ) {
+						if ( XML_ELEMENT_NODE === $c->nodeType && false !== strpos( ' ' . $c->getAttribute( 'class' ) . ' ', ' container ' ) ) {
+							$scope = $c;
+							break;
+						}
+					}
+					$kept = 0;
+					$doomed = array();
+					foreach ( $scope->childNodes as $c ) {
+						if ( XML_ELEMENT_NODE !== $c->nodeType ) { continue; }
+						$kept++;
+						if ( $kept > $op['keep_first'] ) { $doomed[] = $c; }
+					}
+					foreach ( $doomed as $c ) { $scope->removeChild( $c ); }
+					$scope->appendChild( $doc->createTextNode( "\n" . $op['append'] . "\n" ) );
+				} else {
+					echo "island WARN [$slug]: #{$op['section_id']} not found\n";
+				}
+			}
+		}
+	}
 
 	$d4       = '';
 	$sections = 0;

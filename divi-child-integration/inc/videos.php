@@ -129,3 +129,46 @@ function pomdr_get_videos() {
 	}
 	return $out;
 }
+
+/* ---- Videos grid shortcode (native pages) --------------------------------
+ * The native Videos page renders the grid through this island so the page
+ * stays live-data while the layout is native Divi. Markup mirrors
+ * page-videos.php; the sidecar template retires at cutover, leaving this
+ * as the single renderer.
+ */
+function pomdr_videos_grid_shortcode() {
+	$videos = function_exists( 'pomdr_get_videos' ) ? pomdr_get_videos() : array();
+	ob_start();
+	?>
+	<div class="vids-grid">
+		<?php if ( ! $videos ) : ?>
+			<p>No videos yet. Add them in the WordPress admin under Videos.</p>
+		<?php endif; ?>
+		<?php foreach ( $videos as $v ) : ?>
+			<?php if ( ! empty( $v['youtube_id'] ) ) : ?>
+			<article class="vid-item">
+				<div class="vid-frame" role="button" tabindex="0" data-youtube-id="<?php echo esc_attr( $v['youtube_id'] ); ?>" data-title="<?php echo esc_attr( $v['title'] ); ?>">
+					<img src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . $v['youtube_id'] . '/hqdefault.jpg' ); ?>" alt="<?php echo esc_attr( $v['title'] ); ?>" loading="lazy">
+					<span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+				</div>
+				<h2 class="vid-title"><?php echo esc_html( $v['title'] ); ?> <span class="vid-year"><?php echo esc_html( $v['year'] ); ?></span></h2>
+				<p class="vid-caption"><?php echo esc_html( $v['caption'] ); ?></p>
+				<p class="vid-credits"><?php echo esc_html( $v['credits'] ); ?></p>
+			</article>
+			<?php else : ?>
+			<article class="vid-item">
+				<a class="vid-frame vid-frame--ext" href="<?php echo esc_url( $v['url'] ); ?>" target="_blank" rel="noopener">
+					<span class="vid-ext-label">Watch on their site</span>
+					<span class="vid-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></span>
+				</a>
+				<h2 class="vid-title"><?php echo esc_html( $v['title'] ); ?> <span class="vid-year"><?php echo esc_html( $v['year'] ); ?></span></h2>
+				<p class="vid-caption"><?php echo esc_html( $v['caption'] ); ?></p>
+				<p class="vid-credits"><?php echo esc_html( $v['credits'] ); ?></p>
+			</article>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'pomdr_videos', 'pomdr_videos_grid_shortcode' );

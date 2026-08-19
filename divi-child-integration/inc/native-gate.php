@@ -29,6 +29,10 @@ add_filter( 'template_include', function ( $template ) {
 
 	// Only bypass the child theme's page-{slug}.php sidecars. Anything else
 	// (parent templates, the generic hierarchy) is already the native path.
+	// DELIBERATE exclusions (council round 3): front-page.php and
+	// single-pets.php never match this prefix, so the home page and dog
+	// pages CANNOT cut over through this gate; they keep their sidecars
+	// until their own dedicated cutover plans (runbook section 7).
 	if ( 0 !== strpos( basename( $template ), 'page-' ) ) {
 		return $template;
 	}

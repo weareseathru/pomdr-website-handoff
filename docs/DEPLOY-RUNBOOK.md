@@ -77,6 +77,24 @@ Record all of these; abort on any surprise:
 9. Staff-content divergence: list pets/events/media edited on target since
    the local clone date (nothing in this runbook overwrites them; the list
    is for awareness and for media-delta planning).
+10. PHP limits (upload_max_filesize, post_max_size, max_execution_time):
+    the WXR and media paths may have to run through wp-admin if wp-cli is
+    absent.
+11. Child theme FOLDER NAME on target must equal local's stylesheet
+    directory name: converted content bakes root-relative theme-asset paths
+    (/wp-content/themes/NAME/assets/...), and a renamed folder 404s every
+    such image with no local-host string for the crawler to catch.
+12. Enumerate any host page cache or CDN layer so the step 4 purge list is
+    complete.
+13. Dump the target's et_divi options blob (read-only) and diff against
+    local for render-affecting keys; anything divergent that the seeder
+    does not cover gets added to the seeder BEFORE deploy. Standing rule:
+    no Divi option is ever changed by hand on any environment; every
+    change lands in scripts/native/seed-divi-options.php first.
+14. Enumerate the public target URLs that render through the Divi base
+    build rather than a sidecar template; these are the surfaces the
+    option seeding (step 6) can visibly change, and they get their own
+    spot check after it runs.
 
 ## 4. Transplant rehearsal (the deploy is not attempted until this passes)
 
@@ -136,9 +154,14 @@ clean end to end once.
    Pets/Events DB groups (duplicates verified locally); verify the pets
    edit screen shows the canonical 7-value status checkbox once.
 6. Design options seeding: run the SAME idempotent scripts proven locally
-   (global colors incl. Customizer routing, Design Variables, plus every
-   neutralization option added in Phase 2), each with read-back
-   verification. The et_divi options blob is never exported wholesale.
+   (global colors incl. Customizer routing, Design Variables, typography
+   neutralization, Google Fonts off), each with read-back verification.
+   The et_divi options blob is never exported wholesale. THEN a second
+   "looks as expected" spot check on the P0-14 list of Divi-base-rendered
+   URLs: option seeding is globally visible, and the step 4 check ran
+   before it. If the host has no wp-cli, steps 6 to 9 run through the
+   mu-plugin fallback runner (scripts/native/mu-pomdr-runner.php + the two
+   wp-config constants), which is removed at step 12.
 7. Media delta: upload only new local media referenced by converted pages;
    import so attachment rows exist; record the ID map.
 8. Page records: JSON-aware rewrite (URLs incl. escaped forms, attachment
@@ -173,12 +196,26 @@ clean end to end once.
 - Local remains the layout workshop; new.pomdr.org remains the content
   source of truth for pets/events/team/media at all times.
 
-## 7. Open decisions for Andrew
+## 7. Scope notes (council round 3)
+
+- The native gate covers page-{slug}.php sidecars only. front-page.php and
+  single-pets.php are EXPLICIT exclusions for now: the home page and dog
+  pages keep their sidecar renderers until their own dedicated cutover
+  plans (post-staging for the dog template per the plan's Phase 6; home is
+  a special case with the hybrid hero and needs its own gate extension).
+- Staff role lockdown (et_pb_role_settings: Divi Role Editor limits for
+  Editors) is applied and verified as part of the governance step, seeded
+  by script like every other option, never clicked in by hand.
+
+## 8. Open decisions for Andrew
 
 1. Purchase All-in-One Unlimited (~$69) as the restore path (recommended),
    or rely on verified host-level restore.
 2. Approve the P0 read-only inspection session on new.pomdr.org (nothing
    is written; it fills in section 3's unknowns).
-3. Re-convene the four missed council seats after the session cap resets,
-   or accept the QA-seat review + inline adjudication as sufficient for
-   proceeding to the rehearsal.
+3. Buttons and section spacing as named Divi presets (visible, editable
+   choices in the Visual Builder UI) versus the current CSS-class vehicle
+   (invisible in the VB but proven faithful). Cheap to change only while
+   pages are still regenerable, so this gates the batch. Recommendation:
+   stay with the proven CSS-class vehicle for launch fidelity; presets can
+   be layered on specific modules later without regenerating pages.
