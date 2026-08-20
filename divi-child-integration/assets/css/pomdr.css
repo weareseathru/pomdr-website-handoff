@@ -1628,6 +1628,12 @@ body.pom-native .et_pb_row {
   margin: 0 auto;
   padding: 0 32px;
 }
+
+/* Ported sections carry ALL vertical rhythm in their original markup; any
+   extra vertical space from Divi's row padding or module margins is drift
+   (measured +-2..8px block offsets, process 2026-08-20). */
+body.pom-native .et_pb_row { padding-top: 0; padding-bottom: 0; }
+body.pom-native .et_pb_module.et_pb_text { margin-bottom: 0; }
 @media (max-width: 640px) {
   body.pom-native .et_pb_row { padding: 0 20px; }
 }

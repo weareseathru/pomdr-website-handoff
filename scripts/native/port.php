@@ -228,6 +228,10 @@ foreach ( $pom_args as $slug ) {
 			foreach ( $run as $n ) { if ( XML_ELEMENT_NODE === $n->nodeType ) { $has_el = true; } }
 			if ( $has_el ) {
 				$wrap = $doc->createElement( 'div' );
+				// The shield must be layout-invisible: inside flex/grid parents
+				// (.page-cta) a plain div becomes the sole flex item and eats
+				// the gap (measured: buttons stacked gapless, 2026-08-20).
+				$wrap->setAttribute( 'style', 'display:contents' );
 				$blk->insertBefore( $wrap, $run[0] );
 				foreach ( $run as $n ) { $wrap->appendChild( $n ); }
 			}
