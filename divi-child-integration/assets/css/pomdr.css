@@ -1638,10 +1638,19 @@ body.pom-native .et_pb_module.et_pb_text { margin-bottom: 0; }
   body.pom-native .et_pb_row { padding: 0 20px; }
 }
 
-/* Our classed sections own their padding; Divi defaults stand down. */
-.et_pb_section.section { padding: var(--section-pad, 80px) 0; }
-.et_pb_section.page-header { padding: 160px 0 80px; background: var(--cream-2); }
-.et_pb_section.cta-strip { padding: 80px 0; }
+/* Our classed sections own their padding; Divi defaults stand down.
+   body.pom-native prefix outranks Divi's generated per-section CSS
+   (.et_pb_section_N ties and wins by order otherwise; measured: the CTA
+   strip lost its 80px paddings at 1440, 2026-08-20). */
+body.pom-native .et_pb_section.section { padding: var(--section-pad, 80px) 0; }
+body.pom-native .et_pb_section.page-header { padding: 160px 0 80px; background: var(--cream-2); }
+body.pom-native .et_pb_section.cta-strip { padding: 80px 0; }
+@media (max-width: 900px) {
+  body.pom-native .et_pb_section.section { padding: var(--section-pad-m, 56px) 0; }
+}
+@media (max-width: 700px) {
+  body.pom-native .et_pb_section.page-header { padding: 130px 0 56px; }
+}
 
 /* Background utilities the sidecars did with inline styles. */
 .section-cream { background: var(--cream); }

@@ -5,3 +5,4 @@
 .perp-howlist{font-size: 22px;line-height:1.8;padding-left:24px;margin:0;columns:2;column-gap:56px;}
 .perp-howlist li{margin:0 0 14px;break-inside:avoid;}
 @media(max-width:860px){.perp-intro{grid-template-columns:1fr;gap:26px;}.perp-howlist{columns:1;}}
+.pgi-perpetual-care-program-2{background:var(--cream-2);}

@@ -273,13 +273,19 @@ foreach ( $pom_args as $slug ) {
 			$inner .= $doc->saveHTML( $child );
 		}
 
-		/* Unwrap a sole .container child; the Divi row IS the container. */
-		if ( preg_match( '~^\s*<div class="container">(.*)</div>\s*$~s', $inner, $cm ) ) {
-			$inner = $cm[1];
-		}
+		/* The sole-.container unwrap is gone: .et_pb_text .container in the
+		   adapter neutralizes the double width constraint while PRESERVING
+		   layout containers like .cta-strip .container (flex; its removal
+		   made CTA headings span full width, measured 2026-08-20). */
 
 		if ( '' === trim( $inner ) ) { continue; }
 
+		$inline_style = trim( $node->getAttribute( 'style' ) );
+		if ( '' !== $inline_style ) {
+			$gen = 'pgi-' . $slug . '-' . $sections;
+			$classes = trim( $classes . ' ' . $gen );
+			$page_css_extra = ( $page_css_extra ?? '' ) . '.' . $gen . '{' . rtrim( $inline_style, ';' ) . ";}\n";
+		}
 		$label = ucwords( str_replace( array( '-', '_' ), ' ', $classes ? preg_split( '/\s+/', $classes )[0] : $node->nodeName ) );
 		$d4   .= pom_d4_section(
 			array( 'module_class' => trim( $classes . " pg-$slug" ), 'admin_label' => $label ?: 'Section' ),
@@ -292,6 +298,11 @@ foreach ( $pom_args as $slug ) {
 	}
 
 	if ( 0 === $sections ) { $summary[ $slug ] = 'NO SECTIONS'; continue; }
+
+	if ( ! empty( $page_css_extra ) ) {
+		file_put_contents( "$css_raw_dir/$slug.css", ( file_exists( "$css_raw_dir/$slug.css" ) ? file_get_contents( "$css_raw_dir/$slug.css" ) : '' ) . $page_css_extra );
+		$page_css_extra = '';
+	}
 
 	/* Restore the shielded picture/source markup. */
 	$d4 = str_replace( array( '<pom-picture', '</pom-picture>' ), array( '<picture', '</picture>' ), $d4 );

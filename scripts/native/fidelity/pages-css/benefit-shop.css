@@ -7,3 +7,4 @@
 .lists-2col ul{font-size: 21px;line-height:1.7;padding-left:1.2em;columns:2;column-gap:32px;}
 .lists-2col li{break-inside:avoid;}
 @media(max-width:860px){.shop-intro{grid-template-columns:1fr;gap:26px;}.lists-2col{grid-template-columns:1fr;gap:24px;}.lists-2col ul{columns:1;}}
+.pgi-benefit-shop-2{background:var(--cream-2);}

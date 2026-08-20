@@ -119,3 +119,4 @@
 .recognition-row{display:grid;grid-template-columns:repeat(2,auto);gap:40px;align-items:center;justify-content:start;margin-top:32px;}
 .recognition-row img{height:96px;width:auto;display:block;}
 @media(max-width:560px){.recognition-row{grid-template-columns:1fr;gap:24px;justify-items:start;}}
+.pgi-about-5{background:var(--cream-2);}
