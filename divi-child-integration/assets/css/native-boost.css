@@ -10,6 +10,11 @@
 body.pom-native .et_pb_text :where(p, li, ol, ul, blockquote, figcaption) {
   font-size: inherit; line-height: inherit; font-family: inherit;
 }
+/* Divi pads paragraphs (padding-bottom 1em); the design spaces them with
+   margins only, so block padding zeroes here. Lists keep their indent. */
+body.pom-native .et_pb_text :where(p, blockquote, figcaption) {
+  padding-top: 0; padding-bottom: 0;
+}
 
 /* ---- from pomdr-design.css ---- */
 
@@ -1816,3 +1821,24 @@ body.pom-native .btn-primary, body.pom-native .btn-purple, body.pom-native .btn-
 }
 body.pom-native .section-cream { background: var(--cream); }
 body.pom-native .cta-strip-purple { background: var(--purple-50); }
+
+/* ---- from a11y.css ---- */
+
+body.pom-native .section-lead,
+body.pom-native .page-lead,
+body.pom-native .lead {
+  max-width: var(--measure);
+}
+@media (prefers-reduced-motion: reduce) {
+  body.pom-native .reveal, body.pom-native .reveal.in {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto;
+  }
+}
+body.pom-native .opt-link, body.pom-native .fund-link, body.pom-native .card-link, body.pom-native .way-link, body.pom-native .btn-white, body.pom-native .btn-ghost, body.pom-native .filter, body.pom-native .filter-chip, body.pom-native .dog-tab {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}

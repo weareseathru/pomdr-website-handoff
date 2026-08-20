@@ -1654,7 +1654,10 @@ body.pom-native .et_pb_row {
    module; the Divi row already provides the exact container constraint,
    so the inner one stands down (double-constraint made native text 64px
    narrower and rewrapped every line; fidelity probe 2026-08-19). */
-.et_pb_text .container { max-width: none; padding-left: 0; padding-right: 0; }
+.et_pb_text .container,
+body.pom-native .et_pb_text .container {
+  width: auto; max-width: none; padding-left: 0; padding-right: 0;
+}
 
 /* Divi's text-module WRAPPER carries its own font-size and line-height,
    which classless paragraphs inherit (measured: 26px line-height instead
