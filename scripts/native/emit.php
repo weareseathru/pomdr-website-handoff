@@ -114,7 +114,10 @@ function pom_emit_page_header( array $m ) {
 	}
 
 	return pom_d4_section(
-		array( 'module_class' => 'page-header', 'admin_label' => 'Page header' ),
+		array(
+			'module_class' => trim( 'page-header ' . ( $m['section_class'] ?? '' ) ),
+			'admin_label'  => 'Page header',
+		),
 		$row
 	);
 }

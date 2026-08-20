@@ -13,6 +13,7 @@ function pom_native_culture() {
 	$doc = pom_emit_page_header( array(
 		'headline'  => 'Our Culture',
 		'narrative' => 'Kindness, run like a <em>professional</em>.',
+		'section_class' => 'pg-culture',
 		'lead'      => 'Behind every rescued dog is a team that shows up with warmth, honesty, and care. This is what it feels like to work and volunteer at Peace of Mind Dog Rescue.',
 		'ctas'      => array(
 			array( 'text' => 'Join our team', 'url' => '/jobs/', 'class' => 'btn-purple' ),
@@ -49,7 +50,7 @@ function pom_native_culture() {
 		. '<p class="section-lead">Since 2009, POMDR has grown from a small group of volunteers into a trusted Central Coast institution. The way we treat dogs, adopters, donors, and each other has stayed the same the whole way through.</p>';
 
 	$doc .= pom_d4_section(
-		array( 'admin_label' => 'Values', 'module_class' => 'section' ),
+		array( 'admin_label' => 'Values', 'module_class' => 'section pg-culture' ),
 		pom_d4_row( array( 'admin_label' => 'Values intro' ),
 			pom_d4_column( '4_4', array(),
 				pom_d4_text( array( 'admin_label' => 'Values intro' ), $values_intro )
@@ -73,7 +74,7 @@ function pom_native_culture() {
 		. '</ul></div>';
 
 	$doc .= pom_d4_section(
-		array( 'admin_label' => 'The people', 'module_class' => 'section section-cream' ),
+		array( 'admin_label' => 'The people', 'module_class' => 'section section-cream pg-culture' ),
 		pom_d4_row( array( 'admin_label' => 'People band', 'module_class' => 'people-band' ),
 			pom_d4_column( '1_2', array(),
 				pom_d4_text( array( 'admin_label' => 'Team story' ), $people_left )
@@ -92,7 +93,7 @@ function pom_native_culture() {
 		. '<p class="lead">If that sounds like the kind of place you want to spend your time, there is a seat for you here.</p>';
 
 	$doc .= pom_d4_section(
-		array( 'admin_label' => 'Why it works', 'module_class' => 'section' ),
+		array( 'admin_label' => 'Why it works', 'module_class' => 'section pg-culture' ),
 		pom_d4_row( array( 'admin_label' => 'Why it works' ),
 			pom_d4_column( '4_4', array(), pom_d4_text( array( 'admin_label' => 'Why it works' ), $why ) )
 		)
@@ -103,9 +104,9 @@ function pom_native_culture() {
 	$cta_foot = '<p class="cta-contact">Reach us at <a href="tel:8317189122">(831) 718-9122</a> or <a href="mailto:info@pomdr.org">info@pomdr.org</a>.</p>';
 
 	$doc .= pom_d4_section(
-		array( 'admin_label' => 'CTA strip', 'module_class' => 'cta-strip cta-strip-purple' ),
+		array( 'admin_label' => 'CTA strip', 'module_class' => 'cta-strip cta-strip-purple pg-culture' ),
 		pom_d4_row( array( 'admin_label' => 'CTA' ),
-			pom_d4_column( '4_4', array(),
+			pom_d4_column( '4_4', array( 'module_class' => 'cta-col' ),
 				pom_d4_text( array( 'admin_label' => 'CTA heading' ), $cta_head )
 				. pom_d4_button( 'Join our team', '/jobs/', array( 'module_class' => 'btn btn-purple', 'admin_label' => 'Button: Jobs' ) )
 				. pom_d4_button( 'Volunteer with us', '/volunteer/', array( 'module_class' => 'btn btn-outline', 'admin_label' => 'Button: Volunteer' ) )
