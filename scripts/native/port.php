@@ -160,6 +160,23 @@ foreach ( $pom_args as $slug ) {
 	$root = $doc->getElementById( 'pom-root' );
 	if ( ! $root ) { $summary[ $slug ] = 'DOM PARSE FAILED'; continue; }
 
+	/* Descend through sole classless wrappers (process nests a second
+	   <main id="main"> around its sections): otherwise the whole page ports
+	   as ONE section and full-bleed backgrounds paint inset inside the 80%
+	   row (measured: white side bands at 390, 2026-08-20). */
+	for ( $depth = 0; $depth < 3; $depth++ ) {
+		$only = null;
+		foreach ( $root->childNodes as $n ) {
+			if ( XML_ELEMENT_NODE !== $n->nodeType ) { continue; }
+			if ( null !== $only ) { $only = false; break; }
+			$only = $n;
+		}
+		if ( ! $only ) { break; }
+		$tag = strtolower( $only->nodeName );
+		if ( ! in_array( $tag, array( 'main', 'div' ), true ) || trim( $only->getAttribute( 'class' ) ) !== '' ) { break; }
+		$root = $only;
+	}
+
 	/* Apply dynamic-island swaps before serialization. */
 	if ( isset( $islands[ $slug ] ) ) {
 		$xp = new DOMXPath( $doc );
