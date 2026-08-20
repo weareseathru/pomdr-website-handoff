@@ -199,6 +199,48 @@ foreach ( $pom_args as $slug ) {
 		}
 	}
 
+	/* Drop whitespace-only text nodes inside block containers: wpautop
+	   wraps them into empty <p> elements on the native render, which steal
+	   :last-of-type from real paragraphs and break Divi's own padding
+	   reset (found 2026-08-20: phantom P after div.page-cta). Spaces
+	   inside inline/text contexts (p, headings, a, li) are untouched. */
+	$xp_ws  = new DOMXPath( $doc );
+	$blocks = array( 'div', 'section', 'header', 'footer', 'main', 'article', 'aside', 'ul', 'ol', 'figure', 'picture' );
+	foreach ( $xp_ws->query( '//text()' ) as $tn ) {
+		if ( '' === trim( $tn->nodeValue ) && $tn->parentNode
+			&& in_array( strtolower( $tn->parentNode->nodeName ), $blocks, true ) ) {
+			$tn->parentNode->removeChild( $tn );
+		}
+	}
+
+	/* wpautop wraps standalone inline elements (a button <a> between two
+	   paragraphs) into phantom <p> wrappers carrying paragraph padding.
+	   Shield: wrap orphan inline runs inside block containers in a plain
+	   <div> (unstyled, wpautop leaves divs alone). */
+	$inline_tags = array( 'a', 'span', 'em', 'strong', 'small', 'img', 'picture', 'button', 'svg' );
+	foreach ( $xp_ws->query( '//*' ) as $blk ) {
+		if ( ! in_array( strtolower( $blk->nodeName ), $blocks, true ) ) { continue; }
+		$children = iterator_to_array( $blk->childNodes );
+		$run = array();
+		$flush = function () use ( &$run, $doc, $blk ) {
+			if ( ! $run ) { return; }
+			$has_el = false;
+			foreach ( $run as $n ) { if ( XML_ELEMENT_NODE === $n->nodeType ) { $has_el = true; } }
+			if ( $has_el ) {
+				$wrap = $doc->createElement( 'div' );
+				$blk->insertBefore( $wrap, $run[0] );
+				foreach ( $run as $n ) { $wrap->appendChild( $n ); }
+			}
+			$run = array();
+		};
+		foreach ( $children as $child ) {
+			$is_inline = ( XML_TEXT_NODE === $child->nodeType && '' !== trim( $child->nodeValue ) )
+				|| ( XML_ELEMENT_NODE === $child->nodeType && in_array( strtolower( $child->nodeName ), $inline_tags, true ) );
+			if ( $is_inline ) { $run[] = $child; } else { $flush(); }
+		}
+		$flush();
+	}
+
 	$d4       = '';
 	$sections = 0;
 	foreach ( $root->childNodes as $node ) {

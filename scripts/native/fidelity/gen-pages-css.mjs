@@ -24,10 +24,13 @@ for (const file of fs.readdirSync(rawDir).filter((f) => f.endsWith('.css')).sort
     if (rule.parent && rule.parent.type === 'atrule' && /keyframes/i.test(rule.parent.name)) return;
     rule.selectors = rule.selectors.flatMap((sel) => {
       const t = sel.trim();
-      const variants = [`.pg-${slug} ${t}`];
+      // body prefix matches the boost layer so page rules outrank the
+      // synthetic base and boosted shared rules, exactly as the reference
+      // orders page-local styles after the shared stylesheets.
+      const variants = [`body.pom-native .pg-${slug} ${t}`];
       // Section-level classes sit ON the same element as the pg stamp, so a
       // descendant prefix alone never matches; add the compound form.
-      if (t.startsWith('.')) variants.push(`.pg-${slug}${t}`);
+      if (t.startsWith('.')) variants.push(`body.pom-native .pg-${slug}${t}`);
       return variants;
     });
   });

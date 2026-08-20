@@ -10,11 +10,12 @@
 body.pom-native .et_pb_text :where(p, li, ol, ul, blockquote, figcaption) {
   font-size: inherit; line-height: inherit; font-family: inherit;
 }
-/* Divi pads paragraphs (padding-bottom 1em); the design spaces them with
-   margins only, so block padding zeroes here. Lists keep their indent. */
-body.pom-native .et_pb_text :where(p, blockquote, figcaption) {
-  padding-top: 0; padding-bottom: 0;
-}
+/* Mirror Divi's GLOBAL paragraph padding pair exactly (the reference
+   standard): 1em bottom, zeroed on the last p of its parent. Divi's
+   module-scoped variant uses :last-child, which misfires when a div
+   follows the final paragraph; this restores last-of-type semantics. */
+body.pom-native .et_pb_text :where(p) { padding-bottom: 1em; }
+body.pom-native .et_pb_text :where(p:not(.has-background):last-of-type) { padding-bottom: 0; }
 
 /* ---- from pomdr-design.css ---- */
 
