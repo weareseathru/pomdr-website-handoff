@@ -50,6 +50,16 @@ export async function newCtx(browser, width) {
   });
 }
 
+/** Robust navigation: Local's PHP server flakes under load; one retry. */
+export async function gotoRobust(page, url) {
+  try {
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+  } catch (e) {
+    await page.waitForTimeout(3000);
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
+  }
+}
+
 /** Deterministic settle: fonts, lazyload, scroll home, masks. */
 export async function settle(page, masks) {
   await page.waitForLoadState('networkidle').catch(() => {});
@@ -59,6 +69,12 @@ export async function settle(page, masks) {
     for (let y = 0; y < h; y += 800) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); }
     window.scrollTo(0, 0);
   });
+  // Every image must be fully loaded; a capture taken mid-load poisons
+  // goldens and fires false ref-drift (observed at 980 on process).
+  await page.waitForFunction(
+    () => Array.from(document.images).every((i) => i.complete && (i.naturalWidth > 0 || i.getBoundingClientRect().width === 0)),
+    { timeout: 30000 }
+  ).catch(() => {});
   await page.waitForTimeout(400);
   if (masks && masks.length) {
     await page.evaluate((sels) => {

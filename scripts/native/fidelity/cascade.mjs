@@ -43,7 +43,7 @@ for (const url of ['http://newpomdr-local.local/why/', 'http://newpomdr-local.lo
       return getComputedStyle(el).getPropertyValue(prop);
     }, { name: t.name, prop: t.props[0] });
     console.log(`${side} ${t.name} computed=${computed}`);
-    hits.slice(0, 4).forEach((h) => console.log('   ', h));
+    hits.slice(-5).forEach((h) => console.log('   ', h));
   }
   await page.close();
 }

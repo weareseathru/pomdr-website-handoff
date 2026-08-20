@@ -99,10 +99,14 @@ function pom_emit_page_header( array $m ) {
 	}
 
 	if ( ! empty( $m['media'] ) ) {
-		$right = pom_d4_image( $m['media']['src'], $m['media']['alt'], array(
-			'admin_label'  => 'Header photo',
-			'module_class' => 'ph-media-img',
-		) );
+		// Theme-asset hero images keep their <picture>/WebP markup (an image
+		// module would drop the WebP source; semantic parity gate).
+		$pic = '<picture>';
+		if ( ! empty( $m['media']['webp'] ) ) {
+			$pic .= '<source type="image/webp" srcset="' . $m['media']['webp'] . '">';
+		}
+		$pic  .= '<img src="' . $m['media']['src'] . '" alt="' . esc_attr( $m['media']['alt'] ) . '"></picture>';
+		$right = pom_d4_text( array( 'admin_label' => 'Header photo' ), $pic );
 		$inner = pom_d4_column( '1_2', array( 'module_class' => 'ph-text' ), $left )
 			. pom_d4_column( '1_2', array( 'module_class' => 'ph-media' ), $right );
 		$row   = pom_d4_row( array( 'module_class' => 'ph-split', 'admin_label' => 'Header split' ), $inner );

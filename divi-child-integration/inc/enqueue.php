@@ -53,6 +53,19 @@ add_action( 'wp_enqueue_scripts', function () {
         filemtime( get_stylesheet_directory() . '/assets/css/pomdr.css' )
     );
 
+    // GENERATED design-boost layer for native Divi pages: the design rules
+    // re-scoped under body.pom-native so the design outranks Divi's module
+    // styles while keeping its own precedence; page-scoped styles load after. Regenerate with scripts/native/fidelity/gen-boost.mjs
+    // whenever the design stylesheets change.
+    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-boost.css' ) ) {
+        wp_enqueue_style(
+            'pomdr-native-boost',
+            get_stylesheet_directory_uri() . '/assets/css/native-boost.css',
+            array( 'pomdr-shared' ),
+            filemtime( get_stylesheet_directory() . '/assets/css/native-boost.css' )
+        );
+    }
+
     // Page-local styles harvested from the sidecar templates by the native
     // port (scripts/native/port.php). Native Divi pages depend on these; the
     // sidecars keep their inline copies until retirement (rules identical).
@@ -60,21 +73,8 @@ add_action( 'wp_enqueue_scripts', function () {
         wp_enqueue_style(
             'pomdr-native-pages',
             get_stylesheet_directory_uri() . '/assets/css/native-pages.css',
-            array( 'pomdr-shared' ),
+            array( 'pomdr-native-boost' ),
             filemtime( get_stylesheet_directory() . '/assets/css/native-pages.css' )
-        );
-    }
-
-    // GENERATED design-boost layer for native Divi pages: the design rules
-    // re-scoped under .et_pb_text_inner so they outrank Divi's text-module
-    // element styles. Regenerate with scripts/native/fidelity/gen-boost.mjs
-    // whenever the design stylesheets change.
-    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-boost.css' ) ) {
-        wp_enqueue_style(
-            'pomdr-native-boost',
-            get_stylesheet_directory_uri() . '/assets/css/native-boost.css',
-            array( 'pomdr-native-pages' ),
-            filemtime( get_stylesheet_directory() . '/assets/css/native-boost.css' )
         );
     }
 

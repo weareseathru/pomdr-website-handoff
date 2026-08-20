@@ -114,15 +114,20 @@ foreach ( $pom_args as $slug ) {
 		return '';
 	}, $main_html );
 
-	/* Also harvest style blocks that sit BEFORE <main> in the template. */
-	$head_chunk = substr( $html, 0, strpos( $html, '<main' ) );
-	preg_match_all( '~<style\b(?![^>]*id=)[^>]*>(.*?)</style>~s', $head_chunk, $head_styles );
+	/* Also harvest template style blocks between the chrome and <main>.
+	   Anchoring past </head> excludes WordPress/Divi head styles, so no
+	   class whitelist is needed (the old whitelist silently dropped why's
+	   .twocol block, found via cascade trace 2026-08-20). */
+	$body_start = strpos( $html, '</head>' );
+	$main_start = strpos( $html, '<main' );
+	$body_chunk = ( false !== $body_start && false !== $main_start && $main_start > $body_start )
+		? substr( $html, $body_start, $main_start - $body_start )
+		: '';
+	preg_match_all( '~<style\b(?![^>]*id=)[^>]*>(.*?)</style>~s', $body_chunk, $head_styles );
 	foreach ( $head_styles[1] as $css ) {
 		$css = trim( $css );
-		// Only take blocks that reference page-scoped classes, not WP/Divi core inline CSS.
 		if ( '' !== $css && false === strpos( $page_css, $css )
-			&& ! preg_match( '~^(img|\.wp-|:root\{--wp|\.et[-_])~', $css )
-			&& preg_match( '~\.(values-|people-|ph-|steps|story|faq|way-|foster|tmn|hp-|donate|jobs|media|why|team|about|clinic|shop|care|fund)~', $css ) ) {
+			&& ! preg_match( '~^(img|\.wp-|:root\{--wp|\.et[-_])~', $css ) ) {
 			$page_css .= $css . "\n";
 			$style_count++;
 		}

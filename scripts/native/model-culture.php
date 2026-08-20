@@ -20,8 +20,9 @@ function pom_native_culture() {
 			array( 'text' => 'Volunteer with us', 'url' => '/volunteer/', 'class' => 'btn-outline' ),
 		),
 		'media'     => array(
-			'src' => pom_theme_asset( 'assets/images/hero-volunteer.jpg' ),
-			'alt' => 'POMDR volunteers together at an event',
+			'src'  => pom_theme_asset( 'assets/images/hero-volunteer.jpg' ),
+			'webp' => pom_theme_asset( 'assets/images/hero-volunteer.webp' ),
+			'alt'  => 'POMDR volunteers together at an event',
 		),
 	) );
 

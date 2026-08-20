@@ -28,8 +28,8 @@
     "bytes": 612620
    },
    "980": {
-    "sha256": "7d791e3fadfdc7d5ab818a0154d368008ba374961dbecd34c6d400aa8f51fadb",
-    "bytes": 597384
+    "sha256": "24ac109e834869d4a6be43bcabbd26db27a39f223ebaa44e5bc626802208de02",
+    "bytes": 567638
    },
    "1440": {
     "sha256": "697ee3a9d6a10c8fee139366450d75af4a0285c23b3814882e584e4d66fc0ce1",
@@ -55,13 +55,13 @@
    }
   }
  },
- "capturedAt": "2026-08-19T23:37:00.830Z",
- "gitSha": "16e33dec95b88d391efe28d6d1f0f7f39b3de909",
+ "capturedAt": "2026-08-20T20:41:56.792Z",
+ "gitSha": "2e7a2c72cf16b7870e5ae4600e67c6d091341793",
  "cssHashes": {
   "tokens.css": "da2b98ba32822a8a68b9edbf01da42e1f1f13b57d1fe6c472b6b4e4b61171bc5",
-  "pomdr.css": "298251a7de1c96af5827f0a752fa847165d5aff8cf0551716bddc92ca0dd624a",
+  "pomdr.css": "08ab423cd0646c4015b87832c7f04ab83ed2e1ad45a843630c7a52cffc130c87",
   "pomdr-design.css": "8c1295cbad4b5945eaa87b4b3a095e01c2c7bd744fe34430d26e5ceba20bd2fd",
-  "native-pages.css": "52bbd08a6551df93518625722650e81716e3bd525ada91a229293737aa802b93",
+  "native-pages.css": "816587b209aa4198481066e41158c80105c6d5579625fe8d4d5c0ee5064b9b02",
   "a11y.css": "f356507e8e07dc45be01a27ab075e13d50ee40b6f3033b2ceb0d7e47beddf0c7"
  }
 }

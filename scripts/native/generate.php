@@ -65,7 +65,8 @@ $existing     = get_page_by_path( $staging_slug, OBJECT, 'page' );
 
 if ( $existing ) {
 	$post_id = $existing->ID;
-	wp_update_post( array( 'ID' => $post_id, 'post_content' => $d4, 'post_status' => 'draft' ) );
+	// Preserve publish state (a re-draft makes anonymous fidelity captures 404).
+	wp_update_post( array( 'ID' => $post_id, 'post_content' => $d4, 'post_status' => $existing->post_status ) );
 	delete_post_meta( $post_id, '_et_pb_use_divi_5' );
 } else {
 	$post_id = wp_insert_post( array(

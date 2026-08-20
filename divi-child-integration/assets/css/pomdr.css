@@ -1619,18 +1619,17 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
 .et_pb_section.cta-strip {
   display: block;
 }
-.et_pb_section.section > .et_pb_row,
-.et_pb_section.page-header > .et_pb_row,
-.et_pb_section.cta-strip > .et_pb_row {
-  width: 100%;
+body.pom-native .et_pb_row {
+  /* Mirrors the REFERENCE .container box exactly: Divi's own stylesheet
+     gives .container width:80%, and the sidecar pages render inside that
+     (measured 2026-08-20: 312px at a 390 viewport). Do not "fix" to 100%. */
+  width: 80%;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 32px;
 }
 @media (max-width: 640px) {
-  .et_pb_section.section > .et_pb_row,
-  .et_pb_section.page-header > .et_pb_row,
-  .et_pb_section.cta-strip > .et_pb_row { padding: 0 20px; }
+  body.pom-native .et_pb_row { padding: 0 20px; }
 }
 
 /* Our classed sections own their padding; Divi defaults stand down. */
@@ -1664,3 +1663,8 @@ body, html body.et_divi_theme, html body.et_divi_theme #page-container {
    Divi's (0,1,0) regardless of load order. */
 .et_pb_module.et_pb_text,
 .et_pb_text .et_pb_text_inner { font-size: inherit; line-height: inherit; }
+
+/* Divi's .et_pb_button forces line-height 1.7em with !important; mirror the
+   design's .btn value (pomdr.css .btn { line-height: 1.05 }) at equal force.
+   Keep in sync if .btn's line-height ever changes. */
+.et_pb_button.btn { line-height: 1.05 !important; }

@@ -24,7 +24,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { PNG } from 'pngjs';
 import pixelmatch from 'pixelmatch';
-import { BASE, WIDTHS, MASKS, ALL, dirs, launch, newCtx, settle, here } from './common.mjs';
+import { BASE, WIDTHS, MASKS, ALL, dirs, launch, newCtx, settle, gotoRobust, here } from './common.mjs';
 
 const CLUSTER_MIN = 24;      // px, both dimensions of a cluster bbox
 const CELL = 8;              // diff-grid resolution for clustering
@@ -166,8 +166,8 @@ for (const slug of slugs) {
     const ctx = await newCtx(browser, width);
     const ref = await ctx.newPage();
     const nat = await ctx.newPage();
-    await ref.goto(`${BASE}/${slug}/`, { waitUntil: 'domcontentloaded' });
-    await nat.goto(`${BASE}/native-staging-${slug}/`, { waitUntil: 'domcontentloaded' });
+    await gotoRobust(ref, `${BASE}/${slug}/`);
+    await gotoRobust(nat, `${BASE}/native-staging-${slug}/`);
     await settle(ref, masks);
     await settle(nat, masks);
 

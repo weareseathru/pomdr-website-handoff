@@ -22,7 +22,14 @@ for (const file of fs.readdirSync(rawDir).filter((f) => f.endsWith('.css')).sort
   const root = postcss.parse(fs.readFileSync(path.join(rawDir, file), 'utf8'));
   root.walkRules((rule) => {
     if (rule.parent && rule.parent.type === 'atrule' && /keyframes/i.test(rule.parent.name)) return;
-    rule.selectors = rule.selectors.map((s) => `.pg-${slug} ${s.trim()}`);
+    rule.selectors = rule.selectors.flatMap((sel) => {
+      const t = sel.trim();
+      const variants = [`.pg-${slug} ${t}`];
+      // Section-level classes sit ON the same element as the pg stamp, so a
+      // descendant prefix alone never matches; add the compound form.
+      if (t.startsWith('.')) variants.push(`.pg-${slug}${t}`);
+      return variants;
+    });
   });
   out += `\n/* ---- page: ${slug} ---- */\n` + root.toString() + '\n';
 }

@@ -12,6 +12,11 @@
  * Re-check on any Divi update per the pin policy in docs/DEPLOY-RUNBOOK.md.
  */
 
+add_filter( 'body_class', function ( $classes ) {
+	$classes[] = 'pom-native';
+	return $classes;
+} );
+
 get_header();
 ?>
 
