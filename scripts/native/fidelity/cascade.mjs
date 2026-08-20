@@ -3,12 +3,11 @@ const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 
 const TARGETS = [
-  { name: 'h3-apply', find: 'h3', text: 'Apply online', props: ['letter-spacing'] },
-  { name: 'cta-h2', find: 'h2', text: 'Ready when', props: ['color'] },
-  { name: 'resp-p', find: 'p', text: 'Responses to our adoption', props: ['line-height'] },
+  { name: 'care-h2', find: 'h2', text: 'Caring for the people', props: ['font-size', 'font-weight'] },
+  { name: 'they-h3', find: 'h3', text: 'They are already', props: ['font-size'] },
 ];
 
-for (const url of ['http://newpomdr-local.local/process/', 'http://newpomdr-local.local/native-staging-process/']) {
+for (const url of ['http://newpomdr-local.local/why/', 'http://newpomdr-local.local/native-staging-why/']) {
   const side = url.includes('native') ? 'NAT' : 'REF';
   const page = await ctx.newPage();
   await page.goto(url, { waitUntil: 'networkidle' });

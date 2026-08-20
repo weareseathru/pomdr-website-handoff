@@ -141,6 +141,12 @@ foreach ( $pom_args as $slug ) {
 		$main_html = str_replace( $h, '', $main_html );
 	}
 
+	/* PHP's libxml HTML parser predates <picture>/<source> and mangles them
+	   (found: culture hero lost its WebP source). Shield them as paired
+	   custom tags around the parse; restored after serialization. */
+	$main_html = str_replace( array( '<picture', '</picture>' ), array( '<pom-picture', '</pom-picture>' ), $main_html );
+	$main_html = preg_replace( '~<source\b([^>]*)>~i', '<pom-source$1></pom-source>', $main_html );
+
 	/* Split into top-level elements with DOM. */
 	$doc = new DOMDocument();
 	libxml_use_internal_errors( true );
@@ -218,6 +224,10 @@ foreach ( $pom_args as $slug ) {
 	}
 
 	if ( 0 === $sections ) { $summary[ $slug ] = 'NO SECTIONS'; continue; }
+
+	/* Restore the shielded picture/source markup. */
+	$d4 = str_replace( array( '<pom-picture', '</pom-picture>' ), array( '<picture', '</picture>' ), $d4 );
+	$d4 = preg_replace( '~<pom-source\b([^>]*)>\s*</pom-source>~i', '<source$1>', $d4 );
 
 	/* Stage, convert, check (same gate as generate.php, compact). */
 	$staging_slug = "native-staging-$slug";

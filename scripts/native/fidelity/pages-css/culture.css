@@ -1,0 +1,58 @@
+/* Header split: the Divi row is the grid, its columns are ph-text/ph-media. */
+.et_pb_row.ph-split {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 52px;
+  align-items: stretch;
+}
+.et_pb_row.ph-split > .et_pb_column { width: auto; margin: 0; }
+.ph-media .et_pb_image,
+.ph-media .et_pb_image img { width: 100%; height: 100%; }
+.ph-media .et_pb_image img { object-fit: cover; object-position: center; }
+@media (max-width: 860px) {
+  .et_pb_row.ph-split { grid-template-columns: 1fr; gap: 26px; }
+}
+
+/* People band as a Divi row. */
+.et_pb_row.people-band { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.et_pb_row.people-band > .et_pb_column { width: auto; margin: 0; }
+@media (max-width: 800px) { .et_pb_row.people-band { grid-template-columns: 1fr; gap: 32px; } }
+
+/* Culture page components, promoted from the template's page-local styles
+   so the native page styles identically (the sidecar keeps its own copy
+   until retirement; rules are identical). */
+.values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 8px; }
+.value-card { background: #fff; border-radius: var(--radius-lg); padding: 30px; border: 1px solid var(--line); transition: all .35s var(--ease); }
+.value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.value-card .vk { width: 46px; height: 46px; border-radius: 14px; background: var(--purple-50); display: grid; place-items: center; color: var(--purple); margin-bottom: 16px; font-family: var(--font-serif); font-size: 27px; font-weight: 500; }
+.value-card h3 { font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 0 0 8px; }
+.value-card p { font-size: 22px; color: var(--ink-2); margin: 0; }
+@media (max-width: 760px) { .values-grid { grid-template-columns: 1fr; } }
+
+.people-band h2 { font-family: var(--font-serif); font-size: clamp(28px, 3.4vw, 44px); font-weight: 300; letter-spacing: -.02em; margin: 10px 0 18px; }
+.people-band h2 em { font-style: italic; color: var(--purple); }
+.people-band p { font-size: 22px; color: var(--ink-2); margin: 0 0 18px; }
+
+.belong-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px; }
+.belong-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.belong-list li { font-size: 22px; color: var(--ink-2); }
+.belong-list li strong { color: var(--ink); }
+.cta-contact { margin-top: 20px; font-size: 22px; color: var(--ink-2); }
+.cta-strip-purple .cta-contact a { color: var(--purple); font-weight: 600; }
+
+/* CTA strip native layout: heading left, buttons right, contact full width. */
+.cta-col {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px;
+}
+.cta-col > .et_pb_text:first-child { flex: 1 1 340px; margin: 0; }
+.cta-col > .et_pb_button_module_wrapper,
+.cta-col > .et_pb_button { flex: 0 0 auto; }
+.cta-col > .et_pb_text:last-child { flex-basis: 100%; margin: 0; }
+
+/* Consecutive buttons in a text column sit inline, like .page-cta rows. */
+.et_pb_column.ph-text .et_pb_button_module_wrapper,
+.et_pb_row.people-band .et_pb_button_module_wrapper {
+  display: inline-block;
+  margin: 6px 14px 0 0;
+}
+

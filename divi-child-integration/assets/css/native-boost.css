@@ -1816,21 +1816,3 @@
 }
 .et_pb_text .et_pb_text_inner .section-cream { background: var(--cream); }
 .et_pb_text .et_pb_text_inner .cta-strip-purple { background: var(--purple-50); }
-.et_pb_text .et_pb_text_inner .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 8px; }
-.et_pb_text .et_pb_text_inner .value-card { background: #fff; border-radius: var(--radius-lg); padding: 30px; border: 1px solid var(--line); transition: all .35s var(--ease); }
-.et_pb_text .et_pb_text_inner .value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.et_pb_text .et_pb_text_inner .value-card .vk { width: 46px; height: 46px; border-radius: 14px; background: var(--purple-50); display: grid; place-items: center; color: var(--purple); margin-bottom: 16px; font-family: var(--font-serif); font-size: 27px; font-weight: 500; }
-.et_pb_text .et_pb_text_inner .value-card h3 { font-family: var(--font-serif); font-size: 28px; font-weight: 500; margin: 0 0 8px; }
-.et_pb_text .et_pb_text_inner .value-card p { font-size: 22px; color: var(--ink-2); margin: 0; }
-@media (max-width: 760px) { .et_pb_text .et_pb_text_inner .values-grid { grid-template-columns: 1fr; } }
-
-.et_pb_text .et_pb_text_inner .people-band h2 { font-family: var(--font-serif); font-size: clamp(28px, 3.4vw, 44px); font-weight: 300; letter-spacing: -.02em; margin: 10px 0 18px; }
-.et_pb_text .et_pb_text_inner .people-band h2 em { font-style: italic; color: var(--purple); }
-.et_pb_text .et_pb_text_inner .people-band p { font-size: 22px; color: var(--ink-2); margin: 0 0 18px; }
-
-.et_pb_text .et_pb_text_inner .belong-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px; }
-.et_pb_text .et_pb_text_inner .belong-list { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-.et_pb_text .et_pb_text_inner .belong-list li { font-size: 22px; color: var(--ink-2); }
-.et_pb_text .et_pb_text_inner .belong-list li strong { color: var(--ink); }
-.et_pb_text .et_pb_text_inner .cta-contact { margin-top: 20px; font-size: 22px; color: var(--ink-2); }
-.et_pb_text .et_pb_text_inner .cta-strip-purple .cta-contact a { color: var(--purple); font-weight: 600; }
