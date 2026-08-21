@@ -1,0 +1,9 @@
+.forms-group { margin-bottom: 40px; }
+.forms-group h2 { font-family: var(--font-serif); font-size: 33px; font-weight: 500; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.forms-group ul { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 640px) { .forms-group ul { grid-template-columns: 1fr; } }
+.forms-group li a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px;
+  color: var(--blue-text); font-size: 22px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+}
+.forms-group li a:hover { color: var(--blue-900); }

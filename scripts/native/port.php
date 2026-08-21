@@ -137,8 +137,45 @@ foreach ( $pom_args as $slug ) {
 			$style_count++;
 		}
 	}
+	/* Third window: several templates print their <style> AFTER </main>
+	   (testimonials, terms, media, news, forms, privacy - found by the
+	   full sweep 2026-08-21: hundreds of style fails, zero harvested css).
+	   Capture between the sidecar main's close and the site footer. */
+	$main_end  = strpos( $html, '</main>', $main_start ?: 0 );
+	$foot_pos  = strpos( $html, '<footer', $main_end ?: 0 );
+	if ( false !== $main_end ) {
+		$tail_chunk = substr( $html, $main_end, ( false !== $foot_pos ? $foot_pos - $main_end : 20000 ) );
+		preg_match_all( '~<style\b(?![^>]*id=)[^>]*>(.*?)</style>~s', $tail_chunk, $tail_styles );
+		foreach ( $tail_styles[1] as $css ) {
+			$css = trim( $css );
+			if ( '' !== $css && false === strpos( $page_css, $css )
+				&& ! preg_match( '~^(img|\.wp-|:root\{--wp|\.et[-_])~', $css ) ) {
+				$page_css .= $css . "\n";
+				$style_count++;
+			}
+		}
+	}
+
 	if ( '' !== $page_css ) {
 		file_put_contents( "$css_raw_dir/$slug.css", $page_css );
+	}
+
+	/* Harvest inline <script> blocks the same way as styles: Divi text
+	   modules render them as VISIBLE TEXT (raw JS above the surrender
+	   header, 2000px of it on donate; full sweep 2026-08-21). External
+	   src scripts are left in place. */
+	$js_raw_dir = dirname( __FILE__ ) . '/fidelity/pages-js';
+	if ( ! is_dir( $js_raw_dir ) ) { mkdir( $js_raw_dir, 0755, true ); }
+	$page_js   = '';
+	$main_html = preg_replace_callback( '~<script\b(?![^>]*\bsrc=)[^>]*>(.*?)</script>~s', function ( $m ) use ( &$page_js ) {
+		$js = trim( $m[1] );
+		if ( '' !== $js && false === strpos( $page_js, $js ) ) {
+			$page_js .= $js . "\n";
+		}
+		return '';
+	}, $main_html );
+	if ( '' !== $page_js ) {
+		file_put_contents( "$js_raw_dir/$slug.js", $page_js );
 	}
 
 	/* Collapse whitespace runs: wpautop turns raw newlines inside captured

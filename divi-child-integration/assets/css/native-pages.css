@@ -123,7 +123,7 @@ body.pom-native .pg-about .cards-2col,body.pom-native .pg-about.cards-2col{displ
 body.pom-native .pg-about .recognition-row,body.pom-native .pg-about.recognition-row{display:grid;grid-template-columns:repeat(2,auto);gap:40px;align-items:center;justify-content:start;margin-top:32px;}
 body.pom-native .pg-about .recognition-row img,body.pom-native .pg-about.recognition-row img{height:96px;width:auto;display:block;}
 @media(max-width:560px){body.pom-native .pg-about .recognition-row,body.pom-native .pg-about.recognition-row{grid-template-columns:1fr;gap:24px;justify-items:start;}}
-body.pom-native .pg-about .pgi-about-5,body.pom-native .pg-about.pgi-about-5{background:var(--cream-2);}
+body.pom-native .pg-about .pgi-about-4,body.pom-native .pg-about.pgi-about-4{background:var(--cream-2);}
 
 
 /* ---- page: bauer-center ---- */
@@ -270,6 +270,25 @@ body.pom-native .pg-donate .way-card:hover .way-link,body.pom-native .pg-donate.
 @media(max-width:580px){body.pom-native .pg-donate .ways-grid,body.pom-native .pg-donate.ways-grid{grid-template-columns:1fr;}}
 
 
+/* ---- page: events ---- */
+/* The two sections carry equal weight: same title size, same spacing; the
+   second gets a soft tint so the split reads clearly. */
+body.pom-native .pg-events .section--tint, body.pom-native .pg-events.section--tint { background: var(--purple-50); }
+body.pom-native .pg-events .section-intro, body.pom-native .pg-events.section-intro { font-size: 23px; line-height: 1.6; color: var(--ink-2); margin: 0 0 28px; max-width: 60ch; }
+
+
+/* ---- page: forms ---- */
+body.pom-native .pg-forms .forms-group, body.pom-native .pg-forms.forms-group { margin-bottom: 40px; }
+body.pom-native .pg-forms .forms-group h2, body.pom-native .pg-forms.forms-group h2 { font-family: var(--font-serif); font-size: 33px; font-weight: 500; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+body.pom-native .pg-forms .forms-group ul, body.pom-native .pg-forms.forms-group ul { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; list-style: none; margin: 0; padding: 0; }
+@media (max-width: 640px) { body.pom-native .pg-forms .forms-group ul, body.pom-native .pg-forms.forms-group ul { grid-template-columns: 1fr; } }
+body.pom-native .pg-forms .forms-group li a, body.pom-native .pg-forms.forms-group li a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px;
+  color: var(--blue-text); font-size: 22px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px;
+}
+body.pom-native .pg-forms .forms-group li a:hover, body.pom-native .pg-forms.forms-group li a:hover { color: var(--blue-900); }
+
+
 /* ---- page: foster-needs ---- */
 /* Lay the content across the width: a text+photo intro and a 2-up step grid,
    so the page reads horizontally instead of one tall vertical column. */
@@ -394,6 +413,30 @@ body.pom-native .pg-mailing-list .benefit-list .ck svg,body.pom-native .pg-maili
 body.pom-native .pg-mailing-list .pgi-mailing-list-2,body.pom-native .pg-mailing-list.pgi-mailing-list-2{background:var(--blue-50);}
 
 
+/* ---- page: media ---- */
+body.pom-native .pg-media .press-list, body.pom-native .pg-media.press-list { list-style: none; margin: 0; padding: 0; }
+body.pom-native .pg-media .press-item, body.pom-native .pg-media.press-item { border-bottom: 1px solid var(--line); }
+body.pom-native .pg-media .press-item a, body.pom-native .pg-media.press-item a { display: flex; justify-content: space-between; gap: 24px; align-items: baseline; padding: 18px 4px; min-height: 44px; color: inherit; text-decoration: none; }
+body.pom-native .pg-media .press-item a:hover .press-title, body.pom-native .pg-media.press-item a:hover .press-title { color: var(--blue-text); text-decoration: underline; text-underline-offset: 3px; }
+body.pom-native .pg-media .press-title, body.pom-native .pg-media.press-title { font-size: 23px; font-weight: 600; }
+body.pom-native .pg-media .press-meta, body.pom-native .pg-media.press-meta { font-size: 21px; color: var(--ink-3); white-space: nowrap; }
+@media (max-width: 640px) { body.pom-native .pg-media .press-item a, body.pom-native .pg-media.press-item a { flex-direction: column; gap: 4px; } body.pom-native .pg-media .press-meta, body.pom-native .pg-media.press-meta { white-space: normal; } }
+
+
+/* ---- page: news ---- */
+body.pom-native .pg-news .news-item, body.pom-native .pg-news.news-item { padding: 30px 0; border-bottom: 1px solid var(--line); }
+body.pom-native .pg-news .news-item h2, body.pom-native .pg-news.news-item h2 { font-family: var(--font-serif); font-size: 32px; font-weight: 500; margin: 0 0 10px; }
+body.pom-native .pg-news .news-item p, body.pom-native .pg-news.news-item p { font-size: 22px; line-height: 1.7; color: var(--ink-2); margin: 0 0 10px; max-width: 72ch; }
+body.pom-native .pg-news .news-links a, body.pom-native .pg-news.news-links a { display: inline-flex; align-items: center; min-height: 44px; margin-right: 22px; color: var(--blue-text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+
+/* ---- page: perpetual-care-faq ---- */
+body.pom-native .pg-perpetual-care-faq .faq-acc, body.pom-native .pg-perpetual-care-faq.faq-acc { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 14px; padding: 0 26px; }
+body.pom-native .pg-perpetual-care-faq .faq-acc summary, body.pom-native .pg-perpetual-care-faq.faq-acc summary { cursor: pointer; font-family: var(--font-serif); font-size: 26px; font-weight: 500; padding: 20px 0; min-height: 44px; }
+body.pom-native .pg-perpetual-care-faq .faq-acc summary:hover, body.pom-native .pg-perpetual-care-faq.faq-acc summary:hover { color: var(--blue-text); }
+body.pom-native .pg-perpetual-care-faq .faq-acc p, body.pom-native .pg-perpetual-care-faq.faq-acc p { margin: 0 0 22px; font-size: 22px; line-height: 1.7; color: var(--ink-2); }
+
+
 /* ---- page: perpetual-care-program ---- */
 /* Lay the content across the width: a text+photo intro and 2-up lists,
    so the page reads horizontally instead of one tall vertical column. */
@@ -405,11 +448,21 @@ body.pom-native .pg-perpetual-care-program .perp-howlist li,body.pom-native .pg-
 body.pom-native .pg-perpetual-care-program .pgi-perpetual-care-program-2,body.pom-native .pg-perpetual-care-program.pgi-perpetual-care-program-2{background:var(--cream-2);}
 
 
+/* ---- page: privacy ---- */
+body.pom-native .pg-privacy .legal-copy h2, body.pom-native .pg-privacy.legal-copy h2 { font-family: var(--font-serif); font-size: 35px; font-weight: 500; margin: 40px 0 14px; }
+body.pom-native .pg-privacy .legal-copy h3, body.pom-native .pg-privacy.legal-copy h3 { font-size: 23px; font-weight: 700; letter-spacing: 0.04em; margin: 28px 0 10px; }
+body.pom-native .pg-privacy .legal-copy p, body.pom-native .pg-privacy.legal-copy p { font-size: 22px; line-height: 1.75; color: var(--ink-2); margin: 0 0 14px; }
+body.pom-native .pg-privacy .legal-copy .legal-li, body.pom-native .pg-privacy.legal-copy .legal-li { padding-left: 22px; position: relative; }
+body.pom-native .pg-privacy .legal-copy .legal-li::before, body.pom-native .pg-privacy.legal-copy .legal-li::before { content: "\2022"; position: absolute; left: 6px; color: var(--blue-text); }
+
+
 /* ---- page: process ---- */
+body.pom-native .pg-process .pgi-process-2,body.pom-native .pg-process.pgi-process-2{background:var(--cream-2);}
 body.pom-native .pg-process .pgi-process-2,body.pom-native .pg-process.pgi-process-2{background:var(--cream-2);}
 
 
 /* ---- page: recources ---- */
+body.pom-native .pg-recources .pgi-recources-2,body.pom-native .pg-recources.pgi-recources-2{background:var(--cream-2);}
 body.pom-native .pg-recources .pgi-recources-2,body.pom-native .pg-recources.pgi-recources-2{background:var(--cream-2);}
 
 
@@ -478,6 +531,45 @@ body.pom-native .pg-surrender .faq-item p,body.pom-native .pg-surrender.faq-item
 /* CTA */
 body.pom-native .pg-surrender .cta-strip,body.pom-native .pg-surrender.cta-strip{padding:72px 0;background:var(--blue-900);color:#fff;}
 body.pom-native .pg-surrender .cta-strip h2 em,body.pom-native .pg-surrender.cta-strip h2 em{color:var(--blue-200);}
+
+
+/* ---- page: terms ---- */
+body.pom-native .pg-terms .legal-copy h2, body.pom-native .pg-terms.legal-copy h2 { font-family: var(--font-serif); font-size: 35px; font-weight: 500; margin: 40px 0 14px; }
+body.pom-native .pg-terms .legal-copy h3, body.pom-native .pg-terms.legal-copy h3 { font-size: 23px; font-weight: 700; letter-spacing: 0.04em; margin: 28px 0 10px; }
+body.pom-native .pg-terms .legal-copy p, body.pom-native .pg-terms.legal-copy p { font-size: 22px; line-height: 1.75; color: var(--ink-2); margin: 0 0 14px; }
+body.pom-native .pg-terms .legal-copy .legal-li, body.pom-native .pg-terms.legal-copy .legal-li { padding-left: 22px; position: relative; }
+body.pom-native .pg-terms .legal-copy .legal-li::before, body.pom-native .pg-terms.legal-copy .legal-li::before { content: "\2022"; position: absolute; left: 6px; color: var(--blue-text); }
+
+
+/* ---- page: testimonials ---- */
+body.pom-native .pg-testimonials .tmn-wall, body.pom-native .pg-testimonials.tmn-wall { columns: 2 420px; column-gap: 26px; }
+body.pom-native .pg-testimonials .tmn-card, body.pom-native .pg-testimonials.tmn-card {
+  break-inside: avoid; margin: 0 0 24px; padding: 26px 28px;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+}
+body.pom-native .pg-testimonials .tmn-card blockquote, body.pom-native .pg-testimonials.tmn-card blockquote { margin: 0 0 14px; font-size: 22px; line-height: 1.65; color: var(--ink-2); }
+body.pom-native .pg-testimonials .tmn-card figcaption, body.pom-native .pg-testimonials.tmn-card figcaption { font-weight: 700; color: var(--ink); font-size: 21px; }
+body.pom-native .pg-testimonials .tmn-card .tmn-role, body.pom-native .pg-testimonials.tmn-card .tmn-role { display: block; font-weight: 600; color: var(--blue-text); font-size: 20px; margin-top: 2px; }
+
+
+/* ---- page: videos ---- */
+body.pom-native .pg-videos .vids-grid, body.pom-native .pg-videos.vids-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+@media (max-width: 980px) { body.pom-native .pg-videos .vids-grid, body.pom-native .pg-videos.vids-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { body.pom-native .pg-videos .vids-grid, body.pom-native .pg-videos.vids-grid { grid-template-columns: 1fr; } }
+body.pom-native .pg-videos .vid-frame, body.pom-native .pg-videos.vid-frame { position: relative; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: var(--ink); cursor: pointer; display: block; }
+body.pom-native .pg-videos .vid-frame img, body.pom-native .pg-videos.vid-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s var(--ease); }
+body.pom-native .pg-videos .vid-frame:hover img, body.pom-native .pg-videos.vid-frame:hover img { transform: scale(1.04); }
+body.pom-native .pg-videos .vid-frame iframe, body.pom-native .pg-videos.vid-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+body.pom-native .pg-videos .vid-frame:focus-visible, body.pom-native .pg-videos.vid-frame:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 3px; }
+body.pom-native .pg-videos .vid-play, body.pom-native .pg-videos.vid-play { position: absolute; inset: 0; display: grid; place-items: center; }
+body.pom-native .pg-videos .vid-play svg, body.pom-native .pg-videos.vid-play svg { width: 58px; height: 58px; color: #fff; filter: drop-shadow(0 4px 14px rgba(0,0,0,.5)); }
+body.pom-native .pg-videos .vid-frame--ext, body.pom-native .pg-videos.vid-frame--ext { display: grid; place-items: center; background: var(--blue-900); color: #fff; text-decoration: none; }
+body.pom-native .pg-videos .vid-frame--ext .vid-ext-label, body.pom-native .pg-videos.vid-frame--ext .vid-ext-label { font-weight: 700; font-size: 23px; z-index: 1; }
+body.pom-native .pg-videos .vid-frame--ext .vid-play svg, body.pom-native .pg-videos.vid-frame--ext .vid-play svg { width: 34px; height: 34px; opacity: .6; }
+body.pom-native .pg-videos .vid-title, body.pom-native .pg-videos.vid-title { font-family: var(--font-serif); font-size: 29px; font-weight: 500; margin: 14px 0 6px; }
+body.pom-native .pg-videos .vid-year, body.pom-native .pg-videos.vid-year { font-family: var(--font-sans); font-size: 21px; font-weight: 600; color: var(--blue-text); margin-left: 8px; }
+body.pom-native .pg-videos .vid-caption, body.pom-native .pg-videos.vid-caption { font-size: 21px; line-height: 1.6; color: var(--ink-2); margin: 0 0 6px; }
+body.pom-native .pg-videos .vid-credits, body.pom-native .pg-videos.vid-credits { font-size: 20px; color: var(--ink-3); margin: 0; }
 
 
 /* ---- page: volunteer ---- */

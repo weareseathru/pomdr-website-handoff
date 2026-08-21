@@ -176,6 +176,19 @@ add_action( 'wp_enqueue_scripts', function () {
         );
     }
 
+    // Page-local behaviors harvested from the sidecar templates for native
+    // pages (scripts/native/fidelity/gen-pages-js.mjs). Each block is gated
+    // on its .pg-{slug} stamp, so this is inert on non-native pages.
+    if ( file_exists( get_stylesheet_directory() . '/assets/js/native-pages.js' ) ) {
+        wp_enqueue_script(
+            'pomdr-native-pages',
+            get_stylesheet_directory_uri() . '/assets/js/native-pages.js',
+            array(),
+            filemtime( get_stylesheet_directory() . '/assets/js/native-pages.js' ),
+            true
+        );
+    }
+
     // Mobile nav supplement - all pages.
     wp_enqueue_script(
         'pomdr-nav',
