@@ -1669,9 +1669,16 @@ body.pom-native .et_pb_section.cta-strip { padding: 80px 0; }
    module; the Divi row already provides the exact container constraint,
    so the inner one stands down (double-constraint made native text 64px
    narrower and rewrapped every line; fidelity probe 2026-08-19). */
-.et_pb_text .container,
-body.pom-native .et_pb_text .container {
-  width: auto; max-width: none; padding-left: 0; padding-right: 0;
+/* When ported content carries its own .container, the ROW goes fully
+   neutral and the container is THE box, exactly as on the reference (one
+   box owns width AND padding; the split model double-padded mobile and
+   double-80%'d nested widths; sweep 2026-08-21). Rows without containers
+   (hand-model emissions) keep the row-as-container mirror above. */
+body.pom-native .et_pb_row:has(.et_pb_text .container) {
+  width: 100%;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Divi's text-module WRAPPER carries its own font-size and line-height,
