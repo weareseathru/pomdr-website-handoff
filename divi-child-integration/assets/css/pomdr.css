@@ -1682,6 +1682,13 @@ body.pom-native .et_pb_text .container {
 .et_pb_module.et_pb_text,
 .et_pb_text .et_pb_text_inner { font-size: inherit; line-height: inherit; }
 
+/* Divi sets word-wrap:break-word on the text module; it inherits into
+   every child, breaking long tokens the reference leaves whole (Wes
+   figcaption wrapped 3 lines instead of 2). Reset to the reference
+   semantics: only the #main-content p/li/blockquote/heading rules above
+   opt into break-word. */
+body.pom-native .et_pb_module.et_pb_text { overflow-wrap: normal; word-wrap: normal; }
+
 /* Divi's .et_pb_button forces line-height 1.7em with !important; mirror the
    design's .btn value (pomdr.css .btn { line-height: 1.05 }) at equal force.
    Keep in sync if .btn's line-height ever changes. */
