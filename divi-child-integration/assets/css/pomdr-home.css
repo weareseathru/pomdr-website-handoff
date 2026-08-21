@@ -299,10 +299,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .hero-progress #hero-pause:hover { opacity: 1; background: rgba(255,255,255,0.26); }
 
-
-  content: ""; position: absolute; top: -16px; left: 0; right: 0; height: 16px;
-  background: white; animation: scrollDown 2s ease-in-out infinite;
-}
 @keyframes scrollDown { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(32px); } }
 
 /* Placeholder dog photo */

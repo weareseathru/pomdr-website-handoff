@@ -17,7 +17,7 @@ Object.values(dirs).forEach((d) => fs.mkdirSync(d, { recursive: true }));
 /** Live-data islands and third-party frames, masked IDENTICALLY everywhere
  * (goldens included), so staff content edits never break a frozen golden. */
 export const MASKS = {
-  home: ['.dogs-grid', '.tails-grid', '.adopt-strip'],
+  home: ['.dogs-grid', '.tails-grid', '.adopt-strip', '.pt-paw', '#paw-trail', '[class*="pt-"]', 'video'],
   'foster-needs': ['.dogs-grid'],
   videos: ['.vids-grid'],
   events: ['.events-glance', '.event-card', '.event-photo'],

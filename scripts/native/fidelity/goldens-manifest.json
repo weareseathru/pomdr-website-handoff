@@ -578,20 +578,20 @@
   },
   "home": {
    "390": {
-    "sha256": "238bda575d2b4fa24db2d24ef20f7ed58e2cc4712d319ba8131a1848046adfa0",
-    "bytes": 2171563
+    "sha256": "e35e34a5bf33b8e92563b7a58bf6e828e9a8c18b50aa137b5e285f09447376d0",
+    "bytes": 2020877
    },
    "767": {
-    "sha256": "97e4e344a67b7516d06e841153cfc80ae7f2ef91f84fa3962ed75067f5284aec",
-    "bytes": 2424673
+    "sha256": "f49f27c5e4f46d049b5623f69cef6f08fa114a5a0f82f40052b4ec8bdb35efaf",
+    "bytes": 2252457
    },
    "980": {
-    "sha256": "159cef6e9733f407c27978d2e376512365acf71d487e1834d6c775ce718a3c0f",
-    "bytes": 2732166
+    "sha256": "fb0db3a35bc559c2323a1641632905486abae5a1389d9c14b76588470b5698aa",
+    "bytes": 2566819
    },
    "1440": {
-    "sha256": "99bfe4b8aa5385c97b029a78cbb90ee37f0b73f5cf1d4d4caa2e55ecdb4a405f",
-    "bytes": 3862559
+    "sha256": "6df99640e59e5642e44edd67e094db326ff3797f0d848fa5a7ee61a069bda226",
+    "bytes": 3661963
    }
   },
   "pet-hawk": {
@@ -613,8 +613,8 @@
    }
   }
  },
- "capturedAt": "2026-08-21T19:37:29.662Z",
- "gitSha": "7a4cdba544496f0bab5a891acb419a16cae7615b",
+ "capturedAt": "2026-08-21T19:59:09.019Z",
+ "gitSha": "c158d3cb9cae73638cf15312a559c21ea35a243c",
  "cssHashes": {
   "tokens.css": "da2b98ba32822a8a68b9edbf01da42e1f1f13b57d1fe6c472b6b4e4b61171bc5",
   "pomdr.css": "d8f85dfe23dd8942ce4477df2c37a054a2fb914948f7f968b86c9a62b2b4f5a2",

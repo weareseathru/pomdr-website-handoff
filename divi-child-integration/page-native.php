@@ -14,6 +14,11 @@
 
 add_filter( 'body_class', function ( $classes ) {
 	$classes[] = 'pom-native';
+	// The home staging copy must style like home: pomdr-home.css keys many
+	// rules on body.home, which only the real front page carries.
+	if ( is_page( 'native-staging-home' ) ) {
+		$classes[] = 'home';
+	}
 	return $classes;
 } );
 

@@ -15,7 +15,7 @@ import path from 'node:path';
 import { here } from './common.mjs';
 
 const cssDir = path.resolve(here, '../../../divi-child-integration/assets/css');
-const SOURCES = ['pomdr-design.css', 'pomdr.css', 'a11y.css'];
+const SOURCES = ['pomdr-design.css', 'pomdr.css', 'pomdr-home.css', 'paw-trail.css', 'a11y.css'];
 
 // Selectors that must not be re-scoped: chrome, page furniture, Divi's own,
 // element-only selectors (no class), and structural roots.
