@@ -78,6 +78,18 @@ add_action( 'wp_enqueue_scripts', function () {
         );
     }
 
+    // Chrome boost for native pages: chrome rules re-scoped at the same
+    // uniform prefix as the content boost, loaded after it, so chrome wins
+    // exactly what it wins on the reference by order.
+    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-boost-chrome.css' ) ) {
+        wp_enqueue_style(
+            'pomdr-native-boost-chrome',
+            get_stylesheet_directory_uri() . '/assets/css/native-boost-chrome.css',
+            array( 'pomdr-native-pages', 'pomdr-chrome' ),
+            filemtime( get_stylesheet_directory() . '/assets/css/native-boost-chrome.css' )
+        );
+    }
+
     // Site chrome (action bar, two-row nav, tagline, logo, mobile drawer).
     // Loaded after pomdr-design; hides Divi's Theme Builder header.
     wp_enqueue_style(

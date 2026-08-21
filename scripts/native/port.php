@@ -81,6 +81,11 @@ $summary = array();
 foreach ( $pom_args as $slug ) {
 
 	$page = get_page_by_path( $slug, OBJECT, 'page' );
+	if ( ! $page ) {
+		// Nested pages (about/culture) miss the flat path; find by name.
+		$found = get_posts( array( 'name' => $slug, 'post_type' => 'page', 'post_status' => 'publish', 'numberposts' => 1 ) );
+		$page  = $found ? $found[0] : null;
+	}
 	if ( ! $page ) { $summary[ $slug ] = 'NO PAGE RECORD'; continue; }
 
 	$url  = get_permalink( $page->ID );
