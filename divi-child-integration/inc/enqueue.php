@@ -119,7 +119,7 @@ add_action( 'wp_enqueue_scripts', function () {
     );
 
     // Homepage redesign layout + animations. Front page only.
-    if ( is_front_page() || is_page( 'home' ) ) {
+    if ( is_front_page() || is_page( 'home' ) || is_page( 'native-staging-home' ) ) {
         $dir = get_stylesheet_directory();
         $uri = get_stylesheet_directory_uri();
         wp_enqueue_style(

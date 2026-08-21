@@ -80,7 +80,18 @@ $summary = array();
 
 foreach ( $pom_args as $slug ) {
 
-	$page = get_page_by_path( $slug, OBJECT, 'page' );
+	if ( 0 === strpos( $slug, 'pet:' ) ) {
+		// Dog bio staging: port the rendered pet single as a static preview
+		// page (the real conversion is the Theme Builder template; this is
+		// the visual sign-off artifact).
+		$pet_name = substr( $slug, 4 );
+		$pets     = get_posts( array( 'name' => $pet_name, 'post_type' => 'pets', 'post_status' => 'publish', 'numberposts' => 1 ) );
+		if ( ! $pets ) { $summary[ $slug ] = 'NO PET'; continue; }
+		$page = $pets[0];
+		$slug = 'pet-' . $pet_name;
+	} else {
+		$page = get_page_by_path( $slug, OBJECT, 'page' );
+	}
 	if ( ! $page ) {
 		// Nested pages (about/culture) miss the flat path; find by name.
 		$found = get_posts( array( 'name' => $slug, 'post_type' => 'page', 'post_status' => 'publish', 'numberposts' => 1 ) );
