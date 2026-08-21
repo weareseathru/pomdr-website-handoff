@@ -17,6 +17,7 @@ Object.values(dirs).forEach((d) => fs.mkdirSync(d, { recursive: true }));
 /** Live-data islands and third-party frames, masked IDENTICALLY everywhere
  * (goldens included), so staff content edits never break a frozen golden. */
 export const MASKS = {
+  home: ['.dogs-grid', '.tails-grid', '.adopt-strip'],
   'foster-needs': ['.dogs-grid'],
   videos: ['.vids-grid'],
   events: ['.events-glance', '.event-card', '.event-photo'],
@@ -28,6 +29,14 @@ export const MASKS = {
   'sponsor-a-dog': ['iframe'],
 };
 
+/** Reference URL for a staging slug (most are /slug/; specials mapped). */
+export function refPath(slug) {
+  if (slug === 'home') return '/';
+  if (slug.startsWith('pet-')) return `/pets/${slug.slice(4)}/`;
+  if (slug === 'culture') return '/about/culture/';
+  return `/${slug}/`;
+}
+
 export const ALL = [
   'culture', 'process', 'why', 'bauer-center', 'benefit-shop', 'clinic',
   'jobs', 'surrender', 'helping-paw', 'volunteer', 'about', 'fostering',
@@ -35,7 +44,7 @@ export const ALL = [
   'perpetual-care-faq', 'maxs-fund', 'forms', 'recources', 'terms',
   'privacy', 'mailing-list', 'sponsor-a-dog', 'adoption-questionnaire',
   'helping-paw-application', 'intake-questionnaire', 'volunteer-application',
-  'events', 'videos', 'foster-needs',
+  'events', 'videos', 'foster-needs', 'home',
 ];
 
 export async function launch() {
