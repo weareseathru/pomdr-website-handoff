@@ -10,5 +10,3 @@
 .people-band h2 em{font-style:italic;color:var(--purple);}
 .people-band p{font-size: 22px;color:var(--ink-2);margin:0 0 18px;}
 @media(max-width:800px){.people-band{grid-template-columns:1fr;gap:32px;}}
-.pgi-culture-2{background:var(--cream);}
-.pgi-culture-4{background:var(--purple-50);}

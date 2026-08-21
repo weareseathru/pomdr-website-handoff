@@ -9,4 +9,3 @@
 .benefit-list li{display:flex;align-items:flex-start;gap:12px;font-size: 22px;color:var(--ink-2);}
 .benefit-list .ck{width:28px;height:28px;border-radius:8px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;flex-shrink:0;}
 .benefit-list .ck svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.5;}
-.pgi-mailing-list-2{background:var(--blue-50);}

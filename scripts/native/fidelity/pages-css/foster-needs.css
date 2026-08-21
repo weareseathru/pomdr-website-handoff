@@ -5,5 +5,3 @@
 .steps-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; margin-top: 18px; }
 .steps-2col .step-row { padding: 22px 0; }
 @media (max-width: 860px) { .foster-intro { grid-template-columns: 1fr; gap: 26px; } .steps-2col { grid-template-columns: 1fr; gap: 0; } }
-.pgi-foster-needs-2{background:var(--cream-2);}
-.pgi-foster-needs-4{background:var(--blue-50);}

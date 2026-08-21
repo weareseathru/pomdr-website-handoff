@@ -123,7 +123,6 @@ body.pom-native .pg-about .wwd-row--text .wwd-paw, body.pom-native .pg-about.wwd
 }
 
 body.pom-native .pg-about .section-sm ul a, body.pom-native .pg-about.section-sm ul a { color: var(--blue-text); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; display: inline-flex; min-height: 40px; align-items: center; }
-body.pom-native .pg-about .pgi-about-4,body.pom-native .pg-about.pgi-about-4{background:var(--cream-2);}
 
 
 /* ---- page: bauer-center ---- */
@@ -169,7 +168,6 @@ body.pom-native .pg-benefit-shop .lists-2col,body.pom-native .pg-benefit-shop.li
 body.pom-native .pg-benefit-shop .lists-2col ul,body.pom-native .pg-benefit-shop.lists-2col ul{font-size: 21px;line-height:1.7;padding-left:1.2em;columns:2;column-gap:32px;}
 body.pom-native .pg-benefit-shop .lists-2col li,body.pom-native .pg-benefit-shop.lists-2col li{break-inside:avoid;}
 @media(max-width:860px){body.pom-native .pg-benefit-shop .shop-intro,body.pom-native .pg-benefit-shop.shop-intro{grid-template-columns:1fr;gap:26px;}body.pom-native .pg-benefit-shop .lists-2col,body.pom-native .pg-benefit-shop.lists-2col{grid-template-columns:1fr;gap:24px;}body.pom-native .pg-benefit-shop .lists-2col ul,body.pom-native .pg-benefit-shop.lists-2col ul{columns:1;}}
-body.pom-native .pg-benefit-shop .pgi-benefit-shop-2,body.pom-native .pg-benefit-shop.pgi-benefit-shop-2{background:var(--cream-2);}
 
 
 /* ---- page: clinic ---- */
@@ -218,8 +216,6 @@ body.pom-native .pg-culture .people-band h2,body.pom-native .pg-culture.people-b
 body.pom-native .pg-culture .people-band h2 em,body.pom-native .pg-culture.people-band h2 em{font-style:italic;color:var(--purple);}
 body.pom-native .pg-culture .people-band p,body.pom-native .pg-culture.people-band p{font-size: 22px;color:var(--ink-2);margin:0 0 18px;}
 @media(max-width:800px){body.pom-native .pg-culture .people-band,body.pom-native .pg-culture.people-band{grid-template-columns:1fr;gap:32px;}}
-body.pom-native .pg-culture .pgi-culture-2,body.pom-native .pg-culture.pgi-culture-2{background:var(--cream);}
-body.pom-native .pg-culture .pgi-culture-4,body.pom-native .pg-culture.pgi-culture-4{background:var(--purple-50);}
 
 
 /* ---- page: donate ---- */
@@ -297,8 +293,6 @@ body.pom-native .pg-foster-needs .foster-intro__media, body.pom-native .pg-foste
 body.pom-native .pg-foster-needs .steps-2col, body.pom-native .pg-foster-needs.steps-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; margin-top: 18px; }
 body.pom-native .pg-foster-needs .steps-2col .step-row, body.pom-native .pg-foster-needs.steps-2col .step-row { padding: 22px 0; }
 @media (max-width: 860px) { body.pom-native .pg-foster-needs .foster-intro, body.pom-native .pg-foster-needs.foster-intro { grid-template-columns: 1fr; gap: 26px; } body.pom-native .pg-foster-needs .steps-2col, body.pom-native .pg-foster-needs.steps-2col { grid-template-columns: 1fr; gap: 0; } }
-body.pom-native .pg-foster-needs .pgi-foster-needs-2,body.pom-native .pg-foster-needs.pgi-foster-needs-2{background:var(--cream-2);}
-body.pom-native .pg-foster-needs .pgi-foster-needs-4,body.pom-native .pg-foster-needs.pgi-foster-needs-4{background:var(--blue-50);}
 
 
 /* ---- page: fostering ---- */
@@ -311,8 +305,6 @@ body.pom-native .pg-fostering .foster-story__name, body.pom-native .pg-fostering
 body.pom-native .pg-fostering .foster-story__quote, body.pom-native .pg-fostering.foster-story__quote { font-size: 21px; line-height: 1.62; color: var(--ink-2); margin: 0; }
 body.pom-native .pg-fostering .foster-lede, body.pom-native .pg-fostering.foster-lede { max-width: 74ch; font-size: 23px; line-height: 1.7; color: var(--ink-2); }
 body.pom-native .pg-fostering .foster-lede p, body.pom-native .pg-fostering.foster-lede p { margin: 0 0 18px; }
-body.pom-native .pg-fostering .pgi-fostering-2,body.pom-native .pg-fostering.pgi-fostering-2{background:var(--cream-2);}
-body.pom-native .pg-fostering .pgi-fostering-3,body.pom-native .pg-fostering.pgi-fostering-3{background:var(--blue-50);}
 
 
 /* ---- page: helping-paw ---- */
@@ -395,7 +387,6 @@ body.pom-native .pg-jobs .why-quotes, body.pom-native .pg-jobs.why-quotes { colu
 body.pom-native .pg-jobs .why-quote, body.pom-native .pg-jobs.why-quote { break-inside: avoid; margin: 0 0 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; }
 body.pom-native .pg-jobs .why-quote blockquote, body.pom-native .pg-jobs.why-quote blockquote { margin: 0 0 12px; font-size: 22px; line-height: 1.65; color: var(--ink-2); }
 body.pom-native .pg-jobs .why-quote figcaption, body.pom-native .pg-jobs.why-quote figcaption { font-weight: 700; font-size: 21px; }
-body.pom-native .pg-jobs .pgi-jobs-2,body.pom-native .pg-jobs.pgi-jobs-2{background:var(--cream-2);}
 
 
 /* ---- page: mailing-list ---- */
@@ -410,7 +401,6 @@ body.pom-native .pg-mailing-list .benefit-list,body.pom-native .pg-mailing-list.
 body.pom-native .pg-mailing-list .benefit-list li,body.pom-native .pg-mailing-list.benefit-list li{display:flex;align-items:flex-start;gap:12px;font-size: 22px;color:var(--ink-2);}
 body.pom-native .pg-mailing-list .benefit-list .ck,body.pom-native .pg-mailing-list.benefit-list .ck{width:28px;height:28px;border-radius:8px;background:var(--blue-50);color:var(--blue);display:grid;place-items:center;flex-shrink:0;}
 body.pom-native .pg-mailing-list .benefit-list .ck svg,body.pom-native .pg-mailing-list.benefit-list .ck svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.5;}
-body.pom-native .pg-mailing-list .pgi-mailing-list-2,body.pom-native .pg-mailing-list.pgi-mailing-list-2{background:var(--blue-50);}
 
 
 /* ---- page: media ---- */
@@ -445,7 +435,6 @@ body.pom-native .pg-perpetual-care-program .perp-intro__media,body.pom-native .p
 body.pom-native .pg-perpetual-care-program .perp-howlist,body.pom-native .pg-perpetual-care-program.perp-howlist{font-size: 22px;line-height:1.8;padding-left:24px;margin:0;columns:2;column-gap:56px;}
 body.pom-native .pg-perpetual-care-program .perp-howlist li,body.pom-native .pg-perpetual-care-program.perp-howlist li{margin:0 0 14px;break-inside:avoid;}
 @media(max-width:860px){body.pom-native .pg-perpetual-care-program .perp-intro,body.pom-native .pg-perpetual-care-program.perp-intro{grid-template-columns:1fr;gap:26px;}body.pom-native .pg-perpetual-care-program .perp-howlist,body.pom-native .pg-perpetual-care-program.perp-howlist{columns:1;}}
-body.pom-native .pg-perpetual-care-program .pgi-perpetual-care-program-2,body.pom-native .pg-perpetual-care-program.pgi-perpetual-care-program-2{background:var(--cream-2);}
 
 
 /* ---- page: privacy ---- */
@@ -642,7 +631,4 @@ body.pom-native .pg-why .why-quotes, body.pom-native .pg-why.why-quotes { column
 body.pom-native .pg-why .why-quote, body.pom-native .pg-why.why-quote { break-inside: avoid; margin: 0 0 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; }
 body.pom-native .pg-why .why-quote blockquote, body.pom-native .pg-why.why-quote blockquote { margin: 0 0 12px; font-size: 22px; line-height: 1.65; color: var(--ink-2); }
 body.pom-native .pg-why .why-quote figcaption, body.pom-native .pg-why.why-quote figcaption { font-weight: 700; font-size: 21px; }
-body.pom-native .pg-why .pgi-why-2,body.pom-native .pg-why.pgi-why-2{background:var(--cream);}
-body.pom-native .pg-why .pgi-why-4,body.pom-native .pg-why.pgi-why-4{background:var(--blue-50);}
-body.pom-native .pg-why .pgi-why-5,body.pom-native .pg-why.pgi-why-5{background:var(--cream-2);}
 
