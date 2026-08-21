@@ -118,19 +118,15 @@ foreach ( $pom_args as $slug ) {
 	}
 	$main_html = $mm[1];
 
-	/* Harvest page-local <style> blocks into this page's raw css file. */
+	/* Harvest page-local <style> blocks IN DOCUMENT ORDER: head-window
+	   blocks first, then in-main, then tail. About's in-main override
+	   (.page-hero > .container display:block) must come AFTER its
+	   head-block base rule, exactly as the browser sees them
+	   (sweep 2026-08-21: halved hero). */
 	$style_count = 0;
 	$page_css    = '';
-	$main_html   = preg_replace_callback( '~<style\b[^>]*>(.*?)</style>~s', function ( $m ) use ( &$page_css, &$style_count ) {
-		$css = trim( $m[1] );
-		if ( '' !== $css && false === strpos( $page_css, $css ) ) {
-			$page_css .= $css . "\n";
-			$style_count++;
-		}
-		return '';
-	}, $main_html );
 
-	/* Also harvest template style blocks between the chrome and <main>.
+	/* Head-window styles between the chrome and <main>.
 	   Anchoring past </head> excludes WordPress/Divi head styles, so no
 	   class whitelist is needed (the old whitelist silently dropped why's
 	   .twocol block, found via cascade trace 2026-08-20). */
@@ -148,6 +144,16 @@ foreach ( $pom_args as $slug ) {
 			$style_count++;
 		}
 	}
+	/* In-main styles, second in document order. */
+	$main_html = preg_replace_callback( '~<style\b[^>]*>(.*?)</style>~s', function ( $m ) use ( &$page_css, &$style_count ) {
+		$css = trim( $m[1] );
+		if ( '' !== $css && false === strpos( $page_css, $css ) ) {
+			$page_css .= $css . "\n";
+			$style_count++;
+		}
+		return '';
+	}, $main_html );
+
 	/* Third window: several templates print their <style> AFTER </main>
 	   (testimonials, terms, media, news, forms, privacy - found by the
 	   full sweep 2026-08-21: hundreds of style fails, zero harvested css).
@@ -321,10 +327,13 @@ foreach ( $pom_args as $slug ) {
 		if ( XML_ELEMENT_NODE !== $node->nodeType ) { continue; }
 
 		$classes = trim( $node->getAttribute( 'class' ) );
-		$inner   = '';
-		foreach ( $node->childNodes as $child ) {
-			$inner .= $doc->saveHTML( $child );
-		}
+		/* v2: the ORIGINAL element ships intact inside the module (child
+		   combinators like .page-hero > .container, inline backgrounds,
+		   and sibling structure all survive; about's halved hero was the
+		   hoist breaking a child combinator). pom-wrap marks it so the
+		   adapter neutralizes Divi's row box around it. */
+		$node->setAttribute( 'class', trim( $classes . ' pom-wrap' ) );
+		$inner = $doc->saveHTML( $node );
 
 		/* The sole-.container unwrap is gone: .et_pb_text .container in the
 		   adapter neutralizes the double width constraint while PRESERVING
@@ -333,15 +342,9 @@ foreach ( $pom_args as $slug ) {
 
 		if ( '' === trim( $inner ) ) { continue; }
 
-		$inline_style = trim( $node->getAttribute( 'style' ) );
-		if ( '' !== $inline_style ) {
-			$gen = 'pgi-' . $slug . '-' . $sections;
-			$classes = trim( $classes . ' ' . $gen );
-			$page_css_extra = ( $page_css_extra ?? '' ) . '.' . $gen . '{' . rtrim( $inline_style, ';' ) . ";}\n";
-		}
 		$label = ucwords( str_replace( array( '-', '_' ), ' ', $classes ? preg_split( '/\s+/', $classes )[0] : $node->nodeName ) );
 		$d4   .= pom_d4_section(
-			array( 'module_class' => trim( $classes . " pg-$slug" ), 'admin_label' => $label ?: 'Section' ),
+			array( 'module_class' => "pg-$slug", 'admin_label' => $label ?: 'Section' ),
 			pom_d4_row(
 				array( 'admin_label' => $label . ' row' ),
 				pom_d4_column( '4_4', array(), pom_d4_text( array( 'admin_label' => $label . ' content' ), trim( $inner ) ) )

@@ -1674,6 +1674,7 @@ body.pom-native .et_pb_section.cta-strip { padding: 80px 0; }
    box owns width AND padding; the split model double-padded mobile and
    double-80%'d nested widths; sweep 2026-08-21). Rows without containers
    (hand-model emissions) keep the row-as-container mirror above. */
+body.pom-native .et_pb_row:has(.et_pb_text .pom-wrap),
 body.pom-native .et_pb_row:has(.et_pb_text .container) {
   width: 100%;
   max-width: none;
