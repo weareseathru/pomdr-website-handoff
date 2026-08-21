@@ -289,37 +289,11 @@ foreach ( $pom_args as $slug ) {
 		}
 	}
 
-	/* wpautop wraps standalone inline elements (a button <a> between two
-	   paragraphs) into phantom <p> wrappers carrying paragraph padding.
-	   Shield: wrap orphan inline runs inside block containers in a plain
-	   <div> (unstyled, wpautop leaves divs alone). */
-	$inline_tags = array( 'a', 'span', 'em', 'strong', 'small', 'img', 'picture', 'button', 'svg' );
-	foreach ( $xp_ws->query( '//*' ) as $blk ) {
-		if ( ! in_array( strtolower( $blk->nodeName ), $blocks, true ) ) { continue; }
-		$children = iterator_to_array( $blk->childNodes );
-		$run = array();
-		$flush = function () use ( &$run, $doc, $blk ) {
-			if ( ! $run ) { return; }
-			$has_el = false;
-			foreach ( $run as $n ) { if ( XML_ELEMENT_NODE === $n->nodeType ) { $has_el = true; } }
-			if ( $has_el ) {
-				$wrap = $doc->createElement( 'div' );
-				// The shield must be layout-invisible: inside flex/grid parents
-				// (.page-cta) a plain div becomes the sole flex item and eats
-				// the gap (measured: buttons stacked gapless, 2026-08-20).
-				$wrap->setAttribute( 'style', 'display:contents' );
-				$blk->insertBefore( $wrap, $run[0] );
-				foreach ( $run as $n ) { $wrap->appendChild( $n ); }
-			}
-			$run = array();
-		};
-		foreach ( $children as $child ) {
-			$is_inline = ( XML_TEXT_NODE === $child->nodeType && '' !== trim( $child->nodeValue ) )
-				|| ( XML_ELEMENT_NODE === $child->nodeType && in_array( strtolower( $child->nodeName ), $inline_tags, true ) );
-			if ( $is_inline ) { $run[] = $child; } else { $flush(); }
-		}
-		$flush();
-	}
+	/* NOTE: the former wpautop shield (orphan-inline div wrappers) is gone.
+	   D5 pages are block content, so core skips wpautop, and the wrapper
+	   broke child selectors (.pillars-grid > .reveal > * never reached the
+	   pillar cards; home audit 2026-08-21). If phantom paragraphs ever
+	   reappear, fix at the render filter, never by rewrapping markup. */
 
 	$d4       = '';
 	$sections = 0;
