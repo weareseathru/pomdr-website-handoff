@@ -19,7 +19,10 @@
 }
 
 @media (min-width: 981px) {
-    .et_pb_section {
+    /* Legacy base-build tightening. Native redesign pages are exempt:
+       their sections own their padding (fidelity trace 2026-08-20; this
+       rule was the entire 1440-band mismatch). */
+    body:not(.pom-native) .et_pb_section {
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
