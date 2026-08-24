@@ -578,20 +578,20 @@
   },
   "home": {
    "390": {
-    "sha256": "e35e34a5bf33b8e92563b7a58bf6e828e9a8c18b50aa137b5e285f09447376d0",
-    "bytes": 2020877
+    "sha256": "3e42a29ed1451d6462bbaed2a7d96544e0224a0ca8e05c3a9faedafd33a29e35",
+    "bytes": 2081924
    },
    "767": {
-    "sha256": "f49f27c5e4f46d049b5623f69cef6f08fa114a5a0f82f40052b4ec8bdb35efaf",
-    "bytes": 2252457
+    "sha256": "3d0d6b26a7da669998b4a6671b3ae79cedb55eb15d0ffad06b2d39808972e204",
+    "bytes": 2316145
    },
    "980": {
-    "sha256": "fb0db3a35bc559c2323a1641632905486abae5a1389d9c14b76588470b5698aa",
-    "bytes": 2566819
+    "sha256": "b23fada798b4f3d21a631b2a6f0d2aeee66d45b8a7dbe123861246d1cdbd468e",
+    "bytes": 2591902
    },
    "1440": {
-    "sha256": "6df99640e59e5642e44edd67e094db326ff3797f0d848fa5a7ee61a069bda226",
-    "bytes": 3661963
+    "sha256": "6e30cacfcb2744697e09f41d5c41265e6ce6097ca464020ebac1c742b30f6e44",
+    "bytes": 3732515
    }
   },
   "pet-hawk": {
@@ -613,11 +613,11 @@
    }
   }
  },
- "capturedAt": "2026-08-21T19:59:09.019Z",
- "gitSha": "c158d3cb9cae73638cf15312a559c21ea35a243c",
+ "capturedAt": "2026-08-24T18:17:53.162Z",
+ "gitSha": "33445e235c5253ba27479d6b3d3ae503aebdb3a7",
  "cssHashes": {
   "tokens.css": "da2b98ba32822a8a68b9edbf01da42e1f1f13b57d1fe6c472b6b4e4b61171bc5",
-  "pomdr.css": "d8f85dfe23dd8942ce4477df2c37a054a2fb914948f7f968b86c9a62b2b4f5a2",
+  "pomdr.css": "a08d511cf46ec7d3e39f028329fb96944477d55e42f9a3e69f4737fde0acbde0",
   "pomdr-design.css": "8c1295cbad4b5945eaa87b4b3a095e01c2c7bd744fe34430d26e5ceba20bd2fd",
   "native-pages.css": "6acaf59121be756b0ad6029e0af3abac4b1cc4300074fe933ab8e383dcd5bfad",
   "a11y.css": "f356507e8e07dc45be01a27ab075e13d50ee40b6f3033b2ceb0d7e47beddf0c7"
