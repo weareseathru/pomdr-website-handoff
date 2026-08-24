@@ -61,6 +61,11 @@ $home_hosts = array( home_url(), 'http://newpomdr-local.local', 'https://newpomd
  * shortcode text (shortcodes execute inside D5 text modules; verified).
  */
 $islands = array(
+	'home'         => array(
+		// The reference itself renders this band via [pet_home]; baked HTML
+		// froze dog content (council home audit 2026-08-21).
+		array( 'find' => 'dogs-grid', 'with' => '[pet_home]' ),
+	),
 	'foster-needs' => array(
 		array( 'find' => 'dogs-grid', 'with' => '[foster_needed_dogs]' ),
 	),
@@ -321,7 +326,7 @@ foreach ( $pom_args as $slug ) {
 			array( 'module_class' => "pg-$slug", 'admin_label' => $label ?: 'Section' ),
 			pom_d4_row(
 				array( 'admin_label' => $label . ' row' ),
-				pom_d4_column( '4_4', array(), pom_d4_text( array( 'admin_label' => $label . ' content' ), trim( $inner ) ) )
+				pom_d4_column( '4_4', array(), pom_d4_code( array( 'admin_label' => $label . ' content' ), trim( $inner ) ) )
 			)
 		);
 		$sections++;

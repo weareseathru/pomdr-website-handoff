@@ -7,15 +7,15 @@
    text modules, ties every boosted design class rule and loads first, so
    all boosted rules outrank it. Headings deliberately absent (the design
    ships its own .et_pb_module h1-h6 rules). */
-body.pom-native .et_pb_text :where(p, li, ol, ul, blockquote, figcaption) {
+body.pom-native :is(.et_pb_text, .et_pb_code) :where(p, li, ol, ul, blockquote, figcaption) {
   font-size: inherit; line-height: inherit; font-family: inherit;
 }
 /* Mirror Divi's GLOBAL paragraph padding pair exactly (the reference
    standard): 1em bottom, zeroed on the last p of its parent. Divi's
    module-scoped variant uses :last-child, which misfires when a div
    follows the final paragraph; this restores last-of-type semantics. */
-body.pom-native .et_pb_text :where(p) { padding-bottom: 1em; }
-body.pom-native .et_pb_text :where(p:not(.has-background):last-of-type) { padding-bottom: 0; }
+body.pom-native :is(.et_pb_text, .et_pb_code) :where(p) { padding-bottom: 1em; }
+body.pom-native :is(.et_pb_text, .et_pb_code) :where(p:not(.has-background):last-of-type) { padding-bottom: 0; }
 
 /* ---- from pomdr-design.css ---- */
 
@@ -2413,7 +2413,12 @@ body.pom-native .video-card {
   cursor: pointer;
   border: 1px solid var(--line, #e5ddd0);
 }
-body.pom-native .video-card img.poster { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease); }
+body.pom-native .video-card img.poster { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s var(--ease);
+  /* YouTube hqdefault thumbs are 4:3 with baked letterbox bars; 1.34 =
+     360/270 crops them exactly (owner-directed change, ledger 2026-08-21). */
+  transform: scale(1.34);
+}
+body.pom-native .video-card:hover img.poster { transform: scale(1.4); }
 body.pom-native .video-card:hover img.poster { transform: scale(1.05); }
 body.pom-native .video-card .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,32,43,0.1) 0%, rgba(22,32,43,0.62) 100%); }
 body.pom-native .video-card .play {

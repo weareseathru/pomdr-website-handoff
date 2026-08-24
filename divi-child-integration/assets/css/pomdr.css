@@ -1633,7 +1633,8 @@ body.pom-native .et_pb_row {
    extra vertical space from Divi's row padding or module margins is drift
    (measured +-2..8px block offsets, process 2026-08-20). */
 body.pom-native .et_pb_row { padding-top: 0; padding-bottom: 0; }
-body.pom-native .et_pb_module.et_pb_text { margin-bottom: 0; }
+body.pom-native .et_pb_module.et_pb_text,
+body.pom-native .et_pb_module.et_pb_code { margin-bottom: 0; }
 @media (max-width: 640px) {
   body.pom-native .et_pb_row { padding: 0 20px; }
 }
@@ -1676,12 +1677,12 @@ body.pom-native .et_pb_section.cta-strip { padding: 80px 0; }
    (hand-model emissions) keep the row-as-container mirror above. */
 /* Porter-v2 sections: the preserved wrapper owns ALL box duties; Divi's
    section defaults (padding, background) stand down entirely. */
-body.pom-native .et_pb_section:has(.et_pb_text .pom-wrap) {
+body.pom-native .et_pb_section:has(:is(.et_pb_text, .et_pb_code) .pom-wrap) {
   padding: 0;
   background: transparent;
 }
-body.pom-native .et_pb_row:has(.et_pb_text .pom-wrap),
-body.pom-native .et_pb_row:has(.et_pb_text .container) {
+body.pom-native .et_pb_row:has(:is(.et_pb_text, .et_pb_code) .pom-wrap),
+body.pom-native .et_pb_row:has(:is(.et_pb_text, .et_pb_code) .container) {
   width: 100%;
   max-width: none;
   padding-left: 0;
@@ -1694,14 +1695,17 @@ body.pom-native .et_pb_row:has(.et_pb_text .container) {
    own class rules are direct-styled and unaffected. Doubled class beats
    Divi's (0,1,0) regardless of load order. */
 .et_pb_module.et_pb_text,
-.et_pb_text .et_pb_text_inner { font-size: inherit; line-height: inherit; }
+.et_pb_module.et_pb_code,
+.et_pb_text .et_pb_text_inner,
+.et_pb_code .et_pb_code_inner { font-size: inherit; line-height: inherit; }
 
 /* Divi sets word-wrap:break-word on the text module; it inherits into
    every child, breaking long tokens the reference leaves whole (Wes
    figcaption wrapped 3 lines instead of 2). Reset to the reference
    semantics: only the #main-content p/li/blockquote/heading rules above
    opt into break-word. */
-body.pom-native .et_pb_module.et_pb_text { overflow-wrap: normal; word-wrap: normal; }
+body.pom-native .et_pb_module.et_pb_text,
+body.pom-native .et_pb_module.et_pb_code { overflow-wrap: normal; word-wrap: normal; }
 
 /* Divi's .et_pb_button forces line-height 1.7em with !important; mirror the
    design's .btn value (pomdr.css .btn { line-height: 1.05 }) at equal force.
