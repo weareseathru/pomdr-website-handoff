@@ -987,9 +987,9 @@ function pomdr_render_events($events, $hlevel = 'h3', $show_glance = true, $empt
  * Optional attribute: [events types="Adoption Event"] to limit the set.
  */
 function events_shortcode($atts = array()) {
-    $atts  = shortcode_atts(array('hlevel' => 'h3', 'types' => ''), $atts, 'events');
+    $atts  = shortcode_atts(array('hlevel' => 'h3', 'types' => '', 'glance' => '1', 'empty' => ''), $atts, 'events');
     $types = array_filter(array_map('trim', explode(',', (string) $atts['types'])));
-    return pomdr_render_events(pomdr_collect_events($types), $atts['hlevel'], true);
+    return pomdr_render_events(pomdr_collect_events($types), $atts['hlevel'], '0' !== (string) $atts['glance'], (string) $atts['empty']);
 }
 add_shortcode('events', 'events_shortcode');
 

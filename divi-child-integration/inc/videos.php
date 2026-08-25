@@ -138,6 +138,16 @@ function pomdr_get_videos() {
  */
 function pomdr_videos_grid_shortcode() {
 	$videos = function_exists( 'pomdr_get_videos' ) ? pomdr_get_videos() : array();
+	// Divi's Code module decodes numeric entities byte-truncated
+	// (&#8217; becomes 0x19), so ship real characters, never entities.
+	foreach ( $videos as &$v ) {
+		foreach ( array( 'title', 'caption', 'credits' ) as $k ) {
+			if ( isset( $v[ $k ] ) ) {
+				$v[ $k ] = html_entity_decode( (string) $v[ $k ], ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+			}
+		}
+	}
+	unset( $v );
 	ob_start();
 	?>
 	<div class="vids-grid">

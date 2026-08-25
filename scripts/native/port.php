@@ -76,8 +76,8 @@ $islands = array(
 		// The events renderer has no single wrapper, so: inside the named
 		// section keep the heading and intro (first 2 element children of
 		// its .container) and replace the rest with the live shortcode.
-		array( 'section_id' => 'whats-happening', 'keep_first' => 2, 'append' => '[events types="Special Event,Perpetual Event"]' ),
-		array( 'section_id' => 'adoption-events', 'keep_first' => 2, 'append' => '[events types="Adoption Event"]' ),
+		array( 'section_id' => 'whats-happening', 'keep_first' => 2, 'append' => '[events types="Special Event,Perpetual Event" glance="0" empty="No fundraisers or special events on the calendar right now. Call (831) 718-9122 or check our Facebook for what is coming up."]' ),
+		array( 'section_id' => 'adoption-events', 'keep_first' => 2, 'append' => '[events types="Adoption Event" glance="0" empty="No adoption events scheduled right now. You can still meet our dogs any time. Call (831) 718-9122 to arrange a visit."]' ),
 	),
 );
 
