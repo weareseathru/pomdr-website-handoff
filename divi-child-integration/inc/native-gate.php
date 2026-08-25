@@ -27,13 +27,14 @@ add_filter( 'template_include', function ( $template ) {
 		return $template;
 	}
 
-	// Only bypass the child theme's page-{slug}.php sidecars. Anything else
-	// (parent templates, the generic hierarchy) is already the native path.
-	// DELIBERATE exclusions (council round 3): front-page.php and
-	// single-pets.php never match this prefix, so the home page and dog
-	// pages CANNOT cut over through this gate; they keep their sidecars
-	// until their own dedicated cutover plans (runbook section 7).
-	if ( 0 !== strpos( basename( $template ), 'page-' ) ) {
+	// Bypass the child theme's page-{slug}.php sidecars, and front-page.php
+	// once the home page record is armed (its dedicated cutover plan is
+	// complete: hero server-rendered, live dogs island, bundle enqueued at
+	// the real slug because it remains the front page). single-pets.php
+	// still never matches: dog pages keep their sidecar until the Theme
+	// Builder template ships (runbook section 7).
+	$tpl = basename( $template );
+	if ( 0 !== strpos( $tpl, 'page-' ) && 'front-page.php' !== $tpl ) {
 		return $template;
 	}
 
