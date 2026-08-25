@@ -65,6 +65,9 @@ $islands = array(
 		// The reference itself renders this band via [pet_home]; baked HTML
 		// froze dog content (council home audit 2026-08-21).
 		array( 'find' => 'dogs-grid', 'with' => '[pet_home]' ),
+		// [pet_home] renders its own .dogs-more CTA; the static one ported
+		// from the sidecar would double the button (found 2026-08-25).
+		array( 'remove' => 'dogs-more' ),
 	),
 	'foster-needs' => array(
 		array( 'find' => 'dogs-grid', 'with' => '[foster_needed_dogs]' ),
@@ -245,7 +248,17 @@ foreach ( $pom_args as $slug ) {
 	if ( isset( $islands[ $slug ] ) ) {
 		$xp = new DOMXPath( $doc );
 		foreach ( $islands[ $slug ] as $op ) {
-			if ( isset( $op['find'] ) ) {
+			if ( isset( $op['remove'] ) ) {
+				// Drop a static element the island shortcode re-renders itself
+				// (e.g. home's .dogs-more CTA, emitted by [pet_home]).
+				$hits = $xp->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' {$op['remove']} ')]" );
+				if ( $hits->length ) {
+					$el = $hits->item( 0 );
+					$el->parentNode->removeChild( $el );
+				} else {
+					echo "island WARN [$slug]: .{$op['remove']} not found for removal\n";
+				}
+			} elseif ( isset( $op['find'] ) ) {
 				$hits = $xp->query( "//*[contains(concat(' ', normalize-space(@class), ' '), ' {$op['find']} ')]" );
 				if ( $hits->length ) {
 					$el = $hits->item( 0 );
