@@ -41,6 +41,11 @@ if ( ! is_dir( $backup_dir ) ) { mkdir( $backup_dir, 0755, true ); }
 
 $live = get_page_by_path( $slug, OBJECT, 'page' );
 if ( ! $live ) {
+	// Nested pages (about/culture) miss the flat path; find by name.
+	$found = get_posts( array( 'name' => $slug, 'post_type' => 'page', 'post_status' => 'publish', 'numberposts' => 1 ) );
+	$live  = $found ? $found[0] : null;
+}
+if ( ! $live ) {
 	echo "FATAL: no live page for slug '$slug'\n";
 	exit( 1 );
 }
