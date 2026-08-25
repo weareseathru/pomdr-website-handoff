@@ -28,7 +28,14 @@ const SOURCES = [
 
 // Selectors that must not be re-scoped: chrome, page furniture, Divi's own,
 // element-only selectors (no class), and structural roots.
-const SKIP = /(^|[^\w-])(html|body|:root)([^\w-]|$)|et_pb|et-vb|#site|#main-content|\.nav\b|\.action-bar|\.footer|\.a11y-|\.skip-link|\.drawer|\.hero\b|\.pt-|@/;
+// Uniform boost: chrome-region design rules (footer/nav overrides living
+// in pomdr.css and pomdr-design.css) must boost like everything else, or
+// the chrome-boost inverts cross-file precedence (native footer tagline
+// rendered 29px where the design's 21px override wins on the reference;
+// 2026-08-25). Only Divi's own selectors, structural roots, and
+// ID-anchored rules (ID already dominates identically on both sides)
+// stay unboosted.
+const SKIP = /(^|[^\w-])(html|body|:root)([^\w-]|$)|et_pb|et-vb|#site|#main-content|@/;
 const ELEMENT_OK = /^(h[1-6]|p|ul|ol|li|blockquote|figure|figcaption|table|th|td|dl|dt|dd|hr|img|picture|strong|em|small)([\s.:>,[]|$)/;
 
 const SYNTH = `
