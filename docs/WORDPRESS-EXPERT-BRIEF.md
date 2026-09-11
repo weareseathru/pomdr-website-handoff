@@ -82,9 +82,9 @@ template files still execute. That is exactly what our first deploy did.
 
 **Strategy:** export the whole site from Local with All-in-One WP
 Migration (Export to File), import the `.wpress` on the test bed with the
-same plugin. One archive carries database, theme, plugins, media. At
-911MB it needs the paid Unlimited extension on the import side (free
-importer caps at 512MB).
+same plugin. One archive carries database, theme, plugins, media. We hold
+an Unlimited extension subscription, so the archive size is not a
+constraint on the import side.
 
 **What happened on new.pomdr.org:** the database imported perfectly and
 every file NEW to the child theme landed byte-identical. But the two
@@ -100,9 +100,6 @@ grids, the old header exposed.
 carried cache pointing at the local dev machine, which broke icon fonts.
 This lives in cache files (the database was verified clean), so
 search-replace cannot fix it; only clearing Divi's Static CSS can.
-
-**Why nobody noticed for a week:** old and new `style.css` both said
-version 1.0.2. Everything in wp-admin looked normal.
 
 Full forensic record: `docs/DEPLOY-FORENSICS-2026-09-01.md` plus raw
 evidence in `docs/forensics/2026-09-01-newpomdr/` (repo access on
@@ -123,7 +120,7 @@ request).
    activate the Divi parent temporarily > delete "Divi Child" entirely.
    With no pre-existing `divi-child` folder, every theme file is created
    fresh (file creation worked fine last time; only overwriting failed).
-2. Install All-in-One WP Migration + Unlimited extension.
+2. Install All-in-One WP Migration with our Unlimited extension.
 3. Import, wait for the explicit success screen, log back in with the
    archive's credentials (users are replaced).
 
