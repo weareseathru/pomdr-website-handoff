@@ -1,28 +1,31 @@
 # POMDR Website Redesign: Deployment Brief
 
-Prepared September 10, 2026, updated September 11 with the fixes applied.
-For the WordPress expert helping us deploy.
-Contact: Andrew Z. (apzielinski62@gmail.com). Live site (untouched by all
-of this): https://www.pomdr.org
+Prepared September 10, 2026, updated September 11 with all pre-deploy
+fixes applied. From Andrew Z. at POMDR (apzielinski62@gmail.com).
 
-## The project in short
+You know us and you know the site, so I will skip the introductions and
+get straight to where things stand, what broke on our first deployment
+attempt, and exactly where we could use your hands.
 
-Peace of Mind Dog Rescue (POMDR) is a nonprofit in Pacific Grove, CA that
-rescues senior dogs and helps senior people keep their dogs. We rebuilt
-their dated WordPress site as a modern, accessible redesign. The build is
-finished and verified on a local development machine. We now need a clean
-deployment to a fresh WordPress test bed, and a second set of expert eyes
-on our process. Our first attempt failed in an instructive way; the cause
-is fully diagnosed and the fixes are applied (see the progress log at the
-end).
+## Where things stand
 
-## How we work: tools and methods
+The redesign is finished and verified on my local machine: the whole
+public site rebuilt for accessibility and easier adopting, fostering, and
+donating, with every page machine-checked against the approved design.
+The live site (www.pomdr.org) is untouched. Our first attempt to move the
+build onto a test server failed in an instructive way. We diagnosed it
+completely, fixed everything fixable in code, and wrote the corrected
+process below. What we need now is a clean deployment to a fresh
+WordPress test bed with you looking over our shoulder, especially on the
+hosting side.
 
-Plain summary of the workshop, so nothing surprises you:
+## How we have been working
 
-- **Development happens locally**, in Local (by Flywheel) on a Mac. The
+So you know what you are walking into:
+
+- **Development is local-first**, in Local (by Flywheel) on a Mac. The
   live site is never touched.
-- **Everything is in Git** on GitHub, on feature branches, one logical
+- **Everything is in Git** on GitHub, feature branches, one logical
   change per commit. The theme in the repo is the source of truth and is
   synced to the local WordPress install.
 - **The design layer is plain modern CSS** (custom properties for colors,
@@ -30,12 +33,12 @@ Plain summary of the workshop, so nothing surprises you:
   builders, minimal JavaScript, progressive enhancement throughout.
 - **Every page is machine-verified before we call it done**: automated
   browser screenshots (Playwright) compared against the approved design
-  at four screen sizes, full-site crawls checking every URL for errors,
-  and accessibility scans. The audience skews older, so we hold to WCAG
-  2.2 AA, 16px minimum text, and working pinch-zoom.
-- **Staff editability is a requirement, not a feature**: dogs, events,
-  and videos are ordinary wp-admin edits with ACF fields; page content
-  opens in the Divi Visual Builder.
+  at four screen sizes, full-site crawls, and accessibility scans. Our
+  audience skews older, so we hold to WCAG 2.2 AA, 16px minimum text, and
+  working pinch-zoom.
+- **Staff editability is a requirement**: dogs, events, and videos are
+  ordinary wp-admin edits with ACF fields; page content opens in the Divi
+  Visual Builder.
 
 ## The stack
 
@@ -95,7 +98,8 @@ search-replace cannot fix it; only clearing Divi's Static CSS can.
 version 1.0.2. Everything in wp-admin looked normal.
 
 Full forensic record: `docs/DEPLOY-FORENSICS-2026-09-01.md` plus raw
-evidence in `docs/forensics/2026-09-01-newpomdr/`.
+evidence in `docs/forensics/2026-09-01-newpomdr/` (repo access on
+request).
 
 ## The corrected protocol
 
@@ -119,55 +123,75 @@ evidence in `docs/forensics/2026-09-01-newpomdr/`.
 
 **Law:** never merge theme folders by hand. Theme-only updates go through
 Appearance > Themes > Upload > "Replace active with uploaded" (zip root
-folder named exactly `divi-child`). "Could not remove the old theme"
-means the host must fix file ownership; stop and escalate.
+folder named exactly `divi-child`; a versioned zip is staged and ready).
+"Could not remove the old theme" means the host must fix file ownership;
+stop and escalate.
 
 ## Sixty-second verification (view source on the home page)
 
 - `pomdr-build` FOUND, content `2.0.0` (the whole design layer is
-  running; this meta tag only prints when the current code executes)
+  running; this meta only prints when the current code executes)
 - `pomdr.css` FOUND
 - `newpomdr-local` ZERO hits
 - `maximum-scale` ABSENT
 - By eye: one visible h1, six dog cards on home, /adopt/ and /events/
   load, icons render as icons.
 
-## Progress log: fixes applied 2026-09-11
+There is also a scripted version: `scripts/deploy-verify.sh <site-url>`
+crawls all 39 public pages and checks every canary plus populated dog and
+video grids, and exits nonzero on any failure.
 
-Every root cause and fragility from the failed deploy now has a fix in
+## Progress log: pre-deploy fixes, all applied and verified 2026-09-11
+
+Everything we identified as fixable before redeploying is now done, in
 the theme, verified live on the local site:
 
 1. **Theme version bumped 1.0.2 to 2.0.0** (style.css). Old and new can
    never be confused again, in wp-admin or in cached asset URLs.
-2. **Build fingerprint added.** `functions.php` defines `POMDR_BUILD` and
-   the enqueue layer prints `<meta name="pomdr-build" content="2.0.0">`
-   into every page head. A stale functions.php cannot print it, so
-   staleness is a ten-second view-source check.
+2. **Build fingerprint.** `functions.php` defines `POMDR_BUILD` and the
+   enqueue layer prints `<meta name="pomdr-build" content="2.0.0">` into
+   every page head. A stale functions.php cannot print it.
 3. **Deploy guards on the two templates that 500ed.** page-adopt.php and
-   page-events.php now check for their helper functions BEFORE rendering
-   and degrade to a calm "this page is being updated" notice with our
-   phone number instead of a fatal error.
+   page-events.php check for their helper functions BEFORE rendering and
+   degrade to a calm "this page is being updated" notice with our phone
+   number instead of a fatal error.
 4. **Fragile stylesheet dependency removed.** The design CSS chain
-   depended on a Divi handle that Divi itself deregisters late in every
-   request; it only worked because a second Divi pass rewrites the
-   dependencies. One Divi update could have silently removed ALL design
-   CSS. The chain now depends only on our own handles, and one
-   wrong-direction dependency (which could have flipped the CSS cascade
-   order) was corrected.
-5. **Warning-proof asset versioning.** All cache-buster timestamps now go
+   depended on a handle Divi itself deregisters late in every request;
+   one Divi update could have silently removed ALL design CSS. The chain
+   now depends only on our own handles, and one wrong-direction
+   dependency that could have flipped the CSS cascade order was
+   corrected.
+5. **Warning-proof asset versioning.** All cache-buster timestamps go
    through a helper that tolerates missing files, so even a partial
    deploy renders without PHP warnings.
-6. **Local Divi cache cleared** and the clear-before-export /
-   clear-after-import rule made standing policy.
+6. **Staff-visible design-layer canary.** The design tokens stylesheet
+   sets a `--pom-build` custom property and a small always-on script
+   checks it: if the design CSS ever fails to load, logged-in users see a
+   red banner at the top of every page and the console logs the cause.
+   Visitors never see it.
+7. **Deploy README rewritten** (`docs/DEPLOY-README-FOR-COWORKER.md`)
+   with the golden rules, the corrected sizes, the three mandatory
+   after-import steps, the sixty-second proof, and the escalation path.
+8. **Automated verification script** (`scripts/deploy-verify.sh`) that
+   crawls all 39 pages of any deploy target and checks every canary;
+   it passes green against the local build.
+9. **Theme zip staged** with the correctly named root folder
+   (`divi-child-2.0.0.zip`, on the deploy kit folder with the README),
+   for the theme-only update path.
+10. **Local Divi cache cleared**, and clear-before-export /
+    clear-after-import made standing policy.
 
-Verified after the changes: build meta 2.0.0 on every page, full 17-asset
+Verified after all changes: build meta 2.0.0 on every page, full 17-asset
 design chain loading, 12 dog cards on home, /adopt/ /events/ /videos/ and
-native pages all healthy, zero PHP warnings. A fresh export made from
-this state is what you will receive.
+native pages all healthy, zero PHP warnings, and the crawl script passes
+all 39 pages. A fresh export made from this state is what you will
+receive.
 
-Still open by choice (post-deploy): removing the old Divi Theme Builder
-header/footer records (they contain a mangled legacy script, currently
-hidden by our CSS; removal wants a Theme Builder backup first).
+Deliberately left for after the redeploy: removing the old Divi Theme
+Builder header/footer records (they contain a mangled legacy script,
+currently hidden by our CSS; removal wants a Theme Builder backup first,
+and our CSS also hides Divi's fallback chrome so the removal is low
+risk).
 
 ## Where we would value your help
 

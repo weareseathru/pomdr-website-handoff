@@ -9,6 +9,10 @@
    ============================================================ */
 
 :root {
+  /* Deploy canary: a11y.js reads this to confirm the design CSS actually
+     loaded (2026-09-01 incident: theme half-deployed, no CSS, no errors).
+     Bump alongside the theme version. */
+  --pom-build: "2.0.0";
   --blue: #008bb0;
   --blue-700: #006c8a;
   --blue-900: #004e63;

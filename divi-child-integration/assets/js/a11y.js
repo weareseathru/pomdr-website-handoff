@@ -112,9 +112,34 @@
     }, 4000);
   }
 
+  /* ---- Deploy canary ---- */
+  // The design tokens stylesheet sets --pom-build. If it is missing, the
+  // design layer did not load (the silent failure mode of the 2026-09-01
+  // deploy). Logged-in staff get a visible banner; visitors only a console
+  // error, never UI.
+  function checkBuild() {
+    var v = "";
+    try {
+      v = getComputedStyle(document.documentElement)
+        .getPropertyValue("--pom-build").trim();
+    } catch (e) { return; }
+    if (v) return;
+    if (window.console && console.error) {
+      console.error("POMDR: design CSS not loaded (missing --pom-build). Theme deploy is likely incomplete.");
+    }
+    if (document.body && document.body.classList.contains("admin-bar")) {
+      var warn = document.createElement("div");
+      warn.setAttribute("role", "alert");
+      warn.style.cssText = "position:fixed;top:32px;left:0;right:0;z-index:99999;background:#a4372f;color:#fff;padding:10px 16px;font:700 15px/1.4 sans-serif;text-align:center;";
+      warn.textContent = "POMDR deploy check: the design stylesheets are not loading on this page. The theme deploy is likely incomplete. Only logged-in users see this message.";
+      document.body.appendChild(warn);
+    }
+  }
+
   function start() {
     buildToggle();
     initReveal();
+    checkBuild();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", start);
