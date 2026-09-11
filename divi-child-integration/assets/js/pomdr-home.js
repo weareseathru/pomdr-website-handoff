@@ -26,22 +26,22 @@
     { tag: "Adoption · Senior dogs, ready to love",
       title: "<div>Senior dogs deserve</div><div>a <em>soft place</em></div><div>to land.</div>",
       sub: "Calm, gentle, ready to love again. The gray-muzzled companions waiting for their next chapter.",
-      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Helping Paw · Support for senior guardians",
       title: "<div>Helping seniors</div><div>and their dogs stay</div><div><em>together</em> longer.</div>",
       sub: "Walking, vet rides, financial assistance, and temporary fosters, so guardians and their dogs never have to say goodbye too soon.",
-      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Our Mission · Since 2009",
       title: "<div>A lifetime</div><div><em>commitment</em>,</div><div>every time.</div>",
       sub: "Every dog in our care is ours for life. If a placement does not work, for any reason, ever, they come home to us.",
-      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' },
     { tag: "Foster · Donate · Volunteer",
       title: "<div>Be the reason</div><div>a <em>gray muzzle</em></div><div>finds home.</div>",
       sub: "Foster a dog. Make a gift. Walk a senior pup. Three ways to change a life. Pick the one that fits yours.",
-      ctas: '<a href="/adopt/" class="btn btn-primary">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/foster/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' }
+      ctas: '<a href="/adopt/" class="btn btn-ghost">Adopt <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a><a href="/fostering/" class="btn btn-purple">Foster</a><a href="/adopt/" class="btn btn-ghost">See all dogs</a>' }
   ];
   var heroSlides = document.querySelectorAll('.hero-slide');
-  var dots = document.querySelectorAll('#hero-progress button');
+  var dots = document.querySelectorAll('#hero-progress button[data-i]');
   var elTitle = document.getElementById('hero-title');
   var elCtas = document.getElementById('hero-ctas');
   var elCur = document.getElementById('hero-cur');
@@ -66,32 +66,45 @@
       paused = !paused;
       pause.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
       pause.innerHTML = paused
-        ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>'
-        : '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
+        ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9z"/></svg>'
+        : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>';
       schedule();
     });
     schedule();
   }
 
-  /* YouTube video facade: load the iframe only on click (fast first paint),
-     play inline, privacy-friendly via youtube-nocookie. */
-  document.querySelectorAll('.video-card').forEach(function (card) {
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    var play = function () {
+  /* YouTube videos: click a card and it becomes the featured player (a stage
+     is inserted at the head of the grid, the other cards slide into a side
+     rail). Iframes only load on click, privacy-friendly via youtube-nocookie. */
+  var videoGrid = document.getElementById('video-grid');
+  if (videoGrid) {
+    var playIn = function (card) {
       var id = card.getAttribute('data-youtube-id');
       if (!id || id === 'PLACEHOLDER') return;
-      var ifr = document.createElement('iframe');
-      ifr.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-      ifr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; fullscreen');
-      ifr.setAttribute('allowfullscreen', '');
-      ifr.setAttribute('title', card.getAttribute('data-title') || 'POMDR video');
-      card.innerHTML = '';
-      card.appendChild(ifr);
+      var stage = videoGrid.querySelector('.video-stage');
+      if (!stage) {
+        stage = document.createElement('div');
+        stage.className = 'video-stage';
+        videoGrid.insertBefore(stage, videoGrid.firstChild);
+        videoGrid.classList.add('has-player');
+      }
+      stage.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0"' +
+        ' allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen' +
+        ' title="' + (card.getAttribute('data-title') || 'POMDR video') + '"></iframe>';
+      videoGrid.querySelectorAll('.video-card').forEach(function (c) {
+        c.classList.toggle('now-playing', c === card);
+      });
+      stage.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     };
-    card.addEventListener('click', play);
-    card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
-  });
+    videoGrid.querySelectorAll('.video-card').forEach(function (card) {
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('click', function () { playIn(card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); playIn(card); }
+      });
+    });
+  }
 
   /* Happy Tails hover (lift, grow, reverse to purple) is handled purely in CSS. */
 

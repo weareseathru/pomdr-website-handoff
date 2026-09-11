@@ -92,6 +92,10 @@
       }
     } );
 
+    var noResults = document.getElementById( 'no-results' );
+    if ( noResults ) {
+      noResults.hidden = visible !== 0;
+    }
     if ( resultsCount ) {
       resultsCount.textContent = visible === 1 ? '1 dog' : visible + ' dogs';
     }
@@ -122,6 +126,60 @@
     sortSelect.addEventListener( 'change', function ( e ) {
       state.sort = e.target.value;
       apply();
+    } );
+  }
+  // Empty-state escape hatch: one tap back to the full list.
+  var clearBtn = document.getElementById( 'clear-filters' );
+  if ( clearBtn ) {
+    clearBtn.addEventListener( 'click', function () {
+      state.search = '';
+      state.filter = 'all';
+      if ( searchInput ) { searchInput.value = ''; }
+      if ( filtersEl ) {
+        Array.prototype.forEach.call( filtersEl.querySelectorAll( '.filter' ), function ( b ) {
+          b.classList.toggle( 'active', b.getAttribute( 'data-filter' ) === 'all' );
+        } );
+      }
+      apply();
+      if ( searchInput ) { searchInput.focus(); }
+    } );
+  }
+
+  // Hovering a card slideshows its gallery every 3 seconds (adopt page only).
+  // Skipped for reduced-motion users and touch devices (no reliable hover).
+  var canHoverCycle = window.matchMedia &&
+    window.matchMedia( '(hover: hover) and (pointer: fine)' ).matches &&
+    ! window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+  if ( canHoverCycle ) {
+    cards.forEach( function ( card ) {
+      var raw = card.getAttribute( 'data-photos' );
+      if ( ! raw ) { return; }
+      var photos;
+      try { photos = JSON.parse( raw ); } catch ( e ) { return; }
+      if ( ! photos || ! photos.length ) { return; }
+      var img = card.querySelector( '.dog-photo img' );
+      if ( ! img ) { return; }
+      var original = { src: img.src, srcset: img.getAttribute( 'srcset' ), sizes: img.getAttribute( 'sizes' ) };
+      var timer = null;
+      var idx = -1;
+      card.addEventListener( 'mouseenter', function () {
+        if ( timer ) { return; }
+        photos.forEach( function ( u ) { var p = new Image(); p.src = u; } );
+        timer = setInterval( function () {
+          idx = ( idx + 1 ) % photos.length;
+          img.removeAttribute( 'srcset' );
+          img.removeAttribute( 'sizes' );
+          img.src = photos[ idx ];
+        }, 3000 );
+      } );
+      card.addEventListener( 'mouseleave', function () {
+        clearInterval( timer );
+        timer = null;
+        idx = -1;
+        img.src = original.src;
+        if ( original.srcset ) { img.setAttribute( 'srcset', original.srcset ); }
+        if ( original.sizes ) { img.setAttribute( 'sizes', original.sizes ); }
+      } );
     } );
   }
 }() );

@@ -6,8 +6,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 <style>
 .page-hero{padding:160px 0 80px;background:linear-gradient(135deg,rgba(99,47,136,.06) 0%,transparent 60%),var(--cream);border-bottom:1px solid var(--line);}
 .hero-stat-row{display:flex;gap:36px;margin-top:44px;padding-top:36px;border-top:1px solid var(--line);flex-wrap:wrap;}
-.hero-stat .num{font-family:var(--font-serif);font-size:40px;font-weight:300;color:var(--purple);line-height:1;}
-.hero-stat .lbl{font-size:15px;color:var(--ink-3);margin-top:3px;}
+.hero-stat .num{font-family:var(--font-serif);font-size: 45px;font-weight:300;color:var(--purple);line-height:1;}
+.hero-stat .lbl{font-size: 21px;color:var(--ink-3);margin-top:3px;}
 /* Lead copy + the three stats share one row (mirrors the adopt header). */
 .hero-row{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin:22px 0 26px;}
 .hero-row .lead{margin:0;}
@@ -22,7 +22,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .role-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
 .role-card::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink-2) center/cover no-repeat;transition:transform .7s var(--ease);}
 .role-card:hover::before{transform:scale(1.05);}
-.role-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.45) 0%,rgba(22,32,43,.55) 42%,rgba(22,32,43,.9) 100%);}
+.role-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(22,32,43,.55) 0%,rgba(22,32,43,.65) 42%,rgba(22,32,43,.92) 100%);}
 .role-card>*{position:relative;z-index:2;}
 .role-card:nth-of-type(1)::before{background-image:url(<?php echo $img; ?>/hero-mission.jpeg);}
 .role-card:nth-of-type(2)::before{background-image:url(<?php echo $img; ?>/dog4.jpeg);}
@@ -36,9 +36,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .role-card:nth-of-type(10)::before{background-image:url(<?php echo $img; ?>/dog16.jpeg);}
 .role-icon{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;background:rgba(255,255,255,.2)!important;color:#fff!important;backdrop-filter:blur(3px);}
 .role-icon svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;}
-.role-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
-.role-card p{font-size:15px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
-.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#fff;margin-top:auto;}
+.role-card h3{font-family:var(--font-serif);font-size: 28px;font-weight:500;margin:0 0 10px;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.55);}
+.role-card p{font-size: 21px;color:rgba(255,255,255,.94);margin:0 0 14px;flex:1;text-shadow:0 1px 8px rgba(0,0,0,.6);}
+.role-card .learn{display:inline-flex;align-items:center;gap:6px;font-size: 21px;font-weight:700;color:#fff;margin-top:auto;}
 .role-card .learn::after{content:"→";transition:transform .25s var(--ease);}
 .role-card:hover .learn::after{transform:translateX(5px);}
 @media(max-width:900px){.roles-grid{grid-template-columns:1fr 1fr;}}
@@ -47,7 +47,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .apply-band{background:var(--blue-900);color:#fff;padding:100px 0;text-align:center;}
 .apply-band h2{font-family:var(--font-serif);font-size:clamp(32px,4.5vw,60px);font-weight:300;letter-spacing:-.025em;margin:10px 0 18px;}
 .apply-band h2 em{font-style:italic;color:var(--blue-200);}
-.apply-band p{font-size:18px;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 32px;}
+.apply-band p{font-size: 23px;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 32px;}
 </style>
 <main id="main-content">
 
@@ -68,7 +68,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <div class="hero-stat-row">
             <div class="hero-stat"><div class="num">1,800+</div><div class="lbl">Active volunteers</div></div>
             <div class="hero-stat"><div class="num">10+</div><div class="lbl">Ways to volunteer</div></div>
-            <div class="hero-stat"><div class="num">16 yrs</div><div class="lbl">Of community support</div></div>
+            <div class="hero-stat"><div class="num"><?php echo date('Y') - 2009; ?> yrs</div><div class="lbl">Of community support</div></div>
           </div>
         </div>
         <div style="display:flex;gap:14px;flex-wrap:wrap;">
@@ -103,8 +103,8 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Foster Home</h3>
-        <p>Foster volunteers are the heart and soul of what we do. POMDR covers all approved medical expenses, supplies crates, beds and toys as available, and provides a foster manual, training, an emergency contact number, and a dedicated mentor.</p>
-        <a href="https://www.peaceofminddogrescue.org/fostering.html" target="_blank" class="learn">Learn more about fostering</a>
+        <p>Foster volunteers are the heart and soul of what we do. POMDR covers all approved medical expenses, supplies donated food, crates, beds, blankets, and toys as available, and provides a foster manual, training, an emergency contact number, and a dedicated mentor.</p>
+        <a href="/fostering/" class="learn">Learn more about fostering</a>
       </div>
 
       <div class="role-card">
@@ -140,7 +140,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </div>
         <h3>Benefit Shop</h3>
         <p>Our Benefit Shop at 223 Grand Ave, Pacific Grove needs help greeting visitors, running the register, sorting and pricing donations, and creating displays. Truck owners can help with donation pickups too!</p>
-        <a href="https://www.peaceofminddogrescue.org/benefitshop.html" target="_blank" class="learn">Visit the Benefit Shop</a>
+        <a href="/benefit-shop/" class="learn">Visit the Benefit Shop</a>
       </div>
 
       <div class="role-card">
@@ -204,7 +204,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       Fill Out Volunteer Application
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
-    <div style="margin-top:32px;font-size:16px;color:rgba(255,255,255,.55);">Questions? <a href="mailto:info@pomdr.org" style="color:var(--blue-200);">info@pomdr.org</a> · (831) 718-9122</div>
+    <div style="margin-top:32px;font-size: 21px;color:rgba(255,255,255,.55);">Questions? <a href="mailto:info@pomdr.org" style="color:var(--blue-200);">info@pomdr.org</a> · (831) 718-9122</div>
   </div>
 </section>
 

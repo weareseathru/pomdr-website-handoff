@@ -8,7 +8,12 @@
 get_header();
 
 $lgl_form_id = 'utzjcNEZaqAcJk3QURlQmw'; // POMDR adoption inquiry form
+// Dog profile links send ?dogname=; accept it (and the LGL-native ?field_21=)
+// so the prefill actually reaches the form either way. Closes risk B1/R7.
 $prefill     = isset( $_GET['field_21'] ) ? sanitize_text_field( wp_unslash( $_GET['field_21'] ) ) : '';
+if ( '' === $prefill && isset( $_GET['dogname'] ) ) {
+    $prefill = sanitize_text_field( wp_unslash( $_GET['dogname'] ) );
+}
 $iframe_src  = 'https://secure.lglforms.com/form_engine/s/' . $lgl_form_id;
 if ( '' !== $prefill ) {
     $iframe_src = add_query_arg( 'field_21', rawurlencode( $prefill ), $iframe_src );
@@ -25,7 +30,7 @@ if ( '' !== $prefill ) {
   <section class="section">
     <div class="container">
       <?php if ( '' !== $prefill ) : ?>
-        <p style="font-weight:600;color:var(--purple);margin:0 0 18px;font-size:18px;"><?php echo esc_html( 'Applying to adopt: ' . $prefill ); ?></p>
+        <p style="font-weight:600;color:var(--purple);margin:0 0 18px;font-size: 23px;"><?php echo esc_html( 'Applying to adopt: ' . $prefill ); ?></p>
       <?php endif; ?>
       <iframe id="adoption-iframe"
               src="<?php echo esc_url( $iframe_src ); ?>"

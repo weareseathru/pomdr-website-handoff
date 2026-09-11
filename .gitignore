@@ -54,3 +54,4 @@ pomdr-website/project/uploads/web-capture-*.json
 # Local review artifacts (Playwright / Chrome DevTools MCP screenshots)
 responsive-review/
 .playwright-mcp/
+/Divi/
