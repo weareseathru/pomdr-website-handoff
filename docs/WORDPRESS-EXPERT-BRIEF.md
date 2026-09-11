@@ -9,15 +9,22 @@ since, the corrected deployment process, and where we could use your help.
 
 ## Where things stand
 
-The redesign is finished and verified on my local machine: the whole
+Our test bed lives at **https://new.pomdr.org**. It carries the site's
+working foundation (the Divi base build, the pets post type and ACF
+fields, the LGL forms), and that foundation is what my design process
+started from: my local development copy was cloned from it, and the
+redesign layers a new child theme on top of everything that already
+works there.
+
+The redesign is now finished and verified on my local machine: the whole
 public site rebuilt for accessibility and easier adopting, fostering, and
 donating, with every page machine-checked against the approved design.
-The live site (www.pomdr.org) is untouched. Our first attempt to move the
-build onto a test server failed in an instructive way. We diagnosed it
-completely, fixed everything fixable in code, and wrote the corrected
-process below. What we need now is a clean deployment to a fresh
-WordPress test bed with you looking over our shoulder, especially on the
-hosting side.
+The live site (www.pomdr.org) is untouched. **new.pomdr.org is where we
+are trying to deploy the new child theme.** Our first attempt to move the
+build onto it failed in an instructive way. We diagnosed it completely,
+fixed everything fixable in code, and wrote the corrected process below.
+What we need now is a clean deployment to the test bed with you looking
+over our shoulder, especially on the hosting side.
 
 ## How we have been working
 
@@ -51,7 +58,7 @@ So you know what you are walking into:
 | Forms and donations | Little Green Light (LGL) embedded iframes, no form plugins |
 | Other plugins | Redirection, All-in-One WP Migration |
 | Transfer | All-in-One WP Migration `.wpress` archive, about 911MB |
-| CDN | The retired test bed sat behind Cloudflare (CSS cached 4 hours) |
+| Test bed | https://new.pomdr.org, behind Cloudflare (CSS cached 4 hours) |
 
 ## How the theme renders (one minute)
 
@@ -79,10 +86,10 @@ same plugin. One archive carries database, theme, plugins, media. At
 911MB it needs the paid Unlimited extension on the import side (free
 importer caps at 512MB).
 
-**What happened:** the database imported perfectly and every file NEW to
-the child theme landed byte-identical. But the two files that already
-existed in the old child theme on that server (`functions.php`,
-`style.css`) kept their old versions. Leading suspicion: file ownership
+**What happened on new.pomdr.org:** the database imported perfectly and
+every file NEW to the child theme landed byte-identical. But the two
+files that already existed in the old child theme on that server
+(`functions.php`, `style.css`) kept their old versions. Leading suspicion: file ownership
 or permissions blocked overwriting pre-existing files while creating new
 ones succeeded. Result: unstyled pages, two 500s (/adopt/ and /events/,
 new templates calling helpers the old functions.php lacks), empty dog
@@ -109,9 +116,13 @@ request).
 2. Confirm the theme version was bumped if theme files changed.
 3. Export via All-in-One WP Migration > Export > File.
 
-**Import (new test bed):**
-1. Start from a FRESH WordPress install. With no pre-existing POMDR theme
-   the file-merge failure cannot happen.
+**Import (on the test bed):**
+1. Neutralize the file-merge failure first. Cleanest is a fresh WordPress
+   install; when deploying onto new.pomdr.org as it stands, instead
+   delete the old child theme before importing: Appearance > Themes >
+   activate the Divi parent temporarily > delete "Divi Child" entirely.
+   With no pre-existing `divi-child` folder, every theme file is created
+   fresh (file creation worked fine last time; only overwriting failed).
 2. Install All-in-One WP Migration + Unlimited extension.
 3. Import, wait for the explicit success screen, log back in with the
    archive's credentials (users are replaced).
