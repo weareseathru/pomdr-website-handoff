@@ -1,163 +1,182 @@
 # POMDR Website Redesign: Deployment Brief
 
-Prepared 2026-09-10 for an outside WordPress expert helping us deploy.
-Contact: Andrew Z. (apzielinski62@gmail.com)
+Prepared September 10, 2026, updated September 11 with the fixes applied.
+For the WordPress expert helping us deploy.
+Contact: Andrew Z. (apzielinski62@gmail.com). Live site (untouched by all
+of this): https://www.pomdr.org
 
 ## The project in short
 
-Peace of Mind Dog Rescue (POMDR, pomdr.org) is a nonprofit in Pacific Grove,
-CA that rescues senior dogs and helps senior people keep their dogs. We have
-rebuilt their dated WordPress site as a modern, accessible redesign. The
-build is finished and verified on a local development machine. What we need
-now is a clean, reliable deployment to a fresh WordPress test bed, and a
-second set of expert eyes on our process. Our first deployment attempt
-failed in an instructive way, documented below.
+Peace of Mind Dog Rescue (POMDR) is a nonprofit in Pacific Grove, CA that
+rescues senior dogs and helps senior people keep their dogs. We rebuilt
+their dated WordPress site as a modern, accessible redesign. The build is
+finished and verified on a local development machine. We now need a clean
+deployment to a fresh WordPress test bed, and a second set of expert eyes
+on our process. Our first attempt failed in an instructive way; the cause
+is fully diagnosed and the fixes are applied (see the progress log at the
+end).
+
+## How we work: tools and methods
+
+Plain summary of the workshop, so nothing surprises you:
+
+- **Development happens locally**, in Local (by Flywheel) on a Mac. The
+  live site is never touched.
+- **Everything is in Git** on GitHub, on feature branches, one logical
+  change per commit. The theme in the repo is the source of truth and is
+  synced to the local WordPress install.
+- **The design layer is plain modern CSS** (custom properties for colors,
+  type, spacing) on top of Divi. No CSS frameworks, no extra page
+  builders, minimal JavaScript, progressive enhancement throughout.
+- **Every page is machine-verified before we call it done**: automated
+  browser screenshots (Playwright) compared against the approved design
+  at four screen sizes, full-site crawls checking every URL for errors,
+  and accessibility scans. The audience skews older, so we hold to WCAG
+  2.2 AA, 16px minimum text, and working pinch-zoom.
+- **Staff editability is a requirement, not a feature**: dogs, events,
+  and videos are ordinary wp-admin edits with ACF fields; page content
+  opens in the Divi Visual Builder.
 
 ## The stack
 
 | Piece | Detail |
 |---|---|
 | Platform | WordPress (current core), single site |
-| Theme | Divi 5.2.1 parent (pinned, auto-updates off) + custom child theme `divi-child` |
-| Custom fields | ACF Pro. Field groups for dogs, events, team |
+| Theme | Divi 5.2.1 parent (pinned, auto-updates off) + custom child theme `divi-child`, version 2.0.0 |
+| Custom fields | ACF Pro (field groups for dogs, events, team) |
 | Content types | Custom post types: `pets` (~185 dogs), `events`, `videos`, `team` |
-| Forms and donations | Little Green Light (LGL) embedded iframes. No form plugins |
+| Forms and donations | Little Green Light (LGL) embedded iframes, no form plugins |
 | Other plugins | Redirection, All-in-One WP Migration |
-| Dev environment | Local (by Flywheel) on macOS. Site: newpomdr-local.local |
-| Transfer tool | All-in-One WP Migration (.wpress archive, ~911MB) |
+| Transfer | All-in-One WP Migration `.wpress` archive, about 911MB |
 | CDN | The retired test bed sat behind Cloudflare (CSS cached 4 hours) |
 
-## How the theme is built (what you need to know to not be surprised)
+## How the theme renders (one minute)
 
-The child theme renders pages two ways:
+Two families of pages:
 
-1. **Native Divi 5 pages (29 of them).** Real Divi 5 block content on the
-   live page records. A post meta `_pomdr_native` routes these through
-   `page-native.php` via a `template_include` filter in `inc/native-gate.php`.
-2. **Sidecar templates (the rest).** Hardcoded `page-{slug}.php` templates
-   (plus `front-page.php`, `single-pets.php`) that render the design
-   directly and ignore post content.
+1. **Native Divi 5 pages (29).** Real Divi 5 block content on the page
+   records, routed through `page-native.php` by a post meta
+   (`_pomdr_native`).
+2. **Template pages (the rest).** Hardcoded `page-{slug}.php` files that
+   render the design directly.
 
-Dynamic content (dog grids, events, video grids) comes from shortcodes and
-helper functions defined in `functions.php` and `inc/*.php`. All design CSS
-and JS is enqueued by `inc/enqueue.php`.
+Dog grids, events, and video grids come from shortcodes and helpers in
+`functions.php` and `inc/*.php`. All design CSS/JS is enqueued by
+`inc/enqueue.php`.
 
-**The critical detail:** `functions.php` ends with `require_once` calls that
-load `inc/enqueue.php`, `inc/chrome.php`, `inc/native-gate.php`,
-`inc/videos.php`, and `inc/post-types.php`. It is the loader for the entire
-redesign. If an old copy of functions.php executes, the whole design layer
-silently disappears while the template files still run. That exact scenario
-is what broke our first deploy.
+The one critical fact: `functions.php` loads everything else. If an old
+copy of it runs, the entire design layer silently disappears while the
+template files still execute. That is exactly what our first deploy did.
 
-## State of the build (verified locally)
+## Deployment strategy, and what went wrong
 
-- All 40 public URLs crawl clean: correct headings, no PHP errors, dynamic
-  grids populated, forms rendering.
-- Pixel-parity harness (Playwright) verifies the pages against the approved
-  design at 4 breakpoints.
-- Staff editing verified: dogs/events/videos are plain wp-admin edits with
-  ACF fields; pages open in the Divi Visual Builder.
-- Accessibility is a first-class requirement (older audience): WCAG 2.2 AA,
-  16px minimum body text, pinch-zoom restored (we remove Divi's
-  maximum-scale viewport lock).
-- The current production site (www.pomdr.org) is untouched by all of this.
+**Strategy:** export the whole site from Local with All-in-One WP
+Migration (Export to File), import the `.wpress` on the test bed with the
+same plugin. One archive carries database, theme, plugins, media. At
+911MB it needs the paid Unlimited extension on the import side (free
+importer caps at 512MB).
 
-## Deployment strategy and what went wrong
+**What happened:** the database imported perfectly and every file NEW to
+the child theme landed byte-identical. But the two files that already
+existed in the old child theme on that server (`functions.php`,
+`style.css`) kept their old versions. Leading suspicion: file ownership
+or permissions blocked overwriting pre-existing files while creating new
+ones succeeded. Result: unstyled pages, two 500s (/adopt/ and /events/,
+new templates calling helpers the old functions.php lacks), empty dog
+grids, the old header exposed.
 
-**The strategy:** export the entire site from Local via All-in-One WP
-Migration (wp-admin > Export > File), then import the `.wpress` on the test
-bed with the same plugin. One archive carries the database, theme, plugins,
-and media. The archive is ~911MB, which is over the free importer's 512MB
-cap, so the import side needs the paid Unlimited extension.
+**Second, independent defect:** Divi writes generated CSS to
+`wp-content/et-cache` with the origin hostname baked in. Our archive
+carried cache pointing at the local dev machine, which broke icon fonts.
+This lives in cache files (the database was verified clean), so
+search-replace cannot fix it; only clearing Divi's Static CSS can.
 
-**What happened on the first attempt (test bed new.pomdr.org, since
-retired):** the database imported perfectly (record timestamps matched local
-to the second, URLs rewritten correctly) and every file that was NEW to the
-child theme landed byte-identical. But the two files that ALREADY EXISTED in
-the old child theme on that server, `functions.php` and `style.css`, kept
-their old April versions. Our leading suspicion is file ownership or
-permissions preventing overwrite of pre-existing files while new file
-creation succeeded.
+**Why nobody noticed for a week:** old and new `style.css` both said
+version 1.0.2. Everything in wp-admin looked normal.
 
-The result of that half-old, half-new theme:
+Full forensic record: `docs/DEPLOY-FORENSICS-2026-09-01.md` plus raw
+evidence in `docs/forensics/2026-09-01-newpomdr/`.
 
-- Old functions.php ran, so zero design CSS/JS was enqueued, no custom post
-  type registration, no shortcodes, no native-page routing.
-- Pages rendered the new markup (new template files executed) completely
-  unstyled, with the old Divi Theme Builder header exposed.
-- Two hard 500s (/adopt/ and /events/): new templates calling helper
-  functions that only exist in the new functions.php.
-- Every dog/event/video grid empty (shortcodes unregistered).
+## The corrected protocol
 
-**A second, independent defect:** Divi writes generated CSS to
-`wp-content/et-cache` with protocol-relative URLs that bake in the origin
-hostname. Our archive carried cache files pointing at
-`//newpomdr-local.local`, which broke icon fonts on the test bed. This lives
-in cache FILES that get inlined into the HTML, not in the database (we
-verified the DB is clean), so a search-replace cannot fix it. Only clearing
-Divi's Static CSS (or deleting et-cache, it rebuilds) fixes it.
-
-A hidden factor that let this go unnoticed: the old and new `style.css` both
-declared `Version: 1.0.2`, so nothing in wp-admin looked wrong.
-
-Full forensic record with evidence, HTML snapshots, and a five-seat expert
-review: `docs/DEPLOY-FORENSICS-2026-09-01.md` and
-`docs/forensics/2026-09-01-newpomdr/` in the repo.
-
-## The corrected protocol (what we plan to do)
-
-**Before export (on Local):**
-1. Clear Divi Static CSS (Divi > Theme Options) so the archive ships no
-   cache with the local hostname.
-2. Bump the child theme version so old and new are distinguishable.
+**Before export (on the dev machine):**
+1. Clear Divi Static CSS so the archive ships no cache with the local
+   hostname.
+2. Confirm the theme version was bumped if theme files changed.
 3. Export via All-in-One WP Migration > Export > File.
 
 **Import (new test bed):**
-1. Start from a FRESH WordPress install (no pre-existing POMDR theme means
-   the file-merge failure is impossible).
+1. Start from a FRESH WordPress install. With no pre-existing POMDR theme
+   the file-merge failure cannot happen.
 2. Install All-in-One WP Migration + Unlimited extension.
-3. Import the .wpress, wait for the explicit success screen, log back in
-   with the archive's credentials (users are replaced).
+3. Import, wait for the explicit success screen, log back in with the
+   archive's credentials (users are replaced).
 
 **After import, always:**
-1. Settings > Permalinks > Save Changes (registers CPT rewrites).
-2. Divi > Theme Options > Static CSS > Clear + Save (regenerates for the
-   new host).
+1. Settings > Permalinks > Save Changes.
+2. Divi > Theme Options > Static CSS > Clear + Save.
 3. Purge host/CDN caches.
 
-**Rules we now treat as law:**
-- Never merge theme folders by hand (FTP or file-manager unzip over an
-  existing folder). Theme-only updates go through Appearance > Themes >
-  Upload > "Replace active with uploaded".
-- "Could not remove the old theme" during that flow means the host must fix
-  file ownership on the theme directory. Stop and escalate, do not retry.
+**Law:** never merge theme folders by hand. Theme-only updates go through
+Appearance > Themes > Upload > "Replace active with uploaded" (zip root
+folder named exactly `divi-child`). "Could not remove the old theme"
+means the host must fix file ownership; stop and escalate.
 
-**Sixty-second verification (view source on the home page):**
-- `pomdr.css` FOUND (the design layer is running)
-- `newpomdr-local` ZERO hits (no environment leak)
-- `maximum-scale` ABSENT (zoom works for older visitors)
-- One `<h1>` per page, six dog cards on home, /adopt/ and /events/ load,
-  icons render as icons.
+## Sixty-second verification (view source on the home page)
+
+- `pomdr-build` FOUND, content `2.0.0` (the whole design layer is
+  running; this meta tag only prints when the current code executes)
+- `pomdr.css` FOUND
+- `newpomdr-local` ZERO hits
+- `maximum-scale` ABSENT
+- By eye: one visible h1, six dog cards on home, /adopt/ and /events/
+  load, icons render as icons.
+
+## Progress log: fixes applied 2026-09-11
+
+Every root cause and fragility from the failed deploy now has a fix in
+the theme, verified live on the local site:
+
+1. **Theme version bumped 1.0.2 to 2.0.0** (style.css). Old and new can
+   never be confused again, in wp-admin or in cached asset URLs.
+2. **Build fingerprint added.** `functions.php` defines `POMDR_BUILD` and
+   the enqueue layer prints `<meta name="pomdr-build" content="2.0.0">`
+   into every page head. A stale functions.php cannot print it, so
+   staleness is a ten-second view-source check.
+3. **Deploy guards on the two templates that 500ed.** page-adopt.php and
+   page-events.php now check for their helper functions BEFORE rendering
+   and degrade to a calm "this page is being updated" notice with our
+   phone number instead of a fatal error.
+4. **Fragile stylesheet dependency removed.** The design CSS chain
+   depended on a Divi handle that Divi itself deregisters late in every
+   request; it only worked because a second Divi pass rewrites the
+   dependencies. One Divi update could have silently removed ALL design
+   CSS. The chain now depends only on our own handles, and one
+   wrong-direction dependency (which could have flipped the CSS cascade
+   order) was corrected.
+5. **Warning-proof asset versioning.** All cache-buster timestamps now go
+   through a helper that tolerates missing files, so even a partial
+   deploy renders without PHP warnings.
+6. **Local Divi cache cleared** and the clear-before-export /
+   clear-after-import rule made standing policy.
+
+Verified after the changes: build meta 2.0.0 on every page, full 17-asset
+design chain loading, 12 dog cards on home, /adopt/ /events/ /videos/ and
+native pages all healthy, zero PHP warnings. A fresh export made from
+this state is what you will receive.
+
+Still open by choice (post-deploy): removing the old Divi Theme Builder
+header/footer records (they contain a mangled legacy script, currently
+hidden by our CSS; removal wants a Theme Builder backup first).
 
 ## Where we would value your help
 
-1. Run or supervise the import on the new test bed, especially the file
-   permissions/ownership question on the destination.
+1. Run or supervise the import on the new test bed, especially file
+   permissions and ownership on the destination.
 2. Sanity-check the protocol above; tell us what we are missing.
-3. Confirm host requirements: PHP version and limits
-   (upload_max_filesize/post_max_size for the 911MB archive if uploaded
-   through the browser), and whether the host runs aggressive opcode or
-   page caching we should account for.
-4. Eventually: the same process against production (www.pomdr.org), with
-   rollback planning. Production has live donation flows through LGL
-   iframes, which kept working even during the broken deploy, and we intend
-   to keep it that way.
-
-## Planned hardening (built, pending application)
-
-Small changes that turn any future partial deploy into a visible, mild
-failure instead of a broken site: a build fingerprint constant printed into
-the page head, guards at the top of the two templates that 500ed, dropping a
-fragile stylesheet dependency on a handle Divi deregisters, and the theme
-version bump. These are minutes of work each and will be applied before the
-next export.
+3. Confirm host requirements: PHP version and limits (upload and post
+   size for a 911MB browser upload), opcode/page caching behavior.
+4. Eventually, the same process against production, with rollback
+   planning. Production has live donation flows through LGL iframes,
+   which kept working even during the broken deploy, and we intend to
+   keep it that way.

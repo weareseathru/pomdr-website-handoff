@@ -11,6 +11,20 @@
  * Add or edit an event in wp-admin and it lands in the right section by its
  * type. Both sections show upcoming events only, soonest first.
  */
+
+// Deploy guard: on a partial deploy where an old functions.php executes,
+// the event helpers do not exist and the page would fatal before any
+// content (2026-09-01 incident). Degrade to a calm notice instead.
+if ( ! function_exists( 'pomdr_collect_events' ) || ! function_exists( 'pomdr_render_events' ) ) {
+    get_header();
+    echo '<main id="main-content" style="padding:4rem 1.5rem;text-align:center;max-width:40rem;margin:0 auto;">'
+        . '<h1>What\'s Happening</h1>'
+        . '<p>This page is being updated right now. Please check back in a few minutes, or call (831) 718-9122 for upcoming events and adoption days.</p>'
+        . '</main>';
+    get_footer();
+    return;
+}
+
 get_header();
 
 $whats_happening = pomdr_collect_events( array( 'Special Event', 'Perpetual Event' ) );

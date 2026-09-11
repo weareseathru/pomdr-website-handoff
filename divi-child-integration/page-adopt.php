@@ -11,6 +11,20 @@
  * Chrome + footer from the theme; shared look from pomdr.css (enqueued
  * site-wide). No CSS is ported here.
  */
+
+// Deploy guard: on a partial deploy where an old functions.php executes,
+// the helpers this template needs do not exist and the page would fatal
+// mid-render (2026-09-01 incident). Degrade to a calm notice instead.
+if ( ! function_exists( 'pom_render_dog_card' ) ) {
+    get_header();
+    echo '<main id="main-content" style="padding:4rem 1.5rem;text-align:center;max-width:40rem;margin:0 auto;">'
+        . '<h1>Our adoptable dogs are one step away</h1>'
+        . '<p>This page is being updated right now. Please check back in a few minutes, or call (831) 718-9122 and we will happily tell you about our dogs.</p>'
+        . '</main>';
+    get_footer();
+    return;
+}
+
 get_header();
 
 /**

@@ -1,5 +1,11 @@
 <?php
 
+// Build fingerprint. Printed into every page head by inc/enqueue.php, so a
+// stale functions.php (the 2026-09-01 deploy failure) is detectable in one
+// view-source: the marker is simply absent. Bump alongside the style.css
+// Version on every theme change.
+define( 'POMDR_BUILD', '2.0.0' );
+
 // *********** Apply wpautop to Team bio field ***********
 add_filter('acf/format_value/name=bio', function($value, $post_id, $field) {
     if ($value) {
