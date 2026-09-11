@@ -3,9 +3,9 @@
 Prepared September 10, 2026, updated September 11 with all pre-deploy
 fixes applied. From Andrew Z. at POMDR (apzielinski62@gmail.com).
 
-You know us and you know the site, so I will skip the introductions and
-get straight to where things stand, what broke on our first deployment
-attempt, and exactly where we could use your hands.
+This brief covers where the redesign stands, the stack and methods behind
+it, what went wrong on our first deployment attempt, the fixes applied
+since, the corrected deployment process, and where we could use your help.
 
 ## Where things stand
 
