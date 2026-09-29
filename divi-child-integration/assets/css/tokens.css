@@ -9,6 +9,10 @@
    ============================================================ */
 
 :root {
+  /* Deploy canary: a11y.js reads this to confirm the design CSS actually
+     loaded (2026-09-01 incident: theme half-deployed, no CSS, no errors).
+     Bump alongside the theme version. */
+  --pom-build: "2.0.0";
   --blue: #008bb0;
   --blue-700: #006c8a;
   --blue-900: #004e63;
@@ -35,9 +39,9 @@
   --ink: #16202b;
   --ink-2: #3c4a57;
   --ink-3: #5a6773;
-  --line: #e5ddd0;
-  --cream: #FAF6F0;
-  --cream-2: #F3ECDF;
+  --line: #cfe0e9;    /* cool hairline to match (was warm #e5ddd0) */
+  --cream: #E8F2F6;   /* light blue (was warm cream #FAF6F0); leadership spec 2026-07-09 */
+  --cream-2: #E8F2F6; /* unified to the light blue (was #D9E9F0 blue-grey); matches --cream site-wide 2026-07-27 */
   --white: #ffffff;
 
   --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -47,6 +51,10 @@
   --radius: 22px;
   --radius-lg: 32px;
   --radius-xl: 44px;
+
+  /* One section rhythm site-wide (benchmark 2026-08-01): 80px desktop beat. */
+  --section-pad: 80px;
+  --section-pad-m: 56px;
 
   --shadow-sm: 0 2px 8px rgba(22,32,43,.04);
   --shadow: 0 12px 32px -8px rgba(22,32,43,.12), 0 2px 6px rgba(22,32,43,.04);
@@ -61,9 +69,9 @@
   /* ===== Accessibility knobs =====
      These are the levers the opt-in senior mode flips (in a11y.css under
      html[data-a11y="senior"]). Components read them so one override cascades. */
-  --fs-base: 19px;                 /* base body text (senior-readable; was 18px) */
-  --fs-lead: 21px;                 /* intro / lead paragraphs */
-  --fs-small: 16px;                /* smallest UI text; never below 16 */
+  --fs-base: 24px;                 /* base body text (senior-readable; was 18px) */
+  --fs-lead: 26px;                 /* intro / lead paragraphs */
+  --fs-small: 20px;                /* smallest UI text; never below 16 */
   --leading: 1.6;                  /* base line-height */
   --measure: 70ch;                 /* max readable line length for prose */
   --tap-min: 44px;                 /* min interactive target; senior mode raises to 48px */

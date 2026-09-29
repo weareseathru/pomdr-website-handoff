@@ -7,26 +7,36 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:8px;}
 .value-card{background:#fff;border-radius:var(--radius-lg);padding:30px;border:1px solid var(--line);transition:all .35s var(--ease);}
 .value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.value-card .vk{width:46px;height:46px;border-radius:14px;background:var(--purple-50);display:grid;place-items:center;color:var(--purple);margin-bottom:16px;font-family:var(--font-serif);font-size:22px;font-weight:500;}
-.value-card h3{font-family:var(--font-serif);font-size:23px;font-weight:500;margin:0 0 8px;}
-.value-card p{font-size:17px;color:var(--ink-2);margin:0;}
+.value-card .vk{width:46px;height:46px;border-radius:14px;background:var(--purple-50);display:grid;place-items:center;color:var(--purple);margin-bottom:16px;font-family:var(--font-serif);font-size: 27px;font-weight:500;}
+.value-card h3{font-family:var(--font-serif);font-size: 28px;font-weight:500;margin:0 0 8px;}
+.value-card p{font-size: 22px;color:var(--ink-2);margin:0;}
 @media(max-width:760px){.values-grid{grid-template-columns:1fr;}}
 .people-band{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
 .people-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.4vw,44px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
 .people-band h2 em{font-style:italic;color:var(--purple);}
-.people-band p{font-size:17px;color:var(--ink-2);margin:0 0 18px;}
+.people-band p{font-size: 22px;color:var(--ink-2);margin:0 0 18px;}
 @media(max-width:800px){.people-band{grid-template-columns:1fr;gap:32px;}}
 </style>
 <main id="main-content">
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Our Culture</h1>
     <p class="page-narrative">Kindness, run like a <em>professional</em>.</p>
     <p class="page-lead">Behind every rescued dog is a team that shows up with warmth, honesty, and care. This is what it feels like to work and volunteer at Peace of Mind Dog Rescue.</p>
     <div class="page-cta">
       <a href="/jobs/" class="btn btn-purple">Join our team</a>
       <a href="/volunteer/" class="btn btn-outline">Volunteer with us</a>
+    </div>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-volunteer.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/hero-volunteer.jpg" alt="POMDR volunteers together at an event">
+        </picture>
+      </div>
     </div>
   </div>
 </header>
@@ -39,23 +49,38 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="values-grid">
       <div class="value-card">
         <div class="vk">1</div>
-        <h3>Compassion first</h3>
-        <p>We meet every dog and every person with patience and respect. The senior owner in a hard moment and the dog who has waited the longest both deserve our full kindness.</p>
+        <h3>Feedback</h3>
+        <p>To be open to positive and constructive feedback from supervisors, co-workers, volunteer, and general public in an effort to take advantage of all opportunities to grow and improve.</p>
       </div>
       <div class="value-card">
         <div class="vk">2</div>
-        <h3>Honesty always</h3>
-        <p>We tell the truth about a dog's health, history, and needs. Trust is the foundation of every adoption, and we protect it carefully.</p>
+        <h3>Best Practices</h3>
+        <p>To continually strive to explore best practices and ways to improve our programs, policies, procedures and organization effectiveness.</p>
       </div>
       <div class="value-card">
         <div class="vk">3</div>
-        <h3>Dignity to the end</h3>
-        <p>Through Perpetual Care, no dog is abandoned for being old or ill. Every dog in our care is seen through to the end with comfort and love.</p>
+        <h3>Positive Attitude</h3>
+        <p>To maintain a solution oriented, optimistic outlook on our ability to make a difference.</p>
       </div>
       <div class="value-card">
         <div class="vk">4</div>
-        <h3>Community over ego</h3>
-        <p>Staff, volunteers, fosters, and donors are one team. We share the work, share the credit, and keep our focus on the dogs.</p>
+        <h3>Solution-driven</h3>
+        <p>To strive for creative solutions to any challenges that we may face.</p>
+      </div>
+      <div class="value-card">
+        <div class="vk">5</div>
+        <h3>Responsibility</h3>
+        <p>To agree that it is everyone’s responsibility to create a positive experience for volunteers, guardian surrenders, donors, adopters and the general public whether or not what they need is in our job description.</p>
+      </div>
+      <div class="value-card">
+        <div class="vk">6</div>
+        <h3>Professional</h3>
+        <p>To hold ourselves to the utmost standards of professionalism in appearance and attitude at all times.</p>
+      </div>
+      <div class="value-card">
+        <div class="vk">7</div>
+        <h3>Volunteer and Donor Appreciation</h3>
+        <p>To express our sincere appreciation for our volunteers and donors in every interaction.</p>
       </div>
     </div>
   </div>
@@ -76,10 +101,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:30px;">
           <span class="eyebrow purple">Ways to belong</span>
           <ul style="list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;">
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Staff roles.</strong> Mission-driven work with a team that values balance and respect.</li>
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Volunteers.</strong> Walk dogs, foster, drive, photograph, or lend a skill. Every hour matters.</li>
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Fosters.</strong> Open your home and give a senior dog comfort while we find their person.</li>
-            <li style="font-size:17px;color:var(--ink-2);"><strong style="color:var(--ink);">Donors and sponsors.</strong> Fund the care that makes all of this possible.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Staff roles.</strong> Mission-driven work with a team that values balance and respect.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Volunteers.</strong> Walk dogs, foster, drive, photograph, or lend a skill. Every hour matters.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Fosters.</strong> Open your home and give a senior dog comfort while we find their person.</li>
+            <li style="font-size: 22px;color:var(--ink-2);"><strong style="color:var(--ink);">Donors and sponsors.</strong> Fund the care that makes all of this possible.</li>
           </ul>
         </div>
       </div>
@@ -103,7 +128,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <a href="/jobs/" class="btn btn-purple">Join our team</a>
       <a href="/volunteer/" class="btn btn-outline">Volunteer with us</a>
     </div>
-    <p style="margin-top:20px;font-size:17px;color:var(--ink-2);">Reach us at <a href="tel:8317189122" style="color:var(--purple);font-weight:600;">(831) 718-9122</a> or <a href="mailto:info@pomdr.org" style="color:var(--purple);font-weight:600;">info@pomdr.org</a>.</p>
+    <p style="margin-top:20px;font-size: 22px;color:var(--ink-2);">Reach us at <a href="tel:8317189122" style="color:var(--purple);font-weight:600;">(831) 718-9122</a> or <a href="mailto:info@pomdr.org" style="color:var(--purple);font-weight:600;">info@pomdr.org</a>.</p>
   </div>
 </section>
 
