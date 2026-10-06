@@ -11,6 +11,20 @@
  * Chrome + footer from the theme; shared look from pomdr.css (enqueued
  * site-wide). No CSS is ported here.
  */
+
+// Deploy guard: on a partial deploy where an old functions.php executes,
+// the helpers this template needs do not exist and the page would fatal
+// mid-render (2026-09-01 incident). Degrade to a calm notice instead.
+if ( ! function_exists( 'pom_render_dog_card' ) ) {
+    get_header();
+    echo '<main id="main-content" style="padding:4rem 1.5rem;text-align:center;max-width:40rem;margin:0 auto;">'
+        . '<h1>Our adoptable dogs are one step away</h1>'
+        . '<p>This page is being updated right now. Please check back in a few minutes, or call (831) 718-9122 and we will happily tell you about our dogs.</p>'
+        . '</main>';
+    get_footer();
+    return;
+}
+
 get_header();
 
 /**
@@ -35,8 +49,6 @@ if ( ! function_exists( 'pom_adopt_count_status' ) ) {
     }
 }
 
-// Available now = status includes Adoptable.
-$count_available = pom_adopt_count_status( 'Adoptable' );
 // Need foster = status includes Foster Needed.
 $count_foster = pom_adopt_count_status( 'Foster Needed' );
 
@@ -87,9 +99,11 @@ $q_adopted  = pom_adopt_group_query( 'Adopted', 24 );
 
 // Category filter buttons output server-side (not JS-populated). Slugs match
 // the data-status values on each card.
+// "Available" chip removed 2026-07-09 (leadership spec): every dog in this
+// group IS available, so the chip was noise. All adoptable dogs show by
+// default; the remaining chips filter for special situations.
 $adopt_filters = array(
     'all'              => 'All',
-    'adoptable'        => 'Available',
     'foster-needed'    => 'Foster Needed',
     'sponsor-needed'   => 'Sponsor Needed',
     'adoption-pending' => 'Adoption Pending',
@@ -100,12 +114,12 @@ $adopt_filters = array(
 /* toolbar, filters, etc. already have styles. Just keep page-level. */
 .hero{padding:40px 0 60px;background:radial-gradient(ellipse at 20% 0%,rgba(0,139,176,.07),transparent 55%),radial-gradient(ellipse at 80% 10%,rgba(99,47,136,.05),transparent 55%),var(--cream);border-bottom:1px solid var(--line);}
 /* The headline uses the shared .page-headline size so Adopt matches the other pages. */
-.hero p{font-size:19px;color:var(--ink-2);max-width:560px;margin:0;}
+.hero p{font-size: 24px;color:var(--ink-2);max-width:560px;margin:0;}
 /* Lead copy and the three counts share one row so the dogs are closer to the top. */
 .hero-row{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin-top:22px;}
 .hero-meta{display:flex;gap:34px;flex-wrap:wrap;padding-left:44px;border-left:1px solid var(--line);}
-.hero-meta strong{font-family:var(--font-serif);font-size:34px;font-weight:300;color:var(--blue);display:block;line-height:1;margin-bottom:4px;}
-.hero-meta div{font-size:16px;color:var(--ink-3);}
+.hero-meta strong{font-family:var(--font-serif);font-size: 39px;font-weight:300;color:var(--blue);display:block;line-height:1;margin-bottom:4px;}
+.hero-meta div{font-size: 21px;color:var(--ink-3);}
 @media(max-width:820px){.hero-row{grid-template-columns:1fr;gap:22px;}.hero-meta{padding-left:0;border-left:none;padding-top:22px;border-top:1px solid var(--line);}}
 
 /* ===== Adopt toolbar, reorganized into clean tiers =====
@@ -114,6 +128,10 @@ $adopt_filters = array(
    single-row toolbar layout from pomdr.css (this <style> loads after it). */
 .toolbar-inner{display:block;padding:18px 32px 16px;}
 
+.toolbar{padding-top:36px;}
+.toolbar-label{display:block;font-size:23px;font-weight:700;color:var(--ink);margin:0 0 10px;}
+.no-results{text-align:center;padding:48px 0 12px;}
+.no-results p{font-size:24px;color:var(--ink-2);margin:0 0 18px;}
 /* Prominent, full-width search for the dog list. */
 .toolbar-search{
   display:flex;align-items:center;gap:12px;
@@ -126,7 +144,7 @@ $adopt_filters = array(
 .toolbar-search > svg{color:var(--ink-3);flex-shrink:0;}
 .toolbar-search input{
   flex:1;min-width:0;border:none;outline:none;background:transparent;
-  font:inherit;font-size:17px;color:var(--ink);padding:13px 0;
+  font:inherit;font-size: 22px;color:var(--ink);padding:13px 0;
 }
 .toolbar-search input::placeholder{color:var(--ink-3);}
 
@@ -146,16 +164,16 @@ $adopt_filters = array(
    Placed below the toolbar, above the cards. Each tab toggles a CPT-driven
    group grid; the search/filter/sort toolbar belongs to the Adoptable group. */
 .dog-tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin:34px 0 4px;}
-.dog-tab{appearance:none;background:none;border:none;font:inherit;font-size:16px;font-weight:600;color:var(--ink-3);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;display:inline-flex;align-items:center;gap:9px;transition:color .2s var(--ease),border-color .2s var(--ease);}
+.dog-tab{appearance:none;background:none;border:none;font:inherit;font-size: 21px;font-weight:600;color:var(--ink-3);padding:12px 18px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;display:inline-flex;align-items:center;gap:9px;transition:color .2s var(--ease),border-color .2s var(--ease);}
 .dog-tab:hover{color:var(--blue-700);}
 .dog-tab.active{color:var(--blue-900);border-bottom-color:var(--blue-700);}
 .dog-tab:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:6px 6px 0 0;}
-.dog-tab-count{font-size:13px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:2px 9px;line-height:1.5;}
+.dog-tab-count{font-size: 19px;font-weight:700;color:var(--blue-700);background:var(--blue-50);border-radius:999px;padding:2px 9px;line-height:1.5;}
 .dog-tab.active .dog-tab-count{background:var(--blue-100);}
 .dog-group[hidden]{display:none;}
-.group-intro{font-size:17px;color:var(--ink-2);max-width:70ch;margin:26px 0 4px;line-height:1.55;}
-.group-empty{grid-column:1/-1;padding:56px 40px;text-align:center;color:var(--ink-3);border:1px dashed var(--line);border-radius:var(--radius);font-size:16px;}
-@media (max-width:600px){.dog-tab{padding:11px 12px;font-size:15px;}}
+.group-intro{font-size: 22px;color:var(--ink-2);max-width:70ch;margin:26px 0 4px;line-height:1.55;}
+.group-empty{grid-column:1/-1;padding:56px 40px;text-align:center;color:var(--ink-3);border:1px dashed var(--line);border-radius:var(--radius);font-size: 21px;}
+@media (max-width:600px){.dog-tab{padding:11px 12px;font-size: 21px;}}
 
 /* Slim results count above the grid. */
 .results-head{padding:30px 0 20px;}
@@ -175,7 +193,6 @@ $adopt_filters = array(
       <p>Although we specialize in senior dogs, we also get younger dogs surrendered to us from senior guardians. Adoptable dogs are available to meet by appointment at our Pacific Grove center.</p>
       <div class="hero-meta">
         <div><strong id="count-total"><?php echo esc_html( $count_total ); ?></strong>Adoptable dogs</div>
-        <div><strong id="count-available"><?php echo esc_html( $count_available ); ?></strong>Available now</div>
         <div><strong id="count-foster"><?php echo esc_html( $count_foster ); ?></strong>Need foster</div>
       </div>
     </div>
@@ -184,9 +201,10 @@ $adopt_filters = array(
 
 <div class="toolbar">
   <div class="container toolbar-inner">
+    <label class="toolbar-label" for="search-input">Search dogs</label>
     <div class="toolbar-search">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
-      <input id="search-input" type="search" aria-label="Search dogs by name or breed" placeholder="Search dogs by name or breed&hellip;" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+      <input id="search-input" type="search" placeholder="Name or breed, like Terrier&hellip;" />
     </div>
     <div class="toolbar-controls">
       <div class="filters" id="filters">
@@ -223,7 +241,7 @@ $adopt_filters = array(
     <!-- Adoptable (default). The toolbar search/filter/sort applies to this group. -->
     <div class="dog-group" data-group="adoptable" id="group-adoptable" role="tabpanel" aria-labelledby="tab-adoptable">
       <div class="results-head">
-        <div class="results-count serif" id="results-count"><?php echo esc_html( $count_total === 1 ? '1 dog' : $count_total . ' dogs' ); ?></div>
+        <div class="results-count serif" id="results-count" aria-live="polite"><?php echo esc_html( $count_total === 1 ? '1 dog' : $count_total . ' dogs' ); ?></div>
       </div>
       <div class="dogs-grid" id="dogs-grid">
         <?php
@@ -282,6 +300,10 @@ $adopt_filters = array(
     <?php endforeach; ?>
 
   </div>
+    <div id="no-results" class="no-results" hidden>
+      <p>No dogs match right now. Try a different spelling, or see everyone.</p>
+      <button type="button" class="btn btn-primary" id="clear-filters">Show all dogs</button>
+    </div>
 </section>
 
 <script>

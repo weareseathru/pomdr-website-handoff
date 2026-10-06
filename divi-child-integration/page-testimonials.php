@@ -1,46 +1,61 @@
 <?php
-/** Template for the Testimonials page (WP slug: testimonials). Ports prototype testimonials.html. */
+/**
+ * Template for the Testimonials page (WP slug: testimonials).
+ * Renders every real testimonial from the live site (synced 2026-07-21 into
+ * the theme's data/content/testimonials.json; 170 quotes, verbatim, with the
+ * live "Name, Role" attributions). No invented content.
+ */
 get_header();
-$img = get_stylesheet_directory_uri() . "/assets/images";
+
+$file = get_stylesheet_directory() . '/data/content/testimonials.json';
+$testimonials = is_readable( $file ) ? json_decode( (string) file_get_contents( $file ), true ) : array();
+if ( ! is_array( $testimonials ) ) { $testimonials = array(); }
 ?>
 <main id="main-content">
+
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Testimonials</h1>
-    <p class="page-narrative">What <em>adopters</em> say.</p>
-    <p class="page-lead">A small sample of notes we receive from the people who take our dogs home.</p>
+    <p class="page-narrative">In their <em>own words.</em></p>
+    <p class="page-lead"><?php echo esc_html( count( $testimonials ) ); ?> notes from adopters, fosters, volunteers, and Helping Paw clients, exactly as they wrote them.</p>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog15.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog15.jpeg" alt="A happy senior dog with their adopter">
+        </picture>
+      </div>
+    </div>
   </div>
 </header>
 
 <section class="section">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px">
-      <blockquote class="card" style="padding:32px;font-family:var(--font-serif);font-size:20px;line-height:1.5;color:var(--ink);margin:0">
-        <p style="margin:0 0 16px">&ldquo;She walked into the house, found the sunniest spot, and never left. Eight months later, she still rules it.&rdquo;</p>
-        <footer style="font-family:var(--font-sans);font-size:16px;color:var(--ink-3);font-style:normal">Lily &amp; Pebble, adopted 2025</footer>
-      </blockquote>
-      <blockquote class="card" style="padding:32px;font-family:var(--font-serif);font-size:20px;line-height:1.5;color:var(--ink);margin:0">
-        <p style="margin:0 0 16px">&ldquo;POMDR handles the hard parts. Vet records, follow-ups, the questions you do not know to ask. I felt like I was adopting with a team behind me.&rdquo;</p>
-        <footer style="font-family:var(--font-sans);font-size:16px;color:var(--ink-3);font-style:normal">Marco &amp; Watson, adopted 2024</footer>
-      </blockquote>
-      <blockquote class="card" style="padding:32px;font-family:var(--font-serif);font-size:20px;line-height:1.5;color:var(--ink);margin:0">
-        <p style="margin:0 0 16px">&ldquo;We lost our previous dog in winter. POMDR called the day a senior corgi mix arrived who needed a quiet home. They listened.&rdquo;</p>
-        <footer style="font-family:var(--font-sans);font-size:16px;color:var(--ink-3);font-style:normal">Andrea &amp; Honeybee, adopted 2025</footer>
-      </blockquote>
-    </div>
-
-    <p style="margin-top:48px;color:var(--ink-3);font-size:16px"><em>Full testimonial archive ships with the WordPress build.</em></p>
-  </div>
-</section>
-
-<section class="cta-strip" style="background:var(--cream-2)">
-  <div class="container">
-    <h2 class="serif">Read more <em>happy tails</em>.</h2>
-    <div class="ctas">
-      <a href="/adopted/" class="btn btn-primary">Recently Adopted</a>
-      <a href="/adopt/" class="btn btn-outline">Available Dogs</a>
+    <div class="tmn-wall">
+      <?php foreach ( $testimonials as $t ) : if ( empty( $t['quote'] ) ) { continue; } ?>
+      <figure class="tmn-card">
+        <blockquote><?php echo esc_html( $t['quote'] ); ?></blockquote>
+        <figcaption>
+          <?php echo esc_html( $t['attribution'] ?? '' ); ?>
+          <?php if ( ! empty( $t['role'] ) ) : ?><span class="tmn-role"><?php echo esc_html( $t['role'] ); ?></span><?php endif; ?>
+        </figcaption>
+      </figure>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
+
 </main>
+<style>
+.tmn-wall { columns: 2 420px; column-gap: 26px; }
+.tmn-card {
+  break-inside: avoid; margin: 0 0 24px; padding: 26px 28px;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+}
+.tmn-card blockquote { margin: 0 0 14px; font-size: 22px; line-height: 1.65; color: var(--ink-2); }
+.tmn-card figcaption { font-weight: 700; color: var(--ink); font-size: 21px; }
+.tmn-card .tmn-role { display: block; font-weight: 600; color: var(--blue-text); font-size: 20px; margin-top: 2px; }
+</style>
 <?php get_footer();

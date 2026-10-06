@@ -54,3 +54,8 @@ pomdr-website/project/uploads/web-capture-*.json
 # Local review artifacts (Playwright / Chrome DevTools MCP screenshots)
 responsive-review/
 .playwright-mcp/
+/Divi/
+
+# Nested working clone of the standalone rebuild (github.com/ronniereid/pomdr).
+# It has its own git history; never commit it into this repo.
+New-Build/

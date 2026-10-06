@@ -15,9 +15,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
   <div class="container" style="max-width:760px;text-align:center">
     <h2 class="section-title" style="margin-bottom:24px">While you wait</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;text-align:left">
-      <article class="card" style="padding:24px"><div class="eyebrow">Browse</div><h3 style="font-family:var(--font-serif);font-size:20px;margin:8px 0 8px"><a href="/adopt/" style="color:var(--ink)">Adoptable Dogs</a></h3><p style="margin:0;color:var(--ink-3);font-size:16px">See who is available right now.</p></article>
-      <article class="card" style="padding:24px"><div class="eyebrow">Stories</div><h3 style="font-family:var(--font-serif);font-size:20px;margin:8px 0 8px"><a href="/adopted/" style="color:var(--ink)">Recently Adopted</a></h3><p style="margin:0;color:var(--ink-3);font-size:16px">Dogs who recently went home.</p></article>
-      <article class="card" style="padding:24px"><div class="eyebrow">Support</div><h3 style="font-family:var(--font-serif);font-size:20px;margin:8px 0 8px"><a href="/donate/" style="color:var(--ink)">Donate</a></h3><p style="margin:0;color:var(--ink-3);font-size:16px">One dollar feeds a senior dog for a day.</p></article>
+      <article class="card" style="padding:24px"><div class="eyebrow">Browse</div><h3 style="font-family:var(--font-serif);font-size: 25px;margin:8px 0 8px"><a href="/adopt/" style="color:var(--ink)">Adoptable Dogs</a></h3><p style="margin:0;color:var(--ink-3);font-size: 21px">See who is available right now.</p></article>
+      <article class="card" style="padding:24px"><div class="eyebrow">Stories</div><h3 style="font-family:var(--font-serif);font-size: 25px;margin:8px 0 8px"><a href="/adopted/" style="color:var(--ink)">Recently Adopted</a></h3><p style="margin:0;color:var(--ink-3);font-size: 21px">Dogs who recently went home.</p></article>
+      <article class="card" style="padding:24px"><div class="eyebrow">Support</div><h3 style="font-family:var(--font-serif);font-size: 25px;margin:8px 0 8px"><a href="/donate/" style="color:var(--ink)">Donate</a></h3><p style="margin:0;color:var(--ink-3);font-size: 21px">One dollar feeds a senior dog for a day.</p></article>
     </div>
   </div>
 </section>

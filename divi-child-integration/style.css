@@ -5,7 +5,7 @@
  Author: Elegant Themes
  Author URI: https://www.elegantthemes.com
  Template: Divi
- Version: 1.0.2
+ Version: 2.0.0
 */
 
 /* Custom styling for pet name title */
@@ -19,7 +19,10 @@
 }
 
 @media (min-width: 981px) {
-    .et_pb_section {
+    /* Legacy base-build tightening. Native redesign pages are exempt:
+       their sections own their padding (fidelity trace 2026-08-20; this
+       rule was the entire 1440-band mismatch). */
+    body:not(.pom-native) .et_pb_section {
         padding-top: 0px !important;
         padding-bottom: 0px !important;
     }
@@ -27,7 +30,7 @@
 
 
 #main-content {
-    background-color: #fffaf5 !important;
+    background-color: #ffffff !important;
 }
 
 .gallery {
@@ -276,7 +279,7 @@ a.et_pb_button.buttoncustom.et_pb_bg_layout_light:hover {
 }
 
 .custom-post-title {
-    font-size: 20px;
+    font-size: 25px;
     /* margin-bottom: 10px; */
 }
 
@@ -373,7 +376,7 @@ a.et_pb_button.buttoncustom.et_pb_bg_layout_light:hover {
 }
 
 .foster-card__foster-info {
-    background: #fffaf5;
+    background: #ffffff;
     padding: 15px;
     border-radius: 8px;
     color: #666;
@@ -393,7 +396,7 @@ a.et_pb_button.buttoncustom.et_pb_bg_layout_light:hover {
 body,
 body #page-container {
   font-family: var(--font-sans);
-  font-size: 17px;
+  font-size: 22px;
   line-height: 1.6;
   color: var(--ink);
   background-color: var(--cream);
@@ -408,8 +411,12 @@ body #page-container {
 .et_pb_button {
   font-family: var(--font-sans);
   border-radius: 999px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.01em;
+  font-size: 24px; /* text fills the button */
+  padding: 12px 26px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* Divi heading reset - use our serif scale */
@@ -468,22 +475,22 @@ html.pomdr-lightbox-open {
   margin-top: 12px;
   color: var(--white, #fff);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 20px;
 }
 .pomdr-lightbox__caption[hidden] {
   display: none;
 }
 .pomdr-lightbox__close {
   position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  right: clamp(8px, 2vw, 20px);
+  top: clamp(13px, 2vw, 25px);
+  right: clamp(13px, 2vw, 25px);
   width: 44px;
   height: 44px;
   border: 0;
   border-radius: 999px;
   background: var(--white, #fff);
   color: var(--ink, #16202b);
-  font-size: 28px;
+  font-size: 33px;
   line-height: 1;
   cursor: pointer;
 }
@@ -491,3 +498,166 @@ html.pomdr-lightbox-open {
   outline: 3px solid var(--blue, #008bb0);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   DOG DETAIL PAGE REDESIGN (2026-07-08)
+   The modern skin over the PDP section engine: big serif name, status badge,
+   design-system buttons, white info card, rounded gallery. Overrides the
+   legacy .pom-* rules above (same file, later in the cascade).
+   ============================================================ */
+
+#main-content:has(.pdp-header) { background: var(--cream); }
+
+.pom-section { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.pom-section--header { padding-top: 0; padding-bottom: 8px; }
+
+/* Header */
+.pdp-header { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.pdp-back {
+  font-size: 26px; font-weight: 600; color: var(--blue-text);
+  text-decoration: none; min-height: 44px; display: inline-flex; align-items: center;
+}
+.pdp-back:hover { color: var(--blue-900); text-decoration: underline; text-underline-offset: 3px; }
+.pdp-badge {
+  display: inline-flex; align-items: center;
+  padding: 7px 16px; border-radius: 999px;
+  font-size: 19px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--blue-50); color: var(--blue-text);
+}
+.pdp-badge--foster_needed, .pdp-badge--foster_needed_dated,
+.pdp-badge--sponsor_needed { background: var(--purple-50); color: var(--purple); }
+.pdp-badge--hospice { background: var(--cream-2); color: var(--ink-2); }
+.pdp-badge--adoption_pending { background: var(--blue-100); color: var(--blue-900); }
+.pdp-badge--recently_adopted { background: var(--purple); color: #fff; }
+.pdp-badge--courtesy_listing { background: var(--cream-2); color: var(--ink-2); }
+.pdp-name {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(48px, 6.5vw, 84px); line-height: 0.98; letter-spacing: -0.025em;
+  margin: 0; color: var(--ink);
+}
+.pdp-meta { font-size: 31px; color: var(--ink-2); margin: 2px 0 6px; font-weight: 600; }
+.pdp-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin: 6px 0 10px; }
+
+/* Layout: photos left, info card right */
+.pom-row--two-col { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 36px; align-items: start; padding: 24px 0 56px; }
+.pom-col-side {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 30px 32px; box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 18px;
+  position: sticky; top: 190px;
+}
+@media (max-width: 900px) {
+  .pom-row--two-col { grid-template-columns: 1fr; gap: 24px; }
+  .pom-col-side { position: static; }
+}
+
+/* Photos and video */
+.pom-image { border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 14px; }
+.pom-image img { width: 100%; height: auto; display: block; }
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.gallery a { border-radius: 14px; overflow: hidden; display: block; aspect-ratio: 1/1; }
+.gallery a:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; }
+.gallery img.gallery__image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s var(--ease); }
+.gallery a:hover img.gallery__image { transform: scale(1.06); }
+.pom-video { border-radius: var(--radius-lg); overflow: hidden; margin-top: 18px; aspect-ratio: 16/9; background: var(--ink); }
+.pom-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* Info card content */
+.pdp-vitals .pdp-breed { font-family: var(--font-serif); font-size: 31px; font-weight: 500; color: var(--ink); }
+.pdp-vitals .pdp-vitals-line { font-size: 23px; font-weight: 600; color: var(--blue-text); margin-top: 4px; }
+.pom-content { font-size: 22px; line-height: 1.7; color: var(--ink-2); }
+.pom-content p { margin: 0 0 14px; max-width: 60ch; }
+.pom-content p:last-child { margin-bottom: 0; }
+.pom-content strong { color: var(--ink); }
+.pdp-prompt { padding-top: 16px; }
+
+/* Bottom action rows */
+.pom-buttons { display: flex; flex-direction: column; gap: 12px; padding-top: 18px; }
+.pom-buttons-row { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Reset the legacy row width caps (width 80%, max 1080px) so the redesigned
+   layout uses the full section width. */
+.pom-row { width: 100%; max-width: none; padding: 0; }
+.pom-row--header { padding: 0; }
+
+/* Dog highlights: the 3-5 quick facts at the top of the info card */
+.pdp-bullets { list-style: none; margin: 0 0 6px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pdp-bullets li {
+  position: relative; padding-left: 30px;
+  font-size: 22px; line-height: 1.5; color: var(--ink);
+  font-weight: 600;
+}
+.pdp-bullets li::before {
+  content: ""; position: absolute; left: 0; top: 2px;
+  width: 18px; height: 18px;
+  background: url('assets/images/paw-cyan.svg') center/contain no-repeat;
+}
+
+
+/* ===== Single-column dog bio flow (2026-08-01) =====
+   Photo takes the full column, the info card sits below at the same width,
+   vitals read a step larger than body copy, and the gallery click-through
+   ends on the video slide. */
+.pdp-flow {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex; flex-direction: column;
+  gap: 28px;
+  padding: 0 0 64px;
+}
+.pdp-flow .pom-section--header { margin: 0; }
+.pdp-photo { margin: 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
+.pdp-photo img { width: 100%; height: auto; display: block; }
+.pdp-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 30px 34px;
+  text-align: center;
+}
+.pdp-card .pdp-vitals {
+  font-size: 31px; font-weight: 600; color: var(--ink);
+  padding-bottom: 6px; margin-bottom: 14px;
+}
+.pdp-card .pdp-vitals p { margin: 0; font-size: 31px; }
+.pdp-bio { font-size: 23px; line-height: 1.7; color: var(--ink-2); }
+.pdp-bio p { margin: 0 0 16px; }
+.pdp-note { font-size: 22px; color: var(--ink-2); margin: 14px 0 0; }
+.pdp-gallery {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+  margin-top: -14px; /* tuck the strip up under the main photo */
+}
+.pdp-gallery a {
+  display: block; position: relative;
+  width: 104px; height: 104px; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--line);
+}
+@media (max-width: 520px) { .pdp-gallery a { width: 84px; height: 84px; } }
+.pdp-gallery a:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 2px; }
+.pdp-gallery .pdp-thumb { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; transition: transform 0.3s var(--ease); }
+.pdp-gallery a:hover .pdp-thumb { transform: scale(1.05); }
+.pdp-play {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(22, 32, 43, 0.25);
+}
+.pdp-play svg { width: 34px; height: 34px; color: #fff; filter: drop-shadow(0 3px 10px rgba(0,0,0,0.5)); }
+
+
+/* Header row: name and vitals left, actions right, one line (wraps on mobile). */
+.pdp-header-row {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px 28px; flex-wrap: wrap; width: 100%;
+}
+.pdp-header-left { min-width: 0; }
+.pdp-header-row .pdp-ctas { margin: 0; flex-shrink: 0; }
+
+/* Bottom actions: one centered line. */
+.pom-buttons-row--inline { justify-content: center; }
+
+
+/* Bio text block sits centered with a readable measure; no divider lines. */
+.pdp-bio { max-width: 62ch; margin-left: auto; margin-right: auto; }
+.pdp-card .pom-buttons { margin-top: 24px; padding-top: 0; }
+
+
+

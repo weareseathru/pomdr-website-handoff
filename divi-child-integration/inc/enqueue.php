@@ -6,15 +6,57 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Cache-busting version for a theme asset: its filemtime when the file
+ * exists, else the build constant, so a partially deployed theme never
+ * emits PHP warnings from the enqueue layer (2026-09-01 hardening).
+ */
+function pom_asset_ver( $rel ) {
+    $abs = get_stylesheet_directory() . $rel;
+    if ( file_exists( $abs ) ) {
+        return filemtime( $abs );
+    }
+    return defined( 'POMDR_BUILD' ) ? POMDR_BUILD : null;
+}
+
+// Font host preconnect (before the stylesheet request, cheap win for LCP),
+// plus the build marker: its PRESENCE proves the current functions.php and
+// this file are both executing (a stale functions.php never loads this
+// file, the invisible failure of the 2026-09-01 deploy). One view-source
+// check: search for "pomdr-build".
+add_action( 'wp_head', function () {
+    $build = defined( 'POMDR_BUILD' ) ? POMDR_BUILD : 'unknown';
+    echo '<meta name="pomdr-build" content="' . esc_attr( $build ) . '">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}, 5 );
+
 add_action( 'wp_enqueue_scripts', function () {
+
+    // Brand webfonts. Divi happens to load Source Sans 3 for its own modules,
+    // but nothing loaded Source Serif 4, so every serif headline silently fell
+    // back to Iowan Old Style / Palatino (smaller metrics, and different per
+    // browser; the "Safari looks small" report, 2026-08-01). Load both
+    // families ourselves so typography does not depend on Divi's font kit.
+    wp_enqueue_style(
+        'pomdr-fonts',
+        'https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400..700;1,400..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&display=swap',
+        array(),
+        null
+    );
 
     // Design tokens (full set, mirrors the prototype tokens.css). First, so
     // every later stylesheet resolves its custom properties.
+    // NO dependency on 'divi-style': Divi deregisters that handle late in
+    // the request (et_divi_replace_parent_stylesheet) and only its own
+    // dep-rewriting pass keeps a reference to it from silently dropping
+    // every stylesheet in this chain. Ordering after Divi's CSS is already
+    // guaranteed by this hook's priority 20 and Divi's requeue pass.
     wp_enqueue_style(
         'pomdr-tokens',
         get_stylesheet_directory_uri() . '/assets/css/tokens.css',
-        array( 'divi-style' ),
-        filemtime( get_stylesheet_directory() . '/assets/css/tokens.css' )
+        array( 'pomdr-fonts' ),
+        pom_asset_ver( '/assets/css/tokens.css' )
     );
 
     // Design system CSS (tokens + components). Loaded after parent Divi stylesheet.
@@ -22,7 +64,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'pomdr-design',
         get_stylesheet_directory_uri() . '/assets/css/pomdr-design.css',
         array( 'pomdr-tokens' ),
-        filemtime( get_stylesheet_directory() . '/assets/css/pomdr-design.css' )
+        pom_asset_ver( '/assets/css/pomdr-design.css' )
     );
 
     // Full shared component layer (the prototype pomdr.css): page-header,
@@ -32,8 +74,50 @@ add_action( 'wp_enqueue_scripts', function () {
         'pomdr-shared',
         get_stylesheet_directory_uri() . '/assets/css/pomdr.css',
         array( 'pomdr-design' ),
-        filemtime( get_stylesheet_directory() . '/assets/css/pomdr.css' )
+        pom_asset_ver( '/assets/css/pomdr.css' )
     );
+
+    // GENERATED design-boost layer for native Divi pages: the design rules
+    // re-scoped under body.pom-native so the design outranks Divi's module
+    // styles while keeping its own precedence; page-scoped styles load after. Regenerate with scripts/native/fidelity/gen-boost.mjs
+    // whenever the design stylesheets change.
+    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-boost.css' ) ) {
+        wp_enqueue_style(
+            'pomdr-native-boost',
+            get_stylesheet_directory_uri() . '/assets/css/native-boost.css',
+            array( 'pomdr-shared' ),
+            pom_asset_ver( '/assets/css/native-boost.css' )
+        );
+    }
+
+    // Page-local styles harvested from the sidecar templates by the native
+    // port (scripts/native/port.php). Native Divi pages depend on these; the
+    // sidecars keep their inline copies until retirement (rules identical).
+    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-pages.css' ) ) {
+        wp_enqueue_style(
+            'pomdr-native-pages',
+            get_stylesheet_directory_uri() . '/assets/css/native-pages.css',
+            array( 'pomdr-native-boost' ),
+            pom_asset_ver( '/assets/css/native-pages.css' )
+        );
+    }
+
+    // Chrome boost for native pages: chrome rules re-scoped at the same
+    // uniform prefix as the content boost, loaded after it, so chrome wins
+    // exactly what it wins on the reference by order.
+    if ( file_exists( get_stylesheet_directory() . '/assets/css/native-boost-chrome.css' ) ) {
+        wp_enqueue_style(
+            'pomdr-native-boost-chrome',
+            get_stylesheet_directory_uri() . '/assets/css/native-boost-chrome.css',
+            // Deps must MATCH the call order (this handle prints BEFORE
+            // pomdr-chrome on the verified-good reference). Divi currently
+            // rewrites child-style deps so order = call order, but if that
+            // ever changes, a dep on pomdr-chrome here would FLIP the
+            // cascade and shift the design. Depend only backwards.
+            array( 'pomdr-native-pages' ),
+            pom_asset_ver( '/assets/css/native-boost-chrome.css' )
+        );
+    }
 
     // Site chrome (action bar, two-row nav, tagline, logo, mobile drawer).
     // Loaded after pomdr-design; hides Divi's Theme Builder header.
@@ -41,7 +125,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'pomdr-chrome',
         get_stylesheet_directory_uri() . '/assets/css/pomdr-chrome.css',
         array( 'pomdr-shared' ),
-        filemtime( get_stylesheet_directory() . '/assets/css/pomdr-chrome.css' )
+        pom_asset_ver( '/assets/css/pomdr-chrome.css' )
     );
 
     // Accessibility layer (always-on baseline + opt-in senior mode). Loaded
@@ -50,7 +134,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'pomdr-a11y',
         get_stylesheet_directory_uri() . '/assets/css/a11y.css',
         array( 'pomdr-design' ),
-        filemtime( get_stylesheet_directory() . '/assets/css/a11y.css' )
+        pom_asset_ver( '/assets/css/a11y.css' )
     );
 
     // Accessibility behavior: floating toggle + single scroll-reveal observer.
@@ -59,25 +143,25 @@ add_action( 'wp_enqueue_scripts', function () {
         'pomdr-a11y',
         get_stylesheet_directory_uri() . '/assets/js/a11y.js',
         array(),
-        filemtime( get_stylesheet_directory() . '/assets/js/a11y.js' ),
+        pom_asset_ver( '/assets/js/a11y.js' ),
         true
     );
 
     // Homepage redesign layout + animations. Front page only.
-    if ( is_front_page() || is_page( 'home' ) ) {
+    if ( is_front_page() || is_page( 'home' ) || is_page( 'native-staging-home' ) ) {
         $dir = get_stylesheet_directory();
         $uri = get_stylesheet_directory_uri();
         wp_enqueue_style(
             'pomdr-home',
             $uri . '/assets/css/pomdr-home.css',
             array( 'pomdr-design', 'pomdr-chrome' ),
-            filemtime( $dir . '/assets/css/pomdr-home.css' )
+            pom_asset_ver( '/assets/css/pomdr-home.css' )
         );
         wp_enqueue_style(
             'pomdr-paw-trail',
             $uri . '/assets/css/paw-trail.css',
             array( 'pomdr-home' ),
-            filemtime( $dir . '/assets/css/paw-trail.css' )
+            pom_asset_ver( '/assets/css/paw-trail.css' )
         );
         // GSAP + ScrollTrigger power the scroll reveals and the paw trail.
         wp_enqueue_script( 'gsap', $uri . '/assets/vendor/gsap.min.js', array(), '3', true );
@@ -86,14 +170,14 @@ add_action( 'wp_enqueue_scripts', function () {
             'pomdr-paw-trail',
             $uri . '/assets/js/paw-trail.js',
             array( 'gsap', 'gsap-scrolltrigger' ),
-            filemtime( $dir . '/assets/js/paw-trail.js' ),
+            pom_asset_ver( '/assets/js/paw-trail.js' ),
             true
         );
         wp_enqueue_script(
             'pomdr-home',
             $uri . '/assets/js/pomdr-home.js',
             array( 'gsap', 'gsap-scrolltrigger' ),
-            filemtime( $dir . '/assets/js/pomdr-home.js' ),
+            pom_asset_ver( '/assets/js/pomdr-home.js' ),
             true
         );
     }
@@ -105,7 +189,7 @@ add_action( 'wp_enqueue_scripts', function () {
             'pomdr-adopt-filter',
             get_stylesheet_directory_uri() . '/assets/js/adopt-filter.js',
             array(),
-            filemtime( get_stylesheet_directory() . '/assets/js/adopt-filter.js' ),
+            pom_asset_ver( '/assets/js/adopt-filter.js' ),
             true
         );
     }
@@ -116,7 +200,20 @@ add_action( 'wp_enqueue_scripts', function () {
             'pomdr-gallery',
             get_stylesheet_directory_uri() . '/assets/js/gallery.js',
             array(),
-            filemtime( get_stylesheet_directory() . '/assets/js/gallery.js' ),
+            pom_asset_ver( '/assets/js/gallery.js' ),
+            true
+        );
+    }
+
+    // Page-local behaviors harvested from the sidecar templates for native
+    // pages (scripts/native/fidelity/gen-pages-js.mjs). Each block is gated
+    // on its .pg-{slug} stamp, so this is inert on non-native pages.
+    if ( file_exists( get_stylesheet_directory() . '/assets/js/native-pages.js' ) ) {
+        wp_enqueue_script(
+            'pomdr-native-pages',
+            get_stylesheet_directory_uri() . '/assets/js/native-pages.js',
+            array(),
+            pom_asset_ver( '/assets/js/native-pages.js' ),
             true
         );
     }
@@ -126,7 +223,7 @@ add_action( 'wp_enqueue_scripts', function () {
         'pomdr-nav',
         get_stylesheet_directory_uri() . '/assets/js/pomdr-nav.js',
         array(),
-        filemtime( get_stylesheet_directory() . '/assets/js/pomdr-nav.js' ),
+        pom_asset_ver( '/assets/js/pomdr-nav.js' ),
         true
     );
 

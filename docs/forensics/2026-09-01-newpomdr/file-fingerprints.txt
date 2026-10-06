@@ -1,0 +1,30 @@
+== 2. FILE FINGERPRINTS (old vs new on target disk) ==
+style.css -> 200 len=1787 lm=Wed, 15 Apr 2026 21:14:06 GMT
+functions.php -> 500 len= lm=
+rtl.css -> 404 len= lm=
+screenshot.png -> 200 len=7040 lm=Tue, 25 Aug 2026 18:15:50 GMT
+page-native.php -> 500 len= lm=
+front-page.php -> 500 len= lm=
+single-pets.php -> 200 len= lm=
+page-adopt.php -> 500 len= lm=
+page-events.php -> 500 len= lm=
+inc/enqueue.php -> 200 len= lm=
+inc/chrome.php -> 200 len= lm=
+inc/native-gate.php -> 200 len= lm=
+inc/videos.php -> 200 len= lm=
+inc/post-types.php -> 200 len= lm=
+assets/css/tokens.css -> 200 len=1558 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/pomdr.css -> 200 len=14028 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/pomdr-design.css -> 200 len=10566 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/pomdr-chrome.css -> 200 len=6567 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/pomdr-home.css -> 200 len=11411 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/a11y.css -> 200 len=2531 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/native-boost.css -> 200 len=23932 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/native-pages.css -> 200 len=11995 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/css/native-boost-chrome.css -> 200 len=4407 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/js/a11y.js -> 200 len=2013 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/js/pomdr-nav.js -> 200 len=1289 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/js/native-pages.js -> 200 len=721 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/js/adopt-filter.js -> 200 len=2059 lm=Tue, 25 Aug 2026 18:15:50 GMT
+assets/vendor/gsap.min.js -> 200 len=28097 lm=Tue, 25 Aug 2026 18:15:50 GMT
+acf-export-2026-06-09.json -> 200 len=93306 lm=Tue, 25 Aug 2026 18:15:50 GMT
