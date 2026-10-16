@@ -140,7 +140,41 @@ Owed by POMDR and Ronnie, unchanged from the thesis: the photographs onto R2, th
 
 ---
 
-## 5. What held under load
+## 5. After the fixes (same day)
+
+Everything in Tier 0 and most of Tier 1 was built and pushed to `main` the
+same afternoon (Ronnie's repo, f8f5804 to 8c87550; the full list is in
+`Design.md` section 11 under 2026-10-16). The three journeys the site had
+failed were run again, 100 personas each, with one honest change to the
+harness: a Spanish speaker now taps the Spanish button where the page offers
+it, as a person would.
+
+| Journey | Before | After |
+|---|---|---|
+| 2. How adopting works, then the questionnaire | 89% | **98%** |
+| 4. Helping Paw, English or Spanish | 61% (every Spanish attempt failed) | **91%** (no Spanish failure in 100 runs) |
+| 9. Where to visit, address and hours | 91% | **93%** |
+| Text at 100 and 125 percent | 97% / 88% | **100% / 100%** |
+| Text at 150 percent | 90% | **91%** |
+| Text at 200 percent | 63% | **72%** |
+
+(1440px rows excluded as before; the remaining misses are the harness waiting
+on the drawer's accordion, which a person opens with one more tap.)
+
+Measured directly rather than through the journeys: no sideways overflow at
+150 percent text on a 390px phone or at 200 percent on a 1280px laptop across
+nineteen pages (there had been overflow on four and one); the pinned card is
+86px at every text size (it had been 194px at 150 percent); the Spanish page
+is `lang="es"` with its accents; the drawer closes when focus tabs out; the
+homepage's first screen fetches one hero photograph instead of four.
+
+Still for Andrew or POMDR: the mailing-list cadence (two different promises),
+the donate chips (POMDR-9), the reCAPTCHA question to LGL, the Umami decision,
+program numbers, sponsor names, the foster-needed roster, and the residual
+overflow at 320px with 150 percent text on a few long pages, which is beyond
+what WCAG reflow requires and is left as is.
+
+## 6. What held under load
 
 The rest is worth stating plainly, because it is what a thousand visits confirm: the phone number was on the first screen in every run that looked for it; Donate succeeded 100 times out of 100 in two taps; the adopt filters found a small senior dog and reached the questionnaire 96 times out of 100 in six taps and one second; the drawer, the dialog, the thumbnail strip and the slideshow did not break once across any device, text size or input method; no run met a 404; no page overflowed at normal text size. The site's weakness is narrow and nameable, which is the best kind to have a week before launch.
 
