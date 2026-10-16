@@ -1,6 +1,6 @@
 # A thousand everyday visits, and a council of three
 
-**Written 2026-10-16 for Andrew Z.** Companion to `PRE-LAUNCH-THESIS-2026-10-16.md`. Where the thesis measured the pages, this measures the journeys: what happens when people try to do the ten things they most come to pomdr.org to do.
+**Written 2026-10-16 for Andrew Z.** Companion to `PRE-LAUNCH-THESIS-2026-10-16.md`. All three council reports are in. Where the thesis measured the pages, this measures the journeys: what happens when people try to do the ten things they most come to pomdr.org to do.
 
 Two kinds of evidence, kept apart because they answer different questions:
 
@@ -86,7 +86,31 @@ Her ranked asks: carry amount and frequency into the LGL URL or remove the chips
 
 ### 3.3 Luis (accessibility, keyboard, Spanish)
 
-*Pending at the time of writing; his report will be appended to this file when it arrives.*
+Method: keyboard only, the accessibility tree and ARIA snapshots, JavaScript off, reduced motion on, screenshots at 1280 and 390. He separates failures from preferences, and most of what he found is in the second column.
+
+**WCAG 2.2 AA failures, three:**
+
+| Criterion | Where | What | Weight |
+|---|---|---|---|
+| 3.1.1 Language of Page | `/helping-paw-application/es/` | `<html lang="en">` while the h1 ("Solicitar ayuda de Helping Paw"), the intro and "Antes de empezar" have no `lang="es"` ancestor; only the last band carries it. A Spanish voice is never chosen for the page's main content | High |
+| 2.4.11 Focus Not Obscured | Homepage with the drawer open | Tabbing past the last drawer item leaves the popover open and puts focus on the slideshow controls underneath it; at 390px only a sliver of the focus ring shows beside the drawer | Medium |
+| 3.1.1 / 3.1.2 (third party) | The LGL frame on the Spanish page | The frame's own `lang` is `en`, seven field labels are English ("First Name", "ZIP/Postal Code") inside the Spanish form, and its headings jump h1 to h4 | Medium, Little Green Light's |
+
+Borderline, logged as usability rather than failure: two links named "Apply for Helping Paw" on one page going to different places (finding 2.3).
+
+**Better than required, with the evidence:** the slideshow holds while keyboard focus is inside it (verified 9.5 seconds on "Meet our dogs"), on pointer and in a hidden tab; under reduced motion the control reads "Play slideshow" and every keyframe collapses to 0.01 s; inactive slides are `inert`, dots carry `aria-current`, the live region is off until the visitor acts; arrows 60px, dots 44x48, pause 48. The drawer toggle exposes its expanded state natively through `popovertarget` with no ARIA needed, Escape light-dismisses, focus returns to "Menu", and without JavaScript all 24 sub-links are visible. The team dialog is a true modal, labelled by the name, focus to Close, Escape closes, focus back on the exact card; without JavaScript the card is a real link. The phone number is tab stop 2 on every page; on the hard-moment pages the Call button precedes the form frame; frame titles are in the right language; the "open it in its own page" fallback is always visible. The adopt finder has real labels, fieldsets, a polite status ("Showing 52 of 83 dogs"), a URL that mirrors its state, a kind no-results message with the phone number, and a reset. Focus rings are 3px solid on chips and thumbnails, and the gallery radios respond to the arrow keys.
+
+**His seven fixes, ranked for an older or assisted user:**
+
+1. `<html lang="es">` on the Spanish page, with `lang="en"` on the header and footer. One line. (Tier 0, ours.)
+2. Point the Helping Paw band, including "Solicitar en español", at our own wrapper pages (finding 2.3; "a Spanish speaker never sees 'Llame al (831) 718-9122', the ten-minute note, or the fallback"). (Tier 0, ours.)
+3. Close the drawer when focus leaves it, as `nav.js` already does for the wide menu row; or make a visible "Close" its last item. (Tier 1, ours.)
+4. Restore the accents on the Spanish wrapper page ("debería", "razón", "atención", "más", "ábralo", "página") and in the link label "Solicitar en español"; `/surrender/` already has them right. (Tier 0, ours, with a Spanish reader's check.)
+5. The no-JavaScript finder: `/adopt/?size=small` without JavaScript shows all 83 dogs with no submit button; honour the parameters server side and add a submit button hidden once enhanced; hide the slideshow arrows, dots and Pause unless `.is-enhanced` (they render as dead buttons without JavaScript). Project stance, not WCAG. (Tier 1, ours.)
+6. Put the Pause control before the slides in DOM order; it is the fourteenth tab stop today. (Tier 2, preference.)
+7. Distinct alt text per gallery photo ("Tuxedo, photo 2 of 8"); all eight stage photos say "Tuxedo" today. (Tier 2, preference; 1.1.1 is met.)
+
+Not verified: real VoiceOver or NVDA output (modelled from the tree), numeric contrast ratios (no axe in the test folder), the Sort select by keyboard in headless Chromium, and whether LGL allows a per-form language.
 
 ---
 
@@ -99,16 +123,18 @@ Tier 0 (before launch), all ours and all small unless marked:
 3. The Sponsor card on `/donate/` to `/sponsor-a-dog/`; `/sponsor-a-dog/` says the dog's name in its band. (Dana. An hour.)
 4. One statement of the mailing-list cadence. (Dana. Minutes; POMDR confirms which.)
 5. "Open the form in its own page" and "Prefer to talk? Call us" as real buttons above every embedded form. (Margaret. An hour.)
+6. `<html lang="es">` on the Spanish application page, and its accents restored. (Luis. Minutes, plus a Spanish reader's check.)
 
 Tier 1 (first fortnight):
 
-6. The phone header: strip scrolls away, card height in px. (2.2.)
-7. Facts block to auto-fit columns so it falls to two at large text. (2.4.)
-8. Perpetual Care's button says the number; team card phrase underlined; dialog text clears the Close pill. (2.5.)
-9. `/become-a-foster/`: the primary action above the fold on a phone. (Dana.)
-10. Events: venue, address, map link per event; a small "Recently" strip. (Dana; needs POMDR's photos.)
-11. Dog page titles with the hook; a landscape share image where the photo allows. (Dana.)
-12. Donate chips carry amount and frequency, or go. (Dana; this is POMDR-9, with LGL's URL parameters.)
+7. The phone header: strip scrolls away, card height in px. (2.2.)
+8. The drawer closes when focus leaves it; the no-JavaScript finder gets a submit button and server-side filters; slideshow controls hidden until enhanced. (Luis.)
+9. Facts block to auto-fit columns so it falls to two at large text. (2.4.)
+10. Perpetual Care's button says the number; team card phrase underlined; dialog text clears the Close pill. (2.5.)
+11. `/become-a-foster/`: the primary action above the fold on a phone. (Dana.)
+12. Events: venue, address, map link per event; a small "Recently" strip. (Dana; needs POMDR's photos.)
+13. Dog page titles with the hook; a landscape share image where the photo allows. (Dana.)
+14. Donate chips carry amount and frequency, or go. (Dana; this is POMDR-9, with LGL's URL parameters.)
 
 Owed by POMDR and Ronnie, unchanged from the thesis: the photographs onto R2, the roster, Privacy and Terms, the Culture and News words, the sitemap, the vector logo, program numbers, sponsor names, the foster-needed roster.
 
