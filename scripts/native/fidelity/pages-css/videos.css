@@ -1,0 +1,17 @@
+.vids-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 28px; }
+@media (max-width: 980px) { .vids-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .vids-grid { grid-template-columns: 1fr; } }
+.vid-frame { position: relative; aspect-ratio: 16/9; border-radius: var(--radius); overflow: hidden; background: var(--ink); cursor: pointer; display: block; }
+.vid-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s var(--ease); }
+.vid-frame:hover img { transform: scale(1.04); }
+.vid-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.vid-frame:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 3px; }
+.vid-play { position: absolute; inset: 0; display: grid; place-items: center; }
+.vid-play svg { width: 58px; height: 58px; color: #fff; filter: drop-shadow(0 4px 14px rgba(0,0,0,.5)); }
+.vid-frame--ext { display: grid; place-items: center; background: var(--blue-900); color: #fff; text-decoration: none; }
+.vid-frame--ext .vid-ext-label { font-weight: 700; font-size: 23px; z-index: 1; }
+.vid-frame--ext .vid-play svg { width: 34px; height: 34px; opacity: .6; }
+.vid-title { font-family: var(--font-serif); font-size: 29px; font-weight: 500; margin: 14px 0 6px; }
+.vid-year { font-family: var(--font-sans); font-size: 21px; font-weight: 600; color: var(--blue-text); margin-left: 8px; }
+.vid-caption { font-size: 21px; line-height: 1.6; color: var(--ink-2); margin: 0 0 6px; }
+.vid-credits { font-size: 20px; color: var(--ink-3); margin: 0; }

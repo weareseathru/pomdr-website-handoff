@@ -1,0 +1,15 @@
+== 1. SERVER FINGERPRINT (home response headers) ==
+HTTP/2 200 
+date: Wed, 02 Sep 2026 00:23:26 GMT
+content-type: text/html; charset=UTF-8
+link: <https://new.pomdr.org/wp-json/>; rel="https://api.w.org/"
+link: <https://new.pomdr.org/wp-json/wp/v2/pages/54>; rel="alternate"; title="JSON"; type="application/json"
+link: <https://new.pomdr.org/>; rel=shortlink
+no-vary-search: params=("PageSpeed")
+server: cloudflare
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=RK3PIrQOuC7wvwpooXbkgelGkitjgscbcQx9q%2BkvjcU05cPjF1q4Z5ACa9Dr%2B%2BrrJDNYNo62noPbZN9LXwOXqxEGt%2BF7OHLw74Qf5sVCBSy3r0xqA%2BuWQpKrch4lp27k"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a3485db658cd9657-SJC
+alt-svc: h3=":443"; ma=86400
+

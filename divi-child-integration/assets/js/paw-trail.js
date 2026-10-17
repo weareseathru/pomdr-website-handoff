@@ -137,12 +137,14 @@
       "<defs>" +
         filters +
         // The paw shape, once. No fill here so each <use> paints currentColor.
+        // Geometry matches the unified brand paw (assets/images/paw-cyan.svg):
+        // four clean toes over one dome-top pad (2026-08-01).
         '<g id="pt-shape">' +
-          '<path d="M32 33c7.5 0 13.5 4.6 14.6 11.4 1 6.2-3.2 11.6-9.6 13.4-3.2.9-7.2.9-10 0-6.4-1.8-10.6-7.2-9.6-13.4C18.5 37.6 24.5 33 32 33z"/>' +
-          '<ellipse cx="12" cy="31" rx="5" ry="7.6" transform="rotate(-28 12 31)"/>' +
-          '<ellipse cx="24" cy="19" rx="5.2" ry="8.2" transform="rotate(-11 24 19)"/>' +
-          '<ellipse cx="40" cy="19" rx="5.2" ry="8.2" transform="rotate(11 40 19)"/>' +
-          '<ellipse cx="52" cy="31" rx="5" ry="7.6" transform="rotate(28 52 31)"/>' +
+          '<path d="M32 28.5 C22.9 28.5 13.9 35.7 13.9 45.6 C13.9 53.1 19.2 58.4 25.3 58.4 C28.3 58.4 30.1 56.3 32 56.3 C33.9 56.3 35.7 58.4 38.7 58.4 C44.8 58.4 50.1 53.1 50.1 45.6 C50.1 35.7 41.1 28.5 32 28.5 Z"/>' +
+          '<ellipse cx="9.9" cy="30.9" rx="7.5" ry="9.9" transform="rotate(-20 9.9 30.9)"/>' +
+          '<ellipse cx="23.2" cy="15.7" rx="8.3" ry="11.5" transform="rotate(-7 23.2 15.7)"/>' +
+          '<ellipse cx="40.8" cy="15.7" rx="8.3" ry="11.5" transform="rotate(7 40.8 15.7)"/>' +
+          '<ellipse cx="54.1" cy="30.9" rx="7.5" ry="9.9" transform="rotate(20 54.1 30.9)"/>' +
         "</g>" +
       "</defs>";
     document.body.appendChild(svg);

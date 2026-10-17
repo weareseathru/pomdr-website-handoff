@@ -1,0 +1,609 @@
+
+<html>
+<head>
+<title>Peace of Mind Dog Rescue Home</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Peace of Mind Dog Rescue is dedicated to finding new loving homes for dogs whose guardians can no longer care for them due to illness, death, or other challenging circumstances, and to finding homes for senior dogs in animal shelters."><meta name="keywords" content="dog rescue, senior dogs, guardians, no longer care, find new homes, hospice, animal"><link rel="stylesheet" type="text/css" href="pomdr.css?1717082828" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"><style>
+	#adoptDonateVolunteer .imageAndTitle {
+		margin-bottom:1em;
+	}
+	
+	.imageAndTitle {
+		position:relative; /* so the link and label can be positioned over the image */
+	}
+	
+	.imageAndTitle > a {
+		position:absolute;
+		left:0px;
+		top:0px;
+		width:100%;
+		height:100%;
+		z-index:2;
+	}
+	
+	.imageAndTitle img, .videoImage {
+		transition: opacity 0.25s ease;
+		opacity:1.0;
+	}
+	
+	.imageAndTitle img {
+		border-radius:0.5em;
+	}
+	
+	.superimposedTitleContainer {
+		position:absolute;
+		text-align:center;
+	}
+	
+	.superimposedTitle {
+		color:white;
+		font-weight:bold;
+		text-decoration:none;
+		text-shadow: 2px 2px 3px black;
+		background-color:rgba(0, 0, 0, 0.3);
+		padding:0.1em 0.3em;
+		border-radius:0.3em;
+	}
+	
+	.superimposedTitle:visited {
+		color:white;
+	}
+	
+	#adoptDonateVolunteer .superimposedTitleContainer {
+		bottom:10%;
+		left:0%;
+		width:100%;
+	}
+	
+	#adoptDonateVolunteer .superimposedTitle {
+		font-size: 2em;
+	}
+
+	.imageAndTitle > a:hover + img, .videoImageAndPlayIcon > a:hover ~ picture > img {
+		transition: opacity 0.25s ease;
+		opacity:0.6;
+	}
+	
+	#missionAndPrograms {
+		background-color:#d7edfa;
+		padding-top:1em;
+		margin: 2em 0em 2em 0em;
+	}
+	
+	#missionAndPrompt {
+		display:inline-block;
+		text-align:left;
+		padding:0em 1em 0.5em 1em;
+		margin-bottom:0.5em;
+	}
+		
+	#mission {
+		margin-top:1em;
+	}
+	
+	.program {
+		text-align:center;
+		padding:0em 1em 2em 1em;
+	}
+	
+	.programImageAndDescription {
+		background-color:white;
+		border-radius:0.5em;
+		padding:0.5em;
+	}
+
+	.program .superimposedTitleContainer {
+		bottom:5%;
+		left:0%;
+		width:100%;
+	}
+	
+	.program .superimposedTitle {
+		font-size: 1.4em;
+	}
+	
+	.programDescription	 {
+		text-align:left;
+		padding-top:0.5em;
+	}
+	
+	.videoAndCaption {
+		display:inline-block;
+		text-align:center;
+		vertical-align:top;
+		margin-bottom: 1em;
+	}
+	
+	#seeAllVideosButtonHolder {
+		display:block;
+		text-align:center;
+	}
+	
+	#seeAllVideosButtonHolder a {
+		vertical-align:baseline;
+	}
+	
+	.videoAndCaption img {
+		display:block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	.videoImageAndPlayIcon {
+		position:relative; /* so play icon can be overlaid */
+	}
+	
+	.videoImageAndPlayIcon > a {
+		position:absolute;
+		top:0px;
+		left:0px;
+		width:100%;
+		height:100%;
+		z-index:2;
+	}
+	
+	.videoPlayIcon {
+		position:absolute;
+		bottom:30%;
+		left:42%;
+		width:16%;
+	}
+	
+	.videoCaptionContainer {
+		position:absolute;
+		bottom:5%;
+		left:0%;
+		width:100%;
+	}
+	
+	.videoCaption {
+		font-weight:bold;
+		font-size:1.2em;
+		text-decoration:none;
+		text-shadow: 2px 2px 3px black;
+		background-color:rgba(0, 0, 0, 0.3);
+		padding:0.1em 0.3em;
+		border-radius:0.3em;
+		color:white;
+	}
+	
+	.videoCaption:visited {
+		color:white;
+	}
+	
+	#news {
+		position:relative;
+		margin-top:3em;
+		margin-bottom:3em;
+		padding-bottom:35%;
+		background-color:#d7edfa;
+		background-image:url('images/misc/homepage/pawpattern.gif');
+		background-size:20%;
+		background-position:3% 15%; /* minimize clipped paws on sides for both <600 and >600 px wide viewports */
+	}
+
+	#homePageBernie {
+		position:absolute;
+		bottom:0px;
+		left:-1em;
+		width:50%;
+	}
+	
+	#newsText {
+		position:absolute;
+		top:calc((100% - 86px) / 2);
+		left:42%;
+		right:3%;
+		text-align:center;
+	}
+
+	#newsPrompt {
+		font-size:1.1em;
+		font-weight:bold;
+		color:#662D91;
+		margin-bottom:0.5em;
+	}
+	
+	#mailingList {
+		position:relative;
+		margin-bottom:2em;
+	}
+	
+	#mailingListText {
+		text-align:center;
+	}
+
+	#mailingListPrompt {
+		position:absolute;
+		top:calc((100% - 48px) / 2);
+		left:0em;
+		width:45%;
+		display:inline-block;
+		font-size:1.1em;
+		font-weight:bold;
+		color:white;
+		text-shadow: 2px 2px 3px black;
+		margin-bottom:0.5em;
+	}
+	
+	#mailingListButtonHolder {
+		position:absolute;
+		top:calc((100% - 22px) / 2);
+		right:0%;
+		width:35%;
+	}
+
+@media (min-width: 600px) {
+
+	#adoptDonateVolunteer .imageAndTitle, .program {
+		width:33.333333%;
+	}
+	
+	#adoptDonateVolunteer .imageAndTitle {
+		padding-left: 0.333333em;
+		padding-right: 0.333333em;
+		margin-bottom: 0em;
+	}
+	
+	#adoptDonateVolunteer .imageAndTitle:first-child {
+		padding-left:0em;
+		padding-right: 0.666667em;
+	}
+	
+	#adoptDonateVolunteer .imageAndTitle:last-child {
+		padding-right:0em;
+		padding-left: 0.666667em;
+	}
+	
+	.program {
+		padding: 0em 0.666667em 1em 0.666667em;
+	}
+	
+	.program:first-child {
+		padding-left:1em;
+		padding-right:0.333333em;
+	}
+	
+	.program:last-child {
+		padding-right:1em;
+		padding-left:0.333333em;
+	}
+	
+	
+	.program .superimposedTitle {
+		font-size: 1.1em;
+	}
+		
+	.videoAndCaption {
+		width:42%;
+		padding-right: 1em;
+	}
+	
+	.videoCaption {
+		top:75%;
+	}
+
+	#seeAllVideosButtonHolder {
+		width:16%;
+		/* Vertically centered with the video images. 42% is width of video image including
+			padding. 1em is padding. 86/153 is ratio of height/width of video image. 46px
+			is height of button. */
+		padding-top:calc((((42% - 1em) * (86/153)) - 46px) / 2);
+	}
+	
+	#seeAllVideosButtonHolder > a {
+		width:70%;
+		padding-top:0.5em;
+		padding-bottom:0.5em;
+	}
+		
+	.videoPlayIcon {
+		top:35%;
+		left:40%;
+		width:20%;
+	}
+	
+	#news {
+		margin-top:2em;
+		margin-bottom:1em;
+		padding-right:1em;
+		width:50%;
+		padding-bottom:calc((50% - 1em) * (107/365));
+	}
+	
+	#newsText {
+		left:35%;
+		right:5%;
+		top:calc((100% - 67px) / 2);
+	}
+
+	#homePageBernie {
+		width:40%;
+	}
+
+	#mailingList {
+		margin-top:2em;
+		margin-bottom:2em;
+		width:50%;
+		padding-left:1em;
+	}
+
+	#mailingListPrompt {
+		top:calc((100% - 36px) / 2);
+	}
+
+}
+
+@media (min-width: 810px) {
+
+	.program .superimposedTitle {
+		font-size: 1.2em;
+	}	
+
+	#newsPrompt, #mailingListPrompt {
+		font-size:1.2em;
+	}
+
+	#mailingListPrompt {
+		top:calc((100% - 40px) / 2);
+	}
+
+	#newsText {
+		top:calc((100% - 71px) / 2);
+	}
+}
+
+</style>
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.pomdr.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
+</head>
+
+<body>
+<div id="container">
+	
+		<div id="POMDRHeader">
+			<a href="index.php"><img id="headerLogo"" src="images/header/POMDR_logo_horizontal.png" alt="Peace of Mind Logo" /></a><img id="headerTagline" src="images/header/POMDR_logo_tagline.png" alt="Peace of Mind Logo" />
+			<div id="headerDonateButtonContainer">
+				<a id="headerDonateButton" class="blueGradientButton" href="donateoverview.html">Donate</a>
+			</div>
+		</div>
+	<div class="contentsRow">
+
+	  <div id="left-sidebar-nav-menu">
+	  <div class="nav-menu-background">
+	<div class="nav-menu-social-media-images">
+      <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/instagram_white_circle.png"></a>
+      <a href="https://www.facebook.com/POMDR/" target="_blank"><img class="social-media-image" src="images/misc/social/facebook_white_circle.png"></a>
+      <a href="https://www.tiktok.com/@peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/tiktok_white_circle.png"></a>
+      <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank"><img class="social-media-image" src="images/misc/social/youtube_white_circle.png"></a>
+      <a href="https://www.linkedin.com/company/peace-of-mind-dog-rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/linkedin_white_circle.png"></a>
+	</div>
+    <div class="nav-menu-links">
+		<a class="currentpagelink" >Home</a>
+		<a href="aboutus.html" >About Us</a>
+		<a href="adopt.php" >Adoptable Dogs</a>
+		<a href="donateoverview.html" >Ways to Give</a>
+		<a href="volunteer.html" >Volunteer</a>
+		<a href="fosterneeds.html" >Foster Needs</a>
+		<a href="benefitshop.html" >Benefit Shop</a>
+		<a href="news.html" >What&rsquo;s Happening</a>
+		<a href="adoptionevents.php" >Adoption Events</a>
+		<a href="helpplacingdog.html" >Placing Your Dog</a>
+		<a href="lifetimecare.html" >Lifetime Care</a>
+		<a href="helpingpaw.html" >Helping Paw</a>
+		<a href="resources.html" >Resources</a>
+		<a href="inthemedia.html" >In the Media</a>
+		<a href="tributedonations.php" >Tribute Donations</a>
+		<a href="thankyou.html" >Thank You</a>
+		<a href="testimonials.php" >Testimonials</a>
+		<a href="POMDRMailingList.php" >Mailing List</a>
+		<a href="jobs.html" >Job Openings</a>
+		</div>
+  </div>
+  </div>
+  <input class="full-width-nav-menu-state" id="full-width-nav-menu-checkbox" type="checkbox" />
+  <label id="hamburger" for="full-width-nav-menu-checkbox">
+  	<div class="spinning-hamburger-line diagonal part-1"></div>
+  	<div class="spinning-hamburger-line horizontal"></div>
+  	<div class="spinning-hamburger-line diagonal part-2"></div>
+  </label>
+  <div id="full-width-nav-menu">
+  	<div id="full-width-nav-menu-header" class="header">
+<a href="index.php"><img class="logo" src="images/header/POMDR_logo_horizontal.png" alt="Peace of Mind Logo" /></a>  	</div>
+	  <div class="nav-menu-background">
+    <div class="nav-menu-links">
+		<a class="currentpagelink" >Home</a>
+		<a href="aboutus.html" >About Us</a>
+		<a href="adopt.php" >Adoptable Dogs</a>
+		<a href="donateoverview.html" >Ways to Give</a>
+		<a href="volunteer.html" >Volunteer</a>
+		<a href="fosterneeds.html" >Foster Needs</a>
+		<a href="benefitshop.html" >Benefit Shop</a>
+		<a href="news.html" >What&rsquo;s Happening</a>
+		<a href="adoptionevents.php" >Adoption Events</a>
+		<a href="helpplacingdog.html" >Placing Your Dog</a>
+	  </div><div class="nav-menu-links">
+		<a href="lifetimecare.html" >Lifetime Care</a>
+		<a href="helpingpaw.html" >Helping Paw</a>
+		<a href="resources.html" >Resources</a>
+		<a href="inthemedia.html" >In the Media</a>
+		<a href="tributedonations.php" >Tribute Donations</a>
+		<a href="thankyou.html" >Thank You</a>
+		<a href="testimonials.php" >Testimonials</a>
+		<a href="POMDRMailingList.php" >Mailing List</a>
+		<a href="jobs.html" >Job Openings</a>
+		</div>
+	<div class="nav-menu-social-media-images">
+      <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/instagram_white_circle.png"></a>
+      <a href="https://www.facebook.com/POMDR/" target="_blank"><img class="social-media-image" src="images/misc/social/facebook_white_circle.png"></a>
+      <a href="https://www.tiktok.com/@peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/tiktok_white_circle.png"></a>
+      <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank"><img class="social-media-image" src="images/misc/social/youtube_white_circle.png"></a>
+      <a href="https://www.linkedin.com/company/peace-of-mind-dog-rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/linkedin_white_circle.png"></a>
+	</div>
+  </div>
+  </div>
+
+		<div id="main-contents-without-right-sidebar">
+		<div id="adoptDonateVolunteer" class="contentsRow">
+			<div class="imageAndTitle">
+				<a href="adopt.php"></a>
+				<img src="images/misc/homepage/adopt.jpg" />
+				<div class="superimposedTitleContainer"><span class="superimposedTitle">Adopt</span></div>
+			</div>
+			<div class="imageAndTitle">
+				<a href="donateoverview.html"></a>
+				<img src="images/misc/homepage/donate.jpg" />
+				<div class="superimposedTitleContainer"><span class="superimposedTitle">Donate</span></div>
+			</div>
+			<div class="imageAndTitle">
+				<a href="volunteer.html"></a>
+				<img src="images/misc/homepage/volunteer.jpg" />
+				<div class="superimposedTitleContainer"><span class="superimposedTitle">Volunteer</span></div>
+			</div>
+		</div>
+		<div id="missionAndPrograms">
+			<div id="missionAndPrompt">
+				<h2>Who will care for your dog if you no longer can?</h2>
+				<div id="mission">Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast.</div>
+			</div>
+			<div id="programs" class="contentsRow">
+				<div class="program">
+					<div class="programImageAndDescription">
+						<div class="imageAndTitle">
+							<a href="adopt.php"></a>
+							<img src="images/misc/homepage/intakeandadoption.jpg" />
+							<div class="superimposedTitleContainer"><span class="superimposedTitle">Intake & Adoptions</span></div>
+						</div>
+						<div class="programDescription">We find loving homes for dogs whose guardians can no longer care for them and for senior dogs in shelters.</div>
+					</div>
+				</div>
+				<div class="program">
+					<div class="programImageAndDescription">
+						<div class="imageAndTitle">
+							<a href="helpingpaw.html"></a>
+							<img src="images/misc/homepage/helpingpaw.jpg" />
+							<div class="superimposedTitleContainer"><span class="superimposedTitle">Helping Paw</span></div>
+						</div>
+						<div class="programDescription">We provide volunteer and financial assistance so seniors can keep their pets with them as long as possible.</div>
+					</div>
+				</div>
+				<div class="program">
+					<div class="programImageAndDescription">
+						<div class="imageAndTitle">
+							<a href="lifetimecare.html"></a>
+							<img src="images/misc/homepage/perpetualcare.jpg" />
+							<div class="superimposedTitleContainer"><span class="superimposedTitle">Perpetual Care</span></div>
+						</div>
+						<div class="programDescription">We make pre-arrangements to take in dogs should their guardians become unable to care for them.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="videos" class="contentsRow">
+		
+			<div class="videoAndCaption">
+				<div class="videoImageAndPlayIcon">
+					<a href="https://youtu.be/B7RQI4beRZU" target="_blank"></a>
+					<picture>
+						<source class="videoImage" srcset="images/misc/videos/MessageToYouVideo.jpg" media="(min-width: 600px)">
+						<source class="videoImage" srcset="images/misc/videos/MessageToYouVideo_thin.jpg">
+						<img class="videoImage" src="images/misc/videos/MessageToYouVideo.jpg">
+					</picture>
+					<img class="videoPlayIcon" src="images/misc/videos/play_video.png">
+					<div class="videoCaptionContainer"><span class="videoCaption" href="https://youtu.be/B7RQI4beRZU">This is Our Message to You</span></div>
+				</div>
+			</div>
+			<div class="videoAndCaption">
+				<div class="videoImageAndPlayIcon">
+					<a href="https://youtu.be/HVv8rEJjnvs" target="_blank"></a>
+					<picture>
+						<source class="videoImage" srcset="images/misc/videos/TakeAChanceVideo.jpg" media="(min-width: 600px)">
+						<source class="videoImage" srcset="images/misc/videos/TakeAChanceVideo_thin.jpg">
+						<img class="videoImage" src="images/misc/videos/TakeAChanceVideo.jpg">
+					</picture>
+					<img class="videoPlayIcon" src="images/misc/videos/play_video.png">
+					<div class="videoCaptionContainer"><span class="videoCaption" href="https://youtu.be/HVv8rEJjnvs">Take a Chance on POMDR</span></div>
+				</div>
+			</div>
+						
+			<div id="seeAllVideosButtonHolder">
+				<a class="blueRoundButton" href="videos.html">See All Videos</a>
+			</div>
+		
+		</div>
+		
+		<div id="newsAndMailingList" class="contentsRow">
+			<div id="news">
+				<a href="news.html">
+					<img id="homePageBernie" src="images/misc/homepage/newsdog.png">
+					<div id="newsText">
+						<div id="newsPrompt">What&rsquo;s Happening<br>at POMDR?</div>
+						<span class="blueRoundButton" href="news.html">Find Out Here!</span>
+					</div>
+				</a>
+			</div>
+			<div id="mailingList">
+				<a href="POMDRMailingList.php">
+				<img src="images/misc/homepage/joinmailinglist.jpg">
+				<div id="mailingListText">
+					<div id="mailingListPrompt">Join our<br>mailing list!</div>
+					<div id="mailingListButtonHolder"><span class="blueRoundButton" href="POMDRMailingList.php">Sign Up</span></div>
+				</div>
+				</a>
+			</div>
+		</div>
+      
+		<!-- end main content -->
+	</div>
+
+	
+		<div id="POMDRFooter" class="contentsRow">
+			<img id="footerBauerHouse" src="images/misc/pomdrhouse.jpg" alt="Bauer house">
+			<div id="footerBasicInfo">
+				<div class="footerInfoHeader">Phone</div>
+				<div class="footerInfo">(831) 718-9122</div>
+				<div class="footerInfoHeader">Email</div>
+				<div class="footerInfo forceWrap"><a href="/cdn-cgi/l/email-protection#b6dfd8d0d9f6c6d3d7d5d3d9d0dbdfd8d2d2d9d1c4d3c5d5c3d398d9c4d1"><span class="__cf_email__" data-cfemail="b7ded9d1d8f7c7d2d6d4d2d8d1daded9d3d3d8d0c5d2c4d4c2d299d8c5d0">[email&#160;protected]</span></a></div>
+				<div class="footerInfoHeader">Mailing Address</div>
+				<div class="footerInfo">P.O. Box 51554<br>Pacific Grove, CA 93950</div>
+				<div class="footerInfoHeader">Tax Info</div>
+				<div class="footerInfo">POMDR is a non-profit 501(c)(3) corp.<br>Tax ID: 27-1154816</div>
+			</div>
+			<div>
+				<div class="footerInfoHeader">Physical Address</div>
+				<div class="footerLocationName"><a href="bauercenter.html">POMDR Patricia J. Bauer Center</a></div>
+				<div class="footerInfo">615 Forest Avenue<br>Pacific Grove, CA 93950</div>
+				<div class="footerInfoHeader">Hours</div><div class="footerInfo">11am - 4pm Mon - Sat, or by appointment</div><div class="footerLocationCaveat">Adoptable dogs available by appointment only</div>
+			</div>
+			<div>
+				<div class="footerInfoHeader">Veterinary Clinic</div>
+				<div class="footerLocationName"><a href="vetclinic.html">POMDR Harry and Jaynne Boand Clinic</a></div>
+				<div class="footerInfo">1251 10th St<br>Monterey, CA 93940</div>
+				<div class="footerInfoHeader">Benefit Shop</div>
+				<div class="footerLocationName"><a href="benefitshop.html">POMDR Benefit Shop</a></div>
+				<div class="footerInfo">223 Grand Avenue<br>Pacific Grove, CA 93950</div>
+				<div class="footerInfoHeader"><a href="termsandprivacy.html">Terms & Privacy</a></div>
+				<div class="footerInfo"></div>
+			</div>
+		</div>
+		<!-- end #container -->
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"9dd49028a208464a9959831d1bfcb087","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
+

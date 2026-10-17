@@ -1,5 +1,11 @@
 <?php
 
+// Build fingerprint. Printed into every page head by inc/enqueue.php, so a
+// stale functions.php (the 2026-09-01 deploy failure) is detectable in one
+// view-source: the marker is simply absent. Bump alongside the style.css
+// Version on every theme change.
+define( 'POMDR_BUILD', '2.0.0' );
+
 // *********** Apply wpautop to Team bio field ***********
 add_filter('acf/format_value/name=bio', function($value, $post_id, $field) {
     if ($value) {
@@ -45,17 +51,26 @@ function pet_age_sex_weight($atts) {
     // Display value for the sex field (handles mapping of value->label)
     $sex_value_display = pom_acf_sex_display($atts['post_id']);
 
-    // Concatenate values
-    if ($looks_like_value && $age_value && $weight_value && $sex_value_display) {
-   echo "<span style='font-weight:600; font-weight:bold; font-size:1.6em;'>" . esc_html($looks_like_value) . "</span>" .
-	  "<span style='font-weight:400; font-size:1em;'> (looks like)</span><br/>" .
-      "<span style='font-weight:600; font-size:1.2em; '>" .
-      esc_html($sex_value_display) . ", " . esc_html($age_value) . " years old (est), " .
-      esc_html($weight_value) . " lbs</span>";
-
-} else {
-    echo esc_html("Inquire Directly");
-}
+    // Show whichever vitals exist (a missing field no longer hides the rest),
+    // in the redesign voice: "~age" with a tilde, never "(est)".
+    $bits = array();
+    if ($age_value !== '' && $age_value !== null && $age_value !== false) {
+        $bits[] = is_numeric($age_value) ? '~' . $age_value . ' yrs' : $age_value;
+    }
+    if ($sex_value_display) { $bits[] = $sex_value_display; }
+    if ($weight_value) { $bits[] = $weight_value . ' lb'; }
+    if ($looks_like_value || $bits) {
+        echo '<div class="pdp-vitals">';
+        if ($looks_like_value) {
+            echo '<div class="pdp-breed">' . esc_html($looks_like_value) . '</div>';
+        }
+        if ($bits) {
+            echo '<div class="pdp-vitals-line">' . esc_html(implode(' · ', $bits)) . '</div>';
+        }
+        echo '</div>';
+    } else {
+        echo esc_html('Inquire directly');
+    }
 
     return ob_get_clean();
 }
@@ -139,22 +154,9 @@ function dt_enqueue_styles() {
         $theme->get('Version') 
     );
 }
-function register_custom_blog_template($templates) {
-    $templates['template-blog-list.php'] = 'Custom Blog List';
-    return $templates;
-}
-add_filter('theme_page_templates', 'register_custom_blog_template');
-
-/**
- * Handle template loading
- */
-function load_custom_blog_template($template) {
-    if(is_page_template('template-blog-list.php')) {
-        $template = get_stylesheet_directory() . '/template-blog-list.php';
-    }
-    return $template;
-}
-add_filter('template_include', 'load_custom_blog_template');
+/* The "Custom Blog List" template registration was removed 2026-07-07: it
+   pointed at a file that only existed in temp/ scratch (deleted), so choosing
+   it in the page editor produced a blank page. */
 add_action( 'wp_enqueue_scripts', 'dt_enqueue_styles' );
 
 
@@ -337,8 +339,52 @@ add_shortcode('foster_a_pet', 'foster_a_pet_shortcode');
 
 
 // ************* ADOPTED PETS LIST VIEW ***********************
-function adopted_pets_shortcode() { return pomdr_dogs_by_status('Adopted', array('meta_key' => 'date_adopted', 'orderby' => 'meta_value', 'order' => 'DESC')); }
+function adopted_pets_shortcode() {
+    // Do NOT pass meta_key => date_adopted into the query: that inner-joins on
+    // the date field and silently hides every dog whose date was never filled
+    // in, which left /adopted/ rendering empty. Query by status only, sort by
+    // the date in PHP (missing dates last), and cap the page so it does not
+    // grow unbounded as adoptions accumulate.
+    $q = new WP_Query(array(
+        'post_type'      => 'pets',
+        'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'meta_query'     => array(array('key' => 'status', 'value' => 'Adopted', 'compare' => 'LIKE')),
+    ));
+    $ids = $q->posts;
+    usort($ids, function ($a, $b) {
+        // Raw meta is stored Ymd, which string-sorts chronologically.
+        return strcmp((string) get_post_meta($b, 'date_adopted', true), (string) get_post_meta($a, 'date_adopted', true));
+    });
+    $ids = array_slice($ids, 0, 48);
+    if (empty($ids)) {
+        return '<p>No dogs to show right now. Please call (831) 718-9122.</p>';
+    }
+    $out = '<div class="dogs-grid">';
+    foreach ($ids as $id) { $out .= pom_render_dog_card($id); }
+    $out .= '</div>';
+    $out .= pomdr_adopted_wall_html();
+    return $out;
+}
 add_shortcode('adopted_pets', 'adopted_pets_shortcode');
+
+/**
+ * The adopted-names wall: every dog POMDR has ever adopted out (synced from
+ * the live site, data/dogsync/adopted_names.json in the theme). Rendered as a
+ * compact flowing wall under the recent-adoption cards.
+ */
+function pomdr_adopted_wall_html() {
+    $file = get_stylesheet_directory() . '/data/dogsync/adopted_names.json';
+    if (!is_readable($file)) { return ''; }
+    $names = json_decode((string) file_get_contents($file), true);
+    if (!is_array($names) || !$names) { return ''; }
+    $count = count($names);
+    $out  = '<div class="adopted-wall">';
+    $out .= '<h2 class="section-title" style="text-align:center;margin-top:72px">' . esc_html(number_format($count)) . ' dogs, <em>all adopted.</em></h2>';
+    $out .= '<p style="text-align:center;color:var(--ink-2);font-size: 22px;margin:0 0 28px">What do all these dogs have in common? They are all adopted!</p>';
+    $out .= '<p class="adopted-wall-names">' . esc_html(implode(' · ', array_map('trim', $names))) . '</p>';
+    return $out . '</div>';
+}
 
 
 // *********** HOSPICE LIST VIEW ***********
@@ -363,6 +409,10 @@ function pomdr_dogs_by_status($status, $args = array()) {
     }
     return ob_get_clean();
 }
+
+/* Foster Needs page: every dog with Foster Needed status, newest first. */
+function foster_needed_dogs_shortcode() { return pomdr_dogs_by_status('Foster Needed', array('orderby' => 'date', 'order' => 'DESC')); }
+add_shortcode('foster_needed_dogs', 'foster_needed_dogs_shortcode');
 
 function hospice_care_shortcode() { return pomdr_dogs_by_status('Hospice'); }
 add_shortcode('hospice_care', 'hospice_care_shortcode');
@@ -569,6 +619,47 @@ add_shortcode('random_pet', 'random_pet_shortcode');
  * Priority is most-urgent-first so a multi-status dog shows the right badge.
  * Returns [class, label] or ['',''] when no recognized status.
  */
+/**
+ * Dog highlights: the 3 to 5 quick facts an adopter needs (leadership spec,
+ * 2026-07-09). A code-registered ACF field so it is version-controlled; staff
+ * type one bullet per line on the dog's edit screen. Display is hard-capped
+ * at 5 on the dog page.
+ */
+add_action('acf/init', function () {
+    if (!function_exists('acf_add_local_field_group')) { return; }
+    acf_add_local_field_group(array(
+        'key'    => 'group_pomdr_highlights',
+        'title'  => 'Dog Highlights (shown at the top of the dog\'s page)',
+        'fields' => array(array(
+            'key'          => 'field_pomdr_highlights',
+            'label'        => 'Highlights',
+            'name'         => 'highlights',
+            'type'         => 'textarea',
+            'instructions' => 'The 3 to 5 things an adopter should know, one per line (for example: Loves slow morning walks). The page shows at most 5.',
+            'rows'         => 5,
+            'new_lines'    => '',
+        )),
+        'location'   => array(array(array('param' => 'post_type', 'operator' => '==', 'value' => 'pets'))),
+        'menu_order' => 1,
+        'position'   => 'normal',
+    ));
+});
+
+/**
+ * The capped bullet list for the dog page. Returns '' when staff have not
+ * filled the field yet.
+ */
+function pom_pet_highlights_html($post_id) {
+    $raw = function_exists('get_field') ? get_field('highlights', $post_id) : '';
+    if (!$raw) { return ''; }
+    $lines = array_filter(array_map('trim', preg_split('/\r\n|\r|\n/', (string) $raw)));
+    if (empty($lines)) { return ''; }
+    $lines = array_slice(array_values($lines), 0, 5); // hard cap per the spec
+    $out = '<ul class="pdp-bullets">';
+    foreach ($lines as $line) { $out .= '<li>' . esc_html($line) . '</li>'; }
+    return $out . '</ul>';
+}
+
 function pom_pet_badge($post_id) {
     $status = get_field('status', $post_id);
     $status = is_array($status)
@@ -585,7 +676,9 @@ function pom_pet_badge($post_id) {
     if (in_array('Sponsor Needed', $status, true))   return ['sponsor_needed', 'Sponsor Needed'];
     if (in_array('Courtesy Listing', $status, true)) return ['courtesy_listing', 'Courtesy Listing'];
     if (in_array('Adopted', $status, true))          return ['recently_adopted', 'Adopted'];
-    if (in_array('Adoptable', $status, true))        return ['available', 'Available'];
+    // Plain Adoptable gets NO badge (leadership spec 2026-07-09): available is
+    // the default state, so the bubble carried no information. Badges are for
+    // special situations only.
     return ['', ''];
 }
 
@@ -597,9 +690,12 @@ function pom_pet_badge($post_id) {
  * Voice rules (CLAUDE.md s2): age shows as "~N yrs" with a tilde, never "est".
  * No invented data: the only derived tag is "Senior" (age >= 10).
  */
-function pom_render_dog_card($post_id) {
+function pom_render_dog_card($post_id, $card_args = array()) {
     $name      = get_the_title($post_id);
     $permalink = get_permalink($post_id);
+    // 'eager' => true loads the photo immediately (used for the homepage row,
+    // so visitors never see the empty cream placeholder while lazy images decode).
+    $img_loading = !empty($card_args['eager']) ? 'eager' : 'lazy';
 
     list($badge_class, $badge_label) = pom_pet_badge($post_id);
 
@@ -618,8 +714,19 @@ function pom_render_dog_card($post_id) {
 
     $tags = [];
     if (is_numeric($age) && intval($age) >= 10) $tags[] = 'Senior';
+    if (get_post_meta($post_id, 'aged_to_perfection', true)) $tags[] = 'Aged to Perfection';
 
     $thumb_id = get_post_thumbnail_id($post_id);
+
+    // Extra photos for the adopt-page hover cycle (first few gallery images).
+    $cycle_urls = array();
+    $cycle_gal  = get_field('photo_gallery', $post_id);
+    if (is_array($cycle_gal)) {
+        foreach (array_slice($cycle_gal, 0, 4) as $g) {
+            if (is_array($g) && !empty($g['sizes']['medium_large'])) { $cycle_urls[] = $g['sizes']['medium_large']; }
+            elseif (is_array($g) && !empty($g['url'])) { $cycle_urls[] = $g['url']; }
+        }
+    }
 
     // Filter/sort data attributes for the Adopt page JS. The grid stays
     // CPT-driven; these only describe each rendered card so vanilla JS can
@@ -643,14 +750,16 @@ function pom_render_dog_card($post_id) {
        data-breed="<?php echo esc_attr($looks_like); ?>"
        data-status="<?php echo esc_attr($data_status); ?>"
        data-age="<?php echo esc_attr($data_age); ?>"
-       data-weight="<?php echo esc_attr($data_weight); ?>">
+       data-weight="<?php echo esc_attr($data_weight); ?>"<?php if ($cycle_urls) : ?> data-photos="<?php echo esc_attr(wp_json_encode($cycle_urls)); ?>"<?php endif; ?>>
       <div class="dog-card"><div class="photo-wrap">
         <div class="dog-photo"><?php
             if ($thumb_id) {
                 echo wp_get_attachment_image($thumb_id, 'medium_large', false, [
                     'alt'     => $name,
-                    'loading' => 'lazy',
-                    'style'   => 'width:100%;height:100%;object-fit:cover;object-position:center top;display:block',
+                    'loading' => $img_loading,
+                    // center 30% keeps a dog's face (usually upper-middle) framed
+                    // instead of pinning to the very top and cropping the subject.
+                    'style'   => 'width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block',
                 ]);
             }
         ?></div>
@@ -677,32 +786,49 @@ function pom_render_dog_card($post_id) {
  * shortcode is placed.
  */
 function pet_home_shortcode() {
-    $query = new WP_Query([
+    // This row must NEVER silently vanish. The old query inner-joined on the
+    // optional 'feature' meta (meta_key => 'feature'), so any dog without that
+    // flag was invisible and an unmaintained flag emptied the whole section
+    // (the same trap that blanked /adopted/ and dropped team members). Now:
+    // query adoptable dogs with no meta join, prefer featured ones in PHP,
+    // fall back to newest adoptable, and if there are truly no adoptable dogs,
+    // still render a friendly link instead of returning nothing.
+    $q = new WP_Query([
         'post_type'      => 'pets',
-        'posts_per_page' => 6,
+        'posts_per_page' => 30,
+        'fields'         => 'ids',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
         'meta_query'     => [
             'relation' => 'AND',
             ['key' => 'status', 'value' => 'Adoptable', 'compare' => 'LIKE'],
             ['key' => 'status', 'value' => 'Adopted',   'compare' => 'NOT LIKE'],
         ],
-        'meta_key' => 'feature',
-        'orderby'  => ['meta_value' => 'DESC', 'date' => 'DESC'],
     ]);
+    $ids = $q->posts;
 
-    ob_start();
+    // Featured dogs first (feature = Yes), newest first within each group.
+    usort($ids, function ($a, $b) {
+        $fa = ('Yes' === get_post_meta($a, 'feature', true)) ? 0 : 1;
+        $fb = ('Yes' === get_post_meta($b, 'feature', true)) ? 0 : 1;
+        return $fa <=> $fb; // usort is stable in PHP 8; date order holds within groups
+    });
+    $ids = array_slice($ids, 0, 6);
 
-    if ($query->have_posts()) :
-        echo '<div class="pomdr-home"><div class="dogs-grid">';
-        while ($query->have_posts()) : $query->the_post();
-            echo pom_render_dog_card(get_the_ID());
-        endwhile;
-        echo '</div>';
-        echo '<div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>';
-        echo '</div>';
-        wp_reset_postdata();
-    endif;
+    if (empty($ids)) {
+        return '<div class="pomdr-home"><div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs</a></div></div>';
+    }
 
-    return ob_get_clean();
+    $out = '<div class="pomdr-home"><div class="dogs-grid">';
+    foreach ($ids as $id) {
+        // Eager images: this row sits near the fold and lazy placeholders read
+        // as "the cards are not appearing".
+        $out .= pom_render_dog_card($id, array('eager' => true));
+    }
+    $out .= '</div>';
+    $out .= '<div class="dogs-more"><a href="' . esc_url(home_url('/adopt/')) . '" class="btn btn-primary">See all adoptable dogs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>';
+    $out .= '</div>';
+    return $out;
 }
 
 add_shortcode('pet_home', 'pet_home_shortcode');
@@ -747,60 +873,129 @@ add_shortcode('adopt_a_pet_plp', 'adopt_a_pet_plp_shortcode');
 
 
 // ********************* EVENTS *********************
-function events_shortcode($atts = array()) {
-    $atts   = shortcode_atts(array('hlevel' => 'h3'), $atts, 'events');
-    $hlevel = in_array($atts['hlevel'], array('h2', 'h3', 'h4'), true) ? $atts['hlevel'] : 'h3';
-    // Upcoming events only (today or later), soonest first. Past events drop off
-    // automatically, and any event type shows (nothing hidden by its label).
+
+/**
+ * Query upcoming events (today or later), soonest first.
+ *
+ * @param array $types Optional list of event_type values to include, e.g.
+ *                     array('Adoption Event') or array('Special Event','Perpetual Event').
+ *                     Empty means every type. This is what powers the two
+ *                     co-equal sections on the What's Happening page.
+ * @return array List of event display arrays.
+ */
+function pomdr_collect_events($types = array()) {
+    $meta = array(
+        array(
+            'key'     => 'event_start',
+            'value'   => current_time('Y-m-d') . ' 00:00:00',
+            'compare' => '>=',
+            'type'    => 'DATETIME',
+        ),
+    );
+    if (!empty($types)) {
+        $meta['relation'] = 'AND';
+        $meta[] = array(
+            'key'     => 'event_type',
+            'value'   => (array) $types,
+            'compare' => 'IN',
+        );
+    }
     $q = new WP_Query(array(
         'post_type'      => 'events',
         'posts_per_page' => 50,
         'meta_key'       => 'event_start',
         'orderby'        => 'meta_value',
         'order'          => 'ASC',
-        'meta_query'     => array(array(
-            'key'     => 'event_start',
-            'value'   => current_time('Y-m-d') . ' 00:00:00',
-            'compare' => '>=',
-            'type'    => 'DATETIME',
-        )),
+        'meta_query'     => $meta,
     ));
-    ob_start();
-    if ($q->have_posts()) :
-        echo '<div class="events-grid">';
-        while ($q->have_posts()) : $q->the_post();
+
+    $events = array();
+    if ($q->have_posts()) {
+        while ($q->have_posts()) { $q->the_post();
             $id      = get_the_ID();
-            $type    = trim((string) get_field('event_type', $id));
-            $start   = pomdr_event_date(get_field('event_start', $id));
-            // event_end is a time_picker (for example "6:00 pm"), not a date.
-            // Append it as an end time; do NOT run it through the date parser,
-            // which would resolve a bare time to today and print a bogus range.
+            $raw     = (string) get_post_meta($id, 'event_start', true); // Y-m-d H:i:s
+            $ts      = $raw ? strtotime($raw) : false;
             $end_raw = trim((string) get_field('event_end', $id));
-            $details = trim((string) get_field('event_details', $id));
-            // Event photo: the Featured Image, falling back to the legacy
-            // event_image field so older events keep their picture.
             $thumb   = get_post_thumbnail_id($id);
             if (!$thumb) {
                 $legacy = get_field('event_image', $id);
                 if (is_array($legacy) && !empty($legacy['ID'])) { $thumb = (int) $legacy['ID']; }
                 elseif (is_numeric($legacy))                    { $thumb = (int) $legacy; }
             }
-            $when    = $start . ($end_raw !== '' ? ' to ' . esc_html($end_raw) : '');
-            echo '<article class="event-card">';
-            if ($thumb) echo '<div class="event-photo">' . wp_get_attachment_image($thumb, 'medium_large', false, array('alt' => get_the_title(), 'loading' => 'lazy')) . '</div>';
-            echo '<div class="event-body">';
-            if ($type !== '')    echo '<div class="eyebrow">' . esc_html($type) . '</div>';
-            echo '<' . $hlevel . ' class="event-title">' . esc_html(get_the_title()) . '</' . $hlevel . '>';
-            if ($when !== '')    echo '<div class="event-meta">' . wp_kses_post($when) . '</div>';
-            if ($details !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($details, 36)) . '</p>';
-            echo '</div></article>';
-        endwhile;
-        echo '</div>';
+            $events[] = array(
+                'id'      => $id,
+                'title'   => get_the_title($id),
+                'type'    => trim((string) get_field('event_type', $id)),
+                'ts'      => $ts,
+                'time'    => $ts ? date('g:i a', $ts) . ($end_raw !== '' ? ' to ' . $end_raw : '') : '',
+                'details' => trim((string) get_field('event_details', $id)),
+                'thumb'   => $thumb,
+            );
+        }
         wp_reset_postdata();
-    else :
-        echo '<p>No upcoming events right now. Call (831) 718-9122 or check our Facebook for dates.</p>';
-    endif;
+    }
+    return $events;
+}
+
+/**
+ * Render a set of events (an at-a-glance strip plus the card grid) to HTML.
+ * Shared by the [events] shortcode and the What's Happening page template.
+ *
+ * @param array  $events      From pomdr_collect_events().
+ * @param string $hlevel      Heading level for card titles (h2/h3/h4).
+ * @param bool   $show_glance Whether to print the condensed at-a-glance list.
+ * @param string $empty_msg   Message when there are no events in this set.
+ */
+function pomdr_render_events($events, $hlevel = 'h3', $show_glance = true, $empty_msg = '') {
+    $hlevel = in_array($hlevel, array('h2', 'h3', 'h4'), true) ? $hlevel : 'h3';
+    ob_start();
+    if ($events) {
+        // Quick view: every event at a glance (a condensed list, not a hover
+        // preview, so it works for keyboard and touch too).
+        if ($show_glance) {
+            echo '<div class="events-glance" aria-label="Upcoming events at a glance">';
+            foreach ($events as $ev) {
+                echo '<a class="glance-row" href="#event-' . (int) $ev['id'] . '">';
+                echo '<span class="glance-date">' . esc_html($ev['ts'] ? date('M j', $ev['ts']) : '') . '</span>';
+                echo '<span class="glance-title">' . esc_html($ev['title']) . '</span>';
+                if ($ev['time']) { echo '<span class="glance-time">' . esc_html($ev['time']) . '</span>'; }
+                echo '</a>';
+            }
+            echo '</div>';
+        }
+
+        // The cards: siblings of the dog cards (same radius, hover, hairline),
+        // with the date square from the homepage events band.
+        echo '<div class="events-grid">';
+        foreach ($events as $ev) {
+            echo '<article class="event-card" id="event-' . (int) $ev['id'] . '">';
+            if ($ev['thumb']) echo '<div class="event-photo">' . wp_get_attachment_image($ev['thumb'], 'medium_large', false, array('alt' => $ev['title'], 'loading' => 'lazy')) . '</div>';
+            echo '<div class="event-body">';
+            echo '<div class="event-when">';
+            echo '<div class="event-date-sq"><span class="month">' . esc_html($ev['ts'] ? date('M', $ev['ts']) : '') . '</span><span class="day">' . esc_html($ev['ts'] ? date('d', $ev['ts']) : '') . '</span></div>';
+            echo '<div class="event-when-text">';
+            if ($ev['type'] !== '') { echo '<div class="eyebrow event-type">' . esc_html($ev['type']) . '</div>'; }
+            if ($ev['time'])        { echo '<div class="event-meta">' . esc_html($ev['time']) . '</div>'; }
+            echo '</div></div>';
+            echo '<' . $hlevel . ' class="event-title">' . esc_html($ev['title']) . '</' . $hlevel . '>';
+            if ($ev['details'] !== '') echo '<p class="event-desc">' . esc_html(wp_trim_words($ev['details'], 36)) . '</p>';
+            echo '</div></article>';
+        }
+        echo '</div>';
+    } else {
+        echo '<p>' . esc_html($empty_msg !== '' ? $empty_msg : 'No upcoming events right now. Call (831) 718-9122 or check our Facebook for dates.') . '</p>';
+    }
     return ob_get_clean();
+}
+
+/**
+ * [events] shortcode: all upcoming types, glance + grid. Kept for any Divi page.
+ * Optional attribute: [events types="Adoption Event"] to limit the set.
+ */
+function events_shortcode($atts = array()) {
+    $atts  = shortcode_atts(array('hlevel' => 'h3', 'types' => '', 'glance' => '1', 'empty' => ''), $atts, 'events');
+    $types = array_filter(array_map('trim', explode(',', (string) $atts['types'])));
+    return pomdr_render_events(pomdr_collect_events($types), $atts['hlevel'], '0' !== (string) $atts['glance'], (string) $atts['empty']);
 }
 add_shortcode('events', 'events_shortcode');
 
@@ -831,22 +1026,31 @@ function pom_render_person_card($id) {
 }
 
 function pomdr_team_grid($group) {
+    // Query by group only. Passing meta_key => sort into the query inner-joins
+    // on the sort field and silently DROPS any team member whose sort was never
+    // filled in; it also string-sorts (1, 10, 2). Sort numerically in PHP
+    // instead, with unsorted members last (alphabetical among themselves).
     $q = new WP_Query(array(
         'post_type'      => 'team',
         'posts_per_page' => -1,
+        'fields'         => 'ids',
+        'orderby'        => 'title',
         'order'          => 'ASC',
-        'orderby'        => 'meta_value',
-        'meta_key'       => 'sort',
         'meta_query'     => array(array('key' => 'group', 'value' => $group, 'compare' => 'LIKE')),
     ));
-    ob_start();
-    if ($q->have_posts()) {
-        echo '<div class="team-grid">';
-        while ($q->have_posts()) { $q->the_post(); echo pom_render_person_card(get_the_ID()); }
-        echo '</div>';
-        wp_reset_postdata();
-    }
-    return ob_get_clean();
+    $ids = $q->posts;
+    usort($ids, function ($a, $b) {
+        $sa = get_post_meta($a, 'sort', true);
+        $sb = get_post_meta($b, 'sort', true);
+        $na = is_numeric($sa) ? (float) $sa : PHP_FLOAT_MAX;
+        $nb = is_numeric($sb) ? (float) $sb : PHP_FLOAT_MAX;
+        if ($na === $nb) { return strcasecmp(get_the_title($a), get_the_title($b)); }
+        return $na <=> $nb;
+    });
+    if (empty($ids)) { return ''; }
+    $out = '<div class="team-grid">';
+    foreach ($ids as $id) { $out .= pom_render_person_card($id); }
+    return $out . '</div>';
 }
 
 function pomdr_event_date($v) {
@@ -1098,37 +1302,10 @@ add_shortcode( 'acf_image', function( $atts ) {
     return $img_tag;
 });
 
-add_shortcode( 'acf_if', function( $atts, $content = null ) {
-    $a = shortcode_atts( array(
-        'field'    => '',
-        'operator' => '=',
-        'value'    => '',
-        'post_id'  => 0,
-    ), $atts, 'acf_if' );
-
-    if ( empty( $a['field'] ) ) return '';
-
-    if ( ! function_exists( 'get_field' ) ) return '';
-
-    $post_id = pom_acf_get_post_id_from_attr( $a );
-
-    $result = pom_acf_eval_condition( $a['field'], $a['operator'], $a['value'], $post_id );
-
-    // split content on [acf_else] if present
-    $true_part = $content;
-    $false_part = '';
-    if ( $content !== null && stripos( $content, '[acf_else]' ) !== false ) {
-        $parts = preg_split( '/\\[acf_else\\]/i', $content, 2 );
-        $true_part = isset( $parts[0] ) ? $parts[0] : '';
-        $false_part = isset( $parts[1] ) ? $parts[1] : '';
-    }
-
-    if ( $result ) {
-        return do_shortcode( $true_part );
-    } else {
-        return do_shortcode( $false_part );
-    }
-});
+/* Note: [acf_if] was registered twice (here and in the branching version
+   further down). WordPress silently uses the LAST registration, so this first,
+   simpler handler never ran. Removed 2026-07-07; the branching handler below
+   now also accepts operator= as an alias for op= so both syntaxes work. */
 
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -1477,10 +1654,14 @@ add_shortcode('acf_taxonomy', function($atts){
 
     foreach ((array)$terms as $term) {
         if (!is_object($term)) $term = get_term($term);
+        // A deleted or invalid term returns null/WP_Error; skip it rather than
+        // fataling the page (PHP 8 property access on null).
+        if (!$term instanceof WP_Term) { continue; }
 
         $name = $term->name;
         $slug = $term->slug;
         $link = get_term_link($term);
+        if (is_wp_error($link)) { $link = ''; }
 
         $tpl = str_replace('{name}', esc_html($name), $a['template']);
         $tpl = str_replace('{slug}', esc_html($slug), $tpl);
@@ -1677,11 +1858,14 @@ if ( ! function_exists( 'pom_acf_eval_cond' ) ) {
 
 add_shortcode( 'acf_if', function( $atts, $content = null ) {
     $a = shortcode_atts( array(
-        'field'   => '',
-        'post_id' => 0,
-        'op'      => '=',
-        'value'   => '',
+        'field'    => '',
+        'post_id'  => 0,
+        'op'       => '=',
+        'operator' => '',
+        'value'    => '',
     ), $atts, 'acf_if' );
+    // Accept operator= (the older syntax) as an alias for op=.
+    if ( '' !== $a['operator'] ) { $a['op'] = $a['operator']; }
 
     if ( empty( $a['field'] ) ) return '';
 
@@ -1917,8 +2101,10 @@ add_shortcode( 'acf_gallery_lightbox', function( $atts ) {
 
 function pom_enqueue_frontend_assets() {
     if ( is_singular( 'pets' ) ) {
-        wp_enqueue_style( 'fancybox-css', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css', array(), null );
-        wp_enqueue_script( 'fancybox-js', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js', array(), null, true );
+        // Vendored and pinned (5.0.36) so the dog-gallery lightbox does not
+        // depend on a CDN being up or on an unpinned "latest" release.
+        wp_enqueue_style( 'fancybox-css', get_stylesheet_directory_uri() . '/assets/vendor/fancybox.css', array(), '5.0.36' );
+        wp_enqueue_script( 'fancybox-js', get_stylesheet_directory_uri() . '/assets/vendor/fancybox.umd.js', array(), '5.0.36', true );
         $inline = "document.addEventListener('DOMContentLoaded', function(){ if(typeof Fancybox !== 'undefined'){ Fancybox.bind('[data-fancybox=\"gallery\"]', {}); }} );";
         wp_add_inline_script( 'fancybox-js', $inline );
     }
@@ -2096,3 +2282,21 @@ add_shortcode('promo_banner', 'pomdr_promo_banner_shortcode');
 
 require_once get_stylesheet_directory() . '/inc/chrome.php';
 require_once get_stylesheet_directory() . '/inc/enqueue.php';
+require_once get_stylesheet_directory() . '/inc/videos.php';
+require_once get_stylesheet_directory() . '/inc/post-types.php';
+require_once get_stylesheet_directory() . '/inc/native-gate.php';
+
+/**
+ * Accessibility: restore pinch-zoom (WCAG 2.2, SC 1.4.4 Resize Text).
+ * Divi hardcodes `maximum-scale=1.0, user-scalable=0` in its viewport meta,
+ * which stops people (older adopters especially) from zooming the page on a
+ * phone. Remove Divi's tag and emit a zoom-allowing one instead. The removal
+ * runs on `init` (after the parent theme has registered its hook), and our own
+ * meta is added at a late priority so it wins even if the removal ever no-ops.
+ */
+add_action( 'init', function () {
+	remove_action( 'wp_head', 'et_add_viewport_meta' );
+} );
+add_action( 'wp_head', function () {
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1">' . "\n";
+}, 99 );

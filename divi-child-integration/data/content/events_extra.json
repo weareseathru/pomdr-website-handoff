@@ -1,0 +1,40 @@
+{
+  "events": [
+    {
+      "title": "Pet Pals",
+      "date": "Sunday, August 23",
+      "time": "11 - 1:30pm",
+      "location": "3660 Soquel Drive, Soquel",
+      "details": "POMDR information table & adoptable dogs."
+    },
+    {
+      "title": "Pawsh Retreat at Chaminade Resort & Spa",
+      "date": "Sunday, August 30",
+      "time": "11 - 3:00pm",
+      "location": "One Chaminade Lane, Santa Cruz",
+      "details": "Join us for an afternoon of fun, sunshine, and dog-friendly activities at Chaminade Resort & Spa! We'll be there with a few of our adoptable dogs."
+    }
+  ],
+  "ticket_links": [
+    {
+      "event": "For the Love of Dogs (Sunday, September 27, 2026, Chaminade Resort & Spa, Santa Cruz)",
+      "text": "Get your tickets right here!",
+      "url": "https://paybee.io/quickpay.html?handle=pomdr&ppid=20#optionList"
+    },
+    {
+      "event": "Cork and Fork Wine Class & Tasting (Thursday, July 30, 2026, Capitola)",
+      "text": "Purchase Wine Class Tickets",
+      "url": "https://secure.lglforms.com/form_engine/s/3QI94qg-cetdBi5l5CGqPQ"
+    },
+    {
+      "event": "Cork and Fork Wine Class & Tasting raffle",
+      "text": "Additional raffle tickets are available for $10 each (3 for $25). Call Bob at (831) 477-9807 to purchase raffle tickets by phone.",
+      "url": "tel:+18314779807"
+    },
+    {
+      "event": "Paws & Prosecco at Patria (Sunday, July 26, 2026, Salinas)",
+      "text": "Make a Reservation Online",
+      "url": "https://www.opentable.com/r/patria-on-main-salinas?corrid=805033d0-198a-4f2f-b2c6-0df9e93ef4ef&avt=eyJ2IjoyLCJtIjowLCJwIjowLCJzIjowLCJuIjowfQ&p=2&sd=2025-12-09T19%3A00%3A00"
+    }
+  ]
+}

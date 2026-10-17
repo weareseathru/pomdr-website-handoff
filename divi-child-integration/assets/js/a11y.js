@@ -18,6 +18,10 @@
   if (window.__pomdrA11y) return;            // run once per page
   window.__pomdrA11y = true;
 
+  // Flag JS availability so CSS only hides .reveal content when this script
+  // will actually reveal it (progressive enhancement: no JS, no hidden text).
+  document.documentElement.classList.add("js");
+
   var STORAGE_KEY = "pomdr-a11y";
   var root = document.documentElement;
   var reduceMotion = window.matchMedia
@@ -99,11 +103,43 @@
       });
     }, { rootMargin: "0px 0px -10% 0px" });
     items.forEach(function (el) { io.observe(el); });
+
+    // Safety net: content must NEVER stay hidden. If anything goes wrong with
+    // the observer (or a future CSS change), every reveal is forced visible
+    // after a few seconds. The animation is decorative; the content is not.
+    setTimeout(function () {
+      items.forEach(function (el) { el.classList.add("in"); });
+    }, 4000);
+  }
+
+  /* ---- Deploy canary ---- */
+  // The design tokens stylesheet sets --pom-build. If it is missing, the
+  // design layer did not load (the silent failure mode of the 2026-09-01
+  // deploy). Logged-in staff get a visible banner; visitors only a console
+  // error, never UI.
+  function checkBuild() {
+    var v = "";
+    try {
+      v = getComputedStyle(document.documentElement)
+        .getPropertyValue("--pom-build").trim();
+    } catch (e) { return; }
+    if (v) return;
+    if (window.console && console.error) {
+      console.error("POMDR: design CSS not loaded (missing --pom-build). Theme deploy is likely incomplete.");
+    }
+    if (document.body && document.body.classList.contains("admin-bar")) {
+      var warn = document.createElement("div");
+      warn.setAttribute("role", "alert");
+      warn.style.cssText = "position:fixed;top:32px;left:0;right:0;z-index:99999;background:#a4372f;color:#fff;padding:10px 16px;font:700 15px/1.4 sans-serif;text-align:center;";
+      warn.textContent = "POMDR deploy check: the design stylesheets are not loading on this page. The theme deploy is likely incomplete. Only logged-in users see this message.";
+      document.body.appendChild(warn);
+    }
   }
 
   function start() {
     buildToggle();
     initReveal();
+    checkBuild();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", start);

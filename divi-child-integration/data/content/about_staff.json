@@ -1,0 +1,147 @@
+{
+  "office_staff": [
+    {
+      "name": "Carie Broecker",
+      "role": "Executive Director and Co-founder"
+    },
+    {
+      "name": "Cameron Donegan",
+      "role": "Development Director"
+    },
+    {
+      "name": "Allison McKee",
+      "role": "Executive Assistant, part-time"
+    },
+    {
+      "name": "Caitlin Lupien",
+      "role": "Operations Manager"
+    },
+    {
+      "name": "Andrew Zielinski",
+      "role": "Marketing and Communications Manager"
+    },
+    {
+      "name": "Shanel Parolini",
+      "role": "Helping Paw Manager"
+    },
+    {
+      "name": "Alejandra Raya",
+      "role": "Helping Paw Coordinator"
+    },
+    {
+      "name": "Nisha Addleman",
+      "role": "Behavior Coordinator"
+    },
+    {
+      "name": "Courtney Young",
+      "role": "Adoptions Coordinator"
+    },
+    {
+      "name": "Briana Ryan",
+      "role": "Volunteer Coordinator"
+    }
+  ],
+  "benefit_shop_staff": [
+    {
+      "name": "Carmelita Garcia",
+      "role": "Benefit Shop Manager"
+    }
+  ],
+  "clinic_staff": [
+    {
+      "name": "Dr. Erin Trannel",
+      "role": "Medical Director"
+    },
+    {
+      "name": "Dr. Shahla Dourod",
+      "role": "Veterinarian"
+    },
+    {
+      "name": "Kelly Fischer",
+      "role": "Clinic Manager"
+    },
+    {
+      "name": "Celina Arceo",
+      "role": "Head Registered Veterinary Technician"
+    },
+    {
+      "name": "Caite Jackson",
+      "role": "Veterinary Assistant, full-time"
+    },
+    {
+      "name": "Elisa Clay",
+      "role": "Veterinary Assistant, full-time"
+    },
+    {
+      "name": "Veron Yip",
+      "role": "Veterinary Assistant, full-time"
+    },
+    {
+      "name": "Toni Selby",
+      "role": "Receptionist, part-time"
+    }
+  ],
+  "board": [
+    {
+      "name": "Cathy Heape",
+      "role": "President"
+    },
+    {
+      "name": "Kim Bartholomay",
+      "role": "Vice-President"
+    },
+    {
+      "name": "Susan Ferriby",
+      "role": "Secretary/Treasurer"
+    },
+    {
+      "name": "Barbara Allen",
+      "role": "Board Member"
+    },
+    {
+      "name": "Dina Ruiz",
+      "role": "Board Member"
+    }
+  ],
+  "advisory_council": [
+    {
+      "name": "Monica Rua",
+      "role": "Co-founder/Non Profit Consultant"
+    },
+    {
+      "name": "Patrick Casey",
+      "role": "Legal Consultant"
+    },
+    {
+      "name": "Barbara De Groodt",
+      "role": "Dog Behavior Consultant"
+    }
+  ],
+  "volunteer_count_claim": "POMDR is also supported by a network of over 1500 volunteers who help with foster care, adoption events, transportation, office work, fundraising, and other tasks as they come up.",
+  "downloads": [
+    {
+      "label": "2025 Impact Report",
+      "url": "https://www.peaceofminddogrescue.org/downloads/POMDRImpactReport2025"
+    },
+    {
+      "label": "2024 Impact Report",
+      "url": "https://www.peaceofminddogrescue.org/downloads/POMDRImpactReport2024.pdf"
+    },
+    {
+      "label": "2023 Annual Report",
+      "url": "https://www.peaceofminddogrescue.org/downloads/POMDRAnnualReport2023.pdf"
+    },
+    {
+      "label": "2024 990 Form",
+      "url": "https://www.peaceofminddogrescue.org/downloads/POMDR990form2024.pdf"
+    },
+    {
+      "label": "2023 990 Form",
+      "url": "https://www.peaceofminddogrescue.org/downloads/POMDR990form2023.pdf"
+    },
+    {
+      "label": "2022 990 Form",
+      "url": "https://www.peaceofminddogrescue.org/downloads/POMDR990form2022.pdf"
+    }
+  ]
+}

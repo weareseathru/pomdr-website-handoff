@@ -74,10 +74,10 @@ hue.
 
 | Token name        | Hex        | Source                          | Use observed |
 |-------------------|------------|---------------------------------|--------------|
-| `--cream`         | `#FAF6F0`  | `pomdr.css:29`, `styles.css:20` | Default page background |
-| `--cream-2`       | `#F3ECDF`  | `pomdr.css:30`, `styles.css:21` | Pillars section background, photo placeholder |
+| `--cream`         | `#E8F2F6`  | theme token files | Default page background. LEADERSHIP SPEC 2026-07-09: the warm cream family was replaced by the brand light blue (docs/UI-UX-FIX-SPEC-2026-07-09.md); the var names were kept so every consumer updated at once. Was `#FAF6F0`. |
+| `--cream-2`       | `#D9E9F0`  | theme token files | Wells, photo frames, placeholder backgrounds. Was `#F3ECDF`. |
 | `--white`         | `#ffffff`  | `pomdr.css:31`, `styles.css:22` | Card surface, form surface |
-| `--line`          | `#e5ddd0`  | `pomdr.css:28`, `styles.css:19` | Card border, footer divider, dashed dividers |
+| `--line`          | `#cfe0e9`  | theme token files | Card border, footer divider, dashed dividers (cool hairline; was warm `#e5ddd0`) |
 
 ### 1.6 Inline-only colors (used in CSS but not tokenized)
 

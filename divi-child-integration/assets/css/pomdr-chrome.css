@@ -34,23 +34,25 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 .action-bar-tag {
   margin: 0; color: rgba(255, 255, 255, 0.93);
-  font-size: 16px; font-weight: 600; letter-spacing: 0.01em;
+  font-size: 21px; font-weight: 600; letter-spacing: 0.01em;
 }
 .action-bar-actions { display: flex; gap: 10px; flex-shrink: 0; }
 .ab-btn {
+  text-transform: none;
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 42px; padding: 8px 18px; border-radius: 999px;
-  font-weight: 700; font-size: 17px; line-height: 1; text-decoration: none;
+  font-weight: 700; font-size: 22px; line-height: 1; text-decoration: none;
   transition: transform 0.2s var(--ease), background 0.2s;
 }
-.ab-adopt { background: #fff; color: var(--blue-700); }
-.ab-donate { background: transparent; color: #fff; border: 2px solid #fff; }
-.ab-donate:hover { background: rgba(255, 255, 255, 0.15); }
-.ab-volunteer { background: var(--purple); color: #fff; }
+/* The action bar sits on the teal band (dark), so both buttons use the
+   white outline variant per the leadership contrast rule. Sentence case per
+   the 2026-08-01 benchmark (caps stay reserved for tiny labels). */
+.ab-adopt, .ab-volunteer { background: transparent; color: #fff; border: 2px solid #fff; }
+.ab-adopt:hover, .ab-volunteer:hover { background: #fff; color: var(--purple); }
 .ab-btn:hover { transform: translateY(-1px); }
 .ab-btn:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 
-/* ===== NAVIGATION (two-row, sits below the action bar) ===== */
+/* ===== NAVIGATION (single row of dropdowns, sits below the action bar) ===== */
 .nav {
   position: fixed; top: 50px; left: 0; right: 0;
   z-index: 100;
@@ -58,12 +60,15 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   transition: padding 0.3s var(--ease);
 }
 .nav.scrolled { padding: 8px 0; }
+/* The single-row nav needs more width than the content container (which is
+   width:80%): logo + seven items + Donate is about 1280px. */
+.nav > .container { width: min(1560px, calc(100% - 32px)); max-width: none; }
 
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 16px;
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -88,7 +93,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .logo-img { height: 52px; width: auto; display: block; transition: height 0.3s var(--ease); }
 .nav.scrolled .logo-img { height: 44px; }
 .logo-since {
-  font-size: 12px;
+  font-size: 18px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -98,36 +103,71 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   padding-left: 12px;
 }
 
-/* Centered brand tagline lockup (desktop only; hidden when space is tight) */
-.nav-tagline { flex: 0 0 auto; margin: 0 auto; text-align: center; padding: 0 16px; line-height: 1; }
+/* Brand tagline lockup: retired with the single-row nav (2026-07-23). The
+   seven dropdown items plus Donate use the full card width, so the tagline
+   no longer has room at any viewport. Markup stays for possible reuse. */
+.nav-tagline { display: none; }
 .nav-tagline-1 {
   display: block; font-family: var(--font-sans); font-style: italic; font-weight: 700;
-  font-size: 17px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
+  font-size: 22px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap;
 }
 .nav-tagline-2 { display: inline-flex; align-items: center; gap: 12px; margin-top: 5px; }
-.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 13px; color: var(--blue); }
+.nav-since { font-family: var(--font-sans); font-weight: 700; letter-spacing: 0.28em; font-size: 19px; color: var(--blue); }
 .nav-tagline .paw-badge { width: 19px; height: 19px; display: block; flex-shrink: 0; }
-@media (max-width: 1200px) { .nav-tagline { display: none; } }
 
-/* Two visible rows of menu items */
+/* Single row of menu items; dropdowns hold the depth (2026-07-23) */
 .nav-menu {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
 }
+.nav-row--main { display: flex; align-items: center; gap: 2px; }
+
+/* The primary Donate action: a solid blue block on the far right of the nav
+   card, stretching the height of both menu rows. AA contrast (white on
+   --blue-700, about 6:1). */
+.nav-donate {
+  flex-shrink: 0; /* never pushed out of or squeezed off the white card */
+  text-transform: none;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  margin-left: 12px;
+  padding: 0 28px;
+  background: var(--blue-700);
+  color: #fff !important;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border-radius: 18px;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.nav-donate:hover { background: var(--blue-900); transform: translateY(-1px); }
+.nav-donate:focus-visible { outline: var(--focus-w) solid var(--focus-color); outline-offset: 2px; }
 .nav-row {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.nav-row--primary .nav-item > a,
-.nav-row--primary .nav-item > button {
-  font-size: 18px; font-weight: 700; color: var(--ink);
+.nav-row--main .nav-item > a {
+  font-size: 22px; font-weight: 700; color: var(--ink); padding: 12px 14px;
 }
-.nav-row--secondary .nav-item > a,
-.nav-row--secondary .nav-item > button {
-  font-size: 15px; font-weight: 500; color: var(--ink-3); padding: 6px 12px;
+.nav-row--main .nav-item > a:hover { color: var(--blue-text); }
+
+/* Slim tier: below 1500px the full-size row would collide with the logo,
+   so tighten type and padding until the 1200px hamburger takes over. */
+@media (max-width: 1500px) {
+  .nav > .container { padding: 0 20px; }
+  .logo-img { height: 44px; }
+  .nav-inner { padding: 12px 14px 12px 20px; gap: 12px; }
+  .nav-row--main .nav-item > a { font-size: 20px; padding: 11px 8px; }
+  /* 24px min touch target (WCAG 2.2 SC 2.5.8); negative margin keeps the same
+     net footprint (24 - 8 = 16px, as the old 20 - 4) so the single row holds. */
+  .nav-row--main .nav-item > button.nav-caret { width: 24px; margin-left: -8px; }
+  .nav-donate { padding: 0 16px; font-size: 23px; }
 }
 
 /* legacy single-row container (kept harmless) */
@@ -150,7 +190,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   gap: 5px;
   padding: 9px 14px;
   border-radius: 999px;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--ink-2);
   background: none;
@@ -246,7 +286,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   gap: 10px;
   padding: 10px 14px;
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 500;
   color: var(--ink-2);
   text-decoration: none;
@@ -259,7 +299,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 }
 
 .dd-section {
-  font-size: 13px;
+  font-size: 19px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -295,7 +335,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   border-radius: 999px !important;
   background: var(--blue-700) !important;
   color: white !important;
-  font-size: 16px !important;
+  font-size: 21px !important;
   font-weight: 600 !important;
   box-shadow: 0 6px 16px -4px rgba(0, 139, 176, 0.4);
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
@@ -357,7 +397,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 .nav-mobile a {
   display: flex; align-items: center; gap: 10px;
   padding: 13px 16px; border-radius: 14px; min-height: 48px;
-  font-size: 18px; font-weight: 600; color: var(--ink);
+  font-size: 23px; font-weight: 600; color: var(--ink);
   text-decoration: none;
   transition: background .22s var(--ease), color .22s var(--ease), transform .12s var(--ease), padding-left .22s var(--ease);
 }
@@ -387,9 +427,12 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
   .nav-mobile a { transition: background .15s, color .15s; }
 }
 
-/* Mobile: collapse nav links into drawer */
-@media (max-width: 960px) {
+/* Mobile: collapse nav links into the drawer. Breakpoint raised to 1260px so
+   the single-row nav (logo + seven items + Donate, at the larger text) only
+   shows when it comfortably fits, and the first item can never crowd the logo. */
+@media (max-width: 1340px) {
   .nav-menu { display: none; }
+  .nav-donate { display: none; }
   .nav-toggle { display: inline-flex; }
   .action-bar-tag { display: none; }
   .action-bar-inner { justify-content: center; }
@@ -400,7 +443,7 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
 /* Very narrow phones: shrink the 3 action-bar buttons so they never overflow */
 @media (max-width: 360px) {
   .action-bar-actions { gap: 6px; }
-  .ab-btn { padding: 7px 12px; font-size: 15px; min-height: 38px; }
+  .ab-btn { padding: 7px 12px; font-size: 21px; min-height: 38px; }
 }
 @media (max-width: 540px) {
   .nav-cta { display: none !important; }
@@ -428,29 +471,29 @@ main h1, main h2, main h3, main h4, main h5, main h6 { color: inherit; }
    page: brand block beside three link columns, then a bottom bar. The layout
    CSS lives here (not in homepage-only CSS) so sub-page footers never collapse
    to a tall vertical stack. ===== */
-.footer { background: var(--blue-900); color: #fff; padding: 84px 0 36px; }
+.footer { background: var(--blue-900); color: #fff; padding: 52px 0 28px; }
 .footer-main {
   display: grid; grid-template-columns: 1.5fr 2.4fr; gap: 64px;
-  padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 .footer-logo { display: inline-block; margin-bottom: 20px; }
 .footer-logo-img { height: 52px; width: auto; display: block; filter: brightness(0) invert(1); }
-.footer-tagline { font-family: var(--font-serif); font-size: 24px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; }
-.footer-mission { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.86); margin: 0 0 22px; max-width: 40ch; }
-.footer-contact { display: flex; flex-direction: column; gap: 7px; font-size: 18px; }
-.footer-contact a { color: var(--blue-200); }
+.footer-tagline { font-family: var(--font-serif); font-size: 29px; font-weight: 400; line-height: 1.25; letter-spacing: -0.01em; color: #fff; margin: 0 0 12px; }
+.footer-mission { font-size: 22px; line-height: 1.65; color: rgba(255,255,255,0.86); margin: 0 0 22px; max-width: 40ch; }
+.footer-contact { display: flex; flex-direction: column; gap: 7px; font-size: 23px; }
+.footer-contact a { color: var(--blue-100); } /* AA contrast on --blue-900 footer */
 .footer-contact a:hover { color: #fff; }
 .footer-contact span { color: rgba(255,255,255,0.86); }
 .footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.footer-col h2 { font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--blue-200); margin: 0 0 18px; }
+.footer-col h2 { font-size: 21px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--blue-100); margin: 0 0 18px; } /* AA contrast on --blue-900 footer */
 .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-.footer-col a { color: rgba(255,255,255,0.94); font-size: 18px; font-weight: 500; }
+.footer-col a { color: rgba(255,255,255,0.94); font-size: 23px; font-weight: 500; }
 .footer-col a:hover { color: #fff; text-decoration: underline; }
 .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px 28px; flex-wrap: wrap; padding-top: 26px; }
-.footer-legal { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 17px; color: rgba(255,255,255,0.78); }
+.footer-legal { display: flex; gap: 8px 18px; flex-wrap: wrap; font-size: 22px; color: rgba(255,255,255,0.92); }
 .footer-bottom-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
 .footer-legal-links { display: flex; gap: 18px; }
-.footer-legal-links a { font-size: 17px; color: rgba(255,255,255,0.78); }
+.footer-legal-links a { font-size: 22px; color: rgba(255,255,255,0.92); }
 .footer-legal-links a:hover { color: #fff; }
 .socials { display: flex; gap: 10px; }
 .socials a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.1); display: grid; place-items: center; transition: background 0.2s, transform 0.2s; }
@@ -472,5 +515,73 @@ body #main-content .container { padding-top: 0 !important; }
 /* Donate menu item: a dark-blue oval outline so it stands out in the nav. The
    nav link is already a pill (border-radius 999px + padding), so a border reads
    as an oval; box-sizing:border-box keeps it from shifting the row. */
-.nav-item--donate > a { border: 2px solid var(--blue-700); color: var(--blue-700) !important; font-weight: 700; }
+/* The Donate nav item is now the standalone .nav-donate block (solid blue, double height). */
 .nav-item--donate:hover > a, .nav-item--donate > a:hover { background: var(--blue-700) !important; color: #fff !important; }
+
+/* ===== NAV DROPDOWNS (2026-07-21): click-to-open panels of existing pages =====
+   Selectors are written as .nav-item > button.nav-caret because the generic
+   nav pill rule (.nav-item > a, .nav-item > button) otherwise outranks a bare
+   .nav-caret and its 9px 14px padding collapses the 26px button's content box
+   to zero, hiding the chevron. */
+.nav-item.has-drop { display: inline-flex; align-items: center; }
+.nav-item > button.nav-caret {
+  display: inline-grid; place-items: center;
+  width: 26px; height: 32px; padding: 0; margin-left: -6px;
+  border: 0; background: transparent;
+  color: var(--ink-3); border-radius: 8px; cursor: pointer;
+  transition: transform 0.2s var(--ease), color 0.2s;
+}
+.nav-item > button.nav-caret svg { width: 15px; height: 15px; }
+.nav-item > button.nav-caret:hover { color: var(--blue-text); }
+.nav-item > button.nav-caret[aria-expanded="true"] { transform: rotate(180deg); color: var(--blue-text); }
+.nav-item > button.nav-caret:focus-visible { outline: 3px solid var(--focus-color); outline-offset: 1px; }
+.nav-drop {
+  position: absolute; top: calc(100% + 10px); left: 0; z-index: 200;
+  min-width: 250px; padding: 10px;
+  background: #fff; border: 1px solid var(--line); border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  /* The consolidated Dogs menu is tall; never let it run off the viewport. */
+  max-height: calc(100vh - 250px); overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.nav-drop[hidden] { display: none; }
+.nav-drop a {
+  display: flex; align-items: center; min-height: 44px; padding: 8px 14px;
+  border-radius: 10px; font-size: 22px; font-weight: 600; color: var(--ink-2);
+  text-decoration: none; white-space: nowrap;
+}
+.nav-drop a:hover { background: var(--blue-50); color: var(--blue-text); }
+.nav-drop a:focus-visible { outline: 3px solid var(--focus-color); outline-offset: -3px; }
+/* Right-edge items must not overflow the viewport */
+.nav-row--main .nav-item:nth-last-child(-n+2) .nav-drop { left: auto; right: 0; }
+.nav-mobile .m-top { font-weight: 700; }
+.nav-mobile .m-sub { padding-left: 34px; font-size: 21px; color: var(--ink-2); }
+
+/* Section headers inside the consolidated dropdowns (benchmark 2026-08-01):
+   small caps labels that group Adopt / Foster / Surrender within one menu. */
+.nav-drop .dd-section {
+  display: block;
+  font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-weight: 700; color: var(--ink-3);
+  padding: 12px 14px 4px;
+}
+.nav-drop .dd-section:not(:first-child) { border-top: 1px solid var(--line); margin-top: 6px; }
+
+/* Two-column dropdown panels (Dogs, About): each column is a .dd-col. */
+.nav-drop--wide { flex-direction: row; gap: 4px; }
+.nav-drop--wide .dd-col { display: flex; flex-direction: column; min-width: 250px; }
+.nav-drop--wide .dd-col + .dd-col { border-left: 1px solid var(--line); padding-left: 4px; }
+/* Columns reset the header divider logic (each column's first header is flush). */
+.nav-drop--wide .dd-col .dd-section:first-child { border-top: none; margin-top: 0; }
+/* Menus near the right edge open right-aligned so wide panels stay on screen. */
+.nav-row--main .nav-item:last-child .nav-drop { left: auto; right: 0; }
+
+
+/* Compact footer (2026-08-01): brand and links share one band, contact runs
+   horizontally below, everything tighter vertically. */
+.footer-contact--row {
+  flex-direction: row; flex-wrap: wrap; align-items: center;
+  gap: 10px 44px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}

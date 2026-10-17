@@ -7,30 +7,40 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:8px;}
 .reason-card{background:#fff;border-radius:var(--radius-lg);padding:28px;border:1px solid var(--line);transition:all .35s var(--ease);}
 .reason-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.reason-card .num{font-family:var(--font-serif);font-size:34px;font-weight:300;color:var(--blue);line-height:1;margin-bottom:14px;}
-.reason-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
-.reason-card p{font-size:17px;color:var(--ink-2);margin:0;}
+.reason-card .num{font-family:var(--font-serif);font-size: 39px;font-weight:300;color:var(--blue);line-height:1;margin-bottom:14px;}
+.reason-card h3{font-family:var(--font-serif);font-size: 27px;font-weight:500;margin:0 0 8px;}
+.reason-card p{font-size: 22px;color:var(--ink-2);margin:0;}
 @media(max-width:900px){.reasons-grid{grid-template-columns:1fr;}}
 .twocol{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
-.twocol p{font-size:17px;color:var(--ink-2);margin:0 0 18px;}
+.twocol p{font-size: 22px;color:var(--ink-2);margin:0 0 18px;}
 .twocol h2{font-family:var(--font-serif);font-size:clamp(28px,3.4vw,44px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;}
 .twocol h2 em{font-style:italic;color:var(--purple);}
 @media(max-width:800px){.twocol{grid-template-columns:1fr;gap:32px;}}
 .myth-list{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
 .myth-list li{list-style:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
-.myth-list strong{display:block;font-size:18px;color:var(--ink);margin-bottom:6px;font-weight:600;}
-.myth-list span{display:block;font-size:17px;color:var(--ink-2);}
+.myth-list strong{display:block;font-size: 23px;color:var(--ink);margin-bottom:6px;font-weight:600;}
+.myth-list span{display:block;font-size: 22px;color:var(--ink-2);}
 </style>
 <main id="main-content">
 
 <header class="page-header">
   <div class="container">
+    <div class="ph-split">
+      <div class="ph-text">
     <h1 class="page-headline">Why Senior Dogs</h1>
     <p class="page-narrative">The best dogs are sometimes the <em>oldest</em>.</p>
     <p class="page-lead">Peace of Mind Dog Rescue exists for the dogs other shelters overlook, the gray-muzzled, the slow-walking, the deeply loyal. Here is why a senior dog may be the right dog, and why supporting them matters.</p>
     <div class="page-cta">
       <a href="/adopt/" class="btn btn-primary">Adopt a senior dog</a>
       <a href="/foster-needs/" class="btn btn-outline">Foster a senior dog</a>
+    </div>
+      </div>
+      <div class="ph-media">
+        <picture>
+          <source type="image/webp" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog9.webp">
+          <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dog9.jpeg" alt="A gray-muzzled senior dog resting at home">
+        </picture>
+      </div>
     </div>
   </div>
 </header>
@@ -109,9 +119,51 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <a href="/foster-needs/" class="btn btn-outline">Foster a senior dog</a>
       <a href="/donate/" class="btn btn-outline">Support our work</a>
     </div>
-    <p style="margin-top:20px;font-size:17px;color:var(--ink-2);">Questions? Call <a href="tel:8317189122" style="color:var(--blue-700);font-weight:600;">(831) 718-9122</a> or email <a href="mailto:info@pomdr.org" style="color:var(--blue-700);font-weight:600;">info@pomdr.org</a>.</p>
+    <p style="margin-top:20px;font-size: 22px;color:var(--ink-2);">Questions? Call <a href="tel:8317189122" style="color:var(--blue-700);font-weight:600;">(831) 718-9122</a> or email <a href="mailto:info@pomdr.org" style="color:var(--blue-700);font-weight:600;">info@pomdr.org</a>.</p>
   </div>
 </section>
+
+
+<section class="section" style="background:var(--cream-2)">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow purple">From Real Adopters</span>
+      <h2 class="section-title">They said it <em>best.</em></h2>
+    </div>
+    <div class="why-quotes">
+      <figure class="why-quote">
+        <blockquote>Getting to watch an animal go from neglected and…just plain sad to enjoying his new life is just incredibly rewarding in a way that’s very different from raising a puppy and molding him in your own image.</blockquote>
+        <figcaption>Wes, IndefinitelyWild.Gizmodo.com</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>They appreciate the smallest gestures--cuddles, a nap on the bed, a brisk walk--because they had to ‘go without’ at some point. It makes them, and more importantly us humans, appreciate every little thing, a bit more!</blockquote>
+        <figcaption>Dina Eastwood, POMDR Adopter & Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>Sasha was the first senior dog that I adopted. Though I had fostered many dogs before her, Sasha chose me. While I thought I might get 4-5 years with her, she is still healthy and happy over 5 years later. Having a senior dog makes me cherish the time that I have with my pets even more, knowing that our time together is limited.</blockquote>
+        <figcaption>Christine D., POMDR Adopter & Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>Senior dogs have more ‘life experiences under their collar,’ and because of that they are more appreciative of having a loving forever home. I have adopted many, and their wisdom and love has enhanced my life in many ways.</blockquote>
+        <figcaption>Linda L., POMDR Adopter & Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>Senior dogs are usually easier to bring in to your home. They are potty trained and [it’s] so nice to have another old lady to keep me company.</blockquote>
+        <figcaption>Sue C., POMDR Foster Volunteer</figcaption>
+      </figure>
+      <figure class="why-quote">
+        <blockquote>I adopted Disney aka Joe and all I can say is he is the best thing that has happened to me in a long time. Everything you said about older dogs is true: they are pretty much trained when you get them and he is been such a wonderful addition to my life and even though I&#039;ve had him a little over two months he has become my best little buddy and we are so bonded you would not believe it. So I want everybody out there to know this and to give these senior dogs a home. I will be forever grateful!</blockquote>
+        <figcaption>Sharon S., POMDR Adopter</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<style>
+.why-quotes { columns: 2 380px; column-gap: 24px; }
+.why-quote { break-inside: avoid; margin: 0 0 24px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; }
+.why-quote blockquote { margin: 0 0 12px; font-size: 22px; line-height: 1.65; color: var(--ink-2); }
+.why-quote figcaption { font-weight: 700; font-size: 21px; }
+</style>
 
 </main>
 <?php get_footer();

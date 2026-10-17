@@ -1,0 +1,3 @@
+== 3. REST namespaces (active plugin surface) ==
+namespaces: ['oembed/1.0', 'redirection/v1', 'ai1wm/v1', 'divi/v1', 'mcp', 'wp/v2', 'wp-site-health/v1', 'wp-block-editor/v1', 'wp-abilities/v1']
+generator hidden

@@ -1,11 +1,16 @@
 <?php
-/** Template for the Volunteer Application page (WP slug: volunteer-application). Ports prototype volunteer-application.html. */
+/**
+ * Template for the Volunteer Application page (WP slug: volunteer-application).
+ * Embeds the live Little Green Light (LGL) volunteer application form. The form
+ * ID was verified 2026-07-07 by reading the iframe on the live page
+ * (peaceofminddogrescue.org/POMDRVolunteerApplication.php).
+ */
 get_header();
-$img = get_stylesheet_directory_uri() . "/assets/images";
+
+$lgl_form_id = 'HsUdXNpwCEoU8Kc9e_H6Hw'; // POMDR volunteer application form
+$iframe_src  = 'https://secure.lglforms.com/form_engine/s/' . $lgl_form_id;
 ?>
 <main id="main-content">
-
-<main id="main">
 
 <header class="page-header">
   <div class="container">
@@ -16,22 +21,18 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 </header>
 
 <section class="section">
-  <div class="container" style="max-width:760px">
-    <div class="card" style="padding:32px">
-      <p style="margin:0 0 24px;color:var(--ink-3);font-size:15px">The volunteer application is hosted by Little Green Light. The embedded form below collects your details directly into our volunteer database.</p>
-      <div style="aspect-ratio:3/4;background:var(--cream-2);border-radius:var(--radius);display:grid;place-items:center;color:var(--ink-3);text-align:center;padding:24px">
-        <div>
-          <p style="margin:0 0 12px;font-family:var(--font-serif);font-size:24px;color:var(--ink)">LGL volunteer form embed</p>
-          <p style="margin:0;font-size:16px">Wired live with the WordPress build via the LGL Forms iframe. Form ID: utzjcNEZaqAcJk3QURlQmw.</p>
-        </div>
-      </div>
-    </div>
+  <div class="container" style="max-width:820px">
+    <iframe id="volunteer-iframe"
+            src="<?php echo esc_url( $iframe_src ); ?>"
+            title="POMDR volunteer application"
+            width="100%" height="1600"
+            style="border:0;max-width:760px;margin:0 auto;display:block;background:#fff;border-radius:14px;"></iframe>
+    <noscript><p>To apply, visit <a href="<?php echo esc_url( $iframe_src ); ?>">our volunteer application form</a>.</p></noscript>
 
-    <p style="margin-top:32px;color:var(--ink-3);font-size:15px">Trouble with the form? Email <a href="mailto:info@pomdr.org" style="color:var(--blue)">info@pomdr.org</a> or call (831) 718-9122.</p>
+    <p style="margin-top:32px;color:var(--ink-3);font-size: 21px">Trouble with the form? Email <a href="mailto:info@pomdr.org" style="color:var(--blue-text)">info@pomdr.org</a> or call (831) 718-9122.</p>
   </div>
 </section>
 
 </main>
-
-</main>
+<script src="https://secure.lglforms.com/form_engine/s/tfs_iframe.js"></script>
 <?php get_footer();

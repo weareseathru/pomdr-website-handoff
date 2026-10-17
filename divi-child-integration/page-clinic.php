@@ -11,16 +11,16 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .info-card{background:#fff;border-radius:var(--radius-lg);padding:28px;border:1px solid var(--line);}
 .info-card .info-icon{width:48px;height:48px;border-radius:15px;background:var(--blue-50);display:grid;place-items:center;color:var(--blue);margin-bottom:16px;}
 .info-card .info-icon svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;}
-.info-card h3{font-family:var(--font-serif);font-size:22px;font-weight:500;margin:0 0 8px;}
-.info-card p{font-size:16px;color:var(--ink-2);margin:0;line-height:1.6;}
+.info-card h3{font-family:var(--font-serif);font-size: 27px;font-weight:500;margin:0 0 8px;}
+.info-card p{font-size: 21px;color:var(--ink-2);margin:0;line-height:1.6;}
 .info-card a{color:var(--blue-700);font-weight:600;}
 @media(max-width:820px){.info-grid{grid-template-columns:1fr;}}
 /* SERVICES */
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px;}
 .svc-card{background:#fff;border-radius:var(--radius-lg);padding:26px;border:1px solid var(--line);transition:all .35s var(--ease);}
 .svc-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.svc-card h3{font-family:var(--font-serif);font-size:20px;font-weight:500;margin:0 0 8px;}
-.svc-card p{font-size:16px;color:var(--ink-2);margin:0;line-height:1.6;}
+.svc-card h3{font-family:var(--font-serif);font-size: 25px;font-weight:500;margin:0 0 8px;}
+.svc-card p{font-size: 21px;color:var(--ink-2);margin:0;line-height:1.6;}
 @media(max-width:700px){.svc-grid{grid-template-columns:1fr;}}
 /* MISSION */
 .mission-band{background:var(--purple-50);padding:88px 0;}
@@ -32,7 +32,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 @media(max-width:860px){.mission-grid{grid-template-columns:1fr;gap:28px;}}
 .mission-band h2{font-family:var(--font-serif);font-size:clamp(28px,3.5vw,46px);font-weight:300;letter-spacing:-.02em;margin:10px 0 18px;color:var(--purple);}
 .mission-band h2 em{font-style:italic;color:var(--purple);}
-.mission-band p{font-size:18px;color:var(--ink-2);margin:0 0 18px;line-height:1.7;}
+.mission-band p{font-size: 23px;color:var(--ink-2);margin:0 0 18px;line-height:1.7;}
 .cta-strip{padding:72px 0;background:var(--blue-50);}
 </style>
 <main id="main-content">
@@ -138,5 +138,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
   </div>
 </section>
+
+<section class="section" id="team">
+  <div class="container">
+    <span class="eyebrow purple">Our team</span>
+    <h2 class="section-title">The people you will <em>meet</em>.</h2>
+    <p class="section-lead">The veterinarians and technicians who keep our dogs healthy, from intake exams to dental work.</p>
+    <?php echo do_shortcode('[clinic_staff]'); ?>
+  </div>
+</section>
+
 </main>
 <?php get_footer();

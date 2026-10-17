@@ -1,0 +1,354 @@
+
+<html>
+
+
+<head>
+<title>POMDR: Zephyr (was Sonny)</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Peace of Mind Dog Rescue is dedicated to finding new loving homes for dogs whose guardians can no longer care for them due to illness, death, or other challenging circumstances, and to finding homes for senior dogs in animal shelters."><meta name="keywords" content="dog rescue, senior dogs, guardians, no longer care, find new homes, hospice, animal"><link rel="stylesheet" type="text/css" href="pomdr.css?1717082828" /><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"><style>
+	#photos_and_captions {
+		text-align:center;
+	}
+	
+	.photo_and_caption {
+		display:inline-block;
+		padding-top:0.5em;
+		max-width:100%;
+		vertical-align:middle;
+	}
+	
+	.fixed-aspect-ratio-img-wrapper {
+		position:relative;
+		padding-bottom: 75%;
+	}
+
+	.fixed-aspect-ratio-img-wrapper > div {
+		position:absolute;
+		top:0px;
+		left:0px;
+		bottom:0px;
+		right:0px;
+	}
+	
+	.fixed-aspect-ratio-img-wrapper img {
+		max-height:100%;
+	}
+	
+	.caption {
+		padding:0.3em 0em;
+	}
+	
+	#photos_and_captions input {
+		display:none;
+	}
+	
+	#photos_and_captions input + div.photo_and_caption {
+		display:none;
+	}
+	
+	#photos_and_captions input:checked + div.photo_and_caption {
+		display:inline-block;
+	}
+	
+	#thumbnails {
+		padding-top:0.5em;
+		text-align:center;
+		max-width:608px;
+		margin: 0em auto;
+	}
+	
+	a#dogVideo {
+		position:relative; /* so play icon can be positioned over it */
+	}
+	
+	a#dogVideo > img:first-child {
+		opacity:0.3;
+	}
+	
+	#dogVideoPlayIcon {
+		position:absolute;
+		top:3%;
+		left:20%;
+		width:60%;
+	}
+	
+	label.thumbnail, a#dogVideo {
+		display:inline-block;
+		cursor:pointer;
+		padding:0em 0.25em;
+		vertical-align:middle;
+	}
+	
+	#thumbnails.upToFiveSlots label.landscapeThumbnail, #thumbnails.upToFiveSlots #dogVideo {
+		width:20%;
+	}
+	
+	#thumbnails.upToFiveSlots label.portraitThumbnail {
+		width:15%;
+	}
+	
+	#thumbnails.sixSlots label.landscapeThumbnail, #thumbnails.sixSlots #dogVideo {
+		width:16.666666666666667%;
+	}
+	
+	#thumbnails.sixSlots label.portraitThumbnail {
+		width:12.5%;
+	}
+	
+	.selectedThumbnail {
+		opacity:0.5;
+	}
+	
+	.nonSelectedThumbnail {
+		opacity:1.0;
+	}
+	
+	.dogInfo {
+		margin-top:0.5em;
+		margin-bottom:1em;
+		text-align:center;
+		font-size:1.142857142857143em; /* 16 / 14 */
+	}
+
+	.dogInfo .highlightedStatus {
+		font-size:0.875em; /* 14 / 16 */
+		margin-top:0.25em;
+	}
+	
+	.dogDescriptionAndButtons {
+		max-width:600px;
+		margin: 0px auto;
+	}
+
+	.applicationPrompt {
+		margin-top:1em;
+	}
+	
+	div.sponsored {
+		margin-top:1em;
+	}
+	
+	span.sponsoredByPrompt {
+		font-weight:bold;
+	}
+	
+	span.sponsoredByNames {
+	}
+	
+	div.centeredButtonsBox {
+		text-align:center;
+		margin:1em 0em;
+	}
+	
+	div.centeredButtonsBox .blueRoundButton {
+		margin:0.5em 0.5em;
+	}
+	
+	#adoptButton {
+		/* Bit of a hack to make Adopt button about the same width as Sponsor button */
+		padding-left:1em;
+		padding-right:1em;
+	}
+	
+	div.wasAdoptedProclamation {
+		margin-top:1em;
+		font-size:1.142857142857143em; /* 16 / 14 */
+		font-weight:bold;
+	}
+	
+	div.statusExplanation {
+		margin-top:1em;
+	}
+
+@media only screen and (min-width: 600px) {
+	#dogVideoPlayIcon {
+		top:8%; /* don't know why this needs to be different at different widths, but
+		it looks bad on the phone at this percentage */
+	}
+}
+
+</style>
+
+<script type="text/javascript">
+	function markActiveThumbnail() {
+		var activeThumbnailIndex = 1;
+		
+		var imageRadioButtons = document.getElementsByName('imagesGroup');
+		var selectedImage = "";
+		for (var i = 0; i < imageRadioButtons.length; i++){
+			if (imageRadioButtons[i].checked){
+				selectedImage = imageRadioButtons[i].id;
+				break;
+			}
+		}
+	
+		// bail out if no selected image
+		if (!selectedImage.length)
+			return;
+	
+		// convert "imagen" type name to "n"
+		var thumbnailIndexToHighlight = selectedImage.replace("image", "");
+		
+		for (var i = 0; i < 5; ++i) {
+			var thumbnailID = "thumbnail" + i;
+			var thumbnail = document.getElementById(thumbnailID);
+			if (!thumbnail)
+				continue;
+				
+			if (i == thumbnailIndexToHighlight) {
+				thumbnail.className = "selectedThumbnail";
+			} else {
+				thumbnail.className = "nonSelectedThumbnail";
+			}
+		}
+	}
+</script>
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.pomdr.org/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body onload="markActiveThumbnail()">
+<div id="container">
+	
+		<div id="POMDRHeader">
+			<a href="index.php"><img id="headerLogo"" src="images/header/POMDR_logo_horizontal.png" alt="Peace of Mind Logo" /></a><img id="headerTagline" src="images/header/POMDR_logo_tagline.png" alt="Peace of Mind Logo" />
+			<div id="headerDonateButtonContainer">
+				<a id="headerDonateButton" class="blueGradientButton" href="donateoverview.html">Donate</a>
+			</div>
+		</div>
+	<div class="contentsRow">
+
+	  <div id="left-sidebar-nav-menu">
+	  <div class="nav-menu-background">
+	<div class="nav-menu-social-media-images">
+      <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/instagram_white_circle.png"></a>
+      <a href="https://www.facebook.com/POMDR/" target="_blank"><img class="social-media-image" src="images/misc/social/facebook_white_circle.png"></a>
+      <a href="https://www.tiktok.com/@peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/tiktok_white_circle.png"></a>
+      <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank"><img class="social-media-image" src="images/misc/social/youtube_white_circle.png"></a>
+      <a href="https://www.linkedin.com/company/peace-of-mind-dog-rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/linkedin_white_circle.png"></a>
+	</div>
+    <div class="nav-menu-links">
+		<a href="index.php" >Home</a>
+		<a href="aboutus.html" >About Us</a>
+		<a href="adopt.php" >Adoptable Dogs</a>
+		<a href="donateoverview.html" >Ways to Give</a>
+		<a href="volunteer.html" >Volunteer</a>
+		<a href="fosterneeds.html" >Foster Needs</a>
+		<a href="benefitshop.html" >Benefit Shop</a>
+		<a href="news.html" >What&rsquo;s Happening</a>
+		<a href="adoptionevents.php" >Adoption Events</a>
+		<a href="helpplacingdog.html" >Placing Your Dog</a>
+		<a href="lifetimecare.html" >Lifetime Care</a>
+		<a href="helpingpaw.html" >Helping Paw</a>
+		<a href="resources.html" >Resources</a>
+		<a href="inthemedia.html" >In the Media</a>
+		<a href="tributedonations.php" >Tribute Donations</a>
+		<a href="thankyou.html" >Thank You</a>
+		<a href="testimonials.php" >Testimonials</a>
+		<a href="POMDRMailingList.php" >Mailing List</a>
+		<a href="jobs.html" >Job Openings</a>
+		</div>
+  </div>
+  </div>
+  <input class="full-width-nav-menu-state" id="full-width-nav-menu-checkbox" type="checkbox" />
+  <label id="hamburger" for="full-width-nav-menu-checkbox">
+  	<div class="spinning-hamburger-line diagonal part-1"></div>
+  	<div class="spinning-hamburger-line horizontal"></div>
+  	<div class="spinning-hamburger-line diagonal part-2"></div>
+  </label>
+  <div id="full-width-nav-menu">
+  	<div id="full-width-nav-menu-header" class="header">
+<a href="index.php"><img class="logo" src="images/header/POMDR_logo_horizontal.png" alt="Peace of Mind Logo" /></a>  	</div>
+	  <div class="nav-menu-background">
+    <div class="nav-menu-links">
+		<a href="index.php" >Home</a>
+		<a href="aboutus.html" >About Us</a>
+		<a href="adopt.php" >Adoptable Dogs</a>
+		<a href="donateoverview.html" >Ways to Give</a>
+		<a href="volunteer.html" >Volunteer</a>
+		<a href="fosterneeds.html" >Foster Needs</a>
+		<a href="benefitshop.html" >Benefit Shop</a>
+		<a href="news.html" >What&rsquo;s Happening</a>
+		<a href="adoptionevents.php" >Adoption Events</a>
+		<a href="helpplacingdog.html" >Placing Your Dog</a>
+	  </div><div class="nav-menu-links">
+		<a href="lifetimecare.html" >Lifetime Care</a>
+		<a href="helpingpaw.html" >Helping Paw</a>
+		<a href="resources.html" >Resources</a>
+		<a href="inthemedia.html" >In the Media</a>
+		<a href="tributedonations.php" >Tribute Donations</a>
+		<a href="thankyou.html" >Thank You</a>
+		<a href="testimonials.php" >Testimonials</a>
+		<a href="POMDRMailingList.php" >Mailing List</a>
+		<a href="jobs.html" >Job Openings</a>
+		</div>
+	<div class="nav-menu-social-media-images">
+      <a href="https://www.instagram.com/peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/instagram_white_circle.png"></a>
+      <a href="https://www.facebook.com/POMDR/" target="_blank"><img class="social-media-image" src="images/misc/social/facebook_white_circle.png"></a>
+      <a href="https://www.tiktok.com/@peace.of.mind.dog.rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/tiktok_white_circle.png"></a>
+      <a href="https://www.youtube.com/user/PeaceOfMindDogRescue" target="_blank"><img class="social-media-image" src="images/misc/social/youtube_white_circle.png"></a>
+      <a href="https://www.linkedin.com/company/peace-of-mind-dog-rescue/" target="_blank"><img class="social-media-image" src="images/misc/social/linkedin_white_circle.png"></a>
+	</div>
+  </div>
+  </div>
+
+	<div id="main-contents-without-right-sidebar">
+
+  	<div id="photos_and_captions">
+  	  	
+    <h2>Zephyr (was Sonny)</h2>
+    
+    <input type=radio checked id="image0" name="imagesGroup" onchange="markActiveThumbnail()"><div class="photo_and_caption" style="width:600px;">	<div class="fixed-aspect-ratio-img-wrapper">		<div><img src="images/dogs/Sonny020322sm.jpg?1792014093" alt="Zephyr (was Sonny)"></div>	</div></div><input type=radio  id="image1" name="imagesGroup" onchange="markActiveThumbnail()"><div class="photo_and_caption" style="width:600px;">	<div class="fixed-aspect-ratio-img-wrapper">		<div><img src="images/dogs/Sonny020322ft.jpg?1792014093" alt="Zephyr (was Sonny)"></div>	</div></div><input type=radio  id="image2" name="imagesGroup" onchange="markActiveThumbnail()"><div class="photo_and_caption" style="width:600px;">	<div class="fixed-aspect-ratio-img-wrapper">		<div><img src="images/dogs/Sonny020322bg3.jpg?1792014093" alt="Zephyr (was Sonny)"></div>	</div></div><input type=radio  id="image3" name="imagesGroup" onchange="markActiveThumbnail()"><div class="photo_and_caption" style="width:600px;">	<div class="fixed-aspect-ratio-img-wrapper">		<div><img src="images/dogs/Sonny020322bg4.jpg?1792014093" alt="Zephyr (was Sonny)"></div>	</div></div></div><div id="thumbnails" class="upToFiveSlots"><label class="thumbnail landscapeThumbnail" for="image0">		<img id="thumbnail0" src="images/dogs/Sonny020322sm.jpg?1792014093"></label><label class="thumbnail landscapeThumbnail" for="image1">		<img id="thumbnail1" src="images/dogs/Sonny020322ft.jpg?1792014093"></label><label class="thumbnail landscapeThumbnail" for="image2">		<img id="thumbnail2" src="images/dogs/Sonny020322bg3.jpg?1792014093"></label><label class="thumbnail landscapeThumbnail" for="image3">		<img id="thumbnail3" src="images/dogs/Sonny020322bg4.jpg?1792014093"></label></div>		<div class='dogInfo'><span class='breedQualifier'>Looks like: </span>Chihuahua, Terrier mix<br>Male, 10 years old<span class='ageQualifier'> (estimated)</span>, 15 pounds</div>		<div class='dogDescriptionAndButtons'>			<div class='dogDescription'>       Zephyr has a few distinguished greys, but he is still peppy and looking to sniff around. He loves a good walkabout and sniff in the yard, then settles down well in a cozy bed where he may nap or take in the world around him.
+ <br><br>
+
+Zephyr's friendly, joyful personality is a testament to his resilience.  He is generally a mellow, even-keeled guy. His favorite pastimes are sunbathing, getting treats, snuggling, and occasionally singing along with sirens. He is equally fond of his walks. He is currently a steady but slow walk partner. Prepare to be blown away by this little cutie.<br><br>
+
+This sweet senior gentleman originally joined us from Hitchcock Road Animal Services as a medical intake. He arrived at the shelter not bearing any weight on his right hind leg. Thankfully, this has since resolved. Zephyr was adopted into a loving home, where he lived for many years until recently when his guardian's health declined. Sadly, he finds himself searching for a new landing spot.			</div><div class='centeredButtonsBox'><a id='adoptButton' class='blueRoundButton' href='POMDRAdoptionQuestionnaire.php?dogname=Zephyr (was Sonny)'>Adopt Zephyr (was Sonny)</a><a id='sponsorButton' class='blueRoundButton' href='POMDRSponsorDog.php?dogname=Zephyr (was Sonny)'>Sponsor Zephyr (was Sonny)</a></div><div>Are you interested in learning more about Zephyr (was Sonny)? For more medical and behavior information, press the <b>Adopt Zephyr (was Sonny)</b> button and fill out our online adoption questionnaire. Our Adoption Coordinator will give you as much information as we have.</div>		</div>		<!-- end main content -->
+	</div>
+	<!-- end contentsRow -->
+	</div>
+	
+		<div id="POMDRFooter" class="contentsRow">
+			<img id="footerBauerHouse" src="images/misc/pomdrhouse.jpg" alt="Bauer house">
+			<div id="footerBasicInfo">
+				<div class="footerInfoHeader">Phone</div>
+				<div class="footerInfo">(831) 718-9122</div>
+				<div class="footerInfoHeader">Email</div>
+				<div class="footerInfo forceWrap"><a href="/cdn-cgi/l/email-protection#deb7b0b8b19eaebbbfbdbbb1b8b3b7b0babab1b9acbbadbdabbbf0b1acb9"><span class="__cf_email__" data-cfemail="caa3a4aca58abaafaba9afa5aca7a3a4aeaea5adb8afb9a9bfafe4a5b8ad">[email&#160;protected]</span></a></div>
+				<div class="footerInfoHeader">Mailing Address</div>
+				<div class="footerInfo">P.O. Box 51554<br>Pacific Grove, CA 93950</div>
+				<div class="footerInfoHeader">Tax Info</div>
+				<div class="footerInfo">POMDR is a non-profit 501(c)(3) corp.<br>Tax ID: 27-1154816</div>
+			</div>
+			<div>
+				<div class="footerInfoHeader">Physical Address</div>
+				<div class="footerLocationName"><a href="bauercenter.html">POMDR Patricia J. Bauer Center</a></div>
+				<div class="footerInfo">615 Forest Avenue<br>Pacific Grove, CA 93950</div>
+				<div class="footerInfoHeader">Hours</div><div class="footerInfo">11am - 4pm Mon - Sat, or by appointment</div><div class="footerLocationCaveat">Adoptable dogs available by appointment only</div>
+			</div>
+			<div>
+				<div class="footerInfoHeader">Veterinary Clinic</div>
+				<div class="footerLocationName"><a href="vetclinic.html">POMDR Harry and Jaynne Boand Clinic</a></div>
+				<div class="footerInfo">1251 10th St<br>Monterey, CA 93940</div>
+				<div class="footerInfoHeader">Benefit Shop</div>
+				<div class="footerLocationName"><a href="benefitshop.html">POMDR Benefit Shop</a></div>
+				<div class="footerInfo">223 Grand Avenue<br>Pacific Grove, CA 93950</div>
+				<div class="footerInfoHeader"><a href="termsandprivacy.html">Terms & Privacy</a></div>
+				<div class="footerInfo"></div>
+			</div>
+		</div>
+		<!-- end #container -->
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"9dd49028a208464a9959831d1bfcb087","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>

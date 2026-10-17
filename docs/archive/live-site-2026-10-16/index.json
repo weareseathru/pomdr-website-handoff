@@ -1,0 +1,1064 @@
+{
+ "crawled": "2026-10-16",
+ "pages": [
+  {
+   "url": "https://www.peaceofminddogrescue.org/",
+   "file": "index.md",
+   "title": "Peace of Mind Dog Rescue Home",
+   "words": 11,
+   "images": 26,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/index.php",
+   "file": "index-php.md",
+   "title": "Peace of Mind Dog Rescue Home",
+   "words": 11,
+   "images": 26,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/donateoverview.html",
+   "file": "donateoverview-html.md",
+   "title": "POMDR Ways to Donate",
+   "words": 7,
+   "images": 32,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/aboutus.html",
+   "file": "aboutus-html.md",
+   "title": "POMDR About Us",
+   "words": 586,
+   "images": 47,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/adopt.php",
+   "file": "adopt-php.md",
+   "title": "POMDR Adoptable Dogs",
+   "words": 92,
+   "images": 94,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/volunteer.html",
+   "file": "volunteer-html.md",
+   "title": "POMDR Volunteer",
+   "words": 838,
+   "images": 28,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/fosterneeds.html",
+   "file": "fosterneeds-html.md",
+   "title": "POMDR Foster Needs",
+   "words": 1419,
+   "images": 34,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/benefitshop.html",
+   "file": "benefitshop-html.md",
+   "title": "POMDR Benefit Shop",
+   "words": 264,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/news.html",
+   "file": "news-html.md",
+   "title": "POMDR What\u2019s Happening",
+   "words": 336,
+   "images": 24,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/adoptionevents.php",
+   "file": "adoptionevents-php.md",
+   "title": "POMDR Adoption Events",
+   "words": 63,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/helpplacingdog.html",
+   "file": "helpplacingdog-html.md",
+   "title": "POMDR Help Placing Your Dog",
+   "words": 416,
+   "images": 15,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/lifetimecare.html",
+   "file": "lifetimecare-html.md",
+   "title": "POMDR Lifetime Care",
+   "words": 598,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/helpingpaw.html",
+   "file": "helpingpaw-html.md",
+   "title": "POMDR Helping Paw",
+   "words": 202,
+   "images": 20,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/resources.html",
+   "file": "resources-html.md",
+   "title": "POMDR Resources",
+   "words": 1391,
+   "images": 18,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/inthemedia.html",
+   "file": "inthemedia-html.md",
+   "title": "POMDR in the Media",
+   "words": 4,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/tributedonations.php",
+   "file": "tributedonations-php.md",
+   "title": "POMDR Tribute Donations",
+   "words": 39,
+   "images": 23,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/thankyou.html",
+   "file": "thankyou-html.md",
+   "title": "POMDR Thank You!",
+   "words": 1151,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/testimonials.php",
+   "file": "testimonials-php.md",
+   "title": "POMDR Testimonials",
+   "words": 63,
+   "images": 18,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRMailingList.php",
+   "file": "pomdrmailinglist-php.md",
+   "title": "POMDR Mailing List Signup",
+   "words": 0,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/jobs.html",
+   "file": "jobs-html.md",
+   "title": "POMDR Job Opportunities",
+   "words": 1150,
+   "images": 15,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/videos.html",
+   "file": "videos-html.md",
+   "title": "POMDR Videos",
+   "words": 13,
+   "images": 54,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/bauercenter.html",
+   "file": "bauercenter-html.md",
+   "title": "POMDR Patricia J. Bauer Center",
+   "words": 310,
+   "images": 20,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/vetclinic.html",
+   "file": "vetclinic-html.md",
+   "title": "POMDR Harry and Jaynne Boand Clinic",
+   "words": 107,
+   "images": 20,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/termsandprivacy.html",
+   "file": "termsandprivacy-html.md",
+   "title": "POMDR Terms and Privacy",
+   "words": 3778,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=60",
+   "file": "pomdrdonation-php-initialdonation-60.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=125",
+   "file": "pomdrdonation-php-initialdonation-125.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=275",
+   "file": "pomdrdonation-php-initialdonation-275.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=600",
+   "file": "pomdrdonation-php-initialdonation-600.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=1250",
+   "file": "pomdrdonation-php-initialdonation-1250.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?initialdonation=0",
+   "file": "pomdrdonation-php-initialdonation-0.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Max's%20Helping%20Paws%20Fund",
+   "file": "pomdrdonation-php-fund-max-s-20helping-20paws-20fund.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/maxsfund.html",
+   "file": "maxsfund-html.md",
+   "title": "POMDR Max's Helping Paws Fund",
+   "words": 276,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRMonthlyDonation.php",
+   "file": "pomdrmonthlydonation-php.md",
+   "title": "POMDR Monthly Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?donationtype=tribute",
+   "file": "pomdrdonation-php-donationtype-tribute.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/tributecard.html",
+   "file": "tributecard-html.md",
+   "title": "POMDR Tribute Card",
+   "words": 20,
+   "images": 20,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Helping%20Paw%20Fund",
+   "file": "pomdrdonation-php-fund-helping-20paw-20fund.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Food%20Fund",
+   "file": "pomdrdonation-php-fund-food-20fund.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?fund=Silver%20Hearts%20Fund",
+   "file": "pomdrdonation-php-fund-silver-20hearts-20fund.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/silverheartsfund.html",
+   "file": "silverheartsfund-html.md",
+   "title": "POMDR Monica Rua Silver Hearts Fund",
+   "words": 213,
+   "images": 24,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/sponsorad.html",
+   "file": "sponsorad-html.md",
+   "title": "POMDR Sponsor an Ad",
+   "words": 97,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/dogTagDonorOp.html",
+   "file": "dogtagdonorop-html.md",
+   "title": "POMDR Dog Tag Donor",
+   "words": 92,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/doggieSuiteSponsorshipOp.html",
+   "file": "doggiesuitesponsorshipop-html.md",
+   "title": "POMDR Dog Tag Donor",
+   "words": 96,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/majorsponsorshipops.html",
+   "file": "majorsponsorshipops-html.md",
+   "title": "POMDR Major Plaque/Stone Sponsorship Opportunities",
+   "words": 173,
+   "images": 21,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAnnualDonation.php",
+   "file": "pomdrannualdonation-php.md",
+   "title": "POMDR Annual Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/legacydonor.html",
+   "file": "legacydonor-html.md",
+   "title": "POMDR Legacy Donors",
+   "words": 228,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/plannedgiving.html",
+   "file": "plannedgiving-html.md",
+   "title": "POMDR Planned Giving",
+   "words": 198,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/wishlist.html",
+   "file": "wishlist-html.md",
+   "title": "POMDR Wish List",
+   "words": 225,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRCulture.html",
+   "file": "pomdrculture-html.md",
+   "title": "POMDR Culture",
+   "words": 2,
+   "images": 18,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=5",
+   "file": "person-php-id-5.md",
+   "title": "POMDR: Cathy Heape",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=44",
+   "file": "person-php-id-44.md",
+   "title": "POMDR: Kim Bartholomay",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=60",
+   "file": "person-php-id-60.md",
+   "title": "POMDR: Susan Ferriby",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=46",
+   "file": "person-php-id-46.md",
+   "title": "POMDR: Barbara Allen",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=67",
+   "file": "person-php-id-67.md",
+   "title": "POMDR: Dina Ruiz",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=6",
+   "file": "person-php-id-6.md",
+   "title": "POMDR: Carie Broecker",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=10",
+   "file": "person-php-id-10.md",
+   "title": "POMDR: Cameron Donegan",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=9",
+   "file": "person-php-id-9.md",
+   "title": "POMDR: Allison McKee",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=11",
+   "file": "person-php-id-11.md",
+   "title": "POMDR: Caitlin Lupien",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=47",
+   "file": "person-php-id-47.md",
+   "title": "POMDR: Andrew Zielinski",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=52",
+   "file": "person-php-id-52.md",
+   "title": "POMDR: Shanel Parolini",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=64",
+   "file": "person-php-id-64.md",
+   "title": "POMDR: Alejandra Raya",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=71",
+   "file": "person-php-id-71.md",
+   "title": "POMDR: Nisha Addleman",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=74",
+   "file": "person-php-id-74.md",
+   "title": "POMDR: Courtney Young",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=57",
+   "file": "person-php-id-57.md",
+   "title": "POMDR: Briana Ryan",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=66",
+   "file": "person-php-id-66.md",
+   "title": "POMDR: Carmelita Garcia",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=41",
+   "file": "person-php-id-41.md",
+   "title": "POMDR: Dr. Erin Trannel",
+   "words": 3,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=63",
+   "file": "person-php-id-63.md",
+   "title": "POMDR: Dr. Shahla Dourod",
+   "words": 3,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=34",
+   "file": "person-php-id-34.md",
+   "title": "POMDR: Kelly Fischer",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=39",
+   "file": "person-php-id-39.md",
+   "title": "POMDR: Celina Arceo",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=19",
+   "file": "person-php-id-19.md",
+   "title": "POMDR: Caite Jackson",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=35",
+   "file": "person-php-id-35.md",
+   "title": "POMDR: Elisa Clay",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=65",
+   "file": "person-php-id-65.md",
+   "title": "POMDR: Veron Yip",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=48",
+   "file": "person-php-id-48.md",
+   "title": "POMDR: Toni Selby",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=1",
+   "file": "person-php-id-1.md",
+   "title": "POMDR: Monica Rua",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=23",
+   "file": "person-php-id-23.md",
+   "title": "POMDR: Patrick Casey",
+   "words": 2,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/person.php?id=24",
+   "file": "person-php-id-24.md",
+   "title": "POMDR: Barbara De Groodt",
+   "words": 3,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/downloads/POMDRImpactReport2025",
+   "file": "downloads-pomdrimpactreport2025.md",
+   "title": "",
+   "words": 0,
+   "images": 0,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
+   "file": "courtesylistings-php.md",
+   "title": "POMDR Other Adoptable Dogs",
+   "words": 57,
+   "images": 26,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/hospicedogs.php",
+   "file": "hospicedogs-php.md",
+   "title": "POMDR Hospice Dogs",
+   "words": 142,
+   "images": 20,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/adopted.php",
+   "file": "adopted-php.md",
+   "title": "POMDR Adopted Dogs",
+   "words": 14,
+   "images": 3638,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/adoptionprocess.html",
+   "file": "adoptionprocess-html.md",
+   "title": "POMDR Adoption Process",
+   "words": 282,
+   "images": 18,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRVolunteerApplication.php",
+   "file": "pomdrvolunteerapplication-php.md",
+   "title": "POMDR Volunteer Application",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/fostering.html",
+   "file": "fostering-html.md",
+   "title": "POMDR Fostering",
+   "words": 185,
+   "images": 30,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Jason",
+   "file": "pomdradoptionquestionnaire-php-animalname-jason.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Zero",
+   "file": "pomdradoptionquestionnaire-php-animalname-zero.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Ichabod",
+   "file": "pomdradoptionquestionnaire-php-animalname-ichabod.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Elm",
+   "file": "pomdradoptionquestionnaire-php-animalname-elm.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Boo",
+   "file": "pomdradoptionquestionnaire-php-animalname-boo.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Salem",
+   "file": "pomdradoptionquestionnaire-php-animalname-salem.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Barnabas",
+   "file": "pomdradoptionquestionnaire-php-animalname-barnabas.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Loretta",
+   "file": "pomdradoptionquestionnaire-php-animalname-loretta.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Kenji",
+   "file": "pomdradoptionquestionnaire-php-animalname-kenji.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Gabby",
+   "file": "pomdradoptionquestionnaire-php-animalname-gabby.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Kelpie",
+   "file": "pomdradoptionquestionnaire-php-animalname-kelpie.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRAdoptionQuestionnaire.php?animalname=Sparkler",
+   "file": "pomdradoptionquestionnaire-php-animalname-sparkler.md",
+   "title": "POMDR Adoption Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?notes=silverheartsfund",
+   "file": "pomdrdonation-php-notes-silverheartsfund.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRIntakeQuestionnaire.php",
+   "file": "pomdrintakequestionnaire-php.md",
+   "title": "POMDR Intake Questionnaire",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/lifetimecareFAQ.html",
+   "file": "lifetimecarefaq-html.md",
+   "title": "POMDR Lifetime Care",
+   "words": 604,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRHelpingPawFinanceApplication.php",
+   "file": "pomdrhelpingpawfinanceapplication-php.md",
+   "title": "POMDR Helping Paw Financial Assistance Application",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRHelpingPawFinanceApplicationSpanish.php",
+   "file": "pomdrhelpingpawfinanceapplicationspanish-php.md",
+   "title": "POMDR Solicitud de Asistencia Financiera de Helping Paw",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRHelpingPawVolunteerApplication.php",
+   "file": "pomdrhelpingpawvolunteerapplication-php.md",
+   "title": "POMDR Helping Paw Volunteer Assistance Application",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php",
+   "file": "pomdrdonation-php.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?notes=maxs_helping_paws_fund",
+   "file": "pomdrdonation-php-notes-maxs-helping-paws-fund.md",
+   "title": "POMDR Donation",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDogTagDonor.php",
+   "file": "pomdrdogtagdonor-php.md",
+   "title": "POMDR Dog Tag Donor",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRDoggieSuiteSponsorship.php",
+   "file": "pomdrdoggiesuitesponsorship-php.md",
+   "title": "POMDR Doggie Suite Sponsorship",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/majorplaquestonesponsors.html",
+   "file": "majorplaquestonesponsors-html.md",
+   "title": "POMDR Major Plaque/Stone Sponsors",
+   "words": 498,
+   "images": 18,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRWelcomeRoomPlaqueSponsorship.php",
+   "file": "pomdrwelcomeroomplaquesponsorship-php.md",
+   "title": "POMDR Welcome Room Plaque Sponsorship",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRMuralPlaqueSponsorship.php",
+   "file": "pomdrmuralplaquesponsorship-php.md",
+   "title": "POMDR Mural Plaque Sponsorship",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRRiverStoneSponsorship.php",
+   "file": "pomdrriverstonesponsorship-php.md",
+   "title": "POMDR Garden River Stone Sponsorship",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRSponsorDog.php?petname=Huey",
+   "file": "pomdrsponsordog-php-petname-huey.md",
+   "title": "POMDR Sponsor a Dog",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRSponsorDog.php?petname=Winkle",
+   "file": "pomdrsponsordog-php-petname-winkle.md",
+   "title": "POMDR Sponsor a Dog",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRSponsorDog.php?petname=Snowflake",
+   "file": "pomdrsponsordog-php-petname-snowflake.md",
+   "title": "POMDR Sponsor a Dog",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRSponsorDog.php?petname=Zelda",
+   "file": "pomdrsponsordog-php-petname-zelda.md",
+   "title": "POMDR Sponsor a Dog",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/POMDRSponsorDog.php?petname=Suki",
+   "file": "pomdrsponsordog-php-petname-suki.md",
+   "title": "POMDR Sponsor a Dog",
+   "words": 0,
+   "images": 14,
+   "forms": 0,
+   "iframes": 1
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/whyadoptseniordog.html",
+   "file": "whyadoptseniordog-html.md",
+   "title": "POMDR Why Adopt a Senior Dog?",
+   "words": 437,
+   "images": 19,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=3055",
+   "file": "dog-php-id-3055.md",
+   "title": "POMDR: Zephyr (was Sonny)",
+   "words": 3,
+   "images": 22,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=3505",
+   "file": "dog-php-id-3505.md",
+   "title": "POMDR: Hatchi",
+   "words": 1,
+   "images": 26,
+   "forms": 0,
+   "iframes": 0
+  },
+  {
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=3878",
+   "file": "dog-php-id-3878.md",
+   "title": "POMDR: Mihla",
+   "words": 1,
+   "images": 24,
+   "forms": 0,
+   "iframes": 0
+  }
+ ],
+ "dog_pages_seen": 80,
+ "dog_sample": [
+  "https://www.peaceofminddogrescue.org/dog.php?id=3055",
+  "https://www.peaceofminddogrescue.org/dog.php?id=3505",
+  "https://www.peaceofminddogrescue.org/dog.php?id=3878"
+ ]
+}

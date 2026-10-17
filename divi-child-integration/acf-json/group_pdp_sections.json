@@ -1,0 +1,1025 @@
+{
+    "key": "group_pdp_sections",
+    "title": "PDP Sections",
+    "fields": [
+        {
+            "key": "field_pdp_sections",
+            "label": "PDP Sections",
+            "name": "pdp_sections",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_header_section": {
+                    "key": "layout_header_section",
+                    "name": "header_section",
+                    "label": "Header Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_header_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
+                            "key": "field_header_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_header_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_gallery_section": {
+                    "key": "layout_gallery_section",
+                    "name": "gallery_section",
+                    "label": "Gallery Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_gallery_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_gallery_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_gallery_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_quick_info_section": {
+                    "key": "layout_quick_info_section",
+                    "name": "quick_info_section",
+                    "label": "Quick Info Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_quick_info_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_quick_info_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_quick_info_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_bio_section": {
+                    "key": "layout_bio_section",
+                    "name": "bio_section",
+                    "label": "Bio Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_bio_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_bio_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_bio_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_foster_banner_section": {
+                    "key": "layout_foster_banner_section",
+                    "name": "foster_banner_section",
+                    "label": "Foster Banner Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_foster_banner_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_foster_banner_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_foster_banner_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_video_section": {
+                    "key": "layout_video_section",
+                    "name": "video_section",
+                    "label": "Video Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_video_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_video_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_video_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_sponsor_section": {
+                    "key": "layout_sponsor_section",
+                    "name": "sponsor_section",
+                    "label": "Sponsor Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_sponsor_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_sponsor_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_sponsor_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_hospice_section": {
+                    "key": "layout_hospice_section",
+                    "name": "hospice_section",
+                    "label": "Hospice Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_hospice_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_hospice_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_hospice_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_previous_pet_section": {
+                    "key": "layout_previous_pet_section",
+                    "name": "previous_pet_section",
+                    "label": "Previous Pet Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_prev_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_prev_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_prev_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_adoption_prompt_section": {
+                    "key": "layout_adoption_prompt_section",
+                    "name": "adoption_prompt_section",
+                    "label": "Adoption Prompt Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_adoption_prompt_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_adoption_prompt_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = force new row. merge_with_previous = share row with previous section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_adoption_prompt_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 1,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_custom_html_section": {
+                    "key": "layout_custom_html_section",
+                    "name": "custom_html_section",
+                    "label": "Custom HTML Section",
+                    "display": "row",
+                    "sub_fields": [
+                        {
+                            "key": "field_custom_html_position",
+                            "label": "Section Position",
+                            "name": "section_position",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "Choose left\/right\/full width for this section.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "left": "Left",
+                                "right": "Right",
+                                "full": "Full"
+                            },
+                            "default_value": "full",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_custom_html_row_mode",
+                            "label": "Row Mode",
+                            "name": "row_mode",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "start_new_row = new row. merge_with_previous = share row with previous (left\/right).",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "start_new_row": "Start New Row",
+                                "merge_with_previous": "Merge With Previous"
+                            },
+                            "default_value": "start_new_row",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "return_format": "value",
+                            "create_options": 0,
+                            "save_options": 0
+                        },
+                        {
+                            "key": "field_custom_html",
+                            "label": "Custom HTML (safe)",
+                            "name": "custom_html",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "Allowed HTML will be sanitized when output.",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "new_lines": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "rows": ""
+                        },
+                        {
+                            "key": "field_custom_html_enable",
+                            "label": "Enable Section",
+                            "name": "enable_section",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": false,
+                            "conditional_logic": false,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "ui": 1,
+                            "default_value": 0,
+                            "message": "",
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Row"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pets"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1764752935
+}

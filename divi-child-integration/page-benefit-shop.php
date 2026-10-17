@@ -10,7 +10,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
 .shop-intro .media{aspect-ratio:4/5;background:var(--cream-2);border-radius:var(--radius-lg);overflow:hidden;}
 .shop-intro .media img{width:100%;height:100%;object-fit:cover;display:block;}
 .lists-2col{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;margin-top:8px;}
-.lists-2col ul{font-size:16px;line-height:1.7;padding-left:1.2em;columns:2;column-gap:32px;}
+.lists-2col ul{font-size: 21px;line-height:1.7;padding-left:1.2em;columns:2;column-gap:32px;}
 .lists-2col li{break-inside:avoid;}
 @media(max-width:860px){.shop-intro{grid-template-columns:1fr;gap:26px;}.lists-2col{grid-template-columns:1fr;gap:24px;}.lists-2col ul{columns:1;}}
 </style>
@@ -21,7 +21,11 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
       <div class="ph-text">
         <h1 class="page-headline">Benefit Shop</h1>
         <p class="page-narrative">A whole store that <em>helps senior dogs</em>.</p>
-        <p class="page-lead">Books, housewares, treasures, all donated by neighbors, all sold to fund vet care for senior dogs. Run by a tiny team of dedicated volunteers.</p>
+        <p class="page-lead">Books, housewares, treasures, all donated by neighbors, all sold to fund vet care for senior dogs. Run by our shop staff and dedicated volunteers.</p>
+        <div class="ctas" style="display:flex;gap:14px;flex-wrap:wrap;margin-top:22px">
+          <a href="https://maps.google.com/?q=223+Grand+Ave,+Pacific+Grove,+CA" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
+          <a href="tel:8313128991" class="btn btn-outline">Call the Shop</a>
+        </div>
       </div>
       <div class="ph-media"><picture><img src="<?php echo $img; ?>/pages/benefitshop.jpg" alt="Inside the POMDR Benefit Shop in Pacific Grove" loading="lazy"/></picture></div>
     </div>
@@ -33,9 +37,9 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     <div class="shop-intro">
       <div>
         <h2 class="section-title" style="margin-bottom:16px">Visit the shop</h2>
-        <p style="font-size:17px;line-height:1.7">223 Grand Avenue, Suite 1, Pacific Grove, CA 93950<br/>Shop phone: (831) 312-8991</p>
-        <p style="font-size:17px;line-height:1.7"><strong>Hours:</strong><br/>Tuesday through Saturday, 11:00 am to 5:00 pm<br/>Sunday, 11:00 am to 3:00 pm<br/>Closed Mondays</p>
-        <p style="font-size:17px;line-height:1.7">Come check out our artwork, clothing, jewelry, home goods, furniture, and other merchandise. The shop specializes in higher-end, lightly used items at reasonable prices.</p>
+        <p style="font-size: 22px;line-height:1.7">223 Grand Avenue, Suite 1, Pacific Grove, CA 93950<br/>Shop phone: (831) 312-8991</p>
+        <p style="font-size: 22px;line-height:1.7"><strong>Hours:</strong><br/>Tuesday through Saturday, 11:00 am to 5:00 pm<br/>Closed Sunday and Monday</p>
+        <p style="font-size: 22px;line-height:1.7">Come check out our artwork, clothing, jewelry, home goods, furniture, and other merchandise. The shop specializes in higher-end, lightly used items at reasonable prices.</p>
       </div>
       <div class="media">
         <img src="<?php echo $img; ?>/dog12.jpeg" alt="A senior dog cared for thanks to Benefit Shop sales" loading="lazy"/>
@@ -43,10 +47,10 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
 
     <h2 class="section-title" style="margin:48px 0 16px">Donate goods</h2>
-    <p style="font-size:17px;line-height:1.7">To make a donation, email <a href="mailto:info@pomdr.org">info@pomdr.org</a>. Please let us know what you have to donate and your preferred day and time frame. If an item is large, email a photo first so our shop manager can confirm we have space.</p>
+    <p style="font-size: 22px;line-height:1.7">To make a donation, email <a href="mailto:shop@pomdr.org">shop@pomdr.org</a>. Please let us know what you have to donate and your preferred day and time frame. If an item is large, email a photo first so our shop manager can confirm we have space.</p>
     <div class="lists-2col">
       <div>
-        <h3 style="font-size:19px;margin:20px 0 8px">Items we take</h3>
+        <h3 style="font-size: 24px;margin:20px 0 8px">Items we take</h3>
         <ul>
           <li>Accessories such as jewelry, purses, and scarves</li>
           <li>Home decor such as artwork and frames</li>
@@ -65,7 +69,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
         </ul>
       </div>
       <div>
-        <h3 style="font-size:19px;margin:20px 0 8px">Items we cannot use</h3>
+        <h3 style="font-size: 24px;margin:20px 0 8px">Items we cannot use</h3>
         <ul>
           <li>Mattresses</li>
           <li>Baby equipment such as car seats and high chairs (safety regulations and recalls)</li>
@@ -80,7 +84,7 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
 
     <h2 class="section-title" style="margin:48px 0 16px">Volunteer</h2>
-    <p style="font-size:17px;line-height:1.7">The shop runs on volunteers. Sorting, staging, retail shifts, pickups. A few hours a month makes a real difference.</p>
+    <p style="font-size: 22px;line-height:1.7">The shop runs on volunteers. Sorting, staging, retail shifts, pickups. A few hours a month makes a real difference.</p>
     <a href="/volunteer/" class="btn btn-primary" style="margin-top:24px">Volunteer at the Shop</a>
   </div>
 </section>
@@ -94,5 +98,15 @@ $img = get_stylesheet_directory_uri() . "/assets/images";
     </div>
   </div>
 </section>
+
+<section class="section" id="team">
+  <div class="container">
+    <span class="eyebrow purple">Our team</span>
+    <h2 class="section-title">The people you will <em>meet</em>.</h2>
+    <p class="section-lead">The team behind the counter, turning donated treasures into vet care for senior dogs.</p>
+    <?php echo do_shortcode('[benefit_shop_staff]'); ?>
+  </div>
+</section>
+
 </main>
 <?php get_footer();
