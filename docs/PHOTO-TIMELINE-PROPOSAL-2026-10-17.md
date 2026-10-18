@@ -2,6 +2,8 @@
 
 **Proposal, written 2026-10-17 for Andrew Z. to take to Ronnie and staff.** A design to argue with, in the spirit of Ronnie's own proposal documents (`Shelterluv.md`, `Clinic.md`, `Foster.md`, `Connections.md`): it says what would be built, how it fits the Hub, what is unverified, and the order of work. Nothing here is built. Tracker: the discussion ticket filed today (see section 7).
 
+**This is an internal system, part of POMDR Hub, the back office Ronnie is building.** It lives in the admin at `admin.pomdr.org`, behind Cloudflare Access, for staff, the clinic and (later, through the foster site) fosters. It is not a public-facing area of the website. The public dog page is unchanged by it; the only thing a visitor could ever see is an item a staff member has deliberately switched to public, and that is an optional last step (section 3.4), not the point. The point is that the team's pictures, clips and the words around them are organised in one robust place, with the same storage, sync, backup, audit and access controls the rest of the Hub already has.
+
 ---
 
 ## 1. The problem, from each seat
@@ -16,7 +18,7 @@
 
 ## 2. What exists, and what the proposal adds
 
-Everything below is an extension of what Ronnie has already built. The verified state of the Hub (from the repository, 2026-10-17):
+Everything below is an extension of what Ronnie has already built, and it inherits the Hub's robustness rather than adding a parallel system: pictures are written to the admin box first and copied to R2 (two copies, `README.md` section 8); the database is dumped nightly; `bin/audit-images.php` checks daily that database, disk and bucket agree; the admin host is never published and sits behind Cloudflare Access; migrations are guarded so code can land before its column exists; every query is a prepared statement in `includes/db.php`; and nothing is ever written back to Shelterluv, LGL or Instinct. A media timeline built on those rails is as safe as the animal record itself. The verified state of the Hub (from the repository, 2026-10-17):
 
 | Exists today | Where | What it gives us |
 |---|---|---|
@@ -71,15 +73,15 @@ The rule that makes it cheap for people: **nobody logs in to upload.** Staff and
 - **The tray.** Anything it cannot match goes to `/admin/media/unsorted/`: a grid of thumbnails with a dog-search box beside each (the same search-and-pick pattern Connections.md uses for people). One drag or one pick files it. Nothing is ever deleted by the watcher.
 - **Phones.** For the common case, a foster texting a photo: a Dropbox "file request" link per dog, which Dropbox already provides, posts straight into the dog's folder from any phone with no account. The admin could print that link on the foster handoff sheet.
 
-### 3.4 Showing it: admin first, public second
+### 3.4 Showing it: the admin is the product; the public strip is optional
 
 - **Admin:** a **Timeline** tab on the dog's record (the tabbed edit page already exists, POMDR-40), newest first, grouped by stage, each item with its picture, date, caption, credit and the public switch; the adopter's words appear in the same stream dated to adoption day. Multi-select to set a stage or the public switch at once.
-- **Public:** the dog page's gallery stays as it is (hand-ordered, `sort_order`). A dog with public items in more than one stage gains a quiet "Buddy's story so far" strip under the story: a few dated pictures, oldest first, with their captions, and the adopter's words when the dog is a happy tail. It is the before-and-after the old site never managed, and it uses the kit's existing timeline pattern.
+- **Public (optional, later, and only by choice):** nothing on the public site changes by default. Every item is staff-only unless a person switches it to public. If POMDR ever wants it, a dog with public items could gain a quiet "Buddy's story so far" strip under the story on the dog page, built on the kit's timeline pattern; that is a separate decision, after POMDR-13 settles what the public may see, and it is the last step in section 6, not the first.
 - **Marketing's export:** a per-dog zip of the public items with a `story.txt` (captions and words in order), from the admin, so a newsletter or an ad starts from one download.
 
 ## 4. How it fits the larger vision
 
-Hub.md says the thing being built joins the systems that do not talk to each other with the pet as the central record. Pictures and the words of the people around a dog are the one kind of record none of the three masters (LGL, Shelterluv, Instinct) holds well, and the one the public and the donors care about most. This is Hub-owned data by Hub.md's own test: POMDR produces it, nobody else masters it, nothing is written back. It also gives the Dashboard a new real signal (dogs without a photo in the last 30 days), the Foster site (`Foster.md`) a place to post from, and the field registry (POMDR-13) its first concrete use of a per-item public switch.
+This is back-office infrastructure for the team, in the same family as the intake flow, the foster lists, the prospective-adoption board and the medical status Ronnie has built this month: one more thing the Hub holds about a dog, kept where staff work. Hub.md says the thing being built joins the systems that do not talk to each other with the pet as the central record. Pictures and the words of the people around a dog are the one kind of record none of the three masters (LGL, Shelterluv, Instinct) holds well, and the one the public and the donors care about most. This is Hub-owned data by Hub.md's own test: POMDR produces it, nobody else masters it, nothing is written back. It also gives the Dashboard a new real signal (dogs without a photo in the last 30 days), the Foster site (`Foster.md`) a place to post from, and the field registry (POMDR-13) its first concrete use of a per-item public switch.
 
 ## 5. What is unverified
 
@@ -95,10 +97,10 @@ Hub.md says the thing being built joins the systems that do not talk to each oth
 2. **Schema** (Ronnie): the columns in 3.1 and the table in 3.2, as migration 034, guarded with `animals_has_column()` like 027. Small.
 3. **Admin Timeline tab and the words form** (Ronnie's admin; we can draft the layout to his admin pattern). A day.
 4. **The watcher and the tray** (Ronnie's `bin/`; the matching rule and the folder convention from step 1). A day, plus a week of staff using it to find the edge cases.
-5. **The public strip** (ours, in the public layer, behind the `is_public` switch). Half a day.
-6. **The export** (Ronnie's admin). Small.
+5. **The export** (Ronnie's admin). Small.
+6. **Only if POMDR wants it, and after POMDR-13:** the public "story so far" strip (ours, in the public layer, behind the `is_public` switch). Half a day.
 
-Steps 2 to 4 are Ronnie's by the design-only rule; 5 is ours; 1 and the questions are POMDR's.
+Steps 2 to 5 are Ronnie's: this is his back office, and the design-only rule for our work in his repository holds. Step 6 is ours if it ever happens. Step 1 and the questions are POMDR's.
 
 ## 7. Tracker
 
