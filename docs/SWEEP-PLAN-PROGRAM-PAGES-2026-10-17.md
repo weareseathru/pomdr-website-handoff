@@ -1,5 +1,7 @@
 # The sweep: what can be built now, across the program pages
 
+**Status 2026-10-18: built.** A1 and B1 to B10 are on Ronnie's `main` as nine commits (Design.md section 11 has the lines). Checked at 390px and 1280px, 150 percent text, print on Letter, Lighthouse 100 on four pages, stress journeys 3, 4 and 6. Section D is still held.
+
 **Written 2026-10-17 for Andrew Z.** The buildable half of `PROGRAM-PAGES-UPGRADE-BRIEF-2026-10-17.md`: every item that needs no fact, name, photo or decision from anyone else. The other half is on the tracker as POMDR-47 (for Andrew). Each item names the page, the change, the kit piece it uses, what it is built from (only things already on the site or the live site), and the check that proves it.
 
 ## Ground rules for the sweep
