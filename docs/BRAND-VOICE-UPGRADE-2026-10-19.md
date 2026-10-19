@@ -30,19 +30,15 @@ Five rules, drawn from the sentences on the site that already work. Everything i
 
 ## 3. What we add
 
-### 3.1 One mission sentence, everywhere the mission is stated
+### 3.1 The mission, verbatim, everywhere the mission is stated
 
-Today the mission is told six ways (homepage, Why, About, footer, Volunteer, Clinic). Proposed single sentence, in POMDR's words from the live site reordered for the reader:
+Today the mission is told six ways (homepage, Why, About, footer, Volunteer, Clinic). POMDR's mission is already written, and Andrew's rule (2026-10-19) is to base everything on it, rephrase only where space forces it, and change nothing unnecessarily. The three drafted options from earlier in this document are withdrawn.
 
-Three options for Carie, so she chooses rather than approves. The review of this proposal pointed out that the first draft had four "we" words and no "you", and left out the third pillar of POMDR's founding: dogs whose person has died or can no longer care for them, who are not always senior dogs. All three below carry that pillar.
-
-> **A.** We find homes for senior dogs and for dogs whose people can no longer care for them, and we help senior people keep the dogs they love. Every dog who comes to us is ours for life.
+> **Our mission is to be a resource and advocate for senior dogs and senior people on California's Central Coast. We focus on helping dogs and people from Monterey, Santa Cruz, and San Benito counties.**
 >
-> **B.** A loving home for every senior dog, and for every dog whose person can no longer care for them. A helping hand so senior people keep the dogs they love. Every dog who comes to us is safe for life.
->
-> **C.** Senior dogs, and dogs who have lost their people, find a home here. Senior people get help keeping theirs. And every dog who comes to us is ours for life.
+> We find loving foster and forever homes for dogs whose guardians can no longer care for them and for senior dogs in shelters. We also provide volunteer and financial assistance so seniors can keep their pets with them as long as possible. In addition, we make pre-arrangements to take in dogs should their guardians become unable to care for them.
 
-A is the fullest. B reads at sixth grade and is the one I would put on the homepage. C is the shortest and the one for the footer and the share line. The reviewer also offered a "Together, we give..." version; I have left it out on purpose, because "Together, we" is charity: water's register, the one thing section 1 says not to borrow. Used verbatim on the homepage above the fold, the About band, the footer, and the share description. Needs: Carie's choice.
+Where it goes: the first sentence, bold, on the homepage mission section and the About band, with the second paragraph beneath it on About. The footer and the share description, where space is short, take the first clause only and change no claim: "A resource and advocate for senior dogs and senior people on California's Central Coast." The six variants on the site today are replaced by these. Needs: nothing further.
 
 ### 3.2 A promise block, "You have our word"
 
@@ -118,7 +114,7 @@ Names stay, with cover. Needs: POMDR-47 items 6 and 7, and a note in Design.md t
 
 | Today | Proposed |
 |---|---|
-| Our staff is family. (Jobs) | Work where the dogs are the point. |
+| Our staff is family. (Jobs) | Work where seniors are at the center. (Andrew's line) |
 | Our team is awesome. (About) | The people who answer the phone. |
 | Senior dogs and senior people, helped together. (numbers) | What your gifts did last year. |
 | Programs for senior dogs and senior people. (homepage) | Three ways we keep dogs and people together. |
@@ -181,7 +177,7 @@ On the Helping Paw page itself, the concrete finish Muttville's welcome kit taug
 
 ## 7. What only POMDR can supply
 
-1. The one mission sentence, signed off (3.1).
+1. ~~The mission sentence~~ Confirmed by Andrew 2026-10-19; nothing to supply.
 2. Five real costs for the gift ladder (3.4).
 3. Helping Paw grants and clinic dentals for 2024 (3.3).
 4. The volunteer number, 1,500 or 1,800.
@@ -192,7 +188,7 @@ Everything else in sections 3 to 5 can be written and shown this week.
 
 ## 8. Order of work, and how we check it
 
-1. **Mission sentence and promise block** (3.1, 3.2): half a day once Carie answers. Changes six pages.
+1. **The mission, verbatim, and the promise block** (3.1, 3.2): half a day; nothing to wait for. Changes six pages.
 2. **Carried-over paragraphs and headlines** (4.1, 4.2): one day. Shown before and after in one document for staff.
 3. **Helping Paw reconciled, repetition cut, small errors** (4.3, 4.5, 5): half a day.
 4. **Microcopy** (3.5): half a day, then the paper button test from POMDR-25: read the button, say what happens.
@@ -205,7 +201,7 @@ Checks on every change: reading grade per page against the table in 4.4, the voi
 
 A second reader reviewed this proposal and I have folded in what was right:
 
-- **Mission pronouns and the missing pillar** (3.1): accepted. Three options now, each carrying dogs whose person has died or cannot care for them. The "Together, we" option was declined for the reason in section 1.
+- **Mission pronouns and the missing pillar** (3.1): overtaken. Andrew supplied POMDR's written mission on 2026-10-19 and asked that it be used as written; the drafted options are withdrawn.
 - **Named staff as a bottleneck** (3.7): accepted in full. Names with team cover, and a review trigger when the roster changes.
 - **Dog-story prompt too abstract** (3.6): accepted in full. One concrete moment, told to a neighbor over coffee.
 - **Two buttons read as transactional** (3.5): accepted. "Fund a dog's care" and "Join the volunteer team".
