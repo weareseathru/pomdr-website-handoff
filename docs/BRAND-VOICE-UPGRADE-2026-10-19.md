@@ -208,3 +208,49 @@ A second reader reviewed this proposal and I have folded in what was right:
 - **Two buttons read as transactional** (3.5): accepted. "Fund a dog's care" and "Join the volunteer team".
 - **Commonwealth spellings in the proposal** : accepted and corrected throughout this document. The site copy was already US English by rule; the proposal was not, and it should set the example it asks for.
 - **Where to start**: the reviewer's first step matches section 8: the claims ledger, the carried-over rewrites with the American edits, and the single Helping Paw sentence. None of those waits on Carie or the clinic.
+
+## 10. Peers, not aspirations: Muttville and Best Friends
+
+charity: water is the model for method. Muttville (San Francisco, since 2007, "14,639 dogs rescued") and Best Friends Animal Society (Kanab, since 1984) are the comparisons that matter, because they do the same work. Read on 2026-10-19, quoted exactly.
+
+**Muttville says the lifetime promise almost as we do.** "Muttville remains committed to the dogs for the remainder of their lives and will accept dogs back should it not work out." And: "our commitment to their well-being never ends." Ours is the same promise in fewer words, and it is said more often on our site than on theirs. Keep that.
+
+**Muttville's "Seniors for Seniors" is the clearest program sentence either of us has.** "Senior dogs + senior humans = a perfect match." Then the terms: "if you are 62+ years of age, we waive our $250 adoption fee", and a welcome kit "that includes your dog's harness and collar, a leash, dog bowls", "a starter supply of food and medication, a doggy bed". That is CNE's "make microcopy concrete" principle applied to a whole program. POMDR's equivalent is Helping Paw, and nothing on our Helping Paw page is that concrete about what a person walks away with. Section 4.3's single list is the start; the welcome-kit style sentence is the finish. **Question for POMDR:** is there any fee relief for senior adopters, as Muttville's "Over 62? Your adoption is free!"? If yes, it is one of the most persuasive sentences the site could carry. If no, nothing is invented.
+
+**Muttville's fostering line is ours too.** "Give a senior mutt a soft place to land." We use "a soft place to land" on the homepage and the Why page. It is a phrase of the field, not of either rescue, so there is no conflict, but we should not lean on it as if it were ours alone.
+
+**Muttville's weakness is our opening.** Its homepage headline is "Welcome to the Wagcam!" and its About page has no mission or values section at all; the mission appears only as a tagline, "We're changing the way the world thinks about and treats older dogs." Its How to Adopt page opens with "We can't wait to find you your new best friend!" and its newsletter promises to "email you sparingly and very cutely." That voice is bright and a little arch, and it works for a city rescue with a live-streamed loft. POMDR's reader is older and often arrives in a hard moment. Our quieter register is a position, not a gap.
+
+**Best Friends writes in the second person from the first word.** The homepage headline is "you're saving pets' lives." The subhead is "Happiness is a best friend." Every section opens with the reader: "Wherever you live, whatever your experience or interests, there are countless ways to volunteer." That is the pronoun lesson from section 9, done at scale. Our headlines in 4.1 move the same way.
+
+**Best Friends proves itself with a spending split, in numbers.** "87%" to programs and services, "4%" management and general, "9%" fundraising, under a section called "Transparency, accountability, and trust". POMDR publishes its 990s but never says the split. One line, from the 2023 990, under the promise block: "Of every dollar, X cents goes to the dogs and the people we help." **Needs: POMDR, from the 990.**
+
+**Best Friends asks adopters for their story.** "Tell us about it, and share a photo or video", with a "Share My Story" button. That is the adoption-day questions from the timeline proposal (POMDR-44), as a public ask. Worth a line on the Happy tails page once the Hub can receive them.
+
+**Best Friends states the stakes.** "every 80 seconds" a dog or cat is still killed in shelters. POMDR's equivalent stake is specific to senior dogs, and it is already in our Why band: "Older dogs are at the highest risk in shelters and the least likely to be chosen." It needs a source line the way charity: water gives its numbers a definition. **Needs: the citation from the research synthesis** (`RESEARCH-SENIORS-ADOPTION-AND-THE-WEB-2026-10-17.md` has it).
+
+**What neither peer has, and POMDR does.** Helping Paw and Perpetual Care. Muttville has no program for keeping a senior person's dog at home, and no enrolment for the day an owner cannot care for their dog. Best Friends works at the shelter-system level. These two programs are the reason POMDR exists as a separate organisation and the reason CNN came. They should be named in the mission sentence (section 3.1 now carries the second) and they should be the second and third things on the homepage after the dogs, which today they are.
+
+**On the Center for Nonprofit Excellence's resources.** The four principles are the useful part. The site's resource pages are a catalog of equity and governance reading, and its "Messaging Guidance for Nonprofits Under Pressure" is about answering political accusations, not about websites. Nothing further to take from it for this work.
+
+## 11. Values, mission and vision at the front
+
+POMDR already has the words. They are on the About page, folded under three closed questions a visitor has to open: "Our vision", "Our compassionate food policy", "Diversity, equity and inclusion". The live site's Culture page, which the old About linked to, has two words in the archive, so it was never written. What exists:
+
+- **The vision, verbatim:** "Our vision is to model lifetime care for dogs and all companion animals, to help bring about a positive change in the way society thinks about and treats senior dogs, and to create better lives for them through rescue, foster, adoption, hospice and education."
+- **The food policy, verbatim:** "We believe that all animals should be treated humanely and with compassion throughout their lives," and the vegetarian rule at every POMDR event.
+- **DEI, verbatim:** "Diversity, equity and inclusion are important to POMDR. This includes staff, volunteers, adopters and Helping Paw clients."
+- **The culture line, verbatim (About page today):** "kindness first, to dogs and to people."
+
+Proposed: a short section on About called **"What we believe"**, open, not folded, before the team. Five lines, each a value already stated somewhere on the site, in POMDR's words:
+
+1. **Lifetime care.** Every dog who comes to us is ours for life. *(the commitment, said everywhere)*
+2. **Kindness first, to dogs and to people.** *(the culture line, already on About)*
+3. **Compassion for every animal.** We serve only vegetarian food at every POMDR event. *(the food policy, made a sentence a visitor will actually read)*
+4. **Everyone is welcome.** Adopters, fosters, volunteers and Helping Paw clients, without exception. *(DEI, in plain words, with the full policy still a tap away)*
+5. **Honesty about what we can do.** We say what a dog needs and what we cannot take on. *(the limits the site already states, named as a value)*
+
+The vision sentence stays verbatim under the five, as the long form. The three folds stay beneath for anyone who wants the policy text. This costs nothing POMDR has not already said, and it puts the values on the page instead of behind it. The Muttville comparison is the argument: a rescue with no values section is at the mercy of its tagline.
+
+**A rule for every rewrite in this document:** before a sentence changes, ask which of the five values it serves. If it serves none, it is probably decoration. That is the test that keeps the voice POMDR's while the craft improves.
+
