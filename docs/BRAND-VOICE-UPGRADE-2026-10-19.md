@@ -1,4 +1,4 @@
-# Levelling up the voice: what we add, what we change, what we remove, and why
+# Leveling up the voice: what we add, what we change, what we remove, and why
 
 **Proposal, written 2026-10-19 for Andrew Z.** Built from a full read of every word on the new site (`SITE-COPY-2026-10-19.md`, 41 pages, 17,100 words), the live site's archived voice, and two references Andrew asked me to study: the Center for Nonprofit Excellence's four principles of high-converting copy, and charity: water's site as the example of those principles done well. Nothing here is written yet. Every rewrite below is shown before and after so staff approve words, not ideas. Nothing invents a fact; where a number or a name is needed, it is marked as POMDR's to supply.
 
@@ -10,13 +10,13 @@
 
 **charity: water** is the site that keeps all four. What it does, in its own words:
 
-- One promise as the headline: "Bring clean and safe water to every person on the planet." Not a tagline about the organisation; a thing the reader can join.
+- One promise as the headline: "Bring clean and safe water to every person on the planet." Not a tagline about the organization; a thing the reader can join.
 - Impact stated as counts a reader can picture: "209,241 water projects funded", "21,641,908 people will be served", each with a one-line definition of what the number means.
 - Money translated into people: "A gift of just $20 a month is enough to bring six people, an entire family, clean water each year." And "$40 can end a walk for water."
 - Proof as a section, not a claim: "We prove every project", "We're an open book", "You have our word, and more."
 - Every button is an outcome: "Sponsor Now", "Give Today", "Browse Fundraisers". Never "Learn more" as the primary action.
 
-**What we must not copy.** charity: water is a global organisation with a hundred million dollars behind it, and its voice is bright, fast and sure. POMDR is forty people in Pacific Grove taking the dogs nobody else will, talking to a widow about her terrier. Our register is quieter, slower and more tender, and that is the brand. The principles transfer. The pitch does not. "Bold" at POMDR means "We will not put your dog down for being old," which the intake page already says, and which is braver than anything on charity: water's homepage.
+**What we must not copy.** charity: water is a global organization with a hundred million dollars behind it, and its voice is bright, fast and sure. POMDR is forty people in Pacific Grove taking the dogs nobody else will, talking to a widow about her terrier. Our register is quieter, slower and more tender, and that is the brand. The principles transfer. The pitch does not. "Bold" at POMDR means "We will not put your dog down for being old," which the intake page already says, and which is braver than anything on charity: water's homepage.
 
 ## 2. The POMDR voice, stated once
 
@@ -34,9 +34,15 @@ Five rules, drawn from the sentences on the site that already work. Everything i
 
 Today the mission is told six ways (homepage, Why, About, footer, Volunteer, Clinic). Proposed single sentence, in POMDR's words from the live site reordered for the reader:
 
-> **We find homes for senior dogs, and we help senior people keep the dogs they love. Every dog who comes to us is ours for life.**
+Three options for Carie, so she chooses rather than approves. The review of this proposal pointed out that the first draft had four "we" words and no "you", and left out the third pillar of POMDR's founding: dogs whose person has died or can no longer care for them, who are not always senior dogs. All three below carry that pillar.
 
-Used verbatim on the homepage above the fold, the About band, the footer, and the share description. Needs: Carie's yes.
+> **A.** We find homes for senior dogs and for dogs whose people can no longer care for them, and we help senior people keep the dogs they love. Every dog who comes to us is ours for life.
+>
+> **B.** A loving home for every senior dog, and for every dog whose person can no longer care for them. A helping hand so senior people keep the dogs they love. Every dog who comes to us is safe for life.
+>
+> **C.** Senior dogs find a home here. Senior people keep theirs. And every dog who comes to us is ours for life.
+
+A is the fullest. B reads at sixth grade and is the one I would put on the homepage. C is the shortest and the one for the footer and the share line. The reviewer also offered a "Together, we give..." version; I have left it out on purpose, because "Together, we" is charity: water's register, the one thing section 1 says not to borrow. Used verbatim on the homepage above the fold, the About band, the footer, and the share description. Needs: Carie's choice.
 
 ### 3.2 A promise block, "You have our word"
 
@@ -68,7 +74,7 @@ charity: water: "$20 a month brings six people clean water." POMDR's donate page
 - **$60** "A month of medication for one dog in foster." *(cost to confirm)*
 - **$125** "A senior blood panel, the first thing we do for every new dog."
 - **$275** "A dental cleaning. Most of our dogs need one."
-- **$600** "Extractions and the dental under anaesthetic."
+- **$600** "A full dental with extractions under anesthesia."
 - **$1,250** "A dog's whole first month: exam, bloods, dental, chip, vaccines, and a foster home."
 
 Needs: the five costs from Kelly or Monica. The copy is ready to drop in.
@@ -79,28 +85,32 @@ Buttons that say what happens. Current and proposed, from the pages:
 
 | Today | Proposed | Where |
 |---|---|---|
-| Donate now | Pay for a dog's care | Donate band |
-| See all adoptable dogs | Meet all 83 dogs *(count live)* | Homepage |
-| Start a volunteer application | Tell us what you can give | Volunteer band |
+| Donate now | Fund a dog's care | Donate band |
+| See all adoptable dogs | Meet all 83 waiting dogs *(count live)* | Homepage |
+| Start a volunteer application | Join the volunteer team | Volunteer band |
 | Open the form in its own page | Open the form full size | Every form page |
 | Learn more / About Helping Paw (as a primary) | Get help keeping your dog | Get help card |
 | Ways to give | Every way to give | Hospice |
 | See the roles first | See the eleven ways to help | Volunteer application |
 | Help pay for their care | Sponsor a hospice dog | Hospice band |
 
-Rule: a button names the thing the reader gets, in four words or fewer where it can.
+Rule: a button names the thing the reader gets, in four words or fewer where it can. Two refinements from the review, both right: "Pay for a dog's care" reads like an invoice, so it is "Fund a dog's care"; "Tell us what you can give" sounds like an ask, so it is "Join the volunteer team". Giving is an act of care, not a bill, and volunteering is joining, not supplying.
 
 ### 3.6 A dog-story standard, for the admin
 
 Dog stories are the most-read words on the site and the only ones without a standard. Adele's story (quiet, specific, foster's own observation) is the model. Proposed prompt for the intake form, which goes to Ronnie as part of the harmony proposal:
 
-> "Two or three short paragraphs a stranger reads first. Open with who this dog is at home. Say what they love and what they need, in the foster's words. Skip breed, age and weight; the page shows those. End with a sentence, not a question."
+> "Write two or three short paragraphs as if you were telling a neighbor about this dog over coffee. Start with one real moment from your day together: what they do when you pick up the leash, where they curl up when the sun comes in. Say what they love and what kind of home helps them feel safe. Skip breed, age and weight; the page already shows those. End with a warm truth, not a question."
 
-And three rules for the page: no "Meet [Name]" opener, no question ending, no puns longer than one line.
+The first draft said "open with who this dog is at home", and the review was right that most people would answer that with "a sweet, quiet boy who likes naps", which is nothing a reader can picture. One concrete moment is what Adele's story has and Ahi Tuna's does not. Three rules for the page stay: no "Meet [Name]" opener, no question ending, no puns longer than one line.
 
 ### 3.7 The named person
 
-charity: water shows "The executive team." POMDR's care pages should name who answers: "You will reach Shanel or Alejandra, Monday to Saturday." A name is the strongest trust signal a small rescue has. Needs: POMDR-47 items 6 and 7.
+charity: water shows "The executive team." POMDR's care pages should say who answers, and the review caught the risk in the first draft: hard-coding "You will reach Shanel or Alejandra" makes two people a bottleneck, confuses the caller who gets someone else, and goes stale the month a role changes. The line that keeps the trust signal and protects the team:
+
+> "When you call (831) 718-9122, Monday to Saturday, you will not get a call center or a machine. You will talk with Shanel, Alejandra, or another member of our small intake team here in Pacific Grove."
+
+Names stay, with cover. Needs: POMDR-47 items 6 and 7, and a note in Design.md that this line is reviewed whenever the roster changes.
 
 ## 4. What we change
 
@@ -125,11 +135,13 @@ These sit beside warm new copy and the seam shows. Before and after:
 
 **Perpetual Care, step one.** Today: "Contact POMDR and talk with a board member to determine whether your dog is appropriate for our program. Eligibility depends on the dog's age, size, temperament and any special medical needs, and we will need to meet your dog." Proposed: "Call us. A board member will talk with you about your dog, and we will come and meet them. Age, size, temperament and health all matter, and none of them rules a dog out on its own."
 
-**Helping Paw, volunteer help.** Today: "Short term dog walking for emergency situations; emergency short term foster care or boarding for people who are in hospital or recovering from illness or surgery; transportation to the vet or groomer for disabled and senior pet guardians." Proposed: "A volunteer walks your dog when you cannot. If you go into hospital, we foster or board your dog until you are home. If you cannot drive, we take them to the vet or the groomer."
+**Helping Paw, volunteer help.** Today: "Short term dog walking for emergency situations; emergency short term foster care or boarding for people who are in hospital or recovering from illness or surgery; transportation to the vet or groomer for disabled and senior pet guardians." Proposed: "A volunteer walks your dog when you cannot. If you go into the hospital, we foster or board your dog until you are back home. If you cannot drive, we take them to the vet or the groomer."
 
 **Donate, monthly.** Today: "Become a sustaining donor and pledge a recurring monthly donation. Your credit card will be charged your pledged amount at the first of every month." Proposed: "Give the same amount on the first of every month. It is what lets us say yes to the next dog before the money is in. Change or stop it any time."
 
-### 4.3 Helping Paw described once
+#A note on spelling: the pages are US English (Brand.md), and the rewrites above are too. "Part way through", which seven form pages use, is fine in American English and stays.
+
+## 4.3 Helping Paw described once
 
 Four pages list what Helping Paw covers, and the lists differ. One list, from the program page, used everywhere it is mentioned: **walking, rides to the vet, help with a vet bill, food and supplies, and a foster home while you are in hospital.** The homepage, Why, About and Volunteer pages take that sentence verbatim.
 
@@ -161,7 +173,7 @@ Four pages list what Helping Paw covers, and the lists differ. One list, from th
 - Every promise already made, and every honest limit stated.
 - The care-page voice: "You are doing the right thing by asking." "We will not rush you." These are the standard the rest is being raised to.
 - Phone first on every care page. charity: water never shows a phone number. POMDR always does, and should.
-- The two colours, the band, the button above the text.
+- The two colors, the band, the button above the text.
 - Spanish on the Helping Paw and Surrender paths.
 
 ## 7. What only POMDR can supply
@@ -185,3 +197,14 @@ Everything else in sections 3 to 5 can be written and shown this week.
 6. **Story standard** (3.6): to Ronnie with the harmony proposal.
 
 Checks on every change: reading grade per page against the table in 4.4, the voice rules (no em dashes, no question endings, no "Meet"), the stress harness on journeys 2, 4 and 6, and the full page render. Then the test with people, because wording is the thing a machine cannot judge.
+
+## 9. Review notes, 2026-10-19
+
+A second reader reviewed this proposal and I have folded in what was right:
+
+- **Mission pronouns and the missing pillar** (3.1): accepted. Three options now, each carrying dogs whose person has died or cannot care for them. The "Together, we" option was declined for the reason in section 1.
+- **Named staff as a bottleneck** (3.7): accepted in full. Names with team cover, and a review trigger when the roster changes.
+- **Dog-story prompt too abstract** (3.6): accepted in full. One concrete moment, told to a neighbor over coffee.
+- **Two buttons read as transactional** (3.5): accepted. "Fund a dog's care" and "Join the volunteer team".
+- **Commonwealth spellings in the proposal** : accepted and corrected throughout this document. The site copy was already US English by rule; the proposal was not, and it should set the example it asks for.
+- **Where to start**: the reviewer's first step matches section 8: the claims ledger, the carried-over rewrites with the American edits, and the single Helping Paw sentence. None of those waits on Carie or the clinic.
