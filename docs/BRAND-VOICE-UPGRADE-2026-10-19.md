@@ -40,7 +40,7 @@ Three options for Carie, so she chooses rather than approves. The review of this
 >
 > **B.** A loving home for every senior dog, and for every dog whose person can no longer care for them. A helping hand so senior people keep the dogs they love. Every dog who comes to us is safe for life.
 >
-> **C.** Senior dogs find a home here. Senior people keep theirs. And every dog who comes to us is ours for life.
+> **C.** Senior dogs, and dogs who have lost their people, find a home here. Senior people get help keeping theirs. And every dog who comes to us is ours for life.
 
 A is the fullest. B reads at sixth grade and is the one I would put on the homepage. C is the shortest and the one for the footer and the share line. The reviewer also offered a "Together, we give..." version; I have left it out on purpose, because "Together, we" is charity: water's register, the one thing section 1 says not to borrow. Used verbatim on the homepage above the fold, the About band, the footer, and the share description. Needs: Carie's choice.
 
@@ -143,7 +143,9 @@ These sit beside warm new copy and the seam shows. Before and after:
 
 ## 4.3 Helping Paw described once
 
-Four pages list what Helping Paw covers, and the lists differ. One list, from the program page, used everywhere it is mentioned: **walking, rides to the vet, help with a vet bill, food and supplies, and a foster home while you are in hospital.** The homepage, Why, About and Volunteer pages take that sentence verbatim.
+Four pages list what Helping Paw covers, and the lists differ. One list, from the program page, used everywhere it is mentioned: **walking, rides to the vet or groomer, help with a vet bill, dog food and supplies, and a foster home while you are in the hospital.** The homepage, Why, About and Volunteer pages take that sentence verbatim.
+
+On the Helping Paw page itself, the concrete finish Muttville's welcome kit taught (section 10), in POMDR's facts: *"Whether it is a bag of dog food, a collar and leash that fit, a volunteer to walk your dog while your hip heals, or a vet bill that cannot wait, ask. Supplies are ready to pick up at our office in Pacific Grove, and the rest comes to you."* The reviewer's draft said "we bring the help to you"; the program page says donated supplies are collected from the office, so the sentence says that.
 
 ### 4.4 Reading level by page type
 
@@ -173,6 +175,7 @@ Four pages list what Helping Paw covers, and the lists differ. One list, from th
 - Every promise already made, and every honest limit stated.
 - The care-page voice: "You are doing the right thing by asking." "We will not rush you." These are the standard the rest is being raised to.
 - Phone first on every care page. charity: water never shows a phone number. POMDR always does, and should.
+- No urgency, no guilt, no countdowns, no sad eyes behind bars. The national direct-response style raises quick money from strangers and costs the trust of the older guardian who is afraid of being judged. POMDR's "You are doing the right thing by asking" is the opposite stance, and it is the brand.
 - The two colors, the band, the button above the text.
 - Spanish on the Helping Paw and Surrender paths.
 
@@ -207,6 +210,7 @@ A second reader reviewed this proposal and I have folded in what was right:
 - **Dog-story prompt too abstract** (3.6): accepted in full. One concrete moment, told to a neighbor over coffee.
 - **Two buttons read as transactional** (3.5): accepted. "Fund a dog's care" and "Join the volunteer team".
 - **Commonwealth spellings in the proposal** : accepted and corrected throughout this document. The site copy was already US English by rule; the proposal was not, and it should set the example it asks for.
+- **Second review (sections 10 and 11):** Option C had dropped the third pillar; fixed. Two Commonwealth spellings had crept into the new sections; fixed, and the verbatim Helping Paw sentence now says "in the hospital". The 990 line uses the latest return and positive framing, with a floor below which it is not used. A planned-giving sentence joins the Perpetual Care page. The reviewer's Helping Paw finish said "we bring the help to you"; corrected to what the page says, that supplies are picked up in Pacific Grove. The no-guilt stance is now written into section 6.
 - **Where to start**: the reviewer's first step matches section 8: the claims ledger, the carried-over rewrites with the American edits, and the single Helping Paw sentence. None of those waits on Carie or the clinic.
 
 ## 10. Peers, not aspirations: Muttville and Best Friends
@@ -223,13 +227,15 @@ charity: water is the model for method. Muttville (San Francisco, since 2007, "1
 
 **Best Friends writes in the second person from the first word.** The homepage headline is "you're saving pets' lives." The subhead is "Happiness is a best friend." Every section opens with the reader: "Wherever you live, whatever your experience or interests, there are countless ways to volunteer." That is the pronoun lesson from section 9, done at scale. Our headlines in 4.1 move the same way.
 
-**Best Friends proves itself with a spending split, in numbers.** "87%" to programs and services, "4%" management and general, "9%" fundraising, under a section called "Transparency, accountability, and trust". POMDR publishes its 990s but never says the split. One line, from the 2023 990, under the promise block: "Of every dollar, X cents goes to the dogs and the people we help." **Needs: POMDR, from the 990.**
+**Best Friends proves itself with a spending split, in numbers.** "87%" to programs and services, "4%" management and general, "9%" fundraising, under a section called "Transparency, accountability, and trust". POMDR publishes its 990s but never says the split. One line under the promise block, from the latest return (2024, or the 2025 audited figures, so the proof is not three years old), framed so the rest of the dollar is not read as waste, since paying the people who answer the phone and keeping the clinic open is caring for the dogs: "From our latest Form 990: X cents of every dollar goes to veterinary care, foster support, adoption and Helping Paw grants for the dogs and people we serve." Use it if the program share is strong (about 82 percent or more); if it is not, say nothing rather than explain. **Needs: POMDR, from the latest 990.**
 
 **Best Friends asks adopters for their story.** "Tell us about it, and share a photo or video", with a "Share My Story" button. That is the adoption-day questions from the timeline proposal (POMDR-44), as a public ask. Worth a line on the Happy tails page once the Hub can receive them.
 
 **Best Friends states the stakes.** "every 80 seconds" a dog or cat is still killed in shelters. POMDR's equivalent stake is specific to senior dogs, and it is already in our Why band: "Older dogs are at the highest risk in shelters and the least likely to be chosen." It needs a source line the way charity: water gives its numbers a definition. **Needs: the citation from the research synthesis** (`RESEARCH-SENIORS-ADOPTION-AND-THE-WEB-2026-10-17.md` has it).
 
-**What neither peer has, and POMDR does.** Helping Paw and Perpetual Care. Muttville has no program for keeping a senior person's dog at home, and no enrolment for the day an owner cannot care for their dog. Best Friends works at the shelter-system level. These two programs are the reason POMDR exists as a separate organisation and the reason CNN came. They should be named in the mission sentence (section 3.1 now carries the second) and they should be the second and third things on the homepage after the dogs, which today they are.
+**All three peers connect lifetime care to a gift in a will.** POMDR's donate page already lists Planned Giving and Legacy Donor, but the Perpetual Care page, where an older owner is already thinking about the day they are gone, never mentions it. One gentle sentence there, after the enrollment steps: *"Many people who enroll a dog also remember POMDR in their will or trust, so that the promise we make to their dog can be made to the next one. Our planned giving page says how."* Nothing new is claimed; it links two pages that already exist.
+
+**What neither peer has, and POMDR does.** Helping Paw and Perpetual Care. Muttville has no program for keeping a senior person's dog at home, and no enrollment for the day an owner cannot care for their dog. Best Friends works at the shelter-system level. These two programs are the reason POMDR exists as a separate organization and the reason CNN came. They should be named in the mission sentence (section 3.1 now carries the second) and they should be the second and third things on the homepage after the dogs, which today they are.
 
 **On the Center for Nonprofit Excellence's resources.** The four principles are the useful part. The site's resource pages are a catalog of equity and governance reading, and its "Messaging Guidance for Nonprofits Under Pressure" is about answering political accusations, not about websites. Nothing further to take from it for this work.
 
