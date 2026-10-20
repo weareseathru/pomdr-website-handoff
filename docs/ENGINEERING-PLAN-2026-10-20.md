@@ -1,174 +1,218 @@
-# From D to A: the plan for the weak grades
+# From D to A: the engineering plan
 
-**Written 2026-10-20 for Andrew Z. and Ronnie.** Companion to `ENGINEERING-AUDIT-2026-10-20.md`. Seven areas scored below B. For each: the target grade, the steps in order, who does them, how long they take, and the code or configuration ready to drop in. Everything here is additive to Ronnie's repository and follows its conventions (plain PHP, no dependencies, one folder per admin page, `db.php` as the only door to the database). Items marked **ours** we can do now in our own lane; items marked **Ronnie** touch his build, deploy or data and go to him as ready-made patches.
+**Written 2026-10-20 for Andrew Z. and Ronnie.** Companion to `ENGINEERING-AUDIT-2026-10-20.md`. Seven areas scored below B. Each section below opens with the same five-line box (what, why, who, when, done when) so it can be read in a minute, then gives the full detail and the code or configuration to drop in. Everything is additive to Ronnie's repository and follows its conventions: plain PHP, no dependencies, one folder per admin page, `db.php` as the only door to the database. **Ours** means we do it now in our own lane. **Ronnie** means it touches his build, deploy or data and goes to him as a ready-made patch.
 
-| Area | Now | Target | Days of work | Owner |
-|---|---|---|---|---|
-| Data at rest | D | A | 0.5 | Ronnie, Andrew present |
-| Continuous integration | F | A | 1 | Ronnie (workflow), ours (render script) |
-| Testing | D | B+ | 2 | Ours, then Ronnie for unit tests |
-| Observability | C+ | B+ | 1 | Ronnie |
-| Delivery headers | B- | A | 0.5 | Ronnie, from our file |
-| Authentication | B | A- | 0.5 | Ronnie |
-| Repository hygiene | C | B+ | 0.5 | Ronnie (his repo), ours (handoff) |
+## The whole plan on one screen
 
-Total: about six working days, spread over three weeks, none of it blocking the other work.
+| # | Area | Now | Target | Effort | Owner | When |
+|---|---|---|---|---|---|---|
+| 1 | Data at rest | D | A | half a day | Ronnie, Andrew present | This week |
+| 2 | Continuous integration | F | A | one day | Ronnie, with our scripts | Next week |
+| 3 | Testing | D | B+ | two days | Ours, then Ronnie | Next two weeks |
+| 4 | Observability | C+ | B+ | one day | Ronnie | Before the domain moves |
+| 5 | Delivery headers | B- | A | half a day | Ronnie, from our file | Before the domain moves |
+| 6 | Authentication | B | A- | half a day | Ronnie | Next two weeks |
+| 7 | Repository hygiene | C | B+ | half a day each repo | Both | Ongoing |
+
+About six working days over three weeks. Nothing here blocks the site work. Tracker: POMDR-50 (section 1), POMDR-51 (section 4), POMDR-17 (section 5), POMDR-46 (sections 5 and 6 are in the harmony proposal).
 
 ---
 
-## 1. Data at rest: D to A (this week)
+## 1. Data at rest: D to A
 
-**Why D.** Sixteen gzipped production dumps in `db/backups/` with people, phones, emails, clinic notes and admin password hashes. Git keeps them forever in every clone.
+**At a glance**
 
-**Steps**
+- **What:** get the sixteen production database dumps out of git, for good.
+- **Why:** they hold people's names, addresses, phones, emails, clinic notes and admin password hashes, and git keeps them in every clone forever.
+- **Who:** Ronnie, with Andrew present for the one forced push.
+- **When:** this week. Half a day.
+- **Done when:** `db/backups/` is ignored, history no longer contains it, backups land in R2 with retention, admin passwords are rotated, the repository is under 100 MB.
 
-1. Stop writing them to the repository. `bin/backup-db.php` writes to `db/backups/`; change its destination to a local path outside the repo (`/var/backups/pomdr/`) and push each dump to the R2 bucket the photo sync already uses, under `backups/db/YYYY-MM-DD.sql.gz`, with an R2 lifecycle rule keeping 30 daily and 12 monthly.
-2. Ignore the folder: add `db/backups/` to `.gitignore`.
-3. Remove the files from history. On a fresh clone, once, with every other clone refreshed afterwards:
+**The details**
+
+1. **Stop writing to the repository.** `bin/backup-db.php` currently writes to `db/backups/`. Change its destination to a path outside the repo (`/var/backups/pomdr/`) and upload each dump to the R2 bucket the photo sync already uses, under `backups/db/YYYY-MM-DD.sql.gz`. The R2 client code exists in `includes/r2.php`.
+2. **Retention.** In the Cloudflare dashboard, an R2 lifecycle rule on the `backups/db/` prefix: delete after 400 days. Keep the first of each month by a second rule or by the backup script naming monthlies differently. Thirty daily and twelve monthly is the target.
+3. **Ignore the folder.** Add `db/backups/` to `.gitignore` and commit.
+4. **Remove the files from history.** On a fresh clone, once:
    ```bash
+   pip install git-filter-repo
    git filter-repo --path db/backups --invert-paths
+   git remote add origin git@github.com:ronniereid/pomdr.git
    git push --force origin main
    ```
-   Then on the admin box: `git fetch && git reset --hard origin/main` (the box pulls with `--ff-only`, so it must be reset by hand once).
-4. Rotate every row in `admin_users` with `bin/create-admin-user.php`, since the hashes were in the dumps.
-5. Ask GitHub support to purge the unreachable objects from the server side (they do this on request for sensitive data).
+   Then on the admin box, which pulls with `--ff-only` and will refuse the rewritten history: `git fetch origin && git reset --hard origin/main`. Every other clone (Andrew's `New-Build/`, Ronnie's laptop) does the same once. Andrew is present so nothing is lost by surprise.
+5. **Rotate the admin passwords.** Every row in `admin_users` with `bin/create-admin-user.php`, because the hashes were in the dumps. Strong hashes resist cracking, but rotation costs five minutes and removes the question.
+6. **Ask GitHub to purge.** GitHub support will remove unreachable objects from their servers on request when sensitive data is involved; a forced push alone leaves them cached for a time.
+7. **Check.** `git rev-list --all --objects | grep db/backups` returns nothing; `du -sh .git` is under 100 MB.
 
-**Ready to use:** the `.gitignore` line, the two commands above, and an R2 lifecycle rule (`backups/db/` prefix, expire after 400 days, keep the first of each month) in the Cloudflare dashboard.
+## 2. Continuous integration: F to A
 
-**Grade after:** A. No PII in version control, backups off-box, retention defined.
+**At a glance**
 
-## 2. Continuous integration: F to A (next week)
+- **What:** every push to main is checked and the whole site rendered before the admin box can pull it.
+- **Why:** today nothing runs on push, and the box pulls within five minutes. A broken `db.php` takes the admin, the importers and the build down together, and staff find out first.
+- **Who:** Ronnie adds the workflow; we write the seed and page-list scripts.
+- **When:** next week. One day.
+- **Done when:** a red check on GitHub blocks the push, and a green one means every page rendered without a PHP error.
 
-**Why F.** Nothing runs on push. The admin box pulls main within five minutes of a commit.
+**The details**
 
-**Steps**
+1. **The workflow.** Save as `.github/workflows/check.yml`:
+   ```yaml
+   name: check
+   on: [push, pull_request]
+   jobs:
+     check:
+       runs-on: ubuntu-latest
+       services:
+         mysql:
+           image: mysql:8.4
+           env: { MYSQL_ROOT_PASSWORD: root, MYSQL_DATABASE: pomdr_hub }
+           ports: ['3306:3306']
+           options: --health-cmd="mysqladmin ping" --health-interval=5s --health-retries=10
+       steps:
+         - uses: actions/checkout@v4
+         - uses: shivammathur/setup-php@v2
+           with: { php-version: '8.4', extensions: pdo_mysql, mbstring, gd }
+         - run: php bin/check.php
+         - run: cp includes/config.local.php.example includes/config.local.php
+         - run: php bin/seed-ci.php
+         - run: php tests/unit/run.php
+         - run: |
+             set -e
+             for p in $(php bin/list-pages.php); do
+               php build/render-page.php "$p" > /tmp/page.html 2> /tmp/err.txt
+               if [ -s /tmp/err.txt ] || [ $(wc -c < /tmp/page.html) -lt 2000 ]; then
+                 echo "FAIL $p"; cat /tmp/err.txt; exit 1
+               fi
+             done
+   ```
+2. **`bin/seed-ci.php` (ours).** Applies `db/schema.sql` and every file in `db/migrations/` in order, then inserts six dogs (two adoptable with photos, one foster-needed with a temporary window, one hospice, one courtesy, one adopted), three team rows across two groups, two events (one past, one future), so every page has something to render. Uses the same `db_run()` helpers; no fixtures framework.
+3. **`bin/list-pages.php` (ours).** Ten lines: requires `build/build.php`'s `page_urls()` and prints one URL per line, plus `/pets/<slug>/` for the seeded dogs and `/team/<slug>/` for the seeded people.
+4. **Branch protection.** GitHub, Settings, Branches, `main`: require status checks to pass (`check`), nothing else. No pull-request requirement, so the one-branch workflow stays as it is; a red check simply refuses the push.
+5. **The example config.** `includes/config.local.php.example` must point at `127.0.0.1`, `root`, `root`, `pomdr_hub`, with every API key blank. The importers are not run in CI, so blank keys are fine.
+6. **Check.** Push a commit that breaks one page on purpose; the check goes red within three minutes; revert; green.
 
-1. Add the workflow below at `.github/workflows/check.yml`. It runs the existing syntax check, then renders every public page against a seeded MySQL service and fails on any PHP error or empty page.
-2. Add `bin/seed-ci.php` (ours to write): creates the schema from `db/schema.sql` plus migrations, inserts six dogs, three team rows and two events, so every page has something to render.
-3. Turn on branch protection for `main` in GitHub with "require status checks to pass" and no other restriction, so a red check blocks the push but nobody is forced into pull requests.
+## 3. Testing: D to B+
 
-```yaml
-# .github/workflows/check.yml
-name: check
-on: [push, pull_request]
-jobs:
-  check:
-    runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8.4
-        env: { MYSQL_ROOT_PASSWORD: root, MYSQL_DATABASE: pomdr_hub }
-        ports: ['3306:3306']
-        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-retries=10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: shivammathur/setup-php@v2
-        with: { php-version: '8.4', extensions: pdo_mysql, mbstring, gd }
-      - run: php bin/check.php
-      - run: cp includes/config.local.php.example includes/config.local.php
-      - run: php bin/seed-ci.php
-      - run: |
-          set -e
-          for p in $(php bin/list-pages.php); do
-            php build/render-page.php "$p" > /tmp/page.html 2> /tmp/err.txt
-            if [ -s /tmp/err.txt ] || [ $(wc -c < /tmp/page.html) -lt 2000 ]; then
-              echo "FAIL $p"; cat /tmp/err.txt; exit 1
-            fi
-          done
-```
+**At a glance**
 
-`bin/list-pages.php` is ten lines that print the same URL list `build.php` uses (its `page_urls()` function already exists; this exposes it on the command line).
+- **What:** the browser suites move into the repository, a dependency-free unit runner covers the pure functions, and each importer gets one fixture test.
+- **Why:** one syntax check is the whole suite today. Our checks exist but live outside the repo where Ronnie cannot run them.
+- **Who:** ours for the suites and the unit runner; Ronnie for the importer tests.
+- **When:** the next two weeks. Two days of ours.
+- **Done when:** `php tests/unit/run.php` runs in CI, `tests/browser/` runs against the dev server with one command, and the release checklist names both.
 
-**Grade after:** A. Every push lints and renders the whole site before the box can pull it.
+**The details**
 
-## 3. Testing: D to B+ (two days, then ongoing)
+1. **Browser suites into `tests/browser/` (ours).** The stress harness (ten persona journeys), the large-text sweep (320 to 1280px at 150 and 200 percent), the per-page audit (titles, headings, alt text, targets, overflow), the no-script coverage check and the logo and form checks. Playwright only, no build step, a `package.json` in `tests/browser/` only (the repository's no-dependency rule is about the application; the tests are not shipped). A `tests/README.md` says: start the dev server, `npm ci` in `tests/browser/`, `node stress.mjs 3 100`, and what each number means.
+2. **Unit runner (ours).** `tests/unit/run.php`: a list of cases, each a function, its arguments and the expected result; prints one line per case and exits non-zero on any failure, the way `bin/check.php` reports. First cases: `pet_meta_line`, `pet_status_badges`, `pet_temp_foster_open`, `pet_temp_foster_dates`, `format_event_when`, `event_calendar_url`, `pet_story_paragraphs`, `public_profile_where`. These are the functions whose wrong answer shows on a public page.
+3. **Importer fixture tests (Ronnie).** For `sync-shelterluv.php`, `import-lgl.php` and `sync-connections.php`: a small JSON fixture per importer, run against the CI database, then assert the rows written. These scripts are the ones that can corrupt data and the ones nobody wants to run by hand to check.
+4. **Release checklist.** `tests/README.md` ends with the list run before any push that touches layout or data: check, unit, render, the three journeys the change touches, the large-text sweep.
+5. **Check.** CI runs the unit tests; the browser suites run locally in under ten minutes.
 
-**Why D.** One syntax check is the suite.
+## 4. Observability: C+ to B+
 
-**Steps**
+**At a glance**
 
-1. **Browser suites into the repository (ours, one day).** Move the stress harness, the large-text sweep, the per-page audit and the no-script coverage check from the design project into `tests/browser/`, Playwright only, with a `tests/README.md` that says how to run them against the dev server. They become the release checklist, run by hand before a push that touches layout.
-2. **Unit tests for the pure functions (ours, one day).** No framework; a `tests/unit/run.php` that calls each function with known inputs and prints pass or fail, the way `bin/check.php` already reports. Start with: `pet_meta_line`, `pet_status_badges`, `pet_temp_foster_open`, `format_event_when`, `event_calendar_url`, `pet_story_paragraphs`, `public_profile_where`. Add `php tests/unit/run.php` to the workflow.
-3. **One integration test per importer (Ronnie, later).** Feed each importer a fixture file and assert the row it writes. These are the scripts that can corrupt data, and the ones nobody wants to run by hand.
+- **What:** someone is told within minutes when the build fails, when PHP errors pile up, or when the public site stops answering.
+- **Why:** today Slack hears about intakes and the heartbeat, and nothing else. A failed hourly build leaves the public site stale with no signal.
+- **Who:** Ronnie. Tracker POMDR-51.
+- **When:** before the domain moves. One day.
+- **Done when:** a deliberately broken build posts to Slack within the hour, the uptime monitor alerts on a 500, and the daily digest posts when the log is not empty.
 
-**Grade after:** B+. A for unit coverage would need the data layer tested too, which is section 7's job.
+**The details**
 
-## 4. Observability: C+ to B+ (one day)
+1. **Build failure to Slack.** The hourly cron runs `php build/build.php --push`. Wrap it so a non-zero exit posts the last twenty lines through the existing `slack_notify()` in `includes/slack.php`, to the channel the intake alerts use. Five lines in the cron script or in `build.php`'s exit path.
+2. **Uptime.** A free external monitor (Cloudflare Health Checks, UptimeRobot or Better Stack) on `https://www.pomdr.org/` and one dog page, every five minutes, alerting Slack and Andrew's phone. Two checks and no code. The dog page matters because the home page can be fine while the database-driven pages are stale.
+3. **Error digest.** A daily cron, same pattern as `bin/audit-images.php`: count the last 24 hours of lines in the PHP error log, post the count and the three most common messages to Slack, say nothing when the count is zero. Fifteen lines.
+4. **Build staleness.** The build writes a timestamp into the output (a comment in `index.html` or a `/build.txt`); the uptime monitor can check that the public home page's build time is under two hours old. Optional, but it catches the case where the build runs and silently publishes nothing.
+5. **Later, once live:** Sentry's free tier. Its PHP SDK is one vendored file and one line in `config.php`, and gives stack traces with the request that caused them. The one place a third-party service earns its keep.
 
-**Why C+.** Slack hears about intakes and the heartbeat; nobody hears about a failed build, a PHP error, or the public site going dark.
+## 5. Delivery headers: B- to A
 
-**Steps**
+**At a glance**
 
-1. **Build failure to Slack.** In `deploy/cron/` the hourly build runs `php build/build.php --push`. Wrap it: on non-zero exit, call the existing `slack_notify()` with the last twenty lines of output. Five lines.
-2. **Uptime check.** A free monitor (UptimeRobot, Better Stack or Cloudflare's own health checks) on `https://www.pomdr.org/` and one dog page, every five minutes, alerting Slack and Andrew's phone. Zero code.
-3. **Error digest.** A daily cron that greps the PHP error log for the last 24 hours and posts a count and the top three messages to Slack, silent when there are none. Fifteen lines, same pattern as the image audit.
-4. **Later:** Sentry's free tier with its PHP SDK is one `require` and one line in `config.php`, and gives stack traces with context. Worth it once the site is live.
+- **What:** the public site sends a strict Content-Security-Policy, HSTS, framing and permissions policies, and caches hashed assets for a year.
+- **Why:** today only Referrer-Policy and nosniff are set, and every asset revalidates on every visit despite carrying a content hash. The public pages have zero inline scripts, so a strict policy is achievable without rewriting anything.
+- **Who:** Ronnie, since the build writes the file. We supply it. Tracker POMDR-17.
+- **When:** before the domain moves. Half a day.
+- **Done when:** `curl -I https://www.pomdr.org/` shows all six headers, the browser console is clean on the home, a dog page, a form page and the videos page, and repeat visits fetch no assets.
 
-**Grade after:** B+.
+**The details**
 
-## 5. Delivery headers: B- to A (half a day)
+1. **The file.** `build.php` writes `_headers` into the output beside `404.html`, through `write_if_changed()` so the output stays byte-stable:
+   ```
+   /*
+     Content-Security-Policy: default-src 'self'; img-src 'self' https://images.pomdr.org https://www.pomdr.org https://www.peaceofminddogrescue.org data:; script-src 'self' https://stats.imerge.net; style-src 'self'; font-src 'self'; frame-src https://www.youtube-nocookie.com https://secure.lglforms.com; connect-src 'self' https://stats.imerge.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://secure.lglforms.com
+     Strict-Transport-Security: max-age=31536000; includeSubDomains
+     X-Frame-Options: DENY
+     Referrer-Policy: strict-origin-when-cross-origin
+     Permissions-Policy: camera=(), microphone=(), geolocation=()
+     X-Content-Type-Options: nosniff
 
-**Why B-.** No CSP, no HSTS, no framing or permissions policy, assets revalidate on every visit despite content hashes.
+   /assets/*
+     Cache-Control: public, max-age=31536000, immutable
+   ```
+2. **The one inline style.** There is a single `style=""` attribute in the public pages; move it to a class so `style-src 'self'` holds. (Ours; a five-minute change.)
+3. **Report first.** For one build, use `Content-Security-Policy-Report-Only` with the same value and read the console on four pages. Anything blocked is a host missing from the list (the old photo hosts, until POMDR-6 moves the pictures to R2). Then switch to enforcing.
+4. **HSTS preload.** Once the domain has served HSTS for a month without trouble, add `; preload` and submit to the browser preload list. Optional.
+5. **Check.** `curl -I` on the live site; a browser console with no CSP reports; the Network panel showing `(memory cache)` for assets on a second visit.
 
-**Steps**
+## 6. Authentication: B to A-
 
-1. `build.php` writes a `_headers` file into the output beside `404.html`, through the same `write_if_changed()`:
+**At a glance**
 
-```
-/*
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://images.pomdr.org https://www.pomdr.org https://www.peaceofminddogrescue.org data:; script-src 'self' https://stats.imerge.net; style-src 'self'; font-src 'self'; frame-src https://www.youtube-nocookie.com https://secure.lglforms.com; connect-src 'self' https://stats.imerge.net; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://secure.lglforms.com
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  X-Content-Type-Options: nosniff
+- **What:** the admin login slows down and locks out after repeated failures.
+- **Why:** `attempt_login()` has no delay, counter or lockout. Cloudflare Access is the first lock; the second lock should hold on its own.
+- **Who:** Ronnie. In the harmony proposal (POMDR-46).
+- **When:** the next two weeks. Half a day.
+- **Done when:** ten wrong passwords in fifteen minutes lock the email and the IP for fifteen minutes, each failure costs a second, and the login page says so plainly.
 
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
-```
+**The details**
 
-2. The one inline `style=""` attribute in the public pages moves to a class, so `style-src 'self'` holds.
-3. Check the policy in report-only mode for one build (`Content-Security-Policy-Report-Only`) and read the console on the home, a dog page, a form page and the videos page, then switch to enforcing.
+1. **Migration 034.** A `login_attempts` table: `id`, `email`, `ip`, `failed_at`. Guarded in code the way `animals_has_column()` guards columns, so the code can land before the migration runs.
+2. **In `attempt_login()`:**
+   - Count rows for this email, and separately for this IP, with `failed_at` in the last fifteen minutes.
+   - If either count is ten or more: `usleep(1000000)`, return false without checking the password, and log the lockout.
+   - On a wrong password: insert a row, `usleep(1000000)`, return false.
+   - On success: delete the email's rows, then the existing `session_regenerate_id(true)`.
+   - A nightly cron deletes rows older than a day.
+3. **The login page.** For the locked case: "Too many attempts. Try again in fifteen minutes, or ask Andrew to reset your password." Still vague about whether the address exists.
+4. **Optional, later: a second factor.** TOTP (the six-digit app code) for the staff with write access. PHP's standard library has no TOTP, so this is the one place a single vendored file (an RFC 6238 implementation, about sixty lines, reviewed) is justified. Codes are stored as a secret per admin user; recovery is Andrew resetting it.
+5. **Check.** Eleven wrong passwords from one machine: the eleventh returns the lockout message without touching the database's password check; the right password works again fifteen minutes later.
 
-**Grade after:** A.
+## 7. Repository hygiene and code shape: C to B+
 
-## 6. Authentication: B to A- (half a day)
+**At a glance**
 
-**Why B.** No throttling on `attempt_login()`.
+- **What:** Ronnie's repository drops the dumps and splits its 5,458-line data layer by domain as it is touched; the handoff repository archives the Divi-era theme and prototype and moves large binaries out.
+- **Why:** the data layer is the file a newcomer will fear; the handoff repository carries 868 files, of which a few hundred are from a design direction abandoned in September.
+- **Who:** Ronnie for his; ours for the handoff.
+- **When:** ongoing; the handoff archive is half a day.
+- **Done when:** `db.php` is a thin file requiring five domain files; the handoff repository is `docs/`, `design-system/`, `scripts/`, the brand guides and `CLAUDE.md`.
 
-**Steps**
-
-1. A `login_attempts` table (migration 034): `email`, `ip`, `failed_at`. Guarded with `animals_has_column()`'s sibling for tables.
-2. In `attempt_login()`: count failures for the email and for the IP in the last fifteen minutes; if either is ten or more, return false without checking the password and log it; on any failure, `usleep(1000000)` and insert a row; on success, delete the email's rows.
-3. The login page says "Too many attempts. Try again in fifteen minutes, or ask Andrew to reset your password." for the locked case.
-4. Optional, later: TOTP second factor for the three staff with write access. PHP has no dependency-free TOTP in the standard library, so this is the one place a single small vendored file (an RFC 6238 implementation, about 60 lines) is justified.
-
-**Grade after:** A- without TOTP, A with it.
-
-## 7. Repository hygiene and code shape: C to B+ (ongoing)
+**The details**
 
 **Ronnie's repository**
 
-1. Section 1 removes 285 MB and the PII; the repository drops from 584 MB to under 100 MB.
-2. `db.php` split by domain as functions are touched: `db-pets.php`, `db-people.php`, `db-events.php`, `db-jobs.php`, `db-core.php`, each `require_once`d from `db.php` so every caller is unchanged.
-3. `declare(strict_types=1)` and parameter types added to each file as it is edited, never in a sweep.
-4. A `.php-version` file saying `8.4`, so the floor is machine-readable.
+1. Section 1 removes 285 MB and the PII; the repository goes from 584 MB to under 100 MB.
+2. **Split `db.php` by domain** as functions are touched, never in a sweep: `db-core.php` (connection, the three helpers, `animals_has_column()`), `db-pets.php`, `db-people.php`, `db-events.php`, `db-jobs.php`. `db.php` becomes five `require_once` lines, so every caller stays the same. The longest functions (`save_pet()` at 197 lines, `search_pets_where()` at 129) split into validate, map, write when next edited.
+3. **Types.** `declare(strict_types=1)` at the top of each file as it is edited, and parameter and return types on the functions touched. Never a sweep; a sweep is where regressions hide.
+4. **The floor.** A `.php-version` file containing `8.4`, so the PHP requirement is machine-readable as well as in the README.
+5. **The twelve SQL calls outside `db.php`** (admin edit, uploads, jobs, five bin scripts) move into `db.php` when those files are next touched. All already use placeholders; this is a boundary tidy, not a hole.
 
 **The handoff repository (ours)**
 
-1. The Divi-era theme (`divi-child-integration/`, 169 files), the prototype (`pomdr-website/`), `Divi/`, `wp-mu-plugins/` and the summer screenshots are archived under a tag (`archive/divi-era-2026-07`) and removed from main, as the ten branches were on 2026-10-20.
-2. The 20 MB brand PDF and the 10 MB photographs move to the shared drive; the repository keeps the link.
-3. What stays: `docs/`, `design-system/`, `scripts/`, the brand guides and `CLAUDE.md`. The repository becomes the documentation it already is in practice.
-
-**Grade after:** B+ for both.
+1. Tag the current main as `archive/divi-era-2026-07`, then remove `divi-child-integration/` (169 files), `pomdr-website/`, `Divi/`, `wp-mu-plugins/`, `theme.json`, `responsive-review/`, the summer screenshots and the `node_modules` remnants from main. Everything stays reachable under the tag, as the ten branches do.
+2. Move the 20 MB brand PDF and the 10 MB photographs under `pomdr-website/project/uploads/` to the shared drive; the brand guide keeps a link.
+3. What stays: `docs/`, `design-system/`, `scripts/`, `BRAND-GUIDELINES.md`, `VOICE.md`, `DESIGN-TOKENS.md`, `CLAUDE.md`, `README.md`. The README's first paragraph says the repository is now documentation and the archive tag holds the Divi era.
 
 ## 8. What we can do today without waiting for anyone
 
-- Write `bin/seed-ci.php`, `bin/list-pages.php` and the workflow file, and hand them to Ronnie as one patch (sections 2 and 3.2).
-- Move the browser suites under `tests/browser/` with a README (section 3.1).
-- Write the unit test runner and the first seven tests (section 3.2).
-- Write the `_headers` file and the report-only step (section 5).
+- Write `bin/seed-ci.php`, `bin/list-pages.php` and the workflow file, and hand them to Ronnie as one patch (section 2).
+- Move the browser suites under `tests/browser/` with the README, and write the unit runner with its first eight cases (section 3).
+- Write the `_headers` file and move the one inline style to a class (section 5).
 - Archive the Divi-era folders in the handoff repository (section 7).
-- File two tracker tasks for Ronnie: the backups out of git with history rewrite (section 1), and the build alert plus uptime check (section 4). The throttle and the headers are already covered by the harmony proposal and POMDR-17.
 
-Say "go" and that list is a day's work, with the patches in Ronnie's conventions and the tests runnable on the local dev server.
+That list is one day. Sections 1, 4 and 6 are Ronnie's, and are filed: POMDR-50, POMDR-51, and the harmony proposal.
