@@ -187,9 +187,12 @@ Use `sequentialthinking` MCP for multi-step architectural decisions
 
 - One logical change per commit. Clear, descriptive commit messages written
   in plain language (remember: no em dashes).
-- Branch naming: `feature/`, `fix/`, `content/`, `design/`, `a11y/` prefixes.
-- Never push directly to `main`. Always through a PR with a clear before/after.
-- Tag Andrew for review on anything touching the public-facing site.
+- One branch: `main`, in this repo and in Ronnie's (Andrew, 2026-10-07 and
+  2026-10-19). No feature branches. Verify end to end, fast-forward, push.
+- Before any push to Ronnie's main: `php bin/check.php`, the renders, the
+  structure audit (zero lines changed under his folders), a Design.md
+  section 11 line.
+- Andrew is told in the reply what was pushed; he does not review a PR.
 
 ### When in doubt, don't
 
@@ -341,4 +344,4 @@ infallible.
 
 ---
 
-_Last updated: 2026-06-09. Owner: Andrew Z._
+_Last updated: 2026-10-20. Owner: Andrew Z._
