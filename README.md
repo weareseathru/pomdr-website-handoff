@@ -1,33 +1,28 @@
-# POMDR Website Redesign
+# POMDR website: design and content documentation
 
-Working repository for the Peace of Mind Dog Rescue (POMDR) website
-redesign. Two tracks live here side by side:
+The design side of the Peace of Mind Dog Rescue website rebuild, kept beside
+the code it describes. The code lives in Ronnie Reid's repository
+(`github.com/ronniereid/pomdr`, cloned here as `New-Build/`, which git
+ignores); this repository holds what the code does not: the research, the
+audits, the plans, the copy, the brand and voice references, and the record
+of every decision. One branch, `main`.
 
-- **Track A, static prototype** under `pomdr-website/project/`. Clickable
-  HTML/CSS/JS used as a design lab. Approved patterns get re-implemented
-  in the WordPress theme.
-- **Track B, Divi child theme** (`divi-child-integration/`, theme name
-  "POMDR 2026"). The WordPress implementation layer. It overlays the
-  existing Divi parent on new.pomdr.org and docks to that site's `pets`
-  custom post type and ACF fields. The redesign ships as child-theme
-  templates plus a global CSS/JS layer, so the rest of the site inherits
-  the new look through CSS without editing the parent.
+What is here:
 
-> **Architecture note (2026-06-06).** Track B was originally scoped as a
-> clean Full Site Editing block theme (`pomdr-2026/`). That approach was
-> dropped in favor of the Divi child theme above, to retain the
-> staff-familiar Divi editing surface and the working ACF `pets` CPT, LGL
-> forms, and Redirection setup rather than rebuilding them. See
-> [CLAUDE.md §3](./CLAUDE.md) and the decisions log in
-> [STACK.md §7](./STACK.md). The block-theme notes in
-> [WP-SCAFFOLD-NOTES.md](./WP-SCAFFOLD-NOTES.md) are retained as historical
-> record only.
+- `docs/` the dated working documents, newest by name: audits, plans,
+  proposals, the full site copy, the archived old site, session notes.
+- `design-system/` the design tokens and the visual system reference.
+- `BRAND-GUIDELINES.md`, `VOICE.md`, `DESIGN-TOKENS.md`, `CHANGELOG.md`.
+- `CLAUDE.md` the standing rules for working here.
+- `scripts/` small helpers.
 
-The redesign target is documented in [CLAUDE.md](./CLAUDE.md): project
-charter, voice rules, and technical stance.
+The Divi-era work from June to July 2026 (a WordPress child theme, a static
+prototype and their planning documents) was the earlier direction, left on
+2026-09-23 when the rebuild moved to plain PHP. It is kept whole under the
+tag `archive/divi-era-2026-07` and its planning documents under
+`docs/archive/divi-era-2026-07/`. Nothing in it runs anywhere now.
 
----
-
+## Earlier tracks, as the README described them (archived)
 ## Run the static prototype locally
 
 The prototype is plain HTML/CSS/JS; any static server works.

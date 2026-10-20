@@ -62,3 +62,10 @@ New-Build/
 
 # Personal Claude Code guard rules (hookify); each developer keeps their own
 .claude/hookify.*.local.md
+
+# Divi-era working folders, kept only under the tag archive/divi-era-2026-07
+divi-child-integration/
+pomdr-website/
+Divi/
+responsive-review/
+wp-mu-plugins/
