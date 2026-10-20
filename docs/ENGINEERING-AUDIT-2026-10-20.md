@@ -102,6 +102,13 @@ Staff are told about new intakes and exam-needed dogs on Slack, the heartbeat sa
 - **Do:** split `db.php` by domain (`db-pets.php`, `db-people.php`, `db-events.php`, `db-jobs.php`) with the same function names, so nothing calling them changes; add parameter and return types as functions are touched; break `save_pet()` into validate, map, write. No rewrite.
 - **Owner:** Ronnie, incrementally.
 
+### 4.6b A fresh database cannot be built from the repository (found while building CI)
+
+`db/schema.sql` holds six tables. The 33 migrations were written against the older `pets` table names, and `db/schema.sql` was later rewritten to the `animals` names, so replaying schema plus migrations on an empty server fails from migration 003 onward and never creates `animals_clinic`, `edit_locks` and others (measured 2026-10-20: 22 of 26 tables, nine migrations refused). Production works because it was migrated step by step; nobody has stood up a second copy from the repository alone. That is a reproducibility gap: a new developer, a disaster recovery, or CI cannot start from the code.
+
+- **Do:** regenerate `db/schema.sql` from production (`mysqldump --no-data`) whenever a migration lands, and say in `db/README` that migrations are history and `schema.sql` is the present. Until then CI loads `tests/ci/schema.sql`, a structure-only snapshot with the regeneration command at its top.
+- **Owner:** Ronnie. Fifteen minutes each time, or a line in the deploy script.
+
 ### 4.7 Smaller items
 
 - **PHP 8.4 required** with no `composer.json` to pin it and no `.php-version`. State the floor in one machine-readable place.

@@ -208,6 +208,18 @@ About six working days over three weeks. Nothing here blocks the site work. Trac
 2. Move the 20 MB brand PDF and the 10 MB photographs under `pomdr-website/project/uploads/` to the shared drive; the brand guide keeps a link.
 3. What stays: `docs/`, `design-system/`, `scripts/`, `BRAND-GUIDELINES.md`, `VOICE.md`, `DESIGN-TOKENS.md`, `CLAUDE.md`, `README.md`. The README's first paragraph says the repository is now documentation and the archive tag holds the Divi era.
 
+## 7b. Reproducible schema (found while building section 2)
+
+**At a glance**
+
+- **What:** `db/schema.sql` becomes the whole current structure, regenerated from production whenever a migration lands.
+- **Why:** today it holds six tables, and the migrations cannot be replayed on an empty server (nine refuse; `animals_clinic` and `edit_locks` are never created). Nobody can stand up a copy from the code alone.
+- **Who:** Ronnie. Fifteen minutes each time, or one line in the deploy script after a migration.
+- **When:** with the first migration after 033.
+- **Done when:** `mysql < db/schema.sql` on an empty server gives the same 26 tables as production, and CI loads it instead of `tests/ci/schema.sql`.
+
+**The details:** `mysqldump --no-data --skip-comments --compact --skip-triggers pomdr > db/schema.sql`, with a header saying migrations are history and this file is the present. CI already works around it with the snapshot under `tests/ci/`, which carries the same command at its top.
+
 ## 8. What we can do today without waiting for anyone
 
 - Write `bin/seed-ci.php`, `bin/list-pages.php` and the workflow file, and hand them to Ronnie as one patch (section 2).
