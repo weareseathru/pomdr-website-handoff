@@ -408,7 +408,28 @@ section 15 for Carie to settle. Nothing here is from the new site.
 | $800 to $1,100 per day | relief veterinarian pay | jobs page |
 | No "dogs adopted" total | anywhere | the live site gives no lifetime adoption count |
 
-## 15. Where the live site disagrees with itself (for Carie)
+## 15. Where the live site disagrees with itself, and the answers
+
+Andrew settled these on 2026-10-26. The answer is the fact the new site uses.
+
+| # | Conflict | Decision |
+|---|---|---|
+| 1 | Volunteers 1,500 or 1,800 | **1,800** |
+| 2 | Dogs in care about 80 or about 60 | **about 80** |
+| 3 | Helping Paw maximum | **$750, up to $2,750 for major medical emergencies** |
+| 4 | Ad sponsorship $120 or $150 | **$150** |
+| 5 | Benefit Shop hours | **Tuesday to Saturday 11 to 5, closed Sunday and Monday** |
+| 6 | Benefit Shop address 223 Suite 1 or 229B | still open; the shop page and footer say 223 Grand Ave, Suite 1 |
+| 7 | Bauer Center hours | **11 to 4, Monday to Saturday** (front desk and drop-off) |
+| 8 | Where dogs live | **say they all live in foster homes** |
+| 9 | Foster food | **POMDR provides food when it can, but mostly relies on fosters to buy their own; POMDR provides supplies such as a leash, bowl, crate and toys** |
+
+Also decided: follow the live site's senior-dog wording ("Although we specialize
+in senior dogs, we also get younger dogs surrendered to us from senior
+guardians"); follow the live site's facts everywhere else; keep the lifetime
+adoption count (4,500+) on the new site.
+
+The original list, for the record:
 
 1. Volunteers: 1,500 (About) or 1,800 (Volunteer).
 2. Dogs in care at a time: about 80 (Foster Needs) or about 60 (Wish List).

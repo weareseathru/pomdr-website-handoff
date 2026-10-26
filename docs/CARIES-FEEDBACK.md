@@ -34,6 +34,38 @@ Preview: https://pomdr-public.pages.dev/
 | 6 | Every form intro, and Helping Paw | "If you have trouble filling out this form, call (831) 718-9122 and a volunteer will call you back to help you fill it out."; remove "We do not ask for tax returns or bank statements." | Live | Shared string, both languages. |
 | 7 | Adopt page lead | "...could no longer keep them. The fastest way to get information about a dog and set up a meet and greet is to fill out an adoption questionnaire." | Live | |
 
+## Round 2, the fine-tooth comb, 2026-10-26
+
+Carie's note: the site "needs a fine tooth comb", with "all of our dogs are
+seniors" as the example of a wrong statement. Andrew settled the live site's
+nine self-contradictions (1,800 volunteers; about 80 dogs in care; Helping Paw
+$750 and up to $2,750; ads $150; shop 11 to 5, closed Sunday and Monday; Bauer
+11 to 4; all dogs live in foster homes; fosters buy food, POMDR shares donated
+food when it has it and provides supplies; keep the 4,500+ count; follow the
+live site's senior-dog wording). Every sentence on the new site was then read
+against `docs/POMDR-FACTS-FROM-LIVE-SITE-2026-10-26.md`. Full list, with the
+proposed wording for each open item: `docs/FINE-TOOTH-COMB-2026-10-26.md`.
+
+| # | Where | Change | Status |
+|---|-------|--------|--------|
+| 1 | Home, About, Donate, Volunteer, Team, Happy tails | Volunteers 1,500 to 1,800 | Built |
+| 2 | Same pages | "Senior dogs adopted" to "Dogs adopted" beside 4,500+ | Built |
+| 3 | Helping Paw page (3 places), application EN and ES | $500 cap to $750 and up to $2,750; eligibility to three counties and financial need; routine care not covered; flea pick-up; spay/neuter rule; dog and cat food; "give you" not "bring you" | Built |
+| 4 | Benefit Shop | Hours 11 to 5, closed Sunday and Monday; shop phone added | Built |
+| 5 | Donate | Ad sponsorship $120 to $150 | Built |
+| 6 | Volunteer application | "We pay for the food" to "you provide the food" | Built |
+| 7 | Fostering | Clinic-suite FAQ removed | Built |
+| 8 | About | Staff 27 to 19; Helping Paw paragraph used the wrong live sentence; "adoption center" to "headquarters" | Built |
+| 9 | About and Donate promise block | Dental line matches the live site | Built |
+| 10 | Hospice | Not "Perpetual Care", not "behavioral"; live definition | Built |
+| 11 | Get help, Resources | Resources described as they are; Clark Ruggiero Law Office | Built |
+| 12 | How adopting works, questionnaire | "About a week" removed; reply by email; meet and greet via foster; annual follow-up calls | Built |
+| 13 | Perpetual Care | "arrange to meet", eligibility factors; "you can also remember POMDR" | Built |
+| 14 | Help placing your dog | Form first; a call delays processing | Built |
+| 15 | Bauer Center | Headquarters, dogs in foster homes, front desk and B&E shifts | Built |
+| 16 | Work with us | About twenty staff; live posting's hours | Built |
+| 17 to 47 | 31 items across home, About, Clinic, Contact, Donate, Why, Surrender, Perpetual Care, mailing list, applications, media | Grand phrasing, invented detail, or promises not on the live site; each with proposed wording in the comb document, Part B | Talk |
+
 ## Open with Carie (to settle in the next conversation)
 
 | # | Question | Why it matters | Status |
@@ -46,3 +78,5 @@ Preview: https://pomdr-public.pages.dev/
 
 - 2026-10-22: file created; round 1 applied and pushed (Design.md section 11
   in Ronnie's repo has the same list).
+- 2026-10-26: round 2, the fine-tooth comb. 50 factual fixes built and pushed;
+  31 wording items for Carie in docs/FINE-TOOTH-COMB-2026-10-26.md.
