@@ -80,9 +80,9 @@ The full item list with before and after wording is
 | Home and Adopt (hero cards, slide copy, events above testimonials, purple videos tile, two buttons on Adoptable Dogs, How adopting works back to the dogs, "most" live in foster homes, Adopt button lands on the form) | B1 to B6, B8 to B13 | Built |
 | Search buckets | B7 | Parked, Carie marked IGNORE |
 | Hospice and Why | C1, C2, C4 to C6 | Built |
-| Hospice call button | C3 | No such button exists; ask Carie which she meant |
+| Hospice call button | C3 | She meant the hospice dog's page: call link and fact squares removed; cards now story-first, one to a row (built 2026-10-26, second push) |
 | Foster | D1 to D4, D6 | Built |
-| Foster reason line per dog | D5 | Ronnie: needs a per-dog field in the admin |
+| Foster reason line per dog | D5 | Filed for Ronnie as POMDR-65 (for-ronnie) |
 | Get Help (Helping Paw rebuild, volunteer assistance application, no call buttons, Perpetual Care, Resources) | E1 to E18 | Built |
 | Volunteer | F1 to F4 | Built |
 | Events, About, Benefit Shop, Clinic, Contact | G1 to G8 | Built |
