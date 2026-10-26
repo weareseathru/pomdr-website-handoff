@@ -69,11 +69,38 @@ proposed wording for each open item: `docs/FINE-TOOTH-COMB-2026-10-26.md`.
 | 16c | Team page | Remove Cortina Whitmore, Elizabeth Ramsay, Emily Termotto, Hannah Wakefield; add current staff not listed | Open: production data, Ronnie runs the roster SQL (POMDR-32) |
 | 17 to 47 | 31 items across home, About, Clinic, Contact, Donate, Why, Surrender, Perpetual Care, mailing list, applications, media | Grand phrasing, invented detail, or promises not on the live site; each with proposed wording in the comb document, Part B | Talk |
 
+## Round 3, the page-by-page meeting, 2026-10-26 (1.5 hours, every page)
+
+The full item list with before and after wording is
+`docs/CARIE-ROUND-3-PLAN-2026-10-26.md` (67 items). Status:
+
+| Group | Items | Status |
+|---|---|---|
+| Site-wide (guardian, menu, Donate, MC Gives switch, Job opportunities, mailing list under About, Bauer page removed, no "Prefer to talk") | A1 to A9 | Built |
+| Home and Adopt (hero cards, slide copy, events above testimonials, purple videos tile, two buttons on Adoptable Dogs, How adopting works back to the dogs, "most" live in foster homes, Adopt button lands on the form) | B1 to B6, B8 to B13 | Built |
+| Search buckets | B7 | Parked, Carie marked IGNORE |
+| Hospice and Why | C1, C2, C4 to C6 | Built |
+| Hospice call button | C3 | No such button exists; ask Carie which she meant |
+| Foster | D1 to D4, D6 | Built |
+| Foster reason line per dog | D5 | Ronnie: needs a per-dog field in the admin |
+| Get Help (Helping Paw rebuild, volunteer assistance application, no call buttons, Perpetual Care, Resources) | E1 to E18 | Built |
+| Volunteer | F1 to F4 | Built |
+| Events, About, Benefit Shop, Clinic, Contact | G1 to G8 | Built |
+
+Andrew's decisions on the seven open questions (2026-10-26): $3,000 major
+medical; 229B Grand Avenue now; MC Gives switch built but off until the URL
+and dates arrive; mailing list under About Us; "most of our dogs live in
+foster homes"; keep the vet photo until the photo pass (Andrew will redo
+many photos next); "Prefer to talk" off all five forms.
+
+Still to settle with Carie: C3 above; the 31 wording items from round 2
+(Part B of the comb document) that this meeting did not reach.
+
 ## Open with Carie (to settle in the next conversation)
 
 | # | Question | Why it matters | Status |
 |---|----------|----------------|--------|
-| A | Two Donate buttons stacked on phones (strip and header card). Keep both, or drop the header one on phones, or give the strip pill another job | It is the first thing a phone visitor sees | Talk |
+| A | Two Donate buttons stacked on phones (strip and header card) | It is the first thing a phone visitor sees | Settled 2026-10-26: one purple Donate in the card, the strip holds the tagline |
 | B | A phone-demotion pass: the Helping Paw application band still leads with "Call (831) 718-9122", and about 30 Call buttons across Get help, Perpetual Care, surrender and the form pages do the same. If forms first is the rule, the form becomes the primary button everywhere and the phone becomes the fallback line | Her stated rule; one sitting to apply | Talk |
 | C | The list of pages she still thinks are "bizarre or incorrect" | We can only fix what she names | Talk |
 
@@ -83,3 +110,6 @@ proposed wording for each open item: `docs/FINE-TOOTH-COMB-2026-10-26.md`.
   in Ronnie's repo has the same list).
 - 2026-10-26: round 2, the fine-tooth comb. 50 factual fixes built and pushed;
   31 wording items for Carie in docs/FINE-TOOTH-COMB-2026-10-26.md.
+- 2026-10-26: round 3, the page-by-page meeting. 58 items built and pushed
+  to Ronnie's main; 1 for Ronnie (foster reason field); 1 question for
+  Carie (hospice call button); search buckets parked.
