@@ -27,9 +27,14 @@ The test site: https://pomdr-public.pages.dev/ (rebuilds hourly at 17 past).
 - "Senior dogs adopted" became **"Dogs adopted"** beside the 4,500+ figure on
   the home page, About, Donate, Volunteer and Happy tails. The count stays.
   The label asserted that every dog is a senior; the live site says most are.
-- About: "a staff of twenty-seven" became **nineteen** (the 27 on the team
-  page includes the five board members and three advisors). "Most with a
-  POMDR dog of their own" became "many".
+- About: "a staff of twenty-seven" became **more than thirty** (Andrew's
+  figure, 2026-10-26; the live team page lists 19 staff and is behind). "Most
+  with a POMDR dog of their own" became "many". The jobs page says the same.
+- Team page: four people who have left (Cortina Whitmore, Elizabeth Ramsay,
+  Emily Termotto, Hannah Wakefield) still show on the preview because the
+  production database has them published. The roster SQL already sets them to
+  draft; it needs Ronnie to run it (POMDR-32). The current staff not yet on
+  the page need adding the same way.
 
 ### Helping Paw page
 - "a vet bill up to $500" (three places) became **up to $750, and up to
@@ -204,10 +209,10 @@ replacement built from the live site's own words where one exists.
     first", "To make an appointment or ask a question", "A question about your
     dog's care? We are here." *The live site says the clinic "provides medical
     care for the dogs in our program" and never offers appointments to the
-    public.* Question for Carie: does the clinic see Helping Paw clients' pets
-    at all? If not, the page should say plainly that it cares for POMDR's own
-    dogs. The footer and Contact page say "By appointment only" for the clinic
-    and should change with it.
+    public.* **Answered by Andrew 2026-10-26 and built:** it is a private
+    clinic that does see Helping Paw clients' pets. The page, the footer and
+    the Contact page now say so, and the clinic's buttons send people to
+    Helping Paw instead of a phone number.
 12. "A clinic of our own, so no dog is turned away" and "we never have to turn
     a dog away because care felt out of reach." *Grand and not on the live
     site; the surrender page lists conditions POMDR cannot take.* Proposed:
@@ -227,7 +232,7 @@ replacement built from the live site's own words where one exists.
     on the live site.* Keep if true.
 16. info@pomdr.org is used site-wide; the live site uses
     info@peaceofminddogrescue.org (the live shop page does use shop@pomdr.org).
-    Confirm the short address is monitored.
+    **Confirmed by Andrew 2026-10-26: info@pomdr.org stays.**
 
 ### Donate
 17. "POMDR takes in senior dogs nobody else will, and pays for the dentistry,

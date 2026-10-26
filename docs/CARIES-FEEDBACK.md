@@ -64,6 +64,9 @@ proposed wording for each open item: `docs/FINE-TOOTH-COMB-2026-10-26.md`.
 | 14 | Help placing your dog | Form first; a call delays processing | Built |
 | 15 | Bauer Center | Headquarters, dogs in foster homes, front desk and B&E shifts | Built |
 | 16 | Work with us | About twenty staff; live posting's hours | Built |
+| 16a | Clinic page, footer, Contact | Private clinic that sees Helping Paw clients; no public appointments; buttons go to Helping Paw | Built |
+| 16b | About, Work with us | Staff "more than thirty" | Built |
+| 16c | Team page | Remove Cortina Whitmore, Elizabeth Ramsay, Emily Termotto, Hannah Wakefield; add current staff not listed | Open: production data, Ronnie runs the roster SQL (POMDR-32) |
 | 17 to 47 | 31 items across home, About, Clinic, Contact, Donate, Why, Surrender, Perpetual Care, mailing list, applications, media | Grand phrasing, invented detail, or promises not on the live site; each with proposed wording in the comb document, Part B | Talk |
 
 ## Open with Carie (to settle in the next conversation)

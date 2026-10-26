@@ -424,6 +424,14 @@ Andrew settled these on 2026-10-26. The answer is the fact the new site uses.
 | 8 | Where dogs live | **say they all live in foster homes** |
 | 9 | Foster food | **POMDR provides food when it can, but mostly relies on fosters to buy their own; POMDR provides supplies such as a leash, bowl, crate and toys** |
 
+Added 2026-10-26, later the same day (Andrew): **the Boand Clinic is a private
+clinic, not open to the public; it does see Helping Paw clients' pets.**
+**info@pomdr.org is the address to use.** **Staff is more than thirty people**;
+the public team page (19 staff listed on the live site) is behind and needs the
+missing people added, and the four who have left (Cortina Whitmore, Elizabeth
+Ramsay, Emily Termotto, Hannah Wakefield) removed, which the roster SQL
+(`docs/team-roster-live-2026-10-05.sql`, POMDR-32) already does for the four.
+
 Also decided: follow the live site's senior-dog wording ("Although we specialize
 in senior dogs, we also get younger dogs surrendered to us from senior
 guardians"); follow the live site's facts everywhere else; keep the lifetime
