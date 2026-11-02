@@ -96,6 +96,16 @@ many photos next); "Prefer to talk" off all five forms.
 Still to settle with Carie: C3 above; the 31 wording items from round 2
 (Part B of the comb document) that this meeting did not reach.
 
+Verification pass, 2026-11-02 (Andrew's 67-line recap of the round, checked
+item by item against the rendered pages): 63 confirmed in place. The hero
+card was in the code at 60% but still read as a solid panel, so it went to
+42% with a lighter blur and a deeper text shadow (9a92171). Not ours: the
+vet-staff photo (Andrew's photo pass) and the per-dog foster reason
+(POMDR-65, Ronnie). Left as is: three uses of "owner" that are other
+people's words (Old Dog Haven's own description on Resources, a foster's
+quote on Fostering, two news headlines on Media). The MC Gives banner is
+built and off, as decided.
+
 ## Open with Carie (to settle in the next conversation)
 
 | # | Question | Why it matters | Status |
@@ -113,3 +123,5 @@ Still to settle with Carie: C3 above; the 31 wording items from round 2
 - 2026-10-26: round 3, the page-by-page meeting. 58 items built and pushed
   to Ronnie's main; 1 for Ronnie (foster reason field); 1 question for
   Carie (hospice call button); search buckets parked.
+- 2026-11-02: verification pass on round 3 against Andrew's recap; hero
+  panel taken to 42% plus text shadow (9a92171); everything else confirmed.
