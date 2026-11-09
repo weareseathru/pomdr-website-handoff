@@ -1,0 +1,637 @@
+{
+"/pets/adele-2025/": {
+"name": "Adele",
+"badges": [
+"Foster needed"
+],
+"lists": [
+"adopt",
+"foster-needs"
+]
+},
+"/pets/ahi-tuna-2026/": {
+"name": "Ahi Tuna",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/aragorn-2025/": {
+"name": "Aragorn",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/astrid-2026/": {
+"name": "Astrid",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/baguette-2026/": {
+"name": "Baguette",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/beanie-baby-2026/": {
+"name": "Beanie Baby",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/bindi-2025/": {
+"name": "Bindi",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/blizzard-2026/": {
+"name": "Blizzard",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/blockbuster-2026/": {
+"name": "Blockbuster",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/buddy-2025/": {
+"name": "Buddy",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/bumper-car-2026/": {
+"name": "Bumper Car",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/casper-2025/": {
+"name": "Casper",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/chocolate-chunk-2026/": {
+"name": "Chocolate Chunk",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/chris-anthumum-2025/": {
+"name": "Chris-anthumum",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/chucky-2026/": {
+"name": "Chucky",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/cider-2026/": {
+"name": "Cider",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/clove-2026/": {
+"name": "Clove",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/corey-2026/": {
+"name": "Corey",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/dash-2026/": {
+"name": "Dash",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/dottie-2026/": {
+"name": "Dottie",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/floss-2026/": {
+"name": "Floss",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/flounder-2026/": {
+"name": "Flounder",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/free-willy-2026/": {
+"name": "Free Willy",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/furby-2026/": {
+"name": "Furby",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/gigi-2026/": {
+"name": "Gigi",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/gingerbread-2026/": {
+"name": "Gingerbread",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/godiva-2026/": {
+"name": "Godiva",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/gracie-2026/": {
+"name": "Gracie",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/gumdrop-2026/": {
+"name": "Gumdrop",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/hopper-2025/": {
+"name": "Hopper",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/hot-sauce-2026/": {
+"name": "Hot Sauce",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/hubba-bubba-2026/": {
+"name": "Hubba Bubba",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/izzy-2026/": {
+"name": "Izzy",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/jamesy-boy-2026/": {
+"name": "Jamesy Boy",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/jelly-2026/": {
+"name": "Jelly",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/koda-2025/": {
+"name": "Koda",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/leaf-2025/": {
+"name": "Leaf",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/leela-2025/": {
+"name": "Leela",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/lovey-2026/": {
+"name": "Lovey",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/malcolm-2026/": {
+"name": "Malcolm",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/marbles-2026/": {
+"name": "Marbles",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/mattie-aka-matteo-2025/": {
+"name": "Mattie aka Matteo",
+"badges": [
+"Foster needed"
+],
+"lists": [
+"adopt",
+"foster-needs"
+]
+},
+"/pets/melon-2026/": {
+"name": "Melon",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/mighty-joe-2026/": {
+"name": "Mighty Joe",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/mihla-2026/": {
+"name": "Mihla",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/mimi-2025/": {
+"name": "Mimi",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/miss-marley-2026/": {
+"name": "Miss Marley",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/moose-2026/": {
+"name": "Moose",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/mya-2026/": {
+"name": "Mya",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/nana-2026/": {
+"name": "Nana",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/neo-2026/": {
+"name": "Neo",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/newt-2026/": {
+"name": "Newt",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/nougat-2025/": {
+"name": "Nougat",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/orca-2026/": {
+"name": "Orca",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/oscar-2026/": {
+"name": "Oscar",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/osmosis-jones-2025/": {
+"name": "Osmosis Jones",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/oyster-2026/": {
+"name": "Oyster",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/ozzy-2026/": {
+"name": "Ozzy",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/panda-2026/": {
+"name": "Panda",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/patches-2026/": {
+"name": "Patches",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/pauly-d-2025/": {
+"name": "Pauly D",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/pearl-2026/": {
+"name": "Pearl",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/pebble-2026/": {
+"name": "Pebble",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/pie-2026/": {
+"name": "Pie",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/pirata-2025/": {
+"name": "Pirata",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/romeo-2026/": {
+"name": "Romeo",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/root-beer-2026/": {
+"name": "Root Beer",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/santa-s-little-helper-2026/": {
+"name": "Santa\u2019s Little Helper",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/sebastian-2026/": {
+"name": "Sebastian",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/shortbread-2026/": {
+"name": "Shortbread",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/skipper-2026/": {
+"name": "Skipper",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/snowflake-2025/": {
+"name": "Snowflake",
+"badges": [
+"Hospice care"
+],
+"lists": [
+"hospice"
+]
+},
+"/pets/spork-2026/": {
+"name": "Spork",
+"badges": [
+"Hospice care"
+],
+"lists": [
+"hospice"
+]
+},
+"/pets/sugar-cookie-2026/": {
+"name": "Sugar Cookie",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/suki-2026/": {
+"name": "Suki",
+"badges": [
+"Hospice care"
+],
+"lists": [
+"hospice"
+]
+},
+"/pets/sun-bear-2026/": {
+"name": "Sun Bear",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/sunshine-sophie-2025/": {
+"name": "Sunshine Sophie",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/tamagotchi-2026/": {
+"name": "Tamagotchi",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/tarzan-and-jane-2026/": {
+"name": "Tarzan and Jane",
+"badges": [
+"Temporary foster needed"
+],
+"lists": [
+"adopt",
+"foster-needs"
+]
+},
+"/pets/tootsie-roll-2025/": {
+"name": "Tootsie Roll",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/tuxedo-2026/": {
+"name": "Tuxedo",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/walrus-2026/": {
+"name": "Walrus",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/watson-2026/": {
+"name": "Watson",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/whimsy-2026/": {
+"name": "Whimsy",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/winkle-aka-landline-2026/": {
+"name": "Winkle",
+"badges": [
+"Hospice care"
+],
+"lists": [
+"hospice"
+]
+},
+"/pets/yankee-candle-2026/": {
+"name": "Yankee Candle",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/yeti-2025/": {
+"name": "Yeti",
+"badges": [],
+"lists": [
+"adopt"
+]
+},
+"/pets/zelda-2025/": {
+"name": "Zelda",
+"badges": [
+"Hospice care"
+],
+"lists": [
+"hospice"
+]
+}
+}

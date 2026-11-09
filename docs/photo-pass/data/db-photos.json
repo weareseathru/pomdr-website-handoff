@@ -1,0 +1,5557 @@
+{
+"dogs": [
+{
+"page": "/pets/adele-2025/",
+"name": "Adele",
+"lists": [
+"adopt",
+"foster-needs"
+],
+"badges": [
+"Foster needed"
+],
+"photos": [
+{
+"key": "pets/pet-1293/423fa4d69f0719b7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 283,
+"sharp": 3038.3
+},
+{
+"key": "pets/pet-1293/1d824854c125dd4e.jpg",
+"w": 488,
+"h": 488,
+"kb": 20,
+"sharp": 329.7
+},
+{
+"key": "pets/pet-1293/9239a60f3a4c38aa.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 259,
+"sharp": 2350.6
+},
+{
+"key": "pets/pet-1293/947ef956b77bbd35.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 240,
+"sharp": 1869.0
+},
+{
+"key": "pets/pet-1293/be43ea0629b5bbaa.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 252,
+"sharp": 2386.5
+},
+{
+"key": "pets/pet-1293/913f4c4485413158.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 244,
+"sharp": 1572.4
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-adele-2025.jpg"
+},
+{
+"page": "/pets/ahi-tuna-2026/",
+"name": "Ahi Tuna",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1879/3235de285635a256.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 193,
+"sharp": 912.9
+},
+{
+"key": "pets/pet-1879/92ce318aea0d062d.jpg",
+"w": 896,
+"h": 896,
+"kb": 106,
+"sharp": 498.1
+},
+{
+"key": "pets/pet-1879/cb827712b67ad6b1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 160,
+"sharp": 606.0
+},
+{
+"key": "pets/pet-1879/09ccb13091832be3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 284,
+"sharp": 1894.3
+},
+{
+"key": "pets/pet-1879/619af360e938a180.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 264,
+"sharp": 1737.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-ahi-tuna-2026.jpg"
+},
+{
+"page": "/pets/aragorn-2025/",
+"name": "Aragorn",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1615/421a9fcbd4884a20.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 223,
+"sharp": 1485.8
+},
+{
+"key": "pets/pet-1615/2b2c8c373525c3bc.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 117,
+"sharp": 1126.2
+},
+{
+"key": "pets/pet-1615/3ba13ea46cf00cce.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 207,
+"sharp": 1413.6
+},
+{
+"key": "pets/pet-1615/3f5f2a44187c0962.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 297,
+"sharp": 1880.8
+},
+{
+"key": "pets/pet-1615/8a0c53e4f3262898.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 197,
+"sharp": 1330.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-aragorn-2025.jpg"
+},
+{
+"page": "/pets/astrid-2026/",
+"name": "Astrid",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-942/8ae0fb5ae4a008f6.jpg",
+"w": 450,
+"h": 450,
+"kb": 45,
+"sharp": 780.4
+},
+{
+"key": "pets/pet-942/b9f8d7e7dac1e444.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 3408.6
+},
+{
+"key": "pets/pet-942/93632c10851ef4b4.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 203,
+"sharp": 1797.1
+},
+{
+"key": "pets/pet-942/5bc3288dbd043910.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 352,
+"sharp": 4553.6
+},
+{
+"key": "pets/pet-942/0c07ddf19127ddf8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 247,
+"sharp": 2860.7
+},
+{
+"key": "pets/pet-942/2e07691a9ba3e5f7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 248,
+"sharp": 1647.5
+},
+{
+"key": "pets/pet-942/e31457d47e762580.jpg",
+"w": 450,
+"h": 450,
+"kb": 41,
+"sharp": 606.9
+},
+{
+"key": "pets/pet-942/365b5fab3d0f3809.jpg",
+"w": 450,
+"h": 450,
+"kb": 76,
+"sharp": 2093.2
+},
+{
+"key": "pets/pet-942/3874643005489d02.jpg",
+"w": 450,
+"h": 450,
+"kb": 58,
+"sharp": 1054.9
+},
+{
+"key": "pets/pet-942/39c57b936df1571f.jpg",
+"w": 450,
+"h": 450,
+"kb": 60,
+"sharp": 1189.1
+},
+{
+"key": "pets/pet-942/bd3fde497dbee787.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 289,
+"sharp": 1259.7
+},
+{
+"key": "pets/pet-942/8d1251fc5495fa9f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 284,
+"sharp": 1449.4
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-astrid-2026.jpg"
+},
+{
+"page": "/pets/baguette-2026/",
+"name": "Baguette",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1405/4a12cb8c305623b5.jpg",
+"w": 451,
+"h": 451,
+"kb": 53,
+"sharp": 705.2
+},
+{
+"key": "pets/pet-1405/dd8f8e3f80260a23.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 271,
+"sharp": 1056.8
+},
+{
+"key": "pets/pet-1405/74f0f5d39b0ad4b0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 242,
+"sharp": 1280.4
+},
+{
+"key": "pets/pet-1405/dc55c1d83bdd4412.jpg",
+"w": 450,
+"h": 450,
+"kb": 67,
+"sharp": 1898.6
+},
+{
+"key": "pets/pet-1405/43c663e1f30e0b89.jpg",
+"w": 451,
+"h": 451,
+"kb": 57,
+"sharp": 992.1
+},
+{
+"key": "pets/pet-1405/c4f35f712d9427f3.jpg",
+"w": 451,
+"h": 451,
+"kb": 67,
+"sharp": 1474.4
+},
+{
+"key": "pets/pet-1405/3d6bb0031b6de8d4.jpg",
+"w": 451,
+"h": 451,
+"kb": 69,
+"sharp": 1437.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-baguette-2026.jpg"
+},
+{
+"page": "/pets/beanie-baby-2026/",
+"name": "Beanie Baby",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1829/97d4b9503e0e23d2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 188,
+"sharp": 954.1
+},
+{
+"key": "pets/pet-1829/ca31e7e07c5c7a6c.jpg",
+"w": 961,
+"h": 961,
+"kb": 77,
+"sharp": 350.7
+},
+{
+"key": "pets/pet-1829/dfd8a6f3977e9cd6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 149,
+"sharp": 636.9
+},
+{
+"key": "pets/pet-1829/b204ba6a3f12fab2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 283,
+"sharp": 1798.6
+},
+{
+"key": "pets/pet-1829/9661254f173f4e3f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 193,
+"sharp": 982.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-beanie-baby-2026.jpg"
+},
+{
+"page": "/pets/bindi-2025/",
+"name": "Bindi",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1243/915c6f9accabedfb.jpg",
+"w": 451,
+"h": 451,
+"kb": 43,
+"sharp": 546.0
+},
+{
+"key": "pets/pet-1243/a83844b3fa186590.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 332,
+"sharp": 4052.9
+},
+{
+"key": "pets/pet-1243/07185473a4b5915c.jpg",
+"w": 451,
+"h": 451,
+"kb": 59,
+"sharp": 1076.9
+},
+{
+"key": "pets/pet-1243/5c637653723fa44e.jpg",
+"w": 450,
+"h": 450,
+"kb": 53,
+"sharp": 591.0
+},
+{
+"key": "pets/pet-1243/4af5e8bf00271721.jpg",
+"w": 451,
+"h": 451,
+"kb": 62,
+"sharp": 877.9
+},
+{
+"key": "pets/pet-1243/2b083d3056095374.jpg",
+"w": 450,
+"h": 450,
+"kb": 54,
+"sharp": 549.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-bindi-2025.jpg"
+},
+{
+"page": "/pets/blizzard-2026/",
+"name": "Blizzard",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1674/1e17479d44a1a3b2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 245,
+"sharp": 1625.8
+},
+{
+"key": "pets/pet-1674/1c25eddb7f962614.jpg",
+"w": 480,
+"h": 480,
+"kb": 87,
+"sharp": 1826.7
+},
+{
+"key": "pets/pet-1674/b7a4d11033e28250.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 190,
+"sharp": 732.3
+},
+{
+"key": "pets/pet-1674/13728a17c7fcf3c1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 257,
+"sharp": 1105.7
+},
+{
+"key": "pets/pet-1674/bc516ec9e9174900.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 234,
+"sharp": 1594.7
+},
+{
+"key": "pets/pet-1674/1deeefc4a13b4c55.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 249,
+"sharp": 2572.6
+},
+{
+"key": "pets/pet-1674/18bc11435d500565.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 227,
+"sharp": 1981.9
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-blizzard-2026.jpg"
+},
+{
+"page": "/pets/blockbuster-2026/",
+"name": "Blockbuster",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1837/25d1bbe441702c7d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 147,
+"sharp": 688.3
+},
+{
+"key": "pets/pet-1837/589b6f4abe305be6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 148,
+"sharp": 781.9
+},
+{
+"key": "pets/pet-1837/5fa9347d81571fd1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 181,
+"sharp": 1267.1
+},
+{
+"key": "pets/pet-1837/660008a30782b81c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 239,
+"sharp": 1485.0
+},
+{
+"key": "pets/pet-1837/0aab80ab41661fb3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 2499.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-blockbuster-2026.jpg"
+},
+{
+"page": "/pets/buddy-2025/",
+"name": "Buddy",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-964/61812d73775203ed.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 85,
+"sharp": 1178.2
+},
+{
+"key": "pets/pet-964/1b994f8f2b9eb61b.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 78,
+"sharp": 826.6
+},
+{
+"key": "pets/pet-964/7dcc207fd76c90d2.jpg",
+"w": 1023,
+"h": 1024,
+"kb": 114,
+"sharp": 1208.7
+},
+{
+"key": "pets/pet-964/a9b6a15eea26a764.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 85,
+"sharp": 899.4
+},
+{
+"key": "pets/pet-964/ae6b07f62e04cabe.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 87,
+"sharp": 1100.4
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-buddy-2025.jpg"
+},
+{
+"page": "/pets/bumper-car-2026/",
+"name": "Bumper Car",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/bumper-car-2024/0a142cb78f36b8a5.jpg",
+"w": 451,
+"h": 451,
+"kb": 82,
+"sharp": 861.1
+},
+{
+"key": "pets/bumper-car-2024/aa18c534395bb700.jpg",
+"w": 707,
+"h": 707,
+"kb": 92,
+"sharp": 950.4
+},
+{
+"key": "pets/bumper-car-2024/c2cd1c31bcd06e27.jpg",
+"w": 423,
+"h": 423,
+"kb": 98,
+"sharp": 1538.8
+},
+{
+"key": "pets/bumper-car-2024/ba54101379c7f894.jpg",
+"w": 450,
+"h": 450,
+"kb": 99,
+"sharp": 1449.7
+},
+{
+"key": "pets/bumper-car-2024/ce58fd82a818be32.jpg",
+"w": 426,
+"h": 426,
+"kb": 96,
+"sharp": 1405.4
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-bumper-car-2026.jpg"
+},
+{
+"page": "/pets/casper-2025/",
+"name": "Casper",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/casper-2025-2/86a8d8428614ee2c.jpg",
+"w": 451,
+"h": 451,
+"kb": 56,
+"sharp": 1119.3
+},
+{
+"key": "pets/casper-2025-2/5d162a99d4ea9391.jpg",
+"w": 800,
+"h": 800,
+"kb": 77,
+"sharp": 679.3
+},
+{
+"key": "pets/casper-2025-2/84bd5e5e4f0f3cd8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 229,
+"sharp": 1186.6
+},
+{
+"key": "pets/casper-2025-2/97c6ce75e248cc1f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 246,
+"sharp": 1662.4
+},
+{
+"key": "pets/casper-2025-2/5a62157dec054845.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 298,
+"sharp": 1903.3
+},
+{
+"key": "pets/casper-2025-2/2ad3cba84a3e0652.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 1456.7
+},
+{
+"key": "pets/casper-2025-2/7a1ad9985ec8a039.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 215,
+"sharp": 1645.2
+},
+{
+"key": "pets/casper-2025-2/20d8e96752885d99.jpg",
+"w": 450,
+"h": 450,
+"kb": 64,
+"sharp": 1317.5
+},
+{
+"key": "pets/casper-2025-2/23c6485af89e1294.jpg",
+"w": 450,
+"h": 450,
+"kb": 72,
+"sharp": 1936.3
+},
+{
+"key": "pets/casper-2025-2/ebbd7eb98c98f0b2.jpg",
+"w": 450,
+"h": 450,
+"kb": 58,
+"sharp": 1159.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-casper-2025.jpg"
+},
+{
+"page": "/pets/chocolate-chunk-2026/",
+"name": "Chocolate Chunk",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1888/037fc1ad406d8746.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 240,
+"sharp": 1688.1
+},
+{
+"key": "pets/pet-1888/0546ae48b55b80f7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 257,
+"sharp": 1861.2
+},
+{
+"key": "pets/pet-1888/f438b3fa81f688a1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 255,
+"sharp": 1578.7
+},
+{
+"key": "pets/pet-1888/bacfd9e743c06a80.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 261,
+"sharp": 1485.8
+},
+{
+"key": "pets/pet-1888/dc017b895259f62d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 272,
+"sharp": 1663.8
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-chocolate-chunk-2026.jpg"
+},
+{
+"page": "/pets/chris-anthumum-2025/",
+"name": "Chris-anthumum",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1658/4ca98d2c090ce562.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 226,
+"sharp": 1175.3
+},
+{
+"key": "pets/pet-1658/774b8487383ad6ce.jpg",
+"w": 450,
+"h": 450,
+"kb": 51,
+"sharp": 1398.2
+},
+{
+"key": "pets/pet-1658/9696995c7163727e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 1296.9
+},
+{
+"key": "pets/pet-1658/1c2d88ff7cb18c2e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 129,
+"sharp": 356.0
+},
+{
+"key": "pets/pet-1658/b887f738281614a9.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 278,
+"sharp": 1419.7
+},
+{
+"key": "pets/pet-1658/2e2be63993f910ee.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 211,
+"sharp": 1175.8
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-chris-anthumum-2025.jpg"
+},
+{
+"page": "/pets/chucky-2026/",
+"name": "Chucky",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1548/6594a3facbeed85a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 210,
+"sharp": 1250.1
+},
+{
+"key": "pets/pet-1548/fe4066bd4fcd629a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 195,
+"sharp": 806.1
+},
+{
+"key": "pets/pet-1548/c5f31f0eabd7891d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 190,
+"sharp": 867.6
+},
+{
+"key": "pets/pet-1548/18d6a27fdbae8f05.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 211,
+"sharp": 1312.2
+},
+{
+"key": "pets/pet-1548/6465045fcff11f0e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 278,
+"sharp": 1672.5
+},
+{
+"key": "pets/pet-1548/729f7b877b36bdf8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 164,
+"sharp": 640.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-chucky-2026.jpg"
+},
+{
+"page": "/pets/cider-2026/",
+"name": "Cider",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-770/0acd6d0182ec9777.jpg",
+"w": 635,
+"h": 635,
+"kb": 35,
+"sharp": 517.1
+},
+{
+"key": "pets/pet-770/7a8bff7c938fb1e0.jpg",
+"w": 632,
+"h": 632,
+"kb": 49,
+"sharp": 636.1
+},
+{
+"key": "pets/pet-770/7c60b0970b11a16e.jpg",
+"w": 632,
+"h": 632,
+"kb": 46,
+"sharp": 624.1
+},
+{
+"key": "pets/pet-770/ae7899c6a26994d6.jpg",
+"w": 632,
+"h": 632,
+"kb": 46,
+"sharp": 958.1
+},
+{
+"key": "pets/pet-770/6bd37c9eba36f272.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 111,
+"sharp": 639.6
+},
+{
+"key": "pets/pet-770/dcf071732b44906b.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 76,
+"sharp": 804.1
+},
+{
+"key": "pets/pet-770/8d64ee78047c33b2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 205,
+"sharp": 849.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-cider-2026.jpg"
+},
+{
+"page": "/pets/clove-2026/",
+"name": "Clove",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1659/f03e578e40d48e2b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 184,
+"sharp": 988.7
+},
+{
+"key": "pets/pet-1659/b4bef8b06a46946e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 238,
+"sharp": 833.3
+},
+{
+"key": "pets/pet-1659/ae0aa4794e97bd21.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 270,
+"sharp": 2042.0
+},
+{
+"key": "pets/pet-1659/bcf35d3a5668f270.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 275,
+"sharp": 2774.5
+},
+{
+"key": "pets/pet-1659/500456672afe07fb.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 264,
+"sharp": 1618.2
+},
+{
+"key": "pets/pet-1659/9f0805f580b12608.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 264,
+"sharp": 1594.7
+},
+{
+"key": "pets/pet-1659/a4ae9846e2e0a746.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 265,
+"sharp": 1909.9
+},
+{
+"key": "pets/pet-1659/998a16fa86dfe708.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 277,
+"sharp": 2152.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-clove-2026.jpg"
+},
+{
+"page": "/pets/corey-2026/",
+"name": "Corey",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-509/f377319a5e8d4603.jpg",
+"w": 451,
+"h": 451,
+"kb": 47,
+"sharp": 534.8
+},
+{
+"key": "pets/pet-509/531e8d603f117f8f.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 93,
+"sharp": 757.9
+},
+{
+"key": "pets/pet-509/95a342c863837324.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 126,
+"sharp": 1196.2
+},
+{
+"key": "pets/pet-509/898964434a8ab07c.jpg",
+"w": 1023,
+"h": 1024,
+"kb": 105,
+"sharp": 699.5
+},
+{
+"key": "pets/pet-509/626141dcac4f2b50.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 106,
+"sharp": 763.2
+},
+{
+"key": "pets/pet-509/537527676a68e401.jpg",
+"w": 450,
+"h": 450,
+"kb": 51,
+"sharp": 569.0
+},
+{
+"key": "pets/pet-509/78f154c4550101bc.jpg",
+"w": 450,
+"h": 450,
+"kb": 78,
+"sharp": 2198.6
+},
+{
+"key": "pets/pet-509/b7b64ff304d2a111.jpg",
+"w": 451,
+"h": 451,
+"kb": 71,
+"sharp": 1948.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-corey-2026.jpg"
+},
+{
+"page": "/pets/dash-2026/",
+"name": "Dash",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1828/70ec25edf380f17b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 191,
+"sharp": 1001.4
+},
+{
+"key": "pets/pet-1828/e7bd537d7cf2d339.jpg",
+"w": 480,
+"h": 480,
+"kb": 79,
+"sharp": 1126.1
+},
+{
+"key": "pets/pet-1828/7e27ba24cec31f31.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 228,
+"sharp": 2655.5
+},
+{
+"key": "pets/pet-1828/3a2855944f60e88d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 242,
+"sharp": 2798.6
+},
+{
+"key": "pets/pet-1828/fd92b5bc9922746e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 265,
+"sharp": 1716.0
+},
+{
+"key": "pets/pet-1828/6e49aeda4246e290.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 228,
+"sharp": 2863.4
+},
+{
+"key": "pets/pet-1828/9710f81c76cf65bc.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 195,
+"sharp": 1013.9
+},
+{
+"key": "pets/pet-1828/cb8ece971278e743.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 245,
+"sharp": 1086.9
+},
+{
+"key": "pets/pet-1828/49bea722fc363a95.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 189,
+"sharp": 881.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-dash-2026.jpg"
+},
+{
+"page": "/pets/dottie-2026/",
+"name": "Dottie",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1800/27ee64f63012592a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 294,
+"sharp": 2260.2
+},
+{
+"key": "pets/pet-1800/449aabb46cf97528.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 283,
+"sharp": 2093.8
+},
+{
+"key": "pets/pet-1800/d03a9284e026c0a7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 261,
+"sharp": 3070.5
+},
+{
+"key": "pets/pet-1800/d7a8f3be415e042f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 245,
+"sharp": 1508.1
+},
+{
+"key": "pets/pet-1800/a60fb2a0b3400a09.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 275,
+"sharp": 1631.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-dottie-2026.jpg"
+},
+{
+"page": "/pets/floss-2026/",
+"name": "Floss",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1181/be32329a53684169.jpg",
+"w": 451,
+"h": 451,
+"kb": 54,
+"sharp": 886.2
+},
+{
+"key": "pets/pet-1181/9dfec1fd09e34303.jpg",
+"w": 683,
+"h": 683,
+"kb": 90,
+"sharp": 1051.0
+},
+{
+"key": "pets/pet-1181/8c4511b6b7ea6f33.jpg",
+"w": 450,
+"h": 450,
+"kb": 61,
+"sharp": 1147.2
+},
+{
+"key": "pets/pet-1181/b64dcf4988271db3.jpg",
+"w": 450,
+"h": 450,
+"kb": 61,
+"sharp": 1202.4
+},
+{
+"key": "pets/pet-1181/9567a4b0ca5b6586.jpg",
+"w": 450,
+"h": 450,
+"kb": 67,
+"sharp": 1782.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-floss-2026.jpg"
+},
+{
+"page": "/pets/flounder-2026/",
+"name": "Flounder",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1896/81104a246286a158.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 161,
+"sharp": 560.7
+},
+{
+"key": "pets/pet-1896/b1c89086a82702c3.jpg",
+"w": 459,
+"h": 459,
+"kb": 49,
+"sharp": 569.7
+},
+{
+"key": "pets/pet-1896/4b706d8c4814d76d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 932.9
+},
+{
+"key": "pets/pet-1896/8d409f98577a5b0c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 1573.7
+},
+{
+"key": "pets/pet-1896/f4b61d715d826566.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 238,
+"sharp": 1274.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-flounder-2026.jpg"
+},
+{
+"page": "/pets/free-willy-2026/",
+"name": "Free Willy",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1884/b2b50f028f2eebed.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 223,
+"sharp": 1232.3
+},
+{
+"key": "pets/pet-1884/6b1ea2ec5f2cdcc2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 198,
+"sharp": 1158.4
+},
+{
+"key": "pets/pet-1884/06d704f38872779c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 244,
+"sharp": 1402.2
+},
+{
+"key": "pets/pet-1884/daec8016fee2a7ea.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 258,
+"sharp": 1657.8
+},
+{
+"key": "pets/pet-1884/bf5cf0d4e29d93bd.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 237,
+"sharp": 1345.0
+},
+{
+"key": "pets/pet-1884/8d2a36115b108903.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 279,
+"sharp": 1945.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-free-willy-2026.jpg"
+},
+{
+"page": "/pets/furby-2026/",
+"name": "Furby",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1836/5ca69ee7fc1ab80e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 181,
+"sharp": 809.4
+},
+{
+"key": "pets/pet-1836/60cb18c3f9785c9c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 250,
+"sharp": 989.6
+},
+{
+"key": "pets/pet-1836/4eda8a45e70aacf0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 253,
+"sharp": 1407.5
+},
+{
+"key": "pets/pet-1836/7e917a1fd711cd1e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 226,
+"sharp": 1074.7
+},
+{
+"key": "pets/pet-1836/f73d35a5c0a1428f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 197,
+"sharp": 1044.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-furby-2026.jpg"
+},
+{
+"page": "/pets/gigi-2026/",
+"name": "Gigi",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1034/7d85e2b19d995f3d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 276,
+"sharp": 2012.9
+},
+{
+"key": "pets/pet-1034/b55a21fd9b4edf3b.jpg",
+"w": 858,
+"h": 858,
+"kb": 225,
+"sharp": 2260.4
+},
+{
+"key": "pets/pet-1034/c6f2e3b18d168623.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 271,
+"sharp": 1699.9
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-gigi-2026.jpg"
+},
+{
+"page": "/pets/gingerbread-2026/",
+"name": "Gingerbread",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/gingerbread-2025/a1cde20f9d4cdf95.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 197,
+"sharp": 1010.9
+},
+{
+"key": "pets/gingerbread-2025/eeb4348aa636c9e3.jpg",
+"w": 480,
+"h": 480,
+"kb": 107,
+"sharp": 2791.3
+},
+{
+"key": "pets/gingerbread-2025/94b9a14881437496.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 158,
+"sharp": 474.9
+},
+{
+"key": "pets/gingerbread-2025/aa9d19199a97469e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 290,
+"sharp": 1544.2
+},
+{
+"key": "pets/gingerbread-2025/d794016e3ca97f09.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 219,
+"sharp": 1230.8
+},
+{
+"key": "pets/gingerbread-2025/cc96b62138584f5b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 247,
+"sharp": 2969.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-gingerbread-2026.jpg"
+},
+{
+"page": "/pets/godiva-2026/",
+"name": "Godiva",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1908/bf72f5fecd1b40dc.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 161,
+"sharp": 801.7
+},
+{
+"key": "pets/pet-1908/3eab36c756096557.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 277,
+"sharp": 1818.6
+},
+{
+"key": "pets/pet-1908/2c9254989e811a0e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 159,
+"sharp": 741.4
+},
+{
+"key": "pets/pet-1908/67fee7605cc71631.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 285,
+"sharp": 1714.9
+},
+{
+"key": "pets/pet-1908/2c16b76c069df8dd.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 253,
+"sharp": 1627.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-godiva-2026.jpg"
+},
+{
+"page": "/pets/gracie-2026/",
+"name": "Gracie",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1184/bb3ef1c23fd23829.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 184,
+"sharp": 743.1
+},
+{
+"key": "pets/pet-1184/546147930008d99e.jpg",
+"w": 481,
+"h": 481,
+"kb": 53,
+"sharp": 1472.6
+},
+{
+"key": "pets/pet-1184/00ddb1d37d3da647.jpg",
+"w": 450,
+"h": 450,
+"kb": 69,
+"sharp": 1266.7
+},
+{
+"key": "pets/pet-1184/2f5fd0f697bb9a93.jpg",
+"w": 451,
+"h": 451,
+"kb": 51,
+"sharp": 851.7
+},
+{
+"key": "pets/pet-1184/ec8e37d6b091ddfd.jpg",
+"w": 450,
+"h": 450,
+"kb": 70,
+"sharp": 1458.5
+},
+{
+"key": "pets/pet-1184/c688eb02a379e4ce.jpg",
+"w": 450,
+"h": 450,
+"kb": 59,
+"sharp": 843.6
+},
+{
+"key": "pets/pet-1184/6735ee3028a84a68.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 160,
+"sharp": 593.4
+},
+{
+"key": "pets/pet-1184/d50668e969db697d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 185,
+"sharp": 684.6
+},
+{
+"key": "pets/pet-1184/0d22d8e1a34a19a6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 167,
+"sharp": 537.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-gracie-2026.jpg"
+},
+{
+"page": "/pets/gumdrop-2026/",
+"name": "Gumdrop",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/gumdrop-2025/113d252f036bf89e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 202,
+"sharp": 1110.6
+},
+{
+"key": "pets/gumdrop-2025/fd3e2c5b1f4213b5.jpg",
+"w": 922,
+"h": 922,
+"kb": 87,
+"sharp": 647.9
+},
+{
+"key": "pets/gumdrop-2025/a1c860b49f8e8513.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 204,
+"sharp": 959.3
+},
+{
+"key": "pets/gumdrop-2025/65b49b71b2bf06a3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 231,
+"sharp": 1236.6
+},
+{
+"key": "pets/gumdrop-2025/69f0bb61b70cba6e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 1239.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-gumdrop-2026.jpg"
+},
+{
+"page": "/pets/hopper-2025/",
+"name": "Hopper",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1755/0b4dc2a72bec2c2b.jpg",
+"w": 450,
+"h": 450,
+"kb": 76,
+"sharp": 2557.4
+},
+{
+"key": "pets/pet-1755/afb050ac8b1700cb.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 348,
+"sharp": 3439.6
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-hopper-2025.jpg"
+},
+{
+"page": "/pets/hot-sauce-2026/",
+"name": "Hot Sauce",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1423/73e1a799ac72f80f.jpg",
+"w": 450,
+"h": 450,
+"kb": 49,
+"sharp": 792.3
+},
+{
+"key": "pets/pet-1423/68010d70c63bf455.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 225,
+"sharp": 1553.0
+},
+{
+"key": "pets/pet-1423/48f6c0b921db1c77.jpg",
+"w": 451,
+"h": 451,
+"kb": 47,
+"sharp": 661.6
+},
+{
+"key": "pets/pet-1423/9343f97bf08fb5a4.jpg",
+"w": 450,
+"h": 450,
+"kb": 63,
+"sharp": 1431.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-hot-sauce-2026.jpg"
+},
+{
+"page": "/pets/hubba-bubba-2026/",
+"name": "Hubba Bubba",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1852/0678dfc30f69f746.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 257,
+"sharp": 2036.5
+},
+{
+"key": "pets/pet-1852/ecc6c3f09958cf26.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 217,
+"sharp": 1596.0
+},
+{
+"key": "pets/pet-1852/ce3c12f576a3f614.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 291,
+"sharp": 1801.5
+},
+{
+"key": "pets/pet-1852/1d619211d83e0caa.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 247,
+"sharp": 1714.6
+},
+{
+"key": "pets/pet-1852/a2f55f8af45447d7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 255,
+"sharp": 1852.9
+},
+{
+"key": "pets/pet-1852/3fecd55d280f7688.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 200,
+"sharp": 1319.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-hubba-bubba-2026.jpg"
+},
+{
+"page": "/pets/izzy-2026/",
+"name": "Izzy",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-951/5fa970e06aa0b756.jpg",
+"w": 450,
+"h": 450,
+"kb": 82,
+"sharp": 959.3
+},
+{
+"key": "pets/pet-951/b70db9b9c38fadc9.jpg",
+"w": 414,
+"h": 414,
+"kb": 20,
+"sharp": 385.6
+},
+{
+"key": "pets/pet-951/5e18f5689d559e40.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 242,
+"sharp": 2942.3
+},
+{
+"key": "pets/pet-951/f663da2382d434b6.jpg",
+"w": 451,
+"h": 451,
+"kb": 142,
+"sharp": 5345.5
+},
+{
+"key": "pets/pet-951/7f0b535173b087fd.jpg",
+"w": 450,
+"h": 450,
+"kb": 79,
+"sharp": 2136.9
+},
+{
+"key": "pets/pet-951/3e5113c533a303e4.jpg",
+"w": 451,
+"h": 451,
+"kb": 106,
+"sharp": 1544.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-izzy-2026.jpg"
+},
+{
+"page": "/pets/jamesy-boy-2026/",
+"name": "Jamesy Boy",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/jamesy-boy-2025/56bf5a0c284a1c58.jpg",
+"w": 451,
+"h": 451,
+"kb": 50,
+"sharp": 845.6
+},
+{
+"key": "pets/jamesy-boy-2025/34036a386eea9ced.jpg",
+"w": 254,
+"h": 254,
+"kb": 16,
+"sharp": 1463.4
+},
+{
+"key": "pets/jamesy-boy-2025/9de2aae781656b1d.jpg",
+"w": 451,
+"h": 451,
+"kb": 54,
+"sharp": 1030.9
+},
+{
+"key": "pets/jamesy-boy-2025/eabc4d80c138e9ae.jpg",
+"w": 450,
+"h": 450,
+"kb": 62,
+"sharp": 1263.5
+},
+{
+"key": "pets/jamesy-boy-2025/ec291361764c3093.jpg",
+"w": 450,
+"h": 450,
+"kb": 58,
+"sharp": 1441.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-jamesy-boy-2026.jpg"
+},
+{
+"page": "/pets/jelly-2026/",
+"name": "Jelly",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1880/f1582f277be49f9e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 219,
+"sharp": 1542.3
+},
+{
+"key": "pets/pet-1880/4c6862b042de1b27.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 280,
+"sharp": 1612.7
+},
+{
+"key": "pets/pet-1880/9655e5309fe4ed3e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 207,
+"sharp": 1915.9
+},
+{
+"key": "pets/pet-1880/d665bbe1e053a7e7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 222,
+"sharp": 1892.8
+},
+{
+"key": "pets/pet-1880/889420b3023a5ef5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 260,
+"sharp": 1841.0
+},
+{
+"key": "pets/pet-1880/4183134b81e53633.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 281,
+"sharp": 3652.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-jelly-2026.jpg"
+},
+{
+"page": "/pets/koda-2025/",
+"name": "Koda",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/koda-2024/3195821358823bfb.jpg",
+"w": 632,
+"h": 632,
+"kb": 49,
+"sharp": 902.5
+},
+{
+"key": "pets/koda-2024/43532d1dc56501f0.jpg",
+"w": 632,
+"h": 632,
+"kb": 40,
+"sharp": 454.8
+},
+{
+"key": "pets/koda-2024/6c25b7e8ccfff73b.jpg",
+"w": 632,
+"h": 632,
+"kb": 65,
+"sharp": 2059.5
+},
+{
+"key": "pets/koda-2024/1b8dd82ac1b69ce8.jpg",
+"w": 635,
+"h": 635,
+"kb": 67,
+"sharp": 1549.5
+},
+{
+"key": "pets/koda-2024/528c8c97f2e1c612.jpg",
+"w": 635,
+"h": 635,
+"kb": 60,
+"sharp": 983.2
+},
+{
+"key": "pets/koda-2024/7ddf4267d320cbd8.jpg",
+"w": 843,
+"h": 843,
+"kb": 182,
+"sharp": 5732.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-koda-2025.jpg"
+},
+{
+"page": "/pets/leaf-2025/",
+"name": "Leaf",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/leaf-2025-2/7b6218bf650be7d4.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 157,
+"sharp": 494.1
+},
+{
+"key": "pets/leaf-2025-2/0689066048071f06.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 233,
+"sharp": 1124.5
+},
+{
+"key": "pets/leaf-2025-2/15b9e80ecd82e176.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 300,
+"sharp": 1807.1
+},
+{
+"key": "pets/leaf-2025-2/d76661bc82737f3b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 226,
+"sharp": 2415.5
+},
+{
+"key": "pets/leaf-2025-2/f8c1600368353ad0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 171,
+"sharp": 651.3
+},
+{
+"key": "pets/leaf-2025-2/75b77c285a2320e5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 240,
+"sharp": 1304.2
+},
+{
+"key": "pets/leaf-2025-2/e3ec350dd136cb65.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 159,
+"sharp": 508.2
+},
+{
+"key": "pets/leaf-2025-2/d6dc2f11b4dcdde3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 279,
+"sharp": 1238.2
+},
+{
+"key": "pets/leaf-2025-2/d8739ef8154581ae.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 288,
+"sharp": 1476.7
+},
+{
+"key": "pets/leaf-2025-2/69dbd5e98a973609.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 247,
+"sharp": 1148.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-leaf-2025.jpg"
+},
+{
+"page": "/pets/leela-2025/",
+"name": "Leela",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1730/e5d75be72b83a959.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 181,
+"sharp": 762.0
+},
+{
+"key": "pets/pet-1730/4f188ca3ee6a2ecf.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 300,
+"sharp": 1998.5
+},
+{
+"key": "pets/pet-1730/115aa6f417939ec1.jpg",
+"w": 650,
+"h": 650,
+"kb": 160,
+"sharp": 3679.4
+},
+{
+"key": "pets/pet-1730/c19a08576cadd1a6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 248,
+"sharp": 1329.1
+},
+{
+"key": "pets/pet-1730/b6b58153ebb025be.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 279,
+"sharp": 1321.5
+},
+{
+"key": "pets/pet-1730/9a53339f00583535.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 163,
+"sharp": 760.4
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-leela-2025.jpg"
+},
+{
+"page": "/pets/lovey-2026/",
+"name": "Lovey",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1856/f781b880f585645f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 198,
+"sharp": 1073.5
+},
+{
+"key": "pets/pet-1856/b4658de565604bf8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 172,
+"sharp": 648.8
+},
+{
+"key": "pets/pet-1856/aacda6b511b9b9da.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 174,
+"sharp": 788.6
+},
+{
+"key": "pets/pet-1856/980a17d4845c40f9.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 210,
+"sharp": 1078.9
+},
+{
+"key": "pets/pet-1856/9b859988b87635b5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 1460.6
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-lovey-2026.jpg"
+},
+{
+"page": "/pets/malcolm-2026/",
+"name": "Malcolm",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/malcolm-2025/73b95ce621f395b1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 248,
+"sharp": 1391.4
+},
+{
+"key": "pets/malcolm-2025/1b9268635feecfb8.jpg",
+"w": 362,
+"h": 362,
+"kb": 19,
+"sharp": 287.4
+},
+{
+"key": "pets/malcolm-2025/58e888b6a88c69d3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 224,
+"sharp": 2566.3
+},
+{
+"key": "pets/malcolm-2025/7c308946266ebd8e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 242,
+"sharp": 1287.5
+},
+{
+"key": "pets/malcolm-2025/3c44dbbc32d5e999.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 230,
+"sharp": 3268.3
+},
+{
+"key": "pets/malcolm-2025/b8486d75f793f6ac.jpg",
+"w": 450,
+"h": 450,
+"kb": 94,
+"sharp": 3995.3
+},
+{
+"key": "pets/malcolm-2025/0c6ec085ad2ad4cb.jpg",
+"w": 450,
+"h": 450,
+"kb": 50,
+"sharp": 840.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-malcolm-2026.jpg"
+},
+{
+"page": "/pets/marbles-2026/",
+"name": "Marbles",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1449/b051d143300b03c2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 145,
+"sharp": 431.2
+},
+{
+"key": "pets/pet-1449/641ade998906869d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 354,
+"sharp": 4866.5
+},
+{
+"key": "pets/pet-1449/2cd9e589ce0e4acf.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 248,
+"sharp": 3091.7
+},
+{
+"key": "pets/pet-1449/1ffcf04d129e4d10.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 369,
+"sharp": 4340.5
+},
+{
+"key": "pets/pet-1449/1fe10cad109c49bb.jpg",
+"w": 458,
+"h": 458,
+"kb": 78,
+"sharp": 1911.3
+},
+{
+"key": "pets/pet-1449/71bac25165feaca6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 268,
+"sharp": 1653.3
+},
+{
+"key": "pets/pet-1449/c641f3de6d70da34.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 258,
+"sharp": 2011.2
+},
+{
+"key": "pets/pet-1449/89df23db4edae6bc.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 268,
+"sharp": 1755.8
+},
+{
+"key": "pets/pet-1449/68dd8f5230b454f8.jpg",
+"w": 735,
+"h": 735,
+"kb": 138,
+"sharp": 1844.1
+},
+{
+"key": "pets/pet-1449/43fed5dfea5253c3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 207,
+"sharp": 2113.1
+},
+{
+"key": "pets/pet-1449/7b0b848caaf111b2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 129,
+"sharp": 328.6
+},
+{
+"key": "pets/pet-1449/99b6d622ab711cf4.jpg",
+"w": 916,
+"h": 916,
+"kb": 204,
+"sharp": 3033.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-marbles-2026.jpg"
+},
+{
+"page": "/pets/mattie-aka-matteo-2025/",
+"name": "Mattie aka Matteo",
+"lists": [
+"adopt",
+"foster-needs"
+],
+"badges": [
+"Foster needed"
+],
+"photos": [
+{
+"key": "pets/mattie-2025/1f0eea31744e2468.jpg",
+"w": 451,
+"h": 451,
+"kb": 43,
+"sharp": 488.7
+},
+{
+"key": "pets/mattie-2025/2e2974505533a2ac.jpg",
+"w": 394,
+"h": 394,
+"kb": 44,
+"sharp": 962.2
+},
+{
+"key": "pets/mattie-2025/dad4b7cde5a62d28.jpg",
+"w": 450,
+"h": 450,
+"kb": 47,
+"sharp": 603.2
+},
+{
+"key": "pets/mattie-2025/56054a053005a9aa.jpg",
+"w": 450,
+"h": 450,
+"kb": 71,
+"sharp": 2006.7
+},
+{
+"key": "pets/mattie-2025/f438550aff025d4e.jpg",
+"w": 450,
+"h": 450,
+"kb": 46,
+"sharp": 612.8
+},
+{
+"key": "pets/mattie-2025/b87b47b2b135e904.jpg",
+"w": 451,
+"h": 451,
+"kb": 53,
+"sharp": 824.9
+},
+{
+"key": "pets/mattie-2025/7fa69bfce7f6937c.jpg",
+"w": 810,
+"h": 810,
+"kb": 136,
+"sharp": 2739.7
+},
+{
+"key": "pets/mattie-2025/536e169fafcb9aa5.jpg",
+"w": 151,
+"h": 151,
+"kb": 9,
+"sharp": 3213.5
+},
+{
+"key": "pets/mattie-2025/c692921b174e5ead.jpg",
+"w": 150,
+"h": 150,
+"kb": 10,
+"sharp": 5022.8
+},
+{
+"key": "pets/mattie-2025/ac3830309891827c.jpg",
+"w": 142,
+"h": 142,
+"kb": 9,
+"sharp": 5042.5
+},
+{
+"key": "pets/mattie-2025/c69a522229ed92b1.jpg",
+"w": 810,
+"h": 810,
+"kb": 169,
+"sharp": 2362.8
+},
+{
+"key": "pets/mattie-2025/37249eb1ec674b7a.jpg",
+"w": 810,
+"h": 810,
+"kb": 291,
+"sharp": 4981.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-mattie-aka-matteo-2025.jpg"
+},
+{
+"page": "/pets/melon-2026/",
+"name": "Melon",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1475/64426848e71e4e54.jpg",
+"w": 450,
+"h": 450,
+"kb": 50,
+"sharp": 916.0
+},
+{
+"key": "pets/pet-1475/b23e5c1da22efa0f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 198,
+"sharp": 885.0
+},
+{
+"key": "pets/pet-1475/383f71d569684715.jpg",
+"w": 450,
+"h": 450,
+"kb": 64,
+"sharp": 1516.6
+},
+{
+"key": "pets/pet-1475/0b6e21a5169df96b.jpg",
+"w": 451,
+"h": 451,
+"kb": 35,
+"sharp": 550.3
+},
+{
+"key": "pets/pet-1475/f6689fd07372e16d.jpg",
+"w": 450,
+"h": 450,
+"kb": 71,
+"sharp": 2049.3
+},
+{
+"key": "pets/pet-1475/9a91024b4012205b.jpg",
+"w": 451,
+"h": 451,
+"kb": 41,
+"sharp": 602.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-melon-2026.jpg"
+},
+{
+"page": "/pets/mighty-joe-2026/",
+"name": "Mighty Joe",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1720/10019aea628a17d6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 206,
+"sharp": 1128.9
+},
+{
+"key": "pets/pet-1720/fb7d00d1a38118f8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 235,
+"sharp": 1111.5
+},
+{
+"key": "pets/pet-1720/0d02b09243de5bbc.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 279,
+"sharp": 1828.6
+},
+{
+"key": "pets/pet-1720/758b161e68bb3367.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 197,
+"sharp": 1169.7
+},
+{
+"key": "pets/pet-1720/b227047a3a6ca76a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 182,
+"sharp": 851.3
+},
+{
+"key": "pets/pet-1720/e671265805d45a46.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 264,
+"sharp": 1118.3
+},
+{
+"key": "pets/pet-1720/38208e4129ec6fa3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 287,
+"sharp": 1995.2
+},
+{
+"key": "pets/pet-1720/165eb0e496293634.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 309,
+"sharp": 3627.6
+},
+{
+"key": "pets/pet-1720/9948796840a1ed84.jpg",
+"w": 307,
+"h": 307,
+"kb": 55,
+"sharp": 4222.3
+},
+{
+"key": "pets/pet-1720/f648d3dfb6d8ac26.jpg",
+"w": 600,
+"h": 600,
+"kb": 78,
+"sharp": 926.5
+},
+{
+"key": "pets/pet-1720/29761c83c893b53c.jpg",
+"w": 600,
+"h": 600,
+"kb": 94,
+"sharp": 1122.9
+},
+{
+"key": "pets/pet-1720/6b5c9d0c7692b8a9.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 246,
+"sharp": 1432.9
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-mighty-joe-2026.jpg"
+},
+{
+"page": "/pets/mihla-2026/",
+"name": "Mihla",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/mihla-2024/f5763ceeb4fc10c0.jpg",
+"w": 635,
+"h": 635,
+"kb": 41,
+"sharp": 532.0
+},
+{
+"key": "pets/mihla-2024/a456646eb99827de.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 239,
+"sharp": 1586.4
+},
+{
+"key": "pets/mihla-2024/eee3e3672732383a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 262,
+"sharp": 2784.9
+},
+{
+"key": "pets/mihla-2024/a1511780808e22ea.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 316,
+"sharp": 4486.8
+},
+{
+"key": "pets/mihla-2024/c346a6ce7d65519d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 372,
+"sharp": 5460.2
+},
+{
+"key": "pets/mihla-2024/43a796727bc3c90d.jpg",
+"w": 632,
+"h": 632,
+"kb": 59,
+"sharp": 1275.5
+},
+{
+"key": "pets/mihla-2024/4a7ad442a19df73e.jpg",
+"w": 632,
+"h": 632,
+"kb": 47,
+"sharp": 665.2
+},
+{
+"key": "pets/mihla-2024/e7d2341772acfd9b.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 78,
+"sharp": 863.1
+},
+{
+"key": "pets/mihla-2024/fb78864a9917655f.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 159,
+"sharp": 2188.4
+},
+{
+"key": "pets/mihla-2024/e29051777f97614d.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 173,
+"sharp": 2720.3
+},
+{
+"key": "pets/mihla-2024/15e3eef8f5a58815.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 179,
+"sharp": 2475.6
+},
+{
+"key": "pets/mihla-2024/15070e74dabb0fb4.jpg",
+"w": 1024,
+"h": 1024,
+"kb": 146,
+"sharp": 1889.9
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-mihla-2026.jpg"
+},
+{
+"page": "/pets/mimi-2025/",
+"name": "Mimi",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1325/e32781cb10c668c5.jpg",
+"w": 451,
+"h": 451,
+"kb": 49,
+"sharp": 538.9
+},
+{
+"key": "pets/pet-1325/d6f7f820d38841c0.jpg",
+"w": 904,
+"h": 904,
+"kb": 76,
+"sharp": 346.4
+},
+{
+"key": "pets/pet-1325/734453be17c74ef1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 220,
+"sharp": 1869.4
+},
+{
+"key": "pets/pet-1325/0a999013178bd8a6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 351,
+"sharp": 4906.1
+},
+{
+"key": "pets/pet-1325/8d229506cd6f4d62.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 381,
+"sharp": 6401.7
+},
+{
+"key": "pets/pet-1325/e8bd5290d95dd372.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 232,
+"sharp": 3365.6
+},
+{
+"key": "pets/pet-1325/ec2faf62662c6b4f.jpg",
+"w": 1012,
+"h": 1012,
+"kb": 266,
+"sharp": 3487.0
+},
+{
+"key": "pets/pet-1325/efc5ed6a9f52910f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 195,
+"sharp": 844.0
+},
+{
+"key": "pets/pet-1325/f5670f61ce800b54.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 203,
+"sharp": 1076.1
+},
+{
+"key": "pets/pet-1325/143f8ca307c45e30.jpg",
+"w": 984,
+"h": 984,
+"kb": 201,
+"sharp": 2035.4
+},
+{
+"key": "pets/pet-1325/783918946166cef3.jpg",
+"w": 875,
+"h": 875,
+"kb": 146,
+"sharp": 607.8
+},
+{
+"key": "pets/pet-1325/09c6d5f49946b39a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 201,
+"sharp": 1160.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-mimi-2025.jpg"
+},
+{
+"page": "/pets/miss-marley-2026/",
+"name": "Miss Marley",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/miss-marley-2025/f519aa73a47d7816.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 143,
+"sharp": 499.9
+},
+{
+"key": "pets/miss-marley-2025/d740cb6d9fd8aa35.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 929.0
+},
+{
+"key": "pets/miss-marley-2025/346e5f1b22a6e250.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 198,
+"sharp": 1322.1
+},
+{
+"key": "pets/miss-marley-2025/961f5e41bfa8ab56.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 151,
+"sharp": 549.1
+},
+{
+"key": "pets/miss-marley-2025/3dc3caa0161b6e83.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 140,
+"sharp": 434.9
+},
+{
+"key": "pets/miss-marley-2025/7c43425e07b01410.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 262,
+"sharp": 2023.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-miss-marley-2026.jpg"
+},
+{
+"page": "/pets/moose-2026/",
+"name": "Moose",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1783/7fa587d3f20261f1.jpg",
+"w": 450,
+"h": 450,
+"kb": 40,
+"sharp": 404.1
+},
+{
+"key": "pets/pet-1783/e920f411ec92c368.jpg",
+"w": 276,
+"h": 276,
+"kb": 26,
+"sharp": 3968.7
+},
+{
+"key": "pets/pet-1783/80fb0f3b15d8ee33.jpg",
+"w": 451,
+"h": 451,
+"kb": 62,
+"sharp": 1348.8
+},
+{
+"key": "pets/pet-1783/ef4647375e3da842.jpg",
+"w": 450,
+"h": 450,
+"kb": 66,
+"sharp": 1095.1
+},
+{
+"key": "pets/pet-1783/4b272c1d905d3713.jpg",
+"w": 450,
+"h": 450,
+"kb": 61,
+"sharp": 1304.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-moose-2026.jpg"
+},
+{
+"page": "/pets/mya-2026/",
+"name": "Mya",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1867/7c33191631e19df3.jpg",
+"w": 450,
+"h": 450,
+"kb": 65,
+"sharp": 870.9
+},
+{
+"key": "pets/pet-1867/882f33668ccf6aca.jpg",
+"w": 450,
+"h": 450,
+"kb": 69,
+"sharp": 1021.6
+},
+{
+"key": "pets/pet-1867/cc372aedd61b6e40.jpg",
+"w": 450,
+"h": 450,
+"kb": 74,
+"sharp": 1910.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-mya-2026.jpg"
+},
+{
+"page": "/pets/nana-2026/",
+"name": "Nana",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1445/a42add3f6b8a8a71.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 209,
+"sharp": 1024.1
+},
+{
+"key": "pets/pet-1445/3106bcae688d0e22.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 224,
+"sharp": 2282.3
+},
+{
+"key": "pets/pet-1445/cb1ef9324c082434.jpg",
+"w": 905,
+"h": 905,
+"kb": 259,
+"sharp": 4712.2
+},
+{
+"key": "pets/pet-1445/e786bd7625f0616c.jpg",
+"w": 601,
+"h": 601,
+"kb": 176,
+"sharp": 5660.9
+},
+{
+"key": "pets/pet-1445/949736b7c6eaa280.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 299,
+"sharp": 1824.1
+},
+{
+"key": "pets/pet-1445/e721a5122416e507.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 262,
+"sharp": 1749.9
+},
+{
+"key": "pets/pet-1445/a07d3ac7e5bc696e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 257,
+"sharp": 2836.8
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-nana-2026.jpg"
+},
+{
+"page": "/pets/neo-2026/",
+"name": "Neo",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1863/68ac0803126d0041.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 203,
+"sharp": 1250.0
+},
+{
+"key": "pets/pet-1863/7a15d67a5161a62e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 294,
+"sharp": 2051.5
+},
+{
+"key": "pets/pet-1863/2a527dc8b5ff6f34.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 202,
+"sharp": 644.6
+},
+{
+"key": "pets/pet-1863/3b2f99d653df7a39.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 147,
+"sharp": 443.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-neo-2026.jpg"
+},
+{
+"page": "/pets/newt-2026/",
+"name": "Newt",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1197/60199be37709ac1a.jpg",
+"w": 451,
+"h": 451,
+"kb": 52,
+"sharp": 815.9
+},
+{
+"key": "pets/pet-1197/7516cddae9fedbdb.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 381,
+"sharp": 6042.0
+},
+{
+"key": "pets/pet-1197/491824e6890ea015.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 341,
+"sharp": 3202.1
+},
+{
+"key": "pets/pet-1197/72328f0029fa6e27.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 185,
+"sharp": 761.0
+},
+{
+"key": "pets/pet-1197/ed847f4e1f7cc6f6.jpg",
+"w": 451,
+"h": 451,
+"kb": 70,
+"sharp": 1484.9
+},
+{
+"key": "pets/pet-1197/ac8a53b9f07f4ff0.jpg",
+"w": 450,
+"h": 450,
+"kb": 62,
+"sharp": 889.9
+},
+{
+"key": "pets/pet-1197/457105ee38eb0978.jpg",
+"w": 450,
+"h": 450,
+"kb": 64,
+"sharp": 1224.9
+},
+{
+"key": "pets/pet-1197/5c2e956db530c53e.jpg",
+"w": 450,
+"h": 450,
+"kb": 63,
+"sharp": 1187.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-newt-2026.jpg"
+},
+{
+"page": "/pets/nougat-2025/",
+"name": "Nougat",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/nougat-2025-2/c16f9f6a3fd00099.jpg",
+"w": 450,
+"h": 450,
+"kb": 45,
+"sharp": 543.0
+},
+{
+"key": "pets/nougat-2025-2/13969ed0e0a8f7ec.jpg",
+"w": 361,
+"h": 361,
+"kb": 48,
+"sharp": 1996.8
+},
+{
+"key": "pets/nougat-2025-2/afd9bf4b62d65cec.jpg",
+"w": 450,
+"h": 450,
+"kb": 73,
+"sharp": 2071.2
+},
+{
+"key": "pets/nougat-2025-2/3a2285cded93c196.jpg",
+"w": 450,
+"h": 450,
+"kb": 63,
+"sharp": 1343.2
+},
+{
+"key": "pets/nougat-2025-2/d42c1649e2ed39e5.jpg",
+"w": 451,
+"h": 451,
+"kb": 56,
+"sharp": 604.1
+},
+{
+"key": "pets/nougat-2025-2/852d39b38267600e.jpg",
+"w": 450,
+"h": 450,
+"kb": 57,
+"sharp": 764.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-nougat-2025.jpg"
+},
+{
+"page": "/pets/orca-2026/",
+"name": "Orca",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1895/5c5ac2eb55d00bd4.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 230,
+"sharp": 2109.6
+},
+{
+"key": "pets/pet-1895/029504aa52c52a4b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 253,
+"sharp": 4435.9
+},
+{
+"key": "pets/pet-1895/73fd134655020081.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 188,
+"sharp": 830.1
+},
+{
+"key": "pets/pet-1895/f427dc053292470c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 263,
+"sharp": 1267.0
+},
+{
+"key": "pets/pet-1895/3c61f992460e3a3d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 213,
+"sharp": 1070.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-orca-2026.jpg"
+},
+{
+"page": "/pets/oscar-2026/",
+"name": "Oscar",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1638/d9b167b9f96af3f2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 240,
+"sharp": 1635.5
+},
+{
+"key": "pets/pet-1638/916604e2bb359e9e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 374,
+"sharp": 4568.3
+},
+{
+"key": "pets/pet-1638/e0d50209be831685.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 304,
+"sharp": 3483.9
+},
+{
+"key": "pets/pet-1638/bd88f34aee51dbf1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 315,
+"sharp": 3944.6
+},
+{
+"key": "pets/pet-1638/786b975ca6c6daca.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 363,
+"sharp": 3921.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-oscar-2026.jpg"
+},
+{
+"page": "/pets/osmosis-jones-2025/",
+"name": "Osmosis Jones",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/osmosis-jones-2025-2/e9372b344e4ecf04.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 171,
+"sharp": 628.0
+},
+{
+"key": "pets/osmosis-jones-2025-2/1f0f1a2de85fd48b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 286,
+"sharp": 1757.7
+},
+{
+"key": "pets/osmosis-jones-2025-2/969e9ac76b0ea9c2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 201,
+"sharp": 820.3
+},
+{
+"key": "pets/osmosis-jones-2025-2/8f02b35f14914881.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 298,
+"sharp": 1791.1
+},
+{
+"key": "pets/osmosis-jones-2025-2/333fdba17d06e2de.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 252,
+"sharp": 1476.2
+},
+{
+"key": "pets/osmosis-jones-2025-2/9c611ab7bbdf965f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 213,
+"sharp": 1202.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-osmosis-jones-2025.jpg"
+},
+{
+"page": "/pets/oyster-2026/",
+"name": "Oyster",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1905/f24c21eeabe34913.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 192,
+"sharp": 898.3
+},
+{
+"key": "pets/pet-1905/9d9c61b22011be02.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 222,
+"sharp": 3561.5
+},
+{
+"key": "pets/pet-1905/57915e52f8b90483.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 293,
+"sharp": 1433.8
+},
+{
+"key": "pets/pet-1905/80e4d2de793cd411.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 209,
+"sharp": 1532.1
+},
+{
+"key": "pets/pet-1905/e8a01717c17cb867.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 157,
+"sharp": 710.3
+},
+{
+"key": "pets/pet-1905/0639774220c5991c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 179,
+"sharp": 786.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-oyster-2026.jpg"
+},
+{
+"page": "/pets/ozzy-2026/",
+"name": "Ozzy",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1450/29629f2fee3c6231.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 266,
+"sharp": 2068.5
+},
+{
+"key": "pets/pet-1450/f23abf50ac6b3d2b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 274,
+"sharp": 2516.1
+},
+{
+"key": "pets/pet-1450/c0ff745045de55a0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 262,
+"sharp": 3123.8
+},
+{
+"key": "pets/pet-1450/e2ebe035c25b7858.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 3114.6
+},
+{
+"key": "pets/pet-1450/0ee976c708f39976.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 299,
+"sharp": 2315.6
+},
+{
+"key": "pets/pet-1450/89a1b96ea77e766f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 174,
+"sharp": 668.6
+},
+{
+"key": "pets/pet-1450/66854709cbde9b9c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 248,
+"sharp": 1450.2
+},
+{
+"key": "pets/pet-1450/24ff45033cfa4ff7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 235,
+"sharp": 1516.8
+},
+{
+"key": "pets/pet-1450/ca921d6af23b69f0.jpg",
+"w": 768,
+"h": 768,
+"kb": 123,
+"sharp": 1150.7
+},
+{
+"key": "pets/pet-1450/6459234eacb81734.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 202,
+"sharp": 825.1
+},
+{
+"key": "pets/pet-1450/526c107a85d98da2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 297,
+"sharp": 3797.2
+},
+{
+"key": "pets/pet-1450/e14f36e4a1ba0238.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 211,
+"sharp": 2256.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-ozzy-2026.jpg"
+},
+{
+"page": "/pets/panda-2026/",
+"name": "Panda",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1712/26c241784be02ccb.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 174,
+"sharp": 862.4
+},
+{
+"key": "pets/pet-1712/b63b46cefa9e0102.jpg",
+"w": 702,
+"h": 702,
+"kb": 81,
+"sharp": 896.3
+},
+{
+"key": "pets/pet-1712/67b1d9c7c421a1c1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 173,
+"sharp": 891.4
+},
+{
+"key": "pets/pet-1712/25cf6d4577d2394f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 1901.2
+},
+{
+"key": "pets/pet-1712/576bed5bde0c82aa.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 229,
+"sharp": 1267.1
+},
+{
+"key": "pets/pet-1712/edae082d74a6ee1e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 272,
+"sharp": 1726.4
+},
+{
+"key": "pets/pet-1712/998b3cb86fc42b58.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 211,
+"sharp": 1809.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-panda-2026.jpg"
+},
+{
+"page": "/pets/patches-2026/",
+"name": "Patches",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1898/bd753adc7967565f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 189,
+"sharp": 842.6
+},
+{
+"key": "pets/pet-1898/f6babf20f31e175c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 245,
+"sharp": 1581.9
+},
+{
+"key": "pets/pet-1898/047548ab8bac3171.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 270,
+"sharp": 1250.7
+},
+{
+"key": "pets/pet-1898/bee4a0a2abea4c3a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 246,
+"sharp": 1127.6
+},
+{
+"key": "pets/pet-1898/591cd741999d2392.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 2113.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-patches-2026.jpg"
+},
+{
+"page": "/pets/pauly-d-2025/",
+"name": "Pauly D",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1248/19e8b4b77c61f6d0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 181,
+"sharp": 1149.7
+},
+{
+"key": "pets/pet-1248/a035bfeb60752beb.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 221,
+"sharp": 730.3
+},
+{
+"key": "pets/pet-1248/c6aa8323b78dd586.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 173,
+"sharp": 1105.6
+},
+{
+"key": "pets/pet-1248/77a14998cf299325.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 209,
+"sharp": 1680.1
+},
+{
+"key": "pets/pet-1248/2aad428aecbe6783.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 213,
+"sharp": 1499.8
+},
+{
+"key": "pets/pet-1248/4043238b6a56f228.jpg",
+"w": 810,
+"h": 810,
+"kb": 295,
+"sharp": 4292.3
+},
+{
+"key": "pets/pet-1248/7c6ced5bd5c60470.jpg",
+"w": 480,
+"h": 480,
+"kb": 52,
+"sharp": 2330.8
+},
+{
+"key": "pets/pet-1248/a343c4379ff77a98.jpg",
+"w": 480,
+"h": 480,
+"kb": 51,
+"sharp": 2401.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-pauly-d-2025.jpg"
+},
+{
+"page": "/pets/pearl-2026/",
+"name": "Pearl",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1859/a72ac32c6a9467fa.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 222,
+"sharp": 1325.9
+},
+{
+"key": "pets/pet-1859/3b644dcd2e955f3c.jpg",
+"w": 236,
+"h": 236,
+"kb": 15,
+"sharp": 1751.2
+},
+{
+"key": "pets/pet-1859/1e2634102d21efc0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 151,
+"sharp": 793.8
+},
+{
+"key": "pets/pet-1859/6971b5c5a8d11279.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 258,
+"sharp": 2091.5
+},
+{
+"key": "pets/pet-1859/1a1174e988a17b1b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 180,
+"sharp": 1120.9
+},
+{
+"key": "pets/pet-1859/b631fe849d2a87b9.jpg",
+"w": 450,
+"h": 450,
+"kb": 49,
+"sharp": 874.9
+},
+{
+"key": "pets/pet-1859/891e3f78ca1a7a30.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 320,
+"sharp": 4028.6
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-pearl-2026.jpg"
+},
+{
+"page": "/pets/pebble-2026/",
+"name": "Pebble",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-2005/765b50eff947ee93.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 188,
+"sharp": 752.2
+},
+{
+"key": "pets/pet-2005/cfa15845c9cb3245.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 150,
+"sharp": 434.0
+},
+{
+"key": "pets/pet-2005/7046d8fd75004f58.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 231,
+"sharp": 1325.3
+},
+{
+"key": "pets/pet-2005/8f8264052c097454.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 215,
+"sharp": 2187.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-pebble-2026.jpg"
+},
+{
+"page": "/pets/pie-2026/",
+"name": "Pie",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1876/14c5ed6608fe3d31.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 209,
+"sharp": 1005.8
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-pie-2026.jpg"
+},
+{
+"page": "/pets/pirata-2025/",
+"name": "Pirata",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1776/ed7d9be84902a08b.jpg",
+"w": 450,
+"h": 450,
+"kb": 51,
+"sharp": 492.8
+},
+{
+"key": "pets/pet-1776/f56faf2422c70ea4.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 102,
+"sharp": 370.4
+},
+{
+"key": "pets/pet-1776/92df815f8814674d.jpg",
+"w": 451,
+"h": 451,
+"kb": 70,
+"sharp": 2979.3
+},
+{
+"key": "pets/pet-1776/241aba6f37d49441.jpg",
+"w": 450,
+"h": 450,
+"kb": 76,
+"sharp": 1384.9
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-pirata-2025.jpg"
+},
+{
+"page": "/pets/romeo-2026/",
+"name": "Romeo",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1848/7c43da2eb465f5b0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 150,
+"sharp": 610.2
+},
+{
+"key": "pets/pet-1848/03cae9ef3e9edc47.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 241,
+"sharp": 2588.0
+},
+{
+"key": "pets/pet-1848/fbb77f7a15b1abf5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 229,
+"sharp": 1408.8
+},
+{
+"key": "pets/pet-1848/c9077a4de2df73c3.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 173,
+"sharp": 941.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-romeo-2026.jpg"
+},
+{
+"page": "/pets/root-beer-2026/",
+"name": "Root Beer",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1729/76970cbc0f9f9b58.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 215,
+"sharp": 2074.3
+},
+{
+"key": "pets/pet-1729/1c604d182f483dcc.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 229,
+"sharp": 1527.2
+},
+{
+"key": "pets/pet-1729/36f3534f0153b6d8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 221,
+"sharp": 2134.3
+},
+{
+"key": "pets/pet-1729/f766e47b5642bb7e.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 266,
+"sharp": 1366.4
+},
+{
+"key": "pets/pet-1729/02218e2abeb69c00.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 242,
+"sharp": 2695.6
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-root-beer-2026.jpg"
+},
+{
+"page": "/pets/santa-s-little-helper-2026/",
+"name": "Santa\u2019s Little Helper",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/santa-s-little-helper-2026/956bd80e019b93f7.jpg",
+"w": 600,
+"h": 451,
+"kb": 42,
+"sharp": 2202.4
+},
+{
+"key": "pets/santa-s-little-helper-2026/3da90d221560098a.jpg",
+"w": 600,
+"h": 450,
+"kb": 29,
+"sharp": 810.6
+},
+{
+"key": "pets/santa-s-little-helper-2026/e891e73372221d6f.jpg",
+"w": 600,
+"h": 451,
+"kb": 58,
+"sharp": 3940.7
+},
+{
+"key": "pets/santa-s-little-helper-2026/f1d26b370b63281f.jpg",
+"w": 600,
+"h": 450,
+"kb": 35,
+"sharp": 1526.0
+},
+{
+"key": "pets/santa-s-little-helper-2026/39bdcdd48400cee8.jpg",
+"w": 600,
+"h": 451,
+"kb": 60,
+"sharp": 3897.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-santa-s-little-helper-2026.jpg"
+},
+{
+"page": "/pets/sebastian-2026/",
+"name": "Sebastian",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/sebastian-2026/c426b71a0e9ecb24.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 251,
+"sharp": 1385.4
+},
+{
+"key": "pets/sebastian-2026/d9c9436cfea963aa.jpg",
+"w": 630,
+"h": 630,
+"kb": 93,
+"sharp": 926.1
+},
+{
+"key": "pets/sebastian-2026/82ff2462b03fe6bf.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 214,
+"sharp": 1042.4
+},
+{
+"key": "pets/sebastian-2026/1107be5787b01657.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 270,
+"sharp": 1732.0
+},
+{
+"key": "pets/sebastian-2026/749deb4445364165.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 245,
+"sharp": 1136.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-sebastian-2026.jpg"
+},
+{
+"page": "/pets/shortbread-2026/",
+"name": "Shortbread",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1889/8f30fc3a89278c38.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 183,
+"sharp": 876.5
+},
+{
+"key": "pets/pet-1889/f605009c0b24bba1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 238,
+"sharp": 1335.0
+},
+{
+"key": "pets/pet-1889/9fd06a6874966b28.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 214,
+"sharp": 1277.2
+},
+{
+"key": "pets/pet-1889/2b47968fcfe15b78.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 270,
+"sharp": 1564.2
+},
+{
+"key": "pets/pet-1889/8a9bf17747886069.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 232,
+"sharp": 1345.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-shortbread-2026.jpg"
+},
+{
+"page": "/pets/skipper-2026/",
+"name": "Skipper",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1903/befef41864118608.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 224,
+"sharp": 1384.6
+},
+{
+"key": "pets/pet-1903/db7bfdf3aad851d8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 253,
+"sharp": 1234.3
+},
+{
+"key": "pets/pet-1903/018128dfd6acdc4d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 234,
+"sharp": 1908.2
+},
+{
+"key": "pets/pet-1903/1567a4b286d5514f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 241,
+"sharp": 2050.6
+},
+{
+"key": "pets/pet-1903/afba92324d42a281.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 216,
+"sharp": 2128.7
+},
+{
+"key": "pets/pet-1903/69c1600d1762818f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 224,
+"sharp": 1857.8
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-skipper-2026.jpg"
+},
+{
+"page": "/pets/snowflake-2025/",
+"name": "Snowflake",
+"lists": [
+"hospice"
+],
+"badges": [
+"Hospice care"
+],
+"photos": [
+{
+"key": "pets/snowflake-2025-2/9a1db0b9218b4486.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 141,
+"sharp": 456.2
+},
+{
+"key": "pets/snowflake-2025-2/00b9d92cbc1becb7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 287,
+"sharp": 1297.8
+},
+{
+"key": "pets/snowflake-2025-2/45762be8ababc348.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 285,
+"sharp": 1688.3
+},
+{
+"key": "pets/snowflake-2025-2/99d1b380c20418bf.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 250,
+"sharp": 2016.4
+},
+{
+"key": "pets/snowflake-2025-2/c5a62c52aa500009.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 184,
+"sharp": 1058.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-snowflake-2025.jpg"
+},
+{
+"page": "/pets/spork-2026/",
+"name": "Spork",
+"lists": [
+"hospice"
+],
+"badges": [
+"Hospice care"
+],
+"photos": [
+{
+"key": "pets/spork-2025/b7109cdf29ebe273.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 187,
+"sharp": 956.6
+},
+{
+"key": "pets/spork-2025/2006f36c0ddb6cb1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 268,
+"sharp": 1250.9
+},
+{
+"key": "pets/spork-2025/6c1d6f98f34b0c53.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 213,
+"sharp": 1387.1
+},
+{
+"key": "pets/spork-2025/5010a894e1bd7e83.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 269,
+"sharp": 2327.2
+},
+{
+"key": "pets/spork-2025/24691cda3e2c3c86.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 247,
+"sharp": 981.7
+},
+{
+"key": "pets/spork-2025/c989be69d314ea9b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 256,
+"sharp": 1953.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-spork-2026.jpg"
+},
+{
+"page": "/pets/sugar-cookie-2026/",
+"name": "Sugar Cookie",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1886/1edbdd04bf1f024b.jpg",
+"w": 450,
+"h": 450,
+"kb": 39,
+"sharp": 366.3
+},
+{
+"key": "pets/pet-1886/96c578e761d18e34.jpg",
+"w": 480,
+"h": 480,
+"kb": 29,
+"sharp": 294.8
+},
+{
+"key": "pets/pet-1886/79ef32d8adec41a7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 241,
+"sharp": 1197.7
+},
+{
+"key": "pets/pet-1886/a4127baad8365544.jpg",
+"w": 450,
+"h": 450,
+"kb": 48,
+"sharp": 643.4
+},
+{
+"key": "pets/pet-1886/35c02f44ba3d0ba6.jpg",
+"w": 451,
+"h": 451,
+"kb": 56,
+"sharp": 885.8
+},
+{
+"key": "pets/pet-1886/429bd37375fe11ce.jpg",
+"w": 450,
+"h": 450,
+"kb": 55,
+"sharp": 867.8
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-sugar-cookie-2026.jpg"
+},
+{
+"page": "/pets/suki-2026/",
+"name": "Suki",
+"lists": [
+"hospice"
+],
+"badges": [
+"Hospice care"
+],
+"photos": [
+{
+"key": "pets/suki-2026-2/99330685feb459fc.jpg",
+"w": 450,
+"h": 450,
+"kb": 48,
+"sharp": 872.5
+},
+{
+"key": "pets/suki-2026-2/025bba8d6e541c76.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 231,
+"sharp": 2887.2
+},
+{
+"key": "pets/suki-2026-2/3905419596ed231d.jpg",
+"w": 450,
+"h": 450,
+"kb": 65,
+"sharp": 1596.0
+},
+{
+"key": "pets/suki-2026-2/9568494c6857e275.jpg",
+"w": 450,
+"h": 450,
+"kb": 65,
+"sharp": 1250.4
+},
+{
+"key": "pets/suki-2026-2/ae30fe6067a54105.jpg",
+"w": 450,
+"h": 450,
+"kb": 62,
+"sharp": 1242.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-suki-2026.jpg"
+},
+{
+"page": "/pets/sun-bear-2026/",
+"name": "Sun Bear",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1902/590b4f93e17f454d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 196,
+"sharp": 1004.0
+},
+{
+"key": "pets/pet-1902/3722063a7a4c640e.jpg",
+"w": 480,
+"h": 480,
+"kb": 50,
+"sharp": 706.9
+},
+{
+"key": "pets/pet-1902/736ab32660959097.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 185,
+"sharp": 787.1
+},
+{
+"key": "pets/pet-1902/b79261ad48be9a9d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 270,
+"sharp": 1291.3
+},
+{
+"key": "pets/pet-1902/ead09aedf71003fd.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 208,
+"sharp": 1426.5
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-sun-bear-2026.jpg"
+},
+{
+"page": "/pets/sunshine-sophie-2025/",
+"name": "Sunshine Sophie",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1625/2185c698c0a66a7f.jpg",
+"w": 445,
+"h": 445,
+"kb": 74,
+"sharp": 2182.9
+},
+{
+"key": "pets/pet-1625/bdb13dec09f3cbd0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 243,
+"sharp": 1699.6
+},
+{
+"key": "pets/pet-1625/6fbd4243763ba878.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 290,
+"sharp": 1767.4
+},
+{
+"key": "pets/pet-1625/885922a3b4c96d2f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 172,
+"sharp": 613.3
+},
+{
+"key": "pets/pet-1625/2c0855340f747549.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 188,
+"sharp": 996.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-sunshine-sophie-2025.jpg"
+},
+{
+"page": "/pets/tamagotchi-2026/",
+"name": "Tamagotchi",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/tamagotchi-2026-2/9f88b24ee4737e60.jpg",
+"w": 450,
+"h": 450,
+"kb": 72,
+"sharp": 1940.5
+},
+{
+"key": "pets/tamagotchi-2026-2/81a94c4435d9e5f5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 284,
+"sharp": 1166.9
+},
+{
+"key": "pets/tamagotchi-2026-2/eb9603d2f1f98f0a.jpg",
+"w": 450,
+"h": 450,
+"kb": 37,
+"sharp": 337.7
+},
+{
+"key": "pets/tamagotchi-2026-2/bcc4b64f8c2f08c6.jpg",
+"w": 451,
+"h": 451,
+"kb": 45,
+"sharp": 463.0
+},
+{
+"key": "pets/tamagotchi-2026-2/45dfba0c3cef4998.jpg",
+"w": 450,
+"h": 450,
+"kb": 58,
+"sharp": 1018.3
+},
+{
+"key": "pets/tamagotchi-2026-2/92be280eb3869384.jpg",
+"w": 450,
+"h": 450,
+"kb": 35,
+"sharp": 305.5
+},
+{
+"key": "pets/tamagotchi-2026-2/511a222cb77f6de5.jpg",
+"w": 450,
+"h": 450,
+"kb": 48,
+"sharp": 570.2
+},
+{
+"key": "pets/tamagotchi-2026-2/a2ac821ef0973f44.jpg",
+"w": 450,
+"h": 450,
+"kb": 63,
+"sharp": 1757.8
+},
+{
+"key": "pets/tamagotchi-2026-2/3141b239e818f045.jpg",
+"w": 450,
+"h": 450,
+"kb": 68,
+"sharp": 2085.4
+},
+{
+"key": "pets/tamagotchi-2026-2/ac64639830137ea1.jpg",
+"w": 698,
+"h": 698,
+"kb": 65,
+"sharp": 650.6
+},
+{
+"key": "pets/tamagotchi-2026-2/fff3894ffe642908.jpg",
+"w": 812,
+"h": 812,
+"kb": 103,
+"sharp": 459.1
+},
+{
+"key": "pets/tamagotchi-2026-2/6afb9ba7e8406397.jpg",
+"w": 720,
+"h": 720,
+"kb": 108,
+"sharp": 1337.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-tamagotchi-2026.jpg"
+},
+{
+"page": "/pets/tarzan-and-jane-2026/",
+"name": "Tarzan and Jane",
+"lists": [
+"adopt",
+"foster-needs"
+],
+"badges": [
+"Temporary foster needed"
+],
+"photos": [
+{
+"key": "pets/tarzan-2025/b8ad0b0355d806c5.jpg",
+"w": 480,
+"h": 480,
+"kb": 72,
+"sharp": 975.0
+},
+{
+"key": "pets/tarzan-2025/25c5bbcb2301c9dc.jpg",
+"w": 480,
+"h": 480,
+"kb": 84,
+"sharp": 1632.5
+},
+{
+"key": "pets/tarzan-2025/c62b816bc4af4d55.jpg",
+"w": 480,
+"h": 480,
+"kb": 93,
+"sharp": 1940.0
+},
+{
+"key": "pets/tarzan-2025/a791450b7be9717f.jpg",
+"w": 480,
+"h": 480,
+"kb": 77,
+"sharp": 1312.7
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-tarzan-and-jane-2026.jpg"
+},
+{
+"page": "/pets/tootsie-roll-2025/",
+"name": "Tootsie Roll",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1650/76f19bf6683163b8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 186,
+"sharp": 1110.4
+},
+{
+"key": "pets/pet-1650/92a81970d89b50e2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 155,
+"sharp": 585.8
+},
+{
+"key": "pets/pet-1650/eb9bb66eea024286.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 207,
+"sharp": 1074.2
+},
+{
+"key": "pets/pet-1650/f54693e0078ad70c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 1343.1
+},
+{
+"key": "pets/pet-1650/d570fffa6e6fd252.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 168,
+"sharp": 637.7
+},
+{
+"key": "pets/pet-1650/daad8416dde4b8a7.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 252,
+"sharp": 2640.2
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-tootsie-roll-2025.jpg"
+},
+{
+"page": "/pets/tuxedo-2026/",
+"name": "Tuxedo",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/tuxedo-2026-2/e8a02c077ccbbd8f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 159,
+"sharp": 555.6
+},
+{
+"key": "pets/tuxedo-2026/2e9314e1283939a4.jpg",
+"w": 600,
+"h": 450,
+"kb": 47,
+"sharp": 2417.8
+},
+{
+"key": "pets/tuxedo-2026/71b645470c56e5df.jpg",
+"w": 600,
+"h": 450,
+"kb": 39,
+"sharp": 1674.1
+},
+{
+"key": "pets/tuxedo-2026/e58a914cecc5d7c2.jpg",
+"w": 600,
+"h": 451,
+"kb": 41,
+"sharp": 1298.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-tuxedo-2026.jpg"
+},
+{
+"page": "/pets/walrus-2026/",
+"name": "Walrus",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/walrus-2025/b9d3a280999cb790.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 275,
+"sharp": 4269.6
+},
+{
+"key": "pets/walrus-2025/9fca3ff954ace641.jpg",
+"w": 288,
+"h": 288,
+"kb": 19,
+"sharp": 1380.8
+},
+{
+"key": "pets/walrus-2025/396d9d22b887d293.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 288,
+"sharp": 1752.2
+},
+{
+"key": "pets/walrus-2025/cb0506c1acb0575f.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 285,
+"sharp": 4595.4
+},
+{
+"key": "pets/walrus-2025/f225c4fddbc24cb0.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 274,
+"sharp": 3831.3
+},
+{
+"key": "pets/walrus-2025/13cb88c5112bd915.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 219,
+"sharp": 2681.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-walrus-2026.jpg"
+},
+{
+"page": "/pets/watson-2026/",
+"name": "Watson",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/watson-2025/1c819fa3af583978.jpg",
+"w": 451,
+"h": 451,
+"kb": 51,
+"sharp": 705.6
+},
+{
+"key": "pets/watson-2025/64e3e80c93905488.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 262,
+"sharp": 3834.2
+},
+{
+"key": "pets/watson-2025/a035533318b89365.jpg",
+"w": 600,
+"h": 600,
+"kb": 56,
+"sharp": 456.3
+},
+{
+"key": "pets/watson-2025/d2dc96eef8646eef.jpg",
+"w": 451,
+"h": 451,
+"kb": 47,
+"sharp": 791.8
+},
+{
+"key": "pets/watson-2025/df17253fb69d1226.jpg",
+"w": 450,
+"h": 450,
+"kb": 74,
+"sharp": 1840.2
+},
+{
+"key": "pets/watson-2025/afd31c5ec40122bb.jpg",
+"w": 450,
+"h": 450,
+"kb": 61,
+"sharp": 1000.5
+},
+{
+"key": "pets/watson-2025/5a92f91afe1645c4.jpg",
+"w": 450,
+"h": 450,
+"kb": 83,
+"sharp": 2421.4
+},
+{
+"key": "pets/watson-2025/020c0ce13b6f053c.jpg",
+"w": 450,
+"h": 450,
+"kb": 54,
+"sharp": 692.6
+},
+{
+"key": "pets/watson-2025/5e37163ff616dc61.jpg",
+"w": 450,
+"h": 450,
+"kb": 59,
+"sharp": 952.8
+},
+{
+"key": "pets/watson-2025/03ac0cd436785183.jpg",
+"w": 451,
+"h": 451,
+"kb": 54,
+"sharp": 709.5
+},
+{
+"key": "pets/watson-2025/f2af404d1a3b3435.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 289,
+"sharp": 3039.3
+},
+{
+"key": "pets/watson-2025/0a53e0a32bea472c.jpg",
+"w": 871,
+"h": 871,
+"kb": 281,
+"sharp": 5760.3
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-watson-2026.jpg"
+},
+{
+"page": "/pets/whimsy-2026/",
+"name": "Whimsy",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/pet-1899/e4f014c68b9a1f23.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 168,
+"sharp": 787.9
+},
+{
+"key": "pets/pet-1899/7e08d8ba28296b4d.jpg",
+"w": 560,
+"h": 560,
+"kb": 37,
+"sharp": 229.5
+},
+{
+"key": "pets/pet-1899/79bd0194e9ac8214.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 254,
+"sharp": 1339.2
+},
+{
+"key": "pets/pet-1899/80b7fe033389a4d6.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 197,
+"sharp": 1034.7
+},
+{
+"key": "pets/pet-1899/06ee15becc87aa5d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 192,
+"sharp": 1015.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-whimsy-2026.jpg"
+},
+{
+"page": "/pets/winkle-aka-landline-2026/",
+"name": "Winkle",
+"lists": [
+"hospice"
+],
+"badges": [
+"Hospice care"
+],
+"photos": [
+{
+"key": "pets/winkle-aka-landline-2025/4a7f763da376d886.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 251,
+"sharp": 1776.2
+},
+{
+"key": "pets/winkle-aka-landline-2025/216f45850885254c.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 222,
+"sharp": 2082.8
+},
+{
+"key": "pets/winkle-aka-landline-2025/02a4bf0bb3e0c4d5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 243,
+"sharp": 4651.6
+},
+{
+"key": "pets/winkle-aka-landline-2025/b913decae9d32823.jpg",
+"w": 366,
+"h": 366,
+"kb": 25,
+"sharp": 581.6
+},
+{
+"key": "pets/winkle-aka-landline-2025/5f4476637873b7d5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 293,
+"sharp": 1559.0
+},
+{
+"key": "pets/winkle-aka-landline-2025/1b4c13861c6295fe.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 160,
+"sharp": 1229.6
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-winkle-aka-landline-2026.jpg"
+},
+{
+"page": "/pets/yankee-candle-2026/",
+"name": "Yankee Candle",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/yankee-candle-2025/208ab3483edf66f1.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 267,
+"sharp": 3802.1
+},
+{
+"key": "pets/yankee-candle-2025/48b6f5d46546eeae.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 262,
+"sharp": 4247.9
+},
+{
+"key": "pets/yankee-candle-2025/d57127eaf74b8cca.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 168,
+"sharp": 631.9
+},
+{
+"key": "pets/yankee-candle-2025/81433a00d68a0169.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 170,
+"sharp": 741.6
+},
+{
+"key": "pets/yankee-candle-2025/09dcfa5840b7d22b.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 249,
+"sharp": 1528.0
+},
+{
+"key": "pets/yankee-candle-2025/0cdf4bd42a8a192a.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 281,
+"sharp": 1529.2
+},
+{
+"key": "pets/yankee-candle-2025/772724a9ef1aab86.jpg",
+"w": 451,
+"h": 451,
+"kb": 53,
+"sharp": 709.6
+},
+{
+"key": "pets/yankee-candle-2025/45b1a10010fec392.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 294,
+"sharp": 2224.5
+},
+{
+"key": "pets/yankee-candle-2025/eeb6e08d0f40901d.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 284,
+"sharp": 1598.0
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-yankee-candle-2026.jpg"
+},
+{
+"page": "/pets/yeti-2025/",
+"name": "Yeti",
+"lists": [
+"adopt"
+],
+"badges": [],
+"photos": [
+{
+"key": "pets/yeti-2025-2/23df0ece36f092da.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 186,
+"sharp": 619.3
+},
+{
+"key": "pets/yeti-2025-2/f1940c413061b4a5.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 189,
+"sharp": 780.6
+},
+{
+"key": "pets/yeti-2025-2/af2c618a1e6b3576.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 238,
+"sharp": 1030.6
+},
+{
+"key": "pets/yeti-2025-2/db5d46cafcdbb4c2.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 215,
+"sharp": 1953.1
+},
+{
+"key": "pets/yeti-2025-2/833d8290a91b6dc8.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 226,
+"sharp": 2038.0
+},
+{
+"key": "pets/yeti-2025-2/f7e019ef9fafb461.jpg",
+"w": 1028,
+"h": 1028,
+"kb": 212,
+"sharp": 1019.2
+},
+{
+"key": "pets/yeti-2025-2/c230d2161d3716a7.jpg",
+"w": 600,
+"h": 600,
+"kb": 76,
+"sharp": 851.1
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-yeti-2025.jpg"
+},
+{
+"page": "/pets/zelda-2025/",
+"name": "Zelda",
+"lists": [
+"hospice"
+],
+"badges": [
+"Hospice care"
+],
+"photos": [
+{
+"key": "pets/zelda-2025-2/b6ac5e38877a7d84.jpg",
+"w": 450,
+"h": 450,
+"kb": 40,
+"sharp": 489.4
+},
+{
+"key": "pets/zelda-2025-2/995e49d6172b81ef.jpg",
+"w": 349,
+"h": 349,
+"kb": 35,
+"sharp": 923.5
+},
+{
+"key": "pets/zelda-2025-2/193c0dfc52968bbc.jpg",
+"w": 450,
+"h": 450,
+"kb": 48,
+"sharp": 520.6
+},
+{
+"key": "pets/zelda-2025-2/c85411eb0b1fc3e9.jpg",
+"w": 450,
+"h": 450,
+"kb": 70,
+"sharp": 1813.5
+},
+{
+"key": "pets/zelda-2025-2/bdadb95509c27cf2.jpg",
+"w": 450,
+"h": 450,
+"kb": 56,
+"sharp": 881.9
+}
+],
+"shown": [
+532,
+399
+],
+"strip": "dog-zelda-2025.jpg"
+}
+],
+"team": [
+{
+"slug": "cathy-heape",
+"name": "Cathy Heape",
+"role": "President",
+"group": "Board of Directors",
+"key": "team/cathy-heape/8e87e88e25b3c522.jpg",
+"w": 1100,
+"h": 734,
+"kb": 115,
+"sharp": 2471.3
+},
+{
+"slug": "kim-bartholomay",
+"name": "Kim Bartholomay",
+"role": "Vice-President",
+"group": "Board of Directors",
+"key": "team/kim-bartholomay/2ac37693e3b376b6.jpg",
+"w": 1100,
+"h": 734,
+"kb": 108,
+"sharp": 981.6
+},
+{
+"slug": "susan-ferriby",
+"name": "Susan Ferriby",
+"role": "Treasurer",
+"group": "Board of Directors",
+"key": "team/susan-ferriby/0c1945656e2df70b.jpg",
+"w": 1100,
+"h": 734,
+"kb": 115,
+"sharp": 1434.1
+},
+{
+"slug": "barbara-allen",
+"name": "Barbara Allen",
+"role": "Board Member",
+"group": "Board of Directors",
+"key": "team/barbara-allen/42cc58f6b532a4ec.jpg",
+"w": 1100,
+"h": 734,
+"kb": 161,
+"sharp": 1445.1
+},
+{
+"slug": "dina-ruiz",
+"name": "Dina Ruiz",
+"role": "Board Member",
+"group": "Board of Directors",
+"key": "team/dina-ruiz/f5f0f4aca285a49c.jpg",
+"w": 942,
+"h": 628,
+"kb": 219,
+"sharp": 1867.4
+},
+{
+"slug": "carie-broecker",
+"name": "Carie Broecker",
+"role": "Executive Director and Co-founder",
+"group": "Office Staff",
+"key": "team/carie-broecker/fa3857c3859b5c10.jpg",
+"w": 1100,
+"h": 734,
+"kb": 88,
+"sharp": 1254.2
+},
+{
+"slug": "cameron-donegan",
+"name": "Cameron Donegan",
+"role": "Interim Development Director",
+"group": "Office Staff",
+"key": "team/cameron-donegan/97fb0425e8bfe5ad.jpg",
+"w": 1100,
+"h": 825,
+"kb": 90,
+"sharp": 736.9
+},
+{
+"slug": "allison-mckee",
+"name": "Allison McKee",
+"role": "Executive Assistant, part-time",
+"group": "Office Staff",
+"key": "team/allison-mckee/543f576d87c9b824.jpg",
+"w": 1100,
+"h": 734,
+"kb": 87,
+"sharp": 1181.4
+},
+{
+"slug": "caitlin-lupien",
+"name": "Caitlin Lupien",
+"role": "Operations Manager",
+"group": "Office Staff",
+"key": "team/caitlin-lupien/d49b6d98b04c49a5.jpg",
+"w": 1100,
+"h": 734,
+"kb": 171,
+"sharp": 1314.8
+},
+{
+"slug": "andrew-zielinski",
+"name": "Andrew Zielinski",
+"role": "Marketing and Communications Manager",
+"group": "Office Staff",
+"key": "team/andrew-zielinski/cb9717e78b59e87c.jpg",
+"w": 1100,
+"h": 734,
+"kb": 118,
+"sharp": 1444.5
+},
+{
+"slug": "shanel-parolini",
+"name": "Shanel Parolini",
+"role": "Helping Paw Manager",
+"group": "Office Staff",
+"key": "team/shanel-parolini/c193640fff665746.jpg",
+"w": 1100,
+"h": 734,
+"kb": 128,
+"sharp": 1572.7
+},
+{
+"slug": "emily-termotto",
+"name": "Emily Termotto",
+"role": "Adoptions Coordinator",
+"group": "Office Staff",
+"key": "team/emily-termotto/ae8a16e36d35dadc.jpg",
+"w": 1100,
+"h": 734,
+"kb": 108,
+"sharp": 1449.6
+},
+{
+"slug": "elizabeth-ramsay",
+"name": "Elizabeth Ramsay",
+"role": "Volunteer Coordinator",
+"group": "Office Staff",
+"key": "team/elizabeth-ramsay/d733300f9d149460.jpg",
+"w": 1100,
+"h": 734,
+"kb": 131,
+"sharp": 1504.2
+},
+{
+"slug": "alejandra-raya",
+"name": "Alejandra Raya",
+"role": "Helping Paw Coordinator",
+"group": "Office Staff",
+"key": "team/alejandra-raya/ca971392102ab517.jpg",
+"w": 1100,
+"h": 734,
+"kb": 119,
+"sharp": 1223.0
+},
+{
+"slug": "hannah-wakefield",
+"name": "Hannah Wakefield",
+"role": "Interim Dog Behavior and Enrichment Coordinator",
+"group": "Office Staff",
+"key": "team/hannah-wakefield/c0b3a76cc32a417b.jpg",
+"w": 1100,
+"h": 734,
+"kb": 174,
+"sharp": 3825.0
+},
+{
+"slug": "dr-erin-trannel",
+"name": "Dr. Erin Trannel",
+"role": "Medical Director",
+"group": "Clinic Staff",
+"key": "team/dr-erin-trannel/ece3b3e6813892c5.jpg",
+"w": 1100,
+"h": 734,
+"kb": 190,
+"sharp": 3198.4
+},
+{
+"slug": "dr-shahla-dourod",
+"name": "Dr. Shahla Dourod",
+"role": "Veterinarian",
+"group": "Clinic Staff",
+"key": "team/dr-shahla-dourod/2db6fb33c24f2087.jpg",
+"w": 1100,
+"h": 734,
+"kb": 132,
+"sharp": 1515.5
+},
+{
+"slug": "kelly-fischer",
+"name": "Kelly Fischer",
+"role": "Clinic Manager",
+"group": "Clinic Staff",
+"key": "team/kelly-fischer/adfd7badd2cfa9db.jpg",
+"w": 1100,
+"h": 734,
+"kb": 247,
+"sharp": 1514.3
+},
+{
+"slug": "celina-arceo",
+"name": "Celina Arceo",
+"role": "Head Registered Veterinary Technician",
+"group": "Clinic Staff",
+"key": "team/celina-arceo/654c16c0b64caec4.jpg",
+"w": 1100,
+"h": 734,
+"kb": 158,
+"sharp": 1833.3
+},
+{
+"slug": "caite-jackson",
+"name": "Caite Jackson",
+"role": "Veterinary Assistant, full-time",
+"group": "Clinic Staff",
+"key": "team/caite-jackson/8b4908b69a5c1dc4.jpg",
+"w": 1100,
+"h": 734,
+"kb": 121,
+"sharp": 2056.6
+},
+{
+"slug": "elisa-clay",
+"name": "Elisa Clay",
+"role": "Veterinary Assistant, full-time",
+"group": "Clinic Staff",
+"key": "team/elisa-clay/c6af8b14bad22743.jpg",
+"w": 1100,
+"h": 734,
+"kb": 188,
+"sharp": 4363.3
+},
+{
+"slug": "veron-yip",
+"name": "Veron Yip",
+"role": "Veterinary Assistant, full-time",
+"group": "Clinic Staff",
+"key": "team/veron-yip/5ed3892333106435.jpg",
+"w": 1100,
+"h": 734,
+"kb": 133,
+"sharp": 1275.6
+},
+{
+"slug": "toni-selby",
+"name": "Toni Selby",
+"role": "Receptionist, part-time",
+"group": "Clinic Staff",
+"key": "team/toni-selby/5b3d21e64ac2bd1d.jpg",
+"w": 1100,
+"h": 734,
+"kb": 163,
+"sharp": 2292.7
+},
+{
+"slug": "cortina-whitmore",
+"name": "Cortina Whitmore",
+"role": "Benefit Shop Manager",
+"group": "Benefit Shop Staff",
+"key": "team/cortina-whitmore/4086916f006f4a14.jpg",
+"w": 1100,
+"h": 734,
+"kb": 146,
+"sharp": 2258.0
+},
+{
+"slug": "carmelita-garcia",
+"name": "Carmelita Garcia",
+"role": "Benefit Shop Sales Associate, part-time",
+"group": "Benefit Shop Staff",
+"key": "team/carmelita-garcia/ffc21c04f2e12470.jpg",
+"w": 1100,
+"h": 734,
+"kb": 244,
+"sharp": 1925.6
+},
+{
+"slug": "monica-rua",
+"name": "Monica Rua",
+"role": "Co-founder/Non Profit Consultant",
+"group": "Advisory Council",
+"key": "team/monica-rua/aef3180fd5e393d9.jpg",
+"w": 1100,
+"h": 734,
+"kb": 100,
+"sharp": 1354.4
+},
+{
+"slug": "patrick-casey",
+"name": "Patrick Casey",
+"role": "Legal Consultant",
+"group": "Advisory Council",
+"key": "team/patrick-casey/29a2629e92165c2f.jpg",
+"w": 1100,
+"h": 734,
+"kb": 77,
+"sharp": 1227.1
+},
+{
+"slug": "barbara-de-groodt",
+"name": "Barbara De Groodt",
+"role": "Dog Behavior Consultant",
+"group": "Advisory Council",
+"key": "team/barbara-de-groodt/73fb454cd40e9508.jpg",
+"w": 1100,
+"h": 734,
+"kb": 123,
+"sharp": 3243.6
+}
+],
+"noportrait": [
+"briana-ryan",
+"courtney-young",
+"nisha-addleman"
+]
+}

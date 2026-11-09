@@ -1,0 +1,1116 @@
+{
+"placements": [
+{
+"page": "/",
+"file": "home-hero-adopt.jpg",
+"heading": "Peace of Mind Dog Rescue: senior dogs and senior people, helped together",
+"alt": "A woman in a Peace of Mind Dog Rescue fleece hugging a small senior dog outdoors.",
+"w": 1370,
+"h": 904,
+"zone": "main",
+"cls": "home-hero-photo < home-hero-photo"
+},
+{
+"page": "/",
+"file": "home-hero-helping-paw.jpg",
+"heading": "Senior dogs deserve a soft place to land.",
+"alt": "A smiling older woman in a Peace of Mind Dog Rescue shirt on her sofa with a small tan dog.",
+"w": 1280,
+"h": 845,
+"zone": "main",
+"cls": "home-hero-photo < home-hero-photo"
+},
+{
+"page": "/",
+"file": "home-tile-adopt.jpg",
+"heading": "Peace of Mind Dog Rescue: senior dogs and senior people, helped together",
+"alt": "",
+"w": 357,
+"h": 447,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/",
+"file": "home-tile-donate.jpg",
+"heading": "Peace of Mind Dog Rescue: senior dogs and senior people, helped together",
+"alt": "",
+"w": 357,
+"h": 447,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/",
+"file": "home-tile-volunteer.jpg",
+"heading": "Peace of Mind Dog Rescue: senior dogs and senior people, helped together",
+"alt": "",
+"w": 357,
+"h": 447,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/",
+"file": "home-video-take-a-chance.jpg",
+"heading": "POMDR videos.",
+"alt": "",
+"w": 263,
+"h": 329,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/",
+"file": "home-video-grandpa-joe.jpg",
+"heading": "POMDR videos.",
+"alt": "",
+"w": 263,
+"h": 329,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/",
+"file": "video-cnn-hero.jpg",
+"heading": "POMDR videos.",
+"alt": "",
+"w": 263,
+"h": 329,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/about/",
+"file": "volunteer-party-2022.jpg",
+"heading": "Our story",
+"alt": "POMDR volunteers at the 2022 appreciation party.",
+"w": 517,
+"h": 355,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/about/",
+"file": "monica-rua-zorro.jpg",
+"heading": "Senior dogs, senior people, and the promise between them.",
+"alt": "Monica Rua, POMDR co-founder, smiling beside a small black and tan dog.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/about/",
+"file": "bauer-center-house-2.jpg",
+"heading": "How we got here.",
+"alt": "The Patricia J. Bauer Center.",
+"w": 320,
+"h": 212,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/about/",
+"file": "clinic.jpg",
+"heading": "How we got here.",
+"alt": "The Boand Veterinary Clinic.",
+"w": 320,
+"h": 229,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/about/",
+"file": "helping-paw-fund.jpg",
+"heading": "Caring for the people too.",
+"alt": "An older woman on a sofa with a small black and white dog on her lap.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/become-a-foster/",
+"file": "dog-chester.jpg",
+"heading": "Become a foster",
+"alt": "A small brown and white dog carrying a stuffed toy across a wooden floor at home.",
+"w": 517,
+"h": 457,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/benefit-shop/",
+"file": "benefit-shop-montage.jpg",
+"heading": "Benefit Shop",
+"alt": "A montage of the Benefit Shop interior: bookshelves, glassware, furniture and the shop sign.",
+"w": 517,
+"h": 345,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/benefit-shop/",
+"file": "donate-benefit-shop.jpg",
+"heading": "What you will find.",
+"alt": "Shoppers browsing racks and shelves inside the POMDR Benefit Shop.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/clinic/",
+"file": "clinic.jpg",
+"heading": "Veterinary clinic",
+"alt": "The Harry and Jaynne Boand Veterinary Clinic in Monterey.",
+"w": 517,
+"h": 390,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/clinic/",
+"file": "clinic-plaque.jpg",
+"heading": "Good medicine is what makes a second chance possible.",
+"alt": "The clinic's dedication plaque.",
+"w": 540,
+"h": 360,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/donate/",
+"file": "home-tile-donate.jpg",
+"heading": "Donate",
+"alt": "An older couple on a bench in front of a painted mural, a small scruffy terrier sitting between them.",
+"w": 517,
+"h": 388,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/donate/",
+"file": "silver-hearts-grandpa-joe.jpg",
+"heading": "Where your gift goes.",
+"alt": "A small black and white dog resting on a blanket with a red striped heart toy.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/donate/",
+"file": "donate-sponsor-a-dog.jpg",
+"heading": "Give for a dog",
+"alt": "A scruffy cream terrier wearing an Adopt Me bandana.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-silver-hearts-fund.jpg",
+"heading": "Sponsor a Dog",
+"alt": "Monica Rua holding a small black and tan dog in a purple harness.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-helping-paw-fund.jpg",
+"heading": "Monica Rua Silver Hearts Fund",
+"alt": "A white-haired woman on a sofa, cradling a black and white terrier.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-perpetual-care.jpg",
+"heading": "Helping Paw",
+"alt": "A woman in a knitted hat nose to nose with a chihuahua in a purple coat.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "tribute-card-front.jpg",
+"heading": "Give in memory or in honor",
+"alt": "The front of POMDR's tribute card.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-plaque-sponsorship.jpg",
+"heading": "Make a Tribute Gift",
+"alt": "An engraved bone-shaped plaque, an oval plaque and a garden river stone, each carrying a dedication.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-dog-tag-donor.jpg",
+"heading": "Sponsor a Plaque or River Stone",
+"alt": "A promotional graphic: rows of blank silver heart-shaped dog tags under the words Peace of Mind Dog Rescue, with the text thank you for helping to keep our veterinary clinic running.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-sponsor-an-ad.jpg",
+"heading": "Dog Tag Donor",
+"alt": "A man outdoors laughing with a yellow labrador in a POMDR bandana.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-monthly.jpg",
+"heading": "Give for the long term",
+"alt": "A senior Pomeranian with cloudy eyes, sitting outdoors.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-annual-gift.jpg",
+"heading": "Monthly Donation",
+"alt": "A woman in glasses holding a small tan chihuahua close.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-legacy-donor.jpg",
+"heading": "Annual Gift",
+"alt": "A man in a red fleece with a gray-muzzled terrier looking up at him.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-planned-giving.jpg",
+"heading": "Legacy Donor",
+"alt": "A gray and tan collie mix smiling in the sunshine.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-wish-list.jpg",
+"heading": "Give things",
+"alt": "A red and white cattle dog mix with its tongue out.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-stock.jpg",
+"heading": "Wish List",
+"alt": "A black and white chihuahua mix with large upright ears.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-benefit-shop.jpg",
+"heading": "Donate Stock",
+"alt": "A volunteer handing a black paper shopping bag across the Benefit Shop counter to two customers.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-corporate-sponsor.jpg",
+"heading": "Companies",
+"alt": "A shih tzu wearing a blue collar and POMDR tag.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/donate/",
+"file": "donate-sponsor-a-suite.jpg",
+"heading": "Corporate Sponsor",
+"alt": "A pale golden dog sitting in a clean glass-fronted suite at the Boand Clinic.",
+"w": 263,
+"h": 263,
+"zone": "main",
+"cls": " < give-card"
+},
+{
+"page": "/foster-needs/",
+"file": "dog-gypsy.jpg",
+"heading": "You're the bridge.",
+"alt": "A black and tan dog looking out from an open crate.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "home-hero-helping-paw.jpg",
+"heading": "Fostering",
+"alt": "A POMDR volunteer walking a small dog with an older guardian.",
+"w": 517,
+"h": 425,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "dog-chester.jpg",
+"heading": "A safe place to land, for however long it takes.",
+"alt": "A small brown and white dog carrying a stuffed toy across a wooden floor at home.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-christineromeo.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-ginacara.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-lynngracie.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-rhondaearnhardt.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-eileentori.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-jackijasmine.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-marileedaisy.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-terrycharlie.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-eileenmimi.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-lynndeja.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-pollymaurice.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/fostering/",
+"file": "foster-susanroxie.jpg",
+"heading": "Meet some of our foster parents.",
+"alt": "",
+"w": 64,
+"h": 64,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/get-help/",
+"file": "perpetual-care-2.jpg",
+"heading": "I want to keep my dog, but I need a hand",
+"alt": "A man in a blue shirt holding two small gray-muzzled dogs against his cheeks.",
+"w": 288,
+"h": 144,
+"zone": "main",
+"cls": "promise-strip-photo < "
+},
+{
+"page": "/helping-paw/",
+"file": "helping-paw.jpg",
+"heading": "Helping Paw",
+"alt": "A man in a face mask in a parking lot, carrying a small pale chihuahua lying on a shaggy fleece blanket.",
+"w": 517,
+"h": 457,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/helping-paw/",
+"file": "home-hero-helping-paw.jpg",
+"heading": "Supplies we can give you.",
+"alt": "A POMDR volunteer walking a small dog beside an older guardian on a quiet street.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/hospice/",
+"file": "silver-hearts-winston.jpg",
+"heading": "No dog is ever left behind.",
+"alt": "A small black dog riding in a stroller on a walk.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/hospice/",
+"file": "perpetual-care-2.jpg",
+"heading": "No dog is ever left behind.",
+"alt": "A man in a blue shirt holding two small gray-muzzled dogs against his cheeks.",
+"w": 288,
+"h": 144,
+"zone": "main",
+"cls": "promise-strip-photo < "
+},
+{
+"page": "/jobs/",
+"file": "job-opportunities.jpg",
+"heading": "Job opportunities",
+"alt": "Two POMDR veterinary staff examining a small brown dog on a clinic table.",
+"w": 517,
+"h": 388,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/jobs/",
+"file": "clinic-front.jpg",
+"heading": "Work where seniors are at the center.",
+"alt": "The front of the POMDR veterinary clinic in Monterey.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/media/",
+"file": "in-the-media.jpg",
+"heading": "In the media",
+"alt": "A white-haired woman sitting on her porch holding a small gray terrier.",
+"w": 517,
+"h": 381,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/perpetual-care-program/",
+"file": "perpetual-care-faq.jpg",
+"heading": "Perpetual Care",
+"alt": "A woman kissing the head of a scruffy tan terrier in front of a painted mural.",
+"w": 517,
+"h": 388,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/perpetual-care-program/",
+"file": "perpetual-care-2.jpg",
+"heading": "A promise made now, for a day you hope never comes.",
+"alt": "A man in a blue shirt holding two small gray-muzzled dogs against his cheeks.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/perpetual-care-program/",
+"file": "perpetual-care.jpg",
+"heading": "Talk with us",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/perpetual-care-program/",
+"file": "dog-pepper.jpg",
+"heading": "Fill out a Pet Profile",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/perpetual-care-program/",
+"file": "pet-trust-seminar.jpg",
+"heading": "Set up a pet trust with your attorney",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/perpetual-care-program/",
+"file": "dog-ms-daisy.jpg",
+"heading": "Why plan now.",
+"alt": "A hand resting on the head of a white bull terrier mix with a pink nose.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/process/",
+"file": "why-adopt-senior.jpg",
+"heading": "Fill out the adoption questionnaire",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/process/",
+"file": "dog-henry.jpg",
+"heading": "Talk with the foster, then meet the dog",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/process/",
+"file": "dog-chester.jpg",
+"heading": "Home check, then welcome home",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/process/",
+"file": "clinic.jpg",
+"heading": "Every dog arrives ready.",
+"alt": "The Harry and Jaynne Boand Veterinary Clinic in Monterey.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/surrender/",
+"file": "help-finding-a-home.jpg",
+"heading": "Help placing your dog",
+"alt": "A POMDR staff member holding a large white dog on a lead, talking with the dog\u2019s guardian.",
+"w": 517,
+"h": 455,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/surrender/",
+"file": "intake-and-adoption.jpg",
+"heading": "One of the most loving decisions you can make.",
+"alt": "A shaggy gray dog looking out through the bars of a shelter gate.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/surrender/",
+"file": "help-finding-a-home.jpg",
+"heading": "Tell us about your dog",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/surrender/",
+"file": "dog-gypsy.jpg",
+"heading": "We meet your dog",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/surrender/",
+"file": "dog-chester.jpg",
+"heading": "Your dog moves to a foster home",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/surrender/",
+"file": "dog-henry.jpg",
+"heading": "We find the right home, and stay in touch",
+"alt": "",
+"w": 144,
+"h": 108,
+"zone": "main",
+"cls": " < step step-photo"
+},
+{
+"page": "/surrender/",
+"file": "perpetual-care-2.jpg",
+"heading": "Tell us about your dog",
+"alt": "A man in a blue shirt holding two small gray-muzzled dogs against his cheeks.",
+"w": 288,
+"h": 144,
+"zone": "main",
+"cls": "promise-strip-photo < "
+},
+{
+"page": "/surrender/",
+"file": "dog-kamere.jpg",
+"heading": "What we can and cannot take on.",
+"alt": "A gray-muzzled shepherd mix sitting up on a patio chair.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/videos/",
+"file": "video-poster-HVv8rEJjnvs.jpg",
+"heading": "Take a Chance on POMDR",
+"alt": "",
+"w": 1112,
+"h": 626,
+"zone": "main",
+"cls": " < video video-featured"
+},
+{
+"page": "/videos/",
+"file": "video-poster-RYBCJViyzoA.jpg",
+"heading": "You Are Not Alone",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-cnn-hero.jpg",
+"heading": "CNN Heroes",
+"alt": "A woman sitting outdoors surrounded by six dogs, two of them in Adopt Me bandanas, in front of a Peace of Mind Dog Rescue sign, from the CNN Heroes film.",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-KXY3ANV4V84.jpg",
+"heading": "Grandpa Joe's Golden Ticket",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-44qw2-oGN-g.jpg",
+"heading": "Dapper: Don't Give Up",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-cHtsIDd8qOE.jpg",
+"heading": "POMDR Vet Clinic Opens!",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-aW35AiQG55g.jpg",
+"heading": "Stories",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-Hw1tse6XLAc.jpg",
+"heading": "Lean on Me",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-P_uVOvoMUo4.jpg",
+"heading": "About Us",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-making-good.jpg",
+"heading": "Making Good",
+"alt": "Kirby from Making Good and a POMDR vet tech examining a small dog on a clinic table.",
+"w": 540,
+"h": 305,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-AvBqjCb7nWk.jpg",
+"heading": "Weathering the Storm",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-luw0HHlvkX8.jpg",
+"heading": "Changes",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster--6TGhCCp7_A.jpg",
+"heading": "2020: A \"Ruff\" Year",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-5oLQgv5LHa0.jpg",
+"heading": "POMDR During COVID-19",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-kZs_WpiGuZo.jpg",
+"heading": "A Decade of POMDR",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-m-D8-cr42pk.jpg",
+"heading": "Our Mission",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/videos/",
+"file": "video-poster-8PJiCjgQqqM.jpg",
+"heading": "Lucky Dogs",
+"alt": "",
+"w": 540,
+"h": 304,
+"zone": "main",
+"cls": " < video"
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2024.jpg",
+"heading": "Volunteer",
+"alt": "POMDR volunteers gathered for a group photograph, holding a thank-you banner.",
+"w": 517,
+"h": 355,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-photo.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "A large group of POMDR volunteers and their dogs posing together under a Kaua Aloha Ilio banner.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2024.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 737,
+"h": 618,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2023.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 363,
+"h": 303,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2022.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 363,
+"h": 303,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2019.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 363,
+"h": 303,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2018.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 363,
+"h": 303,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2017.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 363,
+"h": 303,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-party-2016.jpg",
+"heading": "Photos from past volunteer appreciation parties.",
+"alt": "",
+"w": 363,
+"h": 303,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/why/",
+"file": "why-senior-dog.jpg",
+"heading": "Why a senior dog",
+"alt": "A gray-muzzled senior dog resting at home.",
+"w": 517,
+"h": 390,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/why/",
+"file": "why-adopt-senior.jpg",
+"heading": "Honest about the health, and the cost.",
+"alt": "A small black dog with a gray muzzle wearing a blue Adopt Me bandana, in front of a mural.",
+"w": 532,
+"h": 399,
+"zone": "main",
+"cls": " < "
+},
+{
+"page": "/why/",
+"file": "perpetual-care-2.jpg",
+"heading": "Caring for the people too.",
+"alt": "A man in a blue shirt holding two small gray-muzzled dogs against his cheeks.",
+"w": 288,
+"h": 144,
+"zone": "main",
+"cls": "promise-strip-photo < "
+},
+{
+"page": "/",
+"file": "home-hero-mission.jpg",
+"heading": "Home slideshow",
+"alt": "",
+"w": 1280,
+"h": 845,
+"zone": "main",
+"cls": "home-hero-photo"
+},
+{
+"page": "/",
+"file": "home-hero-volunteer.jpg",
+"heading": "Home slideshow",
+"alt": "",
+"w": 1280,
+"h": 845,
+"zone": "main",
+"cls": "home-hero-photo"
+}
+],
+"unused": [
+"bauer-center-house.jpg",
+"bauer-center-mural.jpg",
+"bauer-center-office.jpg",
+"bauer-center-patricia-bauer.jpg",
+"bauer-center-welcome-room.jpg",
+"dog-appa.jpg",
+"dog-cricket.jpg",
+"dog-obi.jpg",
+"dogs-chikki-chimmu.jpg",
+"helping-paw-walk.jpg",
+"img-3128.jpg",
+"legacy-furby.jpg",
+"planned-giving-rosie-loren.jpg",
+"share-default.jpg",
+"silver-hearts-beau.jpg",
+"silver-hearts-quincy.jpg",
+"silver-hearts-xena.jpg",
+"sponsor-an-ad-example.jpg",
+"volunteer-party-2015.jpg",
+"wish-list-dog.jpg"
+]
+}

@@ -1,0 +1,3197 @@
+<title>Website Photo Pass</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: a print packet first. Letter pages, one decision row per photo,
+   tick boxes on the right; on screen the same rows read as a long checklist. */
+:root {
+  --paper: #ffffff;
+  --ink: #1d2a30;
+  --muted: #56656c;
+  --rule: #d5dee1;
+  --wash: #f1f6f7;
+  --teal: #006c8a;
+  --purple: #632f88;
+  --good: #1f7a4d;
+  --soft: #8a5a00;
+  --bad: #b3261e;
+  --good-bg: #e6f4ec;
+  --soft-bg: #fbf1dc;
+  --bad-bg: #fbe6e4;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "Source Sans 3", "Myriad Pro", "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #11191c; --ink: #e6eef0; --muted: #a3b3b9; --rule: #2c3a3f; --wash: #18242a;
+  --teal: #5cc3db; --purple: #c7a3e6; --good: #7fd4a3; --soft: #f0c46a; --bad: #ff9a90;
+  --good-bg: #173326; --soft-bg: #342a12; --bad-bg: #3a1c1a; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #11191c; --ink: #e6eef0; --muted: #a3b3b9; --rule: #2c3a3f; --wash: #18242a;
+  --teal: #5cc3db; --purple: #c7a3e6; --good: #7fd4a3; --soft: #f0c46a; --bad: #ff9a90;
+  --good-bg: #173326; --soft-bg: #342a12; --bad-bg: #3a1c1a; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 16px/1.5 var(--sans); }
+.wrap { max-width: 60rem; margin: 0 auto; padding-block: 2rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: 2.75rem; color: var(--purple); }
+h2 { font-size: 1.9rem; color: var(--purple); margin-top: 2.5rem; padding-top: 1rem; border-top: 3px solid var(--purple); }
+h3 { font-size: 1.3rem; margin: 1.75rem 0 0.75rem; color: var(--teal); }
+p { margin: 0; }
+.kicker { font: 700 0.8rem/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+.lede { font-size: 1.15rem; max-width: 42rem; margin-top: 0.75rem; color: var(--muted); }
+.intro p, .intro li { max-width: 44rem; }
+.intro p + p { margin-top: 0.6rem; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1.25rem 2rem; margin-top: 1.25rem; }
+.cols > div { min-width: 0; }
+.cols h4 { font: 700 0.95rem/1.3 var(--sans); margin: 0 0 0.4rem; }
+ol, ul.plain { margin: 0; padding-left: 1.25rem; }
+li + li { margin-top: 0.3rem; }
+table.sum { border-collapse: collapse; margin-top: 1rem; font-variant-numeric: tabular-nums; width: 100%; max-width: 40rem; }
+table.sum td { border-bottom: 1px solid var(--rule); padding: 0.4rem 0.5rem 0.4rem 0; vertical-align: top; }
+table.sum td:first-child { font-weight: 700; white-space: nowrap; color: var(--purple); width: 5.5rem; }
+.key { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-top: 0.75rem; }
+.chip { display: inline-block; font: 700 0.8rem/1.2 var(--sans); padding: 0.2rem 0.55rem; border-radius: 0.3rem; }
+.chip-good { color: var(--good); background: var(--good-bg); }
+.chip-soft { color: var(--soft); background: var(--soft-bg); }
+.chip-bad  { color: var(--bad);  background: var(--bad-bg); }
+.chip-ok   { color: var(--muted); background: var(--wash); }
+.box { display: inline-block; width: 0.95rem; height: 0.95rem; border: 1.5px solid var(--ink); border-radius: 2px; vertical-align: -0.12rem; margin-right: 0.35rem; }
+.blank { display: inline-block; width: 3rem; border-bottom: 1.5px solid var(--ink); margin: 0 0.75rem 0 0.15rem; }
+.blank.short { width: 2.5rem; }
+.file { font: 0.8rem/1.3 ui-monospace, Menlo, Consolas, monospace; color: var(--muted); word-break: break-all; }
+.url { font: 400 0.9rem var(--sans); color: var(--muted); margin-left: 0.4rem; }
+.pnum { display: inline-grid; place-items: center; min-width: 1.8rem; height: 1.8rem; padding: 0 0.35rem; border-radius: 0.9rem; background: var(--teal); color: var(--paper); font: 700 0.95rem var(--sans); margin-right: 0.3rem; vertical-align: 0.15rem; }
+ul.spots, ul.tiles, ul.dogs, ul.people { list-style: none; margin: 0; padding: 0; }
+.spot { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 11.5rem; gap: 1rem; padding: 0.9rem 0; border-top: 1px solid var(--rule); break-inside: avoid; }
+.spot + .spot { margin-top: 0; }
+.spot-img { width: 11rem; height: 8.25rem; object-fit: contain; background: var(--wash); border-radius: 4px; }
+.spot-body { display: grid; gap: 0.3rem; align-content: start; min-width: 0; }
+.spot-id { font: 700 0.85rem var(--sans); color: var(--teal); }
+.spot-where { font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.spot-body .chip { justify-self: start; }
+.facts { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.1rem 0.6rem; margin: 0.2rem 0 0; font-size: 0.92rem; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+.crop, .also { font-size: 0.9rem; color: var(--muted); }
+.crop { color: var(--soft); }
+.decide { display: grid; gap: 0.45rem; align-content: start; font-size: 0.95rem; border-left: 1px solid var(--rule); padding-left: 0.9rem; }
+.decide .line { border-bottom: 1.5px solid var(--ink); height: 1.3rem; margin-top: -0.2rem; }
+ul.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr)); gap: 1rem; }
+.tile { break-inside: avoid; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; margin: 0 !important; }
+.tile img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--wash); display: block; }
+.tile-body { padding: 0.55rem 0.65rem 0.7rem; display: grid; gap: 0.3rem; font-size: 0.9rem; }
+.tile-id { font-weight: 700; color: var(--teal); display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
+.tile-meta { color: var(--muted); font-size: 0.85rem; }
+.boxes { display: flex; flex-wrap: wrap; gap: 0.2rem 0.9rem; align-items: center; }
+ul.dogs { display: grid; gap: 0; }
+.dog { display: grid; grid-template-columns: 12rem minmax(0, 1fr); grid-template-rows: auto auto; gap: 0.35rem 1rem; padding: 0.85rem 0; border-top: 1px solid var(--rule); break-inside: avoid; margin: 0 !important; }
+.dog-head { grid-row: span 2; display: grid; gap: 0.25rem; align-content: start; }
+.dog-head .chip { justify-self: start; }
+.dog-name { font: 600 1.25rem/1.2 var(--serif); }
+.dog-status, .dog-note { font-size: 0.88rem; color: var(--muted); }
+.strip { width: 100%; max-width: 100%; border-radius: 4px; }
+.dog-decide { font-size: 0.95rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
+ul.people { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 10.5rem), 1fr)); gap: 1rem; }
+.person { break-inside: avoid; margin: 0 !important; display: grid; gap: 0.2rem; font-size: 0.9rem; }
+.person img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; background: var(--wash); }
+.person-name { font-weight: 700; font-size: 1rem; margin-top: 0.25rem; }
+.person-role { color: var(--muted); min-height: 2.6em; }
+.shot { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); gap: 0.6rem; padding: 0.6rem 0; border-top: 1px solid var(--rule); break-inside: avoid; margin: 0 !important; }
+.shot strong { display: block; }
+.shot span.need { color: var(--muted); font-size: 0.92rem; }
+ul.shots { list-style: none; padding: 0; margin: 0.5rem 0 0; }
+.blankrow { height: 2.2rem; border-bottom: 1px solid var(--rule); }
+.steps li { margin-top: 0.6rem; max-width: 46rem; }
+.callout { background: var(--wash); border-radius: 6px; padding: 1rem 1.15rem; margin-top: 1rem; max-width: 46rem; }
+@media (max-width: 40rem) {
+  .spot { grid-template-columns: 1fr; }
+  .spot-img { width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .decide { border-left: 0; padding-left: 0; border-top: 1px dashed var(--rule); padding-top: 0.6rem; }
+  .dog { grid-template-columns: 1fr; }
+  .dog-head { grid-row: auto; }
+  h1 { font-size: 2.1rem; }
+}
+@page { size: letter; margin: 0.5in 0.5in 0.55in; }
+@media print {
+  :root { --paper: #fff; --ink: #1d2a30; --muted: #4f5e65; --rule: #cfd8db; --wash: #f1f6f7;
+    --teal: #006c8a; --purple: #632f88; --good: #1f7a4d; --soft: #8a5a00; --bad: #b3261e;
+    --good-bg: #e6f4ec; --soft-bg: #fbf1dc; --bad-bg: #fbe6e4; color-scheme: light; }
+  body { font-size: 10.5pt; }
+  .wrap { max-width: none; padding: 0; }
+  h2 { break-before: page; margin-top: 0; }
+  h2.keep { break-before: auto; margin-top: 1.5rem; }
+  h3 { break-after: avoid; }
+  .chip, .pnum { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="kicker">Peace of Mind Dog Rescue · new website</p>
+  <h1>Website Photo Pass</h1>
+  <p class="lede">Every photo on the new site, where it sits, whether it is sharp enough for the spot, and a box to tick for each one. Prepared 9 November 2026 for Andrew Z. and Carie.</p>
+</header>
+
+<section class="intro">
+  <h2 class="keep">How to use this packet</h2>
+  <ol class="steps">
+    <li><strong>Go page by page.</strong> Each photo has a number, a thumbnail, the words it sits under, and a rating. Tick Keep, Replace (write the photo you want in its place), or Take a new photo.</li>
+    <li><strong>Start with the red and amber ratings.</strong> Red means the file is smaller than the space it fills, so it looks blurry everywhere. Amber means it looks fine on an older screen but soft on a phone or a new laptop. Green is sharp.</li>
+    <li><strong>For dogs, circle the best main photo.</strong> Each dog has a numbered strip of every photo on their page. Write the number of the photo that should lead, or tick the box to ask the foster for new ones.</li>
+    <li><strong>Hand the packet back to Andrew.</strong> The last page explains how the chosen photos get onto the site.</li>
+  </ol>
+  <div class="key"><span class="chip chip-good">Sharp</span><span class="chip chip-soft">Soft on phones and new laptops</span><span class="chip chip-bad">Too small: blurry on every screen</span></div>
+
+  <h3>What the pass found</h3>
+  <table class="sum">
+    <tr><td>109</td><td>photo spots on 19 pages, using 89 different photos.</td></tr>
+    <tr><td>9</td><td>spots where the photo is too small for the space. All four home slideshow photos are among the weakest: 1,024 to 1,280 px wide filling a screen that wants 2,000, the site's largest size.</td></tr>
+    <tr><td>35</td><td>spots that look soft on phones and new laptops, including every small tile on the Ways to give page.</td></tr>
+    <tr><td>88</td><td>dogs with 557 photos between them. None is larger than 1,028 px, because they came across from the old site at reduced size, and 142 are under 600 px.</td></tr>
+    <tr><td>28</td><td>team portraits, all sharp enough. The question for those is whether each is current and consistent.</td></tr>
+    <tr><td>20</td><td>photos already prepared and sitting unused, at the back of the packet. Some may fill a Replace box straight away.</td></tr>
+  </table>
+
+  <h3>What makes the right photo for a spot</h3>
+  <div class="cols">
+    <div><h4>The picture</h4><ul class="plain">
+      <li>A real POMDR dog or person, never stock.</li>
+      <li>Eyes in focus, natural light, the dog's face clear of leashes and hands.</li>
+      <li>Matches the job of the page: a calm senior dog for adoption, a guardian with their dog for Helping Paw, hands giving care for the clinic.</li>
+      <li>The dog is still in the program, or the page is about a happy tail.</li>
+    </ul></div>
+    <div><h4>The file</h4><ul class="plain">
+      <li>The shape matches the spot: wide spots need wide photos, square tiles need room around the subject.</li>
+      <li>Full-size originals only. A photo saved from Facebook, a text message or a screenshot is already shrunk and cannot be made sharp again.</li>
+      <li>Wide banners: 2,000 px wide or more. Photos in a column: 1,200 px. Small tiles: 800 px. Any phone camera original is 3,000 px or more, which covers all of them.</li>
+      <li>Everyone pictured has said yes, especially Helping Paw clients.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Part 1 · Photos placed on the pages</h2>
+  <p class="lede">These live in the website's own files, so Andrew swaps them. Numbers run page by page in menu order.</p>
+  
+<section class="page-block">
+  <h3><span class="pnum">1</span> Home <span class="url">/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-home-hero-adopt.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.1</p>
+    <p class="spot-where">Home slideshow, slide 1 (Adoption)</p>
+    <p class="chip chip-bad">Too small: blurry on every screen</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>1370 × 904 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1280 × 960 px <span class="file">home-hero-adopt.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-hero-helping-paw.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.2</p>
+    <p class="spot-where">Home slideshow, slide 2 (Helping Paw)</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>1280 × 845 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1280 × 960 px <span class="file">home-hero-helping-paw.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Fostering (foster stories), Helping Paw</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-tile-adopt.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.3</p>
+    <p class="spot-where">Under &quot;Three ways we keep dogs and people together&quot;: the Adopt tile</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>357 × 447 px on a laptop (tall)</dd>
+      <dt>Photo is</dt><dd>900 × 675 px <span class="file">home-tile-adopt.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 40% of the photo is cut off. A tall photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-tile-donate.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.4</p>
+    <p class="spot-where">Under &quot;Three ways we keep dogs and people together&quot;: the Donate tile</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>357 × 447 px on a laptop (tall)</dd>
+      <dt>Photo is</dt><dd>900 × 675 px <span class="file">home-tile-donate.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 40% of the photo is cut off. A tall photo fits this spot.</p>
+    <p class="also">Same photo also on: Ways to give (Donate)</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-tile-volunteer.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.5</p>
+    <p class="spot-where">Under &quot;Three ways we keep dogs and people together&quot;: the Volunteer tile</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>357 × 447 px on a laptop (tall)</dd>
+      <dt>Photo is</dt><dd>900 × 675 px <span class="file">home-tile-volunteer.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 40% of the photo is cut off. A tall photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-video-take-a-chance.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.6</p>
+    <p class="spot-where">Under &quot;POMDR videos.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>263 × 329 px on a laptop (tall)</dd>
+      <dt>Photo is</dt><dd>480 × 270 px <span class="file">home-video-take-a-chance.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 55% of the photo is cut off. A tall photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-video-grandpa-joe.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.7</p>
+    <p class="spot-where">Under &quot;POMDR videos.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>263 × 329 px on a laptop (tall)</dd>
+      <dt>Photo is</dt><dd>480 × 270 px <span class="file">home-video-grandpa-joe.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 55% of the photo is cut off. A tall photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-video-cnn-hero.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.8</p>
+    <p class="spot-where">Under &quot;POMDR videos.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>263 × 329 px on a laptop (tall)</dd>
+      <dt>Photo is</dt><dd>564 × 317 px <span class="file">video-cnn-hero.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 55% of the photo is cut off. A tall photo fits this spot.</p>
+    <p class="also">Same photo also on: Videos</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-hero-mission.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.9</p>
+    <p class="spot-where">Home slideshow, slide 3 (Our mission)</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>1280 × 845 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1280 × 960 px <span class="file">home-hero-mission.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-hero-volunteer.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">1.10</p>
+    <p class="spot-where">Home slideshow, slide 4 (Foster, donate, volunteer)</p>
+    <p class="chip chip-bad">Too small: blurry on every screen</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>1280 × 845 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1024 × 768 px <span class="file">home-hero-volunteer.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">2</span> How adopting works <span class="url">/process/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-why-adopt-senior.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">2.1</p>
+    <p class="spot-where">Under &quot;Fill out the adoption questionnaire&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>580 × 435 px <span class="file">why-adopt-senior.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Why a senior dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-henry.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">2.2</p>
+    <p class="spot-where">Under &quot;Talk with the foster, then meet the dog&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 648 px <span class="file">dog-henry.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 31% of the photo is cut off. A wide photo fits this spot.</p>
+    <p class="also">Same photo also on: Placing your dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-chester.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">2.3</p>
+    <p class="spot-where">Under &quot;Home check, then welcome home&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 448 px <span class="file">dog-chester.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Become a foster, Fostering (foster stories), Placing your dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-clinic.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">2.4</p>
+    <p class="spot-where">Under &quot;Every dog arrives ready.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 572 px <span class="file">clinic.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: About us, Veterinary clinic</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">3</span> Why a senior dog <span class="url">/why/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-why-senior-dog.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">3.1</p>
+    <p class="spot-where">Under &quot;Why a senior dog&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 390 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1100 × 825 px <span class="file">why-senior-dog.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-why-adopt-senior.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">3.2</p>
+    <p class="spot-where">Under &quot;Honest about the health, and the cost.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>580 × 435 px <span class="file">why-adopt-senior.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: How adopting works</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care-2.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">3.3</p>
+    <p class="spot-where">Under &quot;Caring for the people too.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>288 × 144 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 600 px <span class="file">perpetual-care-2.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Get help, Hospice care, Perpetual Care, Placing your dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">4</span> Hospice care <span class="url">/hospice/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-silver-hearts-winston.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">4.1</p>
+    <p class="spot-where">Under &quot;No dog is ever left behind.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 450 px <span class="file">silver-hearts-winston.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care-2.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">4.2</p>
+    <p class="spot-where">Under &quot;No dog is ever left behind.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>288 × 144 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 600 px <span class="file">perpetual-care-2.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Get help, Perpetual Care, Placing your dog, Why a senior dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">5</span> Become a foster <span class="url">/become-a-foster/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-chester.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">5.1</p>
+    <p class="spot-where">Under &quot;Become a foster&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 457 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 448 px <span class="file">dog-chester.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Fostering (foster stories), How adopting works, Placing your dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">6</span> Foster needs <span class="url">/foster-needs/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-gypsy.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">6.1</p>
+    <p class="spot-where">Under &quot;You&#x27;re the bridge.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 451 px <span class="file">dog-gypsy.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Placing your dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">7</span> Fostering (foster stories) <span class="url">/fostering/</span></h3>
+  <ul class="tiles">
+<li class="tile">
+  <img src="img/page-home-hero-helping-paw.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.1 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Home slideshow, slide 2 (Helping Paw)</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-dog-chester.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.2 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;A safe place to land, for however long it takes.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-christineromeo.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.3 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-ginacara.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.4 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-lynngracie.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.5 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-rhondaearnhardt.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.6 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-eileentori.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.7 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-jackijasmine.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.8 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-marileedaisy.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.9 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-terrycharlie.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.10 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-eileenmimi.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.11 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-lynndeja.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.12 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-pollymaurice.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.13 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-foster-susanroxie.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">7.14 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Meet some of our foster parents.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">8</span> Get help <span class="url">/get-help/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care-2.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">8.1</p>
+    <p class="spot-where">Under &quot;I want to keep my dog, but I need a hand&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>288 × 144 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 600 px <span class="file">perpetual-care-2.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Hospice care, Perpetual Care, Placing your dog, Why a senior dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">9</span> Helping Paw <span class="url">/helping-paw/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-helping-paw.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">9.1</p>
+    <p class="spot-where">Under &quot;Helping Paw&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 457 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 600 px <span class="file">helping-paw.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-home-hero-helping-paw.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">9.2</p>
+    <p class="spot-where">Home slideshow, slide 2 (Helping Paw)</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1280 × 960 px <span class="file">home-hero-helping-paw.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Fostering (foster stories), Home</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">10</span> Placing your dog <span class="url">/surrender/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-help-finding-a-home.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.1</p>
+    <p class="spot-where">Under &quot;Help placing your dog&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 455 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 601 px <span class="file">help-finding-a-home.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-intake-and-adoption.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.2</p>
+    <p class="spot-where">Under &quot;One of the most loving decisions you can make.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 600 px <span class="file">intake-and-adoption.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 33% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-help-finding-a-home.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.3</p>
+    <p class="spot-where">Under &quot;Tell us about your dog&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 601 px <span class="file">help-finding-a-home.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-gypsy.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.4</p>
+    <p class="spot-where">Under &quot;We meet your dog&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 451 px <span class="file">dog-gypsy.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Foster needs</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-chester.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.5</p>
+    <p class="spot-where">Under &quot;Your dog moves to a foster home&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 448 px <span class="file">dog-chester.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Become a foster, Fostering (foster stories), How adopting works</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-henry.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.6</p>
+    <p class="spot-where">Under &quot;We find the right home, and stay in touch&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 648 px <span class="file">dog-henry.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 31% of the photo is cut off. A wide photo fits this spot.</p>
+    <p class="also">Same photo also on: How adopting works</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care-2.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.7</p>
+    <p class="spot-where">Under &quot;Tell us about your dog&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>288 × 144 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 600 px <span class="file">perpetual-care-2.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Get help, Hospice care, Perpetual Care, Why a senior dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-kamere.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">10.8</p>
+    <p class="spot-where">Under &quot;What we can and cannot take on.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 800 px <span class="file">dog-kamere.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 44% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">11</span> Perpetual Care <span class="url">/perpetual-care-program/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care-faq.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">11.1</p>
+    <p class="spot-where">Under &quot;Perpetual Care&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 388 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>580 × 435 px <span class="file">perpetual-care-faq.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care-2.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">11.2</p>
+    <p class="spot-where">Under &quot;A promise made now, for a day you hope never comes.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 600 px <span class="file">perpetual-care-2.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 33% of the photo is cut off. A wide photo fits this spot.</p>
+    <p class="also">Same photo also on: Get help, Hospice care, Placing your dog, Why a senior dog</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-perpetual-care.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">11.3</p>
+    <p class="spot-where">Under &quot;Talk with us&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>312 × 312 px <span class="file">perpetual-care.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-pepper.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">11.4</p>
+    <p class="spot-where">Under &quot;Fill out a Pet Profile&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 800 px <span class="file">dog-pepper.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 44% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-pet-trust-seminar.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">11.5</p>
+    <p class="spot-where">Under &quot;Set up a pet trust with your attorney&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>144 × 108 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 450 px <span class="file">pet-trust-seminar.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-dog-ms-daisy.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">11.6</p>
+    <p class="spot-where">Under &quot;Why plan now.&quot;</p>
+    <p class="chip chip-bad">Too small: blurry on every screen</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>376 × 640 px <span class="file">dog-ms-daisy.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 56% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">12</span> Volunteer <span class="url">/volunteer/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2024.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.1</p>
+    <p class="spot-where">Under &quot;Volunteer&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 355 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 688 px <span class="file">volunteer-party-2024.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-photo.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.2</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>580 × 283 px <span class="file">volunteer-photo.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 35% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2024.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.3</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>737 × 618 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1200 × 688 px <span class="file">volunteer-party-2024.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 32% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2023.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.4</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>363 × 303 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 618 px <span class="file">volunteer-party-2023.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 36% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2022.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.5</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>363 × 303 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 689 px <span class="file">volunteer-party-2022.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 29% of the photo is cut off. A wide photo fits this spot.</p>
+    <p class="also">Same photo also on: About us</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2019.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.6</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>363 × 303 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 612 px <span class="file">volunteer-party-2019.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 37% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2018.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.7</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>363 × 303 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 620 px <span class="file">volunteer-party-2018.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 36% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2017.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.8</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>363 × 303 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 600 px <span class="file">volunteer-party-2017.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 38% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2016.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">12.9</p>
+    <p class="spot-where">Under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>363 × 303 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 489 px <span class="file">volunteer-party-2016.jpg</span></dd>
+    </dl>
+    <p class="crop">Cropped hard to fit: about 49% of the photo is cut off. A wide photo fits this spot.</p>
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">13</span> Job opportunities <span class="url">/jobs/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-job-opportunities.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">13.1</p>
+    <p class="spot-where">Under &quot;Job opportunities&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 388 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 600 px <span class="file">job-opportunities.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-clinic-front.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">13.2</p>
+    <p class="spot-where">Under &quot;Work where seniors are at the center.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1000 × 750 px <span class="file">clinic-front.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">14</span> Ways to give (Donate) <span class="url">/donate/</span></h3>
+  <ul class="tiles">
+<li class="tile">
+  <img src="img/page-home-tile-donate.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.1 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Three ways we keep dogs and people together&quot;: the Donate tile</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-silver-hearts-grandpa-joe.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.2 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Where your gift goes.&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-sponsor-a-dog.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.3 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Give for a dog&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-silver-hearts-fund.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.4 <span class="chip chip-bad">Too small</span></p>
+    <p class="tile-where">Under &quot;Sponsor a Dog&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-helping-paw-fund.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.5 <span class="chip chip-bad">Too small</span></p>
+    <p class="tile-where">Under &quot;Monica Rua Silver Hearts Fund&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-perpetual-care.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.6 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Helping Paw&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-tribute-card-front.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.7 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Give in memory or in honor&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-plaque-sponsorship.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.8 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Make a Tribute Gift&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-dog-tag-donor.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.9 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Sponsor a Plaque or River Stone&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-sponsor-an-ad.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.10 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Dog Tag Donor&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-monthly.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.11 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Give for the long term&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-annual-gift.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.12 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Monthly Donation&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-legacy-donor.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.13 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Annual Gift&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-planned-giving.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.14 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Legacy Donor&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-wish-list.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.15 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Give things&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-stock.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.16 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Wish List&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-benefit-shop.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.17 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Donate Stock&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-corporate-sponsor.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.18 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Companies&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-donate-sponsor-a-suite.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">14.19 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Corporate Sponsor&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">15</span> About us <span class="url">/about/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-volunteer-party-2022.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">15.1</p>
+    <p class="spot-where">Under &quot;Our story&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 355 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1160 × 689 px <span class="file">volunteer-party-2022.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Volunteer</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-monica-rua-zorro.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">15.2</p>
+    <p class="spot-where">Under &quot;Senior dogs, senior people, and the promise between them.&quot;</p>
+    <p class="chip chip-bad">Too small: blurry on every screen</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>249 × 249 px <span class="file">monica-rua-zorro.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-bauer-center-house-2.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">15.3</p>
+    <p class="spot-where">Under &quot;How we got here.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>320 × 212 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 398 px <span class="file">bauer-center-house-2.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-clinic.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">15.4</p>
+    <p class="spot-where">Under &quot;How we got here.&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>320 × 229 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 572 px <span class="file">clinic.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: How adopting works, Veterinary clinic</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-helping-paw-fund.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">15.5</p>
+    <p class="spot-where">Under &quot;Caring for the people too.&quot;</p>
+    <p class="chip chip-bad">Too small: blurry on every screen</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>259 × 259 px <span class="file">helping-paw-fund.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">16</span> Veterinary clinic <span class="url">/clinic/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-clinic.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">16.1</p>
+    <p class="spot-where">Under &quot;Veterinary clinic&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 390 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 572 px <span class="file">clinic.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: About us, How adopting works</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-clinic-plaque.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">16.2</p>
+    <p class="spot-where">Under &quot;Good medicine is what makes a second chance possible.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>540 × 360 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 534 px <span class="file">clinic-plaque.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">17</span> Benefit Shop <span class="url">/benefit-shop/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-benefit-shop-montage.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">17.1</p>
+    <p class="spot-where">Under &quot;Benefit Shop&quot;</p>
+    <p class="chip chip-good">Sharp</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 345 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>1000 × 667 px <span class="file">benefit-shop-montage.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li>
+<li class="spot">
+  <img class="spot-img" src="img/page-donate-benefit-shop.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">17.2</p>
+    <p class="spot-where">Under &quot;What you will find.&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>532 × 399 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>600 × 600 px <span class="file">donate-benefit-shop.jpg</span></dd>
+    </dl>
+    
+    <p class="also">Same photo also on: Ways to give (Donate)</p>
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">18</span> In the media <span class="url">/media/</span></h3>
+  <ul class="spots">
+<li class="spot">
+  <img class="spot-img" src="img/page-in-the-media.jpg" alt="" loading="lazy">
+  <div class="spot-body">
+    <p class="spot-id">18.1</p>
+    <p class="spot-where">Under &quot;In the media&quot;</p>
+    <p class="chip chip-soft">Soft on phones and new laptops</p>
+    <dl class="facts">
+      <dt>Shown at</dt><dd>517 × 381 px on a laptop (wide)</dd>
+      <dt>Photo is</dt><dd>800 × 590 px <span class="file">in-the-media.jpg</span></dd>
+    </dl>
+    
+    
+  </div>
+  <div class="decide">
+    <p><span class="box"></span>Keep</p>
+    <p><span class="box"></span>Replace with:</p>
+    <p class="line"></p>
+    <p><span class="box"></span>Take a new photo</p>
+  </div>
+</li></ul>
+</section>
+<section class="page-block">
+  <h3><span class="pnum">19</span> Videos <span class="url">/videos/</span></h3>
+  <ul class="tiles">
+<li class="tile">
+  <img src="img/page-video-poster-HVv8rEJjnvs.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.1 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Take a Chance on POMDR&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-RYBCJViyzoA.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.2 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;You Are Not Alone&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-cnn-hero.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.3 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;CNN Heroes&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-KXY3ANV4V84.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.4 <span class="chip chip-bad">Too small</span></p>
+    <p class="tile-where">Under &quot;Grandpa Joe&#x27;s Golden Ticket&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-44qw2-oGN-g.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.5 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Dapper: Don&#x27;t Give Up&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-cHtsIDd8qOE.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.6 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;POMDR Vet Clinic Opens!&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-aW35AiQG55g.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.7 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Stories&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-Hw1tse6XLAc.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.8 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Lean on Me&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-P_uVOvoMUo4.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.9 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;About Us&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-making-good.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.10 <span class="chip chip-soft">Soft on phones and new laptops</span></p>
+    <p class="tile-where">Under &quot;Making Good&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-AvBqjCb7nWk.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.11 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Weathering the Storm&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-luw0HHlvkX8.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.12 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Changes&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster--6TGhCCp7_A.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.13 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;2020: A &quot;Ruff&quot; Year&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-5oLQgv5LHa0.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.14 <span class="chip chip-bad">Too small</span></p>
+    <p class="tile-where">Under &quot;POMDR During COVID-19&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-kZs_WpiGuZo.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.15 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;A Decade of POMDR&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-m-D8-cr42pk.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.16 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Our Mission&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-video-poster-8PJiCjgQqqM.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-id">19.17 <span class="chip chip-good">Sharp</span></p>
+    <p class="tile-where">Under &quot;Lucky Dogs&quot;</p>
+    <p class="boxes"><span class="box"></span>Keep <span class="box"></span>Replace</p>
+  </div>
+</li></ul>
+</section>
+</section>
+
+<section>
+  <h2>Part 2 · Team portraits</h2>
+  <p class="lede">Staff change these in the admin on each person's record. Tick New portrait for anyone whose photo is out of date, low light, or a different style from the rest.</p>
+  <h3>Board of Directors</h3><ul class="people">
+<li class="person">
+  <img src="img/team-cathy-heape.jpg" alt="" loading="lazy">
+  <p class="person-name">Cathy Heape</p>
+  <p class="person-role">President</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-kim-bartholomay.jpg" alt="" loading="lazy">
+  <p class="person-name">Kim Bartholomay</p>
+  <p class="person-role">Vice-President</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-susan-ferriby.jpg" alt="" loading="lazy">
+  <p class="person-name">Susan Ferriby</p>
+  <p class="person-role">Treasurer</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-barbara-allen.jpg" alt="" loading="lazy">
+  <p class="person-name">Barbara Allen</p>
+  <p class="person-role">Board Member</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-dina-ruiz.jpg" alt="" loading="lazy">
+  <p class="person-name">Dina Ruiz</p>
+  <p class="person-role">Board Member</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li></ul><h3>Office Staff</h3><ul class="people">
+<li class="person">
+  <img src="img/team-carie-broecker.jpg" alt="" loading="lazy">
+  <p class="person-name">Carie Broecker</p>
+  <p class="person-role">Executive Director and Co-founder</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-cameron-donegan.jpg" alt="" loading="lazy">
+  <p class="person-name">Cameron Donegan</p>
+  <p class="person-role">Interim Development Director</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-allison-mckee.jpg" alt="" loading="lazy">
+  <p class="person-name">Allison McKee</p>
+  <p class="person-role">Executive Assistant, part-time</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-caitlin-lupien.jpg" alt="" loading="lazy">
+  <p class="person-name">Caitlin Lupien</p>
+  <p class="person-role">Operations Manager</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-andrew-zielinski.jpg" alt="" loading="lazy">
+  <p class="person-name">Andrew Zielinski</p>
+  <p class="person-role">Marketing and Communications Manager</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-shanel-parolini.jpg" alt="" loading="lazy">
+  <p class="person-name">Shanel Parolini</p>
+  <p class="person-role">Helping Paw Manager</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-emily-termotto.jpg" alt="" loading="lazy">
+  <p class="person-name">Emily Termotto</p>
+  <p class="person-role">Adoptions Coordinator</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-elizabeth-ramsay.jpg" alt="" loading="lazy">
+  <p class="person-name">Elizabeth Ramsay</p>
+  <p class="person-role">Volunteer Coordinator</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-alejandra-raya.jpg" alt="" loading="lazy">
+  <p class="person-name">Alejandra Raya</p>
+  <p class="person-role">Helping Paw Coordinator</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-hannah-wakefield.jpg" alt="" loading="lazy">
+  <p class="person-name">Hannah Wakefield</p>
+  <p class="person-role">Interim Dog Behavior and Enrichment Coordinator</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li></ul><h3>Clinic Staff</h3><ul class="people">
+<li class="person">
+  <img src="img/team-dr-erin-trannel.jpg" alt="" loading="lazy">
+  <p class="person-name">Dr. Erin Trannel</p>
+  <p class="person-role">Medical Director</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-dr-shahla-dourod.jpg" alt="" loading="lazy">
+  <p class="person-name">Dr. Shahla Dourod</p>
+  <p class="person-role">Veterinarian</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-kelly-fischer.jpg" alt="" loading="lazy">
+  <p class="person-name">Kelly Fischer</p>
+  <p class="person-role">Clinic Manager</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-celina-arceo.jpg" alt="" loading="lazy">
+  <p class="person-name">Celina Arceo</p>
+  <p class="person-role">Head Registered Veterinary Technician</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-caite-jackson.jpg" alt="" loading="lazy">
+  <p class="person-name">Caite Jackson</p>
+  <p class="person-role">Veterinary Assistant, full-time</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-elisa-clay.jpg" alt="" loading="lazy">
+  <p class="person-name">Elisa Clay</p>
+  <p class="person-role">Veterinary Assistant, full-time</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-veron-yip.jpg" alt="" loading="lazy">
+  <p class="person-name">Veron Yip</p>
+  <p class="person-role">Veterinary Assistant, full-time</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-toni-selby.jpg" alt="" loading="lazy">
+  <p class="person-name">Toni Selby</p>
+  <p class="person-role">Receptionist, part-time</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li></ul><h3>Benefit Shop Staff</h3><ul class="people">
+<li class="person">
+  <img src="img/team-cortina-whitmore.jpg" alt="" loading="lazy">
+  <p class="person-name">Cortina Whitmore</p>
+  <p class="person-role">Benefit Shop Manager</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-carmelita-garcia.jpg" alt="" loading="lazy">
+  <p class="person-name">Carmelita Garcia</p>
+  <p class="person-role">Benefit Shop Sales Associate, part-time</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li></ul><h3>Advisory Council</h3><ul class="people">
+<li class="person">
+  <img src="img/team-monica-rua.jpg" alt="" loading="lazy">
+  <p class="person-name">Monica Rua</p>
+  <p class="person-role">Co-founder/Non Profit Consultant</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-patrick-casey.jpg" alt="" loading="lazy">
+  <p class="person-name">Patrick Casey</p>
+  <p class="person-role">Legal Consultant</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li>
+<li class="person">
+  <img src="img/team-barbara-de-groodt.jpg" alt="" loading="lazy">
+  <p class="person-name">Barbara De Groodt</p>
+  <p class="person-role">Dog Behavior Consultant</p>
+  <p class="boxes"><span class="box"></span>Keep <span class="box"></span>New portrait</p>
+</li></ul>
+  <div class="callout"><p><strong>Also decide:</strong> Briana Ryan, Courtney Young, Nisha Addleman each have a profile page on the new site with no portrait, and none of them is on the team list. Keep those pages with a new portrait, or take them down.</p></div>
+</section>
+
+<section>
+  <h2>Part 3 · The dogs</h2>
+  <p class="lede">Every adoptable and hospice dog on the site today, in alphabetical order. The rating is for the main photo, the first one people see. Staff can pick a different main photo or upload new ones on the dog's record in the admin, and the site updates within the hour.</p>
+  <ul class="dogs">
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Adele</p>
+    <p class="dog-status">Foster needed · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 6 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-adele-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Ahi Tuna</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-ahi-tuna-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Aragorn</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-aragorn-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Astrid</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 12 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-astrid-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Baguette</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 7 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-baguette-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Beanie Baby</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-beanie-baby-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Bindi</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 6 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-bindi-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Blizzard</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 7 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-blizzard-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Blockbuster</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-blockbuster-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Buddy</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-buddy-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Bumper Car</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">4 of 5 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-bumper-car-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Casper</p>
+    <p class="dog-status">Adoptable · 10 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">4 of 10 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-casper-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Chocolate Chunk</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-chocolate-chunk-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Chris-anthumum</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 6 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-chris-anthumum-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Chucky</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-chucky-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Cider</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-soft">Main photo: Soft on phones and new laptops</p>
+    
+  </div>
+  <img class="strip" src="img/dog-cider-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Clove</p>
+    <p class="dog-status">Adoptable · 8 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-clove-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Corey</p>
+    <p class="dog-status">Adoptable · 8 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">4 of 8 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-corey-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Dash</p>
+    <p class="dog-status">Adoptable · 9 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 9 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-dash-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Dottie</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-dottie-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Floss</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">4 of 5 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-floss-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Flounder</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 5 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-flounder-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Free Willy</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-free-willy-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Furby</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-furby-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Gigi</p>
+    <p class="dog-status">Adoptable · 3 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">Only 3 photos</p>
+  </div>
+  <img class="strip" src="img/dog-gigi-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Gingerbread</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 6 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-gingerbread-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Godiva</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-godiva-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Gracie</p>
+    <p class="dog-status">Adoptable · 9 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">5 of 9 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-gracie-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Gumdrop</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-gumdrop-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Hopper</p>
+    <p class="dog-status">Adoptable · 2 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">1 of 2 photos is under 600 px; only 2 photos</p>
+  </div>
+  <img class="strip" src="img/dog-hopper-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Hot Sauce</p>
+    <p class="dog-status">Adoptable · 4 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">3 of 4 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-hot-sauce-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Hubba Bubba</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-hubba-bubba-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Izzy</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 6 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-izzy-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Jamesy Boy</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 5 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-jamesy-boy-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Jelly</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-jelly-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Koda</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-soft">Main photo: Soft on phones and new laptops</p>
+    
+  </div>
+  <img class="strip" src="img/dog-koda-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Leaf</p>
+    <p class="dog-status">Adoptable · 10 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-leaf-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Leela</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-leela-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Lovey</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-lovey-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Malcolm</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">3 of 7 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-malcolm-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Marbles</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 12 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-marbles-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Mattie aka Matteo</p>
+    <p class="dog-status">Foster needed · 12 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">9 of 12 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-mattie-aka-matteo-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Melon</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 6 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-melon-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Mighty Joe</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 12 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-mighty-joe-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Mihla</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-soft">Main photo: Soft on phones and new laptops</p>
+    
+  </div>
+  <img class="strip" src="img/dog-mihla-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Mimi</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">1 of 12 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-mimi-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Miss Marley</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-miss-marley-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Moose</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 5 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-moose-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Mya</p>
+    <p class="dog-status">Adoptable · 3 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">3 of 3 photos are under 600 px; only 3 photos</p>
+  </div>
+  <img class="strip" src="img/dog-mya-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Nana</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-nana-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Neo</p>
+    <p class="dog-status">Adoptable · 4 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-neo-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Newt</p>
+    <p class="dog-status">Adoptable · 8 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 8 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-newt-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Nougat</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">6 of 6 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-nougat-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Orca</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-orca-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Oscar</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-oscar-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Osmosis Jones</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-osmosis-jones-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Oyster</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-oyster-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Ozzy</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-ozzy-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Panda</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-panda-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Patches</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-patches-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Pauly D</p>
+    <p class="dog-status">Adoptable · 8 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">2 of 8 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-pauly-d-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Pearl</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">2 of 7 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-pearl-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Pebble</p>
+    <p class="dog-status">Adoptable · 4 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-pebble-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Pie</p>
+    <p class="dog-status">Adoptable · 1 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">Only 1 photo</p>
+  </div>
+  <img class="strip" src="img/dog-pie-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Pirata</p>
+    <p class="dog-status">Adoptable · 4 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">3 of 4 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-pirata-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Romeo</p>
+    <p class="dog-status">Adoptable · 4 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-romeo-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Root Beer</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-root-beer-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Santa’s Little Helper</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-soft">Main photo: Soft on phones and new laptops</p>
+    
+  </div>
+  <img class="strip" src="img/dog-santa-s-little-helper-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Sebastian</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-sebastian-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Shortbread</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-shortbread-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Skipper</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-skipper-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Snowflake</p>
+    <p class="dog-status">Hospice care · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-snowflake-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Spork</p>
+    <p class="dog-status">Hospice care · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-spork-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Sugar Cookie</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 6 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-sugar-cookie-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Suki</p>
+    <p class="dog-status">Hospice care · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">4 of 5 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-suki-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Sun Bear</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 5 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-sun-bear-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Sunshine Sophie</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">1 of 5 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-sunshine-sophie-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Tamagotchi</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">8 of 12 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-tamagotchi-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Tarzan and Jane</p>
+    <p class="dog-status">Temporary foster needed · 4 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">4 of 4 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-tarzan-and-jane-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Tootsie Roll</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-tootsie-roll-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Tuxedo</p>
+    <p class="dog-status">Adoptable · 4 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-tuxedo-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Walrus</p>
+    <p class="dog-status">Adoptable · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 6 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-walrus-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Watson</p>
+    <p class="dog-status">Adoptable · 12 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">8 of 12 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-watson-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Whimsy</p>
+    <p class="dog-status">Adoptable · 5 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 5 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-whimsy-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Winkle</p>
+    <p class="dog-status">Hospice care · 6 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 6 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-winkle-aka-landline-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Yankee Candle</p>
+    <p class="dog-status">Adoptable · 9 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    <p class="dog-note">1 of 9 photos is under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-yankee-candle-2026.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Yeti</p>
+    <p class="dog-status">Adoptable · 7 photos</p>
+    <p class="chip chip-good">Main photo: Sharp</p>
+    
+  </div>
+  <img class="strip" src="img/dog-yeti-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li>
+<li class="dog">
+  <div class="dog-head">
+    <p class="dog-name">Zelda</p>
+    <p class="dog-status">Hospice care · 5 photos</p>
+    <p class="chip chip-bad">Main photo: Too small: blurry on every screen</p>
+    <p class="dog-note">5 of 5 photos are under 600 px</p>
+  </div>
+  <img class="strip" src="img/dog-zelda-2025.jpg" alt="" loading="lazy">
+  <p class="dog-decide">Best main photo: #<span class="blank"></span>
+     <span class="box"></span>Ask the foster for new photos</p>
+</li></ul>
+</section>
+
+<section>
+  <h2>Part 4 · Photos already on hand, not in use</h2>
+  <p class="lede">Prepared earlier and sitting unused, mostly from the Bauer Center page that was taken down and older Silver Hearts stories. Write a spot number to use one.</p>
+  <ul class="tiles">
+<li class="tile">
+  <img src="img/page-bauer-center-house.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">bauer-center-house.jpg</span></p>
+    <p class="tile-meta">600 × 398 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-bauer-center-mural.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">bauer-center-mural.jpg</span></p>
+    <p class="tile-meta">305 × 198 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-bauer-center-office.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">bauer-center-office.jpg</span></p>
+    <p class="tile-meta">1000 × 750 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-bauer-center-patricia-bauer.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">bauer-center-patricia-bauer.jpg</span></p>
+    <p class="tile-meta">150 × 237 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-bauer-center-welcome-room.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">bauer-center-welcome-room.jpg</span></p>
+    <p class="tile-meta">305 × 198 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-dog-appa.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">dog-appa.jpg</span></p>
+    <p class="tile-meta">525 × 700 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-dog-cricket.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">dog-cricket.jpg</span></p>
+    <p class="tile-meta">414 × 640 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-dog-obi.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">dog-obi.jpg</span></p>
+    <p class="tile-meta">600 × 588 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-dogs-chikki-chimmu.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">dogs-chikki-chimmu.jpg</span></p>
+    <p class="tile-meta">600 × 937 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-helping-paw-walk.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">helping-paw-walk.jpg</span></p>
+    <p class="tile-meta">800 × 600 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-img-3128.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">img-3128.jpg</span></p>
+    <p class="tile-meta">1000 × 721 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-legacy-furby.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">legacy-furby.jpg</span></p>
+    <p class="tile-meta">580 × 435 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-planned-giving-rosie-loren.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">planned-giving-rosie-loren.jpg</span></p>
+    <p class="tile-meta">580 × 387 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-share-default.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">share-default.jpg</span></p>
+    <p class="tile-meta">1200 × 630 px</p>
+    <p class="tile-meta">The picture that shows when someone shares a site link by text, email or Facebook. In use, listed here so it gets a decision.</p>
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-silver-hearts-beau.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">silver-hearts-beau.jpg</span></p>
+    <p class="tile-meta">600 × 393 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-silver-hearts-quincy.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">silver-hearts-quincy.jpg</span></p>
+    <p class="tile-meta">600 × 450 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-silver-hearts-xena.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">silver-hearts-xena.jpg</span></p>
+    <p class="tile-meta">600 × 450 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-sponsor-an-ad-example.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">sponsor-an-ad-example.jpg</span></p>
+    <p class="tile-meta">1160 × 620 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-volunteer-party-2015.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">volunteer-party-2015.jpg</span></p>
+    <p class="tile-meta">580 × 283 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li>
+<li class="tile">
+  <img src="img/page-wish-list-dog.jpg" alt="" loading="lazy">
+  <div class="tile-body">
+    <p class="tile-where"><span class="file">wish-list-dog.jpg</span></p>
+    <p class="tile-meta">580 × 384 px</p>
+    
+    <p class="boxes"><span class="box"></span>Use for spot #<span class="blank short"></span></p>
+  </div>
+</li></ul>
+</section>
+
+<section>
+  <h2>Part 5 · Shot list</h2>
+  <p class="lede">Photos the site needs that do not exist yet. Add to it as you go through the packet.</p>
+  <ul class="shots">
+    <li class="shot"><span class="box"></span><div><strong>Four home slideshow photos, wide, 2,000 px or more</strong><span class="need">Adoption, Helping Paw, Our mission, Foster/donate/volunteer. The first thing every visitor sees. Leave calm space on the left, where the words sit.</span></div></li>
+    <li class="shot"><span class="box"></span><div><strong>Vet staff giving care</strong><span class="need">For "Every dog arrives ready" on How adopting works, asked for in Carie's round 3. Hands on a dog, a stethoscope, a calm patient.</span></div></li>
+    <li class="shot"><span class="box"></span><div><strong>The Ways to give tiles</strong><span class="need">Sixteen small square tiles, most only about 300 px. Square photos with room around the subject, 800 px or more.</span></div></li>
+    <li class="shot"><span class="box"></span><div><strong>About us: Monica and the Helping Paw fund</strong><span class="need">Both are about 250 px shown at twice that size.</span></div></li>
+    <li class="shot"><span class="box"></span><div><strong>The new building page</strong><span class="need">The Bauer Center page is down until the new building page is written. Exterior, the welcome room, people at work.</span></div></li>
+    <li class="shot"><span class="box"></span><div><strong>Dogs flagged in Part 3</strong><span class="need">New photos from fosters for each dog with a red or amber main photo, sent as full-size originals.</span></div></li>
+    <li class="blankrow"></li><li class="blankrow"></li><li class="blankrow"></li><li class="blankrow"></li>
+  </ul>
+</section>
+
+<section>
+  <h2>After the meeting: how the photos get onto the site</h2>
+  <ol class="steps">
+    <li><strong>One shared folder.</strong> Put every chosen photo in one Google Drive folder, full size, and name each file with its number from this packet, for example <span class="file">1.3 home slideshow mission.jpg</span>. Uploading to Drive from a phone keeps the original. Texting or emailing a photo usually shrinks it, so avoid both.</li>
+    <li><strong>Page photos (Part 1 and Part 4).</strong> Andrew prepares each one with the site's photo tool, which sizes it for its spot, makes the phone versions, and strips the hidden location data cameras add. The new photo keeps the old file's name, so no page has to change. One batch per group of pages, checked on the preview before it goes live.</li>
+    <li><strong>Team portraits (Part 2).</strong> Upload on the person's record in the admin. Square, face centered, plain background, the same style for everyone.</li>
+    <li><strong>Dogs (Part 3).</strong> On the dog's record in the admin: upload the new photos, then use Make main photo on the one circled. The admin keeps a 2,000 px master and serves each size on demand.</li>
+    <li><strong>The check.</strong> Andrew re-runs the same measurement that made this packet and confirms every red and amber spot is now green, before the site goes live.</li>
+  </ol>
+</section>
+
+</div>
