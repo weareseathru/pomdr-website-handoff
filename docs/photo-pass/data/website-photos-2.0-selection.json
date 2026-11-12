@@ -1,6 +1,6 @@
 [
  {
-  "sheet_number": 1,
+  "ref": 1,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "71C0D403-2D44-4015-933D-2C87F2BA0B5B",
   "file": "71C0D403-2D44-4015-933D-2C87F2BA0B5B.jpeg",
@@ -13,7 +13,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 2,
+  "ref": 2,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "FF300A37-72D1-4475-A715-94E0FADC8C83",
   "file": "FF300A37-72D1-4475-A715-94E0FADC8C83.jpeg",
@@ -28,7 +28,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 5,
+  "ref": 5,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "C0BEB544-FC6F-4CAD-800C-549E267D9CCD",
   "file": "C0BEB544-FC6F-4CAD-800C-549E267D9CCD.jpeg",
@@ -43,7 +43,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 8,
+  "ref": 8,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "1E2D3216-58CC-44C3-B584-4B6E997CB9CA",
   "file": "1E2D3216-58CC-44C3-B584-4B6E997CB9CA.jpeg",
@@ -56,7 +56,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 9,
+  "ref": 9,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "E4CFF86C-7719-49FC-9E67-FA4CF428BF93",
   "file": "E4CFF86C-7719-49FC-9E67-FA4CF428BF93.jpeg",
@@ -70,7 +70,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 14,
+  "ref": 14,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "B9E9A10B-1758-414B-9AFA-0F9C01F02F5D",
   "file": "B9E9A10B-1758-414B-9AFA-0F9C01F02F5D.heic",
@@ -84,7 +84,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 16,
+  "ref": 16,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "A6B497D2-D1CC-42CB-B9FF-395FD52A0174",
   "file": "A6B497D2-D1CC-42CB-B9FF-395FD52A0174.jpeg",
@@ -97,7 +97,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 17,
+  "ref": 17,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "7EADABD5-3D0A-406E-9DC5-3421EE4E6828",
   "file": "7EADABD5-3D0A-406E-9DC5-3421EE4E6828.jpeg",
@@ -110,7 +110,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 18,
+  "ref": 18,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "CE1168B2-A598-4895-B564-53380889DBF5",
   "file": "CE1168B2-A598-4895-B564-53380889DBF5.heic",
@@ -124,7 +124,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 20,
+  "ref": 20,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "E2977483-E9BF-4048-B454-4E7A891E98E3",
   "file": "E2977483-E9BF-4048-B454-4E7A891E98E3.jpeg",
@@ -137,7 +137,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 22,
+  "ref": 22,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "87BB2BCB-D809-455C-AB2B-5ABAFBE13A2A",
   "file": "87BB2BCB-D809-455C-AB2B-5ABAFBE13A2A.heic",
@@ -151,7 +151,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 27,
+  "ref": 27,
   "category": "Helping Paw: guardians with their dogs",
   "photos_uuid": "9D8F70F7-8E72-414B-B23E-4CCBFC304597",
   "file": "9D8F70F7-8E72-414B-B23E-4CCBFC304597.jpeg",
@@ -164,7 +164,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 40,
+  "ref": 40,
   "category": "Clinic: staff giving care",
   "photos_uuid": "E8EB47DD-D77B-43AD-AADE-9F12C93C0ABA",
   "file": "E8EB47DD-D77B-43AD-AADE-9F12C93C0ABA.heic",
@@ -177,7 +177,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 41,
+  "ref": 41,
   "category": "Clinic: staff giving care",
   "photos_uuid": "A18ABD12-9338-417B-9425-3FE3B9F666F4",
   "file": "A18ABD12-9338-417B-9425-3FE3B9F666F4.heic",
@@ -190,7 +190,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 43,
+  "ref": 43,
   "category": "Clinic: staff giving care",
   "photos_uuid": "E6AF19FD-A32A-4356-88D3-607F76119D40",
   "file": "E6AF19FD-A32A-4356-88D3-607F76119D40.heic",
@@ -203,7 +203,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 44,
+  "ref": 44,
   "category": "Clinic: staff giving care",
   "photos_uuid": "C1E85D3C-B47C-4D8B-95A2-2F40D0CD8039",
   "file": "C1E85D3C-B47C-4D8B-95A2-2F40D0CD8039.heic",
@@ -217,7 +217,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 47,
+  "ref": 47,
   "category": "Clinic: staff giving care",
   "photos_uuid": "50E59B5D-1C1D-491D-B590-E6AFAB25AD60",
   "file": "50E59B5D-1C1D-491D-B590-E6AFAB25AD60.heic",
@@ -230,7 +230,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 50,
+  "ref": 50,
   "category": "Clinic: staff giving care",
   "photos_uuid": "84998D0B-47D5-4159-A12E-C37A512DDFA6",
   "file": "84998D0B-47D5-4159-A12E-C37A512DDFA6.heic",
@@ -243,7 +243,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 52,
+  "ref": 52,
   "category": "Clinic: staff giving care",
   "photos_uuid": "8C0649B3-DCB3-494F-A41A-F4634CF39E33",
   "file": "8C0649B3-DCB3-494F-A41A-F4634CF39E33.heic",
@@ -256,7 +256,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 62,
+  "ref": 62,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "76442383-3EC8-4622-9755-B6E225DF0F93",
   "file": "76442383-3EC8-4622-9755-B6E225DF0F93.heic",
@@ -270,7 +270,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 65,
+  "ref": 65,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "F5887641-22F3-42D4-AFDB-F6A692C9AC10",
   "file": "F5887641-22F3-42D4-AFDB-F6A692C9AC10.heic",
@@ -284,7 +284,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 66,
+  "ref": 66,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "4794F76B-2FDA-45CF-B9D2-E65E1D958052",
   "file": "4794F76B-2FDA-45CF-B9D2-E65E1D958052.heic",
@@ -297,7 +297,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 67,
+  "ref": 67,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "CBBAB001-938B-47D8-9287-908E06817B27",
   "file": "CBBAB001-938B-47D8-9287-908E06817B27.jpeg",
@@ -310,7 +310,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 69,
+  "ref": 69,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "0164F8AE-52A3-4157-9254-BFAAA9595E4E",
   "file": "0164F8AE-52A3-4157-9254-BFAAA9595E4E.jpeg",
@@ -323,7 +323,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 72,
+  "ref": 72,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "1FC9B8E8-19DA-4DC7-9C22-F93DE33EC5C7",
   "file": "1FC9B8E8-19DA-4DC7-9C22-F93DE33EC5C7.heic",
@@ -336,7 +336,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 75,
+  "ref": 75,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "DE7679F9-2E38-4C91-BAD9-0CB124D95E8F",
   "file": "DE7679F9-2E38-4C91-BAD9-0CB124D95E8F.heic",
@@ -349,7 +349,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 76,
+  "ref": 76,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "7B6008E3-43BD-4162-82CE-BEF7D5D507D7",
   "file": "7B6008E3-43BD-4162-82CE-BEF7D5D507D7.jpeg",
@@ -362,7 +362,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 77,
+  "ref": 77,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "66396F9E-D0B9-4837-BF28-BF2C42183E29",
   "file": "66396F9E-D0B9-4837-BF28-BF2C42183E29.jpeg",
@@ -375,7 +375,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 84,
+  "ref": 84,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "32447D91-D503-4497-B0C0-51704419DF18",
   "file": "32447D91-D503-4497-B0C0-51704419DF18.heic",
@@ -389,7 +389,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 337,
+  "ref": 337,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "29AB0AA4-4F9B-4AD2-9136-FDFF04F03DDA",
   "file": "29AB0AA4-4F9B-4AD2-9136-FDFF04F03DDA.heic",
@@ -402,7 +402,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 340,
+  "ref": 340,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "FBB48978-6C86-4BA0-BA26-75BDF9918B32",
   "file": "FBB48978-6C86-4BA0-BA26-75BDF9918B32.jpeg",
@@ -415,7 +415,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 362,
+  "ref": 362,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "2849302D-A98E-460E-A79E-6DCDE2B16717",
   "file": "2849302D-A98E-460E-A79E-6DCDE2B16717.jpeg",
@@ -426,7 +426,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 393,
+  "ref": 393,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "98B14019-B204-425F-B54C-FEDADAD9CD40",
   "file": "98B14019-B204-425F-B54C-FEDADAD9CD40.jpeg",
@@ -437,7 +437,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 401,
+  "ref": 401,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "54104630-9D7E-4D84-B42D-87A1ED0D8925",
   "file": "54104630-9D7E-4D84-B42D-87A1ED0D8925.jpeg",
@@ -450,7 +450,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 423,
+  "ref": 423,
   "category": "Volunteers and fosters with dogs",
   "photos_uuid": "F6FDE4C1-E59A-4C90-9C45-EC9B51C62160",
   "file": "F6FDE4C1-E59A-4C90-9C45-EC9B51C62160.jpeg",
@@ -461,7 +461,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 57,
+  "ref": 57,
   "category": "Connection: people and dogs together",
   "photos_uuid": "AE1C7960-4BFD-4D83-8405-62153932059F",
   "file": "AE1C7960-4BFD-4D83-8405-62153932059F.heic",
@@ -474,7 +474,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 58,
+  "ref": 58,
   "category": "Connection: people and dogs together",
   "photos_uuid": "91F2C433-EC86-4E02-BDE3-923D37FA1499",
   "file": "91F2C433-EC86-4E02-BDE3-923D37FA1499.heic",
@@ -487,7 +487,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 59,
+  "ref": 59,
   "category": "Connection: people and dogs together",
   "photos_uuid": "E8DFB7D8-F86B-48D3-BB06-673B72EC5F0F",
   "file": "E8DFB7D8-F86B-48D3-BB06-673B72EC5F0F.heic",
@@ -500,7 +500,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 60,
+  "ref": 60,
   "category": "Connection: people and dogs together",
   "photos_uuid": "924E161B-1B70-4F4C-9D2C-EC5724578097",
   "file": "924E161B-1B70-4F4C-9D2C-EC5724578097.jpeg",
@@ -514,7 +514,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 93,
+  "ref": 93,
   "category": "Connection: people and dogs together",
   "photos_uuid": "BFFC1FFE-5125-4949-9BCA-95447B14E410",
   "file": "BFFC1FFE-5125-4949-9BCA-95447B14E410.heic",
@@ -528,7 +528,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 95,
+  "ref": 95,
   "category": "Connection: people and dogs together",
   "photos_uuid": "29D025A2-4EC1-460F-8504-A66A48118C42",
   "file": "29D025A2-4EC1-460F-8504-A66A48118C42.jpeg",
@@ -541,7 +541,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 98,
+  "ref": 98,
   "category": "Connection: people and dogs together",
   "photos_uuid": "8A7E8013-F0AB-45A1-956A-A2322E58F677",
   "file": "8A7E8013-F0AB-45A1-956A-A2322E58F677.jpeg",
@@ -554,7 +554,7 @@
   "original_on_this_mac": false
  },
  {
-  "sheet_number": 100,
+  "ref": 100,
   "category": "Connection: people and dogs together",
   "photos_uuid": "9D0B0695-0F6F-44D6-A7C0-C9BF282E4C0E",
   "file": "9D0B0695-0F6F-44D6-A7C0-C9BF282E4C0E.jpeg",
@@ -569,7 +569,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 102,
+  "ref": 102,
   "category": "Connection: people and dogs together",
   "photos_uuid": "AFA59C1E-B3C8-4ECB-984D-576FCE29DC25",
   "file": "AFA59C1E-B3C8-4ECB-984D-576FCE29DC25.jpeg",
@@ -582,7 +582,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 104,
+  "ref": 104,
   "category": "Connection: people and dogs together",
   "photos_uuid": "3384EB8F-F58A-440B-9FDA-E0B145063246",
   "file": "3384EB8F-F58A-440B-9FDA-E0B145063246.jpeg",
@@ -596,7 +596,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 109,
+  "ref": 109,
   "category": "Connection: people and dogs together",
   "photos_uuid": "C1E095E7-36CD-4B12-99B3-11FBEACEF469",
   "file": "C1E095E7-36CD-4B12-99B3-11FBEACEF469.heic",
@@ -610,7 +610,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 111,
+  "ref": 111,
   "category": "Connection: people and dogs together",
   "photos_uuid": "7B2D1C3A-4260-4623-9562-CBF5BCFBD8E4",
   "file": "7B2D1C3A-4260-4623-9562-CBF5BCFBD8E4.jpeg",
@@ -625,7 +625,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 112,
+  "ref": 112,
   "category": "Connection: people and dogs together",
   "photos_uuid": "61DF5C86-71D4-483C-B2DF-E4267DE8D8DB",
   "file": "61DF5C86-71D4-483C-B2DF-E4267DE8D8DB.heic",
@@ -639,7 +639,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 114,
+  "ref": 114,
   "category": "Connection: people and dogs together",
   "photos_uuid": "EAB2FDF4-5BE1-48F9-A8F0-36C6BFE63854",
   "file": "EAB2FDF4-5BE1-48F9-A8F0-36C6BFE63854.heic",
@@ -652,7 +652,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 120,
+  "ref": 120,
   "category": "Connection: people and dogs together",
   "photos_uuid": "08173323-ED06-4047-AE4B-0D3EE89784F5",
   "file": "08173323-ED06-4047-AE4B-0D3EE89784F5.heic",
@@ -665,7 +665,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 122,
+  "ref": 122,
   "category": "Connection: people and dogs together",
   "photos_uuid": "63B96426-D5B8-4D08-8382-A413352F24E2",
   "file": "63B96426-D5B8-4D08-8382-A413352F24E2.jpeg",
@@ -678,7 +678,7 @@
   "original_on_this_mac": false
  },
  {
-  "sheet_number": 125,
+  "ref": 125,
   "category": "Connection: people and dogs together",
   "photos_uuid": "851793A6-EDAA-41F0-B30D-FF853A7C89FD",
   "file": "851793A6-EDAA-41F0-B30D-FF853A7C89FD.jpeg",
@@ -692,7 +692,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 126,
+  "ref": 126,
   "category": "Connection: people and dogs together",
   "photos_uuid": "89E80EBB-6FD0-4962-9D9C-3B02FE578A5A",
   "file": "89E80EBB-6FD0-4962-9D9C-3B02FE578A5A.heic",
@@ -706,7 +706,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 127,
+  "ref": 127,
   "category": "Connection: people and dogs together",
   "photos_uuid": "63B7201B-E9BC-4E53-A167-A37E511DADBC",
   "file": "63B7201B-E9BC-4E53-A167-A37E511DADBC.jpeg",
@@ -719,7 +719,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 132,
+  "ref": 132,
   "category": "Connection: people and dogs together",
   "photos_uuid": "AEBE358B-1EFE-48AA-BAB4-B2AF89C897B3",
   "file": "AEBE358B-1EFE-48AA-BAB4-B2AF89C897B3.jpeg",
@@ -732,7 +732,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 136,
+  "ref": 136,
   "category": "Connection: people and dogs together",
   "photos_uuid": "B949A053-9D84-4C72-9839-FFC26A7947FC",
   "file": "B949A053-9D84-4C72-9839-FFC26A7947FC.heic",
@@ -745,7 +745,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 139,
+  "ref": 139,
   "category": "Connection: people and dogs together",
   "photos_uuid": "2B50C2A5-DDCC-48D9-B635-53A64C6674C7",
   "file": "2B50C2A5-DDCC-48D9-B635-53A64C6674C7.jpeg",
@@ -758,7 +758,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 147,
+  "ref": 147,
   "category": "Connection: people and dogs together",
   "photos_uuid": "4012C3E9-48FA-4AE6-9565-AE66A66766A9",
   "file": "4012C3E9-48FA-4AE6-9565-AE66A66766A9.heic",
@@ -771,7 +771,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 148,
+  "ref": 148,
   "category": "Connection: people and dogs together",
   "photos_uuid": "BEDC3FD9-D955-4E49-86C5-0E3D1192F315",
   "file": "BEDC3FD9-D955-4E49-86C5-0E3D1192F315.jpeg",
@@ -784,7 +784,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 347,
+  "ref": 347,
   "category": "Connection: people and dogs together",
   "photos_uuid": "44B51989-CB70-49E9-A172-84BFEBA4F05D",
   "file": "44B51989-CB70-49E9-A172-84BFEBA4F05D.jpeg",
@@ -795,7 +795,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 151,
+  "ref": 151,
   "category": "Happy tails: adopters",
   "photos_uuid": "1C397194-5865-4970-A9D5-7E2CA06539E6",
   "file": "1C397194-5865-4970-A9D5-7E2CA06539E6.heic",
@@ -808,7 +808,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 153,
+  "ref": 153,
   "category": "Happy tails: adopters",
   "photos_uuid": "F394790F-BA35-41C0-8E09-92DF2F0C534A",
   "file": "F394790F-BA35-41C0-8E09-92DF2F0C534A.heic",
@@ -821,7 +821,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 157,
+  "ref": 157,
   "category": "Happy tails: adopters",
   "photos_uuid": "BA6F938B-4A63-45A8-A304-3715CA0F9F01",
   "file": "BA6F938B-4A63-45A8-A304-3715CA0F9F01.heic",
@@ -834,7 +834,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 158,
+  "ref": 158,
   "category": "Happy tails: adopters",
   "photos_uuid": "B814518E-47BF-4199-9723-422F2D40911D",
   "file": "B814518E-47BF-4199-9723-422F2D40911D.heic",
@@ -847,7 +847,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 160,
+  "ref": 160,
   "category": "Happy tails: adopters",
   "photos_uuid": "8E25FBEC-43A1-452D-B347-947DBA822ADE",
   "file": "8E25FBEC-43A1-452D-B347-947DBA822ADE.heic",
@@ -860,7 +860,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 163,
+  "ref": 163,
   "category": "Happy tails: adopters",
   "photos_uuid": "C56964DD-9E2A-4ABE-8ED3-63363FAEFAB9",
   "file": "C56964DD-9E2A-4ABE-8ED3-63363FAEFAB9.jpeg",
@@ -873,7 +873,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 166,
+  "ref": 166,
   "category": "Happy tails: adopters",
   "photos_uuid": "E39D6E1F-F8A7-4F39-969C-E91871880930",
   "file": "E39D6E1F-F8A7-4F39-969C-E91871880930.heic",
@@ -886,7 +886,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 168,
+  "ref": 168,
   "category": "Happy tails: adopters",
   "photos_uuid": "4C9B340F-2919-445A-A13A-7C96A93AC877",
   "file": "4C9B340F-2919-445A-A13A-7C96A93AC877.heic",
@@ -899,8 +899,8 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 171,
-  "category": "Events and seasonal",
+  "ref": 171,
+  "category": "Events and volunteer groups",
   "photos_uuid": "A1B9E2E1-176F-4378-9185-F9AA2E65C4E8",
   "file": "A1B9E2E1-176F-4378-9185-F9AA2E65C4E8.jpeg",
   "width": 3600,
@@ -912,8 +912,8 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 175,
-  "category": "Events and seasonal",
+  "ref": 175,
+  "category": "Events and volunteer groups",
   "photos_uuid": "2291BEB4-0810-466E-A0C7-6D27CFA25A50",
   "file": "2291BEB4-0810-466E-A0C7-6D27CFA25A50.jpeg",
   "width": 5040,
@@ -925,8 +925,8 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 183,
-  "category": "Events and seasonal",
+  "ref": 183,
+  "category": "Events and volunteer groups",
   "photos_uuid": "D07F13EA-0522-4C46-9BD4-A7FF39516068",
   "file": "D07F13EA-0522-4C46-9BD4-A7FF39516068.jpeg",
   "width": 5040,
@@ -938,46 +938,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 189,
-  "category": "Events and seasonal",
-  "photos_uuid": "543C71D3-46E8-44C0-A63A-3F419D04DDB6",
-  "file": "543C71D3-46E8-44C0-A63A-3F419D04DDB6.heic",
-  "width": 4032,
-  "height": 3024,
-  "taken": "2023-12-21",
-  "keywords": [
-   "holiday"
-  ],
-  "original_on_this_mac": true
- },
- {
-  "sheet_number": 193,
-  "category": "Events and seasonal",
-  "photos_uuid": "9380CA1C-DAE4-4F1E-BE80-806BF243FCB1",
-  "file": "9380CA1C-DAE4-4F1E-BE80-806BF243FCB1.jpeg",
-  "width": 4020,
-  "height": 3015,
-  "taken": "2026-01-29",
-  "keywords": [
-   "holiday"
-  ],
-  "original_on_this_mac": true
- },
- {
-  "sheet_number": 204,
-  "category": "Events and seasonal",
-  "photos_uuid": "0A7D6173-C299-47F2-BB17-663414584868",
-  "file": "0A7D6173-C299-47F2-BB17-663414584868.jpeg",
-  "width": 5732,
-  "height": 4299,
-  "taken": "2023-12-01",
-  "keywords": [
-   "holiday"
-  ],
-  "original_on_this_mac": true
- },
- {
-  "sheet_number": 33,
+  "ref": 33,
   "category": "Dog portraits",
   "photos_uuid": "B50C173D-994C-4D24-A901-65DE5B3AE5B1",
   "file": "B50C173D-994C-4D24-A901-65DE5B3AE5B1.heic",
@@ -990,7 +951,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 55,
+  "ref": 55,
   "category": "Dog portraits",
   "photos_uuid": "51D5F6AC-B19C-4F98-90EF-37C63D78033A",
   "file": "51D5F6AC-B19C-4F98-90EF-37C63D78033A.heic",
@@ -1004,7 +965,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 56,
+  "ref": 56,
   "category": "Dog portraits",
   "photos_uuid": "95F78654-D0A2-4128-AFF6-16203D776A81",
   "file": "95F78654-D0A2-4128-AFF6-16203D776A81.heic",
@@ -1017,7 +978,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 210,
+  "ref": 210,
   "category": "Dog portraits",
   "photos_uuid": "6738E362-6449-4DD1-AFF2-51637E9E986B",
   "file": "6738E362-6449-4DD1-AFF2-51637E9E986B.jpeg",
@@ -1030,7 +991,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 211,
+  "ref": 211,
   "category": "Dog portraits",
   "photos_uuid": "A1E187AE-5F42-4401-B56B-046D807619A6",
   "file": "A1E187AE-5F42-4401-B56B-046D807619A6.jpeg",
@@ -1043,7 +1004,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 221,
+  "ref": 221,
   "category": "Dog portraits",
   "photos_uuid": "2FBD4380-3371-45AD-ADED-7AD56A335734",
   "file": "2FBD4380-3371-45AD-ADED-7AD56A335734.heic",
@@ -1056,7 +1017,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 224,
+  "ref": 224,
   "category": "Dog portraits",
   "photos_uuid": "340EBBEA-5206-4524-978E-A79DD5D236F9",
   "file": "340EBBEA-5206-4524-978E-A79DD5D236F9.heic",
@@ -1069,7 +1030,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 233,
+  "ref": 233,
   "category": "Dog portraits",
   "photos_uuid": "2E613BFF-9F76-4533-BFEC-8222A523916F",
   "file": "2E613BFF-9F76-4533-BFEC-8222A523916F.heic",
@@ -1082,7 +1043,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 242,
+  "ref": 242,
   "category": "Dog portraits",
   "photos_uuid": "EC86489F-A9BC-4F18-88CD-DBEE87BCF0A5",
   "file": "EC86489F-A9BC-4F18-88CD-DBEE87BCF0A5.heic",
@@ -1095,7 +1056,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 246,
+  "ref": 246,
   "category": "Dog portraits",
   "photos_uuid": "3AC59187-4CCC-4DF7-9C78-6FE34DEFEB8D",
   "file": "3AC59187-4CCC-4DF7-9C78-6FE34DEFEB8D.heic",
@@ -1108,7 +1069,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 253,
+  "ref": 253,
   "category": "Dog portraits",
   "photos_uuid": "12D2D1E9-2785-45D0-9602-FDAEDCB1D21B",
   "file": "12D2D1E9-2785-45D0-9602-FDAEDCB1D21B.jpeg",
@@ -1121,7 +1082,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 255,
+  "ref": 255,
   "category": "Dog portraits",
   "photos_uuid": "A952BD90-5032-4161-8FD2-009B0156D1FF",
   "file": "A952BD90-5032-4161-8FD2-009B0156D1FF.heic",
@@ -1134,7 +1095,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 272,
+  "ref": 272,
   "category": "Dog portraits",
   "photos_uuid": "B5ECBFF9-B14A-44E0-974B-35D03157706E",
   "file": "B5ECBFF9-B14A-44E0-974B-35D03157706E.heic",
@@ -1147,7 +1108,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 274,
+  "ref": 274,
   "category": "Dog portraits",
   "photos_uuid": "E2A0DBC1-F348-4554-B73A-844531524640",
   "file": "E2A0DBC1-F348-4554-B73A-844531524640.heic",
@@ -1160,7 +1121,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 287,
+  "ref": 287,
   "category": "Dog portraits",
   "photos_uuid": "B0E2300A-BE28-4E77-B03C-3B19966AA2FD",
   "file": "B0E2300A-BE28-4E77-B03C-3B19966AA2FD.heic",
@@ -1173,7 +1134,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 297,
+  "ref": 297,
   "category": "Dog portraits",
   "photos_uuid": "07DADDD6-5C3C-4C29-90BE-B8140F6B6375",
   "file": "07DADDD6-5C3C-4C29-90BE-B8140F6B6375.jpeg",
@@ -1186,7 +1147,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 303,
+  "ref": 303,
   "category": "Dog portraits",
   "photos_uuid": "002AFEF8-8DDA-4ED5-878D-AE72D2124CE4",
   "file": "002AFEF8-8DDA-4ED5-878D-AE72D2124CE4.heic",
@@ -1199,7 +1160,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 310,
+  "ref": 310,
   "category": "Dog portraits",
   "photos_uuid": "CF148015-65E2-4B27-B9EC-5CEE0F3D8250",
   "file": "CF148015-65E2-4B27-B9EC-5CEE0F3D8250.heic",
@@ -1212,7 +1173,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 313,
+  "ref": 313,
   "category": "Dog portraits",
   "photos_uuid": "5E3B01DA-0E45-4189-818C-445EBFC1E3EF",
   "file": "5E3B01DA-0E45-4189-818C-445EBFC1E3EF.heic",
@@ -1225,7 +1186,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 328,
+  "ref": 328,
   "category": "Dog portraits",
   "photos_uuid": "D7EE1550-71FE-4416-8FB7-7561F9E1FCE0",
   "file": "D7EE1550-71FE-4416-8FB7-7561F9E1FCE0.heic",
@@ -1238,7 +1199,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 331,
+  "ref": 331,
   "category": "Dog portraits",
   "photos_uuid": "154179A1-55B8-4462-862C-EF0E827CF5CD",
   "file": "154179A1-55B8-4462-862C-EF0E827CF5CD.heic",
@@ -1251,7 +1212,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 364,
+  "ref": 364,
   "category": "Dog portraits",
   "photos_uuid": "262D8657-EEC2-4EF2-A533-87D4A7493C58",
   "file": "262D8657-EEC2-4EF2-A533-87D4A7493C58.heic",
@@ -1262,7 +1223,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 365,
+  "ref": 365,
   "category": "Dog portraits",
   "photos_uuid": "CE9A7C62-B12A-4E9E-BD75-DA74C71C50C9",
   "file": "CE9A7C62-B12A-4E9E-BD75-DA74C71C50C9.heic",
@@ -1273,7 +1234,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 368,
+  "ref": 368,
   "category": "Dog portraits",
   "photos_uuid": "D3B764F6-AE58-4D10-83CC-F86A729080AC",
   "file": "D3B764F6-AE58-4D10-83CC-F86A729080AC.heic",
@@ -1284,7 +1245,7 @@
   "original_on_this_mac": true
  },
  {
-  "sheet_number": 403,
+  "ref": 403,
   "category": "Dog portraits",
   "photos_uuid": "8AC86EF3-2C5C-436C-9E73-6FDFCACC78B3",
   "file": "8AC86EF3-2C5C-436C-9E73-6FDFCACC78B3.jpeg",
@@ -1295,7 +1256,7 @@
   "original_on_this_mac": false
  },
  {
-  "sheet_number": 433,
+  "ref": 433,
   "category": "Dog portraits",
   "photos_uuid": "EC58F6EA-F630-407D-93D8-8412630AE168",
   "file": "EC58F6EA-F630-407D-93D8-8412630AE168.heic",
@@ -1304,5 +1265,240 @@
   "taken": "2024-09-28",
   "keywords": [],
   "original_on_this_mac": true
+ },
+ {
+  "ref": "D67",
+  "category": "Volunteer party 2026: the big group photo",
+  "photos_uuid": "CD08A077-5562-4688-BE46-CF7316897F21",
+  "file": "CD08A077-5562-4688-BE46-CF7316897F21.jpeg",
+  "width": 3812,
+  "height": 2236,
+  "taken": "2026-08-02",
+  "keywords": [
+   "volunteer",
+   "pr"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D68",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "647BE854-5610-4957-9701-A513CD96E2BD",
+  "file": "647BE854-5610-4957-9701-A513CD96E2BD.jpeg",
+  "width": 4280,
+  "height": 4338,
+  "taken": "2026-08-19",
+  "keywords": [
+   "staff"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D32",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "F6B88223-CE6A-4F1E-BD33-EF0CD7433EF1",
+  "file": "F6B88223-CE6A-4F1E-BD33-EF0CD7433EF1.jpeg",
+  "width": 5000,
+  "height": 4000,
+  "taken": "2026-03-14",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D44",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "D198CDD4-5C7D-4375-A774-3B8DEE8849C5",
+  "file": "D198CDD4-5C7D-4375-A774-3B8DEE8849C5.heic",
+  "width": 4032,
+  "height": 3024,
+  "taken": "2026-05-02",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D28",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "2C876D04-0D16-4671-9D4D-CE6502FE487E",
+  "file": "2C876D04-0D16-4671-9D4D-CE6502FE487E.jpeg",
+  "width": 2611,
+  "height": 2059,
+  "taken": "2026-02-22",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D75",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "2B26E5A6-2B8C-4287-9BDF-971984E7F0C9",
+  "file": "2B26E5A6-2B8C-4287-9BDF-971984E7F0C9.jpeg",
+  "width": 5712,
+  "height": 4284,
+  "taken": "2026-10-04",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D2",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "4CB2A1E9-F663-438B-BCA6-3E2B93727163",
+  "file": "4CB2A1E9-F663-438B-BCA6-3E2B93727163.jpeg",
+  "width": 3527,
+  "height": 3527,
+  "taken": "2025-06-01",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "D14",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "88DFF0D1-9618-4A51-BF00-4CD41677F21A",
+  "file": "88DFF0D1-9618-4A51-BF00-4CD41677F21A.heic",
+  "width": 3022,
+  "height": 4030,
+  "taken": "2025-08-06",
+  "keywords": [
+   "volunteer"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A7",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "B3A8DF7B-7D16-43A7-93E8-EC964A9DC090",
+  "file": "B3A8DF7B-7D16-43A7-93E8-EC964A9DC090.jpeg",
+  "width": 6965,
+  "height": 4643,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A13",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "A4E541A1-E810-42BE-AB95-F6A7C9185A38",
+  "file": "A4E541A1-E810-42BE-AB95-F6A7C9185A38.jpeg",
+  "width": 4768,
+  "height": 3179,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A42",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "4E619587-0B98-434B-B8CC-131A205B8B6A",
+  "file": "4E619587-0B98-434B-B8CC-131A205B8B6A.jpeg",
+  "width": 5764,
+  "height": 3843,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A70",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "D44B198D-AF75-4CD8-AA65-B2AD9A6D902B",
+  "file": "D44B198D-AF75-4CD8-AA65-B2AD9A6D902B.jpeg",
+  "width": 5646,
+  "height": 3764,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A76",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "908C7C41-3487-4E2B-963D-D4BA5D7AFB50",
+  "file": "908C7C41-3487-4E2B-963D-D4BA5D7AFB50.jpeg",
+  "width": 8063,
+  "height": 5375,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A85",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "735903D8-23B9-4661-9CFD-EB6DF002C781",
+  "file": "735903D8-23B9-4661-9CFD-EB6DF002C781.jpeg",
+  "width": 3581,
+  "height": 5371,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "A89",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "C3DED7AF-DA54-4D80-B75C-4BB6FBEEB814",
+  "file": "C3DED7AF-DA54-4D80-B75C-4BB6FBEEB814.jpeg",
+  "width": 8256,
+  "height": 5504,
+  "taken": "2026-07-26",
+  "keywords": [
+   "events"
+  ],
+  "original_on_this_mac": true
+ },
+ {
+  "ref": "B7",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "FCE4B5A5-E140-4C75-BBFA-3251EF53FD39",
+  "file": "FCE4B5A5-E140-4C75-BBFA-3251EF53FD39.heic",
+  "width": 4284,
+  "height": 5712,
+  "taken": "2026-09-27",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": false
+ },
+ {
+  "ref": "B11",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "D2B0816D-F016-4771-97C6-85419DD523F1",
+  "file": "D2B0816D-F016-4771-97C6-85419DD523F1.jpeg",
+  "width": 3024,
+  "height": 4032,
+  "taken": "2026-09-27",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": false
+ },
+ {
+  "ref": "B17",
+  "category": "Events and volunteer groups",
+  "photos_uuid": "0EB629FF-54AD-47F6-9624-05EFDB6EA89A",
+  "file": "0EB629FF-54AD-47F6-9624-05EFDB6EA89A.heic",
+  "width": 3309,
+  "height": 2865,
+  "taken": "2026-09-27",
+  "keywords": [
+   "event"
+  ],
+  "original_on_this_mac": false
  }
 ]
