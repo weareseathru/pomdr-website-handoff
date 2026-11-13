@@ -1,0 +1,272 @@
+{
+ "read_at": "2026-11-13T11:25",
+ "adoption_events_page": "https://www.peaceofminddogrescue.org/adoptionevents.php",
+ "adoption_events": [
+  {
+   "type": "Adoption event",
+   "when_as_written": "Saturday, November 14, 11 - 1:30pm",
+   "date": "2026-11-14",
+   "weekday_checks_out": true,
+   "starts": "11:00:00",
+   "ends": "13:30:00",
+   "name": "Patagonia Outlet",
+   "address": "415 River Street Suite C",
+   "city": "Santa Cruz",
+   "notes": "POMDR Information table and adoptable dogs."
+  },
+  {
+   "type": "Adoption event",
+   "when_as_written": "Sunday, November 22, 3 - 6:00pm",
+   "date": "2026-11-22",
+   "weekday_checks_out": true,
+   "starts": "15:00:00",
+   "ends": "18:00:00",
+   "name": "Cypress Inn Yappy Hour",
+   "address": "Lincol St & 7th Ave",
+   "city": "Carmel-by-the-Sea",
+   "notes": "Drinks, snacks, and a relaxed afternoon with your pup. Dogs welcome!"
+  },
+  {
+   "type": "Adoption event",
+   "when_as_written": "Sunday, November 22, 11 - 1:30pm",
+   "date": "2026-11-22",
+   "weekday_checks_out": true,
+   "starts": "11:00:00",
+   "ends": "13:30:00",
+   "name": "Pet Pals",
+   "address": "3660 Soquel Drive",
+   "city": "Soquel",
+   "notes": "POMDR information table & adoptable dogs."
+  },
+  {
+   "type": "Adoption event",
+   "when_as_written": "Sunday, December 13, 3 - 6:00pm",
+   "date": "2026-12-13",
+   "weekday_checks_out": true,
+   "starts": "15:00:00",
+   "ends": "18:00:00",
+   "name": "Cypress Inn Yappy Hour",
+   "address": "Lincol St & 7th Ave",
+   "city": "Carmel-by-the-Sea",
+   "notes": "Drinks, snacks, and a relaxed afternoon with your pup. Dogs welcome!"
+  }
+ ],
+ "whats_happening_page": "https://www.peaceofminddogrescue.org/news.html",
+ "whats_happening": [
+  {
+   "title": "POMDR in the PG Parade of Lights!",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/Holiday-Parade-of-Lights-2026-599max.jpg",
+   "image_link": null,
+   "fields": {
+    "Date": "Thursday, December 3",
+    "Time": "6:00 pm, rain or shine",
+    "Where": "Lighthouse Avenue, Downtown Pacific Grove",
+    "What": "Join POMDR for the Pacific Grove Holiday Parade of Lights! This year's theme is A Storybook Christmas, with glowing floats, festive fun, and some of POMDR's adoptable and alumni dogs in teal gear. All friendly dogs are welcome, and storybook or holiday costumes for people and pups are encouraged. Come walk with POMDR and help bring the story to life on Lighthouse Avenue!",
+    "RSVP": "Let us know you're walking with us!"
+   },
+   "paragraphs": [
+    "Date: Thursday, December 3",
+    "Time: 6:00 pm, rain or shine",
+    "Where: Lighthouse Avenue, Downtown Pacific Grove",
+    "What: Join POMDR for the Pacific Grove Holiday Parade of Lights! This year's theme is A Storybook Christmas, with glowing floats, festive fun, and some of POMDR's adoptable and alumni dogs in teal gear. All friendly dogs are welcome, and storybook or holiday costumes for people and pups are encouraged. Come walk with POMDR and help bring the story to life on Lighthouse Avenue!",
+    "RSVP: Let us know you're walking with us!"
+   ],
+   "links": [
+    {
+     "text": "Let us know you're walking with us!",
+     "url": "https://secure.lglforms.com/form_engine/s/6B3HTLwnmulhREtGATkyQQ"
+    }
+   ],
+   "kind": "event",
+   "image_file": "Holiday-Parade-of-Lights-2026-599max.jpg"
+  },
+  {
+   "title": "Santa Cruz Holiday Parade",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/Holidayparade2.jpeg",
+   "image_link": "https://downtownsantacruz.com/do/holiday-parade-2",
+   "fields": {
+    "Date": "Saturday, December 5",
+    "Time": "10 am",
+    "Where": "Laurel Avenue and Pacific Avenue, Santa Cruz",
+    "What": "Join POMDR for a festive and fun holiday parade through downtown Santa Cruz which will include some of POMDR's adoptable dogs!"
+   },
+   "paragraphs": [
+    "Date: Saturday, December 5",
+    "Time: 10 am",
+    "Where: Laurel Avenue and Pacific Avenue, Santa Cruz",
+    "What: Join POMDR for a festive and fun holiday parade through downtown Santa Cruz which will include some of POMDR's adoptable dogs!",
+    "All friendly dogs are welcome. Festive holiday attire for people and dogs is encouraged. Represent POMDR, and kick off the holiday season!"
+   ],
+   "links": [],
+   "kind": "event",
+   "image_file": "Holidayparade2.jpeg"
+  },
+  {
+   "title": "Paws & Presents Holiday Market",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/pawsandpresents.png",
+   "image_link": "https://www.eventbrite.com/e/tpc-monterey-at-pasadera-presents-paws-presents-holiday-market-tickets-1986720022067?aff=oddtdtcreator",
+   "fields": {
+    "Date": "Sunday, December 6, 2026 Time: 1:00 - 3:30 pm",
+    "Where": "The Club at Pasadera, Monterey",
+    "What": "Step into the spirit of the season with this festive afternoon of shopping, sipping, and celebrating in support of Peace of Mind Dog Rescue. Enjoy artisan goods, festive food and drinks and a joyful, dog-loving atmosphere."
+   },
+   "paragraphs": [
+    "Date: Sunday, December 6, 2026 Time: 1:00 - 3:30 pm",
+    "Where: The Club at Pasadera, Monterey",
+    "What: Step into the spirit of the season with this festive afternoon of shopping, sipping, and celebrating in support of Peace of Mind Dog Rescue. Enjoy artisan goods, festive food and drinks and a joyful, dog-loving atmosphere.",
+    "Get Your Ticket and Learn More!",
+    "Sponsored by Robin Venuti, Realtor at Coldwell Bank Realty, and Mechanics Bank"
+   ],
+   "links": [
+    {
+     "text": "Get Your Ticket and Learn More!",
+     "url": "https://www.eventbrite.com/e/tpc-monterey-at-pasadera-presents-paws-presents-holiday-market-tickets-1986720022067?aff=oddtdtcreator"
+    }
+   ],
+   "kind": "event",
+   "image_file": "pawsandpresents.png"
+  },
+  {
+   "title": "POMDR Benefit Shop",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/websiteblurb.png",
+   "image_link": "https://www.peaceofminddogrescue.org/benefitshop.html",
+   "fields": {
+    "Shop Hours": "",
+    "Location": ""
+   },
+   "paragraphs": [
+    "Shop Hours:",
+    "Tuesday - Saturday, 11:00 am - 5 pm (Closed Sunday & Monday)",
+    "Location:",
+    "229B Grand Ave, Pacific Grove",
+    "Learn More and Donate!"
+   ],
+   "links": [
+    {
+     "text": "Learn More and Donate!",
+     "url": "https://www.peaceofminddogrescue.org/benefitshop.html"
+    }
+   ],
+   "kind": "ongoing",
+   "image_file": "websiteblurb.png"
+  },
+  {
+   "title": "The Monica Rua Silver Hearts Fund",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/monicarua.png",
+   "image_link": "https://www.peaceofminddogrescue.org/POMDRDonation.php?notes=silverheartsfund",
+   "fields": {},
+   "paragraphs": [
+    "We are thrilled to announce the creation of the Monica Rua Silver Hearts Fund, a tribute to the tireless dedication that Monica, our co-founder, has to helping senior dogs. After over 15 years of service on the POMDR Board of Directors, Monica continues to make a difference by fostering super seniors, dogs with severe medical conditions, and those in hospice care.",
+    "The Silver Hearts Fund will be used to cover extraordinary medical expenses for POMDR dogs, ensuring they receive the specialized care they need. Join us in honoring the incredible legacy and commitment that Monica has created by donating today.",
+    "Support A Senior Dog Today"
+   ],
+   "links": [
+    {
+     "text": "Support A Senior Dog Today",
+     "url": "https://www.peaceofminddogrescue.org/POMDRDonation.php?notes=silverheartsfund=Monica Rua Silver Hearts Fund"
+    }
+   ],
+   "kind": "ongoing",
+   "image_file": "monicarua.png"
+  },
+  {
+   "title": "Two Bitch Bourbon Affiliate Link",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/twobitch.png",
+   "image_link": "https://twobitchspirits.com/PoMDR",
+   "fields": {},
+   "paragraphs": [
+    "Two Bitch Spirits is a family owned and operated liquor company out of Eureka, Nevada, where founders Joe and Lauren Luby craft delicious bourbon under the playful Two Bitch™ label. And yes, the Bitches are real.",
+    "POMDR receives 10% of every sale when you purchase through the link below.",
+    "Shop Two Bitch Spirits"
+   ],
+   "links": [
+    {
+     "text": "Shop Two Bitch Spirits",
+     "url": "https://twobitchspirits.com/PoMDR"
+    }
+   ],
+   "kind": "ongoing",
+   "image_file": "twobitch.png"
+  },
+  {
+   "title": "The Tiny Dog with the Huge Heart",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/Berniebook.jpeg",
+   "image_link": "https://www.amazon.com/Tiny-Dog-Huge-Heart/dp/1087992494",
+   "fields": {},
+   "paragraphs": [
+    "The Tiny Dog with the Huge Heart by Stephanie Turcotte Edenholm is intended to inspire compassion and empathy in readers of all ages through the story of the life of a real dog named Bernie, who was adopted from POMDR by our co-founder Monica Rua.",
+    "The book is available on Amazon.com or at the POMDR Bauer Center in Pacific Grove, CA. Proceeds benefit POMDR."
+   ],
+   "links": [
+    {
+     "text": "Amazon.com",
+     "url": "https://www.amazon.com/Tiny-Dog-Huge-Heart/dp/1087992494"
+    }
+   ],
+   "kind": "ongoing",
+   "image_file": "Berniebook.jpeg"
+  },
+  {
+   "title": "Wooftrax \"Walk for a Dog\"",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/WooftraxWH.jpeg",
+   "image_link": "https://www.wooftrax.com",
+   "fields": {},
+   "paragraphs": [
+    "You can now support POMDR and help us save more senior dogs by using the Wooftrax app and selecting POMDR as your animal charity of choice. The app is free and it's easy to log your walk.",
+    "The more people actively walking with Wooftrax, the greater the donation to Peace of Mind Dog Rescue! Every walk counts, whether it's around the block or a long hike.",
+    "No dog in your life right now? No problem. You can still record your walk with the app's \"virtual dog,\" Cassie!",
+    "Learn more about Wooftrax"
+   ],
+   "links": [
+    {
+     "text": "Wooftrax",
+     "url": "https://www.wooftrax.com"
+    },
+    {
+     "text": "Learn more about Wooftrax",
+     "url": "https://www.wooftrax.com"
+    }
+   ],
+   "kind": "ongoing",
+   "image_file": "WooftraxWH.jpeg"
+  },
+  {
+   "title": "Cards and More by Catherine Sullivan Benefiting POMDR",
+   "image": "https://www.peaceofminddogrescue.org/images/webemails/uploads/sullivan.jpg",
+   "image_link": "https://www.zazzle.com/store/catherinesullivanart",
+   "fields": {},
+   "paragraphs": [
+    "Artist and POMDR supporter and volunteer, Catherine Sullivan, has created a website showcasing her dog and floral themed artwork and greeting cards.",
+    "We have an assortment of Catherine's greeting cards, postcards and canvas totes for sale at the POMDR Bauer Center (615 Forest Ave, Pacific Grove).",
+    "You can also purchase Catherine's cards and artwork through her zazzle website.",
+    "100% of proceeds from the sale of her merchandise go to POMDR!",
+    "Next Adoption EventPatagonia Outlet",
+    "Saturday, Nov 14 11 - 1:30pm",
+    "415 River Street Suite C, Santa Cruz",
+    "See All Events",
+    "Calendar",
+    "Santa Cruz Holiday Parade",
+    "Saturday, Dec 5 10:00am - 12:00pm",
+    "Pacific Ave. & Laurel Ave.",
+    "Fun holiday parade with adoptable POMDR dogs! All friendly dogs are welcome. Festive holiday encouraged for all.",
+    "Paws & Presents Holiday Market",
+    "Sunday, Dec 6 1 - 3:30pm",
+    "The Club at Pasadera, Monterey",
+    "Enjoy artisan goods, festive food and drinks, live music, and a joyful, dog-loving atmosphere. $25 Adults, $10 Children"
+   ],
+   "links": [
+    {
+     "text": "zazzle website",
+     "url": "http://www.zazzle.com/store/catherinesullivanart "
+    },
+    {
+     "text": "See All Events",
+     "url": "https://www.peaceofminddogrescue.org/adoptionevents.php"
+    }
+   ],
+   "kind": "ongoing",
+   "image_file": "sullivan.jpg"
+  }
+ ],
+ "next_adoption_event_sidebar": []
+}

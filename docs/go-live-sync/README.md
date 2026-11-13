@@ -1,105 +1,55 @@
-# Go-live data sync: dogs, staff and events matching www.pomdr.org
+# Go-live data: everything from www.pomdr.org, gathered for one mass update
 
-Prepared 2026-11-13 at Andrew's request. Andrew has said POMDR has the
-authority to make these changes. Nothing on production has been changed: this
-machine has no connection to the production database, so the change set has to
-be run by someone who does.
+Prepared 2026-11-13 at Andrew's request. Nothing on production has been
+changed: staff, events and dogs are rows in the production database, which this
+machine cannot reach. The update is built, tested and waiting in Ronnie's
+repository as `db/sync/2026-11-13-match-live-site.sql`.
 
 ## What is here
 
-- `prod-sync-2026-11-13.sql`: one transaction, about 500 statements.
-- `build_sync_sql.py`: the script that wrote it, from the live public pages and
-  the production backup `db/backups/pomdr-20261112.sql.gz`.
+| File | What it is |
+|---|---|
+| `MASS-UPDATE-REPORT-2026-11-13.md` | Every change in plain words: each person, each event, each dog |
+| `mass-update-2026-11-13.sql` | The update itself. One transaction, safe to run twice |
+| `data/live-dogs.json` | All 91 dogs on the live site: 76 adoptable, 6 hospice, 9 courtesy. Bio, breed, sex, age, weight, sponsors, status and every photo address |
+| `data/live-staff.json` | All 27 people on the About page, in order, with title, group, full bio and portrait |
+| `data/live-events-and-news.json` | The 4 adoption events and all 9 What's Happening items, with text, links and images |
+| `build_mass_update.py` | Writes the SQL and the report from the three data files and a production backup |
+| `MESSAGE-FOR-RONNIE.md` | The request to run it, ready to paste |
+
+The photographs themselves (353 dog photos, 27 portraits, 9 What's Happening
+images, 80 MB) are in `photo-library/live-site-2026-11-13/`, which is kept out
+of git.
 
 ## How it was tested
 
-The 2026-11-12 backup was loaded into a separate local database and the file
-was run against it twice. The second run changed nothing. All 149 pages then
-rendered with no PHP warnings, and the local lists were compared with the live
-site name by name.
+Ronnie's 2026-11-12 backup was loaded into a separate local database and the
+update run against it twice; the second run changed nothing. Then, on the local
+site:
 
-| | Before | After | Live site |
-|---|---|---|---|
-| Adoptable dogs | 83 (13 of them on the live site) | 68 | 71 |
-| Hospice dogs | 5 | 6 | 6 |
-| Courtesy listings | 0 | 9 | 9 |
-| Staff | 28 | 27, same people, same order | 27 |
-| Upcoming adoption events | 0 | 4 | 4 |
-| Upcoming special events | 0 | 3 | 3 |
+- the adoptable, hospice and courtesy lists were compared with the live site by
+  name: 68 of 71, 6 of 6, 9 of 9;
+- all 68 adoptable dog pages carry the live site's bio;
+- the staff page has the same 27 people in the same order with the same titles,
+  and all 27 bios match word for word;
+- the seven events are listed;
+- all 149 pages render with no PHP warnings.
 
-The three adoptable dogs it does not publish are listed under "Needs a person".
+## The three dogs it does not publish
 
-## To run it
+Kelpie, Zephyr (was Sonny) and Biggie are on the live adoptable page. Their
+records in the new system are flagged community care, which hides a dog from
+every public page. Clearing that flag is a staff decision, so the update leaves
+them alone.
 
-On the admin box, against production:
+## To refresh it
 
-    mysql prod < prod-sync-2026-11-13.sql
-
-It prints a before and an after count. The public site picks the changes up at
-the next hourly build.
-
-## What it does
-
-**Staff.** Unpublishes Cortina Whitmore and Emily Termotto (Andrew's request)
-and Elizabeth Ramsay and Hannah Wakefield (also gone from the live About page).
-Adds Nisha Addleman, Courtney Young and Briana Ryan, who are on the live page
-and not in `team`. Updates three titles to the live site's wording: Carmelita
-Garcia, Benefit Shop Manager; Cameron Donegan, Development Director; Susan
-Ferriby, Secretary/Treasurer. Office staff take the live site's order. Rows are
-unpublished, never deleted.
-
-**Events.** Adds the four adoption events and three special events the live
-site lists, published. If `build/migrate/import-archive-events.php --write` is
-run instead, skip the four adoption events in section 2 of the file, or they
-will be there twice.
-
-**Dogs.**
-
-- 63 dogs on adopt.php that already have a row: public name, bio, breed, sex,
-  age, weight, sponsors and status flags as the live site has them, published.
-  Matched by Shelterluv number where the dog has one.
-- 9 dogs the live site marks "Recently Adopted": marked adopted, with a bio, so
-  they show under Adopted.
-- 6 hospice dogs: flagged hospice and published.
-- 6 dogs on adopt.php with no `animals` row: a new row each, carrying the
-  Shelterluv number where Shelterluv has the dog (Jason, Zero, Kenji, Tulle,
-  Dr. Pepper, Ashanti).
-- 9 courtesy listings: a new row each, flagged courtesy. These are other
-  people's dogs and their write-ups carry the owner's contact details, exactly
-  as the live page does.
-- 72 dogs published today that the live site no longer lists: `is_available`
-  set to 0 and nothing else.
-
-Every UPDATE names its row by id and by name, so a row that has changed since
-the backup is skipped.
-
-## Things to know before running it
-
-1. **Photos for 24 dogs point at the old site.** Those dogs have no photographs
-   in `animals_photos`, so the file stores the live site's own image addresses
-   (`https://www.peaceofminddogrescue.org/images/dogs/...`). `image_url()` hands
-   full addresses back untouched, so they show at once. They are 600px and will
-   break when the old site is switched off. `bin/import-shelterluv-photos.php`
-   for those dogs, then `bin/prefer-shelterluv-photos.php --write`, replaces
-   them with Shelterluv's.
-2. **Needs a person: three dogs.** Kelpie, Zephyr (was Sonny) and Biggie are on
-   the live adopt page, and their rows here (2165 Kelpie Van Wagner, 300 Zephyr
-   Bendel, 1963 Koa Gonzales) are flagged community care (`is_cc = 1`), which
-   keeps a dog off every public page. The file leaves them alone. If the flag is
-   stale, clearing it in the admin and publishing the dog finishes the job.
-3. **Adoption dates.** A recently adopted dog with no `adopted_date` gets
-   today's date, so it sorts with the newest. The real dates are in Shelterluv.
-4. **Dogs taken off the Adopt page are not marked adopted.** 59 of them are
-   "Healthy In Home" in Shelterluv. Whether `sync-adopted` should pick them up
-   is a question for Ronnie; this file only clears the published switch.
-5. **It is a snapshot.** The live site changes daily. The lasting fix is the
-   one in `Import.md` and POMDR-18: publishing that follows the source, not a
-   one-off file. Until then this needs repeating, by re-running
-   `build_sync_sql.py` against a fresh backup.
+The live site changes daily (it listed 81 adoptable dogs on 2026-11-12 and 76
+on 2026-11-13). To rebuild against a newer day, read the live pages again into
+`data/`, parse the newest backup, and run `build_mass_update.py`.
 
 ## Local preview
 
-The local preview (http://127.0.0.1:8777/) now runs on the copy of production
-with this file applied, so it shows what production will look like.
-`includes/config.local.php` points at the local database `pomdr` for that;
-the earlier local database was `pomdr_hub`.
+http://127.0.0.1:8777/ runs on the copy of production with the update applied.
+`includes/config.local.php` points at the local database `pomdr` for that; the
+earlier local database was `pomdr_hub`.
