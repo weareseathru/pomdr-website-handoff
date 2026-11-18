@@ -114,6 +114,7 @@ built and off, as decided.
 | Foster cards like the hospice cards, the reason on the right, click through to the dog's page | Sideways cards, one to a row: photo left; right side has a purple line saying what kind of home the dog needs (short stay with dates, or until adopted), then the story opening; the whole card opens the dog's page with the bio. A staff-written reason per dog still needs POMDR-65 (Ronnie) |
 | Remove "Who we are" / "Visit us" under About Us; put Job opportunities there | Headings gone, two plain columns; Job opportunities moved from Volunteer to About Us |
 | Volunteer opportunities, that page, or Volunteer Application | Volunteer menu lists Volunteer opportunities (/volunteer/, band title renamed to match) and Volunteer application |
+| Follow-up (Andrew): the card should show the live site's "why they need a foster" paragraph, not the bio; the dog page shows it below the bio | Built 4462cd0: migration 042 adds `foster_reason`, db/sync/2026-11-18-foster-reasons.sql fills 8 dogs from the live page. On production only after Ronnie runs both files; staff edit box in the admin still POMDR-65 |
 
 ## Open with Carie (to settle in the next conversation)
 
@@ -136,3 +137,5 @@ built and off, as decided.
   panel taken to 42% plus text shadow (9a92171); everything else confirmed.
 - 2026-11-18: round 4, meeting notes. Four items built and pushed to
   Ronnie's main (f456ee3); per-dog foster reason still POMDR-65.
+- 2026-11-18: foster reasons on the card and the dog page (4462cd0); needs
+  Ronnie to run migration 042 and the fill file.
