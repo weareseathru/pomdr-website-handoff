@@ -1,13 +1,137 @@
 {
- "read_at": "2026-11-13T11:24",
+ "read_at": "2026-11-16T16:55",
  "source": "https://www.peaceofminddogrescue.org/",
  "dogs": [
   {
    "list": "adoptable",
    "order": 1,
+   "old_site_id": "5109",
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5109",
+   "status_label": "Foster needed",
+   "name": "Pudding",
+   "photos": [
+    "images/dogs/Pudding111426sm.jpg",
+    "images/dogs/Pudding111426ft.jpg",
+    "images/dogs/Pudding111426bg3.jpg",
+    "images/dogs/Pudding111426bg4.jpg"
+   ],
+   "captions": [],
+   "animals": [
+    {
+     "looks_like": "Yorkie, Maltese mix",
+     "facts": "Male, 12 years old (estimated) , 10 pounds",
+     "sex": "Male",
+     "age_years": 12.0,
+     "age_is_estimate": true,
+     "weight_lbs": 10.0
+    }
+   ],
+   "bio": [
+    "Pudding is just as sweet as his name! This patient man has been through quite a bit, yet that hasn't changed his lovely disposition. He likes people and other dogs--including a very curious German Shepherd! He came to POMDR quite bloated and still showed grace and even a playful side.",
+    "Pudding is well on the road to recovery, and we are so excited to see how his true personality shines as he feels better and better, but from what we've seen, he has been nothing but lovely.",
+    "Pudding joined POMDR from Hitchcock Road Animal Services due to his senior status."
+   ],
+   "sponsors": "",
+   "video": "",
+   "adopted_note": "",
+   "photo_files": [
+    {
+     "file": "Pudding111426sm.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Pudding111426sm.jpg"
+    },
+    {
+     "file": "Pudding111426ft.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Pudding111426ft.jpg"
+    },
+    {
+     "file": "Pudding111426bg3.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Pudding111426bg3.jpg"
+    },
+    {
+     "file": "Pudding111426bg4.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Pudding111426bg4.jpg"
+    }
+   ]
+  },
+  {
+   "list": "adoptable",
+   "order": 2,
+   "old_site_id": "5102",
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5102",
+   "status_label": "Foster needed",
+   "name": "Harvest",
+   "photos": [
+    "images/dogs/Harvest111126sm.jpg",
+    "images/dogs/Harvest111126ft.jpg",
+    "images/dogs/Harvest111126bg3.jpg",
+    "images/dogs/Harvest111126bg4.jpg",
+    "images/dogs/Harvest111126bg5.jpg"
+   ],
+   "captions": [],
+   "animals": [
+    {
+     "looks_like": "Yorkshire Terrier mix",
+     "facts": "Female, 8 years old (estimated) , 8 pounds",
+     "sex": "Female",
+     "age_years": 8.0,
+     "age_is_estimate": true,
+     "weight_lbs": 8.0
+    }
+   ],
+   "bio": [
+    "Harvest is a sweet girl, good with people and dogs, who we are still getting to know! She has been a little sniffly and is showing early signs of a cold, but that hasn't stopped her sweet disposition. Everyone who meets her falls in love with her, and we can't wait for you to fall in love with her too!",
+    "Harvest joined POMDR from Bradshaw Animal Shelter when it was determined that her senior status made her a good fit for our program."
+   ],
+   "sponsors": "",
+   "video": "",
+   "adopted_note": "",
+   "photo_files": [
+    {
+     "file": "Harvest111126sm.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Harvest111126sm.jpg"
+    },
+    {
+     "file": "Harvest111126ft.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Harvest111126ft.jpg"
+    },
+    {
+     "file": "Harvest111126bg3.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Harvest111126bg3.jpg"
+    },
+    {
+     "file": "Harvest111126bg4.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Harvest111126bg4.jpg"
+    },
+    {
+     "file": "Harvest111126bg5.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Harvest111126bg5.jpg"
+    }
+   ]
+  },
+  {
+   "list": "adoptable",
+   "order": 3,
    "old_site_id": "5107",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5107",
-   "status_label": "",
+   "status_label": "Foster needed",
    "name": "Parker",
    "photos": [
     "images/dogs/Parker111226sm.jpg",
@@ -64,7 +188,65 @@
   },
   {
    "list": "adoptable",
-   "order": 2,
+   "order": 4,
+   "old_site_id": "5106",
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5106",
+   "status_label": "Foster needed",
+   "name": "Gobblina",
+   "photos": [
+    "images/dogs/Gobblina111226sm.jpg",
+    "images/dogs/Gobblina111226ft.jpg",
+    "images/dogs/Gobblina111226bg3.jpg",
+    "images/dogs/Gobblina111226bg4.jpg"
+   ],
+   "captions": [],
+   "animals": [
+    {
+     "looks_like": "Shih Tzu mix",
+     "facts": "Female, 3 years old (estimated) , 9 pounds",
+     "sex": "Female",
+     "age_years": 3.0,
+     "age_is_estimate": true,
+     "weight_lbs": 9.0
+    }
+   ],
+   "bio": [
+    "Gobble gobble! Meet Gobblina! This adorable Shih Tzu mix is serving up a whole feast of love! Gobblina is a happy, affectionate little lady with a heart as big as Thanksgiving dinner. She's got plenty of love to give and is ready to gobble up all the cuddles you can offer. Who's ready to make room for this sweet little turkey at their table (and on their couch)?",
+    "Gobblina joined POMDR from Bradshaw Animal Shelter in Sacramento after being found as a stray."
+   ],
+   "sponsors": "",
+   "video": "",
+   "adopted_note": "",
+   "photo_files": [
+    {
+     "file": "Gobblina111226sm.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Gobblina111226sm.jpg"
+    },
+    {
+     "file": "Gobblina111226ft.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Gobblina111226ft.jpg"
+    },
+    {
+     "file": "Gobblina111226bg3.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Gobblina111226bg3.jpg"
+    },
+    {
+     "file": "Gobblina111226bg4.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Gobblina111226bg4.jpg"
+    }
+   ]
+  },
+  {
+   "list": "adoptable",
+   "order": 5,
    "old_site_id": "5091",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5091",
    "status_label": "Foster needed",
@@ -123,7 +305,7 @@
   },
   {
    "list": "adoptable",
-   "order": 3,
+   "order": 6,
    "old_site_id": "5088",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5088",
    "status_label": "Foster needed",
@@ -182,10 +364,10 @@
   },
   {
    "list": "adoptable",
-   "order": 4,
+   "order": 7,
    "old_site_id": "5100",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5100",
-   "status_label": "Foster needed",
+   "status_label": "",
    "name": "Tofurky",
    "photos": [
     "images/dogs/Tofurky110626sm.jpg",
@@ -241,66 +423,66 @@
   },
   {
    "list": "adoptable",
-   "order": 5,
-   "old_site_id": "5099",
-   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5099",
-   "status_label": "Recently Adopted",
-   "name": "Fawn",
+   "order": 8,
+   "old_site_id": "5098",
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5098",
+   "status_label": "",
+   "name": "Elm",
    "photos": [
-    "images/dogs/Fawn110526sm.jpg",
-    "images/dogs/Fawn110526ft.jpg",
-    "images/dogs/Fawn110526bg3.jpg",
-    "images/dogs/Fawn110526bg4.jpg"
+    "images/dogs/Elm110426sm.jpg",
+    "images/dogs/Elm110426ft.jpg",
+    "images/dogs/Elm110426bg3.jpg",
+    "images/dogs/Elm110426bg4.jpg"
    ],
    "captions": [],
    "animals": [
     {
-     "looks_like": "Poodle Mix",
-     "facts": "Male, 4 years old (estimated) , 12 pounds",
-     "sex": "Male",
-     "age_years": 4.0,
+     "looks_like": "Shepherd mix",
+     "facts": "Female, 11 years old (estimated) , 51 pounds",
+     "sex": "Female",
+     "age_years": 11.0,
      "age_is_estimate": true,
-     "weight_lbs": 12.0
+     "weight_lbs": 51.0
     }
    ],
    "bio": [
-    "Meet Fawn, a sweet little gentleman with a name as cute as he is! Gentle and tender, he gets along wonderfully with other dogs and brings a soft, happy charm wherever he goes.",
-    "Fawn's happiest curled up close, soaking in all the cuddles and human affection he can get. Looking for a loving companion with the heart of a baby deer? This adorable boy is ready to fawn all over you!",
-    "Fawn joined us from Hitchcock Road Animal Services after he was found as a stray."
+    "Elm is the definition of easygoing. She walks well on leash and knows her basic commands. She loves going for walks or runs, and when playtime starts, she can be surprisingly energetic. The rest of the time, she is calm, relaxed, and happy to curl up on the floor -- or the couch if you'll let her.",
+    "This girl gets along with everyone. She is great with all kinds of dogs, gentle with kids, and she loves meeting new people. She has even lived happily with both adult cats and kittens! She can be left alone for a workday without any destructive behavior, though she will be very happy to see you when you get home.",
+    "Elm has been on quite a journey, being rescued from neglect. After her rescuer's health declined and an emergency came up with her caretaker, she found herself seeking a safe place in rescue. Despite everything, Elm has spent her life giving love to everyone around her. Could you be the one to give it right back?"
    ],
    "sponsors": "",
    "video": "",
-   "adopted_note": "Fawn was adopted!",
+   "adopted_note": "",
    "photo_files": [
     {
-     "file": "Fawn110526sm.jpg",
+     "file": "Elm110426sm.jpg",
      "width": 600,
      "height": 450,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526sm.jpg"
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Elm110426sm.jpg"
     },
     {
-     "file": "Fawn110526ft.jpg",
+     "file": "Elm110426ft.jpg",
      "width": 600,
      "height": 450,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526ft.jpg"
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Elm110426ft.jpg"
     },
     {
-     "file": "Fawn110526bg3.jpg",
+     "file": "Elm110426bg3.jpg",
      "width": 600,
      "height": 451,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526bg3.jpg"
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Elm110426bg3.jpg"
     },
     {
-     "file": "Fawn110526bg4.jpg",
+     "file": "Elm110426bg4.jpg",
      "width": 600,
-     "height": 450,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526bg4.jpg"
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Elm110426bg4.jpg"
     }
    ]
   },
   {
    "list": "adoptable",
-   "order": 6,
+   "order": 9,
    "old_site_id": "4692",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4692",
    "status_label": "",
@@ -378,7 +560,7 @@
   },
   {
    "list": "adoptable",
-   "order": 7,
+   "order": 10,
    "old_site_id": "5097",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5097",
    "status_label": "Foster needed",
@@ -437,7 +619,7 @@
   },
   {
    "list": "adoptable",
-   "order": 8,
+   "order": 11,
    "old_site_id": "4866",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4866",
    "status_label": "",
@@ -500,7 +682,7 @@
   },
   {
    "list": "adoptable",
-   "order": 9,
+   "order": 12,
    "old_site_id": "5082",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5082",
    "status_label": "",
@@ -559,7 +741,7 @@
   },
   {
    "list": "adoptable",
-   "order": 10,
+   "order": 13,
    "old_site_id": "5067",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5067",
    "status_label": "",
@@ -624,7 +806,7 @@
   },
   {
    "list": "adoptable",
-   "order": 11,
+   "order": 14,
    "old_site_id": "5064",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5064",
    "status_label": "",
@@ -683,7 +865,7 @@
   },
   {
    "list": "adoptable",
-   "order": 12,
+   "order": 15,
    "old_site_id": "5024",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5024",
    "status_label": "",
@@ -749,7 +931,7 @@
   },
   {
    "list": "adoptable",
-   "order": 13,
+   "order": 16,
    "old_site_id": "4921",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4921",
    "status_label": "",
@@ -808,7 +990,7 @@
   },
   {
    "list": "adoptable",
-   "order": 14,
+   "order": 17,
    "old_site_id": "4792",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4792",
    "status_label": "",
@@ -877,7 +1059,7 @@
   },
   {
    "list": "adoptable",
-   "order": 15,
+   "order": 18,
    "old_site_id": "5095",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5095",
    "status_label": "",
@@ -936,7 +1118,7 @@
   },
   {
    "list": "adoptable",
-   "order": 16,
+   "order": 19,
    "old_site_id": "4963",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4963",
    "status_label": "",
@@ -1003,7 +1185,7 @@
   },
   {
    "list": "adoptable",
-   "order": 17,
+   "order": 20,
    "old_site_id": "3878",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=3878",
    "status_label": "",
@@ -1070,7 +1252,7 @@
   },
   {
    "list": "adoptable",
-   "order": 18,
+   "order": 21,
    "old_site_id": "5054",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5054",
    "status_label": "",
@@ -1128,7 +1310,7 @@
   },
   {
    "list": "adoptable",
-   "order": 19,
+   "order": 22,
    "old_site_id": "4710",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4710",
    "status_label": "Foster needed",
@@ -1187,7 +1369,7 @@
   },
   {
    "list": "adoptable",
-   "order": 20,
+   "order": 23,
    "old_site_id": "5075",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5075",
    "status_label": "",
@@ -1247,7 +1429,7 @@
   },
   {
    "list": "adoptable",
-   "order": 21,
+   "order": 24,
    "old_site_id": "5060",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5060",
    "status_label": "",
@@ -1305,10 +1487,10 @@
   },
   {
    "list": "adoptable",
-   "order": 22,
+   "order": 25,
    "old_site_id": "5094",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5094",
-   "status_label": "Foster needed",
+   "status_label": "",
    "name": "Hocus",
    "photos": [
     "images/dogs/Hocus102726sm.jpg",
@@ -1371,7 +1553,7 @@
   },
   {
    "list": "adoptable",
-   "order": 23,
+   "order": 26,
    "old_site_id": "5093",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5093",
    "status_label": "",
@@ -1431,66 +1613,7 @@
   },
   {
    "list": "adoptable",
-   "order": 24,
-   "old_site_id": "5092",
-   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5092",
-   "status_label": "Recently Adopted",
-   "name": "Van Helsing",
-   "photos": [
-    "images/dogs/VanHelsing102726sm.jpg",
-    "images/dogs/VanHelsing102726ft.jpg",
-    "images/dogs/VanHelsing102726bg3.jpg",
-    "images/dogs/VanHelsing102726bg4.jpg"
-   ],
-   "captions": [],
-   "animals": [
-    {
-     "looks_like": "Yorkie",
-     "facts": "Male, 9 years old (estimated) , 6 pounds",
-     "sex": "Male",
-     "age_years": 9.0,
-     "age_is_estimate": true,
-     "weight_lbs": 6.0
-    }
-   ],
-   "bio": [
-    "Don't let the name fool you! Van Helsing isn't hunting vampires; he's hunting for cuddles, cozy laps, and a forever home! This charming little man may have a name fit for a spooky legend, but there's nothing scary about his sweet personality! Van Helsing arrived at the shelter severely matted and in desperate need of some TLC. But you'd never guess he'd had a rough start by his incredibly happy spirit and irresistible charm!",
-    "Van Helsing is a friendly little fellow who gets along well with other dogs, but his true passion is soaking up all the love and attention he can get from his favorite humans. He's a professional snuggler with a heart of gold, and he's ready to put his spooky past behind him! No tricks here, just one very sweet treat waiting for his happily ever after!",
-    "Van Helsing joined us from Bradshaw County Animal Services after he was found as a stray, horribly matted and in need of some care. Due to his senior status and the state of neglect he had suffered, they felt he would do best to find his forever family with a senior focused rescue."
-   ],
-   "sponsors": "",
-   "video": "",
-   "adopted_note": "Van Helsing was adopted!",
-   "photo_files": [
-    {
-     "file": "VanHelsing102726sm.jpg",
-     "width": 600,
-     "height": 450,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726sm.jpg"
-    },
-    {
-     "file": "VanHelsing102726ft.jpg",
-     "width": 600,
-     "height": 450,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726ft.jpg"
-    },
-    {
-     "file": "VanHelsing102726bg3.jpg",
-     "width": 600,
-     "height": 450,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726bg3.jpg"
-    },
-    {
-     "file": "VanHelsing102726bg4.jpg",
-     "width": 600,
-     "height": 451,
-     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726bg4.jpg"
-    }
-   ]
-  },
-  {
-   "list": "adoptable",
-   "order": 25,
+   "order": 27,
    "old_site_id": "5090",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5090",
    "status_label": "",
@@ -1549,7 +1672,7 @@
   },
   {
    "list": "adoptable",
-   "order": 26,
+   "order": 28,
    "old_site_id": "5089",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5089",
    "status_label": "",
@@ -1608,7 +1731,7 @@
   },
   {
    "list": "adoptable",
-   "order": 27,
+   "order": 29,
    "old_site_id": "4264",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4264",
    "status_label": "",
@@ -1675,7 +1798,7 @@
   },
   {
    "list": "adoptable",
-   "order": 28,
+   "order": 30,
    "old_site_id": "5086",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5086",
    "status_label": "",
@@ -1741,7 +1864,7 @@
   },
   {
    "list": "adoptable",
-   "order": 29,
+   "order": 31,
    "old_site_id": "5084",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5084",
    "status_label": "",
@@ -1800,10 +1923,10 @@
   },
   {
    "list": "adoptable",
-   "order": 30,
+   "order": 32,
    "old_site_id": "5074",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5074",
-   "status_label": "Recently Adopted",
+   "status_label": "",
    "name": "Zero",
    "photos": [
     "images/dogs/Zero101526sm.jpg",
@@ -1858,7 +1981,7 @@
   },
   {
    "list": "adoptable",
-   "order": 31,
+   "order": 33,
    "old_site_id": "5083",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5083",
    "status_label": "Recently Adopted",
@@ -1917,7 +2040,7 @@
   },
   {
    "list": "adoptable",
-   "order": 32,
+   "order": 34,
    "old_site_id": "4944",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4944",
    "status_label": "",
@@ -1983,7 +2106,7 @@
   },
   {
    "list": "adoptable",
-   "order": 33,
+   "order": 35,
    "old_site_id": "4610",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4610",
    "status_label": "",
@@ -2049,7 +2172,7 @@
   },
   {
    "list": "adoptable",
-   "order": 34,
+   "order": 36,
    "old_site_id": "4915",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4915",
    "status_label": "",
@@ -2115,7 +2238,7 @@
   },
   {
    "list": "adoptable",
-   "order": 35,
+   "order": 37,
    "old_site_id": "4932",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4932",
    "status_label": "",
@@ -2182,7 +2305,7 @@
   },
   {
    "list": "adoptable",
-   "order": 36,
+   "order": 38,
    "old_site_id": "4959",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4959",
    "status_label": "",
@@ -2248,7 +2371,7 @@
   },
   {
    "list": "adoptable",
-   "order": 37,
+   "order": 39,
    "old_site_id": "3055",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=3055",
    "status_label": "",
@@ -2307,10 +2430,10 @@
   },
   {
    "list": "adoptable",
-   "order": 38,
+   "order": 40,
    "old_site_id": "4596",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4596",
-   "status_label": "Foster needed",
+   "status_label": "",
    "name": "Biggie",
    "photos": [
     "images/dogs/Biggie101125sm.jpg",
@@ -2373,7 +2496,7 @@
   },
   {
    "list": "adoptable",
-   "order": 39,
+   "order": 41,
    "old_site_id": "5059",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5059",
    "status_label": "",
@@ -2431,7 +2554,7 @@
   },
   {
    "list": "adoptable",
-   "order": 40,
+   "order": 42,
    "old_site_id": "5056",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5056",
    "status_label": "",
@@ -2490,7 +2613,7 @@
   },
   {
    "list": "adoptable",
-   "order": 41,
+   "order": 43,
    "old_site_id": "4948",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4948",
    "status_label": "",
@@ -2556,10 +2679,10 @@
   },
   {
    "list": "adoptable",
-   "order": 42,
+   "order": 44,
    "old_site_id": "5050",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5050",
-   "status_label": "Foster needed 11/24-11/30",
+   "status_label": "",
    "name": "Kenji",
    "photos": [
     "images/dogs/Kenji092426sm.jpg",
@@ -2622,7 +2745,7 @@
   },
   {
    "list": "adoptable",
-   "order": 43,
+   "order": 45,
    "old_site_id": "5041",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5041",
    "status_label": "",
@@ -2688,10 +2811,10 @@
   },
   {
    "list": "adoptable",
-   "order": 44,
+   "order": 46,
    "old_site_id": "5046",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5046",
-   "status_label": "Adoption pending",
+   "status_label": "",
    "name": "Tulle",
    "photos": [
     "images/dogs/Tulle091826sm.jpg",
@@ -2754,7 +2877,7 @@
   },
   {
    "list": "adoptable",
-   "order": 45,
+   "order": 47,
    "old_site_id": "4994",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4994",
    "status_label": "",
@@ -2813,7 +2936,7 @@
   },
   {
    "list": "adoptable",
-   "order": 46,
+   "order": 48,
    "old_site_id": "5044",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5044",
    "status_label": "Adoption pending",
@@ -2873,7 +2996,7 @@
   },
   {
    "list": "adoptable",
-   "order": 47,
+   "order": 49,
    "old_site_id": "4954",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4954",
    "status_label": "",
@@ -2932,7 +3055,7 @@
   },
   {
    "list": "adoptable",
-   "order": 48,
+   "order": 50,
    "old_site_id": "4901",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4901",
    "status_label": "",
@@ -2992,7 +3115,7 @@
   },
   {
    "list": "adoptable",
-   "order": 49,
+   "order": 51,
    "old_site_id": "5029",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5029",
    "status_label": "",
@@ -3052,7 +3175,7 @@
   },
   {
    "list": "adoptable",
-   "order": 50,
+   "order": 52,
    "old_site_id": "4573",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4573",
    "status_label": "",
@@ -3111,7 +3234,7 @@
   },
   {
    "list": "adoptable",
-   "order": 51,
+   "order": 53,
    "old_site_id": "4418",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4418",
    "status_label": "",
@@ -3170,7 +3293,7 @@
   },
   {
    "list": "adoptable",
-   "order": 52,
+   "order": 54,
    "old_site_id": "5026",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5026",
    "status_label": "",
@@ -3236,7 +3359,7 @@
   },
   {
    "list": "adoptable",
-   "order": 53,
+   "order": 55,
    "old_site_id": "5012",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5012",
    "status_label": "",
@@ -3302,7 +3425,7 @@
   },
   {
    "list": "adoptable",
-   "order": 54,
+   "order": 56,
    "old_site_id": "5011",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5011",
    "status_label": "",
@@ -3368,7 +3491,7 @@
   },
   {
    "list": "adoptable",
-   "order": 55,
+   "order": 57,
    "old_site_id": "4924",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4924",
    "status_label": "",
@@ -3427,7 +3550,7 @@
   },
   {
    "list": "adoptable",
-   "order": 56,
+   "order": 58,
    "old_site_id": "5009",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5009",
    "status_label": "",
@@ -3487,7 +3610,7 @@
   },
   {
    "list": "adoptable",
-   "order": 57,
+   "order": 59,
    "old_site_id": "5006",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5006",
    "status_label": "",
@@ -3546,7 +3669,7 @@
   },
   {
    "list": "adoptable",
-   "order": 58,
+   "order": 60,
    "old_site_id": "5004",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=5004",
    "status_label": "",
@@ -3612,7 +3735,7 @@
   },
   {
    "list": "adoptable",
-   "order": 59,
+   "order": 61,
    "old_site_id": "4999",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4999",
    "status_label": "",
@@ -3678,7 +3801,7 @@
   },
   {
    "list": "adoptable",
-   "order": 60,
+   "order": 62,
    "old_site_id": "4987",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4987",
    "status_label": "",
@@ -3738,7 +3861,7 @@
   },
   {
    "list": "adoptable",
-   "order": 61,
+   "order": 63,
    "old_site_id": "4957",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4957",
    "status_label": "",
@@ -3804,7 +3927,7 @@
   },
   {
    "list": "adoptable",
-   "order": 62,
+   "order": 64,
    "old_site_id": "4980",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4980",
    "status_label": "",
@@ -3863,7 +3986,7 @@
   },
   {
    "list": "adoptable",
-   "order": 63,
+   "order": 65,
    "old_site_id": "4019",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4019",
    "status_label": "",
@@ -3928,7 +4051,7 @@
   },
   {
    "list": "adoptable",
-   "order": 64,
+   "order": 66,
    "old_site_id": "4947",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4947",
    "status_label": "",
@@ -3995,7 +4118,7 @@
   },
   {
    "list": "adoptable",
-   "order": 65,
+   "order": 67,
    "old_site_id": "4946",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4946",
    "status_label": "",
@@ -4060,7 +4183,7 @@
   },
   {
    "list": "adoptable",
-   "order": 66,
+   "order": 68,
    "old_site_id": "4945",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4945",
    "status_label": "",
@@ -4120,7 +4243,7 @@
   },
   {
    "list": "adoptable",
-   "order": 67,
+   "order": 69,
    "old_site_id": "4938",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4938",
    "status_label": "",
@@ -4189,7 +4312,7 @@
   },
   {
    "list": "adoptable",
-   "order": 68,
+   "order": 70,
    "old_site_id": "4844",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4844",
    "status_label": "",
@@ -4257,7 +4380,7 @@
   },
   {
    "list": "adoptable",
-   "order": 69,
+   "order": 71,
    "old_site_id": "4929",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4929",
    "status_label": "Foster needed",
@@ -4315,7 +4438,7 @@
   },
   {
    "list": "adoptable",
-   "order": 70,
+   "order": 72,
    "old_site_id": "4928",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4928",
    "status_label": "",
@@ -4382,7 +4505,7 @@
   },
   {
    "list": "adoptable",
-   "order": 71,
+   "order": 73,
    "old_site_id": "4925",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4925",
    "status_label": "",
@@ -4442,7 +4565,7 @@
   },
   {
    "list": "adoptable",
-   "order": 72,
+   "order": 74,
    "old_site_id": "4594",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4594",
    "status_label": "",
@@ -4501,7 +4624,7 @@
   },
   {
    "list": "adoptable",
-   "order": 73,
+   "order": 75,
    "old_site_id": "4297",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4297",
    "status_label": "",
@@ -4567,7 +4690,7 @@
   },
   {
    "list": "adoptable",
-   "order": 74,
+   "order": 76,
    "old_site_id": "4563",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4563",
    "status_label": "",
@@ -4626,7 +4749,7 @@
   },
   {
    "list": "adoptable",
-   "order": 75,
+   "order": 77,
    "old_site_id": "4208",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4208",
    "status_label": "",
@@ -4692,7 +4815,7 @@
   },
   {
    "list": "adoptable",
-   "order": 76,
+   "order": 78,
    "old_site_id": "4652",
    "url": "https://www.peaceofminddogrescue.org/dog.php?id=4652",
    "status_label": "Recently Adopted",
@@ -4753,6 +4876,124 @@
      "width": 600,
      "height": 450,
      "url": "https://www.peaceofminddogrescue.org/images/dogs/JamesyBoy111525bg5.jpg"
+    }
+   ]
+  },
+  {
+   "list": "adoptable",
+   "order": 79,
+   "old_site_id": "5099",
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5099",
+   "status_label": "Recently Adopted",
+   "name": "Fawn",
+   "photos": [
+    "images/dogs/Fawn110526sm.jpg",
+    "images/dogs/Fawn110526ft.jpg",
+    "images/dogs/Fawn110526bg3.jpg",
+    "images/dogs/Fawn110526bg4.jpg"
+   ],
+   "captions": [],
+   "animals": [
+    {
+     "looks_like": "Poodle Mix",
+     "facts": "Male, 4 years old (estimated) , 12 pounds",
+     "sex": "Male",
+     "age_years": 4.0,
+     "age_is_estimate": true,
+     "weight_lbs": 12.0
+    }
+   ],
+   "bio": [
+    "Meet Fawn, a sweet little gentleman with a name as cute as he is! Gentle and tender, he gets along wonderfully with other dogs and brings a soft, happy charm wherever he goes.",
+    "Fawn's happiest curled up close, soaking in all the cuddles and human affection he can get. Looking for a loving companion with the heart of a baby deer? This adorable boy is ready to fawn all over you!",
+    "Fawn joined us from Hitchcock Road Animal Services after he was found as a stray."
+   ],
+   "sponsors": "",
+   "video": "",
+   "adopted_note": "Fawn was adopted!",
+   "photo_files": [
+    {
+     "file": "Fawn110526sm.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526sm.jpg"
+    },
+    {
+     "file": "Fawn110526ft.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526ft.jpg"
+    },
+    {
+     "file": "Fawn110526bg3.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526bg3.jpg"
+    },
+    {
+     "file": "Fawn110526bg4.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/Fawn110526bg4.jpg"
+    }
+   ]
+  },
+  {
+   "list": "adoptable",
+   "order": 80,
+   "old_site_id": "5092",
+   "url": "https://www.peaceofminddogrescue.org/dog.php?id=5092",
+   "status_label": "Recently Adopted",
+   "name": "Van Helsing",
+   "photos": [
+    "images/dogs/VanHelsing102726sm.jpg",
+    "images/dogs/VanHelsing102726ft.jpg",
+    "images/dogs/VanHelsing102726bg3.jpg",
+    "images/dogs/VanHelsing102726bg4.jpg"
+   ],
+   "captions": [],
+   "animals": [
+    {
+     "looks_like": "Yorkie",
+     "facts": "Male, 9 years old (estimated) , 6 pounds",
+     "sex": "Male",
+     "age_years": 9.0,
+     "age_is_estimate": true,
+     "weight_lbs": 6.0
+    }
+   ],
+   "bio": [
+    "Don't let the name fool you! Van Helsing isn't hunting vampires; he's hunting for cuddles, cozy laps, and a forever home! This charming little man may have a name fit for a spooky legend, but there's nothing scary about his sweet personality! Van Helsing arrived at the shelter severely matted and in desperate need of some TLC. But you'd never guess he'd had a rough start by his incredibly happy spirit and irresistible charm!",
+    "Van Helsing is a friendly little fellow who gets along well with other dogs, but his true passion is soaking up all the love and attention he can get from his favorite humans. He's a professional snuggler with a heart of gold, and he's ready to put his spooky past behind him! No tricks here, just one very sweet treat waiting for his happily ever after!",
+    "Van Helsing joined us from Bradshaw County Animal Services after he was found as a stray, horribly matted and in need of some care. Due to his senior status and the state of neglect he had suffered, they felt he would do best to find his forever family with a senior focused rescue."
+   ],
+   "sponsors": "",
+   "video": "",
+   "adopted_note": "Van Helsing was adopted!",
+   "photo_files": [
+    {
+     "file": "VanHelsing102726sm.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726sm.jpg"
+    },
+    {
+     "file": "VanHelsing102726ft.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726ft.jpg"
+    },
+    {
+     "file": "VanHelsing102726bg3.jpg",
+     "width": 600,
+     "height": 450,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726bg3.jpg"
+    },
+    {
+     "file": "VanHelsing102726bg4.jpg",
+     "width": 600,
+     "height": 451,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/VanHelsing102726bg4.jpg"
     }
    ]
   },
@@ -4938,6 +5179,35 @@
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
+   "name": "Daisey",
+   "animals": [],
+   "captions": [],
+   "video": "",
+   "adopted_note": "",
+   "photos": [
+    "images/dogs/courtesy/Daisey111426.jpg"
+   ],
+   "bio": [
+    "Daisey is an easy girl who is good with everyone, from cats to dogs and adults to children. She is mellow and just looking for a place to call her own! Easy and relaxed, she'll be lounging in the sun or snoozing on your couch.",
+    "Daisey is searching for her new home after her guardian could no longer care for her. Can you help this gentle giant find her forever spot?"
+   ],
+   "sponsors": "",
+   "listed": "Posted 11/14/2026",
+   "photo_files": [
+    {
+     "file": "Daisey111426.jpg",
+     "width": 240,
+     "height": 320,
+     "url": "https://www.peaceofminddogrescue.org/images/dogs/courtesy/Daisey111426.jpg"
+    }
+   ]
+  },
+  {
+   "list": "courtesy",
+   "order": 2,
+   "old_site_id": null,
+   "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
+   "status_label": "",
    "name": "Obi",
    "animals": [],
    "captions": [],
@@ -4964,7 +5234,7 @@
   },
   {
    "list": "courtesy",
-   "order": 2,
+   "order": 3,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -4993,7 +5263,7 @@
   },
   {
    "list": "courtesy",
-   "order": 3,
+   "order": 4,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -5022,7 +5292,7 @@
   },
   {
    "list": "courtesy",
-   "order": 4,
+   "order": 5,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -5052,7 +5322,7 @@
   },
   {
    "list": "courtesy",
-   "order": 5,
+   "order": 6,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -5081,7 +5351,7 @@
   },
   {
    "list": "courtesy",
-   "order": 6,
+   "order": 7,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -5113,7 +5383,7 @@
   },
   {
    "list": "courtesy",
-   "order": 7,
+   "order": 8,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -5143,7 +5413,7 @@
   },
   {
    "list": "courtesy",
-   "order": 8,
+   "order": 9,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",
@@ -5172,7 +5442,7 @@
   },
   {
    "list": "courtesy",
-   "order": 9,
+   "order": 10,
    "old_site_id": null,
    "url": "https://www.peaceofminddogrescue.org/courtesylistings.php",
    "status_label": "",

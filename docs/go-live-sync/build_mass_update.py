@@ -225,13 +225,13 @@ for t, slug, typ, desc, st_, en, loc, addr, city, url, img in EV:
 w('')
 ongoing = [it for it in news['whats_happening'] if it['kind'] != 'event']
 r('')
-r(f"The What's Happening page also carries {len(ongoing)} standing items that are not events: " + '; '.join(i['title'] for i in ongoing) + '. They are gathered in `data/live-events-and-news.json` with their text, links and images. The new site has no table for them, so they are not in the SQL.')
+r(f"The What's Happening page also carries {len(ongoing)} standing items that are not dated events: " + '; '.join(i['title'] for i in ongoing) + '. They are gathered in `data/live-events-and-news.json` and placed on `/special-events/` (with Benefit Shop also at `/benefit-shop/` and Silver Hearts Fund on `/donate/`).')
 r('')
 
 # ------------------------------------------------------------------- 3. dogs
-CARE = {'In Foster Home (regular)', 'In Foster Home (temp)', 'Awaiting Foster', 'Hospice', 'Pending Acceptance'}
+CARE = {'In Foster Home (regular)', 'In Foster Home (temp)', 'Awaiting Foster', 'Hospice', 'Pending Acceptance', 'No Rescue Groups (from shelter)'}
 slkey = lambda s: 'pom-a-' + re.sub(r'^pom-a-', '', str(s['shelterluv_id']).lower())
-by_sl = {str(a['shelterluv_id']).lower(): a for a in P['animals'] if a['shelterluv_id']}
+by_sl = {str(a['shelterluv_id']).lower(): a for a in sorted(P['animals'], key=lambda a: a['is_cc'] != '1') if a['shelterluv_id']}
 slidx = collections.defaultdict(list)
 for s in M['sl']:
     for v in variants(s['name']):
@@ -253,17 +253,18 @@ def match(d):
     sc = [s for v in vs for s in slidx.get(v, [])]
     sc = [s for s in sc if s['status'] in CARE or (adopted and s['status'] == 'Healthy In Home')]
     sc.sort(key=lambda s: (s['status'] in CARE, s['last_updated'] or ''), reverse=True)
+    found_slid = slkey(sc[0]) if sc else None
     for s in sc:
         if slkey(s) in by_sl:
-            return by_sl[slkey(s)], 'Shelterluv number', None
+            return by_sl[slkey(s)], 'Shelterluv number', slkey(s)
     c = [A[i] for v in vs for i in aidx.get(v, set()) if i in A]
     c = [a for a in c if a['is_cc'] != '1' and not a['shelterluv_id'] and a['is_adopted'] != '1']
     c.sort(key=lambda a: int(a['id']), reverse=True)
     if c:
-        return c[0], 'name, no Shelterluv link', None
+        return c[0], 'name, no Shelterluv link', found_slid
     if norm(d['name']) in published_by_name:
-        return published_by_name[norm(d['name'])], 'already published under this name', None
-    return None, '', (slkey(sc[0]) if sc else None)
+        return published_by_name[norm(d['name'])], 'already published under this name', found_slid
+    return None, '', found_slid
 
 
 target = set()
@@ -277,7 +278,7 @@ def facts_of(d):
     return a.get('looks_like') or None, a.get('sex') or None, a.get('age_years'), a.get('weight_lbs')
 
 
-def pet_update(a, d, how):
+def pet_update(a, d, how, new_slid=None):
     pid = a['id']
     kind = d['list']
     label = d['status_label']
@@ -285,8 +286,19 @@ def pet_update(a, d, how):
     adopted = label == 'Recently Adopted'
     bio = plain(d['bio'])
     breed, sex, age, weight = facts_of(d)
-    sets = [f"name_public = IF(COALESCE(name_public, '') = '', {q(d['name'])}, name_public)"]
+    if a['is_available'] != '1':
+        sets = [f"name_public = {q(d['name'])}"]
+    else:
+        sets = [f"name_public = IF(COALESCE(name_public, '') = '', {q(d['name'])}, name_public)"]
+    if not (a.get('slug') or '').strip():
+        new_slug = slug_for(d['name'])
+        sets.append(f"slug = COALESCE(NULLIF(slug, ''), {q(new_slug)})")
+    if not (a.get('shelterluv_id') or '').strip() and new_slid:
+        sets.append(f"shelterluv_id = COALESCE(NULLIF(shelterluv_id, ''), {q(new_slid)})")
     notes = []
+    if a.get('is_cc') == '1':
+        sets.append('is_cc = 0')
+        notes.append('cleared is_cc flag (in Shelterluv foster care and live on adopt.php)')
     if bio:
         sets += [f"description = {q(bio)}", f"short_description = {q(short(bio))}"]
         if not squash(a['description']):
@@ -363,12 +375,8 @@ for d in live['dogs']:
         pet_insert(d, None)
         continue
     a, how, new_slid = match(d)
-    if a is not None and a['is_cc'] == '1':
-        needs_person.append((d, a))
-        w(f"-- NOT CHANGED: {d['name']} matches row {a['id']} ({a['name']}), flagged community care (is_cc = 1). A person clears that flag in the admin, then publishes.")
-        continue
     if a is not None:
-        pet_update(a, d, how)
+        pet_update(a, d, how, new_slid)
     else:
         pet_insert(d, new_slid)
 w('')

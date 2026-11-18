@@ -12,37 +12,41 @@ they need running on production. Nothing has been changed there.
 - `db/sync/README.md` beside it (what it does, how it was tested, five things to know first)
 - `db/sync/2026-11-13-match-live-site-REPORT.md` (every change in plain words)
 
-**How it was tested.** The 2026-11-12 backup was loaded into a separate local
+**How it was tested.** The 2026-11-15 backup was loaded into a separate local
 database and the file was run against it twice. The second run changed nothing.
-All 149 pages rendered clean, and every list was compared with the live site by
+All pages rendered clean, and every list was compared with the live site by
 name.
 
 | | Now | After | Live site |
 |---|---|---|---|
-| Adoptable dogs | 83, of which 13 are on the live site | 68 | 71 |
+| Adoptable dogs | 83, of which 13 are on the live site | 76 | 76 |
 | Hospice dogs | 5 | 6 | 6 |
-| Courtesy listings | 0 | 9 | 9 |
+| Courtesy listings | 0 | 10 | 10 |
 | Staff | 28 | 27, same people and order | 27 |
-| Upcoming events | 0 | 7 | 7 |
+| Upcoming events | 0 | 6 | 6 |
 
 **What it changes.**
 
 - Staff: every title, order and bio as the live site has them; unpublishes
   Cortina Whitmore, Emily Termotto, Elizabeth Ramsay and Hannah Wakefield; adds
   Nisha Addleman, Courtney Young and Briana Ryan.
-- Events: four adoption events and three special events.
+- Events: three upcoming adoption events and three special events (plus the six
+  ongoing What's Happening items added on `/special-events/`).
 - Dogs: bio, breed, sex, age, weight, sponsors and flags from the live pages for
-  63 matched dogs (matched on Shelterluv number), 5 recently adopted, 6 hospice,
-  5 new rows for dogs with no `animals` row, 9 courtesy rows, and
-  `is_available = 0` for 72 dogs the live site no longer lists.
+  67 matched adoptable dogs, 4 recently adopted, 6 hospice, 9 new rows for dogs
+  with no `animals` row, 10 courtesy rows, and `is_available = 0` for 72 dogs
+  the live site no longer lists.
 
 Every UPDATE names its row by id and name. Nothing is deleted.
 
 **Your call on three things** (detail in the README):
 
-1. 23 dogs get the old site's photo addresses until
+1. 24 dogs get the old site's photo addresses until
    `import-shelterluv-photos.php` covers them.
-2. Kelpie, Zephyr and Biggie are flagged `is_cc = 1` and are left alone.
+2. Biggie matches his POMDR row (`id = 1611`, `is_cc = 0`), and Kelpie (`2165`)
+   and Zephyr (`300`), both `In Foster Home (regular)` in Shelterluv, have
+   `is_cc = 0` cleared and public slugs assigned so all 76 adoptable dogs match
+   `www.pomdr.org/adopt.php` 1:1.
 3. This is a snapshot. POMDR-18, publishing that follows the source, is still
    the lasting fix.
 

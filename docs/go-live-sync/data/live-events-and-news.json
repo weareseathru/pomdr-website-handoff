@@ -1,19 +1,7 @@
 {
- "read_at": "2026-11-13T11:25",
+ "read_at": "2026-11-16T16:55",
  "adoption_events_page": "https://www.peaceofminddogrescue.org/adoptionevents.php",
  "adoption_events": [
-  {
-   "type": "Adoption event",
-   "when_as_written": "Saturday, November 14, 11 - 1:30pm",
-   "date": "2026-11-14",
-   "weekday_checks_out": true,
-   "starts": "11:00:00",
-   "ends": "13:30:00",
-   "name": "Patagonia Outlet",
-   "address": "415 River Street Suite C",
-   "city": "Santa Cruz",
-   "notes": "POMDR Information table and adoptable dogs."
-  },
   {
    "type": "Adoption event",
    "when_as_written": "Sunday, November 22, 3 - 6:00pm",
