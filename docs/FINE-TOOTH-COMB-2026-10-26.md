@@ -315,3 +315,30 @@ replacement built from the live site's own words where one exists.
 - New-Build commit: see Design.md section 11, 2026-10-26.
 - Tracker: `docs/CARIES-FEEDBACK.md`, round 2.
 - Ruler: `docs/POMDR-FACTS-FROM-LIVE-SITE-2026-10-26.md`.
+
+## Part E. Andrew's answers to Part B, 2026-11-18 (built and pushed, 3026021)
+
+| Item | Answer | Done |
+|---|---|---|
+| 1, 4, 5 | Proposed wording | Yes |
+| 2 | Keep "Support for senior guardians" | No change |
+| 3, 9 | Keep the promises; "for any reason, ever" becomes "for any reason"; POMDR also sends updates on a dog from time to time | Yes |
+| 6 | "A few times a month" | Yes, home page now agrees with the mailing list page |
+| 7, 8, 15, 16, 23 | Keep | No change |
+| 10 | Past two years of Impact Reports; PDFs from the live site | 2025 and 2024 Impact Reports, 2024 990 added |
+| 11 | Clinic sees Helping Paw clients and program dogs | Already says so |
+| 12, 13 | Answers unclear ("surrender page info is fine", "no") | NOT changed, ask Andrew |
+| 14 | Plainer; "real person" is odd | Sentence was already gone from Contact; the dog page's "A real person reads every application" now reads "We read every application" |
+| 17, 18, 19, 20, 21, 24 | Proposed or live wording | Yes |
+| 22 | Keep, say it once | Sentence no longer on the page; nothing to change |
+| 25 | Live "peace of mind" sentence | Flagged lines were already gone |
+| 26 | Drop the ask-for-money part | Yes |
+| 27 | Benefit Shop is not newsletter content | Removed |
+| 28 | Keep, reworded | Yes |
+| 29 | Confirmed | No change |
+| 30 | Add both | Yes, new 2026 group |
+| 31 | "Dogs who found their forever home." | Yes |
+
+Left for Andrew: the Donate page's report card still shows the 2024 Impact
+Report with its figures (4,500+ dogs, 1,800+ volunteers). Pointing it at the
+2025 report needs the 2025 figures confirmed.
