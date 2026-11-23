@@ -116,6 +116,70 @@ built and off, as decided.
 | Volunteer opportunities, that page, or Volunteer Application | Volunteer menu lists Volunteer opportunities (/volunteer/, band title renamed to match) and Volunteer application |
 | Follow-up (Andrew): the card should show the live site's "why they need a foster" paragraph, not the bio; the dog page shows it below the bio | Built 4462cd0: migration 042 adds `foster_reason`, db/sync/2026-11-18-foster-reasons.sql fills 8 dogs from the live page. On production only after Ronnie runs both files; staff edit box in the admin still POMDR-65 |
 
+## Round 5, the 2026-11-23 full-site review (commits 7461df8, 9673938, 509d10c)
+
+Not from Carie: a senior staff reviewer and her husband went through the whole
+site and sent a written review of the top banners, the home page and the
+footer. Their notes were right, and several of the faults were ours: changes
+we had made and left half finished. Everything below is on Ronnie's main.
+The approved plan is `~/.claude/plans/hazy-knitting-moon.md`.
+
+### Top banners
+
+| Their note | What was built | Status |
+|---|---|---|
+| Tagline missing on small screens (a blank band); fine to drop "since 2009" there | The band is sized by its words; phones show "Helping senior dogs and senior people" | Built |
+| Tagline looks dull; add a paw or a more interesting font | Paw first, set in the heading serif | Built |
+| Uneven space above and below; band too tall | Equal padding, about 37px tall (was 56px, sized for buttons that had gone) | Built |
+| Phones never show the name "Peace of Mind Dog Rescue" | The full logo with the name at every width. Andrew kept the floating card; below 360px the name takes its own row | Built |
+| Donate belongs on the right, before the menu button | Done | Built |
+| "Become a foster" should go to the Volunteer Application | **Not changed.** Andrew wants to ask why the page is a problem first | **Pinned** |
+| Submenu labels inconsistently capitalised; use Title Case | All Title Case, and the pages' own titles follow | Built |
+| Top-level menus behave inconsistently (sometimes open, sometimes navigate) | One rule: a name opens its list and never leaves the page, by click or tap, on every screen | Built |
+| The page a name goes to is sometimes in the submenu, sometimes not | Each section's own page is the first item in its list (Fostering, Get Help Overview, Our Story added) | Built |
+| MC Gives banner only on Home and Donate; should be on every page | A purple band under the tagline on every page | Built |
+| Three corner styles in a small area | Two square bands and the rounded card; the hanging tab is gone | Built |
+
+### Home page
+
+| Their note | What was built | Status |
+|---|---|---|
+| Slideshow text covers the dogs; on phones the words and buttons sit under the photo; buttons duplicate the page | Each slide is a photo and one short phrase, no buttons, on phones too | Built |
+| Carie will provide wording and photos | Four phrases from their list stand in on the current photos | **Waiting on Carie** |
+| Section titles: one colour, one alignment | One title style everywhere: paw, capitals, centred, blue, no subtitle | Built (blue chosen; confirm) |
+| Mission section too wordy | POMDR's one sentence only | Built |
+| Titles for the Adopt/Donate/Volunteer and the three-programme sections | "How You Can Help" and "How POMDR Can Help You" stand in | **Waiting on Carie** |
+| Programmes: a photo and the current website's short wording | Photo cards with the current site's photos and sentences | Built; **photos waiting on Carie** |
+| Adoptable dogs should not be on the home page | Removed | Built |
+| Videos title just "Watch POMDR Videos" | Done | Built |
+| Home videos are not the most recent | The three newest, newest first. /videos/ now follows the live site's order, and gains the 2026 film "This is Our Message to You", which we were missing | Built |
+| "See all videos" should look like a normal button | An outline button under the row | Built |
+| Drop "What your gifts have done" | Done | Built |
+| The 17+ years figure is not useful | Removed | Built |
+| Add the number of people helped by Helping Paw | No such figure exists anywhere we can read; it must come from POMDR | **Waiting on staff** |
+| Events title just "Upcoming Events" | Done | Built |
+| "Next Up" should be on the left | Done | Built |
+| Remove "All Adoption Events" | Done | Built |
+| A button to all upcoming events, styled like See all videos | New page /upcoming-events/ (every event of both kinds), and the button | Built |
+| "Testimonials" title does not match | Same paw title as the rest | Built |
+| Stay in the Loop too wordy | The title, the one line and the button | Built |
+
+### Footer
+
+| Their note | What was built | Status |
+|---|---|---|
+| The link lists repeat the menu; remove them | Removed | Built |
+| Remove the Donate button | Removed | Built |
+| 501(c)(3) said twice | Said once, with the Tax ID | Built |
+| A photo, as on the current website | The Bauer Center photograph | Built |
+
+### Found on the way, in the same vein
+
+- The "More under" list on a section's front page listed the page itself.
+- The stress test still drove the old arrow button.
+- Design.md described a strip with a phone number and a footer site map,
+  neither of which existed any more.
+
 ## Open with Carie (to settle in the next conversation)
 
 | # | Question | Why it matters | Status |
@@ -123,6 +187,9 @@ built and off, as decided.
 | A | Two Donate buttons stacked on phones (strip and header card) | It is the first thing a phone visitor sees | Settled 2026-10-26: one purple Donate in the card, the strip holds the tagline |
 | B | A phone-demotion pass: the Helping Paw application band still leads with "Call (831) 718-9122", and about 30 Call buttons across Get help, Perpetual Care, surrender and the form pages do the same. If forms first is the rule, the form becomes the primary button everywhere and the phone becomes the fallback line | Her stated rule; one sitting to apply | Talk |
 | C | The list of pages she still thinks are "bizarre or incorrect" | We can only fix what she names | Talk |
+| D | Round 5: why is the Become a Foster page a problem? The review asks for the menu item to go to the Volunteer Application; Andrew finds the page benign and wants the reason before changing it | Eleven other links go to that page too | **Pinned, Andrew to ask** |
+| E | Round 5: slideshow phrases and photos; titles and photos for the two help sections | Interim wording and the current site's photos are standing in | Waiting on Carie |
+| F | Round 5: the number of people Helping Paw has helped | The reviewers want it in By the Numbers; we must not invent it | Waiting on staff |
 
 ## Log
 
@@ -139,3 +206,8 @@ built and off, as decided.
   Ronnie's main (f456ee3); per-dog foster reason still POMDR-65.
 - 2026-11-18: foster reasons on the card and the dog page (4462cd0); needs
   Ronnie to run migration 042 and the fill file.
+- 2026-11-23: round 5, the full-site review from a senior staff reviewer and
+  her husband. Three pushes to Ronnie's main: the top of every page
+  (7461df8), the home page and videos (9673938), the footer (509d10c).
+  Become a Foster link pinned for Andrew; phrases, photos and titles waiting
+  on Carie; the Helping Paw figure waiting on staff.
