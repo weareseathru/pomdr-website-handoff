@@ -118,6 +118,13 @@ built and off, as decided.
 
 ## Round 5, the 2026-11-23 full-site review (commits 7461df8, 9673938, 509d10c)
 
+**REVERTED 2026-11-23 (e5660c0), at Andrew's request, for now.** Everything
+in this round was built and pushed, then taken back out the same day; the
+site is as it was before. "Built" below means built and then reverted. The
+work is in the history of Ronnie's repo under the three commits above and
+comes back by reverting e5660c0. Do not rebuild it or restore it until Andrew
+says so.
+
 Not from Carie: a senior staff reviewer and her husband went through the whole
 site and sent a written review of the top banners, the home page and the
 footer. Their notes were right, and several of the faults were ours: changes
@@ -211,3 +218,6 @@ The approved plan is `~/.claude/plans/hazy-knitting-moon.md`.
   (7461df8), the home page and videos (9673938), the footer (509d10c).
   Become a Foster link pinned for Andrew; phrases, photos and titles waiting
   on Carie; the Helping Paw figure waiting on staff.
+- 2026-11-23: round 5 reverted the same day at Andrew's request (e5660c0 on
+  Ronnie's main). The site is as it was before the round; the three commits
+  stay in the history.
