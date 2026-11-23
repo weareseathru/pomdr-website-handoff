@@ -1,0 +1,639 @@
+<title>Photo Placement Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: an evidence ledger. Each row is one spot on the site: the two
+   pictures on the left, the reason and the measurements on the right. */
+:root { --paper:#fff; --ink:#1d2a30; --muted:#56656c; --rule:#d5dee1; --wash:#f1f6f7; --teal:#006c8a; --purple:#632f88;
+  --good:#1f7a4d; --soft:#8a5a00; --bad:#b3261e; --good-bg:#e6f4ec; --soft-bg:#fbf1dc; --bad-bg:#fbe6e4;
+  --serif:"Source Serif 4",Georgia,serif; --sans:"Source Sans 3","Myriad Pro","Segoe UI",Arial,sans-serif; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper:#11191c; --ink:#e6eef0; --muted:#a3b3b9; --rule:#2c3a3f; --wash:#18242a; --teal:#5cc3db; --purple:#c7a3e6; --good:#7fd4a3; --soft:#f0c46a; --bad:#ff9a90; --good-bg:#173326; --soft-bg:#342a12; --bad-bg:#3a1c1a; color-scheme:dark; } }
+:root[data-theme="dark"] { --paper:#11191c; --ink:#e6eef0; --muted:#a3b3b9; --rule:#2c3a3f; --wash:#18242a; --teal:#5cc3db; --purple:#c7a3e6; --good:#7fd4a3; --soft:#f0c46a; --bad:#ff9a90; --good-bg:#173326; --soft-bg:#342a12; --bad-bg:#3a1c1a; color-scheme:dark; }
+* { box-sizing:border-box; }
+body { background:var(--paper); color:var(--ink); font:16px/1.5 var(--sans); }
+.wrap { max-width:62rem; margin:0 auto; padding-block:2rem 4rem; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); }
+h1,h2,h3 { font-family:var(--serif); font-weight:600; line-height:1.15; text-wrap:balance; margin:0; }
+h1 { font-size:2.6rem; color:var(--purple); }
+h2 { font-size:1.8rem; color:var(--purple); margin-top:2.75rem; padding-top:1rem; border-top:3px solid var(--purple); }
+h3 { font-size:1.2rem; color:var(--teal); margin:1.5rem 0 .5rem; }
+p { margin:0; }
+.kicker { font:700 .8rem/1 var(--sans); letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.75rem; }
+.lede { font-size:1.12rem; color:var(--muted); max-width:44rem; margin-top:.7rem; }
+table { border-collapse:collapse; font-variant-numeric:tabular-nums; }
+table.sum { margin-top:1rem; width:100%; max-width:44rem; }
+table.sum td { border-bottom:1px solid var(--rule); padding:.45rem .6rem .45rem 0; vertical-align:top; }
+table.sum td:first-child { font-weight:700; color:var(--purple); width:4rem; }
+ul.rows, ul.plain { list-style:none; margin:0; padding:0; }
+.row { display:grid; grid-template-columns:minmax(0, 23rem) minmax(0, 1fr); gap:1.25rem; padding:1.1rem 0; border-top:1px solid var(--rule); break-inside:avoid; }
+.pair { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; align-content:start; }
+figure { margin:0; min-width:0; }
+figure img { width:100%; display:block; border-radius:4px; background:var(--wash); }
+figcaption { font-size:.8rem; color:var(--muted); margin-top:.25rem; line-height:1.25; }
+.text { display:grid; gap:.55rem; align-content:start; min-width:0; }
+.where { font-weight:700; font-size:1.05rem; line-height:1.3; }
+.why, .proof, .score { font-size:.97rem; }
+.note { font-size:.9rem; color:var(--soft); }
+table.nums { font-size:.9rem; width:100%; }
+table.nums th { text-align:left; font-weight:700; color:var(--muted); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; padding:.15rem .5rem .15rem 0; }
+table.nums td { padding:.2rem .5rem .2rem 0; border-top:1px solid var(--rule); }
+table.nums td:first-child { color:var(--muted); }
+.chip { display:inline-block; font:700 .75rem/1.2 var(--sans); padding:.12rem .4rem; border-radius:.25rem; margin-left:.25rem; }
+.chip-good { color:var(--good); background:var(--good-bg); } .chip-soft { color:var(--soft); background:var(--soft-bg); } .chip-bad { color:var(--bad); background:var(--bad-bg); }
+.tests { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap:1rem 1.5rem; margin-top:1rem; }
+.tests > div { min-width:0; background:var(--wash); border-radius:6px; padding:.9rem 1rem; }
+.tests h4 { font:700 1rem/1.3 var(--sans); margin:0 0 .3rem; }
+.tests p { font-size:.94rem; }
+.plain li { padding:.55rem 0; border-top:1px solid var(--rule); max-width:46rem; }
+.plain strong { display:block; }
+@media (max-width:44rem) { .row { grid-template-columns:1fr; } h1 { font-size:2rem; } }
+@page { size:letter; margin:.5in; }
+@media print { :root { --paper:#fff; --ink:#1d2a30; --muted:#4f5e65; --rule:#cfd8db; --wash:#f1f6f7; --teal:#006c8a; --purple:#632f88; --good:#1f7a4d; --soft:#8a5a00; --bad:#b3261e; --good-bg:#e6f4ec; --soft-bg:#fbf1dc; --bad-bg:#fbe6e4; color-scheme:light; }
+  body { font-size:10pt; } .wrap { max-width:none; padding:0; } h2 { break-before:page; margin-top:0; } h2.keep { break-before:auto; margin-top:1.5rem; } .chip, .tests > div { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+<div class="wrap">
+<header>
+  <p class="kicker">Peace of Mind Dog Rescue · new website</p>
+  <h1>Photo Placement Plan</h1>
+  <p class="lede">Where each photo goes, why, and the evidence for it. Prepared 12 November 2026 for Andrew Z. Nothing here has been changed on the site yet.</p>
+</header>
+
+<section>
+  <h2 class="keep">The plan in one look</h2>
+  <p class="lede">The rule you set: do not change what already works. So the first move is to keep the photos you like and make them sharp. A photo is only replaced where it is too small and no original could be found.</p>
+  <table class="sum">
+    <tr><td>65</td><td><strong>Left exactly as they are.</strong> Already sharp for the space they fill.</td></tr>
+    <tr><td>12</td><td><strong>Same photo, made sharp.</strong> The full-size original is in your library, so the picture does not change. This includes all four home slideshow photos.</td></tr>
+    <tr><td>21</td><td><strong>Replaced from "website photos 2.0".</strong> Too small today, with no original to upgrade from.</td></tr>
+    <tr><td>11</td><td><strong>Need something the album does not have.</strong> Listed in part C with what each one needs.</td></tr>
+    <tr><td>91</td><td><strong>Album photos held in reserve.</strong> For the optional additions in part D, dog pages, and later rounds.</td></tr>
+  </table>
+
+  <h3>How each choice is proved</h3>
+  <div class="tests">
+    <div><h4>1. Measured, not judged</h4><p>Every photo's pixel width is compared with the width it fills on a laptop. Under 1× is too small, 1× to 1.6× is soft on phones and new laptops, above that is sharp. The site stores photos at 2,000 px at most, so the planned figure is capped there.</p></div>
+    <div><h4>2. Shown, not described</h4><p>Each planned photo appears cropped to the exact shape of its spot, next to what is there today, with the share of the photo that survives the crop.</p></div>
+    <div><h4>3. Scored against your guide</h4><p>Replacements are scored out of 10 on the draft screening guide: feeling, light, framing, POMDR in view, and story. The guide is still waiting for your approval, so treat the scores as provisional.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Part A · Same photo, made sharp (12)</h2>
+  <p class="lede">Nothing visible changes except the sharpness. Each pair below is the site's copy beside the library original, with the fingerprint test that shows they are one photo.</p>
+  <ul class="rows">
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/home-home-hero-adopt-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/home-home-hero-adopt-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Home slideshow, slide 1 (Adoption)</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 3 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>1,280 × 960 px</td><td>3,286 × 2,464 px</td></tr>
+<tr><td>Against the 1370 px it fills</td><td>0.9× <span class="chip chip-bad">Too small</span></td><td>1.5× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>88%</td><td>88%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/home-home-hero-helping-paw-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/home-home-hero-helping-paw-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Home slideshow, slide 2 (Helping Paw)</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 3 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>1,280 × 960 px</td><td>3,497 × 2,623 px</td></tr>
+<tr><td>Against the 1280 px it fills</td><td>1.0× <span class="chip chip-soft">Soft</span></td><td>1.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>88%</td><td>88%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/home-home-hero-mission-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/home-home-hero-mission-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Home slideshow, slide 3 (Our mission)</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 1 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>1,280 × 960 px</td><td>2,923 × 2,192 px</td></tr>
+<tr><td>Against the 1280 px it fills</td><td>1.0× <span class="chip chip-soft">Soft</span></td><td>1.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>88%</td><td>88%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/home-home-hero-volunteer-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/home-home-hero-volunteer-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Home slideshow, slide 4 (Volunteer)</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 1 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>1,024 × 768 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 1280 px it fills</td><td>0.8× <span class="chip chip-bad">Too small</span></td><td>1.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>88%</td><td>88%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/clinic-clinic-plaque-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/clinic-clinic-plaque-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Veterinary clinic, under &quot;Good medicine is what makes a second chance possible.&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 8 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 534 px</td><td>1,296 × 864 px</td></tr>
+<tr><td>Against the 540 px it fills</td><td>1.5× <span class="chip chip-soft">Soft</span></td><td>2.4× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/clinic-clinic-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/clinic-clinic-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Veterinary clinic, under &quot;Veterinary clinic&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 5 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 572 px</td><td>3,270 × 2,336 px</td></tr>
+<tr><td>Against the 517 px it fills</td><td>1.5× <span class="chip chip-soft">Soft</span></td><td>3.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>95%</td><td>95%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-silver-hearts-grandpa-joe-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-silver-hearts-grandpa-joe-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Where your gift goes.&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 2 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>640 × 480 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    <p class="note">This original is only in iCloud. Open it in Photos to download it before export.</p>
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/helping-paw-helping-paw-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/helping-paw-helping-paw-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Helping Paw, under &quot;Helping Paw&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 5 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 600 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 517 px it fills</td><td>1.5× <span class="chip chip-soft">Soft</span></td><td>3.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>85%</td><td>85%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/jobs-job-opportunities-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/jobs-job-opportunities-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Job opportunities, under &quot;Job opportunities&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 6 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 600 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 517 px it fills</td><td>1.5× <span class="chip chip-soft">Soft</span></td><td>3.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/media-in-the-media-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/media-in-the-media-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">In the media, under &quot;In the media&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 8 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 590 px</td><td>3,285 × 2,419 px</td></tr>
+<tr><td>Against the 517 px it fills</td><td>1.5× <span class="chip chip-soft">Soft</span></td><td>3.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/perpetual-care-program-perpetual-care-faq-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/perpetual-care-program-perpetual-care-faq-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Perpetual Care, under &quot;Perpetual Care&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 3 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>580 × 435 px</td><td>4,000 × 3,000 px</td></tr>
+<tr><td>Against the 517 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/why-why-adopt-senior-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/why-why-adopt-senior-after.jpg" alt="" loading="lazy"><figcaption>Original in your library</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Why a senior dog, under &quot;Honest about the health, and the cost.&quot;</p>
+    <p class="proof"><strong>Proof it is the same photo:</strong> the two fingerprints differ in 7 of 256 points. Unrelated photos differ in about 128.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>580 × 435 px</td><td>4,131 × 3,098 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    
+  </div>
+</li></ul>
+</section>
+
+<section>
+  <h2>Part B · Replaced from the album (21)</h2>
+  <p class="lede">Each of these is too small today and has no original in the library. The planned photo is shown in the shape the page will give it. Crops are set by hand at build time, so a face near an edge here will be centered.</p>
+  <ul class="rows">
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/process-clinic-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/process-clinic-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">How adopting works, under &quot;Every dog arrives ready.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Carie asked for vet staff giving care under &quot;Every dog arrives ready&quot;. Three staff with their hands on a calm dog shows the care itself, where the current photo shows the building.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 572 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.5× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>95%</td><td>100%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Hands on the dog, all three focused on the patient, even room light, tidy clinic.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/volunteer-volunteer-photo-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/volunteer-volunteer-photo-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Volunteer, under &quot;Photos from past volunteer appreciation parties.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> The heading is &quot;Photos from past volunteer appreciation parties&quot; and this is the 2026 party: the whole crowd, the dogs, and the &quot;POMDR Volunteers Take the Cake!&quot; sign.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>580 × 283 px</td><td>3,812 × 2,236 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>65%</td><td>78%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 10 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. About ninety people smiling up at the camera, bright sun but no hard face shadows from above, POMDR shirts and sign.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/about-helping-paw-fund-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/about-helping-paw-fund-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">About us, under &quot;Caring for the people too.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Sits under &quot;Caring for the people too.&quot; A senior guardian at home, her spaniel in her arms, is that sentence as a picture.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>259 × 259 px</td><td>3,549 × 2,662 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>0.5× <span class="chip chip-bad">Too small</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>75%</td><td>100%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Warm smile, dog pressed against her, soft indoor light, close framing.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/become-a-foster-dog-chester-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/become-a-foster-dog-chester-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Become a foster, under &quot;Become a foster&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> The page asks people to foster. A volunteer in a Peace of Mind fleece holding an Adopt Me dog among the flowers shows what fostering looks like.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>600 × 448 px</td><td>4,480 × 3,360 px</td></tr>
+<tr><td>Against the 517 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>3.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>84%</td><td>85%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 10 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. Big smile to camera, dog held close and calm, garden light, logo and bandana in view.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/fostering-dog-chester-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/fostering-dog-chester-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Fostering, under &quot;A safe place to land, for however long it takes.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Under &quot;A safe place to land, for however long it takes.&quot; A foster holding a small dog close, both at ease.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>600 × 448 px</td><td>4,480 × 3,360 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 10 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. Warm smile to camera, dog tucked in, soft shade, POMDR hoodie.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/foster-needs-dog-gypsy-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/foster-needs-dog-gypsy-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Foster needs, under &quot;You&#x27;re the bridge.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Under &quot;You&#x27;re the bridge.&quot; A dog kissing the volunteer who is holding it is the bridge in action.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>600 × 451 px</td><td>5,006 × 3,755 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 10 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. Dog licking her cheek, she is laughing, eye level, teal wall, POMDR shirt.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/hospice-silver-hearts-winston-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/hospice-silver-hearts-winston-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Hospice care, under &quot;No dog is ever left behind.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Under &quot;No dog is ever left behind.&quot; The quiet side: an old gray-faced dog resting in someone&#x27;s arm.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>600 × 450 px</td><td>6,642 × 4,428 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>89%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 1/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. Tender, the dog is settled and looking at the camera; light is flatter than the outdoor shots.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/perpetual-care-program-dog-ms-daisy-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/perpetual-care-program-dog-ms-daisy-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Perpetual Care, under &quot;Why plan now.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Under &quot;Why plan now.&quot; An older guardian with her walker and her dog is exactly who the program is for. The current photo is tall and loses 40% to the crop.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>376 × 640 px</td><td>3,576 × 2,682 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>0.7× <span class="chip chip-bad">Too small</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>44%</td><td>100%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 8 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Calm and content, garden light, wide shape fits the spot.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/surrender-help-finding-a-home-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/surrender-help-finding-a-home-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Placing your dog, under &quot;Tell us about your dog&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Opens &quot;Help placing your dog&quot;, a hard moment. Nose to nose with a big old shepherd carries the bond without sadness.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>800 × 601 px</td><td>3,734 × 2,800 px</td></tr>
+<tr><td>Against the 144 px it fills</td><td>5.6× <span class="chip chip-good">Sharp</span></td><td>13.9× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>100%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 10 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. Real connection, both in profile at eye level, soft light, Adopt Me bandana.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/surrender-dog-kamere-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/surrender-dog-kamere-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Placing your dog, under &quot;What we can and cannot take on.&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Under &quot;What we can and cannot take on.&quot; A large senior dog, smiling, in the Adopt Me bandana.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>600 × 800 px</td><td>2,571 × 1,993 px</td></tr>
+<tr><td>Against the 532 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>3.8× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>56%</td><td>97%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 8 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 1/2. Happy open mouth, sharp eyes, teal wall; a portrait, so less story.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-sponsor-a-dog-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-sponsor-a-dog-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Give for a dog&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Sponsor a Dog&quot;: one dog, eye to eye.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>300 × 300 px</td><td>3,089 × 2,317 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 1/2. Big-eared senior chihuahua looking straight at the camera, crops square cleanly.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-silver-hearts-fund-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-silver-hearts-fund-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Sponsor a Dog&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile for the Monica Rua Silver Hearts Fund, which pays for medical care.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>249 × 249 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>0.9× <span class="chip chip-bad">Too small</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Two staff, one with a stethoscope, small dog calm in arms.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-helping-paw-fund-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-helping-paw-fund-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Monica Rua Silver Hearts Fund&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Helping Paw&quot;: a senior guardian at home with her dog.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>259 × 259 px</td><td>3,911 × 2,933 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.0× <span class="chip chip-bad">Too small</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Big smile, dog on her lap, walker beside her tells the story.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-perpetual-care-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-perpetual-care-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Helping Paw&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Perpetual Care&quot;: a guardian in her armchair with her dog, the home the program protects.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>3,602 × 2,702 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 8 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Content, dog settled on lap, even indoor light.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-monthly-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-monthly-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Give for the long term&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Monthly Donation&quot;: pure joy.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>300 × 300 px</td><td>3,350 × 2,512 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.1× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 1/2. One-eyed senior chihuahua with a huge grin, Adopt Me bandana, sharp.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-annual-gift-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-annual-gift-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Monthly Donation&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Annual Gift&quot;: a happy big dog.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>3,300 × 2,475 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 1/2. Open smile, eyes to camera, garden behind.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-legacy-donor-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-legacy-donor-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Annual Gift&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Legacy Donor&quot;: an older woman holding her dog.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>4,480 × 3,360 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 8 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Gentle smile, dog held close, teal fence.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-planned-giving-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-planned-giving-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Legacy Donor&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Planned Giving&quot;: an older man at home with his small dog on his lap, the kind of bond a planned gift protects.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>4,284 × 5,712 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 8 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 2/2. Gentle smile to camera, dog settled on his knee, even indoor light.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-stock-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-stock-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Wish List&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Stock&quot;: a cheerful senior cocker spaniel.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>4,257 × 3,193 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 3/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 1/2. Tongue out, soft eyes, gray face, bandana.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-wish-list-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-wish-list-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Give things&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Wish List&quot;: two small dogs in the harnesses the wish list pays for.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>2,889 × 2,167 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 7 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 0/1 · Story 1/2. Both looking at the camera, even light.</p>
+    
+  </div>
+</li>
+<li class="row">
+  <div class="pair"><figure><img src="plan-img/donate-donate-corporate-sponsor-before.jpg" alt="" loading="lazy"><figcaption>On the site now</figcaption></figure>
+  <figure><img src="plan-img/donate-donate-corporate-sponsor-after.jpg" alt="" loading="lazy"><figcaption>Planned, cropped as the page will show it</figcaption></figure></div>
+  <div class="text">
+    <p class="where">Ways to give, under &quot;Companies&quot;</p>
+    <p class="why"><strong>Why this photo:</strong> Tile &quot;Corporate Sponsor&quot;: the team at the POMDR booth, out in the community.</p>
+    <table class="nums">
+<tr><th></th><th>Now</th><th>Planned</th></tr>
+<tr><td>Photo size</td><td>312 × 312 px</td><td>4,032 × 3,024 px</td></tr>
+<tr><td>Against the 263 px it fills</td><td>1.2× <span class="chip chip-soft">Soft</span></td><td>7.6× <span class="chip chip-good">Sharp</span></td></tr>
+<tr><td>Of the photo that survives the crop</td><td>100%</td><td>75%</td></tr>
+</table>
+    <p class="score"><strong>Screening score 9 of 10.</strong> Feeling 2/3 · Light 2/2 · Framing 2/2 · POMDR in view 1/1 · Story 2/2. Whole team under the POMDR tent with dogs; some sunglasses, allowed for a group shot.</p>
+    
+  </div>
+</li></ul>
+  <p class="note" style="margin-top:1rem">Before the Ways to give tiles change: if any current tile shows a named donor, say so and that tile stays, and we look for its original.</p>
+</section>
+
+<section>
+  <h2>Part C · What the album cannot fix (11)</h2>
+  <ul class="plain">
+    <li><strong>About us: Monica Rua with Zorro (249 px, shown at 532).</strong>A photo of a named person cannot be swapped for another. It needs the original of this exact picture; the library search did not find it.</li>
+    <li><strong>Benefit Shop: "What you will find" (600 px, shown at 532).</strong>The album has no photo of the shop. Needs a new one: the storefront or a volunteer at the counter.</li>
+    <li><strong>Ways to give: plaque sponsorship, sponsor a suite, sponsor an ad, tribute card.</strong>These show the actual object. Each needs a new photo of that object, about 800 px square.</li>
+    <li><strong>Videos page: five video posters.</strong>These are frames from YouTube. The fix is to fetch YouTube's larger frame for each, which needs no photo from you.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Part D · Optional: making the site fuller</h2>
+  <p class="lede">These pages have little or no photography today. Each idea adds a photo where there is none, so each needs your yes and a small layout change. None is in the plan above.</p>
+  <ul class="plain">
+    <li><strong>Adoption events page.</strong>The July 2026 plaza event: dogs at the water bowl, a volunteer showing a dog on stage.</li>
+    <li><strong>Special events page.</strong>September 2026, the three under the "For the Love of Dogs" banner.</li>
+    <li><strong>Our team page.</strong>The staff group on the steps, August 2026, above the portraits.</li>
+    <li><strong>Helping Paw page body.</strong>Two or three more guardians at home with their dogs, from the twelve in the album.</li>
+    <li><strong>Volunteer page.</strong>Volunteers in POMDR shirts with dogs beside the role descriptions.</li>
+    <li><strong>Testimonials.</strong>Adopters with their dogs beside the words they wrote.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>What happens on your yes</h2>
+  <ul class="plain">
+    <li><strong>Part A first.</strong>I export the 12 originals, prepare each at the site's sizes with location data stripped, keep every file name, and show you the result locally before anything goes live.</li>
+    <li><strong>Part B next, in two waves.</strong>The page photos, then the Ways to give tiles.</li>
+    <li><strong>Then the same measurement again.</strong>Every spot in parts A and B should come back sharp.</li>
+  </ul>
+</section>
+</div>

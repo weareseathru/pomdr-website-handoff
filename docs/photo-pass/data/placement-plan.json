@@ -1,0 +1,979 @@
+{
+"replace": [
+{
+"page": "/process/",
+"file": "clinic.jpg",
+"ref": "43",
+"why": "Carie asked for vet staff giving care under \"Every dog arrives ready\". Three staff with their hands on a calm dog shows the care itself, where the current photo shows the building.",
+"score": [
+3,
+2,
+2,
+0,
+2
+],
+"reason": "Hands on the dog, all three focused on the patient, even room light, tidy clinic.",
+"key": "process-clinic",
+"heading": "Every dog arrives ready.",
+"shown": [
+532,
+399
+],
+"old": [
+800,
+572
+],
+"new": [
+4032,
+3024
+],
+"local": true,
+"newfile": "E6AF19FD-A32A-4356-88D3-607F76119D40.heic",
+"uuid": "E6AF19FD-A32A-4356-88D3-607F76119D40"
+},
+{
+"page": "/volunteer/",
+"file": "volunteer-photo.jpg",
+"ref": "D67",
+"why": "The heading is \"Photos from past volunteer appreciation parties\" and this is the 2026 party: the whole crowd, the dogs, and the \"POMDR Volunteers Take the Cake!\" sign.",
+"score": [
+3,
+2,
+2,
+1,
+2
+],
+"reason": "About ninety people smiling up at the camera, bright sun but no hard face shadows from above, POMDR shirts and sign.",
+"key": "volunteer-volunteer-photo",
+"heading": "Photos from past volunteer appreciation parties.",
+"shown": [
+532,
+399
+],
+"old": [
+580,
+283
+],
+"new": [
+3812,
+2236
+],
+"local": true,
+"newfile": "CD08A077-5562-4688-BE46-CF7316897F21.jpeg",
+"uuid": "CD08A077-5562-4688-BE46-CF7316897F21"
+},
+{
+"page": "/about/",
+"file": "helping-paw-fund.jpg",
+"ref": "14",
+"why": "Sits under \"Caring for the people too.\" A senior guardian at home, her spaniel in her arms, is that sentence as a picture.",
+"score": [
+3,
+2,
+2,
+0,
+2
+],
+"reason": "Warm smile, dog pressed against her, soft indoor light, close framing.",
+"key": "about-helping-paw-fund",
+"heading": "Caring for the people too.",
+"shown": [
+532,
+399
+],
+"old": [
+259,
+259
+],
+"new": [
+3549,
+2662
+],
+"local": true,
+"newfile": "B9E9A10B-1758-414B-9AFA-0F9C01F02F5D.heic",
+"uuid": "B9E9A10B-1758-414B-9AFA-0F9C01F02F5D"
+},
+{
+"page": "/become-a-foster/",
+"file": "dog-chester.jpg",
+"ref": "362",
+"why": "The page asks people to foster. A volunteer in a Peace of Mind fleece holding an Adopt Me dog among the flowers shows what fostering looks like.",
+"score": [
+3,
+2,
+2,
+1,
+2
+],
+"reason": "Big smile to camera, dog held close and calm, garden light, logo and bandana in view.",
+"key": "become-a-foster-dog-chester",
+"heading": "Become a foster",
+"shown": [
+517,
+457
+],
+"old": [
+600,
+448
+],
+"new": [
+4480,
+3360
+],
+"local": true,
+"newfile": "2849302D-A98E-460E-A79E-6DCDE2B16717.jpeg",
+"uuid": "2849302D-A98E-460E-A79E-6DCDE2B16717"
+},
+{
+"page": "/fostering/",
+"file": "dog-chester.jpg",
+"ref": "401",
+"why": "Under \"A safe place to land, for however long it takes.\" A foster holding a small dog close, both at ease.",
+"score": [
+3,
+2,
+2,
+1,
+2
+],
+"reason": "Warm smile to camera, dog tucked in, soft shade, POMDR hoodie.",
+"key": "fostering-dog-chester",
+"heading": "A safe place to land, for however long it takes.",
+"shown": [
+532,
+399
+],
+"old": [
+600,
+448
+],
+"new": [
+4480,
+3360
+],
+"local": true,
+"newfile": "54104630-9D7E-4D84-B42D-87A1ED0D8925.jpeg",
+"uuid": "54104630-9D7E-4D84-B42D-87A1ED0D8925"
+},
+{
+"page": "/foster-needs/",
+"file": "dog-gypsy.jpg",
+"ref": "337",
+"why": "Under \"You're the bridge.\" A dog kissing the volunteer who is holding it is the bridge in action.",
+"score": [
+3,
+2,
+2,
+1,
+2
+],
+"reason": "Dog licking her cheek, she is laughing, eye level, teal wall, POMDR shirt.",
+"key": "foster-needs-dog-gypsy",
+"heading": "You're the bridge.",
+"shown": [
+532,
+399
+],
+"old": [
+600,
+451
+],
+"new": [
+5006,
+3755
+],
+"local": true,
+"newfile": "29AB0AA4-4F9B-4AD2-9136-FDFF04F03DDA.heic",
+"uuid": "29AB0AA4-4F9B-4AD2-9136-FDFF04F03DDA"
+},
+{
+"page": "/hospice/",
+"file": "silver-hearts-winston.jpg",
+"ref": "211",
+"why": "Under \"No dog is ever left behind.\" The quiet side: an old gray-faced dog resting in someone's arm.",
+"score": [
+3,
+1,
+2,
+1,
+2
+],
+"reason": "Tender, the dog is settled and looking at the camera; light is flatter than the outdoor shots.",
+"key": "hospice-silver-hearts-winston",
+"heading": "No dog is ever left behind.",
+"shown": [
+532,
+399
+],
+"old": [
+600,
+450
+],
+"new": [
+6642,
+4428
+],
+"local": true,
+"newfile": "A1E187AE-5F42-4401-B56B-046D807619A6.jpeg",
+"uuid": "A1E187AE-5F42-4401-B56B-046D807619A6"
+},
+{
+"page": "/perpetual-care-program/",
+"file": "dog-ms-daisy.jpg",
+"ref": "8",
+"why": "Under \"Why plan now.\" An older guardian with her walker and her dog is exactly who the program is for. The current photo is tall and loses 40% to the crop.",
+"score": [
+2,
+2,
+2,
+0,
+2
+],
+"reason": "Calm and content, garden light, wide shape fits the spot.",
+"key": "perpetual-care-program-dog-ms-daisy",
+"heading": "Why plan now.",
+"shown": [
+532,
+399
+],
+"old": [
+376,
+640
+],
+"new": [
+3576,
+2682
+],
+"local": true,
+"newfile": "1E2D3216-58CC-44C3-B584-4B6E997CB9CA.jpeg",
+"uuid": "1E2D3216-58CC-44C3-B584-4B6E997CB9CA"
+},
+{
+"page": "/surrender/",
+"file": "help-finding-a-home.jpg",
+"ref": "109",
+"why": "Opens \"Help placing your dog\", a hard moment. Nose to nose with a big old shepherd carries the bond without sadness.",
+"score": [
+3,
+2,
+2,
+1,
+2
+],
+"reason": "Real connection, both in profile at eye level, soft light, Adopt Me bandana.",
+"key": "surrender-help-finding-a-home",
+"heading": "Tell us about your dog",
+"shown": [
+144,
+108
+],
+"old": [
+800,
+601
+],
+"new": [
+3734,
+2800
+],
+"local": true,
+"newfile": "C1E095E7-36CD-4B12-99B3-11FBEACEF469.heic",
+"uuid": "C1E095E7-36CD-4B12-99B3-11FBEACEF469"
+},
+{
+"page": "/surrender/",
+"file": "dog-kamere.jpg",
+"ref": "242",
+"why": "Under \"What we can and cannot take on.\" A large senior dog, smiling, in the Adopt Me bandana.",
+"score": [
+2,
+2,
+2,
+1,
+1
+],
+"reason": "Happy open mouth, sharp eyes, teal wall; a portrait, so less story.",
+"key": "surrender-dog-kamere",
+"heading": "What we can and cannot take on.",
+"shown": [
+532,
+399
+],
+"old": [
+600,
+800
+],
+"new": [
+2571,
+1993
+],
+"local": true,
+"newfile": "EC86489F-A9BC-4F18-88CD-DBEE87BCF0A5.heic",
+"uuid": "EC86489F-A9BC-4F18-88CD-DBEE87BCF0A5"
+},
+{
+"page": "/donate/",
+"file": "donate-sponsor-a-dog.jpg",
+"ref": "255",
+"why": "Tile \"Sponsor a Dog\": one dog, eye to eye.",
+"score": [
+3,
+2,
+2,
+1,
+1
+],
+"reason": "Big-eared senior chihuahua looking straight at the camera, crops square cleanly.",
+"key": "donate-donate-sponsor-a-dog",
+"heading": "Give for a dog",
+"shown": [
+263,
+263
+],
+"old": [
+300,
+300
+],
+"new": [
+3089,
+2317
+],
+"local": true,
+"newfile": "A952BD90-5032-4161-8FD2-009B0156D1FF.heic",
+"uuid": "A952BD90-5032-4161-8FD2-009B0156D1FF"
+},
+{
+"page": "/donate/",
+"file": "donate-silver-hearts-fund.jpg",
+"ref": "41",
+"why": "Tile for the Monica Rua Silver Hearts Fund, which pays for medical care.",
+"score": [
+3,
+2,
+2,
+0,
+2
+],
+"reason": "Two staff, one with a stethoscope, small dog calm in arms.",
+"key": "donate-donate-silver-hearts-fund",
+"heading": "Sponsor a Dog",
+"shown": [
+263,
+263
+],
+"old": [
+249,
+249
+],
+"new": [
+4032,
+3024
+],
+"local": true,
+"newfile": "A18ABD12-9338-417B-9425-3FE3B9F666F4.heic",
+"uuid": "A18ABD12-9338-417B-9425-3FE3B9F666F4"
+},
+{
+"page": "/donate/",
+"file": "donate-helping-paw-fund.jpg",
+"ref": "20",
+"why": "Tile \"Helping Paw\": a senior guardian at home with her dog.",
+"score": [
+3,
+2,
+2,
+0,
+2
+],
+"reason": "Big smile, dog on her lap, walker beside her tells the story.",
+"key": "donate-donate-helping-paw-fund",
+"heading": "Monica Rua Silver Hearts Fund",
+"shown": [
+263,
+263
+],
+"old": [
+259,
+259
+],
+"new": [
+3911,
+2933
+],
+"local": true,
+"newfile": "E2977483-E9BF-4048-B454-4E7A891E98E3.jpeg",
+"uuid": "E2977483-E9BF-4048-B454-4E7A891E98E3"
+},
+{
+"page": "/donate/",
+"file": "donate-perpetual-care.jpg",
+"ref": "16",
+"why": "Tile \"Perpetual Care\": a guardian in her armchair with her dog, the home the program protects.",
+"score": [
+2,
+2,
+2,
+0,
+2
+],
+"reason": "Content, dog settled on lap, even indoor light.",
+"key": "donate-donate-perpetual-care",
+"heading": "Helping Paw",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+3602,
+2702
+],
+"local": true,
+"newfile": "A6B497D2-D1CC-42CB-B9FF-395FD52A0174.jpeg",
+"uuid": "A6B497D2-D1CC-42CB-B9FF-395FD52A0174"
+},
+{
+"page": "/donate/",
+"file": "donate-monthly.jpg",
+"ref": "331",
+"why": "Tile \"Monthly Donation\": pure joy.",
+"score": [
+3,
+2,
+2,
+1,
+1
+],
+"reason": "One-eyed senior chihuahua with a huge grin, Adopt Me bandana, sharp.",
+"key": "donate-donate-monthly",
+"heading": "Give for the long term",
+"shown": [
+263,
+263
+],
+"old": [
+300,
+300
+],
+"new": [
+3350,
+2512
+],
+"local": true,
+"newfile": "154179A1-55B8-4462-862C-EF0E827CF5CD.heic",
+"uuid": "154179A1-55B8-4462-862C-EF0E827CF5CD"
+},
+{
+"page": "/donate/",
+"file": "donate-annual-gift.jpg",
+"ref": "365",
+"why": "Tile \"Annual Gift\": a happy big dog.",
+"score": [
+3,
+2,
+2,
+1,
+1
+],
+"reason": "Open smile, eyes to camera, garden behind.",
+"key": "donate-donate-annual-gift",
+"heading": "Monthly Donation",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+3300,
+2475
+],
+"local": true,
+"newfile": "CE9A7C62-B12A-4E9E-BD75-DA74C71C50C9.heic",
+"uuid": "CE9A7C62-B12A-4E9E-BD75-DA74C71C50C9"
+},
+{
+"page": "/donate/",
+"file": "donate-legacy-donor.jpg",
+"ref": "132",
+"why": "Tile \"Legacy Donor\": an older woman holding her dog.",
+"score": [
+2,
+2,
+2,
+0,
+2
+],
+"reason": "Gentle smile, dog held close, teal fence.",
+"key": "donate-donate-legacy-donor",
+"heading": "Annual Gift",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+4480,
+3360
+],
+"local": true,
+"newfile": "AEBE358B-1EFE-48AA-BAB4-B2AF89C897B3.jpeg",
+"uuid": "AEBE358B-1EFE-48AA-BAB4-B2AF89C897B3"
+},
+{
+"page": "/donate/",
+"file": "donate-planned-giving.jpg",
+"ref": "27",
+"why": "Tile \"Planned Giving\": an older man at home with his small dog on his lap, the kind of bond a planned gift protects.",
+"score": [
+2,
+2,
+2,
+0,
+2
+],
+"reason": "Gentle smile to camera, dog settled on his knee, even indoor light.",
+"key": "donate-donate-planned-giving",
+"heading": "Legacy Donor",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+4284,
+5712
+],
+"local": true,
+"newfile": "9D8F70F7-8E72-414B-B23E-4CCBFC304597.jpeg",
+"uuid": "9D8F70F7-8E72-414B-B23E-4CCBFC304597"
+},
+{
+"page": "/donate/",
+"file": "donate-stock.jpg",
+"ref": "272",
+"why": "Tile \"Stock\": a cheerful senior cocker spaniel.",
+"score": [
+3,
+2,
+2,
+1,
+1
+],
+"reason": "Tongue out, soft eyes, gray face, bandana.",
+"key": "donate-donate-stock",
+"heading": "Wish List",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+4257,
+3193
+],
+"local": true,
+"newfile": "B5ECBFF9-B14A-44E0-974B-35D03157706E.heic",
+"uuid": "B5ECBFF9-B14A-44E0-974B-35D03157706E"
+},
+{
+"page": "/donate/",
+"file": "donate-wish-list.jpg",
+"ref": "433",
+"why": "Tile \"Wish List\": two small dogs in the harnesses the wish list pays for.",
+"score": [
+2,
+2,
+2,
+0,
+1
+],
+"reason": "Both looking at the camera, even light.",
+"key": "donate-donate-wish-list",
+"heading": "Give things",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+2889,
+2167
+],
+"local": true,
+"newfile": "EC58F6EA-F630-407D-93D8-8412630AE168.heic",
+"uuid": "EC58F6EA-F630-407D-93D8-8412630AE168"
+},
+{
+"page": "/donate/",
+"file": "donate-corporate-sponsor.jpg",
+"ref": "D44",
+"why": "Tile \"Corporate Sponsor\": the team at the POMDR booth, out in the community.",
+"score": [
+2,
+2,
+2,
+1,
+2
+],
+"reason": "Whole team under the POMDR tent with dogs; some sunglasses, allowed for a group shot.",
+"key": "donate-donate-corporate-sponsor",
+"heading": "Companies",
+"shown": [
+263,
+263
+],
+"old": [
+312,
+312
+],
+"new": [
+4032,
+3024
+],
+"local": true,
+"newfile": "D198CDD4-5C7D-4375-A774-3B8DEE8849C5.heic",
+"uuid": "D198CDD4-5C7D-4375-A774-3B8DEE8849C5"
+}
+],
+"upgrade": [
+{
+"page": "/",
+"file": "home-hero-adopt.jpg",
+"key": "home-home-hero-adopt",
+"heading": "Peace of Mind Dog Rescue: senior dogs and senior people, helped together",
+"shown": [
+1370,
+904
+],
+"old": [
+1280,
+960
+],
+"new": [
+3286,
+2464
+],
+"dist": 3,
+"local": true,
+"uuid": "0164F8AE-52A3-4157-9254-BFAAA9595E4E",
+"newfile": "0164F8AE-52A3-4157-9254-BFAAA9595E4E.jpeg",
+"dir": "0"
+},
+{
+"page": "/",
+"file": "home-hero-helping-paw.jpg",
+"key": "home-home-hero-helping-paw",
+"heading": "Senior dogs deserve a soft place to land.",
+"shown": [
+1280,
+845
+],
+"old": [
+1280,
+960
+],
+"new": [
+3497,
+2623
+],
+"dist": 3,
+"local": true,
+"uuid": "F779D334-D155-468A-817F-5A96E5E998C2",
+"newfile": "F779D334-D155-468A-817F-5A96E5E998C2.heic",
+"dir": "F"
+},
+{
+"page": "/",
+"file": "home-hero-mission.jpg",
+"key": "home-home-hero-mission",
+"heading": "Home slideshow",
+"shown": [
+1280,
+845
+],
+"old": [
+1280,
+960
+],
+"new": [
+2923,
+2192
+],
+"dist": 1,
+"local": true,
+"uuid": "CE1168B2-A598-4895-B564-53380889DBF5",
+"newfile": "CE1168B2-A598-4895-B564-53380889DBF5.heic",
+"dir": "C"
+},
+{
+"page": "/",
+"file": "home-hero-volunteer.jpg",
+"key": "home-home-hero-volunteer",
+"heading": "Home slideshow",
+"shown": [
+1280,
+845
+],
+"old": [
+1024,
+768
+],
+"new": [
+4032,
+3024
+],
+"dist": 1,
+"local": true,
+"uuid": "D08001FB-5CAE-4F0C-8279-4EB1D444A834",
+"newfile": "D08001FB-5CAE-4F0C-8279-4EB1D444A834.jpeg",
+"dir": "D"
+},
+{
+"page": "/clinic/",
+"file": "clinic-plaque.jpg",
+"key": "clinic-clinic-plaque",
+"heading": "Good medicine is what makes a second chance possible.",
+"shown": [
+540,
+360
+],
+"old": [
+800,
+534
+],
+"new": [
+1296,
+864
+],
+"dist": 8,
+"local": true,
+"uuid": "1B1791B9-6344-4F30-B708-BEA346F08ACF",
+"newfile": "1B1791B9-6344-4F30-B708-BEA346F08ACF.jpeg",
+"dir": "1"
+},
+{
+"page": "/clinic/",
+"file": "clinic.jpg",
+"key": "clinic-clinic",
+"heading": "Veterinary clinic",
+"shown": [
+517,
+390
+],
+"old": [
+800,
+572
+],
+"new": [
+3270,
+2336
+],
+"dist": 5,
+"local": true,
+"uuid": "AF044A43-CAAD-4DED-B153-2E42BD0E9205",
+"newfile": "AF044A43-CAAD-4DED-B153-2E42BD0E9205.jpeg",
+"dir": "A"
+},
+{
+"page": "/donate/",
+"file": "silver-hearts-grandpa-joe.jpg",
+"key": "donate-silver-hearts-grandpa-joe",
+"heading": "Where your gift goes.",
+"shown": [
+532,
+399
+],
+"old": [
+640,
+480
+],
+"new": [
+4032,
+3024
+],
+"dist": 2,
+"local": false,
+"uuid": "027A29C8-7113-4271-9DD3-92347782662E",
+"newfile": "027A29C8-7113-4271-9DD3-92347782662E.jpeg",
+"dir": "0"
+},
+{
+"page": "/helping-paw/",
+"file": "helping-paw.jpg",
+"key": "helping-paw-helping-paw",
+"heading": "Helping Paw",
+"shown": [
+517,
+457
+],
+"old": [
+800,
+600
+],
+"new": [
+4032,
+3024
+],
+"dist": 5,
+"local": true,
+"uuid": "6CB1D748-ADF4-4189-B1E3-070A04F0031B",
+"newfile": "6CB1D748-ADF4-4189-B1E3-070A04F0031B.heic",
+"dir": "6"
+},
+{
+"page": "/jobs/",
+"file": "job-opportunities.jpg",
+"key": "jobs-job-opportunities",
+"heading": "Job opportunities",
+"shown": [
+517,
+388
+],
+"old": [
+800,
+600
+],
+"new": [
+4032,
+3024
+],
+"dist": 6,
+"local": true,
+"uuid": "8B3726EE-B37A-4BE7-86AE-C24EB3C9D119",
+"newfile": "8B3726EE-B37A-4BE7-86AE-C24EB3C9D119.heic",
+"dir": "8"
+},
+{
+"page": "/media/",
+"file": "in-the-media.jpg",
+"key": "media-in-the-media",
+"heading": "In the media",
+"shown": [
+517,
+381
+],
+"old": [
+800,
+590
+],
+"new": [
+3285,
+2419
+],
+"dist": 8,
+"local": true,
+"uuid": "1C91F610-4A3A-4591-9B17-A92AF75D6F6C",
+"newfile": "1C91F610-4A3A-4591-9B17-A92AF75D6F6C.heic",
+"dir": "1"
+},
+{
+"page": "/perpetual-care-program/",
+"file": "perpetual-care-faq.jpg",
+"key": "perpetual-care-program-perpetual-care-faq",
+"heading": "Perpetual Care",
+"shown": [
+517,
+388
+],
+"old": [
+580,
+435
+],
+"new": [
+4000,
+3000
+],
+"dist": 3,
+"local": true,
+"uuid": "FC52CE32-862D-42FA-83EE-F8DC1AB9CB08",
+"newfile": "FC52CE32-862D-42FA-83EE-F8DC1AB9CB08.jpeg",
+"dir": "F"
+},
+{
+"page": "/why/",
+"file": "why-adopt-senior.jpg",
+"key": "why-why-adopt-senior",
+"heading": "Honest about the health, and the cost.",
+"shown": [
+532,
+399
+],
+"old": [
+580,
+435
+],
+"new": [
+4131,
+3098
+],
+"dist": 7,
+"local": true,
+"uuid": "30DA68B5-10F2-4F81-A5B3-9664646FDFEA",
+"newfile": "30DA68B5-10F2-4F81-A5B3-9664646FDFEA.pef",
+"dir": "3"
+}
+],
+"left": [
+[
+"/about/",
+"monica-rua-zorro.jpg"
+],
+[
+"/benefit-shop/",
+"donate-benefit-shop.jpg"
+],
+[
+"/donate/",
+"donate-plaque-sponsorship.jpg"
+],
+[
+"/donate/",
+"donate-sponsor-a-suite.jpg"
+],
+[
+"/donate/",
+"donate-sponsor-an-ad.jpg"
+],
+[
+"/donate/",
+"tribute-card-front.jpg"
+],
+[
+"/videos/",
+"video-cnn-hero.jpg"
+],
+[
+"/videos/",
+"video-making-good.jpg"
+],
+[
+"/videos/",
+"video-poster-5oLQgv5LHa0.jpg"
+],
+[
+"/videos/",
+"video-poster-HVv8rEJjnvs.jpg"
+],
+[
+"/videos/",
+"video-poster-KXY3ANV4V84.jpg"
+]
+]
+}

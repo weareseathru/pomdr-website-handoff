@@ -71,3 +71,7 @@ responsive-review/
 wp-mu-plugins/
 docs/photo-pass/*.pdf
 photo-library/
+
+# Local preview state and per-machine settings for scripts/dev.sh
+.dev-run/
+scripts/dev.local.sh
